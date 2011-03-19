@@ -1,0 +1,153 @@
+
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0>:
+<0><   11>	DW_TAG_compile_unit
+		DW_AT_language              DW_LANG_C89
+		DW_AT_name                  test1
+		DW_AT_low_pc                0x80483c4
+		DW_AT_high_pc               0x80483f0
+		DW_AT_producer              dwarfextract
+
+LOCAL_SYMBOLS:
+<1><   40>	DW_TAG_base_type
+		DW_AT_byte_size             4
+		DW_AT_encoding              DW_ATE_unsigned
+		DW_AT_name                  unsigned int
+<1><   56>	DW_TAG_base_type
+		DW_AT_byte_size             1
+		DW_AT_encoding              DW_ATE_unsigned_char
+		DW_AT_name                  unsigned char
+<1><   73>	DW_TAG_base_type
+		DW_AT_byte_size             2
+		DW_AT_encoding              DW_ATE_unsigned
+		DW_AT_name                  short unsigned int
+<1><   95>	DW_TAG_base_type
+		DW_AT_byte_size             4
+		DW_AT_encoding              DW_ATE_unsigned
+		DW_AT_name                  long unsigned int
+<1><  116>	DW_TAG_base_type
+		DW_AT_byte_size             1
+		DW_AT_encoding              DW_ATE_signed_char
+		DW_AT_name                  signed char
+<1><  131>	DW_TAG_base_type
+		DW_AT_byte_size             2
+		DW_AT_encoding              DW_ATE_signed
+		DW_AT_name                  short int
+<1><  144>	DW_TAG_base_type
+		DW_AT_byte_size             4
+		DW_AT_encoding              DW_ATE_signed
+		DW_AT_name                  int
+<1><  151>	DW_TAG_base_type
+		DW_AT_byte_size             8
+		DW_AT_encoding              DW_ATE_signed
+		DW_AT_name                  long long int
+<1><  168>	DW_TAG_base_type
+		DW_AT_byte_size             8
+		DW_AT_encoding              DW_ATE_unsigned
+		DW_AT_name                  long long unsigned int
+<1><  194>	DW_TAG_base_type
+		DW_AT_byte_size             4
+		DW_AT_encoding              DW_ATE_signed
+		DW_AT_name                  long int
+<1><  206>	DW_TAG_base_type
+		DW_AT_byte_size             4
+		DW_AT_encoding              DW_ATE_unsigned
+<1><  209>	DW_TAG_base_type
+		DW_AT_byte_size             1
+		DW_AT_encoding              DW_ATE_signed_char
+		DW_AT_name                  char
+<1><  217>	DW_TAG_structure_type
+		DW_AT_name                  hd1
+		DW_AT_byte_size             8
+		DW_AT_decl_file             2
+		DW_AT_decl_line             2
+		DW_AT_sibling               <254>
+<2><  229>	DW_TAG_member
+		DW_AT_name                  a
+		DW_AT_decl_file             2
+		DW_AT_decl_line             3
+		DW_AT_data_member_location  DW_OP_constu 0
+		DW_AT_type                  <144>
+<2><  241>	DW_TAG_member
+		DW_AT_name                  b
+		DW_AT_decl_file             2
+		DW_AT_decl_line             4
+		DW_AT_data_member_location  DW_OP_constu 4
+		DW_AT_type                  <144>
+<1><  254>	DW_TAG_subprogram
+		DW_AT_external              yes(1)
+		DW_AT_name                  main
+		DW_AT_decl_file             1
+		DW_AT_decl_line             7
+		DW_AT_low_pc                0x80483c4
+		DW_AT_high_pc               0x80483f0
+		DW_AT_frame_base            DW_OP_constu 0
+		DW_AT_type                  <144>
+<1><  278>	DW_TAG_subprogram
+		DW_AT_external              yes(1)
+		DW_AT_name                  tfunc2
+		DW_AT_decl_file             1
+		DW_AT_decl_line             6
+		DW_AT_low_pc                0x80483f0
+		DW_AT_high_pc               0x8048414
+		DW_AT_frame_base            DW_OP_constu 44
+		DW_AT_type                  <144>
+
+.debug_line: line number info for a single cu
+
+.debug_pubnames
+
+.debug_macinfo
+
+.debug_abbrev
+<   1><    0><code:  1> DW_TAG_compile_unit DW_children_yes
+      <    3>	DW_AT_language              DW_FORM_data1
+      <    5>	DW_AT_name                  DW_FORM_string
+      <    7>	DW_AT_low_pc                DW_FORM_addr
+      <    9>	DW_AT_high_pc               DW_FORM_addr
+      <   11>	DW_AT_producer              DW_FORM_string
+<   2><   15><code:  2> DW_TAG_base_type    DW_children_no
+      <   18>	DW_AT_byte_size             DW_FORM_data1
+      <   20>	DW_AT_encoding              DW_FORM_data1
+      <   22>	DW_AT_name                  DW_FORM_string
+<   3><   26><code:  3> DW_TAG_base_type    DW_children_no
+      <   29>	DW_AT_byte_size             DW_FORM_data1
+      <   31>	DW_AT_encoding              DW_FORM_data1
+<   4><   35><code:  4> DW_TAG_structure_typeDW_children_yes
+      <   38>	DW_AT_name                  DW_FORM_string
+      <   40>	DW_AT_byte_size             DW_FORM_data1
+      <   42>	DW_AT_decl_file             DW_FORM_data1
+      <   44>	DW_AT_decl_line             DW_FORM_data1
+      <   46>	DW_AT_sibling               DW_FORM_ref4
+<   5><   50><code:  5> DW_TAG_member       DW_children_no
+      <   53>	DW_AT_name                  DW_FORM_string
+      <   55>	DW_AT_decl_file             DW_FORM_data1
+      <   57>	DW_AT_decl_line             DW_FORM_data1
+      <   59>	DW_AT_data_member_location  DW_FORM_block1
+      <   61>	DW_AT_type                  DW_FORM_ref4
+<   6><   65><code:  6> DW_TAG_subprogram   DW_children_no
+      <   68>	DW_AT_external              DW_FORM_flag
+      <   70>	DW_AT_name                  DW_FORM_string
+      <   72>	DW_AT_decl_file             DW_FORM_data1
+      <   74>	DW_AT_decl_line             DW_FORM_data1
+      <   76>	DW_AT_low_pc                DW_FORM_addr
+      <   78>	DW_AT_high_pc               DW_FORM_addr
+      <   80>	DW_AT_frame_base            DW_FORM_block1
+      <   82>	DW_AT_type                  DW_FORM_ref4
+<   7><   86><code:  0> null .debug_abbrev entry
+
+.debug_string
+
+.debug_aranges
+
+.debug_frame
+
+.debug_static_func
+
+.debug_static_vars
+
+.debug_weaknames
+
+.rel.debug_info:
+    6	<  0> <no name>                         R_MIPS_16

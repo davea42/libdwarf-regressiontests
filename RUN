@@ -1,0 +1,4 @@
+
+echo 'r val_expr/libpthread-2.5.so -F -v -v -x name=dwarfdump.conf -x abi=x86_64'
+
+gdb ../dwarf-working/trunk/dwarfdump/dwarfdump

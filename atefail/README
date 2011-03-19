@@ -1,0 +1,10 @@
+
+dwarfdump -kt  ig_server 
+
+With dwarfdump before fixes it crashes.
+
+With latest (June 19 2008 or so) it gets an error.
+The problem is that its a relocatable and without
+doing the relocation the .debug_strp offset is wrong.
+
+DavidA.

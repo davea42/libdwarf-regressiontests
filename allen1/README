@@ -1,0 +1,8 @@
+
+This is a build of dwarfdump with gcc 4.4.4 by Todd Allen.
+
+It exposes an omission in libdwarf handling of some dwarf
+expression operators (leading to an error in dwarfdump
+about a register number being too high).
+
+DavidAnderson  6/29/2010

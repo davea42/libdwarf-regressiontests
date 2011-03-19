@@ -1,0 +1,24 @@
+# Pick up newly built dwarfdump in two flavors.
+# Pick up libdwarf in two flavors.
+set -x
+#cp ../dwarf-work*/trunk/dwarfdump/dwarfdump  .
+
+(cd ../libdwarf; ./configure  --enable-oldframecol ; make clean ; make  )
+cp ../libdwarf/libdwarf.a libdwoldframecol.a
+
+(cd ../libdwarf; ./configure  --enable-windowspath; make clean ; make  )
+(cd ../dwarfdump ; rm dwarfdump ; make)
+(cd ../dwarfdump2 ; rm dwarfdump ; make)
+cp ../dwarfdump2/dwarfdump  dwarfdump2W
+cp ../dwarfdump/dwarfdump   dwarfdumpW
+
+(cd ../libdwarf; ./configure ; make clean ; make )
+cp ../libdwarf/libdwarf.a libdwarf.a
+(cd ../dwarfdump ; rm dwarfdump ; make)
+(cd ../dwarfdump2 ; rm dwarfdump ; make)
+
+
+cp ../dwarfdump/dwarfdump  .
+cp ../dwarfdump/dwarfdump.conf  .
+cp ../dwarfdump2/dwarfdump  dwarfdump2
+cp ../libdwarf/gennames .

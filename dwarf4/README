@@ -1,0 +1,6 @@
+These were built (along with libdwarf)
+as -gdwarf-4.
+
+Using gcc-4.5 and g++-4.5.
+
+Jan 13,2011
