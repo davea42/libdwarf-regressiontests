@@ -1,0 +1,3 @@
+#
+# Common code to locate source and test directories.
+libdw=/home/davea/dwarf/gitlibdwarf

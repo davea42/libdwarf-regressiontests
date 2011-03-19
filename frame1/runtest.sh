@@ -1,5 +1,6 @@
 
-cc -g -I ../../libdwarf -L ../../libdwarf frame1.c -ldwarf -lelf -o frame1
+libdw=$1
+cc -g -I $libdw/libdwarf -L $libdw/libdwarf frame1.c -ldwarf -lelf -o frame1
 if [ $? -ne 0 ]
 then
     echo FAIL building frame1.c

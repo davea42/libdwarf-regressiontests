@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash
+#
 echo 'tests are  "dd"   "dd2"  "ddtodd2", and no options means dd'  
 goodcount=0
 failcount=0
-cbase=/home/davea/dwarf/dwarf-working/trunk/
-type=dd
+. BASEFILES
+cbase=$libdw
 if [ $# -eq 0 ]
 then
   d1=./dwarfdump.O
@@ -193,24 +194,24 @@ then
 fi
 
 cd findcu 
-sh RUNTEST >testoutput
+sh RUNTEST $cbase >testoutput
 chkres $? 'findcu/cutest-of-a-libdwarf-interface'
 cd ..
 
 
-cc -Wall -I  ../libdwarf test_harmless.c  -o test_harmless ../libdwarf/libdwarf.a -lelf
+cc -Wall -I  $cbase/libdwarf test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf
 ./test_harmless >testoutput
 chkres $? 'check harmless-error functionality'
 
 
 # Testing that gennames -t and -s generate the same results.
-./gennames -s  -i ../libdwarf -o .
+./gennames -s  -i $cbase/libdwarf -o .
 mv dwarf_names.c dwarfnames-s.c
-cc -Wall -I ../libdwarf test_dwarfnames.c dwarfnames-s.c -o dwarfnames-s
+cc -Wall -I $cbase/libdwarf test_dwarfnames.c dwarfnames-s.c -o dwarfnames-s
 ./dwarfnames-s > dwn_s_out
-./gennames -t  -i ../libdwarf -o .
+./gennames -t  -i $cbase/libdwarf -o .
 mv dwarf_names.c dwarfnames-t.c
-cc -Wall -I  ../libdwarf test_dwarfnames.c dwarfnames-t.c -o dwarfnames-t
+cc -Wall -I  $cbase/libdwarf test_dwarfnames.c dwarfnames-t.c -o dwarfnames-t
 ./dwarfnames-t > dwn_t_out
 
 diff dwn_s_out dwn_t_out
@@ -221,14 +222,13 @@ rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
 rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h 
 
 cd frame1
-sh runtest.sh
+sh runtest.sh $cbase
 chkres $? frame1
 cd ..
 
 cd dwarfextract
 rm dwarfextract
-make
-sh runtests.sh
+sh runtests.sh $cbase
 chkres $?  dwarfextract
 cd ..
 
@@ -238,7 +238,7 @@ chkres $?  sandnes2
 cd ..
 
 cd legendre
-sh RUNTEST.sh
+sh RUNTEST.sh $cbase
 chkres $?  sandnes2
 cd ..
 

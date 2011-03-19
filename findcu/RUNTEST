@@ -1,6 +1,6 @@
-
-h="-I../../libdwarf"
-l="-L../../libdwarf"
+libdw=$1
+h="-I$libdw/libdwarf"
+l="-L$libdw/libdwarf"
 libs="-ldwarf -lelf"
 
 cc $h cutest.c $l -o cutest $libs

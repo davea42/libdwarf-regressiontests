@@ -6,6 +6,7 @@ rm -f core
 rm -f junk*
 rm -f ALL*
 rm -f libdwarf.a
+rm -f testoutput
 rm -f libdwoldframecol.a
 rm -f test_harmless
 rm -f test-alex1/test1

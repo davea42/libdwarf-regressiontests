@@ -1,5 +1,5 @@
 #
-gcc -I ../../libdwarf -DNEW frame_test.c ../libdwarf.a -lelf -o frame_test1
+gcc -I $1/libdwarf -DNEW frame_test.c ../libdwarf.a -lelf -o frame_test1
 ./frame_test1
 if [  $? -ne 0 ]
 then
@@ -7,7 +7,7 @@ then
   exit 1
 fi
 
-gcc -I ../../libdwarf -DOLD frame_test.c ../libdwoldframecol.a -lelf -o frame_test2
+gcc -I $1/libdwarf -DOLD frame_test.c ../libdwoldframecol.a -lelf -o frame_test2
 ./frame_test2
 if [  $? -ne 0 ]
 then
