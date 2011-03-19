@@ -3,6 +3,7 @@
 #
 . ../BASEFILES
 cc -g -I $libdw/libdwarf  dwarfextract.c -o dwarfextract -L ../libdwarf -ldwarf -lelf
+cc -g test1.c test2.c -o test1
 ./dwarfextract test1 test1out
 ../dwarfdump -a test1out >test1.new
 diff test1.base test1.new

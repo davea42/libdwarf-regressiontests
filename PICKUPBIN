@@ -10,15 +10,15 @@ source BASEFILES
 cp $libdw/libdwarf/libdwarf.a libdwoldframecol.a
 
 (cd $libdw/libdwarf; ./configure  --enable-windowspath; make clean ; make  )
-(cd $libdw/dwarfdump ; rm dwarfdump ; make)
-(cd $libdw/dwarfdump2 ; rm dwarfdump ; make)
+(cd $libdw/dwarfdump ; ./configure ; rm dwarfdump ; make)
+(cd $libdw/dwarfdump2  ; ./configure ; rm dwarfdump ; make)
 cp $libdw/dwarfdump2/dwarfdump  dwarfdump2W
 cp $libdw/dwarfdump/dwarfdump   dwarfdumpW
 
 (cd $libdw/libdwarf; ./configure ; make clean ; make )
 cp $libdw/libdwarf/libdwarf.a libdwarf.a
-(cd $libdw/dwarfdump ; rm dwarfdump ; make)
-(cd $libdw/dwarfdump2 ; rm dwarfdump ; make)
+(cd $libdw/dwarfdump ; ./configure ; rm dwarfdump ; make)
+(cd $libdw/dwarfdump2 ; ./configure ; rm dwarfdump ; make)
 
 
 cp $libdw/dwarfdump/dwarfdump  .
