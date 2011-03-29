@@ -151,10 +151,14 @@ chkres () {
           failcount=`expr $failcount + 1`
   fi
 }
-runtest $d1 $d2  moshe/hello -a -ka -vvv -R -M
-runtest $d1 $d2  moshe/a.out.t -a -ka -vvv -R -M
-runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a -ka -vvv -R -M
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a -ka -vvv -R -M
+runtest $d1 $d2  moshe/hello -a -vvv -R -M
+runtest $d1 $d2  moshe/hello -ka -vvv -R -M
+runtest $d1 $d2  moshe/a.out.t -a -vvv -R -M
+runtest $d1 $d2  moshe/a.out.t -ka -vvv -R -M
+runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
+runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
 
 # The following 3 print the lines  differently.
 # The first prints a shorthand for file path.
@@ -174,16 +178,21 @@ runtest $d1 $d2  mucci/stream.o -l  -vvv
 runtest $d1 $d2  moore/djpeg.v850 -l -R
 
 runtest $d1 $d2  enciso2/template.elf -a -vvv -R -M
-runtest $d1 $d2  enciso2/template.elf -a -ka -R -M
+runtest $d1 $d2  enciso2/template.elf -a -R -M
+runtest $d1 $d2  enciso2/template.elf -ka -R -M
 runtest $d1 $d2  enciso2/test_templates.o  -a -R -M
 runtest $d1 $d2  enciso2/test_templates.o  -a -R 
 runtest $d1 $d2  x86/dwarfdumpv4.3 -S match=main 
 runtest $d1 $d2  x86/dwarfdumpv4.3 -S any=leb 
 runtest $d1 $d2  x86/dwarfdumpv4.3 -S 'regex=u.*leb' 
-runtest $d1 $d2  wynn/unoptimised.axf  -f -kf -x abi=arm
-runtest $d1 $d2  arm/armcc-test-dwarf2 -f -ka  -x abi=arm 
-runtest $d1 $d2  arm/armcc-test-dwarf3  -f -ka -x abi=arm
-runtest $d1 $d2  lloyd/arange.elf  -r -kr
+runtest $d1 $d2  wynn/unoptimised.axf  -f   -x abi=arm
+runtest $d1 $d2  wynn/unoptimised.axf  -kf  -x abi=arm
+runtest $d1 $d2  arm/armcc-test-dwarf2 -f   -x abi=arm 
+runtest $d1 $d2  arm/armcc-test-dwarf2 -ka  -x abi=arm 
+runtest $d1 $d2  arm/armcc-test-dwarf3 -f  -x abi=arm
+runtest $d1 $d2  arm/armcc-test-dwarf3 -ka  -x abi=arm
+runtest $d1 $d2  lloyd/arange.elf  -r
+runtest $d1 $d2  lloyd/arange.elf  -kr
 
 # With mips abi and C dwarfdump we get error 
 # DW_DLE_FRAME_REGISTER_UNREPRESENTABLE.  That is normal, expected.
@@ -246,18 +255,24 @@ cd ..
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-simple
 runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips-simple
 
-runtest $d1 $d2  sparc/tcombined.o -a -R -ka -v -v -v -v -v -v
-runtest $d1 $d2  kartashev2/combined.o -a -R -ka -v -v -v -v -v -v
-runtest $d1 $d2  x86/dwarfdumpv4.3 -a -R -ka -v -v -v -v -v -v
-runtest $d1 $d2  mucci/stream.o -a -R -ka  -v -v -v -v -v -v
+runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v
+runtest $d1 $d2  sparc/tcombined.o -ka -R  -v -v -v -v -v -v
+runtest $d1 $d2  kartashev2/combined.o -a -R  -v -v -v -v -v -v
+runtest $d1 $d2  kartashev2/combined.o -ka -R  -v -v -v -v -v -v
+runtest $d1 $d2  x86/dwarfdumpv4.3 -a -R  -v -v -v -v -v -v
+runtest $d1 $d2  x86/dwarfdumpv4.3 -ka -R -v -v -v -v -v -v
+runtest $d1 $d2  mucci/stream.o -a -R   -v -v -v -v -v -v
+runtest $d1 $d2  mucci/stream.o -ka -R   -v -v -v -v -v -v
 runtest $d1 $d2  mucci/stream.o -c -R -ka  
 runtest $d1 $d2  mucci/stream.o -c -R -ka  -v -v -v -v -v -v
-runtest $d1 $d2  mucci/main.o -a -R -ka  -v -v -v -v -v -v
+runtest $d1 $d2  mucci/main.o -a -R   -v -v -v -v -v -v
+runtest $d1 $d2  mucci/main.o -ka -R   -v -v -v -v -v -v
 runtest $d1 $d2  mucci/main.o -c -R -ka  -v -v -v -v -v -v
 runtest $d1 $d2  mucci/main.o -c -R -ka  
 runtest $d1 $d2 mucci/stream.o -a -R -M
 runtest $d1 $d2 mucci/stream.o -i -e
-runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F -ka
+runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F 
+runtest $d1 $d2 legendre/libmpich.so.1.0 -ka 
 
 
 
@@ -281,17 +296,21 @@ cd ..
 
 
 #Following 2 show some DW_AT_MIPS_fde difference. So -C works.
-runtest $d1 $d2  irix64/libc.so -ka -i  -x name=dwarfdump.conf -x abi=mips-simple3
-runtest $d1 $d2  irix64/libc.so -ka -i  -x name=dwarfdump.conf -x abi=mips-simple3
+runtest $d1 $d2  irix64/libc.so -ka   -x name=dwarfdump.conf -x abi=mips-simple3
+runtest $d1 $d2  irix64/libc.so -i    -x name=dwarfdump.conf -x abi=mips-simple3
 #Following shows -C differences, see ia64/README. So -C works.
-runtest $d1 $d2  ia64/mytry.ia64 -ka -i
-runtest $d1 $d2  ia64/mytry.ia64 -ka -i -C
+runtest $d1 $d2  ia64/mytry.ia64 -i
+runtest $d1 $d2  ia64/mytry.ia64 -ka 
+runtest $d1 $d2  ia64/mytry.ia64 -i -C
+runtest $d1 $d2  ia64/mytry.ia64 -ka  -C
 
 runtest $d1 $d2  ref_addr/ELF3.elf -R -a -v -v -v -v -v -v 
-runtest $d1 $d2  ref_addr/ELF3.elf -R -a -M -ka -v -v -v -v -v -v 
+runtest $d1 $d2  ref_addr/ELF3.elf -R -a -M  -v -v -v -v -v -v 
+runtest $d1 $d2  ref_addr/ELF3.elf -R -ka -M -v -v -v -v -v -v 
 
 # This one fails,return add reg num 108.
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a -ka -v -v -v -v -v -v 
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a  -v -v -v -v -v -v 
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -ka  -v -v -v -v -v -v 
 # This one works, return address reg 108 allowed.
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v 
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -c   -R -v -v -v -v -v -v 
@@ -299,8 +318,10 @@ runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -c   -R -v -v -v -v -v 
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a -R -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc 
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -c -R -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc 
 
-runtest $d1 $d2  louzon/ppcobj.o -a -ka -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
-runtest $d1 $d2  linkonce/comdattest.o -a  -ka -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
+runtest $d1 $d2  louzon/ppcobj.o -a  -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
+runtest $d1 $d2  louzon/ppcobj.o -ka -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
+runtest $d1 $d2  linkonce/comdattest.o -ka -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
+runtest $d1 $d2  linkonce/comdattest.o -a -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 runtest $d1 $d2 atefail/ig_server -kt 
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3  
 runtest $d1 $d2 ia32/mytry.ia32 -F -x name=dwarfdump.conf -x abi=x86
@@ -311,11 +332,13 @@ runtest $d1 $d2 val_expr/libpthread-2.5.so -f -v -v -x name=dwarfdump.conf -x ab
 runtest $d1 $d2 irixn32/dwarfdump -i -G  -ka
 runtest $d1 $d2 irixn32/dwarfdump -i -G -d  
 runtest $d1 $d2 ia32/mytry.ia32 -i -G  
-runtest $d1 $d2 ia32/mytry.ia32 -i -G -d  -ka 
+runtest $d1 $d2 ia32/mytry.ia32 -i -G -d  
+runtest $d1 $d2 ia32/mytry.ia32 -ka -G -d 
 runtest $d1 $d2 cristi2/libc-2.5.so -F -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 ia32/libc.so.6 -F -f -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 cristi2/libpthread-2.4.so -F -v -v -v -x name=dwarfdump.conf -x abi=x86
-runtest $d1 $d2 cristi2/libpthread-2.4.so -R -F -ka -v -v -v
+runtest $d1 $d2 cristi2/libpthread-2.4.so -R -F  -v -v -v
+runtest $d1 $d2 cristi2/libpthread-2.4.so -R -ka  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj -m 
 runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 
