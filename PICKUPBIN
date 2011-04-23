@@ -1,10 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 # Pick up newly built dwarfdump in two flavors.
 # Pick up libdwarf in two flavors.
 set -x
 # Fix the following line to match the desired libdwarf/dwarfdump source 
 # directory.
-source BASEFILES
+. ./BASEFILES
 
 (cd $libdw/libdwarf; ./configure  --enable-oldframecol ; make clean ; make  )
 cp $libdw/libdwarf/libdwarf.a libdwoldframecol.a

@@ -1,3 +1,5 @@
 #
-# Common code to locate source and test directories.
-libdw=/home/davea/dwarf/dwarf-working/carlos2010
+# Common code to locate source directories.
+# You will need to alter this to match your local
+# path to the libdwarf/dwarfdump source.
+libdw=/home/davea/dwarf/gitlibdwarf

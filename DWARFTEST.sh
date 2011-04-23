@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 #
 echo 'tests are  "dd"   "dd2"  "ddtodd2", and no options means dd'  
 goodcount=0
 failcount=0
-. BASEFILES
+. ./BASEFILES
 cbase=$libdw
 if [ $# -eq 0 ]
 then
