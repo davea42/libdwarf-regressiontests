@@ -51,31 +51,28 @@ LOCAL_SYMBOLS:
                       DW_AT_encoding              DW_ATE_signed
                       DW_AT_name                  "long int"
 < 1><0x000000ce>    DW_TAG_base_type
-                      DW_AT_byte_size             0x00000004
-                      DW_AT_encoding              DW_ATE_unsigned
-< 1><0x000000d1>    DW_TAG_base_type
                       DW_AT_byte_size             0x00000001
                       DW_AT_encoding              DW_ATE_signed_char
                       DW_AT_name                  "char"
-< 1><0x000000d9>    DW_TAG_structure_type
+< 1><0x000000d6>    DW_TAG_structure_type
                       DW_AT_name                  "hd1"
                       DW_AT_byte_size             0x00000008
                       DW_AT_decl_file             0x00000002
                       DW_AT_decl_line             0x00000002
-                      DW_AT_sibling               <0x000000fe>
-< 2><0x000000e5>      DW_TAG_member
+                      DW_AT_sibling               <0x000000fb>
+< 2><0x000000e2>      DW_TAG_member
                         DW_AT_name                  "a"
                         DW_AT_decl_file             0x00000002
                         DW_AT_decl_line             0x00000003
                         DW_AT_data_member_location  DW_OP_constu 0
                         DW_AT_type                  <0x00000090>
-< 2><0x000000f1>      DW_TAG_member
+< 2><0x000000ee>      DW_TAG_member
                         DW_AT_name                  "b"
                         DW_AT_decl_file             0x00000002
                         DW_AT_decl_line             0x00000004
                         DW_AT_data_member_location  DW_OP_constu 4
                         DW_AT_type                  <0x00000090>
-< 1><0x000000fe>    DW_TAG_subprogram
+< 1><0x000000fb>    DW_TAG_subprogram
                       DW_AT_external              yes(1)
                       DW_AT_name                  "main"
                       DW_AT_decl_file             0x00000001
@@ -84,14 +81,14 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               0x080483f0
                       DW_AT_frame_base            DW_OP_constu 0
                       DW_AT_type                  <0x00000090>
-< 1><0x00000116>    DW_TAG_subprogram
+< 1><0x00000113>    DW_TAG_subprogram
                       DW_AT_external              yes(1)
                       DW_AT_name                  "tfunc2"
                       DW_AT_decl_file             0x00000001
                       DW_AT_decl_line             0x00000006
                       DW_AT_low_pc                0x080483f0
                       DW_AT_high_pc               0x08048414
-                      DW_AT_frame_base            DW_OP_constu 44
+                      DW_AT_frame_base            DW_OP_constu 56
                       DW_AT_type                  <0x00000090>
 
 .debug_line: line number info for a single cu
@@ -111,31 +108,28 @@ LOCAL_SYMBOLS:
        <0x00000012>              DW_AT_byte_size             DW_FORM_data1
        <0x00000014>              DW_AT_encoding              DW_FORM_data1
        <0x00000016>              DW_AT_name                  DW_FORM_string
-<    3><0x0000001a><code:   3> DW_TAG_base_type            DW_children_no
-       <0x0000001d>              DW_AT_byte_size             DW_FORM_data1
-       <0x0000001f>              DW_AT_encoding              DW_FORM_data1
-<    4><0x00000023><code:   4> DW_TAG_structure_type        DW_children_yes
-       <0x00000026>              DW_AT_name                  DW_FORM_string
-       <0x00000028>              DW_AT_byte_size             DW_FORM_data1
-       <0x0000002a>              DW_AT_decl_file             DW_FORM_data1
-       <0x0000002c>              DW_AT_decl_line             DW_FORM_data1
-       <0x0000002e>              DW_AT_sibling               DW_FORM_ref4
-<    5><0x00000032><code:   5> DW_TAG_member               DW_children_no
-       <0x00000035>              DW_AT_name                  DW_FORM_string
-       <0x00000037>              DW_AT_decl_file             DW_FORM_data1
-       <0x00000039>              DW_AT_decl_line             DW_FORM_data1
-       <0x0000003b>              DW_AT_data_member_location  DW_FORM_block1
-       <0x0000003d>              DW_AT_type                  DW_FORM_ref4
-<    6><0x00000041><code:   6> DW_TAG_subprogram           DW_children_no
-       <0x00000044>              DW_AT_external              DW_FORM_flag
-       <0x00000046>              DW_AT_name                  DW_FORM_string
-       <0x00000048>              DW_AT_decl_file             DW_FORM_data1
-       <0x0000004a>              DW_AT_decl_line             DW_FORM_data1
-       <0x0000004c>              DW_AT_low_pc                DW_FORM_addr
-       <0x0000004e>              DW_AT_high_pc               DW_FORM_addr
-       <0x00000050>              DW_AT_frame_base            DW_FORM_block1
-       <0x00000052>              DW_AT_type                  DW_FORM_ref4
-<    7><0x00000056><code:   0> null .debug_abbrev entry
+<    3><0x0000001a><code:   3> DW_TAG_structure_type        DW_children_yes
+       <0x0000001d>              DW_AT_name                  DW_FORM_string
+       <0x0000001f>              DW_AT_byte_size             DW_FORM_data1
+       <0x00000021>              DW_AT_decl_file             DW_FORM_data1
+       <0x00000023>              DW_AT_decl_line             DW_FORM_data1
+       <0x00000025>              DW_AT_sibling               DW_FORM_ref4
+<    4><0x00000029><code:   4> DW_TAG_member               DW_children_no
+       <0x0000002c>              DW_AT_name                  DW_FORM_string
+       <0x0000002e>              DW_AT_decl_file             DW_FORM_data1
+       <0x00000030>              DW_AT_decl_line             DW_FORM_data1
+       <0x00000032>              DW_AT_data_member_location  DW_FORM_block1
+       <0x00000034>              DW_AT_type                  DW_FORM_ref4
+<    5><0x00000038><code:   5> DW_TAG_subprogram           DW_children_no
+       <0x0000003b>              DW_AT_external              DW_FORM_flag
+       <0x0000003d>              DW_AT_name                  DW_FORM_string
+       <0x0000003f>              DW_AT_decl_file             DW_FORM_data1
+       <0x00000041>              DW_AT_decl_line             DW_FORM_data1
+       <0x00000043>              DW_AT_low_pc                DW_FORM_addr
+       <0x00000045>              DW_AT_high_pc               DW_FORM_addr
+       <0x00000047>              DW_AT_frame_base            DW_FORM_block1
+       <0x00000049>              DW_AT_type                  DW_FORM_ref4
+<    6><0x0000004d><code:   0> null .debug_abbrev entry
 
 .debug_string
 
