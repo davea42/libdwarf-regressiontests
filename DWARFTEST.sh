@@ -22,8 +22,11 @@ echo "new is $d2"
 dwlib=$cbase/libdwarf/libdwarf.a
 dwinc=$cbase/libdwarf
 
-o='-F'
-o='-b -c  -f -F  -h -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
+baseopts='-F'
+baseopts='-b -c  -f -F  -h -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
+
+kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe"
+#[-k{abcdefFgilmMnrRsStxy}] [-kxe]
 
 # -e use elipsis for some names.
 # -g use old loclist stuff, must use other option to select section.
@@ -31,8 +34,9 @@ o='-b -c  -f -F  -h -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
 #                -v      verbose: show more information
 #f='x86/dwarfdumpv4.3'
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
-f='moshe/hello
+filepaths='moshe/hello
 moshe/a.out.t
+enciso3/test.o
 dwarf4/dd2g4.5dwarf-4	
 dwarf4/ddg4.5dwarf-4
 x86/dwarfdumpv4.3 
@@ -345,14 +349,26 @@ runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 echo PASS  $goodcount
 echo FAIL  $failcount
 
-for i in $f
+for i in $filepaths
 do
    echo ===== $i all options
    for xtra in "" "-v" "-v -v"
    do
-     for k in  $o
+     for k in  $baseopts
      do
 	runtest $d1 $d2 $i $k $xtra
+     done
+   done
+done
+for i in $filepaths
+do
+   echo ===== $i all options
+   # -kd ensures we report the test statistics
+   for xtra in "" "-kd"  "-ki"
+   do
+     for k in  $kopts
+     do
+       runtest $d1 $d2 $i $k $xtra
      done
    done
 done
