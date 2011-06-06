@@ -36,6 +36,8 @@ kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
 moshe/a.out.t
+simonian/test-gcc-4.3.0  
+simonian/test-gcc-4.5.1
 enciso3/test.o
 dwarf4/dd2g4.5dwarf-4	
 dwarf4/ddg4.5dwarf-4
