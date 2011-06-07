@@ -7,16 +7,8 @@ DW_DLE_REF_SIG8_NOT_HANDLED (228)
 is the output right?
 -ka -R -v -v -v -v -v -v kartashev2/combined.o
 
-
 DWARF CHECK: .debug_line: Invalid address for DW_LNE_end_sequence
 -ka -x name=dwarfdump.conf -x abi=mips-simple3 irix64/libc.so
-
-
- 2 Compilers detected:
- 01: ""
- 02: <unknown producer>
--ka -x name=dwarfdump.conf -x abi=mips-simple3 irix64/libc.so
-
 
 CU Name = "unsigned char"
 Means relocs not done?
