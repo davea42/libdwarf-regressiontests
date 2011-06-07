@@ -1,18 +1,21 @@
+Remaining known issues.
 
+Need to print the new SIG8 section.
+
+Check for FIXME in the source.
 
 DW_DLE_REF_SIG8_NOT_HANDLED (228) 
  -ka -vvv -R -M dwarf4/dd2g4.5dwarf-4
 
-
 is the output right?
 -ka -R -v -v -v -v -v -v kartashev2/combined.o
-
-DWARF CHECK: .debug_line: Invalid address for DW_LNE_end_sequence
--ka -x name=dwarfdump.conf -x abi=mips-simple3 irix64/libc.so
 
 CU Name = "unsigned char"
 Means relocs not done?
 -kt atefail/ig_server
+
+dwarfdump2 needs to be brought up to match dwarfdump,
+starting with dwarfdump2.cc
 
 
 

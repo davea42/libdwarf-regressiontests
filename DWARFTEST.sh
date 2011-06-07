@@ -118,7 +118,7 @@ runtest () {
            echo corefile in  $newdw
            exit 1
         fi
-        grep -v dadebug tmp2  >tmp3
+        cat tmp2  >tmp3
         # 
         diff tmp1 tmp3
         if [ $? = 0 ]
