@@ -1,22 +1,7 @@
 
 
-Compiler wrong?
-pubtype dwarf_offdie : die offset does not reference valid DIE.
- -a -vvv -R -M dwarf4/dd2g4.5dwarf-4
-
-
 DW_DLE_REF_SIG8_NOT_HANDLED (228) 
  -ka -vvv -R -M dwarf4/dd2g4.5dwarf-4
-
-Does not print the CU for each arange. Should it?
- -a -R enciso2/test_templates.o
-
-
-Fails to find 'main' and main is really there.
-DW_TAG_subprogram
- 791752 <               DW_AT_external              yes(1)
- 791753 <               DW_AT_name                  main
--S match=main  x86/dwarfdumpv4.3
 
 
 is the output right?
