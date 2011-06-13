@@ -19,6 +19,10 @@ rm -f        test-alex2/out1
 rm -f        dwarfextract/test1
 rm -f        dwarfextract/test1.new
 rm -f        dwarfextract/test1out
+rm -f        dwarfextract/dwarfextractc
+rm -f   dwarfextract/test2out
+rm -f dwarfextract/testc.new
+rm -f dwarfextract/testcout
 rm -f        dwarfextract/dwarfextract
 rm -f        findcu/testoutput
 rm -f        findcu/cutest
