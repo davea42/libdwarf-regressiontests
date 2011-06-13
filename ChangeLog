@@ -1,3 +1,10 @@
+2011-06-12  DavidAnderson <davea42@earthlink.net>
+     * dwarfextract: Inserting more thorough test code
+       into runtests.sh script and adding new baselines
+       so we can be sure we compiled in the right calls
+       for the particular test (dwarf_producer_init_c or
+       dwarf_producer_init) so we test both.
+     * CLEANUP: Cleans out new temp files created by runtests.sh
 2011-01-13  DavidAnderson <davea42@earthlink.net>
      * dwarfdump.O, dwarfdump2.O: latest version.
      * dwarfextract/dwarfextract.c: build with original or _c

@@ -23,6 +23,8 @@ rm -f        dwarfextract/dwarfextractc
 rm -f   dwarfextract/test2out
 rm -f dwarfextract/testc.new
 rm -f dwarfextract/testcout
+rm -f dwarfextract/basecstdout
+rm -f dwarfextract/basestdout
 rm -f        dwarfextract/dwarfextract
 rm -f        findcu/testoutput
 rm -f        findcu/cutest

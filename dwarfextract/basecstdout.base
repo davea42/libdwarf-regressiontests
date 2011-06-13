@@ -1,0 +1,5 @@
+Using dwarf_producer_init_c, June 2011
+input file:				test1
+compilation units:		2
+structures captured:		1
+output file:				testcout

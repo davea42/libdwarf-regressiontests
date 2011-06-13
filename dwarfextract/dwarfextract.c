@@ -322,7 +322,7 @@ static int producer_callback(char *, int, Dwarf_Unsigned,
 	Dwarf_Unsigned, Dwarf_Unsigned, Dwarf_Unsigned, int *, int*);
 static int producer_callback_c(char *name, int size, Dwarf_Unsigned type,
         Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
-        int *sect_name_index, void *user_data,int *error);
+        Dwarf_Unsigned *sect_name_index, void *user_data,int *error);
 
 int	process_one_file(Elf *, int intfd, int outfd);
 int	is_type_we_want(Dwarf_Debug, Dwarf_Die, int *);
@@ -652,14 +652,15 @@ process_one_file(Elf * elf, int infd, int outfd)
 #ifdef PRODUCER_INIT_C
         {
             void *v = (void *)101;
+            printf("Using dwarf_producer_init_c, June 2011\n");
 	    newdbg = dwarf_producer_init_c(producer_flags, producer_callback_c,
 	        producer_errhandler, 
-                Dwarf_Ptr errarg,
                 producer_error, 
-                v
+                v,
                 &error);
         }
 #else
+        printf("Using original dwarf_producer_init\n");
 	newdbg = dwarf_producer_init(producer_flags, producer_callback,
 			producer_errhandler, producer_error, &error);
 #endif
@@ -2973,23 +2974,32 @@ producer_callback_common(char *name, int size, Dwarf_Unsigned type,
 static int
 producer_callback_c(char *name, int size, Dwarf_Unsigned type,
 	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
-	int *sect_name_index, void *user_data,int *error)
+	Dwarf_Unsigned *sect_name_index, void *user_data,int *error)
 {
+       int name_index = 0;
+       int res;
        if( user_data != (void *)101) {
            printf("Error: bad data passed through user_data pointer, got 0x%x\n",
                (unsigned)user_data);
            exit(1);
        }
-       return producer_callback_common(name,size,type,
-           flags,link,info,sect_name_index,error);
+       /* This horrible casting is so we can use common code
+          here.  Our name counts are small, so there will
+          be no overflow of an int. */
+       name_index = (int)(*sect_name_index);
+       res  = producer_callback_common(name,size,type,
+           flags,link,info,&name_index,error);
+       *sect_name_index = (Dwarf_Unsigned)name_index;
+       return res;
 }
 static int
 producer_callback(char *name, int size, Dwarf_Unsigned type,
 	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
 	int *sect_name_index, int *error)
 {
-       return producer_callback_common(name,size,type,
+       int res = producer_callback_common(name,size,type,
            flags,link,info,sect_name_index,error);
+       return res;
 }
 static int
 producer_callback_common(char *name, int size, Dwarf_Unsigned type,
