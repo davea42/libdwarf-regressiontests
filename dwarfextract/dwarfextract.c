@@ -318,8 +318,12 @@ struct avl_traverser	my_trav;
 /* end of readelf stuff */
 
 /* function prototypes */
-int	producer_callback(char *, int, Dwarf_Unsigned,
+static int producer_callback(char *, int, Dwarf_Unsigned,
 	Dwarf_Unsigned, Dwarf_Unsigned, Dwarf_Unsigned, int *, int*);
+static int producer_callback_c(char *name, int size, Dwarf_Unsigned type,
+        Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
+        int *sect_name_index, void *user_data,int *error);
+
 int	process_one_file(Elf *, int intfd, int outfd);
 int	is_type_we_want(Dwarf_Debug, Dwarf_Die, int *);
 int	in_string_size;
@@ -620,15 +624,20 @@ open_as_elf(int fd, char *file_name)
 	return elf;
 }
 
+
+
 /*
  * Given a file which we know is an elf file, process the dwarf data.
  */
 int
 process_one_file(Elf * elf, int infd, int outfd)
 {
-	int		dres;
-	Dwarf_Debug	dbg;
-	Dwarf_Error	error; /* a structure */
+	int		dres = 0;
+	Dwarf_Debug	dbg = 0;
+	Dwarf_Error	error = 0; 
+#ifdef PRODUCER_INIT_C
+        Dwarf_Ptr       errarg = 0;
+#endif
 
 	dres = dwarf_elf_init(elf, DW_DLC_READ, NULL, NULL, &dbg, &error);
 	if (dres == DW_DLV_NO_ENTRY) {
@@ -640,8 +649,20 @@ process_one_file(Elf * elf, int infd, int outfd)
 		exit(1);
 	}
 
+#ifdef PRODUCER_INIT_C
+        {
+            void *v = (void *)101;
+	    newdbg = dwarf_producer_init_c(producer_flags, producer_callback_c,
+	        producer_errhandler, 
+                Dwarf_Ptr errarg,
+                producer_error, 
+                v
+                &error);
+        }
+#else
 	newdbg = dwarf_producer_init(producer_flags, producer_callback,
 			producer_errhandler, producer_error, &error);
+#endif
 	if (newdbg < 0) {
 		printf ("dwarf_producer_init failed\n");
 		exit(1);
@@ -2945,8 +2966,33 @@ ref_summary()
 /*
  * triggered by calling  dwarf_transform_to_disk_form
  */
-int
+static int
+producer_callback_common(char *name, int size, Dwarf_Unsigned type,
+	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
+	int *sect_name_index, int *error);
+static int
+producer_callback_c(char *name, int size, Dwarf_Unsigned type,
+	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
+	int *sect_name_index, void *user_data,int *error)
+{
+       if( user_data != (void *)101) {
+           printf("Error: bad data passed through user_data pointer, got 0x%x\n",
+               (unsigned)user_data);
+           exit(1);
+       }
+       return producer_callback_common(name,size,type,
+           flags,link,info,sect_name_index,error);
+}
+static int
 producer_callback(char *name, int size, Dwarf_Unsigned type,
+	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
+	int *sect_name_index, int *error)
+{
+       return producer_callback_common(name,size,type,
+           flags,link,info,sect_name_index,error);
+}
+static int
+producer_callback_common(char *name, int size, Dwarf_Unsigned type,
 	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
 	int *sect_name_index, int *error)
 {

@@ -1,3 +1,11 @@
 2011-01-13  DavidAnderson <davea42@earthlink.net>
+     * dwarfdump.O, dwarfdump2.O: latest version.
+     * dwarfextract/dwarfextract.c: build with original or _c
+       producer_init call and callback.
+     * dwarfextract/runtests.sh: build and test with both original
+       and _c producer_init versions.
+     * dwarfextract/testc.base:  New file, baseline for the _c 
+       producer_init call. dwarfextract/testc.base
+2011-01-13  DavidAnderson <davea42@earthlink.net>
      *  New year. Added moshe and dwarf4 directories
         with DWARF4 objects to test with.
