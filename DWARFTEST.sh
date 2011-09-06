@@ -26,6 +26,18 @@ baseopts='-F'
 baseopts='-b -c  -f -F  -h -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
 
 kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe"
+
+chkres () {
+  if [ $1 = 0 ]
+  then
+	goodcount=`expr $goodcount + 1`
+  else
+          echo FAIL  $2
+          failcount=`expr $failcount + 1`
+  fi
+}
+
+
 #[-k{abcdefFgilmMnrRsStxy}] [-kxe]
 
 # -e use elipsis for some names.
@@ -148,15 +160,6 @@ runtest () {
 # end 'runtest'
 
 
-chkres () {
-  if [ $1 = 0 ]
-  then
-	goodcount=`expr $goodcount + 1`
-  else
-          echo FAIL  $2
-          failcount=`expr $failcount + 1`
-  fi
-}
 runtest $d1 $d2  moshe/hello -a -vvv -R -M
 runtest $d1 $d2  moshe/hello -ka -vvv -R -M
 runtest $d1 $d2  moshe/a.out.t -a -vvv -R -M
@@ -254,9 +257,13 @@ cd ..
 
 cd legendre
 sh RUNTEST.sh $cbase
-chkres $?  sandnes2
+chkres $?  legendre
 cd ..
 
+cd enciso4
+sh RUNTEST.sh $d1 $d2 
+chkres $?  enciso4
+cd ..
 
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-simple
 runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips-simple

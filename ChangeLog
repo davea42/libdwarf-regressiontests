@@ -1,3 +1,6 @@
+2011-09-06  DavidAnderson <davea42@earthlink.net>
+     * enciso4:  Added this directory which tests
+       a new address_size: feature of dwarfdump.conf
 2011-09-02  DavidAnderson <davea42@earthlink.net>
      * dwarfdump.O, dwarfdump2.O: latest version.
 2011-06-12  DavidAnderson <davea42@earthlink.net>
