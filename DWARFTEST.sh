@@ -48,6 +48,7 @@ chkres () {
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
 moshe/a.out.t
+marinescu/stream.o.test
 simonian/test-gcc-4.3.0  
 simonian/test-gcc-4.5.1
 enciso3/test.o
@@ -168,6 +169,10 @@ runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
+runtest $d1 $d2  marinescu/hello.original -ka -x abi=ppc
+runtest $d1 $d2  marinescu/hello.original -a -x abi=ppc
+runtest $d1 $d2  marinescu/armcc-test-dwarf2.original -ka -x abi=ppc
+runtest $d1 $d2  marinescu/armcc-test-dwarf2.original -a -x abi=ppc
 
 # The following 3 print the lines  differently.
 # The first prints a shorthand for file path.

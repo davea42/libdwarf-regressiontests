@@ -1,3 +1,8 @@
+2011-09-15  DavidAnderson <davea42@earthlink.net>
+     * New marinescu directory contains new tests that
+       were coredumping libdwarf due to errors in the
+       compiler or linker.  Now libdwarf detects the
+       errors and avoids a coredump.
 2011-09-06  DavidAnderson <davea42@earthlink.net>
      * enciso4:  Added this directory which tests
        a new address_size: feature of dwarfdump.conf
