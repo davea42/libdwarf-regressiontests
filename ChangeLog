@@ -1,3 +1,7 @@
+2011-09-16  DavidAnderson <davea42@earthlink.net>
+     * Adding new test cases which exposed incomplete handling
+       of elf objects with mistakes in an Elf section header
+       or relocation.
 2011-09-15  DavidAnderson <davea42@earthlink.net>
      * New marinescu directory contains new tests that
        were coredumping libdwarf due to errors in the

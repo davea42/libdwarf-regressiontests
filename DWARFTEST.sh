@@ -173,6 +173,8 @@ runtest $d1 $d2  marinescu/hello.original -ka -x abi=ppc
 runtest $d1 $d2  marinescu/hello.original -a -x abi=ppc
 runtest $d1 $d2  marinescu/armcc-test-dwarf2.original -ka -x abi=ppc
 runtest $d1 $d2  marinescu/armcc-test-dwarf2.original -a -x abi=ppc
+runtest $d1 $d2  marinescu/tcombined.o.div -a
+runtest $d1 $d2  marinescu/tcombined.o.seg -a
 
 # The following 3 print the lines  differently.
 # The first prints a shorthand for file path.
