@@ -1,3 +1,6 @@
+2011-09-23  DavidAnderson <davea42@earthlink.net>
+     * Adding new tests, the new  marinescu2  directory.
+       Bad DWARF generation is detected, avoiding a libdwarf crash.
 2011-09-16  DavidAnderson <davea42@earthlink.net>
      * Adding new test cases which exposed incomplete handling
        of elf objects with mistakes in an Elf section header
