@@ -196,6 +196,8 @@ runtest $d1 $d2  moore/djpeg.v850 -l -R
 runtest $d1 $d2  enciso2/template.elf -a -vvv -R -M
 runtest $d1 $d2  enciso2/template.elf -a -R -M
 runtest $d1 $d2  enciso2/template.elf -ka -R -M
+runtest $d1 $d2  enciso2/template.elf -ka -kxe -R -M
+runtest $d1 $d2  enciso2/template.elf -kxe -R -M
 runtest $d1 $d2  enciso2/test_templates.o  -a -R -M
 runtest $d1 $d2  enciso2/test_templates.o  -a -R 
 runtest $d1 $d2  x86/dwarfdumpv4.3 -S match=main 
@@ -205,8 +207,12 @@ runtest $d1 $d2  wynn/unoptimised.axf  -f   -x abi=arm
 runtest $d1 $d2  wynn/unoptimised.axf  -kf  -x abi=arm
 runtest $d1 $d2  arm/armcc-test-dwarf2 -f   -x abi=arm 
 runtest $d1 $d2  arm/armcc-test-dwarf2 -ka  -x abi=arm 
+runtest $d1 $d2  arm/armcc-test-dwarf2 -ka -kxe -x abi=arm 
+runtest $d1 $d2  arm/armcc-test-dwarf2 -kxe -x abi=arm 
 runtest $d1 $d2  arm/armcc-test-dwarf3 -f  -x abi=arm
 runtest $d1 $d2  arm/armcc-test-dwarf3 -ka  -x abi=arm
+runtest $d1 $d2  arm/armcc-test-dwarf3 -ka  -kxe -x abi=arm
+runtest $d1 $d2  arm/armcc-test-dwarf3 -kxe -x abi=arm
 runtest $d1 $d2  lloyd/arange.elf  -r
 runtest $d1 $d2  lloyd/arange.elf  -kr
 
@@ -349,7 +355,8 @@ runtest $d1 $d2 ia64/mytry.ia64 -F -x name=dwarfdump.conf -x abi=ia64
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple 
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conferr1 -x abi=mips
 runtest $d1 $d2 val_expr/libpthread-2.5.so -f -v -v -x name=dwarfdump.conf -x abi=x86_64 
-runtest $d1 $d2 irixn32/dwarfdump -i -G  -ka
+runtest $d1 $d2 irixn32/dwarfdump -i -G 
+runtest $d1 $d2 irixn32/dwarfdump -ka
 runtest $d1 $d2 irixn32/dwarfdump -i -G -d  
 runtest $d1 $d2 ia32/mytry.ia32 -i -G  
 runtest $d1 $d2 ia32/mytry.ia32 -i -G -d  
