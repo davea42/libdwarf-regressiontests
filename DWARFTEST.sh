@@ -38,13 +38,6 @@ chkres () {
 }
 
 
-#[-k{abcdefFgilmMnrRsStxy}] [-kxe]
-
-# -e use elipsis for some names.
-# -g use old loclist stuff, must use other option to select section.
-# -d dense, show DIE info on one line
-#                -v      verbose: show more information
-#f='x86/dwarfdumpv4.3'
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
 moshe/a.out.t
@@ -171,6 +164,13 @@ runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
+# ka p, where we test a warning message is generated (p is printing option)
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -p  -R -M 
+# ka P, where P means print CU names per compiler.
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M 
+# ka P kd, where so print CU names and error summary per compiler
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M 
+
 runtest $d1 $d2  marinescu/hello.original -ka -x abi=ppc
 runtest $d1 $d2  marinescu/hello.original -a -x abi=ppc
 runtest $d1 $d2  marinescu/armcc-test-dwarf2.original -ka -x abi=ppc
@@ -302,6 +302,23 @@ runtest $d1 $d2 mucci/stream.o -i -e
 runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F 
 runtest $d1 $d2 legendre/libmpich.so.1.0 -ka 
 
+for i in cell/c_malloc.o moore/simplec.o \
+   enciso2/test_templates.o enciso3/test.o kartashev/combined.o \
+   linkonce/comdattest.o louzon/ppcobj.o  mucci/main.o \
+   mucci/main.o.gcc mucci/main.o.pathcc  \
+   mucci/stream.o  saurabh/augstring.o \
+   shihhuangti/t1.o shihhuangti/t2.o shihhuangti/tcombined.o \
+   sparc/tcombined.o  atefail/ig_server  cell/c_malloc.o
+do
+  runtest $d1 $d2 $i -o
+  for o in -oi -ol -op -or -of -oo -oR
+  do
+    runtest $d1 $d2 $i $o
+  done
+done
+
+
+
 
 
 if [  $type = "dd2" ]
@@ -351,19 +368,28 @@ runtest $d1 $d2  louzon/ppcobj.o -ka -v -v -v -v -v -v -x name=./dwarfdump.conf 
 runtest $d1 $d2  linkonce/comdattest.o -ka -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 runtest $d1 $d2  linkonce/comdattest.o -a -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 runtest $d1 $d2 atefail/ig_server -kt 
+# Testing old interface to libdwarf with -g. IRIX only.
+runtest $d1 $d2 irixn32/dwarfdump -f -g 
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3  
+runtest $d1 $d2 irixn32/dwarfdump -f -n -x name=./dwarfdump.conf -x abi=mips-simple3  
 runtest $d1 $d2 ia32/mytry.ia32 -F -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 ia64/mytry.ia64 -F -x name=dwarfdump.conf -x abi=ia64 
 # The following is a misspelling of abi. Checks for error spelling so leave it in.
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple 
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3 
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix
+# Restrict to a single fde report
+runtest $d1 $d2 irixn32/dwarfdump -f -H 1  -x name=./dwarfdump.conf -x abi=mips-irix
+# Restrict to a single fde report with no function names shown
+runtest $d1 $d2 irixn32/dwarfdump -f -H 1 -n  -x name=./dwarfdump.conf -x abi=mips-irix
 # mips-irix2 is the new name for what was mips-simple.
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix2
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conferr1 -x abi=mips
 runtest $d1 $d2 val_expr/libpthread-2.5.so -f -v -v -x name=dwarfdump.conf -x abi=x86_64 
 runtest $d1 $d2 irixn32/dwarfdump -i -G 
+# restrict to a single CU
+runtest $d1 $d2 irixn32/dwarfdump -i -H 1 
 runtest $d1 $d2 irixn32/dwarfdump -ka
 runtest $d1 $d2 irixn32/dwarfdump -i -G -d  
 runtest $d1 $d2 ia32/mytry.ia32 -i -G  
@@ -371,7 +397,16 @@ runtest $d1 $d2 ia32/mytry.ia32 -i -G -d
 runtest $d1 $d2 ia32/mytry.ia32 -ka -G -d 
 runtest $d1 $d2 cristi2/libc-2.5.so -F -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 ia32/libc.so.6 -F -f -x name=dwarfdump.conf -x abi=x86
+# do not find functin names
+runtest $d1 $d2 ia32/libc.so.6 -F -f -n  -x name=dwarfdump.conf -x abi=x86
+# restrict to single fde
+runtest $d1 $d2 ia32/libc.so.6 -F -f -H 1 -x name=dwarfdump.conf -x abi=x86
+# restrict to single fde, single CIE
+runtest $d1 $d2 ia32/libc.so.6 -F -f -H 1 -v -x name=dwarfdump.conf -x abi=x86
+runtest $d1 $d2 ia32/libc.so.6 -F -f -n -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 cristi2/libpthread-2.4.so -F -v -v -v -x name=dwarfdump.conf -x abi=x86
+runtest $d1 $d2 cristi2/libpthread-2.4.so -ka -P -x name=dwarfdump.conf -x abi=x86
+runtest $d1 $d2 cristi2/libpthread-2.4.so -ka -kd -P -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 cristi2/libpthread-2.4.so -R -F  -v -v -v
 runtest $d1 $d2 cristi2/libpthread-2.4.so -R -ka  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj -m 
@@ -382,8 +417,8 @@ echo FAIL  $failcount
 
 for i in $filepaths
 do
-   echo ===== $i all options
-   for xtra in "" "-v" "-v -v"
+   echo  "===== $i all options"
+   for xtra in "" "-v" "-v -v" "-D" "H 2"
    do
      for k in  $baseopts
      do
@@ -393,9 +428,9 @@ do
 done
 for i in $filepaths
 do
-   echo ===== $i all options
+   echo ===== $i all checking options
    # -kd ensures we report the test statistics
-   for xtra in "" "-kd"  "-ki"
+   for xtra in "" "-kd"  "-ki" 
    do
      for k in  $kopts
      do
