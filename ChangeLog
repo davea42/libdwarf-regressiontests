@@ -1,3 +1,7 @@
+2011-10-08  DavidAnderson <davea42@earthlink.net>
+     * DWARFTEST.sh now does some tests of options that
+       were previously not tested. Just -S and -W are not
+       tested yet.
 2011-09-23  DavidAnderson <davea42@earthlink.net>
      * Adding new tests, the new  marinescu2  directory.
        Bad DWARF generation is detected, avoiding a libdwarf crash.

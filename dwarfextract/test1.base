@@ -97,40 +97,6 @@ LOCAL_SYMBOLS:
 
 .debug_macinfo
 
-.debug_abbrev
-<    1><0x00000000><code:   1> DW_TAG_compile_unit         DW_children_yes
-       <0x00000003>              DW_AT_language              DW_FORM_data1
-       <0x00000005>              DW_AT_name                  DW_FORM_string
-       <0x00000007>              DW_AT_low_pc                DW_FORM_addr
-       <0x00000009>              DW_AT_high_pc               DW_FORM_addr
-       <0x0000000b>              DW_AT_producer              DW_FORM_string
-<    2><0x0000000f><code:   2> DW_TAG_base_type            DW_children_no
-       <0x00000012>              DW_AT_byte_size             DW_FORM_data1
-       <0x00000014>              DW_AT_encoding              DW_FORM_data1
-       <0x00000016>              DW_AT_name                  DW_FORM_string
-<    3><0x0000001a><code:   3> DW_TAG_structure_type        DW_children_yes
-       <0x0000001d>              DW_AT_name                  DW_FORM_string
-       <0x0000001f>              DW_AT_byte_size             DW_FORM_data1
-       <0x00000021>              DW_AT_decl_file             DW_FORM_data1
-       <0x00000023>              DW_AT_decl_line             DW_FORM_data1
-       <0x00000025>              DW_AT_sibling               DW_FORM_ref4
-<    4><0x00000029><code:   4> DW_TAG_member               DW_children_no
-       <0x0000002c>              DW_AT_name                  DW_FORM_string
-       <0x0000002e>              DW_AT_decl_file             DW_FORM_data1
-       <0x00000030>              DW_AT_decl_line             DW_FORM_data1
-       <0x00000032>              DW_AT_data_member_location  DW_FORM_block1
-       <0x00000034>              DW_AT_type                  DW_FORM_ref4
-<    5><0x00000038><code:   5> DW_TAG_subprogram           DW_children_no
-       <0x0000003b>              DW_AT_external              DW_FORM_flag
-       <0x0000003d>              DW_AT_name                  DW_FORM_string
-       <0x0000003f>              DW_AT_decl_file             DW_FORM_data1
-       <0x00000041>              DW_AT_decl_line             DW_FORM_data1
-       <0x00000043>              DW_AT_low_pc                DW_FORM_addr
-       <0x00000045>              DW_AT_high_pc               DW_FORM_addr
-       <0x00000047>              DW_AT_frame_base            DW_FORM_block1
-       <0x00000049>              DW_AT_type                  DW_FORM_ref4
-<    6><0x0000004d><code:   0> null .debug_abbrev entry
-
 .debug_string
 
 .debug_aranges
