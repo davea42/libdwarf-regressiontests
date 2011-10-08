@@ -23,7 +23,7 @@ dwlib=$cbase/libdwarf/libdwarf.a
 dwinc=$cbase/libdwarf
 
 baseopts='-F'
-baseopts='-b -c  -f -F  -h -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
+baseopts='-b -c  -f -F -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
 
 kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe"
 
@@ -161,6 +161,8 @@ runtest () {
 # end 'runtest'
 
 
+# The -h option does not exist. Try it anyway!
+runtest $d1 $d2  moshe/hello -h 
 runtest $d1 $d2  moshe/hello -a -vvv -R -M
 runtest $d1 $d2  moshe/hello -ka -vvv -R -M
 runtest $d1 $d2  moshe/a.out.t -a -vvv -R -M
@@ -278,8 +280,8 @@ sh RUNTEST.sh $d1 $d2
 chkres $?  enciso4
 cd ..
 
-runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-simple
-runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips-simple
+runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
+runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips-irix
 
 runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v
 runtest $d1 $d2  sparc/tcombined.o -ka -R  -v -v -v -v -v -v
@@ -352,7 +354,13 @@ runtest $d1 $d2 atefail/ig_server -kt
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3  
 runtest $d1 $d2 ia32/mytry.ia32 -F -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 ia64/mytry.ia64 -F -x name=dwarfdump.conf -x abi=ia64 
+# The following is a misspelling of abi. Checks for error spelling so leave it in.
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple 
+runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3 
+runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix
+# mips-irix2 is the new name for what was mips-simple.
+runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix2
+runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conferr1 -x abi=mips
 runtest $d1 $d2 val_expr/libpthread-2.5.so -f -v -v -x name=dwarfdump.conf -x abi=x86_64 
 runtest $d1 $d2 irixn32/dwarfdump -i -G 
