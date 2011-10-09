@@ -282,6 +282,7 @@ sh RUNTEST.sh $d1 $d2
 chkres $?  enciso4
 cd ..
 
+runtest $d1 $d2 irixn32/dwarfdump -g  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
 runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips-irix
 
@@ -394,16 +395,21 @@ runtest $d1 $d2 irixn32/dwarfdump -i -G
 runtest $d1 $d2 irixn32/dwarfdump -i -H 1 
 runtest $d1 $d2 irixn32/dwarfdump -ka
 runtest $d1 $d2 irixn32/dwarfdump -i -G -d  
+
+# Using old loclist call. Without -v nothing prints, so use -v.
+# Adding -D is useless since then the attributes don't print at all so
+# one cannot see the removal of offset from the loclist.
+runtest $d1 $d2 irixn32/libc.so -g  -v -x name=dwarfdump.conf  -x abi=mips-irix
 runtest $d1 $d2 ia32/mytry.ia32 -i -G  
 runtest $d1 $d2 ia32/mytry.ia32 -i -G -d  
 runtest $d1 $d2 ia32/mytry.ia32 -ka -G -d 
 runtest $d1 $d2 cristi2/libc-2.5.so -F -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 ia32/libc.so.6 -F -f -x name=dwarfdump.conf -x abi=x86
-# do not find functin names
+# Do not find function names (using -n)
 runtest $d1 $d2 ia32/libc.so.6 -F -f -n  -x name=dwarfdump.conf -x abi=x86
-# restrict to single fde
+# Restrict to single fde
 runtest $d1 $d2 ia32/libc.so.6 -F -f -H 1 -x name=dwarfdump.conf -x abi=x86
-# restrict to single fde, single CIE
+# Restrict to single fde, single CIE
 runtest $d1 $d2 ia32/libc.so.6 -F -f -H 1 -v -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 ia32/libc.so.6 -F -f -n -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 cristi2/libpthread-2.4.so -F -v -v -v -x name=dwarfdump.conf -x abi=x86
