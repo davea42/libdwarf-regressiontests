@@ -153,6 +153,30 @@ runtest () {
 }
 # end 'runtest'
 
+# Prints DIEs with the name or value DW_AT_low_pc
+runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_lo_pc
+# Prints DIEs with the name or value DW_AT_low_pc
+runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_high_pc
+# Prints DIEs with the name or value 0x0000001c
+runtest $d1 $d2 enciso5/sample_S_option.o  -S match=0x0000001c 
+# Prints DIEs with the name or value value DW_OP_plus
+runtest $d1 $d2 enciso5/sample_S_option.o  -S any=DW_OP_plus
+# The following should work with a space but
+# does not because the shell strips quotes and getopt() won't process
+# the space-containing single option properly even if quoted.
+# So we use uri-style.
+runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_OP_plus_uconst%208
+# The following prints any DIE with name or value containing  anything
+# in the range reg0 through reg9.
+runtest $d1 $d2 enciso5/sample_S_option.o  -S regex="reg[0-9]"
+# The following prints a single DIE, just basic information about it.
+runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg
+# With -W, both parent and child data about the DIE is printed.
+runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -W 
+# With -W, just parent data about the DIE is printed.
+runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wp 
+# With -W, just children data about the DIE is printed.
+runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wc 
 
 # The -h option does not exist. Try it anyway!
 runtest $d1 $d2  moshe/hello -h 
