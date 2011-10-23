@@ -178,6 +178,13 @@ runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wp
 # With -W, just children data about the DIE is printed.
 runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wc 
 
+#Put uri in name
+runtest $d1 $d2 moshe%2fhello  -i
+#Put uri in name, let it fail as no translate done.
+runtest $d1 $d2 moshe%2fhello  -U -i
+#Put uri in name, do not mention the uri translateion
+runtest $d1 $d2 moshe%2fhello  -q -i
+
 # The -h option does not exist. Try it anyway!
 runtest $d1 $d2  moshe/hello -h 
 runtest $d1 $d2  moshe/hello -a -vvv -R -M
