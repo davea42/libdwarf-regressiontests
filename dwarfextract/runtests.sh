@@ -20,7 +20,7 @@ fi
 diff test1.base test1.new
 if [  $?  -ne 0 ] 
 then
-    echo FAIL dwarfextract
+    echo FAIL dwarfextract test1
     exit 1
 fi
 echo PASS dwarfextract
@@ -29,7 +29,7 @@ cc -g -DPRODUCER_INIT_C=1 -I $libdw/libdwarf  dwarfextract.c -o dwarfextractc -L
 ./dwarfextractc test1 testcout >basecstdout
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwarfextract c
+    echo FAIL dwarfextract looking for error
     exit 1
 fi
 diff basecstdout basecstdout.base
@@ -42,7 +42,7 @@ fi
 diff testc.base testc.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwarfextract c
+    echo FAIL dwarfextract testc 
     exit 1
 fi
 echo PASS dwarfextract c
