@@ -73,6 +73,7 @@ mutatee/test1.mutatee_gcc.exe
 cristi2/libpthread-2.4.so 
 ia32/preloadable_libintl.so 
 ia32/libpfm.so.3 
+modula2/write-fixed
 cristi3/cristibadobj'
 
 # Avoid spurious differences because of the names of the
@@ -161,14 +162,19 @@ runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_high_pc
 runtest $d1 $d2 enciso5/sample_S_option.o  -S match=0x0000001c 
 # Prints DIEs with the name or value value DW_OP_plus
 runtest $d1 $d2 enciso5/sample_S_option.o  -S any=DW_OP_plus
+# Following is for URI testing.
+runtest $d1 $d2 enciso5/sample_S_option.o  -S any=DW%5fOP_plus
 # The following should work with a space but
 # does not because the shell strips quotes and getopt() won't process
 # the space-containing single option properly even if quoted.
 # So we use uri-style.
+# Following is for URI testing.
 runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_OP_plus_uconst%208
 # The following prints any DIE with name or value containing  anything
 # in the range reg0 through reg9.
 runtest $d1 $d2 enciso5/sample_S_option.o  -S regex="reg[0-9]"
+# Following is for URI testing
+runtest $d1 $d2 enciso5/sample_S_option.o  -S regex="reg%5b0-9]"
 # The following prints a single DIE, just basic information about it.
 runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg
 # With -W, both parent and child data about the DIE is printed.
@@ -179,10 +185,13 @@ runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wp
 runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wc 
 
 #Put uri in name
+# Following is for URI testing
 runtest $d1 $d2 moshe%2fhello  -i
 #Put uri in name, let it fail as no translate done.
+# Following is for URI testing
 runtest $d1 $d2 moshe%2fhello  -U -i
 #Put uri in name, do not mention the uri translateion
+# Following is for URI testing
 runtest $d1 $d2 moshe%2fhello  -q -i
 
 # The -h option does not exist. Try it anyway!
@@ -203,6 +212,8 @@ runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M 
 
 runtest $d1 $d2  marinescu/hello.original -ka -x abi=ppc
+# Following is for URI testing
+runtest $d1 $d2  marinescu/hello%2eoriginal -ka -x abi=pp%63
 runtest $d1 $d2  marinescu/hello.original -a -x abi=ppc
 runtest $d1 $d2  marinescu/armcc-test-dwarf2.original -ka -x abi=ppc
 runtest $d1 $d2  marinescu/armcc-test-dwarf2.original -a -x abi=ppc
@@ -315,7 +326,15 @@ cd ..
 
 runtest $d1 $d2 irixn32/dwarfdump -g  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
+#The following is for URI style test completeness
+runtest $d1 $d2 irixn32/dwarfdump -u  dwconf%2ec -x name=dwarfdump%2econf  -x abi=mips-irix
 runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips-irix
+
+#Following tests -c and URI, the one restricted to GNU AS 
+# only checks and reports on errors found in CUs with producer GNU AS.
+runtest $d1 $d2 modula2/write-fixed -ka -cGNU%20AS  -M -R
+runtest $d1 $d2 modula2/write-fixed -ka -M -R
+
 
 runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v
 runtest $d1 $d2  sparc/tcombined.o -ka -R  -v -v -v -v -v -v

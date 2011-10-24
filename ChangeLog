@@ -1,3 +1,6 @@
+2011-10-24  DavidAnderson <davea42@earthlink.net>
+     * Added tests so we test all the options that
+       allow URI input with URI input.
 2011-10-08  DavidAnderson <davea42@earthlink.net>
      * DWARFTEST.sh now does some tests of options that
        were previously not tested. Just -S and -W are not
