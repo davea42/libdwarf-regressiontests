@@ -210,6 +210,10 @@ runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -p  -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M 
 # ka P kd, where so print CU names and error summary per compiler
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M 
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i  
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -v
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d -v
 
 runtest $d1 $d2  marinescu/hello.original -ka -x abi=ppc
 # Following is for URI testing
