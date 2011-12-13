@@ -154,6 +154,7 @@ runtest () {
 }
 # end 'runtest'
 
+
 # Prints DIEs with the name or value DW_AT_low_pc
 runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_lo_pc
 # Prints DIEs with the name or value DW_AT_low_pc
@@ -301,6 +302,11 @@ rm -f dwarf_names.c dwarfnames-s.c
 rm -f  dwarfnames-t.c
 rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
 rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h 
+
+cd dwgena
+sh runtest.sh ../$d2
+chkres $? 'dwgena/runtest.sh'
+cd ..
 
 cd frame1
 sh runtest.sh $cbase

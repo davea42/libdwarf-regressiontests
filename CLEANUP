@@ -1,5 +1,6 @@
 # Build a tar file of the test stuff
 set -x
+(cd dwgena ; make clean)
 rm -f tmp*
 rm -f tmp*err*
 rm -f core

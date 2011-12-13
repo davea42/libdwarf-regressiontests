@@ -19,9 +19,10 @@ cp $libdw/dwarfdump/dwarfdump   dwarfdumpW
 cp $libdw/libdwarf/libdwarf.a libdwarf.a
 (cd $libdw/dwarfdump ; ./configure ; rm dwarfdump ; make)
 (cd $libdw/dwarfdump2 ; ./configure ; rm dwarfdump ; make)
-
+(cd $libdw/dwarfgen ; ./configure ; rm dwarfgen ; make)
 
 cp $libdw/dwarfdump/dwarfdump  .
 cp $libdw/dwarfdump/dwarfdump.conf  .
 cp $libdw/dwarfdump2/dwarfdump  dwarfdump2
 cp $libdw/libdwarf/gennames .
+cp $libdw/dwarfgen/dwarfgen .
