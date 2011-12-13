@@ -1,3 +1,8 @@
+2011-12-13  DavidAnderson <davea42@earthlink.net>
+     * dwarfdump.O, dwarfdump2.O: latest version.
+       The major change is missing line columns show as zero not -1,
+       -1 was always incorrect.  And DWARF3/4 new line data is now
+       printed when present.
 2011-10-30  DavidAnderson <davea42@earthlink.net>
      * dwarfdump.O, dwarfdump2.O: latest version.
 2011-10-24  DavidAnderson <davea42@earthlink.net>
