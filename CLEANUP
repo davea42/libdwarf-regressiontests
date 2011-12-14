@@ -42,4 +42,5 @@ rm -f dwarfdump2W
 rm -f dwarfdump
 rm -f dwarfdumpW
 rm -f gennames
+rm -f dwarfgen
 
