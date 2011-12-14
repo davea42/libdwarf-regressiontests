@@ -40,6 +40,7 @@ chkres () {
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
+dwgenb/dwarfgen
 moshe/a.out.t
 marinescu/stream.o.test
 simonian/test-gcc-4.3.0  
