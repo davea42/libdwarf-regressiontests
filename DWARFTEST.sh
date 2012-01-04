@@ -186,6 +186,11 @@ runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wp
 # With -W, just children data about the DIE is printed.
 runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wc 
 
+# The next are on the clang compiler v 2.9, which is making some mistakes.
+runtest $d1 $d2 vlasceanu/a.out -i -M
+runtest $d1 $d2 vlasceanu/a.out -a 
+runtest $d1 $d2 vlasceanu/a.out -ka 
+
 #Put uri in name
 # Following is for URI testing
 runtest $d1 $d2 moshe%2fhello  -i
