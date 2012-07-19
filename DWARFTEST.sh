@@ -40,6 +40,8 @@ chkres () {
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
+relocerr64/tls32.o
+relocerr64/tls64.o
 enciso6/ranges.o
 dwgenb/dwarfgen
 moshe/a.out.t
