@@ -95,3 +95,13 @@ Relocation section '.rel.debug_info' at offset 0x4e4 contains 8 entries:
 00000021  00000801 R_386_32          00000000   .debug_line
 00000031  00000c20 R_386_TLS_LDO_32  00000000   a
 
+--------------
+Most of the object files for testing here, namely
+armv5tel-32-tls.o  ppc64-32-tls.o  s390x-64-tls.o    sparc64-64-tls.o
+ia64-64-tls.o	   ppc64-64-tls.o  sh4a-32-tls.o    
+mips-32-tls.o	   s390x-32-tls.o  sparc64-32-tls.o 
+were provided by Troy Heber on 24 July 2012
+based on the tls.c test source.
+Thank you Troy!
+
+
