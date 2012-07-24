@@ -42,6 +42,16 @@ chkres () {
 filepaths='moshe/hello
 relocerr64/tls32.o
 relocerr64/tls64.o
+relocerr64/armv5tel-32-tls.o
+relocerr64/ia64-64-tls.o
+relocerr64/mips-32-tls.o
+relocerr64/ppc64-32-tls.o
+relocerr64/ppc64-64-tls.o
+relocerr64/s390x-32-tls.o
+relocerr64/s390x-64-tls.o
+relocerr64/sh4a-32-tls.o
+relocerr64/sparc64-32-tls.o
+relocerr64/sparc64-64-tls.o
 enciso6/ranges.o
 dwgenb/dwarfgen
 moshe/a.out.t
