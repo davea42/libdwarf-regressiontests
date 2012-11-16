@@ -3717,6 +3717,9 @@ convert_to_new(Dwarf_Debug olddbg, Dwarf_P_Debug dbg, Dwarf_Die olddie,
 			} else if (attr_val ==  DW_AT_MIPS_linkage_name) {
 				if (debug)
 					printf ("ignoring DW_AT_MIPS_linkage_name\n");
+			} else if (attr_val ==  DW_AT_GNU_all_tail_call_sites ) {
+				if (debug)
+					printf ("ignoring DW_AT_GNU_all_tail_call_sites \n");
 			} else {
 				printf ("%s: attribute %#x not converted\n",
 					name_of_die(olddie), attr_val);

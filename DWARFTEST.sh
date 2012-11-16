@@ -167,11 +167,41 @@ runtest () {
 
 }
 # end 'runtest'
+# Testing the wasted-space from not using LEB.
+runtest $d1 $d2 enciso5/sample_S_option.o  -kE
 
+# These print object header (elf) information.
+runtest $d1 $d2 enciso5/sample_S_option.o  -E
+runtest $d1 $d2 enciso5/sample_S_option.o  -Ea
+runtest $d1 $d2 enciso5/sample_S_option.o  -Eh
+runtest $d1 $d2 enciso5/sample_S_option.o  -El
+runtest $d1 $d2 enciso5/sample_S_option.o  -Ei
+runtest $d1 $d2 enciso5/sample_S_option.o  -Ep
+runtest $d1 $d2 enciso5/sample_S_option.o  -Er
+runtest $d1 $d2 irixn32/dwarfdump  -Ef
+# Following finds no debug_loc.
+runtest $d1 $d2 enciso5/sample_S_option.o  -Eo
+# Following finds a debug_loc.
+runtest $d1 $d2 mucci/main.gcc -Eo
+#Following has no .debug_ranges
+runtest $d1 $d2 enciso5/sample_S_option.o  -ER
+#Following has .debug_ranges
+runtest $d1 $d2 mucci/main.gcc  -ER
+
+runtest $d1 $d2 enciso5/sample_S_option.o  -Es
+# The Et does nothing, we do not seem to have 
+# a .debug_pubtypes (IRIX specific) section anywhere.
+runtest $d1 $d2 enciso5/sample_S_option.o  -Et
+runtest $d1 $d2 enciso5/sample_S_option.o  -Ex
+runtest $d1 $d2 enciso5/sample_S_option.o  -Ed
 
 # Prints DIEs with the name or value DW_AT_low_pc
-runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_lo_pc
-# Prints DIEs with the name or value DW_AT_low_pc
+runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_low_pc
+runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_low_pc -W
+runtest $d1 $d2 enciso5/sample_S_option.o  -S vmatch=DW_AT_low_pc
+runtest $d1 $d2 enciso5/sample_S_option.o  -S vmatch=DW_AT_low_pc -W
+
+# Prints DIEs with the name or value DW_AT_high_pc
 runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_high_pc
 # Prints DIEs with the name or value 0x0000001c
 runtest $d1 $d2 enciso5/sample_S_option.o  -S match=0x0000001c 

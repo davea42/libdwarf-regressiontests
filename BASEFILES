@@ -2,4 +2,4 @@
 # Common code to locate source directories.
 # You will need to alter this to match your local
 # path to the libdwarf/dwarfdump source.
-libdw=/home/davea/dwarf/gitlibdwarf
+libdw=/home/davea/dwarf/gitlibdwarf/libdwarf-code/

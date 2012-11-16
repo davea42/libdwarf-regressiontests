@@ -1,3 +1,7 @@
+2012-11-15  DavidAnderson <davea42@earthlink.net>
+     * New tests of new dwarfdump options. gcc changed
+       so some baseline data had to change. Updated
+       per the new gcc attributes used.
 2012-01-23  DavidAnderson <davea42@earthlink.net>
      * Added enciso6 directory with an example of
        a loclist with an address-selection entry.
