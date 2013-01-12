@@ -1,0 +1,10 @@
+This is a test of the GNU implicit pointer implementation
+in gcc.
+
+To test implicit pointer and to reflect on the standards
+discussion for DWARF5 on adding DW_OP_implicit_pointer.
+
+The intent is to keep using the .o here, not to rebuild
+for every test because gcc will surely change!    
+
+david a. Jan 12, 2013
