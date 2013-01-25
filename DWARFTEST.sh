@@ -168,6 +168,10 @@ runtest () {
 
 }
 # end 'runtest'
+
+# this coredumps libdwarf 20121130
+runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug -a
+
 # Testing the wasted-space from not using LEB.
 runtest $d1 $d2 enciso5/sample_S_option.o  -kE
 
