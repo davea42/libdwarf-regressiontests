@@ -1,4 +1,6 @@
 2012-01-25  DavidAnderson <davea42@earthlink.net>
+     * updated dwarfdump2.O dwarfdump.O with latest.
+2012-01-25  DavidAnderson <davea42@earthlink.net>
      * Added libc6fedora18 directory with an x86_64
        debug libc that coredumps dwarfdump as of the 20121130
        release.
