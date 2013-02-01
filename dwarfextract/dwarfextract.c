@@ -60,7 +60,7 @@
  */
 /*#include <unistd.h> */
 #include <sys/types.h> 
-typedef __off64_t off64_t;
+/* typedef __off64_t off64_t; */ /* No longer needed. */
 #include <libelf.h>
 #include <fcntl.h>
 #include <getopt.h>
@@ -78,7 +78,7 @@ typedef __off64_t off64_t;
 
 #include <stdio.h>
 #include <errno.h>
-#include <malloc.h>
+/*#include <malloc.h>  */ /* stdlib.h has malloc now. */
 #include <string.h>
 #include <sys/time.h>
 #include <bfd.h>
@@ -88,6 +88,9 @@ typedef __off64_t off64_t;
 #include <stddef.h>
 #define BUFSIZE 1024
 #define NUM_SECTIONS 5
+#ifndef __WORDSIZE
+#define __WORDSIZE 32
+#endif
 #if __WORDSIZE == 32
 #define ELF_HEADER Elf32_Ehdr
 #define SECTION_HEADER Elf32_Shdr

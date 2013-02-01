@@ -1,3 +1,16 @@
+2012-01-31  DavidAnderson <davea42@earthlink.net>
+     * DWARFTEST.sh: Pass to dwgena and dwarfextract 
+       the dwarfdump name to test against.
+     * dwarfextract/dwarfextract.c: Fix some incompatibilites
+       with FreeBSD.
+     * dwarfextract/runtests.sh: Expects the dwarfdump path to run it.
+     * dwarfextract/test1: Made this executable saved, not always
+       rebuilt: makes the test repeatable across compiler releases.
+     * dwgena/runtest.sh: Expects the dwarfdump path to run it.
+     * dwgena/test1.base.gz: Updated with corrected dwarfgen results.
+     * dwgena/test2.base.gz: Updated with corrected dwarfgen results.
+     * dwgena/test3.base.gz: Updated with corrected dwarfgen results.
+     * dwgena/test4.base.gz: Updated with corrected dwarfgen results.
 2012-01-26  DavidAnderson <davea42@earthlink.net>
      * updated dwarfdump2.O dwarfdump.O with latest.
 2012-01-25  DavidAnderson <davea42@earthlink.net>

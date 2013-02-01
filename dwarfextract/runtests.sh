@@ -1,9 +1,12 @@
 #!/bin/sh
 #
 #
+dd=$1
 . ../BASEFILES
-cc -g -I $libdw/libdwarf  dwarfextract.c -o dwarfextract -L ../ -ldwarf -lelf
-cc -g test1.c test2.c -o test1
+INCS="-I $libdw/libdwarf  -I /usr/local/include"
+cc -g $INCS dwarfextract.c -o dwarfextract -L ../ -ldwarf -lelf
+# Use precompiled test1.c test2.c for test consistency.
+#cc -g test1.c test2.c -o test1
 ./dwarfextract test1 test1out >basestdout
 if [  $?  -ne 0 ] 
 then
@@ -16,7 +19,7 @@ then
     echo FAIL dwarfextract dwex-1
     exit 1
 fi
-../dwarfdump -a test1out >test1.new
+$dd -a test1out >test1.new
 diff test1.base test1.new
 if [  $?  -ne 0 ] 
 then
@@ -25,7 +28,7 @@ then
 fi
 echo PASS dwarfextract
 
-cc -g -DPRODUCER_INIT_C=1 -I $libdw/libdwarf  dwarfextract.c -o dwarfextractc -L .. -ldwarf -lelf
+cc -g -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwarf -lelf
 ./dwarfextractc test1 testcout >basecstdout
 if [  $?  -ne 0 ]
 then
@@ -38,7 +41,7 @@ then
     echo FAIL dwarfextract dwexc-1
     exit 1
 fi
-../dwarfdump -a testcout >testc.new
+$dd -a testcout >testc.new
 diff testc.base testc.new
 if [  $?  -ne 0 ]
 then

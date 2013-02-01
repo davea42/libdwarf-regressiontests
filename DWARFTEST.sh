@@ -369,7 +369,7 @@ cd ..
 
 cd dwarfextract
 rm dwarfextract
-sh runtests.sh $cbase
+sh runtests.sh ../$d2
 chkres $?  dwarfextract
 cd ..
 

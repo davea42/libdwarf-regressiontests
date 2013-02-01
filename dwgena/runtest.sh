@@ -4,7 +4,7 @@
 
 dd=$1
 
-../dwarfgen -t obj -c 0 ./dwarfgen-bin -o junk1.bin >junkgen.out
+../dwarfgen -t obj -c 0  -o junk1.bin ./dwarfgen-bin >junkgen.out
 $dd -a junk1.bin >junk1.new
 zcat test1.base.gz >test1.base
 diff test1.base junk1.new
@@ -22,7 +22,7 @@ then
     echo FAIL dwgena test 2
     exit 1
 fi
-../dwarfgen -t obj -c 10 ./dwarfgen-bin -o junk3.bin >junkgen.out
+../dwarfgen -t obj -c 10 -o junk3.bin ./dwarfgen-bin >junkgen.out
 $dd -a junk3.bin >junk3.new
 zcat test3.base.gz >test3.base
 diff test3.base junk3.new
