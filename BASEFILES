@@ -2,4 +2,14 @@
 # Common code to locate source directories.
 # You will need to alter this to match your local
 # path to the libdwarf/dwarfdump source.
-libdw=/home/davea/dwarf/gitlibdwarf/libdwarf-code/
+
+
+# As a sensible default (we hope) we say $HOME/dwarf/code
+# is the code.
+# We don't really assume that these tests are in
+# $HOME/dwarf/code/regressiontests but that is
+# a sensible default setup.
+
+#libdw=/home/davea/dwarf/code
+
+libdw=$HOME/dwarf/code
