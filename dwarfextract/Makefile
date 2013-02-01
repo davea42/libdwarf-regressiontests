@@ -1,7 +1,7 @@
 
 
 LIB=-L../../libdwarf  -ldwarf -lelf
-HDR=-I../../libdwarf
+HDR=-I../../libdwarf -I/usr/local/include
 all: test1 dwarfextract tests
 
 dwarfextract: dwarfextract.c 
@@ -11,10 +11,9 @@ test1: test1.c test2.c test1.h
 	$(CC) -g test1.c test2.c -o test1
 
 tests:
-	sh runtests.sh
+	sh runtests.sh ../dwarfdump
 
 clean distclean:
 	-rm -f dwarfextract
 	-rm -f junk
-	-rm -f test1
 	-rm -f test1n

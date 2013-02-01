@@ -17,7 +17,6 @@ rm -f        test-alex1/out1
 rm -f        test-alex1/out2
 rm -f        test-alex2/test2
 rm -f        test-alex2/out1
-rm -f        dwarfextract/test1
 rm -f        dwarfextract/test1.new
 rm -f        dwarfextract/test1out
 rm -f        dwarfextract/dwarfextractc
