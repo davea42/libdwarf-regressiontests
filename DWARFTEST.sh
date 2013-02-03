@@ -534,8 +534,8 @@ runtest $d1 $d2 cristi2/libpthread-2.4.so -R -ka  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj -m 
 runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 
-echo PASS  $goodcount
-echo FAIL  $failcount
+echo PASS $goodcount
+echo FAIL $failcount
 
 for i in $filepaths
 do
@@ -561,5 +561,5 @@ do
    done
 done
 
-echo PASS  $goodcount
-echo FAIL  $failcount
+echo PASS $goodcount
+echo FAIL $failcount

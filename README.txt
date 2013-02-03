@@ -1,33 +1,57 @@
-This directory (dwarftest) is the base which is used for regression testing
-of libdwarf.    It will probably only be usable on
-a POSIX compliant system (Unix or Linux or possibly Mac).
+This directory (dwarftest) is the base which is used for
+regression testing of libdwarf.    It will probably only
+be usable on a POSIX compliant system (Unix or Linux or
+possibly Mac).
 
-As of May 2010 its primary problem is a lack
-of testing of the dwarf-generation routines.
-The libdwarf consumer functions are pretty well tested.
+Its primary problem is a lack of testing of the
+dwarf-generation routines.  The libdwarf consumer functions
+are pretty well tested.
 
-The basic approach is simple: run each test with a newly-compiled
-dwarfdump and with the previous known-good version.
-Compare the resulting text outputs and evaluate the differences.
+The basic approach is simple: run each test with a
+newly-compiled dwarfdump and with the previous known-good
+version.  Compare the resulting text outputs and evaluate
+the differences.
 
-That comparison is only meaningful if one actually has confidence that the
-previous version of dwarfdump and dwarfdump2 is working correctly,
-but in spite of this deficiency these tests seem adequate.
+That comparison is only meaningful if one actually has
+confidence that the previous version of dwarfdump and
+dwarfdump2 is present and working correctly, but in spite of
+this deficiency these tests seem adequate.
 
-For a few tests that comparison simply does not work.
-In a few cases a special build of libdwarf is needed to test
-specific functionality.  
+For a few tests that comparison simply does not work.  In a few
+cases a special build of libdwarf is needed to test specific
+functionality (the test setups do that for you).
 
-The key scripts are:
+The test will not work unless the full libdwarf/dwarfdump 
+source distribution is visible to the regression tests.
 
+To run a full test:
+	./configure
+	make
+
+If you are using a system with no pre-existing dwarfdump[2].O
+to work with you must build the current dwarfdump[2].O
+and hope that is a decent test.
+It seems advisable to move to keeping a baseline-output
+for at least some tests.  Many of the tests involve
+large amounts of dwarfdump output, so keeping a baseline good
+result of text for those would make the regression test
+repository much much larger. So when choosing what to
+switch to 'baseline testing' with known-good dwarfdump output
+will involve some careful consideration. 
+
+
+======================================================================
+What follows is some background detail.
+
+The key scripts are PICKUPBIN RUNALL.sh DWARFTEST.sh CLEANUP
 
 PICKUPBIN:  this builds libdwarf and dwarfdump
 and stores the result in the dwarftest directory.
 The script assumes the directory tree has the following
 directories directly under a main directory (the main
 directory name is not important):
-   dwarftest
    libdwarf
+   dwarfgen
    dwarfdump
    dwarfdump2
 
@@ -42,6 +66,10 @@ RUNALL.sh:  Runs 3 tests, running DWARFTEST.sh 3 times.
    the new dwarfdump2.   This third comparison is perhaps
    conceptually not needed, but it seems worthwhile to keep
    dwarfdump2 and dwarfdump output identical.
+
+CLEANUP:  Cleans up all the temporary results from tests.
+   Does not clean out files created by configure here.
+   Use 'make distclean' to clean out those files.
 
 
 The 'zero' directory holds a utility application that

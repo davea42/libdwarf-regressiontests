@@ -1,0 +1,23 @@
+# Makefile which builds builds the code to test and
+# runs the executables.
+
+all:  build testonly
+
+test: build testonly
+
+build:
+	sh ./PICKUPBIN
+
+testonly:
+	sh ./RUNALL.sh
+
+clean:
+	sh ./CLEANUP
+
+distclean: clean
+	rm -f Makefile
+	rm -f config.h
+	rm -f config.status
+	rm -f config.status
+	rm -f config.log
+	rm -fr autom4te.cache
