@@ -11,8 +11,8 @@ AC_GCC_TRADITIONAL
 AC_PROG_INSTALL
 AC_CHECK_TOOL(RANLIB, ranlib, :)
 AC_CHECK_TOOL(AR, ar)
-AC_CANONICAL_SYSTEM
 
+AC_CANONICAL_SYSTEM
 #echo build $build
 #echo host $host
 #echo target $target
@@ -30,6 +30,7 @@ AC_ARG_ENABLE(libdwarf,
   [Give the full path to the libdwarf/dwarfdump source base]),
   [ ],[ ])
 
+rm -f junkckpath
 echo libdwarfval $enableval
 if test x$enableval != 'x'
 then
@@ -37,28 +38,83 @@ then
   f=`wc -l <junkckpath`
   if test $f != 1
   then
+    rm -f junkckpath
     echo "Error: The libdwarf source path $enableval does not start with /."
     exit 2
   fi
   fullpath=$enableval
-  rm junkckpath
+  rm -f junkckpath
 fi
 
-case "${host}" in
-i*86-pc-linux-gnu*)
-  echo "Using x86 linux-gnu for dwarfdump*.O "
-  cp dwarfdump2-x86-linux-gnu.O dwarfdump2.O
-  cp dwarfdump-x86-linux-gnu.O dwarfdump.O ;;
 
+# We look for a usable dwarfdump.O and dwarfdump2.O
+# This finds the last usable one. Perhaps we should
+# find the first?
+# The Bourne Shell (sh) can do something horrible when
+# attempting to deal with an executable of a sort the kernel
+# cannot handle (as for 64bit on a 32bit kernel machine).
+# It can create a bogus file with @ in the name. An empty file.
+# It is not clear why sh creates a file in that case.
+ddfound='n'
+dd2found='n'
+rm -f junkf1
+rm -f junkf2
+for i in *.O
+do
+   rm -f junkf1
+   rm -f junkf2
+   echo $i > junkf1
+   grep 'dwarfdump-' < junkf1 >/dev/null 2>/dev/null
+   r=$?
+   if test $r = 0
+   then
+     (./$i -i moshe/a.out.t |head -20) >junkf2    2>/dev/null
+     # Remove file that should not be here, if it exists.
+     rm -f *@*
+     cmp junkf2 findexecutable.base  >/dev/null 2>/dev/null
+     t=$?
+     if test $t -eq 0
+     then
+        echo "found usable dwarfdump  $i"
+        ddfound='y'
+        rm -f dwarfdump.O
+        cp $i dwarfdump.O
+     fi
+     continue
+   fi
+   grep 'dwarfdump2-' < junkf1 >/dev/null 2>/dev/null
+   r=$?
+   if test $r = 0
+   then
+     (./$i -i moshe/a.out.t |head -20) >junkf2    2>/dev/null
+     # Remove file that should not be here, if it exists.
+     rm -f *@*
+     cmp junkf2 findexecutable.base  >/dev/null 2>/dev/null
+     t=$?
+     if test $t -eq 0
+     then
+        echo "found usable dwarfdump2  $i"
+        dd2found='y'
+        rm -f dwarfdump2.O
+        cp $i dwarfdump2.O
+     fi
+     continue
+   fi
+done
+rm -f junkf1
+rm -f junkf2
 
-x86*-*-freebsd*)
-  echo "Using x86_64 freebsd for dwarfdump*.O "
-  cp dwarfdump-x86_64-freebsd.O dwarfdump.O
-  cp dwarfdump2-x86_64-freebsd.O dwarfdump2.O ;;
+if test $ddfound = 'n'
+then
+  echo "Unable to find a usable dwarfdump.O, giving up."
+  exit 2
+fi
+if test $dd2found = 'n'
+then
+  echo "Unable to find a usable dwarfdump2.O, giving up."
+  exit 2
+fi
 
-*) echo "We do not know if there is a workable dwarfdump*.O to use!"
-   exit 2 ;;
-esac
 
 for i in libdwarf dwarfdump dwarfdump2 dwarfgen dwarfexample
 do

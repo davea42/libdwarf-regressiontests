@@ -39,6 +39,12 @@ repository much much larger. So when choosing what to
 switch to 'baseline testing' with known-good dwarfdump output
 will involve some careful consideration. 
 
+To clean up:
+       make clean
+To clean out the configure cache etc, getting back to
+a clean distribution:
+       make distclean
+
 
 ======================================================================
 What follows is some background detail.

@@ -1,4 +1,15 @@
 2012-01-31  DavidAnderson <davea42@earthlink.net>
+     * configure.in: Now it simply looks for a dwarfdump*.O
+       and dwarfdump2*.O to make them the dwarfdump[2].O
+       for testing.  Because sometimes a 32bit executable
+       will work as well as 64bit in a 64bit kernel.
+       And possibly one is surprised where an executable will work.
+     * configure: Regenerated.
+     * findexecutable.base: A valid snippet of dwarfdump output
+       which is part of a basic sanity test that an executable 
+       is usable as the 'previous dwarfdump version'.
+     * Makefile.in: Makes it easy to run a single test now.
+2012-01-31  DavidAnderson <davea42@earthlink.net>
      * DWARFTEST.sh: Pass to dwgena and dwarfextract 
        the dwarfdump name to test against.
      * dwarfextract/dwarfextract.c: Fix some incompatibilites
