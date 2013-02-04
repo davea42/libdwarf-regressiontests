@@ -1,3 +1,6 @@
+2012-02-04  DavidAnderson <davea42@earthlink.net>
+     * dwarfdump2-x86_64-linux-gnu.O,dwarfdump-x86_64-linux-gnu.O:
+       new, 64bit Ubuntu 12.10 executables.
 2012-02-03  DavidAnderson <davea42@earthlink.net>
      * In RUNALL.sh, a temp file was not getting deleted,
        now it is.
