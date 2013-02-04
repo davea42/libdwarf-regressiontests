@@ -17,6 +17,7 @@ chkfail () {
   c=`wc -l <junkck2`
   if test $c -ne 2
   then
+    rm -f junkck2
     echo "Failure $2"
     echo "We have $c lines saying FAIL 0 so something is wrong."
     echo "There should be two FAIL 0 lines if everything passed."
@@ -26,6 +27,7 @@ chkfail () {
   else
     echo "PASS $2"
   fi
+  rm -f junkck2
 }
 
 rm -f ALLdd 
