@@ -21,8 +21,12 @@ For a few tests that comparison simply does not work.  In a few
 cases a special build of libdwarf is needed to test specific
 functionality (the test setups do that for you).
 
-The test will not work unless the full libdwarf/dwarfdump 
+The test will not work unless the full libdwarf/dwarfdump
 source distribution is visible to the regression tests.
+In addition to the packages needed to build dwarfdump etc,
+the GNU binutils-dev or equivalent must be installed to get
+bfd.h in a visible standard header location (the 'dwarfextract'
+test will fail without GNU binutils-dev).
 
 To run a full test:
 	./configure
@@ -30,14 +34,13 @@ To run a full test:
 
 If you are using a system with no pre-existing dwarfdump[2].O
 to work with you must build the current dwarfdump[2].O
-and hope that is a decent test.
-It seems advisable to move to keeping a baseline-output
-for at least some tests.  Many of the tests involve
-large amounts of dwarfdump output, so keeping a baseline good
-result of text for those would make the regression test
-repository much much larger. So when choosing what to
-switch to 'baseline testing' with known-good dwarfdump output
-will involve some careful consideration. 
+and hope that is a decent test.  It seems advisable to
+move to keeping a baseline-output for at least some tests.
+Many of the tests involve large amounts of dwarfdump output,
+so keeping a baseline good result of text for those would
+make the regression test repository much much larger. So when
+choosing what to switch to 'baseline testing' with known-good
+dwarfdump output will involve some careful consideration.
 
 To clean up:
        make clean
