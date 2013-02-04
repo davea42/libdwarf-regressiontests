@@ -33,3 +33,5 @@ distclean: clean
 	rm -f config.status
 	rm -f config.log
 	rm -fr autom4te.cache
+	rm -f dwarfdump.O
+	rm -f dwarfdump2.O
