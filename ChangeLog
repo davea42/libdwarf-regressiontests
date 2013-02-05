@@ -1,3 +1,7 @@
+2012-02-05  DavidAnderson <davea42@earthlink.net>
+     * dwarfextract/dwarfextract.c: Force __WORDSIZE to 32
+       for our test purposes.  Simpler to have just one
+       test to keep up todate, and adequate.
 2012-02-04  DavidAnderson <davea42@earthlink.net>
      * dwarfdump2-x86_64-linux-gnu.O,dwarfdump-x86_64-linux-gnu.O:
        new, 64bit Ubuntu 12.10 executables.

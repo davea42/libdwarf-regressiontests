@@ -88,6 +88,10 @@
 #include <stddef.h>
 #define BUFSIZE 1024
 #define NUM_SECTIONS 5
+/* For testing dwarfdump, force __WORDSIZE to 32. */
+#undef __WORDSIZE
+#define __WORDSIZE 32
+
 #ifndef __WORDSIZE
 #define __WORDSIZE 32
 #endif
