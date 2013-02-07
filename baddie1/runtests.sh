@@ -38,8 +38,9 @@ m() {
   fi
 }
 
-# the test_sibling_loop.o will not terminate with old dwarfdump
-#m $dd test_sibling_loop.o testincorrecta incorrectdies.base
+# The test_sibling_loop.o will not terminate unless
+# dwarfdump[2] is from February 2013 or later.
+m $dd test_sibling_loop.o testincorrecta incorrectdies.base
 m $dd badsiblingatchild testincorrectatchild incorrectatchild.base
 m $dd badsiblingatitself testincorrectatitself incorrectatitself.base
 m $dd badsiblingbeforeitself testincorrectbeforeitself incorrectbeforeitself.base
