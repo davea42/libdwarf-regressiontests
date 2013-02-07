@@ -169,6 +169,11 @@ runtest () {
 }
 # end 'runtest'
 
+cd baddie1
+sh runtests.sh ../$d2 
+chkres $?  baddie1
+cd ..
+
 # this coredumps libdwarf 20121130
 runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug -a
 

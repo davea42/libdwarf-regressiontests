@@ -4,7 +4,7 @@
 chkres() {
 if test $1 != 0
 then
-  echo "Test failure: %2"
+  echo "Test failure: $2"
   exit 2
 fi
 }

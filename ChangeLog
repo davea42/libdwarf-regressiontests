@@ -1,3 +1,8 @@
+2012-02-06  DavidAnderson <davea42@earthlink.net>
+     * badddie1: directory with new tests exhibiting error messages
+       catching DW_AT_sibling errors in compiler output.
+     * DWARFTEST.sh: now runs the baddie1 directory tests.
+     * .O versions of dwarfdump[2]. updated.
 2012-02-05  DavidAnderson <davea42@earthlink.net>
      * dwarfextract/dwarfextract.c: Force __WORDSIZE to 32
        for our test purposes.  Simpler to have just one
