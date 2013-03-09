@@ -1,3 +1,8 @@
+2012-03-08  DavidAnderson <davea42@earthlink.net>
+     * k10m: directory with k10m object file.
+       Same relocations as x86.
+     * DWARFTEST.sh: now runs dwarfdump on the k10m object. 
+     * .O versions of dwarfdump[2]. updated.
 2012-02-06  DavidAnderson <davea42@earthlink.net>
      * badddie1: directory with new tests exhibiting error messages
        catching DW_AT_sibling errors in compiler output.
