@@ -199,6 +199,11 @@ runtest $d1 $d2 enciso5/sample_S_option.o  -ER
 #Following has .debug_ranges
 runtest $d1 $d2 mucci/main.gcc  -ER
 
+# AARCH64 Arm 64bit.
+runtest $d1 $d2 juszkiewicz/t1.o -a
+runtest $d1 $d2 juszkiewicz/t2.o -a -v
+runtest $d1 $d2 juszkiewicz/tcombined.o -a
+
 runtest $d1 $d2 enciso5/sample_S_option.o  -Es
 # The Et does nothing, we do not seem to have 
 # a .debug_pubtypes (IRIX specific) section anywhere.

@@ -1,3 +1,8 @@
+2013-07-28  DavidAnderson <davea42@earthlink.net>
+     * DWARFTEST.sh: Added juszkiewicz directory with AARCH64 objects.
+     * dwarfdump-x86-ubuntu-12.10.O,dwarfdump2-x86-ubuntu-12.10.O,
+       dwarfdump-x86_64-ubuntu-12.10.O,dwarfdump2-x86_64-ubuntu-12.10.O:
+       with changes supporting AARCH64 as a baseline.
 2012-03-08  DavidAnderson <davea42@earthlink.net>
      * k10m: directory with k10m object file.
        Same relocations as x86.
