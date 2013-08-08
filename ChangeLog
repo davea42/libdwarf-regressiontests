@@ -1,3 +1,7 @@
+2013-08-07  DavidAnderson <davea42@earthlink.net>
+     * DWARFTEST.sh: Now do unifyddname on stdout as well
+       as stderr.  Now that non-fatal errors always come out
+       on stdout.
 2013-07-28  DavidAnderson <davea42@earthlink.net>
      * DWARFTEST.sh: Added juszkiewicz directory with AARCH64 objects.
      * dwarfdump-x86-ubuntu-12.10.O,dwarfdump2-x86-ubuntu-12.10.O,

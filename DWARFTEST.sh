@@ -101,8 +101,8 @@ unifyddname () {
   t2=tmpuerr2
   sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart >$t1
   sed -e 'sx.\/dwarfdump2.Ox.\/dwarfdumpx' <$t1 >$t2
-  sed -e 'sx.\/dwarfdump2x.\/dwarfdumpx' <$t2 >$nend
-  rm -f $t1 $t2
+  sed -e 's/.\/dwarfdump2/.\/dwarfdump/' <$t2 >$nend
+  rm -f $t1 $t2 $t3
 }
 
 runtest () {
@@ -122,8 +122,9 @@ runtest () {
 
         # Running an old one till baselines established.
         echo "old start " `date`
-        $olddw $*  $targ 1>tmp1 2>tmp1erra
+        $olddw $*  $targ 1>tmp1a 2>tmp1erra
         echo "old done " `date`
+        unifyddname tmp1a tmp1
         unifyddname tmp1erra tmp1err
         if [ -f core ]
         then
@@ -132,8 +133,9 @@ runtest () {
         fi
 
         echo "new start " `date`
-        $newdw  $* $targ  1>tmp2 2>tmp2erra
+        $newdw  $* $targ  1>tmp2a 2>tmp2erra
         echo "new done " `date`
+        unifyddname tmp2a tmp2
         unifyddname tmp2erra tmp2err
         date
         if [ -f core ]
