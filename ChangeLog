@@ -1,3 +1,7 @@
+2013-08-09  DavidAnderson <davea42@earthlink.net>
+     * shopov1/main.exe: New test object for FORM_string
+       in debug_types.
+     * DWARFTEST.sh: Run all options on shopov1/main.exe.
 2013-08-07  DavidAnderson <davea42@earthlink.net>
      * DWARFTEST.sh: Now do unifyddname on stdout as well
        as stderr.  Now that non-fatal errors always come out
