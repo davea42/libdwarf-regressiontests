@@ -40,6 +40,21 @@ then
     echo FAIL dwgena test 4
     exit 1
 fi
+
+# This has .debug_pubnames data.
+../dwarfgen -t obj -c 2 -o junk5.bin ./dwarfdump-bin >junkgen.out
+$dd -a -y -p junk5.bin >junk5.new
+zcat test5.base.gz >test5.base
+diff test5.base junk5.new
+if [  $?  -ne 0 ]
+then
+    echo FAIL dwgena test 5
+    exit 1
+fi
+
+
+
+
 echo PASS dwgena 
 exit 0
 
