@@ -325,9 +325,9 @@ struct avl_traverser	my_trav;
 /* end of readelf stuff */
 
 /* function prototypes */
-static int producer_callback(char *, int, Dwarf_Unsigned,
+static int producer_callback(const char *, int, Dwarf_Unsigned,
 	Dwarf_Unsigned, Dwarf_Unsigned, Dwarf_Unsigned, int *, int*);
-static int producer_callback_c(char *name, int size, Dwarf_Unsigned type,
+static int producer_callback_c(const char *name, int size, Dwarf_Unsigned type,
         Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
         Dwarf_Unsigned *sect_name_index, void *user_data,int *error);
 
@@ -2975,11 +2975,11 @@ ref_summary()
  * triggered by calling  dwarf_transform_to_disk_form
  */
 static int
-producer_callback_common(char *name, int size, Dwarf_Unsigned type,
+producer_callback_common(const char *name, int size, Dwarf_Unsigned type,
 	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
 	int *sect_name_index, int *error);
 static int
-producer_callback_c(char *name, int size, Dwarf_Unsigned type,
+producer_callback_c(const char *name, int size, Dwarf_Unsigned type,
 	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
 	Dwarf_Unsigned *sect_name_index, void *user_data,int *error)
 {
@@ -3000,7 +3000,7 @@ producer_callback_c(char *name, int size, Dwarf_Unsigned type,
        return res;
 }
 static int
-producer_callback(char *name, int size, Dwarf_Unsigned type,
+producer_callback(const char *name, int size, Dwarf_Unsigned type,
 	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
 	int *sect_name_index, int *error)
 {
@@ -3009,7 +3009,7 @@ producer_callback(char *name, int size, Dwarf_Unsigned type,
        return res;
 }
 static int
-producer_callback_common(char *name, int size, Dwarf_Unsigned type,
+producer_callback_common(const char *name, int size, Dwarf_Unsigned type,
 	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
 	int *sect_name_index, int *error)
 {

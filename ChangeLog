@@ -1,4 +1,9 @@
 2014-04-14  David Anderson
+     * dwarfextract/dwarfextract.c: Adding const to
+       the char * of the callback functions to match
+       the current declaration of callbacks. Removes
+       some warnings from the test build.
+2014-04-14  David Anderson
      * diederen/hello: a new 64bit Go executable using
        DW_FORM_ref_addr per the V2 standard. 
      * RUNALL.sh: Now with options allowing running
