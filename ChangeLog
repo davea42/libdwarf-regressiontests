@@ -1,3 +1,9 @@
+2014-04-14  David Anderson
+     * diederen/hello: a new 64bit Go executable using
+       DW_FORM_ref_addr per the V2 standard. 
+     * RUNALL.sh: Now with options allowing running
+       one of the test sets singly.
+     * DWARFTEST.sh: Adds tests using diederen/hello
 2014-01-30  David Anderson
      * BASEFILES: Necessary, but got left out of git earlier.
      * hughes/README, hughes/libkrb5support.so.0.1.debug: New testcase.

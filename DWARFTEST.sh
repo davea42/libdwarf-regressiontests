@@ -40,6 +40,7 @@ chkres () {
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
+diederen/hello
 hughes/libkrb5support.so.0.1.debug
 shopov1/main.exe
 k10m/main_knc.o
@@ -183,6 +184,9 @@ cd offsetfromlowpc
 sh runtest.sh ../dwarfgen ../$d2  ../simplereader
 chkres $?  offsetfromlowpc
 cd ..
+
+# This validates standard-based handling of DW_FORM_ref_addr
+runtest $d1 $d2 diederen/hello -i
 
 # this coredumps libdwarf 20121130
 runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug -a
