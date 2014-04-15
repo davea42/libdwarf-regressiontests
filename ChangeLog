@@ -1,3 +1,7 @@
+2014-04-15  David Anderson
+     * dwgena/test2.base.gz,dwgena/test4.base.gz: updated test results
+       with the CU offset_size field from -v
+     * *.O: new baseline executables. 
 2014-04-14  David Anderson
      * dwarfextract/dwarfextract.c: Adding const to
        the char * of the callback functions to match
