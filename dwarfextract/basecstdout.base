@@ -1,4 +1,4 @@
-Using dwarf_producer_init_c, June 2011
+Using original dwarf_producer_init
 input file:				test1
 compilation units:		2
 structures captured:		1

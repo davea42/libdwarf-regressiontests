@@ -10,7 +10,7 @@ cc -g $INCS dwarfextract.c -o dwarfextract -L ../ -ldwarf -lelf
 ./dwarfextract test1 test1out >basestdout
 if [  $?  -ne 0 ] 
 then
-    echo FAIL dwarfextract
+    echo FAIL dwarfextract test0
     exit 1
 fi
 diff basestdout basestdout.base

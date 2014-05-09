@@ -1,3 +1,10 @@
+2014-05-08  David Anderson
+     * dwarfextract/basecstdout.base,dwarfextract/dwarfextract.c,
+       dwarfextract/runtests.sh: Small changes to
+       baselines and dwarfextract.c to match the new 
+       dwarf_producer_init() interface. And a small change
+       in a runtests.sh message to clarify which step failed in case of
+       of a failure.
 2014-04-15  David Anderson
      * dwgena/test2.base.gz,dwgena/test4.base.gz: updated test results
        with the CU offset_size field from -v

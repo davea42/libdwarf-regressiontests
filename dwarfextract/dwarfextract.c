@@ -249,6 +249,9 @@ Dwarf_P_Die	*needptr_pdiep2, *needarr_pdiep2;
 Dwarf_Off	*ref_refp, *ref_refp2;
 Dwarf_P_Debug	newdbg;  /* global, the new "Producer" dbg */
 Dwarf_Debug	*needarr_dbgp, *needarr_dbgp2;
+const char *   producer_isa = "x86";
+const char *   producer_version = "V2";
+void *   producer_user_data = (void *)101;
 /* this is the type information of each unique type that we have
    saved as a new Dwarf_P_Die */
 struct typenode {
@@ -656,22 +659,19 @@ process_one_file(Elf * elf, int infd, int outfd)
 		exit(1);
 	}
 
-#ifdef PRODUCER_INIT_C
-        {
-            void *v = (void *)101;
-            printf("Using dwarf_producer_init_c, June 2011\n");
-	    newdbg = dwarf_producer_init_c(producer_flags, producer_callback_c,
-	        producer_errhandler, 
-                producer_error, 
-                v,
-                &error);
-        }
-#else
         printf("Using original dwarf_producer_init\n");
-	newdbg = dwarf_producer_init(producer_flags, producer_callback,
-			producer_errhandler, producer_error, &error);
-#endif
-	if (newdbg < 0) {
+	dres = dwarf_producer_init(producer_flags, 
+            producer_callback_c,
+	    producer_errhandler, 
+            producer_error, 
+            producer_user_data,
+            producer_isa,
+            producer_version,
+            0, /* No extra args. */
+            &newdbg,
+            &error);
+
+	if (dres != DW_DLV_OK) {
 		printf ("dwarf_producer_init failed\n");
 		exit(1);
 	}
@@ -3000,15 +3000,6 @@ producer_callback_c(const char *name, int size, Dwarf_Unsigned type,
        return res;
 }
 static int
-producer_callback(const char *name, int size, Dwarf_Unsigned type,
-	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
-	int *sect_name_index, int *error)
-{
-       int res = producer_callback_common(name,size,type,
-           flags,link,info,sect_name_index,error);
-       return res;
-}
-static int
 producer_callback_common(const char *name, int size, Dwarf_Unsigned type,
 	Dwarf_Unsigned flags, Dwarf_Unsigned link, Dwarf_Unsigned info,
 	int *sect_name_index, int *error)
@@ -5296,9 +5287,17 @@ concatenate (Elf *elf, int infd, int outfd)
 		exit(1);
 	}
 
-	newdbg = dwarf_producer_init(producer_flags, producer_callback,
-			producer_errhandler, producer_error, &error);
-	if (newdbg < 0) {
+	dres = dwarf_producer_init(producer_flags, 
+            producer_callback_c,
+	    producer_errhandler, 
+            producer_error, 
+            producer_user_data,
+            producer_isa,
+            producer_version,
+            0,
+            &newdbg,
+            &error);
+	if (dres != DW_DLV_OK) {
 		printf ("dwarf_producer_init failed\n");
 		exit(1);
 	}
