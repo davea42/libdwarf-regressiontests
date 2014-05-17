@@ -185,6 +185,11 @@ sh runtest.sh ../dwarfgen ../$d2  ../simplereader
 chkres $?  offsetfromlowpc
 cd ..
 
+cd debugfission
+sh runtest.sh  ../$d2 
+chkres $?  debugfission
+cd ..
+
 # This validates standard-based handling of DW_FORM_ref_addr
 runtest $d1 $d2 diederen/hello -i
 

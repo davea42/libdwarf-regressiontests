@@ -1,6 +1,7 @@
-# Build a tar file of the test stuff
+# Clean up the temp files left behind by a test.
 set -x
 (cd dwgena ; make clean)
+(cd debugfission ; make clean)
 rm -f tmp*
 rm -f tmp*err*
 rm -f core
