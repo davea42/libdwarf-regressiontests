@@ -1,3 +1,6 @@
+2014-05-18  David Anderson
+     * *x86*.O: new baseline dwarfdump for x86 and x86 64 Ubunutu.
+     * debugfission: updated baseline data for the test cases.
 2014-05-08  David Anderson
      * dwarfextract/basecstdout.base,dwarfextract/dwarfextract.c,
        dwarfextract/runtests.sh: Small changes to
