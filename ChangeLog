@@ -1,3 +1,5 @@
+2014-05-20  David Anderson
+     * debugfission baselines: Now dwo_id prints in hex.
 2014-05-18  David Anderson
      * *x86*.O: new baseline dwarfdump for x86 and x86 64 Ubunutu.
      * debugfission: updated baseline data for the test cases.
