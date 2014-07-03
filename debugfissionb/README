@@ -1,0 +1,8 @@
+The build of ld-new (gnu ld with
+debug fission) is from Cary Coutant.
+
+We use it to validate correct extraction
+of  the .gdb_index section.
+
+
+David Anderson July 2014
