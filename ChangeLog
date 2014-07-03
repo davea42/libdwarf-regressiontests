@@ -1,3 +1,7 @@
+2014-07-02  David Anderson
+     * debugfission/archivedwo-iMvvv.base.gz,debugfission/archivedwo.base.gz,
+       debugfission/targetdwo.base.gz:  A warning was messed up
+       and now it is fixed in dwarfdump[2], baselines needed update.
 2014-05-20  David Anderson
      * debugfission baselines: Now dwo_id prints in hex.
 2014-05-18  David Anderson
