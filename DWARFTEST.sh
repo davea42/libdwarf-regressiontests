@@ -175,6 +175,14 @@ runtest () {
 }
 # end 'runtest'
 
+# A very short debug_types file. Used to result in error due to bug.
+runtest $d1 $d2 emre/input.o -a
+
+# This has a .gdb_index   file print
+runtest $d1 $d2  debugfissionb/ld-new -I
+runtest $d1 $d2  debugfissionb/ld-new -I  -v -v -v
+runtest $d1 $d2  debugfissionb/ld-new -a  
+
 cd baddie1
 sh runtests.sh ../$d2 
 chkres $?  baddie1

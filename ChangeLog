@@ -1,3 +1,6 @@
+2014-07-04  David Anderson
+     * DWARFTEST.sh: Add tests of objects in the
+       debugfissionb and emre directories
 2014-07-02  David Anderson
      * debugfission/archivedwo-iMvvv.base.gz,debugfission/archivedwo.base.gz,
        debugfission/targetdwo.base.gz:  A warning was messed up
