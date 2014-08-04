@@ -175,6 +175,10 @@ runtest () {
 }
 # end 'runtest'
 
+# This is a .dwp file with .debug_cu_index and .debug_tu_index.
+runtest $d1 $d2 debugfissionb/ld-new.dwp -I
+runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
+
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
 
