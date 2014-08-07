@@ -182,6 +182,9 @@ runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
 
+# Has a type unit so we can see the index for such.
+runtest $d1 $d2 emre2/emre.ex -I
+
 # This has a .gdb_index   file print
 runtest $d1 $d2  debugfissionb/ld-new -I
 runtest $d1 $d2  debugfissionb/ld-new -I  -v -v -v
