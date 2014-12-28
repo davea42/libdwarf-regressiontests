@@ -3785,7 +3785,7 @@ test -n "$target_alias" &&
 
 # The path to libdwarf source we want is a path to
 # the directory containing the libdwarf, dwarfdump,
-# dwarfdump2, dwarfgen, and dwarfexample source directories.
+# dwarfgen, and dwarfexample source directories.
 
 here=`pwd`
 fullpath=$here/../code
@@ -3813,7 +3813,7 @@ then
 fi
 
 
-# We look for a usable dwarfdump.O and dwarfdump2.O
+# We look for a usable dwarfdump.O
 # This finds the last usable one. Perhaps we should
 # find the first?
 # The Bourne Shell (sh) can do something horrible when
@@ -3848,24 +3848,6 @@ do
      fi
      continue
    fi
-   grep 'dwarfdump2-' < junkf1 >/dev/null 2>/dev/null
-   r=$?
-   if test $r = 0
-   then
-     (./$i -i moshe/a.out.t |head -20) >junkf2    2>/dev/null
-     # Remove file that should not be here, if it exists.
-     rm -f *@*
-     cmp junkf2 findexecutable.base  >/dev/null 2>/dev/null
-     t=$?
-     if test $t -eq 0
-     then
-        echo "found usable dwarfdump2  $i"
-        dd2found='y'
-        rm -f dwarfdump2.O
-        cp $i dwarfdump2.O
-     fi
-     continue
-   fi
 done
 rm -f junkf1
 rm -f junkf2
@@ -3875,14 +3857,9 @@ then
   echo "Unable to find a usable dwarfdump.O, giving up."
   exit 2
 fi
-if test $dd2found = 'n'
-then
-  echo "Unable to find a usable dwarfdump2.O, giving up."
-  exit 2
-fi
 
 
-for i in libdwarf dwarfdump dwarfdump2 dwarfgen dwarfexample
+for i in libdwarf dwarfdump dwarfgen dwarfexample
 do
   if test -d $fullpath/$i
   then

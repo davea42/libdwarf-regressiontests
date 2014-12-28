@@ -9,7 +9,7 @@ doddtodd2=y
 
 if [ $# -eq 0 ]
 then
-  echo "Running all 3 tests"
+  echo "Running all  tests"
 else
   if [ $# -eq 1 ]
   then
@@ -82,20 +82,22 @@ fi
 
 if [ $doddtodd2 = "y" ]
 then
-  echo begin test ddtodd2
-  date
-  ./DWARFTEST.sh ddtodd2 2>ALLddtodd2 1>&2
-  chkres $? "Failure building test ddtodd2 results"
-  chkfail ALLddtodd2 "running test ddtodd2"
+  echo "Test ddtodd2 is no longer needed."
+#  echo begin test ddtodd2
+#  date
+#  ./DWARFTEST.sh ddtodd2 2>ALLddtodd2 1>&2
+#  chkres $? "Failure building test ddtodd2 results"
+#  chkfail ALLddtodd2 "running test ddtodd2"
 fi
-
+#
 if [ $dodd2 = "y" ]
 then
-  echo begin test dd2
-  date
-  ./DWARFTEST.sh dd2 2>ALLdd2 1>&2
-  chkres $? "Failure building test dd2 results"
-  chkfail ALLdd2 "running test dd2"
+  echo "Test dd2 is no longer needed."
+#  echo begin test dd2
+#  date
+#  ./DWARFTEST.sh dd2 2>ALLdd2 1>&2
+#  chkres $? "Failure building test dd2 results"
+#  chkfail ALLdd2 "running test dd2"
 fi
 
 

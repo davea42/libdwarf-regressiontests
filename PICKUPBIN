@@ -11,21 +11,21 @@ cp $libdw/libdwarf/libdwarf.a libdwoldframecol.a
 
 (cd $libdw/libdwarf; ./configure  --enable-windowspath; make clean ; make  )
 (cd $libdw/dwarfdump ; ./configure ; rm dwarfdump ; make)
-(cd $libdw/dwarfdump2  ; ./configure ; rm dwarfdump ; make)
-cp $libdw/dwarfdump2/dwarfdump  dwarfdump2W
+#(cd $libdw/dwarfdump2  ; ./configure ; rm dwarfdump ; make)
+#cp $libdw/dwarfdump2/dwarfdump  dwarfdump2W
 cp $libdw/dwarfdump/dwarfdump   dwarfdumpW
 
 (cd $libdw/libdwarf; ./configure ; make clean ; make )
 cp $libdw/libdwarf/libdwarf.a libdwarf.a
 (cd $libdw/dwarfdump ; make clean ;  ./configure ;  rm dwarfdump ; make)
-(cd $libdw/dwarfdump2 ;  make clean ; ./configure ; rm dwarfdump ; make)
+#(cd $libdw/dwarfdump2 ;  make clean ; ./configure ; rm dwarfdump ; make)
 (cd $libdw/dwarfgen ;  make clean ; ./configure ; rm dwarfgen ; make)
 # dwarfexample has no configure script
 (cd $libdw/dwarfexample ; make clean ;  make)
 
 cp $libdw/dwarfdump/dwarfdump  .
 cp $libdw/dwarfdump/dwarfdump.conf  .
-cp $libdw/dwarfdump2/dwarfdump  dwarfdump2
+#cp $libdw/dwarfdump2/dwarfdump  dwarfdump2
 cp $libdw/libdwarf/gennames .
 cp $libdw/dwarfgen/dwarfgen .
 cp $libdw/dwarfexample/simplereader .

@@ -1,3 +1,16 @@
+2014-12-28  David Anderson
+     * sandnes2/RUNTEST.sh: Now uses dwarfdump, not dwarfdump2.
+       Now does exit 1 on fail, not exit 0.
+     * configure.in: removed dwarfdump2 configure.
+     * configure: regenerated.
+     * PICKUPBIN, RUNALL.sh: Removed dwarfdump2 references
+     * dwarfdump2-i386-freebsd-9.1.O, dwarfdump2-x86-ubuntu-13.04.O,
+       dwarfdump2-x86_64-freebsd-9.1.O,  dwarfdump2-x86_64-ubuntu-13.04.O:
+       Deleted, as we no longer build or test dwarfdump2.
+     * dwarfdump-x86-ubuntu-13.04.O,dwarfdump-x86_64-ubuntu-13.04.O:
+       Updates with minor libdwarf changes enhancing
+       behavior when malloc area exhausted, there is no change
+       in dwarfdump output.
 2014-07-04  David Anderson
      * DWARFTEST.sh: Add tests of objects in the
        debugfissionb and emre directories
