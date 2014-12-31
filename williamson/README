@@ -1,11 +1,17 @@
-December 30, 2014
+December 31, 2014
 Edward Williamson sends heap_buffer_overflow.exe
 
-heap_buffer_overflow.exe seems to be damaged, as
+heap_buffer_overflow.exe seems to be damaged
+by some sort of executable-size-minimizer, as
    readelf -S heap_buffer_overflow.exe gives errors.
 
 dwarfdump -i heap_buffer_overflow.exe coredumps
 because _dwarf_decode_u_leb128 tramps over memory
 due to bogus input.
+
+He also sends  hbo_unminimized.exe, which
+is the same thing but without the damaging
+minimization applied.
+
 
 

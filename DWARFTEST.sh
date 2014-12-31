@@ -175,6 +175,11 @@ runtest () {
 }
 # end 'runtest'
 
+cd williamson
+sh runtest.sh  ../$d2 
+chkres $?  williamson
+cd ..
+
 # This is a .dwp file with .debug_cu_index and .debug_tu_index.
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
@@ -199,6 +204,7 @@ cd offsetfromlowpc
 sh runtest.sh ../dwarfgen ../$d2  ../simplereader
 chkres $?  offsetfromlowpc
 cd ..
+
 
 cd debugfission
 sh runtest.sh  ../$d2 
