@@ -1,0 +1,11 @@
+
+t=heap_buffer_overflow.exe
+readelf -S $t
+a=/home/davea/dwarf/code/dwarfdump/dwarfdump
+$a -i $t
+
+#valgrind --leak-check=full  $a -i   $t
+
+#echo run -i   heap_buffer_overflow.exe
+#gdb $a
+

@@ -1,0 +1,11 @@
+December 30, 2014
+Edward Williamson sends heap_buffer_overflow.exe
+
+heap_buffer_overflow.exe seems to be damaged, as
+   readelf -S heap_buffer_overflow.exe gives errors.
+
+dwarfdump -i heap_buffer_overflow.exe coredumps
+because _dwarf_decode_u_leb128 tramps over memory
+due to bogus input.
+
+
