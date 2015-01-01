@@ -1,14 +1,14 @@
 
 t=hbo_unminimized.exe
 t=heap_buffer_overflow.exe
-readelf -S $t
+#readelf -S $t
 a=/home/davea/dwarf/code/dwarfdump/dwarfdump
-$a -i $t
+#$a -i $t
 
 #valgrind --leak-check=full  $a -i   $t
 
-#echo run -i   $t
-#gdb $a
+echo run -i   $t
+gdb $a
 
 
 #echo break _dwarf_decode_u_leb128
