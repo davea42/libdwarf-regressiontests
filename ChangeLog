@@ -1,3 +1,7 @@
+2015-01-05  David Anderson
+     * dwarfdump-x86_64-ubuntu-13.04.O, dwarfdump-x86-ubuntu-13.04.O:
+       Renamed, removing the -13.04 from the name.
+       Updated for fixes to libdwarf on COMDAT object. No coredump now.
 2015-01-01  David Anderson
      *  dwarfdump-i386-freebsd-9.1.O,dwarfdump-x86_64-freebsd-9.1.O:
         freebsd baseline executable updated.
