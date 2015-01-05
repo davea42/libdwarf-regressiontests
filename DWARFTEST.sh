@@ -180,6 +180,11 @@ sh runtest.sh  ../$d2
 chkres $?  williamson
 cd ..
 
+/* duplicatedattr test dir has stuff to test. FIXME */
+
+# This should not coredump dwarfdump. Did as of Jan 1, 2015
+runtest $d1 $d2 comdatex/example.o -i
+
 # This is a .dwp file with .debug_cu_index and .debug_tu_index.
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
