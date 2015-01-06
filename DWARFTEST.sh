@@ -175,13 +175,13 @@ runtest () {
 }
 # end 'runtest'
 
-cd williamson
-sh runtest.sh  ../$d2 
-chkres $?  williamson
-cd ..
+# These are testing  some mangled objects for
+# sensible output. We do not want a core dump.
+runtest $d1 $d2 williamson/heap_buffer_overflow.exe -i -G
+runtest $d1 $d2 williamson/hbo_unminimized.exe -i -G
 runtest $d1 $d2 williamson/heap_buffer_overflow_01.exe -i
 
-/* duplicatedattr test dir has stuff to test. FIXME */
+# duplicatedattr test dir has stuff to test. FIXME 
 
 # This should not coredump dwarfdump. Did as of Jan 1, 2015
 runtest $d1 $d2 comdatex/example.o -i
