@@ -1,5 +1,8 @@
 December 31, 2014
-Edward Williamson sends heap_buffer_overflow.exe
+Last Update Jan 6, 2015
+Edward Williamson sends heap_buffer_overflow.exe and
+other things.  All these are damaged intentionally
+by a binary test tool.
 
 heap_buffer_overflow.exe seems to be damaged
 by some sort of executable-size-minimizer, as
@@ -13,5 +16,7 @@ He also sends  hbo_unminimized.exe, which
 is the same thing but without the damaging
 minimization applied.
 
-
+heap_buffer_overflow_01.exe also coredumps dwarfdump
+because elf_getshdr() fails and we used stale 
+libdwarf-internal data while cleaning up from that.
 

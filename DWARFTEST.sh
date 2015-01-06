@@ -179,6 +179,7 @@ cd williamson
 sh runtest.sh  ../$d2 
 chkres $?  williamson
 cd ..
+runtest $d1 $d2 williamson/heap_buffer_overflow_01.exe -i
 
 /* duplicatedattr test dir has stuff to test. FIXME */
 
