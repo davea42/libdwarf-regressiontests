@@ -43,7 +43,7 @@ rm -f  dwarfnames-s
 rm -f  dwarfnames-t.c
 rm -f  dwarfnames-t
 rm -f dwarfdump2
-rm -f dwarfdump2W
+rm -f OF*
 rm -f dwarfdump
 rm -f dwarfdumpW
 rm -f gennames

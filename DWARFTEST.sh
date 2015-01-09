@@ -25,7 +25,7 @@ dwinc=$cbase/libdwarf
 baseopts='-F'
 baseopts='-b -c  -f -F -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
 
-kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe"
+kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku -kuf"
 
 chkres () {
   if [ $1 = 0 ]
@@ -120,8 +120,14 @@ runtest () {
         rm -f core
         rm -f tmp1 tmp2 tmp3
         rm -f tmp1err tmp2err tmp3err 
-        rm -f tmp1errb tem1errc
+        rm -f tmp1errb tmp1errc
         rm -f tmp1berr tmp2berr
+        # OFo OFn are targets of dwarfdump -O file=path
+        #
+        rm -f OFo OFn  OFo1 OFn1 
+        rm -f OFo2 OFn2
+        rm -f OFo3 OFn3
+	rm -f OFobkup
 
         # Running an old one till baselines established.
         echo "old start " `date`
@@ -133,6 +139,14 @@ runtest () {
         then
            echo corefile in  $olddw '(old dwarfdump)'
            rm core
+        fi
+        if [ -f OFo ] 
+        then
+           unifyddname OFo OFo1
+           grep -v Usage   OFo1 >OFo2
+           # Delete date on first line
+           sed '1d' OFo2 >OFo3
+           cp OFo OFobkup
         fi
 
         echo "new start " `date`
@@ -147,6 +161,29 @@ runtest () {
            exit 1
         fi
         cat tmp2  >tmp3
+        if [ -f OFo ] 
+        then
+           # Here OFo is really OFn
+           unifyddname OFo OFn1
+           cp OFo OFnbkup
+           grep -v Usage   OFn1 >OFn2
+           # Delete date on first line
+           sed '1d' OFn2 >OFn3
+        fi
+
+        if [ -f OFn3 -o -f OFo3 ]
+        then
+          touch OFn3 OFo3
+          diff OFo3 OFn3
+          if [ $? = 0 ]
+          then
+            goodcount=`expr $goodcount + 1`
+          else
+            echo "FAIL -O file=path"  $* $targ
+            failcount=`expr $failcount + 1`
+          fi
+        fi
+
         # 
         diff tmp1 tmp3
         if [ $? = 0 ]
@@ -156,8 +193,11 @@ runtest () {
           echo FAIL  $* $targ
           failcount=`expr $failcount + 1`
         fi
+
         grep -v Usage   tmp1err >tmp1berr
         grep -v Usage   tmp2err >tmp2berr
+
+
         diff tmp1berr tmp2berr
         if [ $? = 0 ]
         then
@@ -169,11 +209,20 @@ runtest () {
         rm -f core
         rm -f tmp1 tmp2 tmp3
         rm -f tmp1err tmp2err tmp3err 
-        rm -f tmp1errb tem1errc
+        rm -f tmp1errb tmp1errc
         rm -f tmp1berr tmp2berr
-
+	rm -f OFobkup
+        rm -f OFo OFn  OFo1 OFn1 
+        rm -f OFo2 OFn2
+        rm -f OFo3 OFn3
 }
 # end 'runtest'
+
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -i -O file=./OFo
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kD
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kG
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -ku
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kuf
 
 # These are testing  some mangled objects for
 # sensible output. We do not want a core dump.
