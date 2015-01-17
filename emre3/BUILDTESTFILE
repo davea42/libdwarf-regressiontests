@@ -1,0 +1,19 @@
+g++ -c -gsplit-dwarf main.cc foo.cc
+if [  $? -ne 0 ]
+then
+   echo test g++ exec failed.
+   exit 1
+fi
+rm a.out.dwp
+/home/davea/bin/dwp  -o a.out.dwp main.dwo foo.dwo
+if [  $? -ne 0 ]
+then
+   echo test dwp failed.
+   exit 1
+fi
+exit 0
+
+#dwarfdump a.out.dwp
+#...
+#dwarfdump ERROR:  reference form with no valid local ref?!, offset=<0x66335a5f>:  DW_DLE_ATTR_FORM_OFFSET_BAD (119)
+
