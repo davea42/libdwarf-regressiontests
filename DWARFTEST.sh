@@ -37,9 +37,14 @@ chkres () {
   fi
 }
 
-
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
+emre3/a.out.dwp
+emre3/foo.dwo
+emre3/main
+emre3/foo.o
+emre3/main.o 
+debugfissionb/ld-new.dwp
 diederen/hello
 hughes/libkrb5support.so.0.1.debug
 shopov1/main.exe
@@ -218,12 +223,21 @@ runtest () {
 }
 # end 'runtest'
 
+
+# This one has .debug_cu_index
+# Some duplication with generic test loop.
+runtest $d1 $d2 emre3/a.out.dwp -i
+runtest $d1 $d2 emre3/a.out.dwp -i -v
+runtest $d1 $d2 emre3/a.out.dwp -i -d
+runtest $d1 $d2 emre3/a.out.dwp -i -d -v
+runtest $d1 $d2 emre3/a.out.dwp -I
+
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -i -O file=./OFo
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kD
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kG
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -ku
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kuf
-
+a
 # These are testing  some mangled objects for
 # sensible output. We do not want a core dump.
 runtest $d1 $d2 williamson/heap_buffer_overflow.exe -i -G
@@ -236,8 +250,11 @@ runtest $d1 $d2 williamson/heap_buffer_overflow_01.exe -i
 runtest $d1 $d2 comdatex/example.o -i
 
 # This is a .dwp file with .debug_cu_index and .debug_tu_index.
+# Some duplication with generic test loop.
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
+runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
+runtest $d1 $d2 debugfissionb/ld-new.dwp -i 
 
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
@@ -647,7 +664,7 @@ do
    echo  "===== $i all options"
    for xtra in "" "-v" "-v -v" "-D" "H 2"
    do
-     for k in  $baseopts
+     for k in  $baseopts "-i -M"
      do
 	runtest $d1 $d2 $i $k $xtra
      done

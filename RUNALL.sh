@@ -51,6 +51,8 @@ chkfail () {
     echo "There should be two FAIL 0 lines if everything passed."
     echo "Here are the first few FAIL lines:"
     grep FAIL $f |head -10
+    endt=`date`
+    echo "end   $endt"
     exit 2
   else
     echo "PASS $2"
@@ -101,7 +103,7 @@ then
 fi
 
 
-endt=`date`
 echo "start $start"
+endt=`date`
 echo "end   $endt"
 exit 0
