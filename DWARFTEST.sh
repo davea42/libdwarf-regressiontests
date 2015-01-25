@@ -44,7 +44,6 @@ emre3/foo.dwo
 emre3/main
 emre3/foo.o
 emre3/main.o 
-debugfissionb/ld-new.dwp
 diederen/hello
 hughes/libkrb5support.so.0.1.debug
 shopov1/main.exe
@@ -250,11 +249,11 @@ runtest $d1 $d2 williamson/heap_buffer_overflow_01.exe -i
 runtest $d1 $d2 comdatex/example.o -i
 
 # This is a .dwp file with .debug_cu_index and .debug_tu_index.
-# Some duplication with generic test loop.
-runtest $d1 $d2 debugfissionb/ld-new.dwp -I
+# Results are so large (500MB) it is unwise to run all options
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
 runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
-runtest $d1 $d2 debugfissionb/ld-new.dwp -i 
+runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
+
 
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
@@ -263,9 +262,11 @@ runtest $d1 $d2 emre/input.o -a
 runtest $d1 $d2 emre2/emre.ex -I
 
 # This has a .gdb_index   file print
+# Unwise to run all options.
 runtest $d1 $d2  debugfissionb/ld-new -I
 runtest $d1 $d2  debugfissionb/ld-new -I  -v -v -v
 runtest $d1 $d2  debugfissionb/ld-new -a  
+runtest $d1 $d2  debugfissionb/ld-new -ka  
 
 cd baddie1
 sh runtests.sh ../$d2 
