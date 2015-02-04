@@ -222,7 +222,6 @@ runtest () {
 }
 # end 'runtest'
 
-
 # This one has .debug_cu_index
 # Some duplication with generic test loop.
 runtest $d1 $d2 emre3/a.out.dwp -i
@@ -242,6 +241,8 @@ a
 runtest $d1 $d2 williamson/heap_buffer_overflow.exe -i -G
 runtest $d1 $d2 williamson/hbo_unminimized.exe -i -G
 runtest $d1 $d2 williamson/heap_buffer_overflow_01.exe -i
+# The following has a bad info value in a rela. Coredumped dwarfdump.
+runtest $d1 $d2 williamson/heap_vulnerability_20150201 -i
 
 # duplicatedattr test dir has stuff to test. FIXME 
 
