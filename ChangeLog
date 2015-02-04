@@ -1,5 +1,8 @@
 2015-02-04  David Anderson
-     * adding new tests, diederen2 directory. And a new test
+     * DWARFTEST.sh: Actually run the new test objects, with all
+       options.
+2015-02-04  David Anderson
+     * DWARFTEST.sh: adding new tests, diederen2 directory. And a new test
        in williamson directory. Thanks to Edward Williamson
        and Arnaud Diederen for these great little test objects.
 2015-01-18  David Anderson

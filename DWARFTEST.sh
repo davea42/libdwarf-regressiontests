@@ -39,6 +39,12 @@ chkres () {
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
+diederen2/pc_dwarf_bad_attributes.elf
+diederen2/pc_dwarf_bad_sibling2.elf
+diederen2/pc_dwarf_bad_reloc_empty_debug_info.elf
+diederen2/pc_dwarf_bad_sibling.elf
+diederen2/pc_dwarf_bad_reloc_section_link.elf
+diederen2/pc_dwarf_bad_string_offset.elf
 emre3/a.out.dwp
 emre3/foo.dwo
 emre3/main
