@@ -1,4 +1,9 @@
 
-echo 'r val_expr/libpthread-2.5.so -F -v -v -x name=dwarfdump.conf -x abi=x86_64'
 
-gdb ../dwarf-working/trunk/dwarfdump/dwarfdump
+./dwarfdump -ka -p -R -M  dwarf4/ddg4.5dwarf-4 >junkn.dw4out
+./dwarfdump.O -ka -p -R -M  dwarf4/ddg4.5dwarf-4 >junko.dw4out
+./dwarfdump -ka -R -M  dwarf4/ddg4.5dwarf-4 >junkn.kadw4out
+
+#echo 'r val_expr/libpthread-2.5.so -F -v -v -x name=dwarfdump.conf -x abi=x86_64'
+#
+#gdb ../dwarf-working/trunk/dwarfdump/dwarfdump

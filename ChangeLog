@@ -1,3 +1,8 @@
+2015-03-07  David Anderson
+     * dwarfdump-x86_64-ubuntu-13.04.O, dwarfdump-x86-ubuntu-13.04.O,
+       dwarfdump-i386-freebsd-9.1.O,dwarfdump-x86_64-freebsd-9.1.O:
+       New versions because of updated dwarfdump tag-attr lists
+       and the revised timing of certain range checks.
 2015-02-04  David Anderson
      * DWARFTEST.sh: Actually run the new test objects, with all
        options.
