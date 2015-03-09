@@ -390,7 +390,10 @@ runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
 # ka p, where we test a warning message is generated (p is printing option)
+# And should run like just -p (as of Jan 2015 erroneously did many checks).
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -p  -R -M 
+# normal ka, full checks
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka  -R -M 
 # ka P, where P means print CU names per compiler.
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M 
 # ka P kd, where so print CU names and error summary per compiler
