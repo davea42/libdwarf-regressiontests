@@ -4,5 +4,9 @@ debug fission) is from Cary Coutant.
 We use it to validate correct extraction
 of  the .gdb_index section.
 
+ld-new.dwp provides a test of reading a .dwp
+and the special libdwarf interfaces to reading a dwp
+object (DebugFission Package File).
+
 
 David Anderson July 2014
