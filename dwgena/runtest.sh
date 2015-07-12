@@ -13,6 +13,8 @@ diff test1.base junk1.new
 if [  $?  -ne 0 ]
 then
     echo FAIL dwgena test 1
+    echo "update via "
+    echo "update via: mv junk1.new test1.base ; gzip test1.base"
     exit 1
 fi
 
@@ -23,6 +25,7 @@ diff test2.base junk2.new
 if [  $?  -ne 0 ]
 then
     echo FAIL dwgena test 2
+    echo "update via: mv junk2.new test2.base ; gzip test2.base"
     exit 1
 fi
 ../dwarfgen -t obj -c 10 -o junk3.bin ./dwarfgen-bin >junkgen.out
@@ -33,6 +36,7 @@ diff test3.base junk3.new
 if [  $?  -ne 0 ]
 then
     echo FAIL dwgena test 3
+    echo "update via: mv junk3.new test2.base ; gzip test3.base"
     exit 1
 fi
 
@@ -43,6 +47,7 @@ diff test4.base junk4.new
 if [  $?  -ne 0 ]
 then
     echo FAIL dwgena test 4
+    echo "update via: mv junk4.new test4.base ; gzip test4.base"
     exit 1
 fi
 
@@ -56,6 +61,7 @@ diff test5.base junk5.new
 if [  $?  -ne 0 ]
 then
     echo FAIL dwgena test 5
+    echo "update via: mv junk5.new test5.base ; gzip test5.base"
     exit 1
 fi
 

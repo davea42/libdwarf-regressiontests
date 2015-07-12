@@ -1,3 +1,14 @@
+2015-07-12  David Anderson
+     * RUNALL.sh : Removed dd2, ddtodd2 stuff. Not needed.
+     *  debugfission/archivedwo-iMvvv.base.gz,debugfission/archivedwo.base.gz
+       debugfission/archiveo.base.gz debugfission/targetdwo.base.gz
+       debugfission/targeto.base.gz :DW_AT_dwo_id print changed.
+     * debugfission/runtest.sh: Add description of update to baseline
+     * debugfissionb/RUN: Minor change for hand testing.
+     * dwgena/test1.base.gz,dwgena/test2.base.gz,dwgena/test4.base.gz:
+       updated baselines, new DW_AT_dwo_id print.
+     * dwgena/runtest.sh: Add description of update to baseline.
+
 2015-03-07  David Anderson
      * dwarfdump-x86_64-ubuntu-13.04.O, dwarfdump-x86-ubuntu-13.04.O,
        dwarfdump-i386-freebsd-9.1.O,dwarfdump-x86_64-freebsd-9.1.O:

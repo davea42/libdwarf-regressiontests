@@ -2,6 +2,9 @@
 f=ld-new.dwp
 re=~/bin/readelfgold
 dd=~/dwarf/code/dwarfdump/dwarfdump
+$re -S  $f >junksecs
+#$re -s -r $f >junksecs-relocs
+exit 1
 
 #$re --debug-dump=cu_index $f >junk.index
 #$re --debug-dump=info $f >junk.info

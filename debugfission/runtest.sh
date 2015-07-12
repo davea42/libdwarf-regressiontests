@@ -11,6 +11,7 @@ diff archiveo.base junk1.new
 if [  $?  -ne 0 ]
 then
     echo FAIL debugfission archiveo test 1
+    echo "update via : mv junk1.new archiveio.base ; gzip archiveio.base"
     exit 1
 fi
 
@@ -20,6 +21,7 @@ diff archivedwo.base junk2.new
 if [  $?  -ne 0 ]
 then
     echo FAIL debugfission archivedwo 2
+    echo "update via : mv junk2.new archivedwo.base ; gzip archivedwo.base"
     exit 1
 fi
 
@@ -29,6 +31,7 @@ diff  targeto.base junk3.new
 if [  $?  -ne 0 ]
 then
     echo FAIL debugfission targeto test 3
+    echo "update via : mv junk3.new targeto.base ; gzip targeto.base"
     exit 1
 fi
 
@@ -38,6 +41,7 @@ diff  targetdwo.base junk4.new
 if [  $?  -ne 0 ]
 then
     echo FAIL debugfission targetdwo 4
+    echo "update via : mv junk4.new targetdwo.base ; gzip targetdwo.base"
     exit 1
 fi
 
@@ -47,6 +51,7 @@ diff archivedwo-iMvvv.base junk5.new
 if [  $?  -ne 0 ]
 then
     echo FAIL debugfission archivedwo-iMvvv 5
+    echo "update via : mv junk5.new archivedwo-iMvvv ; gzip archivedwo-iMvvv"
     exit 1
 fi
 echo PASS debug fission
