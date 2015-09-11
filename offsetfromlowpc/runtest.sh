@@ -11,8 +11,8 @@ sim=$3
 
 tx=junktesthipcoffset.o
 ty=junktesthipcoffsetorig.o
-t1=junk.ddout
-t2=junk2.ddout
+t1=junk1.highpc
+t2=junk2.highpc
 t3=junk3.basehighpc3
 t4=junk4.genout
 t5=junkh.basehighpc1
@@ -31,6 +31,22 @@ rm $t8
 rm $tx
 rm $ty
 
+if [ ! -x $gen ]
+then
+    echo "FAIL: Unable to find dwarfgen named $gen"
+    exit 1
+fi
+if [ ! -x $dd ]
+then
+    echo "FAIL: Unable to find dwarfdump named $dd"
+    exit 1
+fi
+if [ ! -x $sim ]
+then
+    echo "FAIL: Unable to find simplereader named $sim"
+    exit 1
+fi
+
 $gen  -h -t obj -c 0 -o $tx dwarfdump.o  >$t4 2>/dev/null
 
 # This one no conversion.
@@ -43,6 +59,7 @@ grep high_pc $t1 >$t5
 diff  basehighpc1 $t5
 if [ $? -ne 0 ]
 then
+    echo FAIL diff basehighpc1 $t5
     echo FAIL offsetfromlowpc/runtest.sh  incorrect list of high_pc data.
     exit 1
 fi
@@ -54,6 +71,10 @@ grep high_pc $t2  >$t6 2>/dev/null
 diff   basehighpc2 $t6
 if [ $? -ne 0 ]
 then
+    echo "did: $gen  -h -t obj -c 0 -o $tx dwarfdump.o  >$t4 "
+    echo "did: $dd -i -M $tx > $t6"
+    echo "did: diff   basehighpc2 $t6"
+    echo FAIL diff basehighpc2 $t6
     echo FAIL offsetfromlowpc/runtest.sh  incorrect transformed high_pc offset
     exit 1
 fi

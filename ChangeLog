@@ -1,3 +1,6 @@
+2015-09-11  David Anderson
+     * offsetfromlowpc/runtest.sh: Checks for build failure directly
+       instead of relying on comparison fail for that unusual case.
 2015-07-12  David Anderson
      * RUNALL.sh : Removed dd2, ddtodd2 stuff. Not needed.
      *  debugfission/archivedwo-iMvvv.base.gz,debugfission/archivedwo.base.gz
