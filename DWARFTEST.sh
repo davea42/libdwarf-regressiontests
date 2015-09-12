@@ -260,7 +260,8 @@ runtest $d1 $d2 comdatex/example.o -i
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
 runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
 runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
-
+runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
+runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
 
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
