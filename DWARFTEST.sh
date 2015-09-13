@@ -45,6 +45,7 @@ diederen2/pc_dwarf_bad_reloc_empty_debug_info.elf
 diederen2/pc_dwarf_bad_sibling.elf
 diederen2/pc_dwarf_bad_reloc_section_link.elf
 diederen2/pc_dwarf_bad_string_offset.elf
+diederen3/pc_dwarf_bad_name3.elf
 emre3/a.out.dwp
 emre3/foo.dwo
 emre3/main
