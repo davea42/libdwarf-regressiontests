@@ -19,17 +19,17 @@ t5=junkh.basehighpc1
 t6=junk2h.basehighpc2
 t7=junk.basehighpc4
 t8=junk8.genout
-rm $tx
-rm $t1 
-rm $t2 
-rm $t3
-rm $t4
-rm $t5
-rm $t6
-rm $t7
-rm $t8
-rm $tx
-rm $ty
+rm -f $tx
+rm -f $t1
+rm -f $t2
+rm -f $t3
+rm -f $t4
+rm -f $t5
+rm -f $t6
+rm -f $t7
+rm -f $t8
+rm -f $tx
+rm -f $ty
 
 if [ ! -x $gen ]
 then
