@@ -513,9 +513,9 @@ sh runtest.sh $cbase
 chkres $? frame1
 cd ..
 
-echo "=====   dwarfextract/runtest.sh"
+echo "=====   dwarfextract/runtests.sh"
 cd dwarfextract
-rm dwarfextract
+rm -f dwarfextract
 sh runtests.sh ../$d2
 chkres $?  dwarfextract
 cd ..

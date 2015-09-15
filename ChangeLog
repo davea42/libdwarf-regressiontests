@@ -1,3 +1,6 @@
+2015-09-15  David Anderson
+     * DWARFTEST.sh: changed rm to rm -f as we expect
+       the temporary files involved to be missing at times.
 2015-09-11  David Anderson
      * offsetfromlowpc/runtest.sh: Checks for build failure directly
        instead of relying on comparison fail for that unusual case.
