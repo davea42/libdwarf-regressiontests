@@ -1,4 +1,7 @@
 2015-09-15  David Anderson
+     * debugfission/runtest.sh: Typos in the script
+       meant test base not properly updated.
+2015-09-15  David Anderson
      * DWARFTEST.sh: changed rm to rm -f as we expect
        the temporary files involved to be missing at times.
 2015-09-11  David Anderson

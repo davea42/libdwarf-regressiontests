@@ -11,7 +11,7 @@ diff archiveo.base junk1.new
 if [  $?  -ne 0 ]
 then
     echo FAIL debugfission archiveo test 1
-    echo "update via : mv junk1.new archiveio.base ; gzip archiveio.base"
+    echo "update via : mv junk1.new archiveo.base ; gzip archiveo.base"
     exit 1
 fi
 
