@@ -51,7 +51,7 @@ diff archivedwo-iMvvv.base junk5.new
 if [  $?  -ne 0 ]
 then
     echo FAIL debugfission archivedwo-iMvvv 5
-    echo "update via : mv junk5.new archivedwo-iMvvv ; gzip archivedwo-iMvvv"
+    echo "update via : mv junk5.new archivedwo-iMvvv.base ; gzip archivedwo-iMvvv.base"
     exit 1
 fi
 echo PASS debug fission

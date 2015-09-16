@@ -1,4 +1,8 @@
 2015-09-15  David Anderson
+     * debugfission/runtest.h and the .gz baselines.
+       Script had typos and baselines changed due to
+       fixing bugs in dwarf_form.c
+2015-09-15  David Anderson
      * debugfission/runtest.sh: Typos in the script
        meant test base not properly updated.
 2015-09-15  David Anderson
