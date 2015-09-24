@@ -36,7 +36,7 @@ diff test3.base junk3.new
 if [  $?  -ne 0 ]
 then
     echo FAIL dwgena test 3
-    echo "update via: mv junk3.new test2.base ; gzip test3.base"
+    echo "update via: mv junk3.new test3.base ; gzip test3.base"
     exit 1
 fi
 
