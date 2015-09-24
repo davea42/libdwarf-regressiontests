@@ -1,3 +1,14 @@
+2015-09-24  David Anderson
+     * DWARFTEST.sh: Removed spurious letter a.
+     * debugfission/archiveo.base.gz: new baseline
+     * debugfission/targeto.base.gz: newbaseline
+
+     * dwarfdump-i386-freebsd-9.1.O,dwarfdump-x86-ubuntu.O,
+       dwarfdump-x86_64-freebsd-9.1.O,dwarfdump-x86_64-ubuntu.O:
+       New baseline executables.
+     * dwarfextract/dwarfextract.c: Fixed a line to avoid
+       compiler warning.
+     
 2015-09-15  David Anderson
      * debugfission/runtest.h and the .gz baselines.
        Script had typos and baselines changed due to

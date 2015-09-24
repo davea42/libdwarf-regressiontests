@@ -2986,8 +2986,8 @@ producer_callback_c(const char *name, int size, Dwarf_Unsigned type,
        int name_index = 0;
        int res;
        if( user_data != (void *)101) {
-           printf("Error: bad data passed through user_data pointer, got 0x%x\n",
-               (unsigned)user_data);
+           unsigned long long ud = (unsigned long long)user_data;
+           printf("Error: bad data passed through user_data pointer, got 0x%llx\n",ud);
            exit(1);
        }
        /* This horrible casting is so we can use common code

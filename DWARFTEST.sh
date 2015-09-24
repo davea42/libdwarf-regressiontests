@@ -127,7 +127,7 @@ runtest () {
 	shift
 	shift
 	
-        echo "=====  $*  $targ"
+        echo "=====START  $*  $targ"
         rm -f core
         rm -f tmp1 tmp2 tmp3
         rm -f tmp1err tmp2err tmp3err 
@@ -250,7 +250,7 @@ runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kD
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kG
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -ku
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kuf
-a
+#
 # These are testing  some mangled objects for
 # sensible output. We do not want a core dump.
 runtest $d1 $d2 williamson/heap_buffer_overflow.exe -i -G
