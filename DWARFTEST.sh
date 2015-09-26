@@ -230,11 +230,14 @@ runtest () {
 # end 'runtest'
 
 # for two-level line tables 
-# -vvv not yet supported for line tables.
 runtest $d1 $d2 emre4/test19_64_dbg -l
 runtest $d1 $d2 emre4/test19_64_dbg -a
 runtest $d1 $d2 emre4/test3_64_dbg -l
 runtest $d1 $d2 emre4/test3_64_dbg -a
+runtest $d1 $d2 emre4/test19_64_dbg -l -vvv
+runtest $d1 $d2 emre4/test19_64_dbg -a -vvv
+runtest $d1 $d2 emre4/test3_64_dbg -l -vvv
+runtest $d1 $d2 emre4/test3_64_dbg -a -vvv
 
 
 # This one has .debug_cu_index
