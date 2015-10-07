@@ -238,6 +238,10 @@ runtest $d1 $d2 emre4/test19_64_dbg -l -vvv
 runtest $d1 $d2 emre4/test19_64_dbg -a -vvv
 runtest $d1 $d2 emre4/test3_64_dbg -l -vvv
 runtest $d1 $d2 emre4/test3_64_dbg -a -vvv
+runtest $d1 $d2 emre4/test19_64_dbg -l -v
+runtest $d1 $d2 emre4/test19_64_dbg -a -v
+runtest $d1 $d2 emre4/test3_64_dbg -l -v
+runtest $d1 $d2 emre4/test3_64_dbg -a -v
 
 
 # This one has .debug_cu_index
@@ -560,6 +564,16 @@ runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32
 runtest $d1 $d2 modula2/write-fixed -ka -cGNU%20AS  -M -R
 runtest $d1 $d2 modula2/write-fixed -ka -M -R
 
+runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v -x line5=no
+runtest $d1 $d2  sparc/tcombined.o -a -R   -v -x line5=no
+runtest $d1 $d2  sparc/tcombined.o -a -R    -x line5=no
+runtest $d1 $d2  x86/dwarfdumpv4.3 -a -R  -v -v -v -v -v -v -x line5=no
+runtest $d1 $d2 legendre/libmpich.so.1.0 -ka  -x line5=no
+runtest $d1 $d2 legendre/libmpich.so.1.0 -a  -x line5=no
+runtest $d1 $d2 legendre/libmpich.so.1.0 -l  -x line5=no
+runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix2 -x line5=no
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v  -x line5=no
+runtest $d1 $d2  mucci/main.o -c -R -ka  -v -v -v -v -v -v -x line5=no
 
 runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v
 runtest $d1 $d2  sparc/tcombined.o -ka -R  -v -v -v -v -v -v
@@ -704,9 +718,9 @@ echo FAIL $failcount
 for i in $filepaths
 do
    echo  "===== $i all options"
-   for xtra in "" "-v" "-v -v" "-D" "H 2"
+   for xtra in "" "-v" "-vv" "-vvv"  "-D" "-H 2" 
    do
-     for k in  $baseopts "-i -M"
+     for k in  $baseopts "-i -M" 
      do
 	runtest $d1 $d2 $i $k $xtra
      done
@@ -724,6 +738,5 @@ do
      done
    done
 done
-
 echo PASS $goodcount
 echo FAIL $failcount
