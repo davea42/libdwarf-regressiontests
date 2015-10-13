@@ -1,0 +1,6 @@
+A test from Emre Kultursay with
+.debug_loc.dwo from dwp referring to .debug_addr
+in the main executable.
+
+Oct 13, 2015
+
