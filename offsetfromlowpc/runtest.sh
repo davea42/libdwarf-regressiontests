@@ -61,6 +61,7 @@ if [ $? -ne 0 ]
 then
     echo FAIL diff basehighpc1 $t5
     echo FAIL offsetfromlowpc/runtest.sh  incorrect list of high_pc data.
+    echo "to update baseline do: mv $t5 basehipc1"
     exit 1
 fi
 
@@ -75,6 +76,7 @@ then
     echo "did: $dd -i -M $tx > $t6"
     echo "did: diff   basehighpc2 $t6"
     echo FAIL diff basehighpc2 $t6
+    echo "to update baseline do: mv $t6 basehighpc2"
     echo FAIL offsetfromlowpc/runtest.sh  incorrect transformed high_pc offset
     exit 1
 fi
@@ -85,6 +87,7 @@ diff basehighpc3 $t3
 if [ $? -ne 0 ]
 then
     echo FAIL offsetfromlowpc/runtest.sh  mismatch transformation to offset
+    echo "to update baseline do: mv $t3 basehighpc3"
     exit 1
 fi
 
@@ -93,10 +96,9 @@ diff basehighpc4 $t7
 if [ $? -ne 0 ]
 then
     echo FAIL offsetfromlowpc/runtest.sh  mismatch non-transformation to offset
+    echo "to update baseline do: mv $t7 basehipc4"
     exit 1
 fi
-
-
 
 echo PASS offsetfromlowpc/runtest.sh
 exit 0

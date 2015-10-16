@@ -106,6 +106,10 @@ ia32/libpfm.so.3
 modula2/write-fixed
 cristi3/cristibadobj'
 
+stripx() {
+    x=`echo $* | sed -e 's/-x line5=.*//'`
+    echo $x 
+}
 # Avoid spurious differences because of the names of the
 # various dwarfdump versions being tested.
 unifyddname () {
@@ -142,7 +146,13 @@ runtest () {
 
         # Running an old one till baselines established.
         echo "old start " `date`
-        $olddw $*  $targ 1>tmp1a 2>tmp1erra
+        tmplist="$*"
+        echo "dadebug tmplist baseline line5 difference-fix ",$tmplist 
+        # dadebug temp strip -x
+        tmplist2=`stripx "$*"`
+        # echo "dadebug tmplist2 ",$tmplist2 
+        $olddw $tmplist2  $targ 1>tmp1a 2>tmp1erra
+        #$olddw $*  $targ 1>tmp1a 2>tmp1erra
         echo "old done " `date`
         unifyddname tmp1a tmp1
         unifyddname tmp1erra tmp1err
@@ -228,6 +238,24 @@ runtest () {
         rm -f OFo3 OFn3
 }
 # end 'runtest'
+
+#  For line table variants checking.
+for x in '-x line5=std' '-x line5=s2l' '-x line5=orig' '-x line5=orig2l'
+do
+runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v $x
+runtest $d1 $d2  sparc/tcombined.o -a -R   -v  $x
+runtest $d1 $d2  sparc/tcombined.o -a -R    $x
+runtest $d1 $d2  x86/dwarfdumpv4.3 -a -R  -v -v -v -v -v -v $x
+runtest $d1 $d2 legendre/libmpich.so.1.0 -ka  $x
+runtest $d1 $d2 legendre/libmpich.so.1.0 -a  $x
+runtest $d1 $d2 legendre/libmpich.so.1.0 -l  $x
+runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix2 $x
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v  $x
+runtest $d1 $d2  mucci/main.o -c -R -ka  -v -v -v -v -v -v $x
+done
+
+# Test support for DW_FORM_GNU_strp_alt
+runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=hughes/krb5-1.11.3-38.fc20.x86_64 
 
 # for two-level line tables 
 runtest $d1 $d2 emre4/test19_64_dbg -l
@@ -564,16 +592,9 @@ runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32
 runtest $d1 $d2 modula2/write-fixed -ka -cGNU%20AS  -M -R
 runtest $d1 $d2 modula2/write-fixed -ka -M -R
 
-runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v -x line5=no
-runtest $d1 $d2  sparc/tcombined.o -a -R   -v -x line5=no
-runtest $d1 $d2  sparc/tcombined.o -a -R    -x line5=no
-runtest $d1 $d2  x86/dwarfdumpv4.3 -a -R  -v -v -v -v -v -v -x line5=no
-runtest $d1 $d2 legendre/libmpich.so.1.0 -ka  -x line5=no
-runtest $d1 $d2 legendre/libmpich.so.1.0 -a  -x line5=no
-runtest $d1 $d2 legendre/libmpich.so.1.0 -l  -x line5=no
-runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix2 -x line5=no
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v  -x line5=no
-runtest $d1 $d2  mucci/main.o -c -R -ka  -v -v -v -v -v -v -x line5=no
+
+
+
 
 runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v
 runtest $d1 $d2  sparc/tcombined.o -ka -R  -v -v -v -v -v -v

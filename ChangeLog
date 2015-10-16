@@ -1,3 +1,13 @@
+2015-10-15  David Anderson
+     * DWARFTEST.sh: New test of tied and new tests of the 4 flavors
+       of srclines. New test of the hughes file with tied in use.
+     * dwarfdump-i386-freebsd-9.1.O dwarfdump-x86-ubuntu.O,
+       dwarfdump-x86_64-freebsd-9.1.O,dwarfdump-x86_64-ubuntu.O:
+       new baseline version.
+     * hughes/README: Explains that this is now a fixed problem and
+       the fix is tested..
+     * offsetfromlowpc/runtest.sh,sandnes2/RUNTEST.sh:
+       updated to match new libdwarf. 
 2015-10-05  David Anderson
      * Refactored line table code and added new interfaces to libdwarf.
        Those are tested now along with two-level line tables.
