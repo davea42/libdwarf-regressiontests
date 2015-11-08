@@ -107,7 +107,7 @@ modula2/write-fixed
 cristi3/cristibadobj'
 
 stripx() {
-    x=`echo $* | sed -e 's/-x line5=.*//'`
+    x=`echo $* | sed -e 's/-g//'`
     echo $x 
 }
 # Avoid spurious differences because of the names of the
@@ -254,6 +254,9 @@ runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v 
 runtest $d1 $d2  mucci/main.o -c -R -ka  -v -v -v -v -v -v $x
 done
 
+runtest $d1 $d2 irixn32/dwarfdump -i -x name=./dwarfdump.conf -x abi=mips-irix2 -g
+runtest $d1 $d2 comdatex/example.o -i -g
+
 # Test support for DW_FORM_GNU_strp_alt
 runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=hughes/krb5-1.11.3-38.fc20.x86_64 
 
@@ -359,6 +362,7 @@ runtest $d1 $d2 enciso5/sample_S_option.o  -El
 runtest $d1 $d2 enciso5/sample_S_option.o  -Ei
 runtest $d1 $d2 enciso5/sample_S_option.o  -Ep
 runtest $d1 $d2 enciso5/sample_S_option.o  -Er
+runtest $d1 $d2 enciso5/sample_S_option.o  -Er -g
 runtest $d1 $d2 irixn32/dwarfdump  -Ef
 # Following finds no debug_loc.
 runtest $d1 $d2 enciso5/sample_S_option.o  -Eo
@@ -368,6 +372,7 @@ runtest $d1 $d2 mucci/main.gcc -Eo
 runtest $d1 $d2 enciso5/sample_S_option.o  -ER
 #Following has .debug_ranges
 runtest $d1 $d2 mucci/main.gcc  -ER
+runtest $d1 $d2 mucci/main.gcc  -ER -g
 
 # AARCH64 Arm 64bit.
 runtest $d1 $d2 juszkiewicz/t1.o -a
@@ -433,6 +438,7 @@ runtest $d1 $d2 moshe%2fhello  -q -i
 # The -h option does not exist. Try it anyway!
 runtest $d1 $d2  moshe/hello -h 
 runtest $d1 $d2  moshe/hello -a -vvv -R -M
+runtest $d1 $d2  moshe/hello -a -vvv -R -M -g
 runtest $d1 $d2  moshe/hello -ka -vvv -R -M
 runtest $d1 $d2  moshe/a.out.t -a -vvv -R -M
 runtest $d1 $d2  moshe/a.out.t -ka -vvv -R -M
@@ -450,6 +456,7 @@ runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M
 # ka P kd, where so print CU names and error summary per compiler
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M 
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i  
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -g
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -v
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d -v
@@ -484,6 +491,7 @@ runtest $d1 $d2  moore/djpeg.v850 -l -R
 
 runtest $d1 $d2  enciso2/template.elf -a -vvv -R -M
 runtest $d1 $d2  enciso2/template.elf -a -R -M
+runtest $d1 $d2  enciso2/template.elf -a -R -M -g
 runtest $d1 $d2  enciso2/template.elf -ka -R -M
 runtest $d1 $d2  enciso2/template.elf -ka -kxe -R -M
 runtest $d1 $d2  enciso2/template.elf -kxe -R -M
