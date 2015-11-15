@@ -107,7 +107,8 @@ modula2/write-fixed
 cristi3/cristibadobj'
 
 stripx() {
-    x=`echo $* | sed -e 's/-g//'`
+    #x=`echo $* | sed -e 's/-g//'`
+    x=`echo $*`
     echo $x 
 }
 # Avoid spurious differences because of the names of the

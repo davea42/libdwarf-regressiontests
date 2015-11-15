@@ -34,6 +34,7 @@ m() {
   if test  $?  -ne 0
   then
       echo "FAIL test baddie1/$obj, mismatch base $base vs $test "
+      echo "update by mv $test $base"
       exit 1
   fi
 }
