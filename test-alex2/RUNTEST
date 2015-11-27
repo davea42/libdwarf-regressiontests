@@ -2,7 +2,12 @@
 set -x
 l=$1
 i=$2
-gcc -DWORKING=1 -I $i    test.c $l -lelf -o test2
+if [ -f /usr/include/zlib.h ]
+then
+  gcc -DWORKING=1 -I $i    test.c $l -lelf -lz -o test2
+else
+  gcc -DWORKING=1 -I $i    test.c $l -lelf -o test2
+fi
 
 ./test2 orig.a.out >out1
 if [ $? != 0 ]

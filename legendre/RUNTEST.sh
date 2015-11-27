@@ -1,5 +1,10 @@
 #
-gcc -I $1/libdwarf -DNEW frame_test.c ../libdwarf.a -lelf -o frame_test1
+if [ -f /usr/include/zlib.h ]
+then
+  gcc -I $1/libdwarf -DNEW frame_test.c ../libdwarf.a -lelf -lz -o frame_test1
+else
+  gcc -I $1/libdwarf -DNEW frame_test.c ../libdwarf.a -lelf -o frame_test1
+fi
 ./frame_test1
 if [  $? -ne 0 ]
 then
@@ -7,7 +12,12 @@ then
   exit 1
 fi
 
-gcc -I $1/libdwarf -DOLD frame_test.c ../libdwoldframecol.a -lelf -o frame_test2
+if [ -f /usr/include/zlib.h ]
+then
+  gcc -I $1/libdwarf -DOLD frame_test.c ../libdwoldframecol.a -lelf -lz -o frame_test2
+else
+  gcc -I $1/libdwarf -DOLD frame_test.c ../libdwoldframecol.a -lelf -o frame_test2
+fi
 ./frame_test2
 if [  $? -ne 0 ]
 then

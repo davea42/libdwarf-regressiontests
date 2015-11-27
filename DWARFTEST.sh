@@ -148,7 +148,7 @@ runtest () {
         # Running an old one till baselines established.
         echo "old start " `date`
         tmplist="$*"
-        echo "dadebug tmplist baseline line5 difference-fix ",$tmplist 
+        #echo "dadebug tmplist baseline line5 difference-fix ",$tmplist 
         # dadebug temp strip -x
         tmplist2=`stripx "$*"`
         # echo "dadebug tmplist2 ",$tmplist2 
@@ -530,7 +530,12 @@ cd ..
 
 
 echo "=====   test_harmless"
-cc -Wall -I  $cbase/libdwarf test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf
+if [ -f /usr/include/zlib.h ]
+then
+  cc -Wall -I  $cbase/libdwarf test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf -lz
+else
+  cc -Wall -I  $cbase/libdwarf test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf
+fi
 ./test_harmless >testoutput
 chkres $? 'check harmless-error functionality'
 

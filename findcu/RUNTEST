@@ -3,7 +3,12 @@ h="-I$libdw/libdwarf"
 l="-L$libdw/libdwarf"
 libs="-ldwarf -lelf"
 
-cc $h cutest.c $l -o cutest $libs
+if [ -f /usr/include/zlib.h ]
+then
+  cc $h cutest.c $l -o cutest $libs -lz
+else
+  cc $h cutest.c $l -o cutest $libs
+fi
 ./cutest cutestobj.save
 r=$?
 if [ $r -ne 0 ]

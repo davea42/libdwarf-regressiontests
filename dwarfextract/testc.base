@@ -101,7 +101,7 @@ LOCAL_SYMBOLS:
 
 .debug_macinfo
 
-.debug_string
+.debug_str
 
 .debug_aranges
 
