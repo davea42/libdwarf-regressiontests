@@ -330,6 +330,8 @@ runtest $d1 $d2 emre/input.o -a
 # Has a type unit so we can see the index for such.
 runtest $d1 $d2 emre2/emre.ex -I
 
+runtest $d1 $d2  -i -x tied=emre5/test33_64_opt_fpo_split emre5/test33_64_opt_fpo_split
+
 # This has a .gdb_index   file print
 # Unwise to run all options.
 runtest $d1 $d2  debugfissionb/ld-new -I
