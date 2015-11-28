@@ -1,6 +1,17 @@
 #!/bin/sh
 #
 echo 'tests are  "dd"   "dd2"  "ddtodd2", and no options means dd'  
+ps -eaf |grep DWARF >/tmp/dwa.$$
+grep DWARFTEST.sh /tmp/dwa.$$ > /tmp/dwb.$$
+ct=`wc -l </tmp/dwb.$$`
+echo "Number of DWARFTEST.sh running: $ct"
+if [ $ct -gt 1 ]
+then
+  echo "Only one DWARFTEST.sh can run at a time on a machine"
+  echo "Something is wrong, DWARFTEST.sh already running"
+  exit 1
+fi
+
 goodcount=0
 failcount=0
 . ./BASEFILES
@@ -39,6 +50,8 @@ chkres () {
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
+klingler/dwarfgen_zdebug
+klingler/test_with_zdebug
 diederen2/pc_dwarf_bad_attributes.elf
 diederen2/pc_dwarf_bad_sibling2.elf
 diederen2/pc_dwarf_bad_reloc_empty_debug_info.elf
@@ -150,9 +163,9 @@ runtest () {
         tmplist="$*"
         #echo "dadebug tmplist baseline line5 difference-fix ",$tmplist 
         # dadebug temp strip -x
-        tmplist2=`stripx "$*"`
+        #tmplist2=`stripx "$*"`
         # echo "dadebug tmplist2 ",$tmplist2 
-        $olddw $tmplist2  $targ 1>tmp1a 2>tmp1erra
+        $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
         #$olddw $*  $targ 1>tmp1a 2>tmp1erra
         echo "old done " `date`
         unifyddname tmp1a tmp1
