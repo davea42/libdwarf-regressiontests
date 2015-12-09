@@ -268,6 +268,12 @@ runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v 
 runtest $d1 $d2  mucci/main.o -c -R -ka  -v -v -v -v -v -v $x
 done
 
+runtest $d1 $d2 augmentation/a.out -f 
+runtest $d1 $d2 augmentation/a.out -f  -vvv
+runtest $d1 $d2 corruptdwarf-a/simplereader.elf -i  
+runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a  
+runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a  -vvv
+
 runtest $d1 $d2 irixn32/dwarfdump -i -x name=./dwarfdump.conf -x abi=mips-irix2 -g
 runtest $d1 $d2 comdatex/example.o -i -g
 
