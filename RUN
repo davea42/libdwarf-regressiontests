@@ -1,22 +1,30 @@
 
-dd=./dwarfdump
-d=/home/davea/dwarf/code/dwarfdump/dwarfdump
-/home/davea/dwarf/code/dwarfdump/dwarfdump -i -M -l -vvv hughes/libkrb5support.so.0.1.debug
+/tmp/dwarfdump -ka -x line5=std  legendre/libmpich.so.1.0 >junkk
+./dwarfdump -i -G  legendre/libmpich.so.1.0 >junki
+./dwarfdump.O -ka -x line5=std  legendre/libmpich.so.1.0 >junko
 exit 0
 
+#./dwarfdump.O -ka debugfissionb/ld-new >junko
 
-valgrind --leak-check=full ./dwarfdump.O -i -M diederen3/pc_dwarf_bad_name3.elf
-exit 0
+#dd=./dwarfdump
+#d=/home/davea/dwarf/code/dwarfdump/dwarfdump
+#/home/davea/dwarf/code/dwarfdump/dwarfdump -i -M -l -vvv hughes/libkrb5support.so.0.1.debug
+#exit 0
+
+
+#valgrind --leak-check=full ./dwarfdump.O -i -M diederen3/pc_dwarf_bad_name3.elf
+#exit 0
 #readelf --debug-dump=decodedline dwarf4/ddg4.5dwarf-4 >junk.readelf
 
 #$dd -ka -p -R -M  dwarf4/ddg4.5dwarf-4 >junkn.dw4out
 #./dwarfdump.O -ka -p -R -M  dwarf4/ddg4.5dwarf-4 >junko.dw4out
 #./dwarfdump -ka -R -M  dwarf4/ddg4.5dwarf-4 >junkn.kadw4out
-dd -ka -R -M  dwarf4/ddg4.5dwarf-4 >junkk
+#dd -ka -R -M  dwarf4/ddg4.5dwarf-4 >junkk
 
-cho now dump -i
-dd -i -l -v -M -G dwarf4/ddg4.5dwarf-4 >junki
+#cho now dump -i
+#dd -i -l -v -M -G dwarf4/ddg4.5dwarf-4 >junki
 
 #echo 'r val_expr/libpthread-2.5.so -F -v -v -x name=dwarfdump.conf -x abi=x86_64'
 #
 #gdb ../dwarf-working/trunk/dwarfdump/dwarfdump
+

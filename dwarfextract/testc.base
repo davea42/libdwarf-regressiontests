@@ -99,8 +99,6 @@ LOCAL_SYMBOLS:
 
 .debug_pubnames
 
-.debug_macinfo
-
 .debug_str
 
 .debug_aranges

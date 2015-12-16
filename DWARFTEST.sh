@@ -794,5 +794,6 @@ do
      done
    done
 done
+rm -f /tmp/dwa.$$
 echo PASS $goodcount
 echo FAIL $failcount

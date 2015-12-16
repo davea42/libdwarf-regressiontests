@@ -36,31 +36,32 @@ def tailmatches(tail,windowlen):
   if len(tail) < int(windowlen):
      #print "tailmatch FAIL short list",ct
      return "n"
-  if tail[0].startswith("Thu") == 0: 
-     #print "tailmatch FAIL 0"
+  
+  #print "dadebug",tail[0].startswith("Thu ")
+  if tail[0].startswith("Wed ") == 0: 
+     #print "dadebug",tail[0].startswith("Tue ")
+     #print "tailmatch FAIL 0",tail[0]
      return "n"
-  wds = tail[1].strip().split("c")
+  wds = tail[1].strip().split("d")
   if len(wds) != 2:
      #print "tailmatch FAIL 1a",wds
      return "n"
-  if wds[0].isdigit() == 0:
-     print "tailmatch FAIL 1b",wds
-     return "n"
+  #if wds[0].isdigit() == False:
+  #   print "tailmatch FAIL 1b",wds
+  #   return "n"
   if wds[1].isdigit() == 0:
+     #print "dadebug isdigit:",wds[1].isdigit()
      #print "tailmatch FAIL 1c",wds
      return "n"
      
-  if tail[2].startswith("< .debug_string") == 0: 
+  if tail[2].startswith("< .debug_macinfo") == 0: 
      #print "tailmatch FAIL 2",tail[1]
      return "n"
-  if tail[3].startswith("---") == 0: 
+  if tail[3].startswith("<") == 0: 
      #print "tailmatch FAIL 3",tail[2]
      return "n"
-  if tail[4].startswith("> .debug_str") == 0: 
-     #print "tailmatch FAIL 4",tail[3]
-     return "n"
-  if tail[5].startswith("FAIL") == 0: 
-     #print "tailmatch FAIL 5",tail[4]
+  if tail[4].startswith("FAIL") == 0: 
+     #print "tailmatch FAIL 4",tail[4]
      return "n"
   #print "PASS tailmatches!"
   return "y"
@@ -125,7 +126,7 @@ def readinfile(fname):
     print >> sys.stderr , "File could not be opened: ", fname, " ", message
     sys.exit(1)
 
-  windowlen=5
+  windowlen=4
   curwindow = []
   done = "n" 
   while done == "n":
@@ -142,6 +143,6 @@ if __name__ == '__main__':
   #  v = sys.argv[cur]
   #  cur = int(cur) +1
   #  sys.exit(1)
-  #readinfile("testALLdd")
-  readinfile("ALLdd")
+  readinfile("testALLdd")
+  #readinfile("ALLdd")
   
