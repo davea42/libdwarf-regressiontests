@@ -690,6 +690,14 @@ sh RUNTEST $dwlib $dwinc
 chkres $?  test-alex1
 cd ..
 
+# We need this to not do all DIE printing. FIXME
+runtest $d1 $d2 macro5/dwarfdump-g3  -m
+runtest $d1 $d2 macro5/dwarfdump-g3  -m -vvv
+runtest $d1 $d2 macro5/dwarfdump-g3  -m -v
+#Here we ask for DIE printing.
+runtest $d1 $d2 macro5/dwarfdump-g3 -i -m
+runtest $d1 $d2 macro5/dwarfdump-g3 -i -m -vvv
+runtest $d1 $d2 macro5/dwarfdump-g3 -i -m -v
 
 #Following 2 show some DW_AT_MIPS_fde difference. So -C works.
 runtest $d1 $d2  irix64/libc.so -ka   -x name=dwarfdump.conf -x abi=mips-simple3

@@ -1,7 +1,11 @@
 
-/tmp/dwarfdump -ka -x line5=std  legendre/libmpich.so.1.0 >junkk
-./dwarfdump -i -G  legendre/libmpich.so.1.0 >junki
-./dwarfdump.O -ka -x line5=std  legendre/libmpich.so.1.0 >junko
+hxdump  -s 0x76a0 -l 0x128a  emre4/test19_64_dbg >junkhxmacro
+readelf  -S  emre4/test19_64_dbg >junksects
+readelf  --debug-dump=macro  emre4/test19_64_dbg >junkre-emre
+#/tmp/dwarfdump -ka -x line5=std  legendre/libmpich.so.1.0 >junkk
+/tmp/dwarfdump   -a -m -vvv  emre4/test19_64_dbg >junkn19
+/tmp/dwarfdump   -a -m -vvv  emre4/test3_64_dbg >junkn3
+#./dwarfdump.O  -a -vvv  emre4/test3_64_dbg >junko
 exit 0
 
 #./dwarfdump.O -ka debugfissionb/ld-new >junko

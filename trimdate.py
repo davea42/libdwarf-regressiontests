@@ -21,10 +21,39 @@ def printblock(b,failcount_in):
       print l
   return failcount
 
+def isdateitem(rec):
+  if rec.startswith("old start "):
+    return "y"
+  if rec.startswith("old done "):
+    return "y"
+  if rec.startswith("new start "):
+    return "y"
+  if rec.startswith("new done "):
+    return "y"
+  if rec.startswith("Mon "):
+    return "y"
+  if rec.startswith("Tue "):
+    return "y"
+  if rec.startswith("Wed "):
+    return "y"
+  if rec.startswith("Thu "):
+    return "y"
+  if rec.startswith("Fri "):
+    return "y"
+  if rec.startswith("Sat "):
+    return "y"
+  if rec.startswith("Sun "):
+    return "y"
+  return "n"
+
+
 if __name__ == '__main__':
   fn="ALLdd"
+  if len(sys.argv) >1:
+    fn = sys.argv[1]
   count=0
   failcount = 0
+  print "trimdate on file",fn
   try:
     file = open(fn,"r")
   except IOError,message:
@@ -39,19 +68,8 @@ if __name__ == '__main__':
     if len(rec) < 1:
       # eof
       break
-    if rec.startswith("Mon ") == 1:
-       print "DATE:xxx"
-    elif  rec.startswith("Tue ") == 1:
-       print "DATE:xxx"
-    elif  rec.startswith("Wed ") == 1:
-       print "DATE:xxx"
-    elif  rec.startswith("Thu ") == 1:
-       print "DATE:xxx"
-    elif  rec.startswith("Fri ") == 1:
-       print "DATE:xxx"
-    elif  rec.startswith("Sat ") == 1:
-       print "DATE:xxx"
-    elif  rec.startswith("Sun ") == 1:
+     
+    if isdateitem(rec) == "y":
        print "DATE:xxx"
     else:
        print rec
