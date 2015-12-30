@@ -253,6 +253,11 @@ runtest () {
 }
 # end 'runtest'
 
+
+# The object has a bad ELF section type. So should
+# generate an error.  Should not coredump.
+runtest $d1 $d2  xqx/awbug6.elf -i 
+
 #  For line table variants checking.
 for x in '-x line5=std' '-x line5=s2l' '-x line5=orig' '-x line5=orig2l'
 do
