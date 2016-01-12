@@ -2,6 +2,10 @@
 set -x
 (cd dwgena ; make clean)
 (cd debugfission ; make clean)
+# The /tmp/dwa* files are lock files to prevent running two regr.
+# tests at the same time as two-at-once will not work!
+rm -f /tmp/dwa.*
+rm -f /tmp/dwb.*
 rm -f tmp*
 rm -f tmp*err*
 rm -f core
