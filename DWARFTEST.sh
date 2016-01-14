@@ -258,6 +258,14 @@ runtest () {
 # generate an error.  Should not coredump.
 runtest $d1 $d2  xqx/awbug6.elf -i 
 
+/* This test has odd abbreviation codes. See that we notice them. */
+runtest $d1 $d2  xqx-b/aw.elf -kb 
+runtest $d1 $d2  xqx-b/aw.elf -ka 
+runtest $d1 $d2  xqx-b/aw.elf -a 
+runtest $d1 $d2  xqx-b/awbug5.elf -kb 
+runtest $d1 $d2  xqx-b/awbug5.elf -ka 
+runtest $d1 $d2  xqx-b/awbug5.elf -a 
+
 #  For line table variants checking.
 for x in '-x line5=std' '-x line5=s2l' '-x line5=orig' '-x line5=orig2l'
 do
