@@ -67,6 +67,13 @@
 #include <libdwarf.h>
 #include <dwarf.h>
 
+/* For freebsd 10.2, need defines for bfd.h */
+#define PACKAGE "dwarfextract-test"
+#define PACKAGE_VERSION "1.0"
+#define ATTRIBUTE_UNUSED
+#define ENUM_BITFIELD(z) enum z
+/* End required mess. */
+
 #include <sys/time.h>
 
 #ifdef OPAQUE_RELOCATION

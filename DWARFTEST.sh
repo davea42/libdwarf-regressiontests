@@ -697,7 +697,7 @@ sh RUNTEST $dwlib $dwinc
 chkres $?  test-alex1
 cd ..
 
-echo "=====START   test-alex2/RUNTEST"
+echo "=====START   test-alex2/RUNTEST $dwlib $dwinc"
 cd test-alex2
 sh RUNTEST $dwlib $dwinc
 chkres $?  test-alex1
