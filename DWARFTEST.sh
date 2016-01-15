@@ -368,13 +368,13 @@ sh runtest.sh ../dwarfgen ../$d2  ../simplereader
 chkres $?  offsetfromlowpc
 cd ..
 
-echo "=====   debugfissionb runtests.sh"
+echo "=====START   debugfissionb runtests.sh"
 cd debugfissionb
 sh runtests.sh  ../simplereader
 chkres $?  debugfissionb-simplreader
 cd ..
 
-echo "=====   debugfission runtest.sh"
+echo "=====START   debugfission runtest.sh"
 cd debugfission
 sh runtest.sh  ../$d2 
 chkres $?  debugfission
@@ -556,14 +556,14 @@ then
  runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 fi
 
-echo "=====   findcu RUNTEST"
+echo "=====START   findcu RUNTEST"
 cd findcu 
 sh RUNTEST $cbase >testoutput
 chkres $? 'findcu/cutest-of-a-libdwarf-interface'
 cd ..
 
 
-echo "=====   test_harmless"
+echo "=====START   test_harmless"
 if [ -f /usr/include/zlib.h ]
 then
   cc -Wall -I  $cbase/libdwarf test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf -lz
@@ -574,7 +574,7 @@ fi
 chkres $? 'check harmless-error functionality'
 
 
-echo "=====   test gennames -t and -s same output"
+echo "=====START   test gennames -t and -s same output"
 # Testing that gennames -t and -s generate the same results.
 ./gennames -s  -i $cbase/libdwarf -o .
 mv dwarf_names.c dwarfnames-s.c
@@ -592,38 +592,38 @@ rm -f  dwarfnames-t.c
 rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
 rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h 
 
-echo "=====   dwgena/runtest.sh"
+echo "=====START   dwgena/runtest.sh"
 cd dwgena
 sh runtest.sh ../$d2
 chkres $? 'dwgena/runtest.sh'
 cd ..
 
-echo "=====   frame1/runtest.sh"
+echo "=====START   frame1/runtest.sh"
 cd frame1
 sh runtest.sh $cbase
 chkres $? frame1
 cd ..
 
-echo "=====   dwarfextract/runtests.sh"
+echo "=====START   dwarfextract/runtests.sh"
 cd dwarfextract
 rm -f dwarfextract
 sh runtests.sh ../$d2
 chkres $?  dwarfextract
 cd ..
 
-echo "=====   sandnes2/RUNTEST.sh"
+echo "=====START   sandnes2/RUNTEST.sh"
 cd sandnes2
 sh RUNTEST.sh
 chkres $?  sandnes2
 cd ..
 
-echo "=====   legendre/RUNTEST.sh"
+echo "=====START   legendre/RUNTEST.sh"
 cd legendre
 sh RUNTEST.sh $cbase
 chkres $?  legendre
 cd ..
 
-echo "=====   enciso4/RUNTEST.sh"
+echo "=====START   enciso4/RUNTEST.sh"
 cd enciso4
 sh RUNTEST.sh $d1 $d2 
 chkres $?  enciso4
@@ -691,13 +691,13 @@ then
   runtest $d1 $d2  ia32/libpt_linux_x86_r.so.1 -c -vvv -R -F
 fi
 
-echo "=====   test-alex1/RUNTEST"
+echo "=====START   test-alex1/RUNTEST"
 cd test-alex1
 sh RUNTEST $dwlib $dwinc
 chkres $?  test-alex1
 cd ..
 
-echo "=====   test-alex2/RUNTEST"
+echo "=====START   test-alex2/RUNTEST"
 cd test-alex2
 sh RUNTEST $dwlib $dwinc
 chkres $?  test-alex1
