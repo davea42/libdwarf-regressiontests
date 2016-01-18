@@ -262,9 +262,13 @@ runtest $d1 $d2  xqx/awbug6.elf -i
 runtest $d1 $d2  xqx-b/aw.elf -kb 
 runtest $d1 $d2  xqx-b/aw.elf -ka 
 runtest $d1 $d2  xqx-b/aw.elf -a 
+runtest $d1 $d2  xqx-b/aw.elf -f 
+runtest $d1 $d2  xqx-b/aw.elf -F 
 runtest $d1 $d2  xqx-b/awbug5.elf -kb 
 runtest $d1 $d2  xqx-b/awbug5.elf -ka 
 runtest $d1 $d2  xqx-b/awbug5.elf -a 
+runtest $d1 $d2  xqx-b/awbug5.elf -f 
+runtest $d1 $d2  xqx-b/awbug5.elf -F 
 
 #  For line table variants checking.
 for x in '-x line5=std' '-x line5=s2l' '-x line5=orig' '-x line5=orig2l'
