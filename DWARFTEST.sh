@@ -258,7 +258,7 @@ runtest () {
 # generate an error.  Should not coredump.
 runtest $d1 $d2  xqx/awbug6.elf -i 
 
-/* This test has odd abbreviation codes. See that we notice them. */
+# This test has odd abbreviation codes. See that we notice them.
 runtest $d1 $d2  xqx-b/aw.elf -kb 
 runtest $d1 $d2  xqx-b/aw.elf -ka 
 runtest $d1 $d2  xqx-b/aw.elf -a 
