@@ -1,7 +1,7 @@
 
 
 all:
-	./runtests.sh ../dwarfdump
+	./runtest.sh ../dwarfdump
 
 clean:
 	rm -f testincorrecta	       

@@ -1228,7 +1228,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_sibling               <0x000006f1 GOFF=0x00000978>
 < 2><0x000006ea GOFF=0x00000971>      DW_TAG_subrange_type
                                         DW_AT_type                  <0x000006f1 GOFF=0x00000978>
-                                        DW_AT_upper_bound           255(as signed = -1)
+                                        DW_AT_upper_bound           255
 < 1><0x000006f1 GOFF=0x00000978>    DW_TAG_base_type
                                       DW_AT_byte_size             0x00000004
                                       DW_AT_encoding              DW_ATE_unsigned

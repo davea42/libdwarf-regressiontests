@@ -1,6 +1,6 @@
 #
 all:
-	sh runtests.sh  ../simplereader
+	sh runtest.sh  ../simplereader
 
 clean:
 	rm junk*

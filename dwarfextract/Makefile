@@ -11,7 +11,7 @@ test1: test1.c test2.c test1.h
 	$(CC) -g test1.c test2.c -o test1
 
 tests:
-	sh runtests.sh ../dwarfdump
+	sh runtest.sh ../dwarfdump
 
 clean distclean:
 	-rm -f dwarfextract

@@ -1,5 +1,5 @@
 #!/bin/sh
-# execute as  RUNTEST.sh <old dd name> <new dd name> 
+# execute as  runtest.sh <old dd name> <new dd name> 
 # unpack the executable  (lots of zeroes, so it compresses well).
 # zcat is the same as gunzip -c  
 

@@ -363,7 +363,7 @@ runtest $d1 $d2  debugfissionb/ld-new -a
 runtest $d1 $d2  debugfissionb/ld-new -ka  
 
 cd baddie1
-sh runtests.sh ../$d2 
+sh runtest.sh ../$d2 
 chkres $?  baddie1
 cd ..
 
@@ -372,9 +372,9 @@ sh runtest.sh ../dwarfgen ../$d2  ../simplereader
 chkres $?  offsetfromlowpc
 cd ..
 
-echo "=====START   debugfissionb runtests.sh"
+echo "=====START   debugfissionb runtest.sh"
 cd debugfissionb
-sh runtests.sh  ../simplereader
+sh runtest.sh  ../simplereader
 chkres $?  debugfissionb-simplreader
 cd ..
 
@@ -560,9 +560,9 @@ then
  runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 fi
 
-echo "=====START   findcu RUNTEST"
+echo "=====START   findcu runtest"
 cd findcu 
-sh RUNTEST $cbase >testoutput
+sh runtest.sh $cbase >testoutput
 chkres $? 'findcu/cutest-of-a-libdwarf-interface'
 cd ..
 
@@ -608,28 +608,28 @@ sh runtest.sh $cbase
 chkres $? frame1
 cd ..
 
-echo "=====START   dwarfextract/runtests.sh"
+echo "=====START   dwarfextract/runtest.sh"
 cd dwarfextract
 rm -f dwarfextract
-sh runtests.sh ../$d2
+sh runtest.sh ../$d2
 chkres $?  dwarfextract
 cd ..
 
-echo "=====START   sandnes2/RUNTEST.sh"
+echo "=====START   sandnes2/runtest.sh"
 cd sandnes2
-sh RUNTEST.sh
+sh runtest.sh
 chkres $?  sandnes2
 cd ..
 
-echo "=====START   legendre/RUNTEST.sh"
+echo "=====START   legendre/runtest.sh"
 cd legendre
-sh RUNTEST.sh $cbase
+sh runtest.sh $cbase
 chkres $?  legendre
 cd ..
 
-echo "=====START   enciso4/RUNTEST.sh"
+echo "=====START   enciso4/runtest.sh"
 cd enciso4
-sh RUNTEST.sh $d1 $d2 
+sh runtest.sh $d1 $d2 
 chkres $?  enciso4
 cd ..
 
@@ -695,15 +695,15 @@ then
   runtest $d1 $d2  ia32/libpt_linux_x86_r.so.1 -c -vvv -R -F
 fi
 
-echo "=====START   test-alex1/RUNTEST"
+echo "=====START   test-alex1/runtest"
 cd test-alex1
-sh RUNTEST $dwlib $dwinc
+sh runtest.sh $dwlib $dwinc
 chkres $?  test-alex1
 cd ..
 
-echo "=====START   test-alex2/RUNTEST $dwlib $dwinc"
+echo "=====START   test-alex2/runtest $dwlib $dwinc"
 cd test-alex2
-sh RUNTEST $dwlib $dwinc
+sh runtest.sh $dwlib $dwinc
 chkres $?  test-alex1
 cd ..
 
