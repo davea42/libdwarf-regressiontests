@@ -90,7 +90,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_high_pc               0x00000000
                                       DW_AT_frame_base            DW_OP_breg0+4
                                       
-dwarfdump:  ERROR: Sibling offset 0x000000c1 points before its own die Global offset 0x0000013c 
+dwarfdump:  ERROR: Sibling offset 0x000000c1 points before its own die GOFF=0x0000013c 
 
 CU Name = t.c
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
