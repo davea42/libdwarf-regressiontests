@@ -253,6 +253,11 @@ runtest () {
 }
 # end 'runtest'
 
+# Testing SHF_COMPRESSED .debug* section reading.
+runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
+runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
+# .eh_frame is not actually compressed...
+runtest $d1 $d2  klingler2/compresseddebug.amd64 -F
 
 # The object has a bad ELF section type. So should
 # generate an error.  Should not coredump.
