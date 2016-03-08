@@ -20,3 +20,14 @@ heap_buffer_overflow_01.exe also coredumps dwarfdump
 because elf_getshdr() fails and we used stale 
 libdwarf-internal data while cleaning up from that.
 
+
+As of March 07 2016
+ dwarfdump -i williamson/heap_buffer_overflow.exe
+ dwarfdump -i williamson/heap_buffer_overflow_01.exe
+are rejected as unreadable object by ubuntu 14.04 libelf.
+FreeBSD libelf continues to accept them.
+Hence FreeBSD can sometimes see an extra fail
+or two  if output text
+changes since dwarfdump can actually run there.
+
+
