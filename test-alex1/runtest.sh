@@ -1,5 +1,4 @@
-
-set -x
+#!/bin/sh
 l=$1
 i=$2
 if [ -f /usr/include/zlib.h ]

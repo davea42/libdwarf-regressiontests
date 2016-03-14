@@ -8,7 +8,9 @@ echo "Number of DWARFTEST.sh running: $ct"
 if [ $ct -gt 1 ]
 then
   echo "Only one DWARFTEST.sh can run at a time on a machine"
-  echo "Something is wrong, DWARFTEST.sh already running"
+  echo "Something is wrong, DWARFTEST.sh already running: $ct"
+  echo "do        : rm /tmp/dwa* /tmp/dwb* "
+  echo "Check with: ps -eaf |grep DWARF"
   exit 1
 fi
 
@@ -252,6 +254,12 @@ runtest () {
         rm -f OFo3 OFn3
 }
 # end 'runtest'
+
+echo "=====START   hughes2 runtest.sh"
+cd hughes2
+sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
+chkres $?  hughes2
+cd ..
 
 # Testing SHF_COMPRESSED .debug* section reading.
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -i

@@ -1,4 +1,4 @@
-
+#!/bin/sh
 ../dwarfdump -a *.elf >junk.base
 grep 'c:/programs/' <junk.base >junk.hasout
 r=$?

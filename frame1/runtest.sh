@@ -1,4 +1,4 @@
-
+#!/bin/sh
 libdw=$1
 if [ -f /usr/include/zlib.h ]
 then

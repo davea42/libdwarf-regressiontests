@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 # Assumes a single argument, naming a dwarfdump.
 # So it's testing the new dwarfgen and a new dwarfdump.
 

@@ -63,7 +63,11 @@ m $dd thash1.base '--tuhash=058027967850060b'
 m $dd thash2.base '--tufissionhash=b1fcaeaf1d01cc85'
 m $dd chash1.base '--cuhash=032ccfcfbc7c9d26'
 m $dd chash2.base '--cufissionhash=0441e597e1e38549'
-m $dd chash3.base '--fissionfordie=49926'
+# We have the hash arg so output is limited in size.
+# The following two are  not much of a test of options. 
+# Just a simple basic run.
+m $dd chash2.base '--cufissionhash=0441e597e1e38549' '--passnullerror'
+m $dd chash2.base '--cufissionhash=0441e597e1e38549' '--passnullerror' '--simpleerrhand'
 
 if [ $isfail = "y" ]
 then

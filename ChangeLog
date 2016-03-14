@@ -1,5 +1,9 @@
+2016-03-14  David Anderson
+     * DWARFTEST.sh: hughes2 directory which uses simplereader
+       to verify that the various error recovery possibilities
+       all work.
+     * */runtest.sh: ensured all start with #!/bin/sh
 2016-01-15  David Anderson
-     * DWARFTEST.sh: Added START where it was ommitted after =====
      * dwarfextract/dwarfextract.c: Add #defines so the test will build
        with bfd.h on FreeBSD  10.2
      * legendre/RUNTEST.sh: gcc->cc so this works on FreeBSD 10 too.

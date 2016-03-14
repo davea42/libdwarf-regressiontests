@@ -1,5 +1,5 @@
+#!/bin/sh
 #  This is really a test of the new dwarf_get_form_class function.
-set -x
 l=$1
 i=$2
 if [ -f /usr/include/zlib.h ]

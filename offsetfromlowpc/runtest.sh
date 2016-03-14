@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # This should create testhipcoffset.o  with several
 # instances of DW_AT_high_pc being a class constant (offset).
 # The dwarfdump.o has all the high pc as class address.

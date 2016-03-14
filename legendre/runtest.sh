@@ -1,4 +1,4 @@
-#
+#!/bin/sh
 if [ -f /usr/include/zlib.h ]
 then
   cc -I $1/libdwarf -DNEW frame_test.c ../libdwarf.a -lelf -lz -o frame_test1

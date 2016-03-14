@@ -1,3 +1,4 @@
+#!/bin/sh
 libdw=$1
 h="-I$libdw/libdwarf"
 l="-L$libdw/libdwarf"
