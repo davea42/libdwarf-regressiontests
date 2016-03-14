@@ -1,4 +1,4 @@
-<2> tag: 47 DW_TAG_template_type_parameter  name: "_RandomAccessIterator"
+<2> tag: 47 DW_TAG_template_type_parameter  name: "_RandomAccessIterator" FORM 0x1f02 "DW_FORM_GNU_str_index"
 
   Fission section     = .debug_cu_index
   Fission index       = 0x00000003

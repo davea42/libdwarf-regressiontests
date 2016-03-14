@@ -53,6 +53,7 @@ m() {
   if test  $?  -ne 0
   then
       echo "FAIL test $baseline vs $tmp"
+      echo "to update, mv $tmp $baseline"
       isfail="y"
       #exit 1
   fi
