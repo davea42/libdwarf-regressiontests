@@ -38,3 +38,17 @@ And also:
 test case:
 divisionbyzero.elf
 ===============
+And also:
+ 145     {
+ 146         Dwarf_Unsigned address_size = cieptr->ci_address_size;
+ 147         Dwarf_Unsigned length_field_summed = length_size + extension_size;
+ 148         Dwarf_Unsigned total_len = length + length_field_summed;
+ 149         Dwarf_Unsigned mod = total_len % address_size;              <- $pc
+ 150     
+ 151         if (mod != 0) {
+ 152             char msg[DW_HARMLESS_ERROR_MSG_STRING_SIZE];
+ 153             Dwarf_Unsigned sectionoffset = ciefde_start - section_ptr;
+
+test case:
+divisonbyzero02.elf
+==========
