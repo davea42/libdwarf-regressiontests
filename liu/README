@@ -22,4 +22,19 @@ Segment Fault at dwarf_leb.c:57 :
 
 My analysis: none of the uleb reading is checked to ensure it does
 not run off the end. 
+test case:
+outofboundread.elf
+===============
+And also:
+894     #endif /* PRINTING_DETAILS */
+ 895                 Dwarf_Unsigned operation_advance = 0;
+ 896     
+ 897                 opcode = opcode - line_context->lc_opcode_base;
+ 898                 operation_advance = (opcode / line_context->lc_line_range);                 <- $pc
+ 899     
+ 900                 if (line_context->lc_maximum_ops_per_instruction < 2) {
+ 901                     regs.lr_address = regs.lr_address + (operation_advance *
+
+test case:
+divisionbyzero.elf
 ===============
