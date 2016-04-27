@@ -52,3 +52,19 @@ And also:
 test case:
 divisonbyzero02.elf
 ==========
+And also
+
+------------------------------------------------[source:dwarf_frame.c+344]--------------------------
+ 340             Dwarf_Small opcode = 0;
+ 341             reg_num_type reg_no = 0;
+ 342     
+ 343             fp_instr_offset = instr_ptr - start_instr_ptr;
+ 344             instr = *(Dwarf_Small *) instr_ptr;             <- $pc
+ 345             instr_ptr += sizeof(Dwarf_Small);
+ 346     
+ 347             fp_base_op = (instr & 0xc0) >> 6;
+ 348             if ((instr & 0xc0) == 0x00) {
+-----------------------------------------------------------------------------
+test case:
+outofboundread2.elf
+==========
