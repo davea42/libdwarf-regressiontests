@@ -261,6 +261,11 @@ sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
 chkres $?  hughes2
 cd ..
 
+runtest $d1 $d2  liu/divisionbyzero.elf  -a 
+runtest $d1 $d2  liu/outofboundread.elf -a 
+runtest $d1 $d2  liu/divisionbyzero02.elf   -a
+runtest $d1 $d2  liu/outofboundread2.elf -a
+
 # Testing SHF_COMPRESSED .debug* section reading.
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
