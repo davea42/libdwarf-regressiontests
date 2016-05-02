@@ -1,4 +1,6 @@
 
+All the test cases here may also have bogus strings.
+
 April 26, 2016. Yue Liu reports:
 
 I found a out bound READ bug in lastest libdwarf, and the offset can be controlled between a range from 0 to 0xFFFFFFFF.
@@ -67,4 +69,37 @@ And also
 -----------------------------------------------------------------------------
 test case:
 outofboundread2.elf
+========== 
+
+When there were bogus relocation records
+we could write outside the malloc space in memory.
+Now we check for that. And in the case of dwarf_srcfiles()
+in dwarfdump (this test case) we report that we had an error and
+are attempting to continue.
+
+test case:
+heapoverflow01.elf
+========== 
+
+This test exposed a logic bug in dwarf 5 macros.
+In case of error there would be a duplicate free
+in dwarf_finish(). 
+
+
+test case:
+outofbound01.elf
+
+============
+This is an info section with zero length, so 
+there is no pointer to the section in libdwarf.
+
+test case:
+null01.elf
+
 ==========
+
+Corrupt dwarf in the aranges section showed
+some checks were needed in dwarf_arange.c
+
+testcase:
+infiniteloop.elf
