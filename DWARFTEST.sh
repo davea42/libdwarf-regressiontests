@@ -274,8 +274,6 @@ runtest $d1 $d2  liu/null02.elf -a
 runtest $d1 $d2  liu/infinitloop.elf  -a
 runtest $d1 $d2  liu/heapoverflow01.elf -a 
 
-exit 1
-
 # Testing SHF_COMPRESSED .debug* section reading.
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
