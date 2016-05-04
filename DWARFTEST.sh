@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-echo 'tests are  "dd"   "dd2"  "ddtodd2", and no options means dd'  
+echo 'test is  "dd", no option  means dd'  
 ps -eaf |grep DWARF >/tmp/dwa.$$
 grep DWARFTEST.sh /tmp/dwa.$$ > /tmp/dwb.$$
 ct=`wc -l </tmp/dwb.$$`
@@ -9,6 +9,8 @@ if [ $ct -gt 1 ]
 then
   echo "Only one DWARFTEST.sh can run at a time on a machine"
   echo "Something is wrong, DWARFTEST.sh already running: $ct"
+  echo "dwb.$$ contains:"
+  echo /tmp/dwb.$$
   echo "do        : rm /tmp/dwa* /tmp/dwb* "
   echo "Check with: ps -eaf |grep DWARF"
   exit 1
@@ -262,9 +264,17 @@ chkres $?  hughes2
 cd ..
 
 runtest $d1 $d2  liu/divisionbyzero.elf  -a 
-runtest $d1 $d2  liu/outofboundread.elf -a 
 runtest $d1 $d2  liu/divisionbyzero02.elf   -a
+runtest $d1 $d2  liu/outofboundread.elf -a 
 runtest $d1 $d2  liu/outofboundread2.elf -a
+runtest $d1 $d2  outofbound01.elf  -a
+
+runtest $d1 $d2  liu/null01.elf -a
+runtest $d1 $d2  liu/null02.elf -a
+runtest $d1 $d2  liu/infinitloop.elf  -a
+runtest $d1 $d2  liu/heapoverflow01.elf -a 
+
+exit 1
 
 # Testing SHF_COMPRESSED .debug* section reading.
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
