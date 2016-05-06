@@ -1,4 +1,12 @@
 
+2016-05-06  David Anderson
+  * DWARFTEST.sh:New testcases (liu directory) and improved corruption checking
+    plus new uri-style output so bogus characters show more
+    recognizably. New baseline executables.
+  * debugfission/targeto.base.gz: new baseline.
+  * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,dwarfdump-x86_64-freebsd.O,
+    dwarfdump-x86_64-ubuntu.O: New baseline executables.
+
 2016-05-01  David Anderson
   These are wall clock of the full regression test suite.
   So not terribly meaningful. But suggestive that the latest

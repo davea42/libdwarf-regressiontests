@@ -274,6 +274,10 @@ runtest $d1 $d2  liu/null02.elf -a
 runtest $d1 $d2  liu/infinitloop.elf  -a
 runtest $d1 $d2  liu/heapoverflow01.elf -a 
 
+#runtest $d1 $d2  liu/heapoverflow01b.elf -a
+#runtest $d1 $d2  liu/free_invalid_address.elf -a
+
+
 # Testing SHF_COMPRESSED .debug* section reading.
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
@@ -846,5 +850,6 @@ do
    done
 done
 rm -f /tmp/dwa.$$
+rm -f /tmp/dwb.$$
 echo PASS $goodcount
 echo FAIL $failcount
