@@ -15,8 +15,10 @@ exit 0
 #/home/davea/dwarf/code/dwarfdump/dwarfdump -i -M -l -vvv hughes/libkrb5support.so.0.1.debug
 #exit 0
 
+# Useful with big ALLdd:
+#grep -B 100 FAIL ALLdd >fails
 
-#valgrind --leak-check=full ./dwarfdump.O -i -M diederen3/pc_dwarf_bad_name3.elf
+#valgrind --leak-check=full --log-file=./vg.log ./dwarfdump.O -i -M diederen3/pc_dwarf_bad_name3.elf
 #exit 0
 #readelf --debug-dump=decodedline dwarf4/ddg4.5dwarf-4 >junk.readelf
 

@@ -286,9 +286,9 @@ runtest $d1 $d2  liu/heapoverflow01b.elf -a
 runtest $d1 $d2  liu/free_invalid_address.elf -a
 
 # DW201605-007
-runtest $d1 $d2  liu/OOB0505_01.elf	 -a
+runtest $d1 $d2  liu/OOB0505_01.elf -a
 # DW201605-008
-#runtest $d1 $d2  liu/OOB0505_02.elf-a
+#runtest $d1 $d2  liu/OOB0505_02.elf -a
 # DW201605-009
 #runtest $d1 $d2  liu/NULLderefer0505_01.elf -a 
 
