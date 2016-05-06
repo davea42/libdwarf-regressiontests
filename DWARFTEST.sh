@@ -267,15 +267,30 @@ runtest $d1 $d2  liu/divisionbyzero.elf  -a
 runtest $d1 $d2  liu/divisionbyzero02.elf   -a
 runtest $d1 $d2  liu/outofboundread.elf -a 
 runtest $d1 $d2  liu/outofboundread2.elf -a
-runtest $d1 $d2  outofbound01.elf  -a
 
-runtest $d1 $d2  liu/null01.elf -a
-runtest $d1 $d2  liu/null02.elf -a
-runtest $d1 $d2  liu/infinitloop.elf  -a
+# DW201605-001
 runtest $d1 $d2  liu/heapoverflow01.elf -a 
+# DW201605-002
+runtest $d1 $d2  liu/outofbound01.elf  -a
+# DW201605-003
+runtest $d1 $d2  liu/infinitloop.elf  -a
 
-#runtest $d1 $d2  liu/heapoverflow01b.elf -a
-#runtest $d1 $d2  liu/free_invalid_address.elf -a
+#  DW201605-004
+runtest $d1 $d2  liu/null01.elf -a
+# DW201605-005
+runtest $d1 $d2  liu/null02.elf -a
+
+# DW201605-006
+runtest $d1 $d2  liu/heapoverflow01b.elf -a
+# DW201605-006
+runtest $d1 $d2  liu/free_invalid_address.elf -a
+
+# DW201605-007
+runtest $d1 $d2  liu/OOB0505_01.elf	 -a
+# DW201605-008
+#runtest $d1 $d2  liu/OOB0505_02.elf-a
+# DW201605-009
+#runtest $d1 $d2  liu/NULLderefer0505_01.elf -a 
 
 
 # Testing SHF_COMPRESSED .debug* section reading.
