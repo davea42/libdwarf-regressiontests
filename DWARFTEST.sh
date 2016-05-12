@@ -110,9 +110,6 @@ ia64/mytry.ia64
 ia32/mytry.ia32  
 ia32/libc.so.6 
 x86-64/x86_64testcase.o 
-irix64/libc.so 
-irixn32/libc.so 
-irixn32/dwarfdump 
 testcase/testcase 
 Test-eh/eh-frame.386 
 test-eh/test-eh.386 
@@ -121,7 +118,30 @@ cristi2/libpthread-2.4.so
 ia32/preloadable_libintl.so 
 ia32/libpfm.so.3 
 modula2/write-fixed
-cristi3/cristibadobj'
+cristi3/cristibadobj
+liu/divisionbyzero02.elf
+liu/divisionbyzero.elf
+liu/free_invalid_address.elf
+liu/heapoverflow01b.elf
+liu/heapoverflow01.elf
+liu/infinitloop.elf
+liu/null01.elf
+liu/null02.elf
+liu/NULLderefer0505_01.elf
+liu/OOB0505_01.elf
+liu/OOB0505_02_02.elf
+liu/OOB0505_02.elf
+liu/OOB_read3_02.elf
+liu/OOB_read3.elf
+liu/OOB_read4.elf
+liu/outofbound01.elf
+liu/outofboundread2.elf
+liu/outofboundread.elf
+irix64/libc.so 
+irixn32/libc.so 
+irixn32/dwarfdump' 
+
+
 
 stripx() {
     #x=`echo $* | sed -e 's/-g//'`
@@ -262,42 +282,6 @@ cd hughes2
 sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
 chkres $?  hughes2
 cd ..
-
-runtest $d1 $d2  liu/divisionbyzero.elf  -a 
-runtest $d1 $d2  liu/divisionbyzero02.elf   -a
-runtest $d1 $d2  liu/outofboundread.elf -a 
-runtest $d1 $d2  liu/outofboundread2.elf -a
-
-# DW201605-001
-runtest $d1 $d2  liu/heapoverflow01.elf -a 
-# DW201605-002
-runtest $d1 $d2  liu/outofbound01.elf  -a
-# DW201605-003
-runtest $d1 $d2  liu/infinitloop.elf  -a
-
-#  DW201605-004
-runtest $d1 $d2  liu/null01.elf -a
-# DW201605-005
-runtest $d1 $d2  liu/null02.elf -a
-
-# DW201605-006
-runtest $d1 $d2  liu/heapoverflow01b.elf -a
-# DW201605-006
-runtest $d1 $d2  liu/free_invalid_address.elf -a
-
-# DW201605-007
-runtest $d1 $d2  liu/OOB0505_01.elf -a
-# DW201605-008
-runtest $d1 $d2  liu/OOB0505_02.elf -a
-# DW201605-009
-runtest $d1 $d2  liu/NULLderefer0505_01.elf -a 
-
-# DW201605-010
-runtest $d1 $d2  liu/OOB_read3.elf
-
-# DW201605-010
-runtest $d1 $d2  liu/OOB_read4.elf
-
 
 # Testing SHF_COMPRESSED .debug* section reading.
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
