@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-echo 'test is  "dd", no option  means dd'  
+echo 'Starting DWARFTEST.sh' `date`
 ps -eaf |grep DWARF >/tmp/dwa.$$
 grep DWARFTEST.sh /tmp/dwa.$$ > /tmp/dwb.$$
 ct=`wc -l </tmp/dwb.$$`

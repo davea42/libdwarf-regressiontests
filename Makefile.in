@@ -3,16 +3,18 @@
 # Running these tests multiple times simultaneously
 # in a single directory will result in incorrect results and errors.
 
-all:  build testonly
+all:  pretest build testonly
 
-test: build testonly
+test: pretest build testonly
 
-build:
+build: pretest
 	sh ./PICKUPBIN
 
 # Run the test set all 3 times.
 testonly:
 	sh ./RUNALL.sh
+pretest:
+	sh CHECKIFRUNNING.sh
 
 # To run an individual test set, choose one of these.
 # RUNALL.sh does all three.
