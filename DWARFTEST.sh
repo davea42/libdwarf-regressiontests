@@ -2,9 +2,13 @@
 #
 echo 'Starting DWARFTEST.sh' `date`
 ps -eaf |grep DWARF >/tmp/dwa.$$
+echo "dwa.$$"
+cat /tmp/dwa.$$
 grep DWARFTEST.sh /tmp/dwa.$$ > /tmp/dwb.$$
 ct=`wc -l </tmp/dwb.$$`
 echo "Number of DWARFTEST.sh running: $ct"
+echo "dwb.$$"
+cat /tmp/dwb.$$
 if [ $ct -gt 1 ]
 then
   echo "Only one DWARFTEST.sh can run at a time on a machine"
@@ -124,6 +128,7 @@ liu/divisionbyzero.elf
 liu/free_invalid_address.elf
 liu/heapoverflow01b.elf
 liu/heapoverflow01.elf
+liu/HeapOverflow0513.elf
 liu/infinitloop.elf
 liu/null01.elf
 liu/null02.elf
