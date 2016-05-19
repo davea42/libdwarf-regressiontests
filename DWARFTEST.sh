@@ -136,6 +136,9 @@ liu/NULLderefer0505_01.elf
 liu/OOB0505_01.elf
 liu/OOB0505_02_02.elf
 liu/OOB0505_02.elf
+liu/OOB0517_01.elf
+liu/OOB0517_02.elf
+liu/OOB0517_03.elf
 liu/OOB_read3_02.elf
 liu/OOB_read3.elf
 liu/OOB_read4.elf
