@@ -134,6 +134,7 @@ liu/null01.elf
 liu/null02.elf
 liu/NULLdereference0519.elf
 liu/NULLderefer0505_01.elf
+NULLdereference0522.elf
 liu/OOB0505_01.elf
 liu/OOB0505_02_02.elf
 liu/OOB0505_02.elf
