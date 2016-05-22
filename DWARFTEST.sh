@@ -132,6 +132,7 @@ liu/HeapOverflow0513.elf
 liu/infinitloop.elf
 liu/null01.elf
 liu/null02.elf
+liu/NULLdereference0519.elf
 liu/NULLderefer0505_01.elf
 liu/OOB0505_01.elf
 liu/OOB0505_02_02.elf
@@ -142,6 +143,7 @@ liu/OOB0517_03.elf
 liu/OOB_read3_02.elf
 liu/OOB_read3.elf
 liu/OOB_read4.elf
+liu/OOB_READ0519.elf
 liu/outofbound01.elf
 liu/outofboundread2.elf
 liu/outofboundread.elf
