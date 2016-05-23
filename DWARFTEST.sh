@@ -316,6 +316,9 @@ runtest $d1 $d2  xqx-b/awbug5.elf -a
 runtest $d1 $d2  xqx-b/awbug5.elf -f 
 runtest $d1 $d2  xqx-b/awbug5.elf -F 
 
+# A corrupted object file
+runtest $d1 $d2  liu/NULLdeference0522c.elf -a 
+
 #  For line table variants checking.
 for x in '-x line5=std' '-x line5=s2l' '-x line5=orig' '-x line5=orig2l'
 do
