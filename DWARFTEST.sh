@@ -46,6 +46,16 @@ baseopts='-b -c  -f -F -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
 
 kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku -kuf"
 
+# These accumulate times so we can print actual dwarfdump
+# user, sys, clock times at the end (see usertime.py).
+bdir=`pwd`
+otimeout=$bdir/junktimeouto
+ntimeout=$bdir/junktimeoutn
+wrtimeo="/usr/bin/time -o $otimeout -a -p "
+wrtimen="/usr/bin/time -o $ntimeout -a -p "
+rm -f $otimeout 
+rm -f $ntimeout
+
 chkres () {
   if [ $1 = 0 ]
   then
@@ -200,7 +210,8 @@ runtest () {
         # dadebug temp strip -x
         #tmplist2=`stripx "$*"`
         # echo "dadebug tmplist2 ",$tmplist2 
-        $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
+        echo "======" $tmplist $targ >> $otimeout
+        $wrtimeo $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
         #$olddw $*  $targ 1>tmp1a 2>tmp1erra
         echo "old done " `date`
         unifyddname tmp1a tmp1
@@ -220,7 +231,8 @@ runtest () {
         fi
 
         echo "new start " `date`
-        $newdw  $* $targ  1>tmp2a 2>tmp2erra
+        echo "======" $tmplist $targ >> $ntimeout
+        $wrtimen $newdw  $* $targ  1>tmp2a 2>tmp2erra
         echo "new done " `date`
         unifyddname tmp2a tmp2
         unifyddname tmp2erra tmp2err
@@ -266,8 +278,6 @@ runtest () {
 
         grep -v Usage   tmp1err >tmp1berr
         grep -v Usage   tmp2err >tmp2berr
-
-
         diff tmp1berr tmp2berr
         if [ $? = 0 ]
         then
@@ -870,5 +880,10 @@ do
 done
 rm -f /tmp/dwa.$$
 rm -f /tmp/dwb.$$
+echo "base dwarfdump times"
+python usertime.py $otimeout
+echo "new  dwarfdump times"
+python usertime.py $ntimeout
 echo PASS $goodcount
 echo FAIL $failcount
+

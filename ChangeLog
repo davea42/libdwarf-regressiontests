@@ -1,3 +1,8 @@
+2016-06-08  David Anderson
+  * usertime.py: New python to print dwarfdump user/sys time.
+  * DWARFTEST.sh: Uses /usr/bin/time to record user/sys time
+    per dwarfdump run at top level (the scripts in 
+    directories do not count in these times so far).
 
 2016-05-06  David Anderson
   * DWARFTEST.sh:New testcases (liu directory) and improved corruption checking
