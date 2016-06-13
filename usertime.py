@@ -16,6 +16,13 @@ class urec:
   def uprint(self,h):
     print "%s u%6.2f s%6.2f w%6.2f %s " %(h, self._usecs,self._ssecs,self._wsecs,self._title)
 
+def sort_class(mydata):
+  """ Sort the list of objects by  zip
+  """
+  auxiliary = [ (x._wsecs,x) for x in mydata ]
+  auxiliary.sort()
+  return [ x[1] for x in auxiliary ]
+
 
 def processfile():
   if len(sys.argv) != 2:
@@ -39,6 +46,7 @@ def processfile():
   intrec = "n"
   title=''
   crec = ''
+  reclist = []
   while 1:
     try:
       rec = file.readline()
@@ -55,6 +63,8 @@ def processfile():
       wds = rec.strip().split()
       title = ' '.join((wds[1:]))
       allthree = "n"
+      if crec != '':
+        reclist += [crec]
       crec = urec(title)
       continue
     if inrec == "n":
@@ -98,23 +108,31 @@ def processfile():
       totssecs = float(totssecs) + t
       allthree  = "y"
       inrec = "n"
-      if crec._wsecs  > 10.0 and crec._wsecs > float (maxwsecs):
-         maxwsecs = crec._wsecs
-         crec.uprint("  Highest:")
       continue
     # Else continue    
-
+  if crec != '':
+    reclist += [crec]
   file.close()
-  return (tcount,nzcount,totusecs,totssecs,totwsecs,maxusecs,maxwsecs)
+  return (tcount,nzcount,totusecs,totssecs,totwsecs,maxusecs,maxwsecs,reclist)
  
 
 
-
-
-
+def printtop(recs,max):
+  i = 0;
+  for r in recs:
+    r.uprint("")
+    i = int(i) +1
+    if i >= max:
+        return
+    
 
 if __name__ == '__main__':
-  (tcount,nzcount,usecs,ssecs,wsecs,maxu,maxw) = processfile()
+  (tcount,nzcount,usecs,ssecs,wsecs,maxu,maxw,reclist) = processfile()
+  
+  recs = sort_class(reclist)
+  recs.reverse()
+  printtop(recs,10)
+
   print "Count %5d  Seconds: usr %6.2f sys %6.2f wallclock %6.2f " %( tcount,usecs,ssecs,wsecs)
   print "    Non zero status count %d maxu %6.2f maxw %6.2f " % (nzcount,maxu,maxw)
   
