@@ -49,12 +49,10 @@ kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky 
 # These accumulate times so we can print actual dwarfdump
 # user, sys, clock times at the end (see usertime.py).
 bdir=`pwd`
-otimeout=$bdir/junktimeouto
-ntimeout=$bdir/junktimeoutn
-wrtimeo="/usr/bin/time -o $otimeout -a -p "
-wrtimen="/usr/bin/time -o $ntimeout -a -p "
+. ./RUNTIMEFILES
 rm -f $otimeout 
 rm -f $ntimeout
+exit 1
 
 chkres () {
   if [ $1 = 0 ]

@@ -3,6 +3,8 @@
 
 dd=$1
 . ../BASEFILES
+bdir=".."
+. ../RUNTIMEFILES
 # Avoid spurious differences because of the names of the
 # various dwarfdump versions being tested.
 # This only deals with names like /tmp*dwarfdump2 and /tmp*dwarfdump
@@ -28,7 +30,8 @@ m() {
   obj=$2
   test=$3
   base=$4
-  $dwdumper -i -G $obj 1>junk1 2>&1
+  echo "====== " "$dwdumper -i -G $obj"  >> $ntimeout
+  $wrtimen $dwdumper -i -G $obj 1>junk1 2>&1
   unifyddname junk1 $test
   diff $base $test
   if test  $?  -ne 0
