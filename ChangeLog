@@ -1,3 +1,9 @@
+2016-08-23  David Anderson
+  * To keep the .O version working (after upgrading from 14.04 to 16.04)
+    had to "cd /usr/lib/x86_64-linux-gnu ; sudo ln -s libelf.so libelf.so.0"
+  * Added a test in offsetfromlowpc/runtest.sh to show we can generate
+    DW_FORM_strp now.
+    
 2016-06-08  David Anderson
   * usertime.py: New python to print dwarfdump user/sys time.
   * DWARFTEST.sh: Uses /usr/bin/time to record user/sys time

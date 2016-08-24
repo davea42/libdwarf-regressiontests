@@ -52,7 +52,6 @@ bdir=`pwd`
 . ./RUNTIMEFILES
 rm -f $otimeout 
 rm -f $ntimeout
-exit 1
 
 chkres () {
   if [ $1 = 0 ]

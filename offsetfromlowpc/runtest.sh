@@ -19,6 +19,8 @@ t5=junkh.basehighpc1
 t6=junk2h.basehighpc2
 t7=junk.basehighpc4
 t8=junk8.genout
+t9=junkstrp.genout
+ta=junkstrp.iM
 rm -f $tx
 rm -f $t1
 rm -f $t2
@@ -28,6 +30,8 @@ rm -f $t5
 rm -f $t6
 rm -f $t7
 rm -f $t8
+rm -f $t9
+rm -f $ta
 rm -f $tx
 rm -f $ty
 
@@ -51,8 +55,21 @@ $gen  -h -t obj -c 0 -o $tx dwarfdump.o  >$t4 2>/dev/null
 
 # This one no conversion.
 $gen   -t obj -c 0 -o $ty dwarfdump.o  >$t8 2>/dev/null
-
 $dd -i -M dwarfdump.o >$t1 2> /dev/null
+
+# gens DW_FORM_strp
+$gen  -s  -t obj -c 0 -o $ty dwarfdump.o  >$t9 2>/dev/null
+$dd -i -M dwarfdump.o >$ta 2> /dev/null
+
+diff basestrpiM  $ta
+if [ $? -ne 0 ]
+then
+    echo FAIL diff basestrpiM $ta
+    echo FAIL offsetfromlowpc/runtest.sh Generating strp strings
+    echo "to update baseline do: mv $ta basestrpiM"
+    exit 1
+fi
+
 
 grep high_pc $t1 >$t5
 
