@@ -1,0 +1,13 @@
+Also see offsetfromlowpc and its use of
+dwarfgen.
+
+AT_names are the strings that are generated and recorded
+in .debug_info.
+
+createirepformfrombinary.o is an object in dwarfgen and
+has the most string data of the individual objects in
+that program.
+
+
+
+
