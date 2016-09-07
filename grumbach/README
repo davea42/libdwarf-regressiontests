@@ -1,0 +1,9 @@
+James Grumbach supplies a small object file to 
+demonstrate that dwarfdump fails to print
+a DW_AT_discr_list properly.
+
+dwarfdump was not coded to accept a DW_FORM_block*
+so dwarfdump was wrong.
+
+david a.  Sept 7, 2016
+
