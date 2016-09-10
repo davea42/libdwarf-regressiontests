@@ -5,5 +5,11 @@ a DW_AT_discr_list properly.
 dwarfdump was not coded to accept a DW_FORM_block*
 so dwarfdump was wrong.
 
+test2.o is a copy of James' object but with
+the initial discriminant changed to a x41
+which (as sleb) is interpreted as 0xffffffc1
+(-63) due to the way sleb works.
+So we validate the leb checking.
+
 david a.  Sept 7, 2016
 

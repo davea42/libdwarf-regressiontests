@@ -301,6 +301,13 @@ sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
 chkres $?  hughes2
 cd ..
 
+
+# Testing DW_AT_discr_list
+runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i
+runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i -vvv
+runtest $d1 $d2  grumbach/test2.o -i -vvv 
+
+
 # Testing SHF_COMPRESSED .debug* section reading.
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
