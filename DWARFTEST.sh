@@ -306,6 +306,8 @@ cd ..
 runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i
 runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i -vvv
 runtest $d1 $d2  grumbach/test2.o -i -vvv 
+runtest $d1 $d2  grumbach/test_odb_ada_record_types12_pkg_.o -i -vvv 
+runtest $d1 $d2  grumbach/test4.o -i -vvv 
 
 
 # Testing SHF_COMPRESSED .debug* section reading.
