@@ -1,0 +1,26 @@
+
+# Here is the patch script to munge the .o
+# This will likely not quite work across compiler,
+# versions,
+# but we will simply not recompile or rerun this
+# Leaving it in place as documentation.
+
+# start of debug_info 0x7c
+# End of debug_info  0x12d
+# base type starts 0xa9 in CU. overall offset 0x125
+readelf -S test1.o
+hxdump -s 0x7c -l 0xb1 test1.o
+hxdump -s 0x124 -l 50 test1.o
+hxdump -s 0x7d8 -l 64 test1.o
+
+# Modify a copy.
+cp test1.o test2.o
+# Change the length of the section and the CU-header length byte
+# to keep them in sync.
+binpatch 0x7d8 0xb1 0xa9 test2.o
+binpatch 0x7c 0xad 0xa5 test2.o
+# test2.o is now properly formed but invalid DWARF.
+readelf -S test2.o
+hxdump -s 0x7c -l 0xb1 test2.o
+hxdump -s 0x124 -l 50 test2.o
+hxdump -s 0x7d8 -l 64 test2.o

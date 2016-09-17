@@ -1,0 +1,8 @@
+Sept 17, 2016
+To deal with a libdwarf crash we construct
+a test case by making bit changes to a valid
+DWARF to make libdwarf behave badly.
+
+The goal is to catch this and error off.
+
+
