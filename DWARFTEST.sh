@@ -301,6 +301,13 @@ sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
 chkres $?  hughes2
 cd ..
 
+# Testing DW201609-001 vulnerability.
+# This will pass. Valid dwarf. 
+runtest $d1 $d2   DW201609-001/test1.o -i
+# This will get an error, the object was patched
+# to demonstrate the vulnerability is fixed.
+# The reported error should be DW_DLE_SIBLING_LIST_IMPROPER
+runtest $d1 $d2   DW201609-001/test2.o -i
 
 # Testing DW_AT_discr_list
 runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i
