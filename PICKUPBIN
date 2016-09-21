@@ -1,23 +1,31 @@
 #!/bin/sh
 # Pick up newly built dwarfdump in two flavors.
 # Pick up libdwarf in two flavors.
+
+# The -fsanitize=address tells gcc to use extra run-time
+# code to look for code writing where it should not.
+# It should be sufficiently efficient to do by default, but
+# we will see.
+#  The gcc option is -fsanitize=address
+sanitize="--enable-sanitize"
+sanitize=
 set -x
 # Fix the following line to match the desired libdwarf/dwarfdump source 
 # directory.
 . ./BASEFILES
 
-(cd $libdw/libdwarf; ./configure  --enable-oldframecol ; make clean ; make  )
+(cd $libdw/libdwarf; ./configure $sanitize  --enable-oldframecol ; make clean ; make  )
 cp $libdw/libdwarf/libdwarf.a libdwoldframecol.a
 
-(cd $libdw/libdwarf; ./configure  --enable-windowspath; make clean ; make  )
-(cd $libdw/dwarfdump ; ./configure ; rm dwarfdump ; make)
+(cd $libdw/libdwarf; ./configure $sanitize --enable-windowspath; make clean ; make  )
+(cd $libdw/dwarfdump ; ./configure $sanitize ; rm dwarfdump ; make)
 cp $libdw/dwarfdump/dwarfdump   dwarfdumpW
 
-(cd $libdw/libdwarf;      make clean;  ./configure ; make clean ; make )
+(cd $libdw/libdwarf;   make clean;  ./configure $sanitize ; make clean ; make )
 cp $libdw/libdwarf/libdwarf.a libdwarf.a
-(cd $libdw/dwarfdump ;    make clean ; ./configure ; make clean ; make)
-(cd $libdw/dwarfgen ;     make clean ; ./configure ; make clean ; make)
-(cd $libdw/dwarfexample ; make clean ; ./configure ; make clean ; make)
+(cd $libdw/dwarfdump ; make clean ; ./configure $sanitize ; make clean ; make)
+(cd $libdw/dwarfgen ; make clean ; ./configure $sanitize ; make clean ; make)
+(cd $libdw/dwarfexample ; make clean ; ./configure $sanitize ; make clean ; make)
 
 cp $libdw/dwarfdump/dwarfdump  .
 cp $libdw/dwarfdump/dwarfdump.conf  .

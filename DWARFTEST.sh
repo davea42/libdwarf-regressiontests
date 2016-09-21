@@ -20,6 +20,10 @@ then
   exit 1
 fi
 
+# Do the following two for address-sanitization.
+# Not all tests will be run in that case.
+#DWADDRSAN=y
+#export DWADDRSAN
 goodcount=0
 failcount=0
 . ./BASEFILES
@@ -308,6 +312,8 @@ runtest $d1 $d2   DW201609-001/test1.o -i
 # to demonstrate the vulnerability is fixed.
 # The reported error should be DW_DLE_SIBLING_LIST_IMPROPER
 runtest $d1 $d2   DW201609-001/test2.o -i
+# The reported error should be DW_DLE_SIBLING_LIST_IMPROPER
+runtest $d1 $d2   DW201609-001/DW201609-001-poc  -i
 
 # Testing DW_AT_discr_list
 runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i
@@ -634,7 +640,8 @@ fi
 
 echo "=====START   findcu runtest"
 cd findcu 
-sh runtest.sh $cbase >testoutput
+#sh runtest.sh $cbase -fsanitize=address >testoutput
+sh runtest.sh $cbase  >testoutput
 chkres $? 'findcu/cutest-of-a-libdwarf-interface'
 cd ..
 

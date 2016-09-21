@@ -48,6 +48,13 @@ To clean out the configure cache etc, getting back to
 a clean distribution:
        make distclean
 
+If the dwarf/libdwarf etc code is not in
+../code/dwarf then an example suggests how to
+tell the tests where the source is:
+      configure --enable-libdwarf=/a/b/code/dwarf
+
+   
+
 
 ======================================================================
 What follows is some background detail.
