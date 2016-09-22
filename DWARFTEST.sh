@@ -22,8 +22,13 @@ fi
 
 # Do the following two for address-sanitization.
 # Not all tests will be run in that case.
-#DWADDRSAN=y
-#export DWADDRSAN
+
+if [ x$NLIZE != 'xy' ]
+then
+  NLIZE='n'
+  export NLIZE
+fi
+
 goodcount=0
 failcount=0
 . ./BASEFILES
@@ -145,7 +150,7 @@ liu/null01.elf
 liu/null02.elf
 liu/NULLdereference0519.elf
 liu/NULLderefer0505_01.elf
-NULLdereference0522.elf
+liu/NULLdereference0522.elf
 liu/OOB0505_01.elf
 liu/OOB0505_02_02.elf
 liu/OOB0505_02.elf
@@ -299,11 +304,14 @@ runtest () {
 }
 # end 'runtest'
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   hughes2 runtest.sh"
 cd hughes2
 sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
 chkres $?  hughes2
 cd ..
+fi
 
 # Testing DW201609-001 vulnerability.
 # This will pass. Valid dwarf. 
@@ -314,6 +322,15 @@ runtest $d1 $d2   DW201609-001/test1.o -i
 runtest $d1 $d2   DW201609-001/test2.o -i
 # The reported error should be DW_DLE_SIBLING_LIST_IMPROPER
 runtest $d1 $d2   DW201609-001/DW201609-001-poc  -i
+
+# Should report line table botch DW_DLE_LINE_TABLE_BAD
+# corrupt dwarf.
+runtest $d1 $d2   DW201609-004/poc  -i -l
+runtest $d1 $d2   DW201609-004/poc  -l
+# corrupt dwarf.
+runtest $d1 $d2   DW201609-003/poc  -i
+# corrupt dwarf.
+runtest $d1 $d2   DW201609-002/DW201609-002-poc  -i
 
 # Testing DW_AT_discr_list
 runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i
@@ -345,8 +362,34 @@ runtest $d1 $d2  xqx-b/awbug5.elf -a
 runtest $d1 $d2  xqx-b/awbug5.elf -f 
 runtest $d1 $d2  xqx-b/awbug5.elf -F 
 
-# A corrupted object file
-runtest $d1 $d2  liu/NULLdeference0522c.elf -a 
+# Corrupted object files 
+runtest $d1 $d2  liu/divisionbyzero02.elf -a
+runtest $d1 $d2  liu/divisionbyzero.elf -a
+runtest $d1 $d2  liu/free_invalid_address.elf -a
+runtest $d1 $d2  liu/heapoverflow01b.elf -a
+runtest $d1 $d2  liu/heapoverflow01.elf -a
+runtest $d1 $d2  liu/HeapOverflow0513.elf -a
+runtest $d1 $d2  liu/infinitloop.elf -a
+runtest $d1 $d2  liu/null01.elf -a
+runtest $d1 $d2  liu/null02.elf -a
+runtest $d1 $d2  liu/NULLdereference0519.elf -a
+runtest $d1 $d2  liu/NULLderefer0505_01.elf -a
+runtest $d1 $d2  liu/NULLdereference0522.elf -a
+runtest $d1 $d2  liu/NULLdereference0522c.elf -a 
+runtest $d1 $d2  liu/OOB0505_01.elf -a
+runtest $d1 $d2  liu/OOB0505_02_02.elf -a
+runtest $d1 $d2  liu/OOB0505_02.elf -a
+runtest $d1 $d2  liu/OOB0517_01.elf -a
+runtest $d1 $d2  liu/OOB0517_02.elf -a
+runtest $d1 $d2  liu/OOB0517_03.elf -a
+runtest $d1 $d2  liu/OOB_read3_02.elf -a
+runtest $d1 $d2  liu/OOB_read3.elf -a
+runtest $d1 $d2  liu/OOB_read4.elf -a
+runtest $d1 $d2  liu/OOB_READ0519.elf -a
+runtest $d1 $d2  liu/outofbound01.elf -a
+runtest $d1 $d2  liu/outofboundread2.elf -a
+runtest $d1 $d2  liu/outofboundread.elf -a
+
 
 #  For line table variants checking.
 for x in '-x line5=std' '-x line5=s2l' '-x line5=orig' '-x line5=orig2l'
@@ -440,27 +483,41 @@ runtest $d1 $d2  debugfissionb/ld-new -I  -v -v -v
 runtest $d1 $d2  debugfissionb/ld-new -a  
 runtest $d1 $d2  debugfissionb/ld-new -ka  
 
+if [ $NLIZE = 'n' ]
+then
+echo "=====START   baddie runtest.sh"
 cd baddie1
 sh runtest.sh ../$d2 
 chkres $?  baddie1
 cd ..
+fi
 
+if [ $NLIZE = 'n' ]
+then
+echo "=====START   offsetfromlowpc runtest.sh"
 cd offsetfromlowpc
 sh runtest.sh ../dwarfgen ../$d2  ../simplereader
 chkres $?  offsetfromlowpc
 cd ..
+fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   debugfissionb runtest.sh"
 cd debugfissionb
 sh runtest.sh  ../simplereader
 chkres $?  debugfissionb-simplreader
 cd ..
+fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   debugfission runtest.sh"
 cd debugfission
 sh runtest.sh  ../$d2 
 chkres $?  debugfission
 cd ..
+fi
 
 # This validates standard-based handling of DW_FORM_ref_addr
 runtest $d1 $d2 diederen/hello -i
@@ -638,14 +695,19 @@ then
  runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   findcu runtest"
 cd findcu 
 #sh runtest.sh $cbase -fsanitize=address >testoutput
 sh runtest.sh $cbase  >testoutput
 chkres $? 'findcu/cutest-of-a-libdwarf-interface'
 cd ..
+fi
 
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   test_harmless"
 if [ -f /usr/include/zlib.h ]
 then
@@ -655,8 +717,11 @@ else
 fi
 ./test_harmless >testoutput
 chkres $? 'check harmless-error functionality'
+fi
 
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   test gennames -t and -s same output"
 # Testing that gennames -t and -s generate the same results.
 ./gennames -s  -i $cbase/libdwarf -o .
@@ -674,43 +739,62 @@ rm -f dwarf_names.c dwarfnames-s.c
 rm -f  dwarfnames-t.c
 rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
 rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h 
+fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   dwgena/runtest.sh"
 cd dwgena
 sh runtest.sh ../$d2
 chkres $? 'dwgena/runtest.sh'
 cd ..
+fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   frame1/runtest.sh"
 cd frame1
 sh runtest.sh $cbase
 chkres $? frame1
 cd ..
+fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   dwarfextract/runtest.sh"
 cd dwarfextract
 rm -f dwarfextract
 sh runtest.sh ../$d2
 chkres $?  dwarfextract
 cd ..
+fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   sandnes2/runtest.sh"
 cd sandnes2
 sh runtest.sh
 chkres $?  sandnes2
 cd ..
+fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   legendre/runtest.sh"
 cd legendre
 sh runtest.sh $cbase
 chkres $?  legendre
 cd ..
+fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   enciso4/runtest.sh"
 cd enciso4
 sh runtest.sh $d1 $d2 
 chkres $?  enciso4
 cd ..
+fi
 
 runtest $d1 $d2 irixn32/dwarfdump -g  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
@@ -774,17 +858,23 @@ then
   runtest $d1 $d2  ia32/libpt_linux_x86_r.so.1 -c -vvv -R -F
 fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   test-alex1/runtest"
 cd test-alex1
 sh runtest.sh $dwlib $dwinc
 chkres $?  test-alex1
 cd ..
+fi
 
+if [ $NLIZE = 'n' ]
+then
 echo "=====START   test-alex2/runtest $dwlib $dwinc"
 cd test-alex2
 sh runtest.sh $dwlib $dwinc
 chkres $?  test-alex1
 cd ..
+fi
 
 # We need this to not do all DIE printing. FIXME
 runtest $d1 $d2 macro5/dwarfdump-g3  -m

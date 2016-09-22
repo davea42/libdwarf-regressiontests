@@ -53,6 +53,14 @@ If the dwarf/libdwarf etc code is not in
 tell the tests where the source is:
       configure --enable-libdwarf=/a/b/code/dwarf
 
+If you want to use addressing correctness checks (gcc -fsanitize=address)
+where some checks may be skipped, do:
+      ./configure
+      export NLIZE=y
+      make
+
+     
+      
    
 
 

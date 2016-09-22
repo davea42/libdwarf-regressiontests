@@ -7,8 +7,13 @@
 # It should be sufficiently efficient to do by default, but
 # we will see.
 #  The gcc option is -fsanitize=address
+if [ x$NLIZE = 'xy' ]
+then
 sanitize="--enable-sanitize"
+else
 sanitize=
+fi
+
 set -x
 # Fix the following line to match the desired libdwarf/dwarfdump source 
 # directory.

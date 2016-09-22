@@ -15,6 +15,7 @@ then
    echo "FAIL sandnes2 Failed to transform name"
    exit 1
 fi
+echo PASS sandnes2/runtest.sh
 # success!
 exit 0
 
