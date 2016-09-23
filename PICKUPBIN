@@ -21,19 +21,59 @@ set -x
 
 (cd $libdw/libdwarf; ./configure $sanitize  --enable-oldframecol ; make clean ; make  )
 cp $libdw/libdwarf/libdwarf.a libdwoldframecol.a
+if [ $? -ne 0 ]
+then
+  echo "No libdwoldframecol.a copied! giving up."
+  exit 1;
+fi
 
 (cd $libdw/libdwarf; ./configure $sanitize --enable-windowspath; make clean ; make  )
-(cd $libdw/dwarfdump ; ./configure $sanitize ; rm dwarfdump ; make)
+(cd $libdw/dwarfdump ; ./configure $sanitize ; rm dwarfdump ; make clean ; make)
 cp $libdw/dwarfdump/dwarfdump   dwarfdumpW
+if [ $? -ne 0 ]
+then
+  echo "No dwarfdumpW done! giving up."
+  exit 1;
+fi
 
 (cd $libdw/libdwarf;   make clean;  ./configure $sanitize ; make clean ; make )
 cp $libdw/libdwarf/libdwarf.a libdwarf.a
+if [ $? -ne 0 ]
+then
+  echo "No libdwarf.a to copy! giving up."
+  exit 1;
+fi
 (cd $libdw/dwarfdump ; make clean ; ./configure $sanitize ; make clean ; make)
 (cd $libdw/dwarfgen ; make clean ; ./configure $sanitize ; make clean ; make)
 (cd $libdw/dwarfexample ; make clean ; ./configure $sanitize ; make clean ; make)
 
 cp $libdw/dwarfdump/dwarfdump  .
+if [ $? -ne 0 ]
+then
+  echo "No dwarfdump to copy! giving up."
+  exit 1;
+fi
 cp $libdw/dwarfdump/dwarfdump.conf  .
+if [ $? -ne 0 ]
+then
+  echo "No dwarfdump.conf to copy! giving up."
+  exit 1;
+fi
 cp $libdw/libdwarf/gennames .
+if [ $? -ne 0 ]
+then
+  echo "No gennames to copy! giving up."
+  exit 1;
+fi
 cp $libdw/dwarfgen/dwarfgen .
+if [ $? -ne 0 ]
+then
+  echo "No dwarfgen to copy! giving up."
+  exit 1;
+fi
 cp $libdw/dwarfexample/simplereader .
+if [ $? -ne 0 ]
+then
+  echo "No simplereader to copy! giving up."
+  exit 1;
+fi
