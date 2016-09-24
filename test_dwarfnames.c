@@ -14,7 +14,7 @@ typedef int (*tfunc)(unsigned int, const char **out);
 static void
 run_test(tfunc callme, const char *name)
 {
-    int i;
+    unsigned i;
     for ( i = 0; i < 50; ++i) {
           const char *out = 0;
           int res = callme(i,&out);

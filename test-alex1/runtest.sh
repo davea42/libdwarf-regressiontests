@@ -1,13 +1,19 @@
 #!/bin/sh
 l=$1
 i=$2
+if [ x$NLIZE = 'xy' ]
+then
+  opt=-fsanitize=address
+else
+  opt=
+fi
 if [ -f /usr/include/zlib.h ]
 then
-  gcc -DWORKING=1 -I $i    test.c $l -lelf -lz -o test1
-  gcc -I $i    test.c  $l -lelf -lz -o test2
+  gcc -DWORKING=1 -I $i  $opt   test.c $l -lelf -lz -o test1
+  gcc -I $i  $opt   test.c  $l -lelf -lz -o test2
 else
-  gcc -DWORKING=1 -I $i    test.c $l -lelf -o test1
-  gcc -I $i    test.c  $l -lelf -o test2
+  gcc -DWORKING=1 -I $i   $opt  test.c $l -lelf -o test1
+  gcc -I $i  $opt   test.c  $l -lelf -o test2
 fi
 
 ./test1 orig.a.out >out1

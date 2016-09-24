@@ -1,3 +1,10 @@
+2016-09-24  David Anderson
+  * DWARFTEST.sh: Now if one does export NLIZE=y 
+    the build will use
+    -fsanitize=address in all compiles. Thus
+    getting checking for out of bounds references,
+    memory leaks, and more. A few checks would
+    always fail so those are not run with NLIZE=y.
 2016-08-23  David Anderson
   * To keep the .O version working (after upgrading from 14.04 to 16.04)
     had to "cd /usr/lib/x86_64-linux-gnu ; sudo ln -s libelf.so libelf.so.0"

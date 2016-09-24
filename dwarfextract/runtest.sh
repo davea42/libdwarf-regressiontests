@@ -3,12 +3,18 @@
 #
 dd=$1
 . ../BASEFILES
+if [ x$NLIZE = 'xy' ]
+then
+  opt=-fsanitize=address
+else
+  opt=
+fi
 INCS="-I $libdw/libdwarf  -I /usr/local/include"
 if [ -f /usr/include/zlib.h ]
 then
-  cc -g $INCS dwarfextract.c -o dwarfextract -L ../ -ldwarf -lelf -lz
+  cc -g $opt $INCS dwarfextract.c -o dwarfextract -L ../ -ldwarf -lelf -lz
 else
-  cc -g $INCS dwarfextract.c -o dwarfextract -L ../ -ldwarf -lelf
+  cc -g $opt $INCS dwarfextract.c -o dwarfextract -L ../ -ldwarf -lelf
 fi
 # Use precompiled test1.c test2.c for test consistency.
 #cc -g test1.c test2.c -o test1
@@ -37,9 +43,9 @@ echo PASS dwarfextract
 
 if [ -f /usr/include/zlib.h ]
 then
-  cc -g -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwarf -lelf -lz
+  cc -g $opt -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwarf -lelf -lz
 else
-  cc -g -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwarf -lelf
+  cc -g $opt -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwarf -lelf
 fi
 ./dwarfextractc test1 testcout >basecstdout
 if [  $?  -ne 0 ]

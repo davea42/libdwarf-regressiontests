@@ -36,6 +36,7 @@
 #include <fcntl.h>     /* For open() */
 #include <stdlib.h>     /* For exit() */
 #include <unistd.h>     /* For close() */
+#include <string.h>     /* for strcmp() */
 #include <stdio.h>
 #include <errno.h>
 #include "dwarf.h"

@@ -27,12 +27,16 @@ if [ x$NLIZE != 'xy' ]
 then
   NLIZE='n'
   export NLIZE
+  nlizeopt=
+else
+  nlizeopt=-fsanitize=address
 fi
 
 goodcount=0
 failcount=0
 . ./BASEFILES
 cbase=$libdw
+echo "dadebug" $cbase
 if [ $# -eq 0 ]
 then
   d1=./dwarfdump.O
@@ -65,10 +69,10 @@ rm -f $ntimeout
 chkres () {
   if [ $1 = 0 ]
   then
-	goodcount=`expr $goodcount + 1`
+    goodcount=`expr $goodcount + 1`
   else
-          echo FAIL  $2
-          failcount=`expr $failcount + 1`
+    echo FAIL  $2
+    failcount=`expr $failcount + 1`
   fi
 }
 
@@ -304,14 +308,38 @@ runtest () {
 }
 # end 'runtest'
 
-if [ $NLIZE = 'n' ]
-then
+echo "=====START   test gennames -t and -s same output"
+
+# Testing that gennames -t and -s generate the same results.
+./gennames -s -i $cbase/libdwarf -o .
+chkres $?  gennames-build-s-check
+mv dwarf_names.c dwarfnames-s.c
+chkres $?  dwarfnames_s-mv-check
+cc -Wall $nlizeopt -I $cbase/libdwarf test_dwarfnames.c dwarfnames-s.c -o dwarfnames-s
+chkres $?  dwarfnames_s-compile-check
+./dwarfnames-s > dwn_s_out
+chkres $? dwarfnames-s-run
+
+./gennames -t  -i $cbase/libdwarf -o .
+chkres $?  gennames-build-t-check
+mv dwarf_names.c dwarfnames-t.c
+chkres $?  dwarfnames_t-mv-check
+cc -Wall $nlizeopt -I  $cbase/libdwarf test_dwarfnames.c dwarfnames-t.c -o dwarfnames-t
+chkres $?  dwarfnames_t-compile-check
+./dwarfnames-t > dwn_t_out
+chkres $? dwarfnames-t-run
+diff dwn_s_out dwn_t_out
+chkres $?  dwarfnames-switch-table-check
+rm -f dwarf_names.c dwarfnames-s.c
+rm -f  dwarfnames-t.c
+rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
+rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h
+
 echo "=====START   hughes2 runtest.sh"
 cd hughes2
 sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
 chkres $?  hughes2
 cd ..
-fi
 
 # Testing DW201609-001 vulnerability.
 # This will pass. Valid dwarf. 
@@ -483,41 +511,29 @@ runtest $d1 $d2  debugfissionb/ld-new -I  -v -v -v
 runtest $d1 $d2  debugfissionb/ld-new -a  
 runtest $d1 $d2  debugfissionb/ld-new -ka  
 
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   baddie runtest.sh"
 cd baddie1
 sh runtest.sh ../$d2 
 chkres $?  baddie1
 cd ..
-fi
 
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   offsetfromlowpc runtest.sh"
 cd offsetfromlowpc
 sh runtest.sh ../dwarfgen ../$d2  ../simplereader
 chkres $?  offsetfromlowpc
 cd ..
-fi
 
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   debugfissionb runtest.sh"
 cd debugfissionb
 sh runtest.sh  ../simplereader
 chkres $?  debugfissionb-simplreader
 cd ..
-fi
 
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   debugfission runtest.sh"
 cd debugfission
 sh runtest.sh  ../$d2 
 chkres $?  debugfission
 cd ..
-fi
 
 # This validates standard-based handling of DW_FORM_ref_addr
 runtest $d1 $d2 diederen/hello -i
@@ -695,88 +711,54 @@ then
  runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 fi
 
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   findcu runtest"
 cd findcu 
-#sh runtest.sh $cbase -fsanitize=address >testoutput
 sh runtest.sh $cbase  >testoutput
 chkres $? 'findcu/cutest-of-a-libdwarf-interface'
 cd ..
-fi
 
 
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   test_harmless"
 if [ -f /usr/include/zlib.h ]
 then
-  cc -Wall -I  $cbase/libdwarf test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf -lz
+  cc -Wall -I  $cbase/libdwarf $nlizeopt test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf -lz
 else
-  cc -Wall -I  $cbase/libdwarf test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf
+  cc -Wall -I  $cbase/libdwarf $nlizeopt test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf
 fi
 ./test_harmless >testoutput
 chkres $? 'check harmless-error functionality'
-fi
 
-
-if [ $NLIZE = 'n' ]
-then
-echo "=====START   test gennames -t and -s same output"
-# Testing that gennames -t and -s generate the same results.
-./gennames -s  -i $cbase/libdwarf -o .
-mv dwarf_names.c dwarfnames-s.c
-cc -Wall -I $cbase/libdwarf test_dwarfnames.c dwarfnames-s.c -o dwarfnames-s
-./dwarfnames-s > dwn_s_out
-./gennames -t  -i $cbase/libdwarf -o .
-mv dwarf_names.c dwarfnames-t.c
-cc -Wall -I  $cbase/libdwarf test_dwarfnames.c dwarfnames-t.c -o dwarfnames-t
-./dwarfnames-t > dwn_t_out
-
-diff dwn_s_out dwn_t_out
-chkres $?  dwarfnames-switch-table-check
-rm -f dwarf_names.c dwarfnames-s.c
-rm -f  dwarfnames-t.c
-rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
-rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h 
-fi
-
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   dwgena/runtest.sh"
 cd dwgena
 sh runtest.sh ../$d2
 chkres $? 'dwgena/runtest.sh'
 cd ..
-fi
 
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   frame1/runtest.sh"
 cd frame1
 sh runtest.sh $cbase
 chkres $? frame1
 cd ..
-fi
 
 if [ $NLIZE = 'n' ]
 then
 echo "=====START   dwarfextract/runtest.sh"
+# This has serious problems with leaks, so
+# do not do $NLIZE for now..
 cd dwarfextract
 rm -f dwarfextract
 sh runtest.sh ../$d2
 chkres $?  dwarfextract
 cd ..
+else
+echo "=====SKIP  dwarfextract/runtest.sh with NLIZE"
 fi
 
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   sandnes2/runtest.sh"
 cd sandnes2
 sh runtest.sh
 chkres $?  sandnes2
 cd ..
-fi
 
 if [ $NLIZE = 'n' ]
 then
@@ -785,16 +767,15 @@ cd legendre
 sh runtest.sh $cbase
 chkres $?  legendre
 cd ..
+else
+echo "=====SKIP   legendre/runtest.sh NLIZE as it has leaks"
 fi
 
-if [ $NLIZE = 'n' ]
-then
 echo "=====START   enciso4/runtest.sh"
 cd enciso4
 sh runtest.sh $d1 $d2 
 chkres $?  enciso4
 cd ..
-fi
 
 runtest $d1 $d2 irixn32/dwarfdump -g  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
@@ -865,6 +846,8 @@ cd test-alex1
 sh runtest.sh $dwlib $dwinc
 chkres $?  test-alex1
 cd ..
+else
+echo "=====SKIP   test-alex1/runtest.sh NLIZE as it has leaks"
 fi
 
 if [ $NLIZE = 'n' ]
@@ -874,6 +857,8 @@ cd test-alex2
 sh runtest.sh $dwlib $dwinc
 chkres $?  test-alex1
 cd ..
+else
+echo "=====SKIP   test-alex2/runtest.sh NLIZE as it has leaks"
 fi
 
 # We need this to not do all DIE printing. FIXME

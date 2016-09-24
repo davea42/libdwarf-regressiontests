@@ -1,9 +1,16 @@
 #!/bin/sh
+if [ x$NLIZE = 'xy' ]
+then
+  opt=-fsanitize=address
+else
+  opt=
+fi
+
 if [ -f /usr/include/zlib.h ]
 then
-  cc -I $1/libdwarf -DNEW frame_test.c ../libdwarf.a -lelf -lz -o frame_test1
+  cc -I $1/libdwarf $opt -DNEW frame_test.c ../libdwarf.a -lelf -lz -o frame_test1
 else
-  cc -I $1/libdwarf -DNEW frame_test.c ../libdwarf.a -lelf -o frame_test1
+  cc -I $1/libdwarf $opt -DNEW frame_test.c ../libdwarf.a -lelf -o frame_test1
 fi
 ./frame_test1
 if [  $? -ne 0 ]
@@ -14,9 +21,9 @@ fi
 
 if [ -f /usr/include/zlib.h ]
 then
-  cc -I $1/libdwarf -DOLD frame_test.c ../libdwoldframecol.a -lelf -lz -o frame_test2
+  cc -I $1/libdwarf -DOLD $opt frame_test.c ../libdwoldframecol.a -lelf -lz -o frame_test2
 else
-  cc -I $1/libdwarf -DOLD frame_test.c ../libdwoldframecol.a -lelf -o frame_test2
+  cc -I $1/libdwarf -DOLD $opt frame_test.c ../libdwoldframecol.a -lelf -o frame_test2
 fi
 ./frame_test2
 if [  $? -ne 0 ]

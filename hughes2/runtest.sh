@@ -18,16 +18,26 @@ rm -f *core*
 $e $opts $t > $bt
 if [ $expcore = 'y' ]
 then
-  if [ ! -f *core* ]  
+  if [ x$NLIZE != 'xy' ]
   then
-    echo "FAIL hughes2/simplereader expected  corefile! "
-    exit 1
+    if [ ! -f *core* ]  
+    then
+      echo "FAIL hughes2/simplereader expected  corefile! "
+      exit 1
+    fi
+  else
+    echo 'hughes2 test 1: $NLIZE set so skip looking for corefile' 
   fi
 else
-  if [ -f *core* ]  
+  if [ x$NLIZE != 'xy' ]
   then
-    echo "FAIL hughes2/simplereader got a corefile unexpectedly"
-    exit 1Y
+    if [ -f *core* ]  
+    then
+      echo "FAIL hughes2/simplereader got a corefile unexpectedly"
+      exit 1Y
+    fi
+  else
+    echo 'hughes2 test 2: $NLIZE set so skip checking on corefile' 
   fi
 fi
 diff $b $bt

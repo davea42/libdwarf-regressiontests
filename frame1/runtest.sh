@@ -1,10 +1,16 @@
 #!/bin/sh
 libdw=$1
+if [ x$NLIZE = 'xy' ]
+then
+  opt=-fsanitize=address
+else
+  opt=
+fi
 if [ -f /usr/include/zlib.h ]
 then
-  cc -g -I $libdw/libdwarf -L $libdw/libdwarf frame1.c -ldwarf -lelf -lz -o frame1
+  cc -g $opt -I $libdw/libdwarf -L $libdw/libdwarf frame1.c -ldwarf -lelf -lz -o frame1
 else
-  cc -g -I $libdw/libdwarf -L $libdw/libdwarf frame1.c -ldwarf -lelf -o frame1
+  cc -g $opt  -I $libdw/libdwarf -L $libdw/libdwarf frame1.c -ldwarf -lelf -o frame1
 fi
 if [ $? -ne 0 ]
 then

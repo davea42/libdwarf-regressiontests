@@ -6,6 +6,11 @@ set -x
 # tests at the same time as two-at-once will not work!
 rm -f /tmp/dwa.*
 rm -f /tmp/dwb.*
+rm -f dwarf_names.h
+rm -f dwarf_names_enum.h
+rm -f dwarf_names_new.h
+rm -f dwn_s_out
+rm -f dwn_t_out
 rm -f tmp*
 rm -f tmp*err*
 rm -f core
@@ -43,10 +48,13 @@ rm -f        kartashev/kart2.tar
 rm -f        tn
 rm -f        to
 rm -f */junk*
+rm -f  a.out
 rm -f  dwarfnames-s.c
 rm -f  dwarfnames-s
 rm -f  dwarfnames-t.c
 rm -f  dwarfnames-t
+rm -f  legendre/frame_test1
+rm -f  legendre/frame_test2
 rm -f dwarfdump2
 rm -f OF*
 rm -f dwarfdump

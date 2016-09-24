@@ -3,12 +3,18 @@ libdw=$1
 h="-I$libdw/libdwarf"
 l="-L$libdw/libdwarf"
 libs="-ldwarf -lelf"
+if [ x$NLIZE = 'xy' ]
+then
+  nli=-fsanitize=address
+else
+  nli=
+fi
 
 if [ -f /usr/include/zlib.h ]
 then
-  cc $h cutest.c $l -o cutest $libs -lz
+  cc $h cutest.c $nli $l -o cutest $libs -lz
 else
-  cc $h cutest.c $l -o cutest $libs
+  cc $h cutest.c $nli $l -o cutest $libs
 fi
 ./cutest cutestobj.save
 r=$?
