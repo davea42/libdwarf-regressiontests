@@ -1,0 +1,2 @@
+alloc_test got DW_DLV_ERROR which is to be expected.
+Alloc test error string : DW_DLE_DBG_NULL (81)

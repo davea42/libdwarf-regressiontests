@@ -1,0 +1,16 @@
+
+This is a test for a failure in allocating an error
+record with a NULL Dwarf_Debug using
+a libdwarf interface that lets us do that easily, with
+no open Dwarf_Debug required.
+
+The intent is to ensure that
+_dwarf_special_no_dbg_error_malloc() actually
+returns a pointer to the space allocated.
+Unfortunately with gcc (as of the current
+implemenation) the absence of a return
+has no effect. Ugh. Not too good a test then.
+
+With NLIZE it expects there is a memory leak.
+
+David Anderson, September 2016
