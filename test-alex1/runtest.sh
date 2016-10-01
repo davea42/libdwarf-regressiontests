@@ -3,7 +3,7 @@ l=$1
 i=$2
 if [ x$NLIZE = 'xy' ]
 then
-  opt=-fsanitize=address
+  opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 else
   opt=
 fi

@@ -6,7 +6,7 @@
 # code to look for code writing where it should not.
 # It should be sufficiently efficient to do by default, but
 # we will see.
-#  The gcc option is -fsanitize=address
+#  The gcc option is -fsanitize=address and the like
 if [ x$NLIZE = 'xy' ]
 then
 sanitize="--enable-sanitize"

@@ -1,8 +1,8 @@
 #!/bin/sh
 libdw=$1
 if [ x$NLIZE = 'xy' ]
-then
-  opt=-fsanitize=address
+then 
+  opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 else
   opt=
 fi

@@ -1,21 +1,26 @@
 #!/bin/sh
 #
-echo 'Starting DWARFTEST.sh' `date`
-ps -eaf |grep DWARF >/tmp/dwa.$$
-echo "dwa.$$"
-cat /tmp/dwa.$$
-grep DWARFTEST.sh /tmp/dwa.$$ > /tmp/dwb.$$
-ct=`wc -l </tmp/dwb.$$`
+echo 'Starting dwarftesth' `date`
+# Here do not use DWARFTEST, we do not want to match the grep from ps
+ps -eaf >/tmp/dwbc.$$ 
+grep DWARFTEST.sh < /tmp/dwbc.$$ >/tmp/dwba.$$
+echo "/tmp/dwbc.$$"
+echo  wc -l /tmp/dwbc.$$
+rm -f /tmp/dwbc.$$
+echo "dwba.$$"
+cat /tmp/dwba.$$
+grep DWARFTEST.sh </tmp/dwba.$$ > /tmp/dwbb.$$
+ct=`wc -l </tmp/dwbb.$$`
 echo "Number of DWARFTEST.sh running: $ct"
-echo "dwb.$$"
-cat /tmp/dwb.$$
+echo "dwbb.$$"
+cat /tmp/dwbb.$$
 if [ $ct -gt 1 ]
 then
   echo "Only one DWARFTEST.sh can run at a time on a machine"
   echo "Something is wrong, DWARFTEST.sh already running: $ct"
-  echo "dwb.$$ contains:"
-  echo /tmp/dwb.$$
-  echo "do        : rm /tmp/dwa* /tmp/dwb* "
+  echo "dwbb.$$ contains:"
+  echo /tmp/dwbb.$$
+  echo "do        : rm /tmp/dwba* /tmp/dwbb* "
   echo "Check with: ps -eaf |grep DWARF"
   exit 1
 fi
@@ -29,7 +34,7 @@ then
   export NLIZE
   nlizeopt=
 else
-  nlizeopt=-fsanitize=address
+  nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 fi
 
 goodcount=0
@@ -711,12 +716,10 @@ then
  runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 fi
 
-echo "=====START   findcu runtest"
 cd findcu 
 sh runtest.sh $cbase  >testoutput
 chkres $? 'findcu/cutest-of-a-libdwarf-interface'
 cd ..
-
 
 echo "=====START   test_harmless"
 if [ -f /usr/include/zlib.h ]
@@ -973,8 +976,8 @@ do
      done
    done
 done
-rm -f /tmp/dwa.$$
-rm -f /tmp/dwb.$$
+rm -f /tmp/dwba.$$
+rm -f /tmp/dwbb.$$
 echo "base dwarfdump times"
 python usertime.py $otimeout
 echo "new  dwarfdump times"

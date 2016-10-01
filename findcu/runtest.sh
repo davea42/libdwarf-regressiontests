@@ -5,7 +5,7 @@ l="-L$libdw/libdwarf"
 libs="-ldwarf -lelf"
 if [ x$NLIZE = 'xy' ]
 then
-  nli=-fsanitize=address
+  nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 else
   nli=
 fi

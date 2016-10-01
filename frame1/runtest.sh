@@ -2,7 +2,7 @@
 libdw=$1
 if [ x$NLIZE = 'xy' ]
 then
-  opt=-fsanitize=address
+  opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 else
   opt=
 fi
