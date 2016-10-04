@@ -1,0 +1,6 @@
+
+cp test_odb_ada_record_types12_pkg_.o test4.o
+binpatch 0x41b 0x0078007a  0x01010400 test4.o
+binpatch 0x41f 0x007c007e  0x10017073 test4.o
+binpatch 0x423 0x00000002  0x00850001 test4.o
+binpatch 0x427 0x00040006  0x85018601 test4.o
