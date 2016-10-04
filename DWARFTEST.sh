@@ -340,11 +340,43 @@ rm -f  dwarfnames-t.c
 rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
 rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h
 
+
+
 echo "=====START   hughes2 runtest.sh"
 cd hughes2
 sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
 chkres $?  hughes2
 cd ..
+
+# All the following have been fuzzed and some have
+# elf that is so badly damaged it is unusable.
+# 08,09,12,14,16 in particular have really bad elf header data.
+runtest $d1 $d2   sarubbo/01.hangs -a
+runtest $d1 $d2   sarubbo/02.hangs -a
+runtest $d1 $d2   sarubbo/03.hangs -a
+runtest $d1 $d2   sarubbo/04.hangs -a
+runtest $d1 $d2   sarubbo/05.hangs -a
+runtest $d1 $d2   sarubbo/06.hangs -a
+runtest $d1 $d2   sarubbo/07.hangs -a
+runtest $d1 $d2   sarubbo/08.hangs -a
+runtest $d1 $d2   sarubbo/09.hangs -a
+runtest $d1 $d2   sarubbo/10.hangs -a
+runtest $d1 $d2   sarubbo/11.hangs -a
+runtest $d1 $d2   sarubbo/12.hangs -a
+runtest $d1 $d2   sarubbo/13.hangs -a
+runtest $d1 $d2   sarubbo/14.hangs -a
+runtest $d1 $d2   sarubbo/15.hangs -a
+runtest $d1 $d2   sarubbo/17.hangs -a
+# test2.crashes has bad elf. With Ubuntu 16.04 libelf
+# libelf detects an error in .debug_ranges so libdwarf
+# reports error and dwarfdump stops. -fsanitize= detects errors too.
+# Building latest libelf my self from
+# https://launchpad.net/ubuntu/+source/libelf
+# the libelf error is detected but there are no -fsanitize= errors
+# detected.
+runtest $d1 $d2   sarubbo/test2.crashes -a
+# Exposed failure to check off-end in abbreviation reading, corrupted dWARF.
+runtest $d1 $d2   sarubbo/test122.crashes -a
 
 # Testing DW201609-001 vulnerability.
 # This will pass. Valid dwarf. 
