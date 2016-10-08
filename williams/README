@@ -1,0 +1,30 @@
+From Bill Williams.
+15 June 2016.
+
+It's still possible, as of the latest libdwarf snapshots, to generate a binary with debugging information that causes dwarf_next_cu_header_c to crash.
+
+Reproducer snippet, all types as per the function prototype:
+
+while (dwarf_next_cu_header_c(dbg, is_info,
+                              &cu_header_length,
+                              &version,
+                              &abbrev_offset,
+                              &addr_size,
+                              &offset_size,
+                              &extension_size,
+                              &signature,
+                              &typeoffset,
+                              &next_cu_header, &err) == DW_DLV_OK ) {
+	// process sig8 types, but should be irrelevant to reproduction of bug
+}
+
+
+A representative binary that should produce this crash is attached.
+
+If you need a full reproducer, I can build and send one, but I hope this is sufficient.
+
+===========
+October 7, 2016.
+Unable to reproduce any problem using dwarfdump.
+it is unclear how to reproduce a problem.
+No further information is available.
