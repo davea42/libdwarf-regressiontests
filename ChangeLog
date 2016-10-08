@@ -1,3 +1,14 @@
+2016-10-07  David Anderson
+  * DWARFTEST.sh: Adds a test of sarubbo/test1112.crashes, a
+    new test exposing a unique bug in handling a corrupted
+    .debug_abbrev file. 
+  * offsetfromlowpc/basestrpgenout: New content, a selection
+    from dwarfgen stdout that shows (repeatably) the .debug_str generation.
+  * offsetfromlowpc/runtest.sh: Now tests for consistent .debug_str
+    output.
+  * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,dwarfdump-x86_64-freebsd.O,
+    dwarfdump-x86_64-ubuntu.O: New baseline executables.
+  
 2016-09-24  David Anderson
   * DWARFTEST.sh: Now if one does export NLIZE=y 
     the build will use

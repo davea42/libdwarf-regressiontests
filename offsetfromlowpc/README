@@ -11,6 +11,13 @@ Some gcc can to this automatically, but it was
 better to improve dwarfgen than to search out such a gcc
 at this time.
 
+One of the tests here does dwarfgen -s  so that the
+strings are generated using 
+dwarf_pro_set_default_string_form(dbg,DW_FORM_strp,error ).
+In that case libdwarf not only generates .debug_str,
+it notices duplicate strings
+and avoids emitting duplicates in .debug_str.
+
 
 These tests attempt to verify dwarf_highpc_b() works
 properly and also that dwarfgen works properly.

@@ -64,7 +64,7 @@ $dd -i -M $ty  >$t1 2> /dev/null
 
 # gens DW_FORM_strp
 echo $gen -r  -s  -t obj -c 0 -o $tz dwarfdump.o  
-$gen -r  -s  -t obj -c 0 -o $tz dwarfdump.o  >$t9 2> $t9e
+$gen -r  -s  -t obj -c 0 -o $tz dwarfdump.o |grep 'Debug_Str:'  >$t9 2> $t9e
 echo Now show FORM_str and more for $tz >$ta
 $dd -i -M $tz |grep DW_FORM_str  >>$ta 2> /dev/null
 
@@ -77,14 +77,14 @@ then
     exit 1
 fi
 
-#diff basestrpgenout  $t9
-#if [ $? -ne 0 ]
-#then
-#    echo FAIL diff basestrpiM $ta. Object gen is $tz
-#    echo FAIL offsetfromlowpc/runtest.sh Generating strp strings
-#    echo "to update baseline do: mv $t9 basestrpgenout"
-#    exit 1
-#fi
+diff basestrpgenout  $t9
+if [ $? -ne 0 ]
+then
+    echo FAIL diff basestrpiM $ta. Object gen is $tz
+    echo FAIL offsetfromlowpc/runtest.sh Generating strp strings
+    echo "to update baseline do: mv $t9 basestrpgenout"
+    exit 1
+fi
 
 
 grep high_pc $t1 >$t5

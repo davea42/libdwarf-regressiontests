@@ -378,6 +378,9 @@ runtest $d1 $d2   sarubbo/test2.crashes -a
 # Exposed failure to check off-end in abbreviation reading, corrupted dWARF.
 runtest $d1 $d2   sarubbo/test122.crashes -a
 
+# This exposed a different off-end in abbrev reading.
+runtest $d1 $d2   sarubbo/1112.crashes -a
+
 # Exposed failure to check DW_FORM_string in _dwarf_get_size_of_val(),
 # which is the real contribution of this fuzzed-object testcase.
 # Libelf as of Ubuntu 16.04  will try to malloc an absurd 
