@@ -197,6 +197,7 @@ unifyddname () {
   rm -f $t1 $t2 $t3
 }
 
+totaltestcount=0
 runtest () {
 	olddw=$1
 	newdw=$2
@@ -205,7 +206,9 @@ runtest () {
 	shift
 	shift
 	
-        echo "=====START  $*  $targ"
+        totaltestcount=`expr $totaltestcount + 1`
+        pctstring=`python3 showpct.py $totaltestcount`
+        echo "=====START Pct $pctstring  $*  $targ" 
         rm -f core
         rm -f tmp1 tmp2 tmp3
         rm -f tmp1err tmp2err tmp3err 
@@ -1021,9 +1024,9 @@ done
 rm -f /tmp/dwba.$$
 rm -f /tmp/dwbb.$$
 echo "base dwarfdump times"
-python usertime.py $otimeout
+python3 usertime.py $otimeout
 echo "new  dwarfdump times"
-python usertime.py $ntimeout
+python3 usertime.py $ntimeout
 echo PASS $goodcount
 echo FAIL $failcount
 

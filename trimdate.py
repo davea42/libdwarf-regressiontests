@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # Any line starting with a day number (as abbrev)
 # gets 'DATE' substitutied. Makes comparisons
@@ -18,7 +18,7 @@ def printblock(b,failcount_in):
       break
   if suppress == "n":
     for l in b:
-      print l
+      print(l)
   return failcount
 
 def isdateitem(rec):
@@ -53,13 +53,13 @@ if __name__ == '__main__':
     fn = sys.argv[1]
   count=0
   failcount = 0
-  print "trimdate on file",fn
+  print("trimdate on file",fn)
   try:
     file = open(fn,"r")
-  except IOError,message:
+  except IOError as message:
     print "FAIL open ",fn,"errormessage",message
     sys.exit(1)
-  print "Start stripping dates"
+  print("Start stripping dates")
   while 1:
     try:
       rec = file.readline().strip()
@@ -70,10 +70,10 @@ if __name__ == '__main__':
       break
      
     if isdateitem(rec) == "y":
-       print "DATE:xxx"
+       print("DATE:xxx")
     else:
-       print rec
-  print "Done stripping dates"
+       print(rec)
+  print("Done stripping dates")
 
 
 

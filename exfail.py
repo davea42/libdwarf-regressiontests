@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 #  Split ALLdd into groups of lines
 #   with '====' at beginning of line, as head line.
@@ -21,7 +21,7 @@ def printblock(b,failcount_in):
       break
   if suppress == "n":
     for l in b:
-      print l
+      print(l)
   return failcount
 
 if __name__ == '__main__':
@@ -30,8 +30,8 @@ if __name__ == '__main__':
   failcount = 0
   try:
     file = open(fn,"r")
-  except IOError,message:
-    print "FAIL open ",fn,"errormessage",message
+  except IOError as message:
+    print("FAIL open ",fn,"errormessage",message)
     sys.exit(1)
   block = []
   while 1:
@@ -52,8 +52,8 @@ if __name__ == '__main__':
   if len(block) > 0:
     failcount = printblock(block,failcount)
 
-  print "testcount:",count
-  print "failcount:",failcount
+  print("testcount:",count)
+  print("failcount:",failcount)
   
 
 

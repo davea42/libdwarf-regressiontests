@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 import os
 
@@ -14,7 +15,7 @@ class urec:
   def setssecs(self,t):
     self._ssecs = float(t);
   def uprint(self,h):
-    print "%s u%6.2f s%6.2f w%6.2f %s " %(h, self._usecs,self._ssecs,self._wsecs,self._title)
+    print("%s u%6.2f s%6.2f w%6.2f %s " %(h, self._usecs,self._ssecs,self._wsecs,self._title))
 
 def sort_class(mydata):
   """ Sort the list of objects by  zip
@@ -26,13 +27,13 @@ def sort_class(mydata):
 
 def processfile():
   if len(sys.argv) != 2:
-    print "Usage: python useritime.py <usagetimepath>"
+    print("Usage: python useritime.py <usagetimepath>")
     sys.exit(1)
   tfilename = sys.argv[1]
   try:
     file = open(tfilename,"r")
-  except IOError, message:
-    print >> sys.stderr , "File could not be opened: ", message
+  except IOError as message:
+    print("File could not be opened: ", message, file=sys.stderr)
     sys.exit(1)
   linecount = 0
   maxusecs = 0.0
@@ -78,7 +79,7 @@ def processfile():
       try:
         t = float(wds[1])
       except ValueError,message:
-        print "Bad value, line ",linecount,"record: ",rec
+        print("Bad value, line ",linecount,"record: ",rec)
         t = 0.0
       crec.setwsecs(t)
       totwsecs = float(totwsecs) + t
@@ -102,7 +103,7 @@ def processfile():
       try:
         t = float(wds[1])
       except ValueError,message:
-        print "Bad value, line ",linecount,"record: ",rec
+        print("Bad value, line ",linecount,"record: ",rec)
         t = 0.0
       crec.setssecs(t)
       totssecs = float(totssecs) + t
@@ -133,7 +134,7 @@ if __name__ == '__main__':
   recs.reverse()
   printtop(recs,10)
 
-  print "Count %5d  Seconds: usr %6.2f sys %6.2f wallclock %6.2f " %( tcount,usecs,ssecs,wsecs)
-  print "    Non zero status count %d maxu %6.2f maxw %6.2f " % (nzcount,maxu,maxw)
+  print("Count %5d  Seconds: usr %6.2f sys %6.2f wallclock %6.2f " %( tcount,usecs,ssecs,wsecs))
+  print("    Non zero status count %d maxu %6.2f maxw %6.2f " % (nzcount,maxu,maxw))
   
 
