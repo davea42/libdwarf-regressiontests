@@ -78,7 +78,7 @@ def processfile():
       # %e  wall clock seconds and fraction.
       try:
         t = float(wds[1])
-      except ValueError,message:
+      except ValueError as message:
         print("Bad value, line ",linecount,"record: ",rec)
         t = 0.0
       crec.setwsecs(t)
@@ -89,7 +89,7 @@ def processfile():
       # %U  user cpu seconds and fraction.
       try:
         t = float(wds[1])
-      except ValueError,message:
+      except ValueError as message:
         print "Bad value, line ",linecount,"record: ",rec
         t = 0.0
       totusecs = float(totusecs) + t
@@ -102,7 +102,7 @@ def processfile():
       # %S  system cpu seconds and fraction.
       try:
         t = float(wds[1])
-      except ValueError,message:
+      except ValueError as message:
         print("Bad value, line ",linecount,"record: ",rec)
         t = 0.0
       crec.setssecs(t)
