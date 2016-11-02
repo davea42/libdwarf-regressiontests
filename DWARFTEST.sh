@@ -416,6 +416,12 @@ runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i -vvv
 runtest $d1 $d2  grumbach/test2.o -i -vvv 
 runtest $d1 $d2  grumbach/test_odb_ada_record_types12_pkg_.o -i -vvv 
 runtest $d1 $d2  grumbach/test4.o -i -vvv 
+# Testing DW_AT_GNU_numerator, DW_AT_GNU_denominator and 
+# DW_AT_GNU_bias DWARF attributes.
+runtest $d1 $d2  grumbach/test_biased.o -i -vvv 
+runtest $d1 $d2  grumbach/test_fixed.o -i -vvv 
+runtest $d1 $d2  grumbach/test_biased.o -ka
+runtest $d1 $d2  grumbach/test_fixed.o -ka
 
 
 # Testing SHF_COMPRESSED .debug* section reading.

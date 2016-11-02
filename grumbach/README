@@ -11,5 +11,7 @@ which (as sleb) is interpreted as 0xffffffc1
 (-63) due to the way sleb works.
 So we validate the leb checking.
 
+test_fixed.o test_biased.o are some ELF object files with the "new" DW_AT_GNU_numerator, DW_AT_GNU_denominator and DW_AT_GNU_bias DWARF attributes.
+
 david a.  Sept 7, 2016
 
