@@ -17,12 +17,23 @@ class urec:
   def uprint(self,h):
     print("%s u%6.2f s%6.2f w%6.2f %s " %(h, self._usecs,self._ssecs,self._wsecs,self._title))
 
+class sortable:
+  def __init__(self,ws,x):
+    self.ws = ws
+    self.x = x
+  def __lt__(self, other):
+    return ("%s" % (self.ws) < "%s" % (other.ws))
+
 def sort_class(mydata):
   """ Sort the list of objects by  zip
   """
-  auxiliary = [ (x._wsecs,x) for x in mydata ]
-  auxiliary.sort()
-  return [ x[1] for x in auxiliary ]
+  l = list(mydata)
+  auxiliary = [ (sortable(x._wsecs,x)) for x in l ]
+  y = sorted(auxiliary)
+  lo = []
+  for x in y:
+    lo += [x.x]
+  return lo
 
 
 def processfile():
@@ -44,7 +55,7 @@ def processfile():
   nzcount = 0
   allthree = "n"
   tcount = 0
-  intrec = "n"
+  inrec = "n"
   title=''
   crec = ''
   reclist = []
@@ -90,7 +101,7 @@ def processfile():
       try:
         t = float(wds[1])
       except ValueError as message:
-        print "Bad value, line ",linecount,"record: ",rec
+        print("Bad value, line ",linecount,"record: ",rec)
         t = 0.0
       totusecs = float(totusecs) + t
       crec.setusecs(t)

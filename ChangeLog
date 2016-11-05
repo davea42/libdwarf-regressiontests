@@ -1,3 +1,5 @@
+2016-11-04  David Anderson
+  * usertime.py: Fixed incomplete conversion to python3.
 2016-10-07  David Anderson
   * DWARFTEST.sh: Adds a test of sarubbo/test1112.crashes, a
     new test exposing a unique bug in handling a corrupted
