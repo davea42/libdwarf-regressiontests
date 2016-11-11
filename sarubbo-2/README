@@ -2,4 +2,16 @@ A set of test cases from
 Agostino Sarubbo.
 Fuzzed objects.
 
+ 
+
+
+with --enable-sanitize
+dwarf_leb.c:306:19: runtime error: negation of -9223372036854775808 cannot be 
+represented in type 'Dwarf_Signed' (aka 'long long'); cast to an unsigned type 
+to negate this value to itself
+
+
+TESTCASE: https://github.com/asarubbo/poc/blob/master/00050-libdwarf-negate-itself
+
+
 November 2, 2016

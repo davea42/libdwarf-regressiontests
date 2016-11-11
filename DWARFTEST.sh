@@ -387,6 +387,10 @@ runtest $d1 $d2 sarubbo-2/00025-libdwarf-heapoverflow-get_attr_value -a
 runtest $d1 $d2 sarubbo-2/00026-libdwarf-heapoverflow-dwarf_get_aranges_list -a
 runtest $d1 $d2 sarubbo-2/00027-libdwarf-heapoverflow-_dwarf_skim_forms -a
 
+# With pre-Nov 11 dwarf_leb.c there are undefined operations
+# in signed leb reading.
+runtest $d1 $d2 sarubbo-2/00050-libdwarf-negate-itself -a
+
 
 # This exposed a different off-end in abbrev reading.
 runtest $d1 $d2   sarubbo/1112.crashes -a
