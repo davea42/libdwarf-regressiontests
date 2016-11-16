@@ -1,0 +1,85 @@
+Test case
+
+Nov 14, 2016 from Puzzor (Shi Ji).
+
+# Description
+heap-buffer-overflow in dwarf_util.c:208 for val_ptr
+
+# Version
+bb9a3492ac5713bed9cf3ae58ddb7afa6e9e98f8
+(in regression tests here named  heap_buf_overflow.o)
+
+
+# ASAN Output
+<0> tag: 17 DW_TAG_compile_unit  name: "strstrnocase.c" FORM 0xe "DW_FORM_strp"
+<1> tag: 46 DW_TAG_subprogram  name: "is_strstrnocase" FORM 0xe "DW_FORM_strp"
+=================================================================
+==1666==ERROR: AddressSanitizer: heap-buffer-overflow on address 0xb5846db9 at pc 0x080b3a1b bp 0xbfa75d18 sp 0xbfa75d08
+READ of size 1 at 0xb5846db9 thread T0
+    #0 0x80b3a1a in _dwarf_get_size_of_val /home/puzzor/libdwarf-code/libdwarf/dwarf_util.c:208
+    #1 0x8056602 in _dwarf_next_die_info_ptr /home/puzzor/libdwarf-code/libdwarf/dwarf_die_deliv.c:1353
+    #2 0x8057f4b in dwarf_child /home/puzzor/libdwarf-code/libdwarf/dwarf_die_deliv.c:1688
+    #3 0x804b5fa in get_die_and_siblings simplereader.c:637
+    #4 0x804b65c in get_die_and_siblings simplereader.c:643
+    #5 0x804b3f3 in read_cu_list simplereader.c:611
+    #6 0x804aeae in main simplereader.c:533
+    #7 0xb6ffe275 in __libc_start_main (/lib/i386-linux-gnu/libc.so.6+0x18275)
+    #8 0x80491c0  (/home/puzzor/libdwarf-code/dwarfexample/simplereader+0x80491c0)
+
+0xb5846db9 is located 0 bytes to the right of 249-byte region [0xb5846cc0,0xb5846db9)
+allocated by thread T0 here:
+    #0 0xb727fae4 in __interceptor_malloc (/usr/lib/i386-linux-gnu/libasan.so.3+0xc3ae4)
+    #1 0xb71a9b98  (/usr/lib/i386-linux-gnu/libelf.so.1+0x9b98)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/puzzor/libdwarf-code/libdwarf/dwarf_util.c:208 in _dwarf_get_size_of_val
+Shadow bytes around the buggy address:
+  0x36b08d60: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x36b08d70: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x36b08d80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x36b08d90: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x36b08da0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x36b08db0: 00 00 00 00 00 00 00[01]fa fa fa fa fa fa fa fa
+  0x36b08dc0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x36b08dd0: 00 00 00 00 00 00 00 00 00 fa fa fa fa fa fa fa
+  0x36b08de0: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x36b08df0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x36b08e00: 00 fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Heap right redzone:      fb
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack partial redzone:   f4
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==1666==ABORTING
+
+
+
+
+# PoC
+refer to PoC
+
+
+
+# Report Timeline
+2016.11.15: Shi Ji(@Puzzor) discovered this issue
+
+# Credit
+Shi Ji(@Puzzor) of VARAS@IIE
+
+# Repro
+build with asan, run the poc with ./dwarfexample/simplereader poc

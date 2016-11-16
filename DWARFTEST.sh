@@ -381,6 +381,9 @@ runtest $d1 $d2   sarubbo/test2.crashes -a
 # Exposed failure to check off-end in abbreviation reading, corrupted dWARF.
 runtest $d1 $d2   sarubbo/test122.crashes -a
 
+# Object file die runs off end of die
+runtest $d1 $d2   puzzor/heap_buf_overflow.o -a
+
 # Fuzzed objects, each of which resulted in a specific out of bounds memory access.
 runtest $d1 $d2 sarubbo-2/00024-libdwarf-memalloc-do_decompress_zlib -a
 runtest $d1 $d2 sarubbo-2/00025-libdwarf-heapoverflow-get_attr_value -a
