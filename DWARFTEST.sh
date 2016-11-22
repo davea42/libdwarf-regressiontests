@@ -398,6 +398,11 @@ runtest $d1 $d2 sarubbo-2/00050-libdwarf-negate-itself -a
 # This exposed a different off-end in abbrev reading.
 runtest $d1 $d2   sarubbo/1112.crashes -a
 
+# The test case has a circular typedef.
+# It provokes various -ka warnings.
+runtest $d1 $d2 parodi/TestA2l.elf -a
+runtest $d1 $d2 parodi/TestA2l.elf -ka
+
 # Exposed failure to check DW_FORM_string in _dwarf_get_size_of_val(),
 # which is the real contribution of this fuzzed-object testcase.
 # Libelf as of Ubuntu 16.04  will try to malloc an absurd 
