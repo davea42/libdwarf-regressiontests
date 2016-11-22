@@ -1,0 +1,6 @@
+The elf test case is from 
+GHS C 2012.5.4
+and contains a circular definition.
+
+Thanks to Davide Parodi for the testcase.
+22 November 2016
