@@ -1,0 +1,8 @@
+
+empty.o has both .debug_str and .debug_str.dwo
+(and so on).  libdwarf does not yet handle this.
+
+libdwarf needs to handl this.
+
+Thanks to Phil Camp for providing this 
+test case.
