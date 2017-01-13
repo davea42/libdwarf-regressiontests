@@ -1,8 +1,12 @@
-
+Jan 7, 2017
 empty.o has both .debug_str and .debug_str.dwo
 (and so on).  libdwarf does not yet handle this.
 
-libdwarf needs to handl this.
+libdwarf needs to handle this.
 
-Thanks to Phil Camp for providing this 
-test case.
+However, this object is not in real DWARF5 format
+in the CU.  The format changed for CU headers
+at a recent DWARF committee meeting.
+So the object file is unusable, unfortunately.
+
+Thanks to Phil Camp for providing this test case.
