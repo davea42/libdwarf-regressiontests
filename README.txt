@@ -1,4 +1,4 @@
-This directory (dwarftest) is the base which is used for
+hhhhis directory (dwarftest) is the base which is used for
 regression testing of libdwarf.    It will probably only
 be usable on a POSIX compliant system (Unix or Linux or
 possibly Mac).
@@ -58,6 +58,20 @@ where some checks may be skipped, do:
       ./configure
       export NLIZE=y
       make
+
+
+======================================================================
+PASS 34297
+FAIL 12 (the 12  differences were due to a change in dwarf.h for DWARF5
+as of this test). Normally all will pass.
+The CPUs/cores in use are all in the general area near 3GHz.
+Run times vary of course.
+As of 31 Jan 2017:
+TIME Ubuntu 16.04 64:   1:20
+TIME Ubuntu 16.04 32:   2:17 Slower than it should be. Hardware?
+TIME FreeBSD 32bitVM:   1:20
+TIME FreeBSD 64bitVM:   1:15
+
 
      
       

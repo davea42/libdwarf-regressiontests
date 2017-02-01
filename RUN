@@ -1,3 +1,11 @@
+
+echo "======New version"
+/home/davea/dwarf/code/dwarfdump/dwarfdump  -a liu/NULLdereference0519.elf >junkn
+echo "======Old version"
+./dwarfdump.O  -a liu/NULLdereference0519.elf  >junko 
+exit 0
+
+
 #valgrind --leak-check=full --log-file=./vg.log ./dwarfdump.O -i -M diederen3/pc_dwarf_bad_name3.elf
 exit 0
 
