@@ -1,4 +1,15 @@
-Emre Kultursay provided tese tests March 4.
+Emre Kultursay provided these tests March 4, 2017.
 
 There were problems with location lists (in dwarf_loc2.c)
 which he noticed via these testcases.
+
+Before March 4 the result of
+dwarfdump -i  class_64_opt_fpo_split.dwp
+
+was
+dwarf_get_loclist_c:  DW_DLE_POINTER_SECTION_UNKNOWN (344)
+
+After the fix the run proceeds to a normal end.
+
+
+

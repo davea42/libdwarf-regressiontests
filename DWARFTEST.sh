@@ -344,6 +344,11 @@ rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
 rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h
 
 
+# Before 4 March 2017 would terminate early with error.
+runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a
+# the fix had no effect on this, which works ok.
+runtest $d1 $d2   emre6/class_64_opt_fpo_split -a
+
 
 echo "=====START   hughes2 runtest.sh"
 cd hughes2
