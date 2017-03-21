@@ -45,6 +45,7 @@ then
 fi
 start=`date`
 echo "start $start"
+stsecs=`date '+%s'`
 if [ $dodd = "y" ]
 then
   echo begin test dd
@@ -52,8 +53,15 @@ then
   chkres $? "Failure in DWARFTEST.sh. Possibly coredump new dwarfdump? "
   chkfail ALLdd "running test dd"
 fi
-
-echo "start $start"
+ndsecs=`date '+%s'`
 endt=`date`
+echo "start $start"
 echo "end   $endt"
+showminutes() {
+   t=`expr  \( $2 \- $1 \+ 29  \) \/ 60`
+   echo "Run time in minutes: $t"
+}
+showminutes $stsecs $ndsecs
+
+
 exit 0
