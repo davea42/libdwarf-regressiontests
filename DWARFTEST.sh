@@ -343,6 +343,15 @@ rm -f  dwarfnames-t.c
 rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
 rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h
 
+# These all involved bounds violations so should error off
+# fairly early.
+runtest $d1 $d2   marcel/crash1 -a
+runtest $d1 $d2   marcel/crash2 -a
+runtest $d1 $d2   marcel/crash3 -a
+runtest $d1 $d2   marcel/crash4 -a
+runtest $d1 $d2   marcel/crash5 -a
+runtest $d1 $d2   marcel/crash6 -a
+runtest $d1 $d2   marcel/crash7 -a
 
 # Before 4 March 2017 would terminate early with error.
 runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a

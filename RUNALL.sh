@@ -31,8 +31,6 @@ chkfail () {
     echo "Here are the last few lines:"
     tail -n 5 $f
     endt=`date`
-    echo "exit with error at $endt"
-    exit 2
   else
     echo "PASS $2"
   fi
