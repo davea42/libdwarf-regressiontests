@@ -49,8 +49,6 @@ then
 else
 case $1 in
   dd ) d1=./dwarfdump.O ;  d2=./dwarfdump ; type=dd ;;
-  dd2 ) d1=./dwarfdump2.O ; d2=./dwarfdump2 ; type=dd2 ;;
-  ddtodd2 ) d1=./dwarfdump ; d2=./dwarfdump2 ; type=ddtodd2 ;;
   * )  echo BAD OPTION NO TEST RUN ; exit 1 ;;
 esac
 fi
@@ -189,12 +187,7 @@ stripx() {
 unifyddname () {
   nstart=$1
   nend=$2
-  t1=tmpuerr1
-  t2=tmpuerr2
-  sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart >$t1
-  sed -e 'sx.\/dwarfdump2.Ox.\/dwarfdumpx' <$t1 >$t2
-  sed -e 's/.\/dwarfdump2/.\/dwarfdump/' <$t2 >$nend
-  rm -f $t1 $t2 $t3
+  sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart > $nend
 }
 
 totaltestcount=0
@@ -252,8 +245,11 @@ runtest () {
         echo "======" $tmplist $targ >> $ntimeout
         $wrtimen $newdw  $* $targ  1>tmp2a 2>tmp2erra
         echo "new done " `date`
-        unifyddname tmp2a tmp2
-        unifyddname tmp2erra tmp2err
+        # No need to unify for new dd name.
+        #unifyddname tmp2a tmp2
+        mv tmp2a tmp2
+        #unifyddname tmp2erra tmp2err
+        mv tmp2erra tmp2err
         date
         if [ -f core ]
         then
