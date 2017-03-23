@@ -55,7 +55,6 @@ rm -f  dwarfnames-t.c
 rm -f  dwarfnames-t
 rm -f  legendre/frame_test1
 rm -f  legendre/frame_test2
-rm -f dwarfdump2
 rm -f OF*
 rm -f dwarfdump
 rm -f dwarfdumpW
