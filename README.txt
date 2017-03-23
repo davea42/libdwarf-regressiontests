@@ -13,8 +13,8 @@ version.  Compare the resulting text outputs and evaluate
 the differences.
 
 That comparison is only meaningful if one actually has
-confidence that the previous version of dwarfdump and
-dwarfdump2 is present and working correctly, but in spite of
+confidence that the previous version of dwarfdump
+present and working correctly, but in spite of
 this deficiency these tests seem adequate.
 
 For a few tests that comparison simply does not work.  In a few
@@ -91,19 +91,16 @@ directory name is not important):
    libdwarf
    dwarfgen
    dwarfdump
-   dwarfdump2
 
 README.txt:  This file.
 
 DWARFTEST.sh:  Runs a specific test set.
 
-RUNALL.sh:  Runs 3 tests, running DWARFTEST.sh 3 times.  
-   First comparing dwarfdump.O output vs 
-   the new dwarfdump.   Second comparing dwarfdump2.O output vs
-   the new dwarfdump2.   Third comparing the new dwarfdump vs
-   the new dwarfdump2.   This third comparison is perhaps
-   conceptually not needed, but it seems worthwhile to keep
-   dwarfdump2 and dwarfdump output identical.
+RUNALL.sh:  Runs RUNALL.sh once.
+   Comparing dwarfdump.O output vs the new dwarfdump.
+   (It did more when dwarfdump2 existed, but dwarfdump2
+   was no longer needed once tsearch was
+   reimplemented for libdwarf so it is gone).
 
 CLEANUP:  Cleans up all the temporary results from tests.
    Does not clean out files created by configure here.
