@@ -184,10 +184,14 @@ stripx() {
 }
 # Avoid spurious differences because of the names of the
 # various dwarfdump versions being tested.
+# dwarfdump.c fixes the dwarfdump.O to be dwarfdump now.
+# Running sed on all the files took 50 minutes
+# so getting rid of the sed is very worthwhile.
 unifyddname () {
-  nstart=$1
-  nend=$2
-  sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart > $nend
+  mv $1 $2
+  #nstart=$1
+  #nend=$2
+  #sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart > $nend
 }
 
 totaltestcount=0
@@ -246,10 +250,8 @@ runtest () {
         $wrtimen $newdw  $* $targ  1>tmp2a 2>tmp2erra
         echo "new done " `date`
         # No need to unify for new dd name.
-        #unifyddname tmp2a tmp2
-        mv tmp2a tmp2
-        #unifyddname tmp2erra tmp2err
-        mv tmp2erra tmp2err
+        unifyddname tmp2a tmp2
+        unifyddname tmp2erra tmp2err
         date
         if [ -f core ]
         then

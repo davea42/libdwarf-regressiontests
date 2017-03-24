@@ -1,3 +1,8 @@
+2017-03-24  David Anderson
+  * DWARFTEST.sh: unifyddname now just renames files. No
+    need for sed to remove the .O from the program name
+    dwarfdump prints.  See code/dwarfdump/NEWS or
+    code/dwarfdump/ChangeLog.
 2017-03-22  David Anderson
   * DWARFTEST.sh: Added tests for marcel directory testcases.
   * RUNALL.sh: Added code to compute number of minutes wall clock

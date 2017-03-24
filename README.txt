@@ -95,6 +95,14 @@ directory name is not important):
 README.txt:  This file.
 
 DWARFTEST.sh:  Runs a specific test set.
+   This relies on having dwarfdump alter the program_name
+   it gets from argv[0] so that /dwarfdump.O becomes
+   /dwarfdump  Doing this avoids sed commands (see
+   function unifyddname() in DWARFTEST.sh) and
+   reduces DWARFTEST.sh runtime by 70% compared
+   to using sed. It's not that sed is slow, it is simply
+   that some of the test output files are very large.
+  
 
 RUNALL.sh:  Runs RUNALL.sh once.
    Comparing dwarfdump.O output vs the new dwarfdump.
