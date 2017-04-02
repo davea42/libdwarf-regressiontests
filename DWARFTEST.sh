@@ -162,7 +162,6 @@ liu/OOB0505_01.elf
 liu/OOB0505_02_02.elf
 liu/OOB0505_02.elf
 liu/OOB0517_01.elf
-liu/OOB0517_02.elf
 liu/OOB0517_03.elf
 liu/OOB_read3_02.elf
 liu/OOB_read3.elf
@@ -341,6 +340,13 @@ rm -f  dwarfnames-t.c
 rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
 rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h
 
+# This is an object with both dwo and non-dwo sections.
+# It's not correct, but it at least has both groups
+# The first should pick up group 1.
+runtest $d1 $d2   camp/empty.o -a
+# The second should show a little bit.
+runtest $d1 $d2   camp/empty.o -a -x groupnumber=2
+
 # These all involved bounds violations so should error off
 # fairly early.
 runtest $d1 $d2   marcel/crash1 -a
@@ -495,7 +501,17 @@ runtest $d1 $d2  liu/OOB0505_01.elf -a
 runtest $d1 $d2  liu/OOB0505_02_02.elf -a
 runtest $d1 $d2  liu/OOB0505_02.elf -a
 runtest $d1 $d2  liu/OOB0517_01.elf -a
+
+# OOB0517_02.elf has a bogus non-dwo section name
+# Because of the bogosity in the sections
+# one cannot run all tests on this, nothing
+# useful happens. 
 runtest $d1 $d2  liu/OOB0517_02.elf -a
+# There is a bogus .debug_str section, lets show it.
+runtest $d1 $d2  liu/OOB0517_02.elf -s
+# This skips group 1 , dwo (group 2) is more complete.
+runtest $d1 $d2  liu/OOB0517_02.elf -a -x groupnumber=2
+
 runtest $d1 $d2  liu/OOB0517_03.elf -a
 runtest $d1 $d2  liu/OOB_read3_02.elf -a
 runtest $d1 $d2  liu/OOB_read3.elf -a
