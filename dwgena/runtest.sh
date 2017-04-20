@@ -3,9 +3,10 @@
 # So it's testing the new dwarfgen and a new dwarfdump.
 
 dd=$1
+dg=../dwarfgen
 
-echo ../dwarfgen -t obj -c 0  -o junk1.bin ./dwarfgen-bin 
-../dwarfgen -t obj -c 0  -o junk1.bin ./dwarfgen-bin >junkgen.out
+echo $dgn -t obj -c 0  -o junk1.bin ./dwarfgen-bin 
+$dg -t obj -c 0  -o junk1.bin ./dwarfgen-bin >junkgen.out
 echo $dd -a junk1.bin 
 $dd -a junk1.bin >junk1.new
 zcat test1.base.gz >test1.base
@@ -28,7 +29,7 @@ then
     echo "update via: mv junk2.new test2.base ; gzip test2.base"
     exit 1
 fi
-../dwarfgen -t obj -c 10 -o junk3.bin ./dwarfgen-bin >junkgen.out
+$dg -t obj -c 10 -o junk3.bin ./dwarfgen-bin >junkgen.out
 echo $dd -a junk3.bin 
 $dd -a junk3.bin >junk3.new
 zcat test3.base.gz >test3.base
@@ -52,8 +53,8 @@ then
 fi
 
 # This has .debug_pubnames data.
-echo ../dwarfgen -t obj -c 2 -o junk5.bin ./dwarfdump-bin 
-../dwarfgen -t obj -c 2 -o junk5.bin ./dwarfdump-bin >junkgen.out
+echo $dg -t obj -c 2 -o junk5.bin ./dwarfdump-bin 
+$dg -t obj -c 2 -o junk5.bin ./dwarfdump-bin >junkgen.out
 echo $dd -a -y -p junk5.bin 
 $dd -a -y -p junk5.bin >junk5.new
 zcat test5.base.gz >test5.base
