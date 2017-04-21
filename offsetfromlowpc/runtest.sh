@@ -80,7 +80,7 @@ fi
 diff basestrpgenout  $t9
 if [ $? -ne 0 ]
 then
-    echo FAIL diff basestrpiM $ta. Object gen is $tz
+    echo FAIL diff basestrpgenout $t9. Object gen is $tz
     echo FAIL offsetfromlowpc/runtest.sh Generating strp strings
     echo "to update baseline do: mv $t9 basestrpgenout"
     exit 1

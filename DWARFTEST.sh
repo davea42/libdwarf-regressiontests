@@ -78,6 +78,15 @@ chkres () {
     failcount=`expr $failcount + 1`
   fi
 }
+chkresn () {
+  if [ $1 = 0 ]
+  then
+    goodcount=`expr $goodcount + $3`
+  else
+    echo FAIL  $2
+    failcount=`expr $failcount + $3`
+  fi
+}
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
@@ -832,13 +841,15 @@ chkres $? 'check harmless-error functionality'
 echo "=====START   dwgena/runtest.sh"
 cd dwgena
 sh runtest.sh ../$d2
-chkres $? 'dwgena/runtest.sh'
+r=$?
+chkresn $r 'dwgena/runtest.sh' 9
 cd ..
 
 echo "=====START   frame1/runtest.sh"
 cd frame1
 sh runtest.sh $cbase
-chkres $? frame1
+r=$?
+chkres $r frame1
 cd ..
 
 if [ $NLIZE = 'n' ]
@@ -858,7 +869,8 @@ fi
 echo "=====START   sandnes2/runtest.sh"
 cd sandnes2
 sh runtest.sh
-chkres $?  sandnes2
+r=$?
+chkres $r  sandnes2
 cd ..
 
 if [ $NLIZE = 'n' ]
@@ -866,7 +878,8 @@ then
 echo "=====START   legendre/runtest.sh"
 cd legendre
 sh runtest.sh $cbase
-chkres $?  legendre
+r=$?
+chkres $r  legendre
 cd ..
 else
 echo "=====SKIP   legendre/runtest.sh NLIZE as it has leaks"
