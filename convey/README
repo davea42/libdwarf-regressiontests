@@ -1,0 +1,18 @@
+Test case supplied by Christian Convey.
+
+Ubuntu 17.04 gcc, by default, creates COMDAT groups
+in this instance.
+
+Convey found that "-gstrict-dwarf"
+removes use of COMDAT. Here we have the COMDAT
+version for testing dwarfdump.
+
+At this writing I'm not sure how to access the COMDAT
+  .debug_macro data .   Each comdat just has a single
+  .debug_macro section.
+One would expect a COMDAT group to be a complete set,
+like .debug_info and .debug_macro . Maybe. 
+But that is not what gcc is emitting.
+
+May 13, 2017
+DavidA.

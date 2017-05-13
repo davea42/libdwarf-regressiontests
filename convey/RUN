@@ -1,0 +1,7 @@
+
+/home/davea/dwarf/code/dwarfdump/dwarfdump -i testesb.c.o >junki
+
+/home/davea/dwarf/code/dwarfdump/dwarfdump -x groupnumber=3  -m testesb.c.o  >junk3
+
+#echo r -i testesb.c.o
+#gdb /home/davea/dwarf/code/dwarfdump/dwarfdump
