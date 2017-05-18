@@ -553,7 +553,6 @@ runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a
 runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a  -vvv
 
 runtest $d1 $d2 irixn32/dwarfdump -i -x name=./dwarfdump.conf -x abi=mips-irix2 -g
-runtest $d1 $d2 comdatex/example.o -i -g
 
 # Test support for DW_FORM_GNU_strp_alt
 runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=hughes/krb5-1.11.3-38.fc20.x86_64 
@@ -599,6 +598,8 @@ runtest $d1 $d2 williamson/heap_vulnerability_20150201 -i
 
 # This should not coredump dwarfdump. Did as of Jan 1, 2015
 runtest $d1 $d2 comdatex/example.o -i
+runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=2
+runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 
 # This is a .dwp file with .debug_cu_index and .debug_tu_index.
 # Results are so large (500MB) it is unwise to run all options

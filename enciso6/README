@@ -3,5 +3,8 @@ The simple test code here has location lists with begin-range
 entries.  So far the only example in the tests of such
 begin-range entries.
 
+An oddity is that the big-endian object has SHT_GROUP
+data with content in little-endian form. 
+
 Provided by Carlos Alberto Enciso for the test suite.   
 Jan 23, 2012

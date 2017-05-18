@@ -1,4 +1,65 @@
 
+#i="-a -a sarubbo/04.hangs"
+#i="-a -a sarubbo/03.hangs"
+i=" -Ea  enciso5/sample_S_option.o"
+i="-p liu/OOB0505_01.elf"
+#readelf -S  $i
+./dwarfdump.O  $i >junko
+./dwarfdump  $i >junkn
+exit 0
+
+./dwarfdump.O -a  emre6/class_64_opt_fpo_split.dwp >junko
+/tmp/dwarfdump   -a  emre6/class_64_opt_fpo_split.dwp >junkn
+exit 0
+
+
+./dwarfdump.O -l mucci/stream.o >junko
+/tmp/dwarfdump -l mucci/stream.o >junkn
+/tmp/dwarfdump -a mucci/stream.o >junka
+readelf -S mucci/stream.o
+
+
+exit 0
+/tmp/dwarfdump -a  camp/empty.o
+#dwarfdump -b DW201609-001/test1.o
+/tmp/dwarfdump -i DW201609-001/test1.o
+readelf -S DW201609-001/test1.o
+echo info
+hxdump -s 0x7c -l 0xb1 DW201609-001/test1.o
+echo abbrev
+hxdump -s 0x12d -l 0x60 DW201609-001/test1.o
+#./dwarfdump.O -i DW201609-001/test1.o
+/tmp/dwarfdump -i DW201609-001/test1.o >junkn
+
+/tmp/dwarfdump.O -i DW201609-001/test1.o >junko
+
+exit 0
+#hxdump -s 0x1fe -l 0xa3 DW201609-001/test1.o
+#/tmp/dwarfdump -i DW201609-001/test1.o
+echo b dwarf_formstring
+echo r -i DW201609-001/test1.o
+gdb /tmp/dwarfdump 
+exit 0
+
+#/tmp/dwarfdump -a -x groupnumber=3  emre/input.o
+#valgrind --leak-check=full --log-file=./vg.log /tmp/dwarfdump -a -g -x groupnumber=3 comdatex/example.o
+#readobj -r -t comdatex/example.o
+#readelf -s comdatex/example.o
+#readelf -r comdatex/example.o
+#readelf --debug-dump=info comdatex/example.o
+#readelf -S comdatex/example.o
+#/tmp/dwarfdump -a -g -x noprintsectiongroups -x groupnumber=4 comdatex/example.o 
+#echo b _dwarf_make_CU_Context
+#echo r -a -g -x groupnumber=3 comdatex/example.o 
+#gdb /tmp/dwarfdump 
+#/tmp/dwarfdump -a -g -x groupnumber=3 comdatex/example.o 
+#/tmp/dwarfdump -a -g -x groupnumber=4 comdatex/example.o 
+#exit 0
+#/tmp/dwarfdump -a  enciso6/ranges.o
+#echo r -c  enciso6/ranges.o
+#gdb /tmp/dwarfdump 
+exit 0
+
 echo "======New version"
 /home/davea/dwarf/code/dwarfdump/dwarfdump  -a liu/NULLdereference0519.elf >junkn
 echo "======Old version"
