@@ -1,22 +1,28 @@
 
-#i="-a -a sarubbo/04.hangs"
-#i="-a -a sarubbo/03.hangs"
-i=" -Ea  enciso5/sample_S_option.o"
-i="-p liu/OOB0505_01.elf"
-#readelf -S  $i
-./dwarfdump.O  $i >junko
-./dwarfdump  $i >junkn
+#valgrind --leak-check=full --show-leak-kinds=all --log-file=./vg.log /tmp/dwarfdump -a -g -x groupnumber=3 comdatex/example.o
+i="sarubbo/04.hangs"
+# sarubbo/03.hangs has bad debug_abbrev size
+i=" sarubbo/03.hangs"
+#i="enciso5/sample_S_option.o"
+# liu/OOB0505_01.elf has  bad section names and size
+#i="liu/OOB0505_01.elf"  
+#i="camp/empty.o"
+#i="mucci/stream.o"
+#i="DW201609-001/test1.o"
+readelf  -W -S  $i
+/tmp/dwarfdump  -a $i >junkn
+#./dwarfdump  -a $i >junkn
 exit 0
 
-./dwarfdump.O -a  emre6/class_64_opt_fpo_split.dwp >junko
-/tmp/dwarfdump   -a  emre6/class_64_opt_fpo_split.dwp >junkn
-exit 0
+#./dwarfdump.O -a  emre6/class_64_opt_fpo_split.dwp >junko
+#/tmp/dwarfdump   -a  emre6/class_64_opt_fpo_split.dwp >junkn
+#exit 0
 
 
-./dwarfdump.O -l mucci/stream.o >junko
-/tmp/dwarfdump -l mucci/stream.o >junkn
-/tmp/dwarfdump -a mucci/stream.o >junka
-readelf -S mucci/stream.o
+#./dwarfdump.O -l mucci/stream.o >junko
+#/tmp/dwarfdump -l mucci/stream.o >junkn
+#/tmp/dwarfdump -a mucci/stream.o >junka
+#readelf -S mucci/stream.o
 
 
 exit 0

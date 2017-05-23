@@ -1,4 +1,5 @@
 #!/bin/sh
+trap "echo Exit testing due to signal ;  rm -f /tmp/dwbc.$$ /tmp/dwba.$$ /tmp/dwbb.$$ ; exit 1 " 2
 #
 echo 'Starting dwarftesth' `date`
 # Here do not use DWARFTEST, we do not want to match the grep from ps
@@ -365,6 +366,10 @@ runtest $d1 $d2   marcel/crash4 -a
 runtest $d1 $d2   marcel/crash5 -a
 runtest $d1 $d2   marcel/crash6 -a
 runtest $d1 $d2   marcel/crash7 -a
+
+# Got DW_DLE_RELOC_SECTION_RELOC_TARGET_SIZE_UNKNOWN due to
+# presence of unexpected R_X86_64_PC32
+runtest $d1 $d2   convey/foo.g3-O0-strictdwarf.o -F
 
 # Before 4 March 2017 would terminate early with error.
 runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a

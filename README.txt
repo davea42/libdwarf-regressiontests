@@ -1,11 +1,28 @@
-hhhhis directory (dwarftest) is the base which is used for
+This directory (dwarftest) is the base which is used for
 regression testing of libdwarf.    It will probably only
 be usable on a POSIX compliant system (Unix or Linux or
 possibly Mac).
 
-Its primary problem is a lack of testing of the
+Here are some tests that relate to specific features
+of groups:
+  groups split dw:
+  camp/empty.o
+
+  COMDAT:
+  comdatex/example.o
+  emre/input.o
+
+  all dwo:
+  emre6/class_64_opt_fpo_split.dwp
+  liu/NULLdereference0519.elf
+  liu/OOB_read4.elf
+  emre3/a.out.dwp
+  debugfissionb/ld-new.dwp
+  debugfission/... test 2
+
+A primary problem is insufficient testing of the
 dwarf-generation routines.  The libdwarf consumer functions
-are pretty well tested.
+are nearly all tested here.
 
 The basic approach is simple: run each test with a
 newly-compiled dwarfdump and with the previous known-good
@@ -27,6 +44,17 @@ In addition to the packages needed to build dwarfdump etc,
 the GNU binutils-dev or equivalent must be installed to get
 bfd.h in a visible standard header location (the 'dwarfextract'
 test will fail without GNU binutils-dev).
+
+A source of variation in output is libelf, since 
+libelf traditionally does a poor job of noticing
+invalid Elf and some versions are
+better than others.  Libelf 0.8.13 does a little better
+but is still pretty weak. For example it adds
+offset to size before checking for a value >
+the size of the entire file so an overflow in the
+add would result in letting the read proceed.
+Freebsd libelf is a bit better than Ubuntu
+in testing for legitimate Elf.
 
 To run a full test:
 	./configure

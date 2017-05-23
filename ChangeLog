@@ -1,3 +1,21 @@
+2017-05-23  David Anderson
+Added test with a 'new' relocation seen for the first time.
+  DWARFTEST.sh
+
+Added words about libelf and naming files with
+special and interesting characteristics relating
+to groups.
+  README.txt
+
+Nothing special, just examples.
+  RUN
+
+New baselines with Group info present.
+Should have been in a previous update!
+  debugfission/archivedwo-iMvvv.base.gz
+  debugfission/archivedwo.base.gz
+  debugfission/targetdwo.base.gz
+
 2017-03-24  David Anderson
   * DWARFTEST.sh: unifyddname now just renames files. No
     need for sed to remove the .O from the program name
