@@ -42,7 +42,7 @@ goodcount=0
 failcount=0
 . ./BASEFILES
 cbase=$libdw
-echo "dadebug" $cbase
+echo "our code source is " $cbase
 if [ $# -eq 0 ]
 then
   d1=./dwarfdump.O
