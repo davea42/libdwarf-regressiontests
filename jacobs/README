@@ -1,0 +1,9 @@
+
+
+I meant to get this to you yesterday.  
+I built test.c with GCC 5.4 on Solaris/SPARC
+using "gcc -g -c -m32 test.c"
+Thanks,
+    -Norm Jacobs
+
+June 28,2017

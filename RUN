@@ -1,4 +1,17 @@
 
+
+#for i in emre3/main.o k10m/main_knc.o marinescu/stream.o.test shihhuangti/tcombined.o liu/HeapOverflow0513.elf
+#do
+#  readelf -S $i
+#  ./dwarfdump -o $i >junkn
+#  ./dwarfdump.O -o $i >junko
+#  fldiff junko junkn
+#done
+
+#rm vg.log
+#readelf -S comdatex/example.o
+valgrind  --leak-check=full --show-leak-kinds=all --log-file=./vg.log ./dwarfdump -E -o  liu/HeapOverflow0513.elf
+exit 1
 #valgrind --leak-check=full --show-leak-kinds=all --log-file=./vg.log /tmp/dwarfdump -a -g -x groupnumber=3 comdatex/example.o
 i="sarubbo/04.hangs"
 # sarubbo/03.hangs has bad debug_abbrev size
