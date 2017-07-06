@@ -324,6 +324,10 @@ runtest () {
 }
 # end 'runtest'
 
+# Vulnerability CVE-2017-9998 in libdwarf
+runtest $d1 $d2   wolff/POC1 -a
+runtest $d1 $d2   wolff/POC1 -b
+
 echo "=====START   test gennames -t and -s same output"
 
 # Testing that gennames -t and -s generate the same results.
