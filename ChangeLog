@@ -1,17 +1,25 @@
+2017-08-22  David Anderson
+  * dwarfdump-i386-freebsd.O,dwarfdump-x86_64-freebsd.O: The old
+    FreeBSD 9 versions simply won't run on FreeBSD 11.1.
+    So now we start afresh with a new FreeBSD 11.1
+    environment.
+  * dwgena/runtest.sh: FreeBSD 11.1 has a one-second-different
+    idea of what ctime(&x) means where x = 0 as compared
+    to Linux. This papers over that irrelevant (to libdwarf) difference.
 2017-05-23  David Anderson
-Added test with a 'new' relocation seen for the first time.
+  Added test with a 'new' relocation seen for the first time.
   DWARFTEST.sh
 
-Added words about libelf and naming files with
-special and interesting characteristics relating
-to groups.
-  README.txt
+  Added words about libelf and naming files with
+  special and interesting characteristics relating
+  to groups.
+    README.txt
 
-Nothing special, just examples.
-  RUN
+  Nothing special, just examples.
+    RUN
 
-New baselines with Group info present.
-Should have been in a previous update!
+  New baselines with Group info present.
+  Should have been in a previous update!
   debugfission/archivedwo-iMvvv.base.gz
   debugfission/archivedwo.base.gz
   debugfission/targetdwo.base.gz
