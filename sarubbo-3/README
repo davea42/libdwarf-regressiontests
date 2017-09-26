@@ -1,0 +1,64 @@
+
+This from Agostino Sarubbo on  19 September 2017.
+
+ dwarfdump-asan -a -b -c 1.crashes.bin 
+
+.debug_info
+
+.debug_pubnames
+
+Printing location lists with -c is no longer supported
+...
+       <0x00000107>              DW_AT_prototyped            DW_FORM_flag_present
+       <0x00000109>              DW_AT_declaration           DW_FORM_flag_present
+<   22><0x0000010d><code:   0> Abbrev 0: null abbrev entry
+=================================================================
+==20023==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6120000002d0 at pc 0x000000585eb1 bp 0x7ffdd378dd90 sp 0x7ffdd378dd88
+READ of size 1 at 0x6120000002d0 thread T0
+    #0 0x585eb0 in dwarf_get_abbrev /tmp/dwarf-20170709/libdwarf/dwarf_abbrev.c:127:33
+    #1 0x529ce9 in print_abbrevs /tmp/dwarf-20170709/dwarfdump/print_abbrevs.c:80:21
+    #2 0x5178f6 in process_one_file /tmp/dwarf-20170709/dwarfdump/dwarfdump.c:1301:9
+    #3 0x5178f6 in main /tmp/dwarf-20170709/dwarfdump/dwarfdump.c:567
+    #4 0x7f93afb13680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+    #5 0x41a518 in _start (/usr/bin/dwarfdump-asan+0x41a518)
+
+0x6120000002d0 is located 0 bytes to the right of 272-byte region [0x6120000001c0,0x6120000002d0)
+allocated by thread T0 here:
+    #0 0x4d8708 in malloc /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_malloc_linux.cc:67
+    #1 0x7f93b0beecc7 in __libelf_set_rawdata_wrlock /var/tmp/portage/dev-libs/elfutils-0.169-r1/work/elfutils-0.169/libelf/elf_getdata.c:329
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /tmp/dwarf-20170709/libdwarf/dwarf_abbrev.c:127:33 in dwarf_get_abbrev
+Shadow bytes around the buggy address:
+  0x0c247fff8000: fa fa fa fa fa fa fa fa fd fd fd fd fd fd fd fd
+  0x0c247fff8010: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c247fff8020: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fa fa
+  0x0c247fff8030: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c247fff8040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c247fff8050: 00 00 00 00 00 00 00 00 00 00[fa]fa fa fa fa fa
+  0x0c247fff8060: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff8070: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff8080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff8090: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c247fff80a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==20023==ABORTING
+Aborted
+

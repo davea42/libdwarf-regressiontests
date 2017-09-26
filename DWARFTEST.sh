@@ -330,6 +330,8 @@ runtest $d1 $d2   wolff/POC1 -b
 
 echo "=====START   test gennames -t and -s same output"
 
+runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b -c 
+
 # Testing that gennames -t and -s generate the same results.
 ./gennames -s -i $cbase/libdwarf -o .
 chkres $?  gennames-build-s-check
