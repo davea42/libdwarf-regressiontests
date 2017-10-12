@@ -1,0 +1,65 @@
+==21730==ERROR: AddressSanitizer: heap-use-after-free on address 0x7fd2df080810 at pc 0x000000545b98 bp 0x7ffe14f88c50 sp 0x7ffe14f88c48
+READ of size 8 at 0x7fd2df080810 thread T0
+    #0 0x545b97 in print_attributes_encoding /tmp/code/dwarfdump/print_die.c:4624:50
+    #1 0x51913c in process_one_file /tmp/code/dwarfdump/dwarfdump.c:1376:9
+    #2 0x51913c in main /tmp/code/dwarfdump/dwarfdump.c:573
+    #3 0x7fd2e1423680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+    #4 0x41a3c8 in _start (/usr/bin/dwarfdump-asan-git+0x41a3c8)
+
+0x7fd2df080810 is located 16 bytes inside of 196608-byte region [0x7fd2df080800,0x7fd2df0b0800)
+freed by thread T0 here:
+    #0 0x4d83f0 in __interceptor_cfree.localalias.0 /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_malloc_linux.cc:55
+    #1 0x545b21 in print_attributes_encoding /tmp/code/dwarfdump/print_die.c:4682:9
+    #2 0x51913c in process_one_file /tmp/code/dwarfdump/dwarfdump.c:1376:9
+    #3 0x51913c in main /tmp/code/dwarfdump/dwarfdump.c:573
+    #4 0x7fd2e1423680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+
+previously allocated by thread T0 here:
+    #0 0x4d87d0 in calloc /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_malloc_linux.cc:76
+    #1 0x548eab in check_attributes_encoding /tmp/code/dwarfdump/print_die.c:4552:56
+    #2 0x548eab in get_attr_value /tmp/code/dwarfdump/print_die.c:5068
+    #3 0x53cb98 in print_attribute /tmp/code/dwarfdump/print_die.c:3382:13
+    #4 0x5387e5 in print_one_die /tmp/code/dwarfdump/print_die.c:1471:38
+    #5 0x5363d4 in print_die_and_children_internal /tmp/code/dwarfdump/print_die.c:1055:36
+    #6 0x53463b in print_die_and_children_internal /tmp/code/dwarfdump/print_die.c:1152:13
+    #7 0x532f79 in print_die_and_children /tmp/code/dwarfdump/print_die.c:927:5
+    #8 0x532f79 in print_one_die_section /tmp/code/dwarfdump/print_die.c:837
+    #9 0x52e94a in print_infos /tmp/code/dwarfdump/print_die.c:372:16
+    #10 0x5171ec in process_one_file /tmp/code/dwarfdump/dwarfdump.c:1268:9
+    #11 0x5171ec in main /tmp/code/dwarfdump/dwarfdump.c:573
+    #12 0x7fd2e1423680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+
+SUMMARY: AddressSanitizer: heap-use-after-free /tmp/code/dwarfdump/print_die.c:4624:50 in print_attributes_encoding
+Shadow bytes around the buggy address:
+  0x0ffadbe080b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0ffadbe080c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0ffadbe080d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0ffadbe080e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0ffadbe080f0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+=>0x0ffadbe08100: fd fd[fd]fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0ffadbe08110: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0ffadbe08120: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0ffadbe08130: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0ffadbe08140: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0ffadbe08150: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==21730==ABORTING
+Aborted

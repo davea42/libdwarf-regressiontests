@@ -1,0 +1,11 @@
+
+Agostino Sarubbo  provides the test case here.
+   dwarfdump -ka  libresolve.a
+dwarfdump creates, then frees a table and re-uses it later
+on another .o.  Oops.
+
+stacktrace.txt has the analyzer output.
+This is the first archive testcase in the regression tests (oops,
+this sort of test should have existed all along!).
+
+October 12, 2017

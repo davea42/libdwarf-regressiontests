@@ -91,6 +91,7 @@ chkresn () {
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
+sarubbo-4/libresolv.a
 jacobs/test.o
 klingler/dwarfgen_zdebug
 klingler/test_with_zdebug
