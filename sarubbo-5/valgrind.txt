@@ -1,0 +1,135 @@
+*** DWARF CHECK: Abbrev code 6979321855 skips up by 6979321838 from last abbrev code of 17: Questionable abbreviation code. ***
+
+CU Name = <unknown>
+CU Producer = "<CU-missing-DW_AT_producer>"
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+==14944== Warning: set address range perms: large range [0x15a06028, 0x25a06058) (noaccess)
+==14944== Warning: set address range perms: large range [0x79e3b040, 0x99e3b040) (undefined)
+==14944== Warning: set address range perms: large range [0x25a07028, 0x45a07058) (noaccess)
+==14944== Warning: set address range perms: large range [0xd9e3c040, 0x119e3c040) (undefined)
+==14944== Warning: set address range perms: large range [0x59e3b028, 0x99e3b058) (noaccess)
+==14944== Invalid write of size 8
+==14944==    at 0x4C328A7: memset (vg_replace_strmem.c:1239)
+==14944==    by 0x414332: get_abbrev_array_info (print_abbrevs.c:345)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944==  Address 0x80000000 is 639,389,632 bytes inside a block of size 1,073,741,824 free'd
+==14944==    at 0x4C2E12F: realloc (vg_replace_malloc.c:785)
+==14944==    by 0x414315: get_abbrev_array_info (print_abbrevs.c:342)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944==  Block was alloc'd at
+==14944==    at 0x4C2E12F: realloc (vg_replace_malloc.c:785)
+==14944==    by 0x414315: get_abbrev_array_info (print_abbrevs.c:342)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944== 
+==14944== Invalid write of size 8
+==14944==    at 0x4C328AA: memset (vg_replace_strmem.c:1239)
+==14944==    by 0x414332: get_abbrev_array_info (print_abbrevs.c:345)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944==  Address 0x80000008 is 639,389,640 bytes inside a block of size 1,073,741,824 free'd
+==14944==    at 0x4C2E12F: realloc (vg_replace_malloc.c:785)
+==14944==    by 0x414315: get_abbrev_array_info (print_abbrevs.c:342)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944==  Block was alloc'd at
+==14944==    at 0x4C2E12F: realloc (vg_replace_malloc.c:785)
+==14944==    by 0x414315: get_abbrev_array_info (print_abbrevs.c:342)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944== 
+==14944== Invalid write of size 8
+==14944==    at 0x4C328AE: memset (vg_replace_strmem.c:1239)
+==14944==    by 0x414332: get_abbrev_array_info (print_abbrevs.c:345)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944==  Address 0x80000010 is 639,389,648 bytes inside a block of size 1,073,741,824 free'd
+==14944==    at 0x4C2E12F: realloc (vg_replace_malloc.c:785)
+==14944==    by 0x414315: get_abbrev_array_info (print_abbrevs.c:342)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944==  Block was alloc'd at
+==14944==    at 0x4C2E12F: realloc (vg_replace_malloc.c:785)
+==14944==    by 0x414315: get_abbrev_array_info (print_abbrevs.c:342)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944== 
+==14944== Invalid write of size 8
+==14944==    at 0x4C328B2: memset (vg_replace_strmem.c:1239)
+==14944==    by 0x414332: get_abbrev_array_info (print_abbrevs.c:345)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944==  Address 0x80000018 is 639,389,656 bytes inside a block of size 1,073,741,824 free'd
+==14944==    at 0x4C2E12F: realloc (vg_replace_malloc.c:785)
+==14944==    by 0x414315: get_abbrev_array_info (print_abbrevs.c:342)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944==  Block was alloc'd at
+==14944==    at 0x4C2E12F: realloc (vg_replace_malloc.c:785)
+==14944==    by 0x414315: get_abbrev_array_info (print_abbrevs.c:342)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944== 
+==14944== 
+==14944== More than 10000000 total errors detected.  I'm not reporting any more.
+==14944== Final error counts will be inaccurate.  Go fix your program!
+==14944== Rerun with --error-limit=no to disable this cutoff.  Note
+==14944== that errors may occur in your program without prior warning from
+==14944== Valgrind, because errors are no longer being displayed.
+==14944== 
+==14944== 
+==14944== Process terminating with default action of signal 11 (SIGSEGV)
+==14944==  Access not within mapped region at address 0x119E3D000
+==14944==    at 0x4C328A7: memset (vg_replace_strmem.c:1239)
+==14944==    by 0x414332: get_abbrev_array_info (print_abbrevs.c:345)
+==14944==    by 0x417DEA: print_one_die_section (print_die.c:808)
+==14944==    by 0x415BE1: print_infos (print_die.c:372)
+==14944==    by 0x408775: process_one_file (dwarfdump.c:1290)
+==14944==    by 0x408775: main (dwarfdump.c:592)
+==14944==  If you believe this happened as a result of a stack
+==14944==  overflow in your program's main thread (unlikely but
+==14944==  possible), you can try to increase the size of the
+==14944==  main thread stack using the --main-stacksize= flag.
+==14944==  The main thread stack size used in this run was 8388608.
+==14944== 
+==14944== HEAP SUMMARY:
+==14944==     in use at exit: 2,147,519,750 bytes in 92 blocks
+==14944==   total heap usage: 188 allocs, 96 frees, 8,589,975,460 bytes allocated
+==14944== 
+==14944== LEAK SUMMARY:
+==14944==    definitely lost: 0 bytes in 0 blocks
+==14944==    indirectly lost: 0 bytes in 0 blocks
+==14944==      possibly lost: 2,147,484,312 bytes in 6 blocks
+==14944==    still reachable: 35,438 bytes in 86 blocks
+==14944==         suppressed: 0 bytes in 0 blocks
+==14944== Rerun with --leak-check=full to see details of leaked memory
+==14944== 
+==14944== For counts of detected and suppressed errors, rerun with: -v
+==14944== ERROR SUMMARY: 10000000 errors from 4 contexts (suppressed: 0 from 0)
+Segmentation fault

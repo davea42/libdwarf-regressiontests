@@ -1,0 +1,26 @@
+=================================================================
+==7325==ERROR: AddressSanitizer: unknown-crash on address 0x000100000000 at pc 0x0000004c1aa5 bp 0x7ffdde526310 sp 0x7ffdde525ac0
+WRITE of size 4294967296 at 0x000100000000 thread T0
+==7325==WARNING: failed to fork (errno 12)
+==7325==WARNING: failed to fork (errno 12)
+==7325==WARNING: failed to fork (errno 12)
+==7325==WARNING: failed to fork (errno 12)
+==7325==WARNING: failed to fork (errno 12)
+==7325==WARNING: Failed to use and restart external symbolizer!
+    #0 0x4c1aa4  (/usr/bin/dwarfdump-asan-git+0x4c1aa4)
+    #1 0x52b235  (/usr/bin/dwarfdump-asan-git+0x52b235)
+    #2 0x53301a  (/usr/bin/dwarfdump-asan-git+0x53301a)
+    #3 0x52edaa  (/usr/bin/dwarfdump-asan-git+0x52edaa)
+    #4 0x5176c6  (/usr/bin/dwarfdump-asan-git+0x5176c6)
+    #5 0x7fa234205680  (/lib64/libc.so.6+0x20680)
+    #6 0x41a518  (/usr/bin/dwarfdump-asan-git+0x41a518)
+
+Address 0x000100000000 is located in the shadow gap area.
+SUMMARY: AddressSanitizer: unknown-crash (/usr/bin/dwarfdump-asan-git+0x4c1aa4) 
+==7325==ABORTING
+
+*** DWARF CHECK: Abbrev code 4026531839 skips up by 4026531833 from last abbrev code of 6: Questionable abbreviation code. ***
+
+CU Name = <unknown>
+CU Producer = GNU C 4.9.3 -m64 -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
