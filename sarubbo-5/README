@@ -1,0 +1,5 @@
+
+Agostino Sarubbo contributed this fuzzed binary
+that crashed dwarfdump -ka.
+
+Oct 15, 2017
