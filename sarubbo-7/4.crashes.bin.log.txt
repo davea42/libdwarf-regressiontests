@@ -1,0 +1,349 @@
+*** DWARF CHECK: DW_TAG_compile_unit -> DW_AT_GNU_macros: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = 0x00400581, High PC = unknown   
+DW_AT_GNU_macros            0x00000000
+
+*** DWARF CHECK: DW_TAG_compile_unit -> DW_TAG_common_inclusion: tag-tree relation is not standard. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000031 GOFF = 0x00000031, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_TAG_common_inclusion -> DW_AT_pure: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000031 GOFF = 0x00000031, Low PC = 0x00400581, High PC = unknown   
+DW_AT_pure                  8
+
+*** DWARF CHECK: DW_TAG_common_inclusion -> DW_AT_call_file: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000031 GOFF = 0x00000031, Low PC = 0x00400581, High PC = unknown   
+DW_AT_call_file             0x00000005 /var/tmp/portage/sys-libs/glibc-2.22-n4/work/build-amd64-x86_64-pc-linux-gnu-nptl/config.h
+
+*** DWARF CHECK: DW_TAG_common_inclusion -> DW_AT_name: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000031 GOFF = 0x00000031, Low PC = 0x00400581, High PC = unknown   
+DW_AT_name                  long int
+
+*** DWARF CHECK: DW_AT_type offset 0x00000043 does not point to Type info we got tag 0x1b DW_TAG_common_inclusion ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000038 GOFF = 0x00000038, Low PC = 0x00400581, High PC = unknown   
+DW_AT_type                  <0x00000043>
+
+*** DWARF CHECK: DW_TAG_compile_unit -> DW_TAG_common_inclusion: tag-tree relation is not standard. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000043 GOFF = 0x00000043, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_TAG_common_inclusion -> DW_AT_pure: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000043 GOFF = 0x00000043, Low PC = 0x00400581, High PC = unknown   
+DW_AT_pure                  8
+
+*** DWARF CHECK: DW_TAG_common_inclusion -> DW_AT_call_file: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000043 GOFF = 0x00000043, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_AT_call_file: Does not point to valid file info  filenum=7 filecount=6. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000043 GOFF = 0x00000043, Low PC = 0x00400581, High PC = unknown   
+DW_AT_call_file             0x00000007
+
+*** DWARF CHECK: DW_TAG_common_inclusion -> DW_AT_name: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000043 GOFF = 0x00000043, Low PC = 0x00400581, High PC = unknown   
+DW_AT_name                  long unsigned int
+
+*** DWARF CHECK: DW_TAG_compile_unit -> DW_TAG_condition: tag-tree relation is not standard. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000051 GOFF = 0x00000051, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_TAG_condition -> DW_AT_external: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000051 GOFF = 0x00000051, Low PC = 0x00400581, High PC = unknown   
+DW_AT_external              yes(1)
+
+*** DWARF CHECK: DW_TAG_condition -> DW_AT_prototyped: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000051 GOFF = 0x00000051, Low PC = 0x00400581, High PC = unknown   
+DW_AT_prototyped            yes(1)
+
+*** DWARF CHECK: DW_TAG_condition -> DW_AT_low_pc: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000051 GOFF = 0x00000051, Low PC = 0x00400581, High PC = unknown   
+DW_AT_low_pc                0x00400590
+
+*** DWARF CHECK: DW_TAG_condition -> DW_AT_high_pc: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000051 GOFF = 0x00000051, Low PC = 0x00400581, High PC = unknown   
+DW_AT_high_pc               <offset-from-lowpc>101
+
+*** DWARF CHECK: DW_TAG_condition -> DW_AT_frame_base: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000051 GOFF = 0x00000051, Low PC = 0x00400581, High PC = unknown   
+DW_AT_frame_base            len 0x0001: 9c: DW_OP_call_frame_cfa
+
+*** DWARF CHECK: DW_TAG_condition -> DW_AT_GNU_all_call_sites: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x00000051 GOFF = 0x00000051, Low PC = 0x00400581, High PC = unknown   
+DW_AT_GNU_all_call_sites    yes(1)
+
+*** DWARF CHECK: DW_TAG_condition -> DW_TAG_formal_parameter: tag-tree relation is not standard. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000006e GOFF = 0x0000006e, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_TAG_formal_parameter -> DW_AT_data_member_location: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000006e GOFF = 0x0000006e, Low PC = 0x00400581, High PC = unknown   
+DW_AT_data_member_location  67
+
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000006e GOFF = 0x0000006e, Low PC = 0x00400581, High PC = unknown   
+Offset = 0x00000000, Base = 0x00400581, Low = 0x00400581 (0x00000000), High = 0x004005b3 (0x00000032)
+
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000006e GOFF = 0x0000006e, Low PC = 0x00400581, High PC = unknown   
+Offset = 0x00000013, Base = 0x00400581, Low = 0x004005b3 (0x00000032), High = 0x004005e5 (0x00000064)
+
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000006e GOFF = 0x0000006e, Low PC = 0x00400581, High PC = unknown   
+Offset = 0x00000026, Base = 0x00400581, Low = 0x004005e5 (0x00000064), High = 0x004005e6 (0x00000065)
+
+DW_AT_location              <loclist at offset 0x00000000 with 3 entries follows>
+			[ 0]< offset pair low-off : 0x00000000 addr  0x00400581 high-off  0x00000032 addr 0x004005b3><from .debug_loc offset 0x00000000>DW_OP_reg5
+			[ 1]< offset pair low-off : 0x00000032 addr  0x004005b3 high-off  0x00000064 addr 0x004005e5><from .debug_loc offset 0x00000013>DW_OP_reg15
+			[ 2]< offset pair low-off : 0x00000064 addr  0x004005e5 high-off  0x00000065 addr 0x004005e6><from .debug_loc offset 0x00000026>DW_OP_GNU_entry_value 0x00000001 contents 0x55 DW_OP_stack_value
+
+*** DWARF CHECK: DW_TAG_condition -> DW_TAG_formal_parameter: tag-tree relation is not standard. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000007d GOFF = 0x0000007d, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_TAG_formal_parameter -> DW_AT_data_member_location: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000007d GOFF = 0x0000007d, Low PC = 0x00400581, High PC = unknown   
+DW_AT_data_member_location  67
+
+*** DWARF CHECK: DW_AT_type offset 0x000000e7 does not point to Type info we got tag 0x19 DW_TAG_variant ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000007d GOFF = 0x0000007d, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_AT_type offset 0x000000ed does not point to Type info we got tag 0x19 DW_TAG_variant ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000007d GOFF = 0x0000007d, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_AT_type offset 0x000000f3 does not point to Type info we got tag 0x1b DW_TAG_common_inclusion ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000007d GOFF = 0x0000007d, Low PC = 0x00400581, High PC = unknown   
+DW_AT_type                  <0x000000e7>
+
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000007d GOFF = 0x0000007d, Low PC = 0x00400581, High PC = unknown   
+Offset = 0x0000004c, Base = 0x00400581, Low = 0x00400581 (0x00000000), High = 0x004005b3 (0x00000032)
+
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000007d GOFF = 0x0000007d, Low PC = 0x00400581, High PC = unknown   
+Offset = 0x0000005f, Base = 0x00400581, Low = 0x004005b3 (0x00000032), High = 0x004005e3 (0x00000062)
+
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000007d GOFF = 0x0000007d, Low PC = 0x00400581, High PC = unknown   
+Offset = 0x00000072, Base = 0x00400581, Low = 0x004005e3 (0x00000062), High = 0x004005e6 (0x00000065)
+
+DW_AT_location              <loclist at offset 0x0000004c with 3 entries follows>
+			[ 0]< offset pair low-off : 0x00000000 addr  0x00400581 high-off  0x00000032 addr 0x004005b3><from .debug_loc offset 0x0000004c>DW_OP_reg4
+			[ 1]< offset pair low-off : 0x00000032 addr  0x004005b3 high-off  0x00000062 addr 0x004005e3><from .debug_loc offset 0x0000005f>DW_OP_reg14
+			[ 2]< offset pair low-off : 0x00000062 addr  0x004005e3 high-off  0x00000065 addr 0x004005e6><from .debug_loc offset 0x00000072>DW_OP_GNU_entry_value 0x00000001 contents 0x54 DW_OP_stack_value
+
+*** DWARF CHECK: DW_TAG_condition -> DW_TAG_formal_parameter: tag-tree relation is not standard. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000008c GOFF = 0x0000008c, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_TAG_formal_parameter -> DW_AT_data_member_location: check the tag-attr combination ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000008c GOFF = 0x0000008c, Low PC = 0x00400581, High PC = unknown   
+DW_AT_data_member_location  67
+
+*** DWARF CHECK: DW_AT_type offset does not point to a DIE for global offset 0x000000ef cu off 0x0000000b local offset 0x000000ef tag 0x5 ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu=================================================================
+==12584==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x615000000280 at pc 0x00000052b996 bp 0x7ffd8a6f3570 sp 0x7ffd8a6f3568
+READ of size 8 at 0x615000000280 thread T0
+    #0 0x52b995 in validate_abbrev_code /tmp/code/dwarfdump/print_abbrevs.c:382:13
+    #1 0x537456 in print_one_die /tmp/code/dwarfdump/print_die.c:1266:9
+    #2 0x536834 in print_die_and_children_internal /tmp/code/dwarfdump/print_die.c:1055:36
+    #3 0x534a9b in print_die_and_children_internal /tmp/code/dwarfdump/print_die.c:1152:13
+    #4 0x534a9b in print_die_and_children_internal /tmp/code/dwarfdump/print_die.c:1152:13
+    #5 0x534a9b in print_die_and_children_internal /tmp/code/dwarfdump/print_die.c:1152:13
+    #6 0x5333d9 in print_die_and_children /tmp/code/dwarfdump/print_die.c:927:5
+    #7 0x5333d9 in print_one_die_section /tmp/code/dwarfdump/print_die.c:837
+    #8 0x52edaa in print_infos /tmp/code/dwarfdump/print_die.c:372:16
+    #9 0x5176c6 in process_one_file /tmp/code/dwarfdump/dwarfdump.c:1290:9
+    #10 0x5176c6 in main /tmp/code/dwarfdump/dwarfdump.c:592
+    #11 0x7fd3f3a17680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+    #12 0x41a518 in _start (/usr/bin/dwarfdump-asan-git+0x41a518)
+
+0x615000000280 is located 0 bytes to the right of 512-byte region [0x615000000080,0x615000000280)
+allocated by thread T0 here:
+    #0 0x4d8920 in calloc /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_malloc_linux.cc:76
+    #1 0x52af09 in get_abbrev_array_info /tmp/code/dwarfdump/print_abbrevs.c:311:17
+    #2 0x53301a in print_one_die_section /tmp/code/dwarfdump/print_die.c:808:9
+    #3 0x52edaa in print_infos /tmp/code/dwarfdump/print_die.c:372:16
+    #4 0x5176c6 in process_one_file /tmp/code/dwarfdump/dwarfdump.c:1290:9
+    #5 0x5176c6 in main /tmp/code/dwarfdump/dwarfdump.c:592
+    #6 0x7fd3f3a17680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /tmp/code/dwarfdump/print_abbrevs.c:382:13 in validate_abbrev_code
+Shadow bytes around the buggy address:
+  0x0c2a7fff8000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c2a7fff8010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c2a7fff8020: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c2a7fff8030: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c2a7fff8040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c2a7fff8050:[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c2a7fff8060: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c2a7fff8070: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c2a7fff8080: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c2a7fff8090: fd fd fd fd fd fd fd fd fd fd fd fa fa fa fa fa
+  0x0c2a7fff80a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==12584==ABORTING
+99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000008c GOFF = 0x0000008c, Low PC = 0x00400581, High PC = unknown   
+DW_AT_type                  <0x000000ef>
+
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000008c GOFF = 0x0000008c, Low PC = 0x00400581, High PC = unknown   
+Offset = 0x00000098, Base = 0x00400581, Low = 0x00400581 (0x00000000), High = 0x004005b3 (0x00000032)
+
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000008c GOFF = 0x0000008c, Low PC = 0x00400581, High PC = unknown   
+Offset = 0x000000ab, Base = 0x00400581, Low = 0x004005b3 (0x00000032), High = 0x004005e1 (0x00000060)
+
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000008c GOFF = 0x0000008c, Low PC = 0x00400581, High PC = unknown   
+Offset = 0x000000be, Base = 0x00400581, Low = 0x004005e1 (0x00000060), High = 0x004005e6 (0x00000065)
+
+DW_AT_location              <loclist at offset 0x00000098 with 3 entries follows>
+			[ 0]< offset pair low-off : 0x00000000 addr  0x00400581 high-off  0x00000032 addr 0x004005b3><from .debug_loc offset 0x00000098>DW_OP_reg1
+			[ 1]< offset pair low-off : 0x00000032 addr  0x004005b3 high-off  0x00000060 addr 0x004005e1><from .debug_loc offset 0x000000ab>DW_OP_reg13
+			[ 2]< offset pair low-off : 0x00000060 addr  0x004005e1 high-off  0x00000065 addr 0x004005e6><from .debug_loc offset 0x000000be>DW_OP_GNU_entry_value 0x00000001 contents 0x51 DW_OP_stack_value
+
+*** DWARF CHECK: DW_TAG_condition -> DW_TAG_dynamic_type: tag-tree relation is not standard. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000009b GOFF = 0x0000009b, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_AT_type offset 0x00000043 does not point to Type info we got tag 0x1b DW_TAG_common_inclusion ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x0000009b GOFF = 0x0000009b, Low PC = 0x00400581, High PC = unknown   
+DW_AT_type                  <0x000000fa>
+
+*** DWARF CHECK: DW_TAG_condition -> DW_TAG_lexical_block: tag-tree relation is not standard. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x000000a6 GOFF = 0x000000a6, Low PC = 0x00400581, High PC = unknown   
+
+*** DWARF CHECK: DW_TAG_lexical_block -> DW_TAG_variant: tag-tree relation is not standard. ***
+
+CU Name = elf-init.c
+CU Producer = GNU C 4.9.3 -m6%1f -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+DIE OFF = 0x000000af GOFF = 0x000000af, Low PC = 0x00400581, High PC = unknown   

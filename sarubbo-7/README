@@ -1,0 +1,5 @@
+Agostino Sarubbo provided the testcase.
+
+dwarfdump -ka 4.crashes.bin
+
+Oct 16, 2017
