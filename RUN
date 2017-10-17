@@ -1,4 +1,20 @@
 
+ASAN_OPTIONS="allocator_may_return_null=1"
+export ASAN_OPTIONS
+rm -f vg.log
+t="-a sarubbo/test2.crashes"
+#t="-a sarubbo-2/00050-libdwarf-negate-itself"
+#t="-ka  sarubbo-4/libresolv.a"
+#t="-kl -kd sarubbo-4/libresolv.a"
+#t="-kG -ki sarubbo-4/libresolv.a"
+t="-kF -ki sarubbo-4/libresolv.a"
+#t="-kl -ki sarubbo-4/libresolv.a"
+#t="-kl sarubbo-4/libresolv.a"
+#valgrind --leak-check=full  --show-leak-kinds=all --log-file=./vg.log   ./dwarfdump $t
+./dwarfdump $t >junk
+exit 1
+
+#If you don't like this behavior set allocator_may_return_null=1
 
 #for i in emre3/main.o k10m/main_knc.o marinescu/stream.o.test shihhuangti/tcombined.o liu/HeapOverflow0513.elf
 #do
@@ -10,8 +26,7 @@
 
 #rm vg.log
 #readelf -S comdatex/example.o
-valgrind  --leak-check=full --show-leak-kinds=all --log-file=./vg.log ./dwarfdump -E -o  liu/HeapOverflow0513.elf
-exit 1
+#valgrind  --leak-check=full --show-leak-kinds=all --log-file=./vg.log ./dwarfdump -E -o  liu/HeapOverflow0513.elf
 #valgrind --leak-check=full --show-leak-kinds=all --log-file=./vg.log /tmp/dwarfdump -a -g -x groupnumber=3 comdatex/example.o
 i="sarubbo/04.hangs"
 # sarubbo/03.hangs has bad debug_abbrev size
