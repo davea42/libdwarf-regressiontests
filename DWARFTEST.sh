@@ -668,6 +668,12 @@ sh runtest.sh  ../$d2
 chkres $?  debugfission
 cd ..
 
+echo "=====START   data16 runtest.sh"
+cd data16
+sh runtest.sh
+chkres $?  data16
+cd ..
+
 # This validates standard-based handling of DW_FORM_ref_addr
 runtest $d1 $d2 diederen/hello -i
 
