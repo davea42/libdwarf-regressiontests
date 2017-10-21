@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 
-total= 17200.0
+total= 18000.0
 
 if __name__ == '__main__':
   if len(sys.argv) == 2:
