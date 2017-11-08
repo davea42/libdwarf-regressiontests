@@ -1,0 +1,8 @@
+#Agostino Sarubbo provides the
+#test case and uses
+
+dwarfdump -a -b -c -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y  1.crashes.bin 
+
+#to get an overflow.
+
+#November 1, 2017

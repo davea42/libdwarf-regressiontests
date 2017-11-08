@@ -1,0 +1,121 @@
+.debug_info
+
+.debug_pubnames
+
+.debug_loc
+Format <i o b e l>: index section-offset begin-addr end-addr length-of-block-entry
+
+.debug_abbrev
+
+.debug_str
+
+.debug_aranges
+
+.debug_ranges
+End of .debug_ranges.
+
+.debug_frame
+
+.eh_frame
+
+fde:
+<    0><0x00400af0:0x00400c40><><cie offset 0x0000001c::cie index     1><fde offset 0x00000048 length: 0x00000024>
+       <eh aug data len 0x0>
+        0x00400af0: <off cfa=16(r7) > <off r16=-8(cfa) > 
+        0x00400af6: <off cfa=24(r7) > <off r16=-8(cfa) > 
+        0x00400b00: <expr cfa=expr-block-len=11> <off r16=-8(cfa) > 
+<    1><0x00400c50:0x00401201><><cie offset 0x0000005c::cie index     1><fde offset 0x00000088 length: 0x0000004c>
+       <eh aug data len 0x0>
+        0x00400c50: <off cfa=08(r7) > <off r16=-8(cfa) > 
+        0x00400c52: <off cfa=16(r7) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400c54: <off cfa=24(r7) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400c59: <off cfa=32(r7) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400c5b: <off cfa=40(r7) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400c5f: <off cfa=48(r7) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400c60: <off cfa=56(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400c72: <off cfa=112(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400fbc: <off cfa=56(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400fbf: <off cfa=48(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400fc0: <off cfa=40(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400fc2: <off cfa=32(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400fc4: <off cfa=24(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400fc6: <off cfa=16(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400fc8: <off cfa=08(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00400fc9: <off cfa=112(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+<    2><0x00401210:0x0040123a><><cie offset 0x0000001c::cie index     0><fde offset 0x00000018 length: 0x00000014>
+       <eh aug data len 0x0>
+        0x00401210: <off cfa=08(r7) > <off r16=u > 
+<    3><0x00401310:0x00401350><><cie offset 0x00000044::cie index     1><fde offset 0x00000070 length: 0x00000014>
+       <eh aug data len 0x0>
+        0x00401310: <off cfa=08(r7) > <off r16=-8(cfa) > 
+        0x00401311: <off cfa=16(r7) > <off r3=-16(cfa) > <off r16=-8(cfa) > 
+<    4><0x00401350:0x004013b5><><cie offset 0x000000ac::cie index     1><fde offset 0x000000d8 length: 0x00000044>
+       <eh aug data len 0x0>
+        0x00401350: <off cfa=08(r7) > <off r16=-8(cfa) > 
+        0x00401352: <off cfa=16(r7) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00401354: <off cfa=24(r7) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00401359: <off cfa=32(r7) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+       =================================================================
+==3473==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x612000000178 at pc 0x0000005bed70 bp 0x7ffdff97f150 sp 0x7ffdff97f148
+READ of size 1 at 0x612000000178 thread T0
+    #0 0x5bed6f in _dwarf_exec_frame_instr /tmp/code/libdwarf/dwarf_frame.c:463:39
+    #1 0x5c2bba in _dwarf_get_fde_info_for_a_pc_row /tmp/code/libdwarf/dwarf_frame.c:1622:15
+    #2 0x5c7953 in dwarf_get_fde_info_for_cfa_reg3_b /tmp/code/libdwarf/dwarf_frame.c:2035:11
+    #3 0x55e06b in print_one_fde /tmp/code/dwarfdump/print_frames.c:873:25
+    #4 0x55e06b in print_frames /tmp/code/dwarfdump/print_frames.c:2270
+    #5 0x518023 in process_one_file /tmp/code/dwarfdump/dwarfdump.c:1348:9
+    #6 0x518023 in main /tmp/code/dwarfdump/dwarfdump.c:592
+    #7 0x7f6c8b8b3680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+    #8 0x41a518 in _start (/usr/bin/dwarfdump-git+0x41a518)
+
+0x612000000178 is located 0 bytes to the right of 312-byte region [0x612000000040,0x612000000178)
+allocated by thread T0 here:
+    #0 0x4d8708 in malloc /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_malloc_linux.cc:67
+    #1 0x7f6c8c98ecc7 in __libelf_set_rawdata_wrlock /var/tmp/portage/dev-libs/elfutils-0.169-r1/work/elfutils-0.169/libelf/elf_getdata.c:329
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /tmp/code/libdwarf/dwarf_frame.c:463:39 in _dwarf_exec_frame_instr
+Shadow bytes around the buggy address:
+  0x0c247fff7fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c247fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c247fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c247fff8000: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c247fff8010: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c247fff8020: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00[fa]
+  0x0c247fff8030: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c247fff8040: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c247fff8050: 00 00 00 00 00 00 00 00 00 00 00 fa fa fa fa fa
+  0x0c247fff8060: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c247fff8070: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3473==ABORTING
+ 0x0040135b: <off cfa=40(r7) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x00401363: <off cfa=48(r7) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x0040136b: <off cfa=56(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x0040137a: <off cfa=64(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x004013aa: <off cfa=56(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x004013ab: <off cfa=48(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x004013ac: <off cfa=40(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x004013ae: <off cfa=32(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x004013b0: <off cfa=24(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x004013b2: <off cfa=16(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+        0x004013b4: <off cfa=08(r7) > <off r3=-56(cfa) > <off r6=-48(cfa) > <off r12=-40(cfa) > <off r13=-32(cfa) > <off r14=-24(cfa) > <off r15=-16(cfa) > <off r16=-8(cfa) > 
+<    5><0x004013c0:0x004013c2><><cie offset 0x000000f4::cie index     1><fde offset 0x00000120 length: 0x00000014>
+       <eh aug data len 0x0>
