@@ -669,10 +669,15 @@ chkres $?  debugfission
 cd ..
 
 echo "=====START   data16 runtest.sh"
+if [ $NLIZE = 'n' ]
+then
 cd data16
 sh runtest.sh
 chkres $?  data16
 cd ..
+else
+echo "=====SKIP  data16/runtest.sh with NLIZE"
+fi
 
 # This validates standard-based handling of DW_FORM_ref_addr
 runtest $d1 $d2 diederen/hello -i
