@@ -1,0 +1,10 @@
+This shows off-end-of-section
+line table reference in
+
+_dwarf_read_line_table_header() 
+libdwarf/./dwarf_line_table_reader_common.c
+
+Thanks to Agostino Sarubbo for providing this
+testcase.
+
+November 08, 2017

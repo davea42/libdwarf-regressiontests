@@ -1,0 +1,52 @@
+=================================================================
+==2391==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x613000000513 at pc 0x0000005f0473 bp 0x7ffed5a98390 sp 0x7ffed5a98388
+READ of size 1 at 0x613000000513 thread T0
+    #0 0x5f0472 in _dwarf_read_line_table_header /tmp/code/libdwarf/./dwarf_line_table_reader_common.c:609:33
+    #1 0x5e922d in dwarf_srcfiles /tmp/code/libdwarf/./dwarf_line.c:399:20
+    #2 0x5335c8 in print_one_die_section /tmp/code/dwarfdump/print_die.c:823:28
+    #3 0x52f17a in print_infos /tmp/code/dwarfdump/print_die.c:377:16
+    #4 0x5176d6 in process_one_file /tmp/code/dwarfdump/dwarfdump.c:1298:9
+    #5 0x5176d6 in main /tmp/code/dwarfdump/dwarfdump.c:601
+    #6 0x7f3250f23680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+    #7 0x41a518 in _start (/usr/bin/dwarfdump-git+0x41a518)
+
+0x613000000513 is located 0 bytes to the right of 339-byte region [0x6130000003c0,0x613000000513)
+allocated by thread T0 here:
+    #0 0x4d8708 in malloc /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_malloc_linux.cc:67
+    #1 0x7f3251ffecc7 in __libelf_set_rawdata_wrlock /var/tmp/portage/dev-libs/elfutils-0.169-r1/work/elfutils-0.169/libelf/elf_getdata.c:329
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /tmp/code/libdwarf/./dwarf_line_table_reader_common.c:609:33 in _dwarf_read_line_table_header
+Shadow bytes around the buggy address:
+  0x0c267fff8050: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c267fff8060: 00 00 00 00 00 00 00 00 00 00 00 04 fa fa fa fa
+  0x0c267fff8070: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0x0c267fff8080: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c267fff8090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x0c267fff80a0: 00 00[03]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c267fff80b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c267fff80c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c267fff80d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c267fff80e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c267fff80f0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==2391==ABORTING
+
+.debug_info
