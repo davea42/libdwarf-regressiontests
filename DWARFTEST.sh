@@ -671,13 +671,30 @@ cd ..
 echo "=====START   data16 runtest.sh"
 if [ $NLIZE = 'n' ]
 then
-cd data16
-sh runtest.sh
-chkres $?  data16
-cd ..
+  cd data16
+  sh runtest.sh
+  chkres $?  data16
+  cd ..
 else
-echo "=====SKIP  data16/runtest.sh with NLIZE"
+  echo "=====SKIP  data16/runtest.sh with NLIZE"
 fi
+
+if [ $NLIZE = 'n' ]
+then
+  runtest $d1 $d2   sarubbo-8/1.crashes.bin  -a -b -c -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
+  chkres $?  sarubbo-8 
+else
+  echo "=====SKIP  sarubbo-8 with NLIZE"
+fi
+
+if [ $NLIZE = 'n' ]
+then
+  runtest  $d1 $d2   sarubbo-9/3.crashes.bin -a -b -c -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
+  chkres $?  sarubbo-9
+else
+  echo "=====SKIP  sarubbo-9 with NLIZE"
+fi
+
 
 # This validates standard-based handling of DW_FORM_ref_addr
 runtest $d1 $d2 diederen/hello -i
