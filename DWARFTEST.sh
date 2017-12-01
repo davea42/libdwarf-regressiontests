@@ -372,6 +372,11 @@ runtest $d1 $d2   camp/empty.o -a
 # The second should show a little bit.
 runtest $d1 $d2   camp/empty.o -a -x groupnumber=2
 
+# DW201712-001: Was failing to check augmentation length for fde.
+runtest $d1 $d2   sarubbo-10/1.crashes.bin -a -b -c -d -e -f -F -g -G -i -I \
+ -m -M -N -p -P -R -r -s -ta -w -y
+
+
 # These all involved bounds violations so should error off
 # fairly early.
 runtest $d1 $d2   marcel/crash1 -a

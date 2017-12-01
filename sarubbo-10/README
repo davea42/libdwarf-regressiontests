@@ -17,4 +17,9 @@ is used to identify this situation
 with erroneous frame data.
 
 
+To reproduce  one does
+
+dwarfdump -a -b -c -d -e -f -F -g -G -i -I \
+-m -M -N -p -P -R -r -s -ta -w -y 1.crashes.bin
+
 
