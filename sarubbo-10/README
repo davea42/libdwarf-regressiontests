@@ -1,0 +1,20 @@
+
+01 December 2017.
+
+Agostino Sarubbo creates a test case
+where bogus fde augmentation data
+is not fully checked so a caller
+of dwarf_get_fde_augmentation_data()
+can be put in the position of
+interpreting invalid data.
+
+The corresponding cie case has
+a proper test so the problem is
+detected an an error returned.
+
+A new error code, DW_DLE_AUG_DATA_LENGTH_BAD
+is used to identify this situation
+with erroneous frame data.
+
+
+
