@@ -1,0 +1,38 @@
+
+Testcases from Agostino Sarubbo
+received 28 January 2018
+
+Reproducer: dwarfdump-git -a $FILE
+
+He writes:
+
+1)
+SEGV /tmp/code/dwarfdump/print_frames.c:1350:19 in print_frame_inst_bytes
+stacktrace: stacktrace1.txt
+testcase: testcase1.bin
+
+2)
+SEGV /tmp/code/libdwarf/dwarf_leb.c:74:10 in _dwarf_decode_u_leb128_chk
+stacktrace: stacktrace2.txt
+testcase: testcase2.bin
+
+3) (maybe related or a duplicate of 1)
+heap-buffer-overflow /tmp/code/dwarfdump/print_frames.c:1434:41 in 
+print_frame_inst_bytes
+stacktrace: stacktrace3.txt
+testcase: testcase3.bin
+
+4) (maybe related or a duplicate of 1)
+heap-buffer-overflow /tmp/code/libdwarf/dwarf_arange.c:181:24 in 
+dwarf_get_aranges_list
+stacktrace: stacktrace4.txt
+testcase: testcase4.bin
+
+5) (maybe related or a duplicate of 1)
+heap-buffer-overflow /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/
+work/compiler-rt-5.0.0.src/lib/asan/asan_interceptors.cc:466 in __asan_memcpy
+related to:
+    #1 0x55a8ed in print_frame_inst_bytes /tmp/code/dwarfdump/print_frames.c:
+1416:25                                                                 
+stacktrace: stacktrace5.txt
+testcase: testcase5.bin

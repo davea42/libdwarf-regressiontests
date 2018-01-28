@@ -1,0 +1,1347 @@
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000b>  DW_TAG_compile_unit
+                    DW_AT_producer              GNU C 4.9.3 -m64 -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec
+                    DW_AT_language              DW_LANG_C89
+                    DW_AT_name                  elf-init.c
+                    DW_AT_comp_dir              /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu
+                    DW_AT_low_pc                0x00400590
+                    DW_AT_high_pc               <offset-from-lowpc>114
+                    DW_AT_stmt_list             0x00000000
+                    DW_AT_GNU_macros            0x00000000
+
+LOCAL_SYMBOLS:
+< 1><0x00000031>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_encoding              DW_ATE_signed
+                      DW_AT_name                  long int
+< 1><0x00000038>    DW_TAG_typedef
+                      DW_AT_name                  size_t
+                      DW_AT_decl_file             0x00000002 /usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/stddef.h
+                      DW_AT_decl_line             0x000000d4
+                      DW_AT_type                  <0x00000043>
+< 1><0x00000043>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_encoding              DW_ATE_unsigned
+                      DW_AT_name                  long unsigned int
+< 1><0x0000004a>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000004
+                      DW_AT_encoding              DW_ATE_signed
+                      DW_AT_name                  int
+< 1><0x00000051>    DW_TAG_subprogram
+                      DW_AT_external              yes(1)
+                      DW_AT_name                  __libc_csu_init
+                      DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                      DW_AT_decl_line             0x00000043
+                      DW_AT_prototyped            yes(1)
+                      DW_AT_low_pc                0x00400590
+                      DW_AT_high_pc               <offset-from-lowpc>101
+                      DW_AT_frame_base            len 0x0001: 9c: DW_OP_call_frame_cfa
+                      DW_AT_GNU_all_call_sites    yes(1)
+                      DW_AT_sibling               <0x000000e7>
+< 2><0x0000006e>      DW_TAG_formal_parameter
+                        DW_AT_name                  argc
+                        DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                        DW_AT_decl_line             0x00000043
+                        DW_AT_type                  <0x0000004a>
+                        DW_AT_location              <loclist at offset 0x00000000 with 3 entries follows>
+			[ 0]< offset pair low-off : 0x00000000 addr  0x00400590 high-off  0x00000032 addr 0x004005c2>DW_OP_reg5
+			[ 1]< offset pair low-off : 0x00000032 addr  0x004005c2 high-off  0x00000064 addr 0x004005f4>DW_OP_reg15
+			[ 2]< offset pair low-off : 0x00000064 addr  0x004005f4 high-off  0x00000065 addr 0x004005f5>DW_OP_GNU_entry_value 0x00000001 contents 0x55 DW_OP_stack_value
+< 2><0x0000007d>      DW_TAG_formal_parameter
+                        DW_AT_name                  argv
+                        DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                        DW_AT_decl_line             0x00000043
+                        DW_AT_type                  <0x000000e7>
+                        DW_AT_location              <loclist at offset 0x0000004c with 3 entries follows>
+			[ 0]< offset pair low-off : 0x00000000 addr  0x00400590 high-off  0x00000032 addr 0x004005c2>DW_OP_reg4
+			[ 1]< offset pair low-off : 0x00000032 addr  0x004005c2 high-off  0x00000062 addr 0x004005f2>DW_OP_reg14
+			[ 2]< offset pair low-off : 0x00000062 addr  0x004005f2 high-off  0x00000065 addr 0x004005f5>DW_OP_GNU_entry_value 0x00000001 contents 0x54 DW_OP_stack_value
+< 2><0x0000008c>      DW_TAG_formal_parameter
+                        DW_AT_name                  envp
+                        DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                        DW_AT_decl_line             0x00000043
+                        DW_AT_type                  <0x000000e7>
+                        DW_AT_location              <loclist at offset 0x00000098 with 3 entries follows>
+			[ 0]< offset pair low-off : 0x00000000 addr  0x00400590 high-off  0x00000032 addr 0x004005c2>DW_OP_reg1
+			[ 1]< offset pair low-off : 0x00000032 addr  0x004005c2 high-off  0x00000060 addr 0x004005f0>DW_OP_reg13
+			[ 2]< offset pair low-off : 0x00000060 addr  0x004005f0 high-off  0x00000065 addr 0x004005f5>DW_OP_GNU_entry_value 0x00000001 contents 0x51 DW_OP_stack_value
+< 2><0x0000009b>      DW_TAG_variable
+                        DW_AT_name                  size
+                        DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                        DW_AT_decl_line             0x00000056
+                        DW_AT_type                  <0x000000fa>
+< 2><0x000000a6>      DW_TAG_lexical_block
+                        DW_AT_ranges                0x00000000
+		ranges: 6 at .debug_ranges offset 0 (0x00000000) (96 bytes)
+			[ 0] range entry    0x0000000b 0x00000012
+			[ 1] range entry    0x00000013 0x0000001a
+			[ 2] range entry    0x00000021 0x00000026
+			[ 3] range entry    0x0000002a 0x0000002e
+			[ 4] range entry    0x00000033 0x00000056
+			[ 5] range end      0x00000000 0x00000000
+                        DW_AT_sibling               <0x000000d9>
+< 3><0x000000af>        DW_TAG_variable
+                          DW_AT_name                  i
+                          DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                          DW_AT_decl_line             0x00000057
+                          DW_AT_type                  <0x00000038>
+                          DW_AT_location              <loclist at offset 0x000000e4 with 2 entries follows>
+			[ 0]< offset pair low-off : 0x00000033 addr  0x004005c3 high-off  0x00000038 addr 0x004005c8>DW_OP_lit0 DW_OP_stack_value
+			[ 1]< offset pair low-off : 0x00000038 addr  0x004005c8 high-off  0x00000056 addr 0x004005e6>DW_OP_reg3
+< 3><0x000000bc>        DW_TAG_GNU_call_site
+                          DW_AT_low_pc                0x004005dd
+< 4><0x000000c5>          DW_TAG_GNU_call_site_parameter
+                            DW_AT_location              len 0x0001: 55: DW_OP_reg5
+                            DW_AT_GNU_call_site_value   len 0x0002: 7f00: DW_OP_breg15+0
+< 4><0x000000cb>          DW_TAG_GNU_call_site_parameter
+                            DW_AT_location              len 0x0001: 54: DW_OP_reg4
+                            DW_AT_GNU_call_site_value   len 0x0002: 7e00: DW_OP_breg14+0
+< 4><0x000000d1>          DW_TAG_GNU_call_site_parameter
+                            DW_AT_location              len 0x0001: 51: DW_OP_reg1
+                            DW_AT_GNU_call_site_value   len 0x0002: 7d00: DW_OP_breg13+0
+< 2><0x000000d9>      DW_TAG_GNU_call_site
+                        DW_AT_low_pc                0x004005c3
+                        DW_AT_abstract_origin       <0x00000154>
+< 1><0x000000e7>    DW_TAG_pointer_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_type                  <0x000000ed>
+< 1><0x000000ed>    DW_TAG_pointer_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_type                  <0x000000f3>
+< 1><0x000000f3>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000001
+                      DW_AT_encoding              DW_ATE_signed_char
+                      DW_AT_name                  char
+< 1><0x000000fa>    DW_TAG_const_type
+                      DW_AT_type                  <0x00000038>
+< 1><0x000000ff>    DW_TAG_subprogram
+                      DW_AT_external              yes(1)
+                      DW_AT_name                  __libc_csu_fini
+                      DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                      DW_AT_decl_line             0x0000005f
+                      DW_AT_prototyped            yes(1)
+                      DW_AT_low_pc                0x00400600
+                      DW_AT_high_pc               <offset-from-lowpc>2
+                      DW_AT_frame_base            len 0x0001: 9c: DW_OP_call_frame_cfa
+                      DW_AT_GNU_all_call_sites    yes(1)
+< 1><0x00000118>    DW_TAG_array_type
+                      DW_AT_type                  <0x00000123>
+                      DW_AT_sibling               <0x00000123>
+< 2><0x00000121>      DW_TAG_subrange_type
+< 1><0x00000123>    DW_TAG_pointer_type
+                      DW_AT_byte_size             0x00000008
+                      DW_AT_type                  <0x00000129>
+< 1><0x00000129>    DW_TAG_subroutine_type
+                      DW_AT_prototyped            yes(1)
+                      DW_AT_sibling               <0x0000013e>
+< 2><0x0000012e>      DW_TAG_formal_parameter
+                        DW_AT_type                  <0x0000004a>
+< 2><0x00000133>      DW_TAG_formal_parameter
+                        DW_AT_type                  <0x000000e7>
+< 2><0x00000138>      DW_TAG_formal_parameter
+                        DW_AT_type                  <0x000000e7>
+< 1><0x0000013e>    DW_TAG_variable
+                      DW_AT_name                  __init_array_start
+                      DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                      DW_AT_decl_line             0x0000002c
+                      DW_AT_type                  <0x00000118>
+                      DW_AT_external              yes(1)
+                      DW_AT_declaration           yes(1)
+< 1><0x00000149>    DW_TAG_variable
+                      DW_AT_name                  __init_array_end
+                      DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                      DW_AT_decl_line             0x0000002e
+                      DW_AT_type                  <0x00000118>
+                      DW_AT_external              yes(1)
+                      DW_AT_declaration           yes(1)
+< 1><0x00000154>    DW_TAG_subprogram
+                      DW_AT_external              yes(1)
+                      DW_AT_name                  _init
+                      DW_AT_decl_file             0x00000001 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+                      DW_AT_decl_line             0x00000037
+                      DW_AT_prototyped            yes(1)
+                      DW_AT_declaration           yes(1)
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x0000000b):
+
+            NS new statement, BB new basic block, ET end of text sequence
+            PE prologue end, EB epilogue begin
+            IS=val ISA number, DI=val discriminator value
+<pc>        [lno,col] NS BB ET PE EB IS= DI= uri: "filepath"
+0x00400590  [  68, 0] NS uri: "/var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c"
+0x0040059b  [  86, 0] NS
+0x004005a2  [  68, 0] NS
+0x004005a3  [  86, 0] NS
+0x004005aa  [  68, 0] NS
+0x004005b1  [  87, 0] NS
+0x004005b3  [  86, 0] NS
+0x004005b6  [  68, 0] NS
+0x004005ba  [  86, 0] NS
+0x004005be  [  83, 0] NS
+0x004005c3  [  87, 0] NS
+0x004005d0  [  88, 0] NS DI=0x3
+0x004005dd  [  87, 0] NS DI=0x3
+0x004005e6  [  89, 0] NS
+0x00400600  [  96, 0] NS
+0x00400602  [  96, 0] NS ET
+
+.debug_macro: Macro info for a single cu
+Macro data from CU-DIE at .debug_info offset 0x0000000b:
+  Macro version: 4
+  MacroInformationEntries count: 20, bytes length: 61
+   [  0] 0x07 DW_MACRO_import       offset 0x00000044
+   [  1] 0x03 DW_MACRO_start_file   line 0 file number 1 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/elf-init.c
+   [  2] 0x03 DW_MACRO_start_file   line 0 file number 3 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/build-amd64-x86_64-pc-linux-gnu-nptl/libc-modules.h
+   [  3] 0x07 DW_MACRO_import       offset 0x00000618
+   [  4] 0x04 DW_MACRO_end_file   
+   [  5] 0x03 DW_MACRO_start_file   line 0 file number 4 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/./../include/libc-symbols.h
+   [  6] 0x07 DW_MACRO_import       offset 0x0000070c
+   [  7] 0x03 DW_MACRO_start_file   line 60 file number 5 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/build-amd64-x86_64-pc-linux-gnu-nptl/config.h
+   [  8] 0x07 DW_MACRO_import       offset 0x00000746
+   [  9] 0x04 DW_MACRO_end_file   
+   [ 10] 0x07 DW_MACRO_import       offset 0x0000082f
+   [ 11] 0x03 DW_MACRO_start_file   line 725 file number 6 /var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu/../sysdeps/generic/symbol-hacks.h
+   [ 12] 0x04 DW_MACRO_end_file   
+   [ 13] 0x07 DW_MACRO_import       offset 0x00000c40
+   [ 14] 0x04 DW_MACRO_end_file   
+   [ 15] 0x03 DW_MACRO_start_file   line 36 file number 2 /usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/include/stddef.h
+   [ 16] 0x07 DW_MACRO_import       offset 0x00000c75
+   [ 17] 0x04 DW_MACRO_end_file   
+   [ 18] 0x04 DW_MACRO_end_file   
+   [ 19] 0x00 end-of-macros       
+
+.debug_macro: Macro info for imported CU at offset 0x00000044
+  Macro version: 4
+  MacroInformationEntries count: 249, bytes length: 1489
+   [  0] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002571 __STDC__ 1
+   [  1] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000350d __STDC_VERSION__ 199901L
+   [  2] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001983 __STDC_UTF_16__ 1
+   [  3] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00004096 __STDC_UTF_32__ 1
+   [  4] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000035ba __STDC_HOSTED__ 1
+   [  5] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000005ac __GNUC__ 4
+   [  6] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000004e2 __GNUC_MINOR__ 9
+   [  7] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002680 __GNUC_PATCHLEVEL__ 3
+   [  8] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000003fe __VERSION__ "4.9.3"
+   [  9] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001eea __ATOMIC_RELAXED 0
+   [ 10] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000007e1 __ATOMIC_SEQ_CST 5
+   [ 11] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002a69 __ATOMIC_ACQUIRE 2
+   [ 12] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000002f3 __ATOMIC_RELEASE 3
+   [ 13] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000378f __ATOMIC_ACQ_REL 4
+   [ 14] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000025dc __ATOMIC_CONSUME 1
+   [ 15] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003e60 __pic__ 2
+   [ 16] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003a0f __PIC__ 2
+   [ 17] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000079b __OPTIMIZE__ 1
+   [ 18] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002294 __FINITE_MATH_ONLY__ 0
+   [ 19] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002212 _LP64 1
+   [ 20] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000021c4 __LP64__ 1
+   [ 21] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002d75 __SIZEOF_INT__ 4
+   [ 22] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000025ca __SIZEOF_LONG__ 8
+   [ 23] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000313c __SIZEOF_LONG_LONG__ 8
+   [ 24] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000052f __SIZEOF_SHOR
+   [ 25] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000024d6 __SIZEOF_FLOAT__ 4
+   [ 26] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000265d __SIZEOF_DOUBLE__ 8
+   [ 27] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000112d __SIZEOF_LONG_DOUBLE__ 16
+   [ 28] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000587 __SIZEOF_SIZE_T__ 8
+   [ 29] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002239 __CHAR_BIT__ 8
+   [ 30] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003e74 __BIGGEST_ALIGNMENT__ 16
+   [ 31] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001464 __ORDER_LITTLE_ENDIAN__ 1234
+   [ 32] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000005b7 __ORDER_BIG_ENDIAN__ 4321
+   [ 33] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002c89 __ORDER_PDP_ENDIAN__ 3412
+   [ 34] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000008e1 __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
+   [ 35] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002983 __FLOAT_WORD_ORDER__ __ORDER_LITTLE_ENDIAN__
+   [ 36] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000332c __SIZEOF_POINTER__ 8
+   [ 37] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000036f2 __SIZE_TYPE__ long unsigned int
+   [ 38] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003c6a __PTRDIFF_TYPE__ long int
+   [ 39] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002f6e __WCHAR_TYPE__ int
+   [ 40] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000025fb __WINT_TYPE__ unsigned int
+   [ 41] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000029b0 __INTMAX_TYPE__ long int
+   [ 42] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002aa0 __UINTMAX_TYPE__ long unsigned int
+   [ 43] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000542 __CHAR16_TYPE__ short unsigned int
+   [ 44] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002e73 __CHAR32_TYPE__ unsigned int
+   [ 45] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000041bb __SIG_ATOMIC_TYPE__ int
+   [ 46] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002f54 __INT8_TYPE__ signed char
+   [ 47] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000006e3 __INT16_TYPE__ short int
+   [ 48] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000015dc __INT32_TYPE__ int
+   [ 49] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003836 __INT64_TYPE__ long int
+   [ 50] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003153 __UINT8_TYPE__ unsigned char
+   [ 51] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001960 __UINT16_TYPE__ short unsigned int
+   [ 52] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002fd5 __UINT32_TYPE__ unsigned int
+   [ 53] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000816 __UINT64_TYPE__ long unsigned int
+   [ 54] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000838 __INT_LEAST8_TYPE__ signed char
+   [ 55] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002073 __INT_LEAST16_TYPE__ short int
+   [ 56] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000bbf __INT_LEAST32_TYPE__ int
+   [ 57] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000095f __INT_LEAST64_TYPE__ long int
+   [ 58] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000c81 __UINT_LEAST8_TYPE__ unsigned char
+   [ 59] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001a2d __UINT_LEAST16_TYPE__ short unsigned int
+   [ 60] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000886 __UINT_LEAST32_TYPE__ unsigned int
+   [ 61] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003a5d __UINT_LEAST64_TYPE__ long unsigned int
+   [ 62] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000a2b __INT_FAST8_TYPE__ signed char
+   [ 63] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003c84 __INT_FAST16_TYPE__ long int
+   [ 64] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002640 __INT_FAST32_TYPE__ long int
+   [ 65] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001fd8 __INT_FAST64_TYPE__ long int
+   [ 66] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002ef4 __UINT_FAST8_TYPE__ unsigned char
+   [ 67] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003475 __UINT_FAST16_TYPE__ long unsigned int
+   [ 68] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000008a9 __UINT_FAST32_TYPE__ long unsigned int
+   [ 69] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003008 __UINT_FAST64_TYPE__ long unsigned int
+   [ 70] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000133f __INTPTR_TYPE__ long int
+   [ 71] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002488 __UINTPTR_TYPE__ long unsigned int
+   [ 72] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000031d5 __has_include(STR) __has_include__(STR)
+   [ 73] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000382 __has_include_next(STR) __has_include_next__(STR)
+   [ 74] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001871 __GXX_ABI_VERSION 1002
+   [ 75] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000094d __SCHAR_MAX__ 127
+   [ 76] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002451 __SHRT_MAX__ 32767
+   [ 77] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000007aa __INT_MAX__ 2147483647
+   [ 78] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002f81 __LONG_MAX__ 9223372036854775807L
+   [ 79] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000034 __LONG_LONG_MAX__ 9223372036854775807LL
+   [ 80] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000033ed __WCHAR_MAX__ 2147483647
+   [ 81] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000097d __WCHAR_MIN__ (-__WCHAR_MAX__ - 1)
+   [ 82] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002cc3 __WINT_MAX__ 4294967295U
+   [ 83] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000026d3 __WINT_MIN__ 0U
+   [ 84] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000036aa __PTRDIFF_MAX__ 9223372036854775807L
+   [ 85] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002d04 __SIZE_MAX__ 18446744073709551615UL
+   [ 86] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000302f __INTMAX_MAX__ 9223372036854775807L
+   [ 87] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001e81 __INTMAX_C(c) c ## L
+   [ 88] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001547 __UINTMAX_MAX__ 18446744073709551615UL
+   [ 89] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000e5a __UINTMAX_C(c) c ## UL
+   [ 90] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003427 __SIG_ATOMIC_MAX__ 2147483647
+   [ 91] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000029fb __SIG_ATOMIC_MIN__ (-__SIG_ATOMIC_MAX__ - 1)
+   [ 92] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000252 __INT8_MAX__ 127
+   [ 93] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000221a __INT16_MAX__ 32767
+   [ 94] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001a7d __INT32_MAX__ 2147483647
+   [ 95] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002e1e __INT64_MAX__ 9223372036854775807L
+   [ 96] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002bf4 __UINT8_MAX__ 255
+   [ 97] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003548 __UINT16_MAX__ 65535
+   [ 98] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001f13 __UINT32_MAX__ 4294967295U
+   [ 99] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001253 __UINT64_MAX__ 18446744073709551615UL
+   [100] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000001c8 __INT_LEAST8_MAX__ 127
+   [101] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000b9f __INT8_C(c) c
+   [102] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000017df __INT_LEAST16_MAX__ 32767
+   [103] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000024ab __INT16_C(c) c
+   [104] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000311d __INT_LEAST32_MAX__ 2147483647
+   [105] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002f16 __INT32_C(c) c
+   [106] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000012e6 __INT_LEAST64_MAX__ 9223372036854775807L
+   [107] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003bfd __INT64_C(c) c ## L
+   [108] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000908 __UINT_LEAST8_MAX__ 255
+   [109] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002671 __UINT8_C(c) c
+   [110] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000021ed __UINT_LEAST16_MAX__ 65535
+   [111] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002a7c __UINT16_C(c) c
+   [112] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001d27 __UINT_LEAST32_MAX__ 4294967295U
+   [113] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000262b __UINT32_C(c) c ## U
+   [114] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002545 __UINT_LEAST64_MAX__ 18446744073709551615UL
+   [115] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000623 __UINT64_C(c) c ## UL
+   [116] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000013ed __INT_FAST8_MAX__ 127
+   [117] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000001a0 __INT_FAST16_MAX__ 9223372036854775807L
+   [118] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000014d __INT_FAST32_MAX__ 9223372036854775807L
+   [119] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002cdc __INT_FAST64_MAX__ 9223372036854775807L
+   [120] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000025b3 __UINT_FAST8_MAX__ 255
+   [121] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002953 __UINT_FAST16_MAX__ 18446744073709551615UL
+   [122] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000acc __UINT_FAST32_MAX__ 18446744073709551615UL
+   [123] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002bc9 __UINT_FAST64_MAX__ 18446744073709551615UL
+   [124] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000d6d __INTPTR_MAX__ 9223372036854775807L
+   [125] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000037a2 __UINTPTR_MAX__ 18446744073709551615UL
+   [126] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000eec __GCC_IEC_559 2
+   [127] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000027d0 __GCC_IEC_559_COMPLEX 2
+   [128] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001d64 __FLT_EVAL_METHOD__ 0
+   [129] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001cc5 __DEC_EVAL_METHOD__ 2
+   [130] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000010fe __FLT_RADIX__ 2
+   [131] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001b4f __FLT_MANT_DIG__ 24
+   [132] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000011b __FLT_DIG__ 6
+   [133] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000ceb __FLT_MIN_EXP__ (-125)
+   [134] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003bcd __FLT_MIN_10_EXP__ (-37)
+   [135] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003731 __FLT_MAX_EXP__ 128
+   [136] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001a56 __FLT_MAX_10_EXP__ 38
+   [137] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002d28 __FLT_DECIMAL_DIG__ 9
+   [138] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000009b1 __FLT_MAX__ 3.40282346638528859812e+38F
+   [139] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000000e3 __FLT_MIN__ 1.17549435082228750797e-38F
+   [140] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003a85 __FLT_EPSILON__ 1.19209289550781250000e-7F
+   [141] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000137e __FLT_DENORM_MIN__ 1.40129846432481707092e-45F
+   [142] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00004296 __FLT_HAS_DENORM__ 1
+   [143] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000252e __FLT_HAS_INFINITY__ 1
+   [144] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003c52 __FLT_HAS_QUIET_NAN__ 1
+   [145] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000639 __DBL_MANT_DIG__ 53
+   [146] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002163 __DBL_DIG__ 15
+   [147] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000343 __DBL_MIN_EXP__ (-1021)
+   [148] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001cea __DBL_MIN_10_EXP__ (-307)
+   [149] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000bd8 __DBL_MAX_EXP__ 1024
+   [150] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003e16 __DBL_MAX_10_EXP__ 308
+   [151] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000000a0 __DBL_DECIMAL_DIG__ 17
+   [152] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000017ac __DBL_MAX__ ((double)1.79769313486231570815e+308L)
+   [153] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000ea3 __DBL_MIN__ ((double)2.22507385850720138309e-308L)
+   [154] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003e9c __DBL_EPSILON__ ((double)2.22044604925031308085e-16L)
+   [155] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000a4a __DBL_DENORM_MIN__ ((double)4.94065645841246544177e-324L)
+   [156] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000938 __DBL_HAS_DENORM__ 1
+   [157] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003be6 __DBL_HAS_INFINITY__ 1
+   [158] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001147 __DBL_HAS_QUIET_NAN__ 1
+   [159] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003b78 __LDBL_MANT_DIG__ 64
+   [160] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000002cf __LDBL_DIG__ 18
+   [161] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002d4c __LDBL_MIN_EXP__ (-16381)
+   [162] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001d48 __LDBL_MIN_10_EXP__ (-4931)
+   [163] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000012cf __LDBL_MAX_EXP__ 16384
+   [164] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00004148 __LDBL_MAX_10_EXP__ 4932
+   [165] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000042ab __DECIMAL_DIG__ 21
+   [166] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001429 __LDBL_MAX__ 1.18973149535723176502e+4932L
+   [167] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000439 __LDBL_MIN__ 3.36210314311209350626e-4932L
+   [168] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000f2f __LDBL_EPSILON__ 1.08420217248550443401e-19L
+   [169] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000472 __LDBL_DENORM_MIN__ 3.64519953188247460253e-4951L
+   [170] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00004211 __LDBL_HAS_DENORM__ 1
+   [171] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000277a __LDBL_HAS_INFINITY__ 1
+   [172] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002f3b __LDBL_HAS_QUIET_NAN__ 1
+   [173] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000029d9 __DEC32_MANT_DIG__ 7
+   [174] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000037d9 __DEC32_MIN_EXP__ (-94)
+   [175] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000162d __DEC32_MAX_EXP__ 97
+   [176] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000ed6 __DEC32_MIN__ 1E-95DF
+   [177] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002017 __DEC32_MAX__ 9.999999E96DF
+   [178] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000782 __DEC32_EPSILON__ 1E-6DF
+   [179] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000024e9 __DEC32_SUBNORMAL_MIN__ 0.000001E-95DF
+   [180] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00004280 __DEC64_MANT_DIG__ 16
+   [181] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000020af uiltin_weak(name) libc_hidden_weak (name)
+   [182] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002e08 __DEC64_MAX_EXP__ 385
+   [183] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00004161 __DEC64_MIN__ 1E-383DD
+   [184] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001358 __DEC64_MAX__ 9.999999999999999E384DD
+   [185] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000186 __DEC64_EPSILON__ 1E-15DD
+   [186] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000005c __DEC64_SUBNORMAL_MIN__ 0.000000000000001E-383DD
+   [187] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001599 __DEC128_MANT_DIG__ 34
+   [188] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001032 __DEC128_MIN_EXP__ (-6142)
+   [189] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002ae0 __DEC128_MAX_EXP__ 6145
+   [190] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002eb2 __DEC128_MIN__ 1E-6143DL
+   [191] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003eee __DEC128_MAX__ 9.999999999999999999999999999999999E6144DL
+   [192] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001087 __DEC128_EPSILON__ 1E-33DL
+   [193] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003ca1 __DEC128_SUBNORMAL_MIN__ 0.000000000000000000000000000000001E-6143DL
+   [194] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003f28 __REGISTER_PREFIX__ 
+   [195] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000034b3 __USER_LABEL_PREFIX__ 
+   [196] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000037f1 _FORTIFY_SOURCE ((defined __OPTIMIZE__ && __OPTIMIZE__ > 0) ? 2 : 0)
+   [197] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002e9c __GNUC_GNU_IBLINE__ 1
+   [198] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000d48 __GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 1
+   [199] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000e35 __GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 1
+   [200] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001ba3 __GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 1
+   [201] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000041d3 __GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 1
+   [202] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002276 __GCC_ATOMIC_BOOL_LOCK_FREE 2
+   [203] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000019d0 __GCC_ATOMIC_CHAR_LOCK_FREE 2
+   [204] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002172 __GCC_ATOMIC_CHAR16_T_LOCK_FREE 2
+   [205] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000034eb __GCC_ATOMIC_CHAR32_T_LOCK_FREE 2
+   [206] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002c4e __GCC_ATOMIC_WCHAR_T_LOCK_FREE 2
+   [207] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003b8d __GCC_ATOMIC_SHORT_LOCK_FREE 2
+   [208] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000013ad __GCC_ATOMIC_INT_LOCK_FREE 2
+   [209] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000021cf __GCC_ATOMIC_LONG_LOCK_FREE 2
+   [210] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003712 __GCC_ATOMIC_LLONG_LOCK_FREE 2
+   [211] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000129 __GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1
+   [212] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000034ca __GCC_ATOMIC_POINTER_LOCK_FREE 2
+   [213] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000024ba _<GCC_HAVE_DWARF2_CFI_ASM 1
+   [214] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000419f __PRAGMA_REDEFINE_EXTNAME 1
+   [215] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000b45 __SIZEOF_INT128__ 16
+   [216] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000028de __SIZEOF_WCHAR_T__ 4
+   [217] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000003ea __SIZEOF_WINT_T__ 4
+   [218] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001582 __SIZEOF_PTRDIFF_T__ 8
+   [219] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000403f __amd64 1
+   [220] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001932 __amd64__ 1
+   [221] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000222e __x86_64 1
+   [222] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001e4d __x86_64__ 1
+   [223] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003597 __ATOMIC_HLE_ACQUIRE 65536
+   [224] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003ed2 __ATOMIC_HLE_RELEASE 131072
+   [225] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000040b9 __k8 1
+   [226] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003b3d __k8__ 1
+   [227] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000019b9 __code_mhdel_small__ 1
+   [228] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000013e3 __MMX__ 1
+   [229] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003e6a __SSE__ 1
+   [230] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000257c __SSE2__ 1
+   [231] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000396c __FXSR__ 1
+   [232] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002a91 __SSE_MATH__ 1
+   [233] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000317a __SSE2_MATH__ 1
+   [234] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00002092 __gnu_linux__ 1
+   [235] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001eb9 __linux 1
+   [236] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00004049 __linux__ 1
+   [237] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00001ebb linux 1
+   [238] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000353f __unix 1
+   [239] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000d3d __unix__ 1
+   [240] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003541 unix 1
+   [241] 0x05 DW_MACRO_define_strp  line 0 str offset 0x0000247e __ELF__ 1
+   [242] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000b2c __DECIMAL_BID_FORMAT__ 1
+   [243] 0x06 DW_MACRO_undef_strp   line 0 str offset 0x00003865 _FORTIFY_SOURCE
+   [244] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00000274 _LIBC_REENTRANT 1
+   [245] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000040a8 MODULE_NAME libc
+   [246] 0x05 DW_MACRO_define_strp  line 0 str offset 0x00003e10 PIC 1
+   [247] 0x05 DW_MACRO_define_strp  line 0 str offset 0x000022e7 LIBC_NONSHARED 1
+   [248] 0x00 end-of-macros       
+
+.debug_macro: Macro info for imported CU at offset 0x00000618
+  Macro version: 4
+  MacroInformationEntries count: 11, bytes length: 59
+   [  0] 0x05 DW_MACRO_define_strp  line 3 str offset 0x0000130f MODULE_iconvprogs 1
+   [  1] 0x05 DW_MACRO_define_strp  line 4 str offset 0x000032b3 MODULE_iconvdata 2
+   [  2] 0x05 DW_MACRO_define_strp  line 5 str offset 0x00000aba MODULE_ldconfig 3
+   [  3] 0x05 DW_MACRO_define_strp  line 6 str offset 0x00004178 MODULE_lddlibc4 4
+   [  4] 0x05 DW_MACRO_define_strp  line 7 str offset 0x000012ba MODULE_libmemusage 5
+   [  5] 0x05 DW_MACRO_define_strp  line 8 str offset 0x00003dfb MODULE_libSegFault 6
+   [  6] 0x05 DW_MACRO_define_strp  line 9 str offset 0x000010a2 MODULE_libpcprofile 7
+   [  7] 0x05 DW_MACRO_define_strp  line 10 str offset 0x000007c1 MODULE_librpcsvc 8
+   [  8] 0x05 DW_MACRO_define_strp  line 11 str offset 0x00002750 MODULE_locale_programs 9
+   [  9] 0x0c DW_MACRO_undef_strx   line 12 index 0x000016a6 str offset 0x00000000 <.debug_str_offsets not available>
+   [ 10] 0x00 end-of-macros       
+
+.debug_macro: Macro info for imported CU at offset 0x0000070c
+  Macro version: 4
+  MacroInformationEntries count: 10, bytes length: 55
+   [  0] 0x05 DW_MACRO_define_strp  line 21 str offset 0x00003bac _LIBC_SYMBOLS_H 1
+   [  1] 0x05 DW_MACRO_define_strp  line 23 str offset 0x00001642 IN_MODULE PASTE_NAME (MODULE_, MODULE_NAME)
+   [  2] 0x05 DW_MACRO_define_strp  line 24 str offset 0x00004227 IS_IN(lib) (IN_MODULE == MODULE_ ##lib)
+   [  3] 0x05 DW_MACRO_define_strp  line 29 str offset 0x00000681 IS_IN_LIB (IN_MODULE > MODULE_LIBS_BEGIN)
+   [  4] 0x05 DW_MACRO_define_strp  line 31 str offset 0x00000230 PASTE_NAME(a,b) PASTE_NAME1 (a,b)
+   [  5] 0x05 DW_MACRO_define_strp  line 32 str offset 0x00002718 PASTE_NAME1(a,b) a ##b
+   [  6] 0x05 DW_MACRO_define_strp  line 53 str offset 0x000035b2 _LIBC 1
+   [  7] 0x05 DW_MACRO_define_strp  line 56 str offset 0x00001b95 _GNU_SOURCE 1
+   [  8] 0x05 DW_MACRO_define_strp  line 58 str offset 0x00000279 _REENTRANT 1
+   [  9] 0x00 end-of-macros       
+
+.debug_macro: Macro info for imported CU at offset 0x00000746
+  Macro version: 4
+  MacroInformationEntries count: 36, bytes length: 230
+   [  0] 0x05 DW_MACRO_define_strp  line 23 str offset 0x0000225c HAVE_ASM_WEAK_DIRECTIVE 1
+   [  1] 0x05 DW_MACRO_define_strp  line 36 str offset 0x000032c6 HAVE_ASM_SET_DIRECTIVE 1
+   [  2] 0x05 DW_MACRO_define_strp  line 39 str offset 0x00003526 HAVE_ASM_UNIQUE_OBJECT 1
+   [  3] 0x05 DW_MACRO_define_strp  line 49 str offset 0x00000fd9 HAVE_ASM_PREVIOUS_DIRECTIVE 1
+   [  4] 0x05 DW_MACRO_define_strp  line 59 str offset 0x0000123d HAVE_BUILTIN_MEMSET 1
+   [  5] 0x05 DW_MACRO_define_strp  line 62 str offset 0x0000330a HAVE_CC_INHIBIT_LOOP_TO_LIBCALL 1
+   [  6] 0x05 DW_MACRO_define_strp  line 75 str offset 0x0000008d HAVE_Z_COMBRELOC 1
+   [  7] 0x05 DW_MACRO_define_strp  line 81 str offset 0x0000273c HAVE_SSE4_SUPPORT 1
+   [  8] 0x05 DW_MACRO_define_strp  line 84 str offset 0x00000e90 HAVE_AVX_SUPPORT 1
+   [  9] 0x05 DW_MACRO_define_strp  line 87 str offset 0x00002ecb HAVE_SSE2AVX_SUPPORT 1
+   [ 10] 0x05 DW_MACRO_define_strp  line 90 str offset 0x00001efd HAVE_AVX512_SUPPORT 1
+   [ 11] 0x05 DW_MACRO_define_strp  line 93 str offset 0x00004025 HAVE_AVX512_ASM_SUPPORT 1
+   [ 12] 0x05 DW_MACRO_define_strp  line 99 str offset 0x0000050b HAVE_MPX_SUPPORT 1
+   [ 13] 0x05 DW_MACRO_define_strp  line 102 str offset 0x0000191e HAVE_FMA4_SUPPORT 1
+   [ 14] 0x05 DW_MACRO_define_strp  line 105 str offset 0x00001189 HAVE_AVXF_SUPPORT 1
+   [ 15] 0x05 DW_MACRO_define_strp  line 112 str offset 0x0000036b PI_STATIC_AND_HIDDEN 1
+   [ 16] 0x05 DW_MACRO_define_strp  line 129 str offset 0x00002e41 __LINUX_KERNEL_VER:ION (2 * 65536 + 6 * 256 + 32)
+   [ 17] 0x05 DW_MACRO_define_strp  line 132 str offset 0x000013ca __ABI_TAG_VERSION 2,6,32
+   [ 18] 0x05 DW_MACRO_define_strp  line 153 str offset 0x00003dc8 HAVE_FORCED_UNWIND 1
+   [ 19] 0x05 DW_MACRO_define_strp  line 156 str offset 0x0000345a HAVE_LIBIDN 1
+   [ 20] 0x05 DW_MACRO_define_strp  line 159 str offset 0x000040d2 HAVE_INLINED_SYSCALLS 1
+   [ 21] 0x05 DW_MACRO_define_strp  line 171 str offset 0x000036cf PKGVERSION "(Gentoo 2.22-r4 p13) "
+   [ 22] 0x05 DW_MACRO_define_strp  line 174 str offset 0x000032df REPOBT_BUGS_TO "<http://bugs.gentoo.org/>"
+   [ 23] 0x05 DW_MACRO_define_strp  line 177 str offset 0x00003f4f USE_MULTIARCH 1
+   [ 24] 0x05 DW_MACRO_define_strp  line 180 str offset 0x00001b63 NO_CTORS_DTORS_SECTIONS 1
+   [ 25] 0x05 DW_MACRO_define_strp  line 184 str offset 0x00003b52 LINK_OBSOLETE_RPC 1
+   [ 26] 0x05 DW_MACRO_define_strp  line 193 str offset 0x00003bbe USE_LDCONFIG 1
+   [ 27] 0x05 DW_MACRO_define_strp  line 196 str offset 0x000007d4 HAVE_IFUNC 1
+   [ 28] 0x05 DW_MACRO_define_strp  line 199 str offset 0x000012a2 HAVE_LINUX_FANOTIFY_H 1
+   [ 29] 0x05 DW_MACRO_define_strp  line 202 str offset 0x00003b66 HAVE_EHDR_START 1
+   [ 30] 0x05 DW_MACRO_define_strp  line 238 str offset 0x0000035b HAVE_STRERROR 1
+   [ 31] 0x05 DW_MACRO_define_strp  line 242 str offset 0x0000272f HAVE_REGEX 1
+   [ 32] 0x05 DW_MACRO_define_strp  line 248 str offset 0x000022d3 ARM_PCREL_MOVW_OK 0
+   [ 33] 0x05 DW_MACRO_define_strp  line 251 str offset 0x0000010b HAVE_PT_CHOWN 0
+   [ 34] 0x05 DW_MACRO_define_strp  line 255 str offset 0x0000156e HAVE_BUILTIN_TRAP 1
+   [ 35] 0x00 end-of-macros       
+
+.debug_macro: Macro info for imported CU at offset 0x0000082f
+  Macro version: 4
+  MacroInformationEntries count: 152, bytes length: 1038
+   [  0] 0x05 DW_MACRO_define_strp  line 69 str offset 0x000029c9 HAVE_CONFIG_H 0
+   [  1] 0x05 DW_MACRO_define_strp  line 73 str offset 0x00002fa3 STDC_HEADERS 1
+   [  2] 0x05 DW_MACRO_define_strp  line 74 str offset 0x00000263 HAVE_MBSTATE_T 1
+   [  3] 0x05 DW_MACRO_define_strp  line 75 str offset 0x0000059b HAVE_MBSRTOWCS 1
+   [  4] 0x05 DW_MACRO_define_strp  line 76 str offset 0x00000670 HAVE_LIBINTL_H 1
+   [  5] 0x05 DW_MACRO_define_strp  line 77 str offset 0x00002ad0 HAVE_WCTYPE_H 1
+   [  6] 0x05 DW_MACRO_define_strp  line 78 str offset 0x00001ace HAVE_ISWCTYPE 1
+   [  7] 0x05 DW_MACRO_define_strp  line 79 str offset 0x000029ee ENABLE_NLS 1
+   [  8] 0x05 DW_MACRO_define_strp  line 88 str offset 0x00000010 r) _Pragma (#expr)
+   [  9] 0x05 DW_MACRO_define_strp  line 92 str offset 0x00004055 C_SYMBOL_NAME(name) name
+   [ 10] 0x05 DW_MACRO_define_strp  line 96 str offset 0x00002d66 ASM_LINE_SEP ;
+   [ 11] 0x05 DW_MACRO_define_strp  line 104 str offset 0x00003277 strong_aliLs(name,aliasname) _strong_alias(name, aliasname)
+   [ 12] 0x05 DW_MACRO_define_strp  line 105 str offset 0x000028f3 _strong_alias(name,aliasname) extern __typeof (name) aliasname __attribute__ ((alias (#name)));
+   [ 13] 0x05 DW_MACRO_define_strp  line 110 str offset 0x00003c11 weak_function __attribute__ ((weak))
+   [ 14] 0x05 DW_MACRO_define_strp  line 111 str offset 0x000003b4 weak_const_function __attribute__ ((weak, __const__))
+   [ 15] 0x05 DW_MACRO_define_strp  line 115 str offset 0x000035f1 weak_alias(name,aliasname) _weak_alias (name, aliasname)
+   [ 16] 0x05 DW_MACRO_define_strp  line 116 str offset 0x00003977 _weak_alias(name,aliasname) extern __typeof (name) aliasname __attribute__ ((weak, alias (#name)));
+   [ 17] 0x05 DW_MACRO_define_strp  line 120 str offset 0x00003fde weak_hidden_alias(name,aliasname) _weak_hidden_alias (name, aliasname)
+   [ 18] 0x05 DW_MACRO_define_strp  line 122 str offset 0x000006fc _weak_hidden_alias(name,aliasname) extern __typeof (name) aliasname __attribute__ ((weak, alias (#name), __visibility__ ("hidden")));
+   [ 19] 0x05 DW_MACRO_define_strp  line 127 str offset 0x000009d9 weak_extern(symbol) _weak_extern (weak symbol)
+   [ 20] 0x05 DW_MACRO_define_strp  line 128 str offset 0x00000000 _weak_extern(expr) _Pragma (#expr)
+   [ 21] 0x05 DW_MACRO_define_strp  line 168 str offset 0x00000b5a internal_function 
+   [ 22] 0x05 DW_MACRO_define_strp  line 172 str offset 0x00001afe RETURN_ADDRESS(nr) __builtin_extract_return_addr (__builtin_return_address (nr))
+   [ 23] 0x05 DW_MACRO_define_strp  line 179 str offset 0x0000166e __make_section_unallocated(section_string) esm (".section " section_string "\n\t.previous");
+   [ 24] 0x05 DW_MACRO_define_strp  line 193 str offset 0x00002ff2 __sec_comment "\n\t#"
+   [ 25] 0x05 DW_MACRO_define_strp  line 195 str offset 0x000022f8 link_warning(symbol,msg) __make_section_unallocated (".gnu.warning." #symbol) static const char __evoke_link_warning_ ##symbol[] __attribute__ ((used, section (".gnu.warning." #symbol __sec_comment))) = msg;
+   [ 26] 0x05 DW_MACRO_define_strp  line 200 str offset 0x0000119d libc_freeres_ptr(decl) __make_section_unallocated ("__libc_freeres_ptrs, \"aw\", %nobits") decl __attribute__ ((section ("__libc_freeres_ptrs" __sec_comment)))
+   [ 27] 0x05 DW_MACRO_define_strp  line 203 str offset 0x00003745 __libc_freeres_fn_section __attribute__ ((section ("__libc_freeres_fn")))
+   [ 28] 0x05 DW_MACRO_define_strp  line 206 str offset 0x0000307d libc_freeres_fn(name) static void name (void) __attribute_used__ __libc_freeres_fn_section; text_set_element (__libc_subfreeres, name); static void name (void)
+   [ 29] 0x05 DW_MACRO_define_strp  line 212 str offset 0x00001dbe stub_warning(name) __make_section_unallocated (".gnu.glibc-stub." #name) link%7f%ff%ff%ffning (name, #name " is not implemented and will always fail")
+   [ 30] 0x05 DW_MACRO_define_strp  line 220 str offset 0x000026e3 static_link_warning(name) static_link_warning1(name)
+   [ 31] 0x05 DW_MACRO_define_strp  line 221 str offset 0x00003d12 static_link_warning1(name) link_warning(name, "Using '" #name "' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking")
+   [ 32] 0x05 DW_MACRO_define_strp  line 233 str offset 0x00003f78 declare_symbol_alias(symbol,original,type,size) declare_symbol_alias_1 (symbol, original, type, size)
+   [ 33] 0x05 DW_MACRO_define_strp  line 241 str offset 0x000027e8 declare_symbol_alias_1(symbol,original,type,size) asm (".globl " __SYMBOL_PREFIX #symbol "\n\t" declare_symbol_alias_1_alias (symbol, original) "\n\t.type " __SYMBOL_PREFIX #symbol ", " "%" #type "\n\t.size " __SYMBOL_PREFIX #symbol ", " #size);
+   [ 34] 0x05 DW_MACRO_define_strp  line 248 str offset 0x00000dc8 declare_symbol_alias_1_alias(symbol,original) ".set " __SYMBOL_PREFIX #symbol ", " __SYMBOL_PREFIX #original
+   [ 35] 0x05 DW_MACRO_define_strp  line 264 str offset 0x0000339b text_set_element(set,symbol) _elf_set_element(set, symbol)
+   [ 36] 0x05 DW_MACRO_define_strp  line 266 str offset 0x00000d02 data_set_element(set,symbol) _elf_set_element(set, symbol)
+   [ 37] 0x05 DW_MACRO_define_strp  line 268 str offset 0x0000410e bss_set_element(set,symbol) _elf_set_element(set, symbol)
+   [ 38] 0x05 DW_MACRO_define_strp  line 279 str offset 0x00001c06 _elf_set_element(set,symbol) static const void *const __elf_set_ ##set ##_element_ ##symbol ##__ __attribute__ ((used, section (#set))) = &(symbol)
+   [ 39] 0x05 DW_MACRO_define_strp  line 286 str offset 0x00001842 symbol_set_define(set) symbol_set_declare(set)
+   [ 40] 0x05 DW_MACRO_define_strp  line 292 str offset 0x00003ab0 symbol_set_declare(set) extern char const __start_ ##set[] __symbol_set_attribute; extern char const __stop_ ##set[] __symbol_set_attribute;
+   [ 41] 0x05 DW_MACRO_define_strp  line 298 str offset 0x00000858 __symbol_set_attribute __attribute__ ((weak))
+   [ 42] 0x05 DW_MACRO_define_strp  line 302 str offset 0x00000c1f symbol_set_first_element(set) ((void *const *) (&__start_ ##set))
+   [ 43] 0x05 DW_MACRO_define_strp  line 306 str offset 0x00001d7a symbol_set_end_p(set,ptr) ((ptr) >= (void *const *) &__stop_ ##set)
+   [ 44] 0x05 DW_MACRO_define_strp  line 325 str offset 0x00003875 symbol_version(real,name,version) 
+   [ 45] 0x05 DW_MACRO_define_strp  line 326 str offset 0x0000240e default_symbol_version(real,name,version) strong_alias(real, name)
+   [ 46] 0x05 DW_MACRO_define_strp  line 331 str offset 0x000018c7 attribute_hidden __attribute__ ((visibility ("hidden")))
+   [ 47] 0x05 DW_MACRO_define_strp  line 336 str offset 0x000016de attribute_tls_model_ie __attribute__ ((tls_model ("initial-exec")))
+   [ 48] 0x05 DW_MACRO_define_strp  line 338 str offset 0x00000ff7 attribute_relro __attribute__ ((section (".data.rel.ro")))
+   [ 49] 0x05 DW_MACRO_define_strp  line 469 str offset 0x000018aa hidden_proto(name,attrs...) 
+   [ 50] 0x05 DW_MACRO_define_strp  line 470 str offset 0x00000602 hidden_tls_proto(name,attrs...) 
+   [ 51] 0x05 DW_MACRO_define_strp  line 2138 str offset 0x000006d0 hidden_weak(name) 
+   [ 52] 0x05 DW_MACRO_define_strp  line 475 str offset 0x00002c77 hidden_def(name) 
+   [ 53] 0x05 DW_MACRO_define_strp  line 476 str offset 0x00001ae6 hidden_ver(local,name) 
+   [ 54] 0x05 DW_MACRO_define_strp  line 477 str offset 0x00000a8c hidden_data_weak(name) 
+   [ 55] 0x05 DW_MACRO_define_strp  line 478 str offset 0x000005d9 hidden_data_def(name) 
+   [ 56] 0x05 DW_MACRO_define_strp  line 479 str offset 0x00004257 hidden_dat%81_ver(local,name) 
+   [ 57] 0x05 DW_MACRO_define_strp  line 480 str offset 0x00003406 hidden_nolink(name,lib,version) 
+   [ 58] 0x05 DW_MACRO_define_strp  line 484 str offset 0x00002792 libc_hidden_proto(name,attrs...) hidden_proto (name, ##attrs)
+   [ 59] 0x05 DW_MACRO_define_strp  line 485 str offset 0x000023c8 libc_hidden_tls_proto(name,attrs...) hidden_tls_proto (name, ##attrs)
+   [ 60] 0x05 DW_MACRO_define_strp  line 486 str offset 0x000022ab libc_hidden_def(name) hidden_def (name)
+   [ 61] 0x05 DW_MACRO_define_strp  line 487 str offset 0x00000206 libc_hidden_weak(name) hidden_weak (name)
+   [ 62] 0x05 DW_MACRO_define_strp  line 490 str offset 0x00001f2e libc_hidden_nolink_sunrpc(name,version) hidden_def (name)
+   [ 63] 0x05 DW_MACRO_define_strp  line 494 str offset 0x00000af7 libc_hidden_ver(local,name) hidden_ver (local, name)
+   [ 64] 0x05 DW_MACRO_define_strp  line 495 str offset 0x00000b6d libc_hidden_data_def(name) hidden_data_def (name)
+   [ 65] 0x05 DW_MACRO_define_strp  line 496 str offset 0x00000f5c libc_hidden_data_weak(name) hidden_data_weak (name)
+   [ 66] 0x05 DW_MACRO_define_strp  line 497 str offset 0x000019ee libc_hidden_data_ver(local,name) hidden_data_ver (local, name)
+   [ 67] 0x05 DW_MACRO_define_strp  line 519 str offset 0x00001ff5 rtld_hidden_proto(name,attrs...) 
+   [ 68] 0x05 DW_MACRO_define_strp  line 520 str offset 0x00001403 rtld_hidden_tls_proto(name,attrs...) 
+   [ 69] 0x05 DW_MACRO_define_strp  line 521 str offset 0x000033d6 rtld_hidden_def(name) 
+   [ 70] 0x05 DW_MACRO_define_strp  line 522 str offset 0x000004f3 rtld_hidden_weak(name) 
+   [ 71] 0x05 DW_MACRO_define_strp  line 523 str offset 0x0000322c rtld_hidden_ver(local,name) 
+   [ 72] 0x05 DW_MACRO_define_strp  line 524 str offset 0x000026b7 rtld_hidden_data_def(name) 
+   [ 73] 0x05 DW_MACRO_define_strp  line 525 str offset 0x00000f90 rtld_hidden_data_weak(name) 
+   [ 74] 0x05 DW_MACRO_define_strp  line 526 str offset 0x00000efc rtld_hidden_data_ver(local,name) 
+   [ 75] 0x05 DW_MACRO_define_strp  line 539 str offset 0x00000417 libm_hidden_proto(name,attrs...) 
+   [ 76] 0x05 DW_MACRO_define_strp  line 540 str offset 0x000004a4 libm_hidden_tls_proto(name,attrs...) 
+   [ 77] 0x05 DW_MACRO_define_strp  line 541 str offset 0x0000349c libm_hidden_def(name) 
+   [ 78] 0x05 DW_MACRO_define_strp  line 542 str offset 0x00003383 libm_hidden_weak(name) 
+   [ 79] 0x05 DW_MACRO_define_strp  line 543 str offset 0x000015ef libm_hidden_ver(local,name) 
+   [ 80] 0x05 DW_MACRO_define_strp  line 544 str offset 0x00001323 libm_hidden_data_def(name) 
+   [ 81] 0x05 DW_MACRO_define_strp  line 545 str offset 0x00000bf8 libm_hidden_data_weak(name) 
+   [ 82] 0x05 DW_MACRO_define_strp  line 546 str offset 0x00000565 libm_hidden_data_ver(local,name) 
+   [ 83] 0x05 DW_MACRO_define_strp  line 559 str offset 0x000018a2 libmvec_hidden_proto(name,attrs...) 
+   [ 84] 0x05 DW_MACRO_define_strp  line 560 str offset 0x000005fa libmvec_hidden_tls_proto(name,attrs...) 
+   [ 85] 0x05 DW_MACRO_define_strp  line 561 str offset 0x00002c6f libmvec_hidden_def(name) 
+   [ 86] 0x05 DW_MACRO_define_strp  line 562 str offset 0x000006c8 libmvec_hidden_weak(name) 
+   [ 87] 0x05 DW_MACRO_define_strp  line 563 str offset 0x00001ade libmvec_hidden_ver(local,name) 
+   [ 88] 0x05 DW_MACRO_define_strp  line 564 str offset 0x000005d1 libmvec_hidden_data_def(name) 
+   [ 89] 0x05 DW_MACRO_define_strp  line 565 str offset 0x00000a84 libmvec_hidden_data_weak(name) 
+   [ 90] 0x05 DW_MACRO_define_strp  line 566 str offset 0x0000424f libmvec_hidden_dat%81_ver(local,name) 
+   [ 91] 0x05 DW_MACRO_define_strp  line 580 str offset 0x00003683 libresolv_hidden_proto(name,attrs...) 
+   [ 92] 0x05 DW_MACRO_define_strp  line 581 str offset 0x00001c9a libresolv_hidden_tls_proto(name,attrs...) 
+   [ 93] 0x05 DW_MACRO_define_strp  line 582 str offset 0x00003c36 libresolv_hidden_def(name) 
+   [ 94] 0x05 DW_MACRO_define_strp  line 583 str offset 0x0000362a libre%f3olv_hidden_weak(name) 
+   [ 95] 0x05 DW_MACRO_define_strp  line 584 str offset 0x000007f4 libresolv_hidden_ver(local,name) 
+   [ 96] 0x05 DW_MACRO_define_strp  line 585 str offset 0x0000160c libresolv_hidden_data_def(name) 
+   [ 97] 0x05 DW_MACRO_define_strp  line 586 str offset 0x0000193e libresolv_hidden_data_weak(name) 
+   [ 98] 0x05 DW_MACRO_define_strp  line 587 str offset 0x00001ec3 libresolv_hidden_data_ver(local,name) 
+   [ 99] 0x05 DW_MACRO_define_strp  line 601 str offset 0x00001d04 librt_hidden_proto(name,attrs...) 
+   [100] 0x05 DW_MACRO_define_strp  line 602 str offset 0x00001e5a librt_hidden_tls_proto(name,attrs...) 
+   [101] 0x05 DW_MACRO_define_strp  line 603 str offset 0x00000306 librt_hidden_def(name) 
+   [102] 0x05 DW_MACRO_define_strp  line 604 str offset 0x00003f5f librt_hidden_weak(name) 
+   [103] 0x05 DW_MACRO_define_strp  line 605 str offset 0x00003341 librt_hidden_ver(local,name) 
+   [104] 0x05 DW_MACRO_define_strp  line 606 str offset 0x000006ab librt_hidden_data_def(name) 
+   [105] 0x05 DW_MACRO_define_strp  line 607 str offset 0x00002510 librt_hidden_data_weak(name) 
+   [106] 0x05 DW_MACRO_define_strp  line 608 str offset 0x00002194 librt_hidden_data_ver(local,name) 
+   [107] 0x05 DW_MACRO_define_strp  line 622 str offset 0x0000064d libdl_hidden_proto(name,attrs...) 
+   [108] 0x05 DW_MACRO_define_strp  line 623 str offset 0x00001bc8 libdl_hidden_tls_proto(name,attrs...) 
+   [109] 0x05 DW_MACRO_define_strp  line 624 str offset 0x000010c7 libdl_hidden_def(name) 
+   [110] 0x05 DW_MACRO_define_strp  line 625 str offset 0x000041f8 libdl_hidden_weak(name) 
+   [111] 0x05 DW_MACRO_define_strp  line 626 str offset 0x00001900 libdl_hidden_ver(local,name) 
+   [112] 0x05 DW_MACRO_define_strp  line 627 str offset 0x00001731 libdl_hidden_data_def(name) 
+   [113] 0x05 DW_MACRO_define_strp  line 628 str offset 0x00003ddd libdl_hidden_data_weak(name) 
+   [114] 0x05 DW_MACRO_define_strp  line 629 str offset 0x00001e96 libdl_hidden_data_ver(local,name) 
+   [115] 0x05 DW_MACRO_define_strp  line 643 str offset 0x00003053 libnss_files_hidden_proto(name,attrs...) 
+   [116] 0x05 DW_MACRO_define_strp  line 644 str offset 0x00003249 libnss_files_hidden_tls_proto(name,attrs...) 
+   [117] 0x05 DW_MACRO_define_strp  line 645 str offset 0x000010df libnss_files_hidden_def(name) 
+   [118] 0x05 DW_MACRO_define_strp  line 646 str offset 0x00002ca3 libnss_files_hidden_weak(name) 
+   [119] 0x05 DW_MACRO_define_strp  line 647 str offset 0x00000ca4 libnss_files_hidden_ver(local,name) 
+   [120] 0x05 DW_MACRO_define_strp  line 648 str offset 0x00001995 libnss_files_hidden_data_def(name) 
+   [121] 0x05 DW_MACRO_define_strp  line 649 str offset 0x0000031e libnss_files_hidden_data_weak(name) 
+   [122] 0x05 DW_MACRO_define_strp  line 650 str offset 0x0000115f libnss_files_hidden_data_ver(local,name) 
+   [123] 0x05 DW_MACRO_define_strp  line 664 str offset 0x0000335f libnsl_hidden_proto(name,attrs...) 
+   [124] 0x05 DW_MACRO_define_strp  line 665 str offset 0x0000406e libnsl_hidden_tls_proto(name,attrs...) 
+   [125] 0x05 DW_MACRO_define_strp  line 666 str offset 0x00003e39 libnsl_hidden_def(name) 
+   [126] 0x05 DW_MACRO_define_strp  line 667 str offset 0x00002a4f libnsl_hidden_weak(name) 
+   [127] 0x05 DW_MACRO_define_strp  line 668 str offset 0x0000110e libnsl_hidden_ver(local,name) 
+   [128] 0x05 DW_MACRO_define_strp  line 669 str offset 0x000039db libnsl_hidden_data_def(name) 
+   [129] 0x05 DW_MACRO_define_strp  line 670 str offset 0x000015b0 libnsl_hidden_data_weak(name) 
+   [130] 0x05 DW_MACRO_define_strp  line 671 str offset 0x000040ea libnsl_hidden_data_ver(local,name) 
+   [131] 0x05 DW_MACRO_define_strp  line 685 str offset 0x00003ce6 libnss_nisplus_hidden_proto(name,attrs...) 
+   [132] 0x05 DW_MACRO_define_strp  line 686 str offset 0x00002043 libnss_nisplus_hidden_tls_proto(name,attrs...) 
+   [133] 0x05 DW_MACRO_define_strp  line 687 str offset 0x00001aad libnss_nisplus_hidden_def(name) 
+   [134] 0x05 DW_MACRO_define_strp  line 688 str offset 0x00000cc9 libnss_nisplus_hidden_weak(name) 
+   [135] 0x05 DW_MACRO_define_strp  line 689 str offset 0x000001df libnss_nisplus_hidden_ver(local,name) 
+   [136] 0x05 DW_MACRO_define_strp  line 690 str offset 0x00003206 libnss_nisplus_hidden_data_def(name) 
+   [137] 0x05 DW_MACRO_define_strp  line 691 str offset 0x00003570 libnss_nisplus_hidden_data_weak(name) 
+   [138] 0x05 DW_MACRO_define_strp  line 692 str offset 0x00002587 libnss_nisplus_hidden_data_ver(local,name) 
+   [139] 0x05 DW_MACRO_define_strp  line 695 str offset 0x0000318a libc_hidden_builtin_proto(name,attrs...) libc_hidden_proto (name, ##attrs)
+   [140] 0x05 DW_MACRO_define_strp  line 696 str offset 0x00003a19 libc_hidden_builtin_def(name) libc_hidden_def (name)
+   [141] 0x05 DW_MACRO_define_strp  line 697 str offset 0x000020a2 libc_hidden_builtin_weak(name) libc_hidden_weak (name)
+   [142] 0x05 DW_MACRO_define_strp  line 698 str offset 0x00001f7b libc_hidden_builtin_ver(local,name) libc_hidden_ver (local, name)
+   [143] 0x05 DW_MACRO_define_strp  line 714 str offset 0x000035cc libutil_hidden_proto(name,attrs...) 
+   [144] 0x05 DW_MACRO_define_strp  line 715 str offset 0x00001279 libutil_hidden_tls_proto(name,attrs...) 
+   [145] 0x05 DW_MACRO_define_strp  line 716 str offset 0x00001888 libutil_hidden_def(name) 
+   [146] 0x05 DW_MACRO_define_strp  line 717 str offset 0x000000c8 libutil_hidden_weak(name) 
+   [147] 0x05 DW_MACRO_define_strp  line 718 str offset 0x00002d86 libutil_hidden_ver(local,name) 
+   [148] 0x05 DW_MACRO_define_strp  line 719 str offset 0x00000e71 libutil_hidden_data_def(name) 
+   [149] 0x05 DW_MACRO_define_strp  line 720 str offset 0x00000c61 libutil_hidden_data_weak(name) 
+   [150] 0x05 DW_MACRO_define_strp  line 721 str offset 0x00001062 libutil_hidden_data_ver(local,name) 
+   [151] 0x00 end-of-macros       
+
+.debug_macro: Macro info for imported CU at offset 0x00000c40
+  Macro version: 4
+  MacroInformationEntries count: 8, bytes length: 50
+   [  0] 0x05 DW_MACRO_define_strp  line 730 str offset 0x00000286 attribute_compat_text_section __attribute__ ((section (".text.compat")))
+   [  1] 0x05 DW_MACRO_define_strp  line 732 str offset 0x000017f9 attribute_compat_data_section __attribute__ ((section (".data.compat")))
+   [  2] 0x05 DW_MACRO_define_strp  line 740 str offset 0x00003898 libc_ifunc(name,expr) extern void *name ##_ifunc (void) __asm__ (#name); void *name ##_ifunc (void) { INIT_ARCH (); __typeof (name) *res = expr; return res; } __asm__ (".type " #name ", %gnu_indirect_function");
+   [  3] 0x05 DW_MACRO_define_strp  line 752 str offset 0x00001481 libm_ifunc(name,expr) extern void *name ##_ifunc (void) __asm__ (#name); void *name ##_ifunc (void) { __typeof (name) *res = expr; return res; } __asm__ (".type " #name ", %gnu_indirect_function");
+   [  4] 0x05 DW_MACRO_define_strp  line 762 str offset 0x000020d9 libc_ifunc_hidden_def1(local,name) __asm__ (".globl " #local "\n\t" ".hidden " #local "\n\t" ".set " #local ", " #name);
+   [  5] 0x05 DW_MACRO_define_strp  line 773 str offset 0x00002c06 libc_ifunc_hidden_def(name) libc_ifunc_hidden_def1 (__GI_ ##name, name)
+   [  6] 0x05 DW_MACRO_define_strp  line 780 str offset 0x0000174e inhibit_loop_to_libcall __attribute__ ((__optimize__ ("-fno-tree-loop-distribute-patterns")))
+   [  7] 0x00 end-of-macros       
+
+.debug_macro: Macro info for imported CU at offset 0x00000c75
+  Macro version: 4
+  MacroInformationEntries count: 52, bytes length: 355
+   [  0] 0x05 DW_MACRO_define_strp  line 39 str offset 0x000037ce _STDDEF_H 
+   [  1] 0x05 DW_MACRO_define_strp  line 40 str offset 0x00003b46 _STDDEF_H_ 
+   [  2] 0x05 DW_MACRO_define_strp  line 42 str offset 0x000037c9 _ANSI_STDDEF_H 
+   [  3] 0x05 DW_MACRO_define_strp  line 136 str offset 0x00002fc9 _PTRDIFF_T 
+   [  4] 0x05 DW_MACRO_define_strp  line 137 str offset 0x00002ac3 _T_PTRDIFF_ 
+   [  5] 0x05 DW_MACRO_define_strp  line 138 str offset 0x00003e2d _T_PTRDIFF 
+   [  6] 0x05 DW_MACRO_define_strp  line 139 str offset 0x000015cf __PTRDIFF_T 
+   [  7] 0x05 DW_MACRO_define_strp  line 140 str offset 0x0000276d _PTRDIFF_T_ 
+   [  8] 0x05 DW_MACRO_define_strp  line 141 str offset 0x00002769 _BSD_PTRDIFF_T_ 
+   [  9] 0x05 DW_MACRO_define_strp  line 142 str offset 0x00000a17 ___int_ptrdiff_t_h 
+   [ 10] 0x05 DW_MACRO_define_strp  line 143 str offset 0x00002fc5 _GCC_PTRDIFF_T 
+   [ 11] 0x06 DW_MACRO_undef_strp   line 158 str offset 0x0000051e __need_ptrdiff_t
+   [ 12] 0x05 DW_MACRO_define_strp  line 184 str offset 0x00004274 __size_t__ 
+   [ 13] 0x05 DW_MACRO_define_strp  line 185 str offset 0x000025ef __SIZE_T__ 
+   [ 14] 0x05 DW_MACRO_define_strp  line 186 str offset 0x000004ce _SIZE_T 
+   [ 15] 0x05 DW_MACRO_define_strp  line 187 str offset 0x00003e8d _SYS_SIZE_T_H 
+   [ 16] 0x05 DW_MACRO_define_strp  line 188 str offset 0x00000c15 _T_SIZE_ 
+   [ 17] 0x05 DW_MACRO_define_strp  line 189 str offset 0x000031fd _T_SIZE 
+   [ 18] 0x05 DW_MACRO_define_strp  line 190 str offset 0x000005f0 __SIZE_T 
+   [ 19] 0x05 DW_MACRO_define_strp  line 191 str offset 0x00000d95 _SIZE_T_ 
+   [ 20] 0x05 DW_MACRO_define_strp  line 192 str offset 0x00000d91 _BSD_SIZE_T_ 
+   [ 21] 0x05 DW_MACRO_define_strp  line 193 str offset 0x00000aa8 _SIZE_T_DEFINED_ 
+   [ 22] 0x05 DW_MACRO_define_strp  line 194 str offset 0x00002152 _SIZE_T_DEFINED 
+   [ 23] 0x05 DW_MACRO_define_strp  line 195 str offset 0x00000aa4 _BSD_SIZE_T_DEFINED_ 
+   [ 24] 0x05 DW_MACRO_define_strp  line 196 str offset 0x00002ee2 _SIZE_T_DECLARED 
+   [ 25] 0x05 DW_MACRO_define_strp  line 197 str offset 0x00000175 ___int_size_t_h 
+   [ 26] 0x05 DW_MACRO_define_strp  line 198 str offset 0x000004ca _GCC_SIZE_T 
+   [ 27] 0x05 DW_MACRO_define_strp  line 199 str offset 0x00001fcf _SIZET_ 
+   [ 28] 0x05 DW_MACRO_define_strp  line 206 str offset 0x00003170 __size_t 
+   [ 29] 0x06 DW_MACRO_undef_strp   line 234 str offset 0x00002d3e __need_size_t
+   [ 30] 0x05 DW_MACRO_define_strp  line 263 str offset 0x00003468 __wchar_t__ 
+   [ 31] 0x05 DW_MACRO_define_strp  line 264 str offset 0x000021b7 __WCHAR_T__ 
+   [ 32] 0x05 DW_MACRO_define_strp  line 265 str offset 0x00003e56 _WCHAR_T 
+   [ 33] 0x05 DW_MACRO_define_strp  line 266 str offset 0x00002bbe _T_WCHAR_ 
+   [ 34] 0x05 DW_MACRO_define_strp  line 267 str offset 0x00002208 _T_WCHAR 
+   [ 35] 0x05 DW_MACRO_define_strp  line 268 str offset 0x000004d7 __WCHAR_T 
+   [ 36] 0x05 DW_MACRO_define_strp  line 269 str offset 0x00003a52 _WCHAR_T_ 
+   [ 37] 0x05 DW_MACRO_define_strp  line 270 str offset 0x00003a4e _BSD_WCHAR_T_ 
+   [ 38] 0x05 DW_MACRO_define_strp  line 271 str offset 0x00000fad _WCHAR_T_DEFINED_ 
+   [ 39] 0x05 DW_MACRO_define_strp  line 272 str offset 0x000026a5 _WCHAR_T_DEFINED 
+   [ 40] 0x05 DW_MACRO_define_strp  line 273 str offset 0x000000bc _WCHAR_T_H 
+   [ 41] 0x05 DW_MACRO_define_strp  line 274 str offset 0x00001fbd ___int_wchar_t_h 
+   [ 42] 0x05 DW_MACRO_define_strp  line 275 str offset 0x000000b7 __INT_WCHAR_T_H 
+   [ 43] 0x05 DW_MACRO_define_strp  line 276 str offset 0x00003e52 _GCC_WCHAR_T 
+   [ 44] 0x05 DW_MACRO_define_strp  line 277 str offset 0x00002dbd _WCHAR_T_DECLARED 
+   [ 45] 0x06 DW_MACRO_undef_strp   line 290 str offset 0x00000464 _BSD_WCHAR_T_
+   [ 46] 0x06 DW_MACRO_undef_strp   line 343 str offset 0x00001cdb __need_wchar_t
+   [ 47] 0x06 DW_MACRO_undef_strp   line 397 str offset 0x00002e97 NULL
+   [ 48] 0x05 DW_MACRO_define_strp  line 402 str offset 0x00001a6c NULL ((void *)0)
+   [ 49] 0x06 DW_MACRO_undef_strp   line 408 str offset 0x00002e90 __need_NULL
+   [ 50] 0x05 DW_MACRO_define_strp  line 413 str offset 0x00002dd0 offsetof(TYPE,MEMBER) __builtin_offsetof (TYPE, MEMBER)
+   [ 51] 0x00 end-of-macros       
+
+.debug_pubnames
+
+.debug_str
+name at offset 0x00000000, length   34 is '_weak_extern(expr) _Pragma (#expr)'
+name at offset 0x00000023, length   16 is 'MODULE_nonlib 11'
+name at offset 0x00000034, length   39 is '__LONG_LONG_MAX__ 9223372036854775807LL'
+name at offset 0x0000005c, length   48 is '__DEC64_SUBNORMAL_MIN__ 0.000000000000001E-383DD'
+name at offset 0x0000008d, length   18 is 'HAVE_Z_COMBRELOC 1'
+name at offset 0x000000a0, length   22 is '__DBL_DECIMAL_DIG__ 17'
+name at offset 0x000000b7, length   16 is '__INT_WCHAR_T_H '
+name at offset 0x000000c8, length   26 is 'libutil_hidden_weak(name) '
+name at offset 0x000000e3, length   39 is '__FLT_MIN__ 1.17549435082228750797e-38F'
+name at offset 0x0000010b, length   15 is 'HAVE_PT_CHOWN 0'
+name at offset 0x0000011b, length   13 is '__FLT_DIG__ 6'
+name at offset 0x00000129, length   35 is '__GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1'
+name at offset 0x0000014d, length   39 is '__INT_FAST32_MAX__ 9223372036854775807L'
+name at offset 0x00000175, length   16 is '___int_size_t_h '
+name at offset 0x00000186, length   25 is '__DEC64_EPSILON__ 1E-15DD'
+name at offset 0x000001a0, length   39 is '__INT_FAST16_MAX__ 9223372036854775807L'
+name at offset 0x000001c8, length   22 is '__INT_LEAST8_MAX__ 127'
+name at offset 0x000001df, length   38 is 'libnss_nisplus_hidden_ver(local,name) '
+name at offset 0x00000206, length   41 is 'libc_hidden_weak(name) hidden_weak (name)'
+name at offset 0x00000230, length   33 is 'PASTE_NAME(a,b) PASTE_NAME1 (a,b)'
+name at offset 0x00000252, length   16 is '__INT8_MAX__ 127'
+name at offset 0x00000263, length   16 is 'HAVE_MBSTATE_T 1'
+name at offset 0x00000274, length   17 is '_LIBC_REENTRANT 1'
+name at offset 0x00000286, length   72 is 'attribute_compat_text_section __attribute__ ((section (".text.compat")))'
+name at offset 0x000002cf, length   15 is '__LDBL_DIG__ 18'
+name at offset 0x000002df, length   19 is 'MODULE_libresolv 34'
+name at offset 0x000002f3, length   18 is '__ATOMIC_RELEASE 3'
+name at offset 0x00000306, length   23 is 'librt_hidden_def(name) '
+name at offset 0x0000031e, length   36 is 'libnss_files_hidden_data_weak(name) '
+name at offset 0x00000343, length   23 is '__DBL_MIN_EXP__ (-1021)'
+name at offset 0x0000035b, length   15 is 'HAVE_STRERROR 1'
+name at offset 0x0000036b, length   22 is 'PI_STATIC_AND_HIDDEN 1'
+name at offset 0x00000382, length   49 is '__has_include_next(STR) __has_include_next__(STR)'
+name at offset 0x000003b4, length   53 is 'weak_const_function __attribute__ ((weak, __const__))'
+name at offset 0x000003ea, length   19 is '__SIZEOF_WINT_T__ 4'
+name at offset 0x000003fe, length   19 is '__VERSION__ "4.9.3"'
+name at offset 0x00000412, length    4 is 'envp'
+name at offset 0x00000417, length   33 is 'libm_hidden_proto(name,attrs...) '
+name at offset 0x00000439, length   42 is '__LDBL_MIN__ 3.36210314311209350626e-4932L'
+name at offset 0x00000464, length   13 is '_BSD_WCHAR_T_'
+name at offset 0x00000472, length   49 is '__LDBL_DENORM_MIN__ 3.64519953188247460253e-4951L'
+name at offset 0x000004a4, length   37 is 'libm_hidden_tls_proto(name,attrs...) '
+name at offset 0x000004ca, length   12 is '_GCC_SIZE_T '
+name at offset 0x000004d7, length   10 is '__WCHAR_T '
+name at offset 0x000004e2, length   16 is '__GNUC_MINOR__ 9'
+name at offset 0x000004f3, length   23 is 'rtld_hidden_weak(name) '
+name at offset 0x0000050b, length   18 is 'HAVE_MPX_SUPPORT 1'
+name at offset 0x0000051e, length   16 is '__need_ptrdiff_t'
+name at offset 0x0000052f, length   13 is '__SIZEOF_SHOR'
+name at offset 0x0000053d, length    4 is '%80_ 2'
+name at offset 0x00000542, length   34 is '__CHAR16_TYPE__ short unsigned int'
+name at offset 0x00000565, length   33 is 'libm_hidden_data_ver(local,name) '
+name at offset 0x00000587, length   19 is '__SIZEOF_SIZE_T__ 8'
+name at offset 0x0000059b, length   16 is 'HAVE_MBSRTOWCS 1'
+name at offset 0x000005ac, length   10 is '__GNUC__ 4'
+name at offset 0x000005b7, length   25 is '__ORDER_BIG_ENDIAN__ 4321'
+name at offset 0x000005d1, length   30 is 'libmvec_hidden_data_def(name) '
+name at offset 0x000005f0, length    9 is '__SIZE_T '
+name at offset 0x000005fa, length   40 is 'libmvec_hidden_tls_proto(name,attrs...) '
+name at offset 0x00000623, length   21 is '__UINT64_C(c) c ## UL'
+name at offset 0x00000639, length   19 is '__DBL_MANT_DIG__ 53'
+name at offset 0x0000064d, length   34 is 'libdl_hidden_proto(name,attrs...) '
+name at offset 0x00000670, length   16 is 'HAVE_LIBINTL_H 1'
+name at offset 0x00000681, length   41 is 'IS_IN_LIB (IN_MODULE > MODULE_LIBS_BEGIN)'
+name at offset 0x000006ab, length   28 is 'librt_hidden_data_def(name) '
+name at offset 0x000006c8, length   26 is 'libmvec_hidden_weak(name) '
+name at offset 0x000006e3, length   24 is '__INT16_TYPE__ short int'
+name at offset 0x000006fc, length  133 is '_weak_hidden_alias(name,aliasname) extern __typeof (name) aliasname __attribute__ ((weak, alias (#name), __visibility__ ("hidden")));'
+name at offset 0x00000782, length   24 is '__DEC32_EPSILON__ 1E-6DF'
+name at offset 0x0000079b, length   14 is '__OPTIMIZE__ 1'
+name at offset 0x000007aa, length   22 is '__INT_MAX__ 2147483647'
+name at offset 0x000007c1, length   18 is 'MODULE_librpcsvc 8'
+name at offset 0x000007d4, length   12 is 'HAVE_IFUNC 1'
+name at offset 0x000007e1, length   18 is '__ATOMIC_SEQ_CST 5'
+name at offset 0x000007f4, length   33 is 'libresolv_hidden_ver(local,name) '
+name at offset 0x00000816, length   33 is '__UINT64_TYPE__ long unsigned int'
+name at offset 0x00000838, length   31 is '__INT_LEAST8_TYPE__ signed char'
+name at offset 0x00000858, length   45 is '__symbol_set_attribute __attribute__ ((weak))'
+name at offset 0x00000886, length   34 is '__UINT_LEAST32_TYPE__ unsigned int'
+name at offset 0x000008a9, length   38 is '__UINT_FAST32_TYPE__ long unsigned int'
+name at offset 0x000008d0, length   16 is 'MODULE_libanl 40'
+name at offset 0x000008e1, length   38 is '__BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__'
+name at offset 0x00000908, length   23 is '__UINT_LEAST8_MAX__ 255'
+name at offset 0x00000920, length   23 is 'MODULE_libnss_hesiod 39'
+name at offset 0x00000938, length   20 is '__DBL_HAS_DENORM__ 1'
+name at offset 0x0000094d, length   17 is '__SCHAR_MAX__ 127'
+name at offset 0x0000095f, length   29 is '__INT_LEAST64_TYPE__ long int'
+name at offset 0x0000097d, length   34 is '__WCHAR_MIN__ (-__WCHAR_MAX__ - 1)'
+name at offset 0x000009a0, length   16 is 'MODULE_libnsl 28'
+name at offset 0x000009b1, length   39 is '__FLT_MAX__ 3.40282346638528859812e+38F'
+name at offset 0x000009d9, length   46 is 'weak_extern(symbol) _weak_extern (weak symbol)'
+name at offset 0x00000a08, length   14 is 'MODULE_libm 36'
+name at offset 0x00000a17, length   19 is '___int_ptrdiff_t_h '
+name at offset 0x00000a2b, length   30 is '__INT_FAST8_TYPE__ signed char'
+name at offset 0x00000a4a, length   57 is '__DBL_DENORM_MIN__ ((double)4.94065645841246544177e-324L)'
+name at offset 0x00000a84, length   31 is 'libmvec_hidden_data_weak(name) '
+name at offset 0x00000aa4, length   21 is '_BSD_SIZE_T_DEFINED_ '
+name at offset 0x00000aba, length   17 is 'MODULE_ldconfig 3'
+name at offset 0x00000acc, length   42 is '__UINT_FAST32_MAX__ 18446744073709551615UL'
+name at offset 0x00000af7, length   52 is 'libc_hidden_ver(local,name) hidden_ver (local, name)'
+name at offset 0x00000b2c, length   24 is '__DECIMAL_BID_FORMAT__ 1'
+name at offset 0x00000b45, length   20 is '__SIZEOF_INT128__ 16'
+name at offset 0x00000b5a, length   18 is 'internal_function '
+name at offset 0x00000b6d, length   49 is 'libc_hidden_data_def(name) hidden_data_def (name)'
+name at offset 0x00000b9f, length   13 is '__INT8_C(c) c'
+name at offset 0x00000bad, length   17 is 'MODULE_libcidn 26'
+name at offset 0x00000bbf, length   24 is '__INT_LEAST32_TYPE__ int'
+name at offset 0x00000bd8, length   20 is '__DBL_MAX_EXP__ 1024'
+name at offset 0x00000bed, length   10 is 'elf-init.c'
+name at offset 0x00000bf8, length   28 is 'libm_hidden_data_weak(name) '
+name at offset 0x00000c15, length    9 is '_T_SIZE_ '
+name at offset 0x00000c1f, length   65 is 'symbol_set_first_element(set) ((void *const *) (&__start_ ##set))'
+name at offset 0x00000c61, length   31 is 'libutil_hidden_data_weak(name) '
+name at offset 0x00000c81, length   34 is '__UINT_LEAST8_TYPE__ unsigned char'
+name at offset 0x00000ca4, length   36 is 'libnss_files_hidden_ver(local,name) '
+name at offset 0x00000cc9, length   33 is 'libnss_nisplus_hidden_weak(name) '
+name at offset 0x00000ceb, length   22 is '__FLT_MIN_EXP__ (-125)'
+name at offset 0x00000d02, length   58 is 'data_set_element(set,symbol) _elf_set_element(set, symbol)'
+name at offset 0x00000d3d, length   10 is '__unix__ 1'
+name at offset 0x00000d48, length   36 is '__GCC_HAVE_SYNC_COMPARE_AND_SWAP_1 1'
+name at offset 0x00000d6d, length   35 is '__INTPTR_MAX__ 9223372036854775807L'
+name at offset 0x00000d91, length   13 is '_BSD_SIZE_T_ '
+name at offset 0x00000d9f, length   15 is '__libc_csu_fini'
+name at offset 0x00000daf, length   24 is '__DEC64_MIN_EXP__ (-382)'
+name at offset 0x00000dc8, length  108 is 'declare_symbol_alias_1_alias(symbol,original) ".set " __SYMBOL_PREFIX #symbol ", " __SYMBOL_PREFIX #original'
+name at offset 0x00000e35, length   36 is '__GCC_HAVE_SYNC_COMPARE_AND_SWAP_2 1'
+name at offset 0x00000e5a, length   22 is '__UINTMAX_C(c) c ## UL'
+name at offset 0x00000e71, length   30 is 'libutil_hidden_data_def(name) '
+name at offset 0x00000e90, length   18 is 'HAVE_AVX_SUPPORT 1'
+name at offset 0x00000ea3, length   50 is '__DBL_MIN__ ((double)2.22507385850720138309e-308L)'
+name at offset 0x00000ed6, length   21 is '__DEC32_MIN__ 1E-95DF'
+name at offset 0x00000eec, length   15 is '__GCC_IEC_559 2'
+name at offset 0x00000efc, length   33 is 'rtld_hidden_data_ver(local,name) '
+name at offset 0x00000f1e, length   16 is '__init_array_end'
+name at offset 0x00000f2f, length   44 is '__LDBL_EPSILON__ 1.08420217248550443401e-19L'
+name at offset 0x00000f5c, length   51 is 'libc_hidden_data_weak(name) hidden_data_weak (name)'
+name at offset 0x00000f90, length   28 is 'rtld_hidden_data_weak(name) '
+name at offset 0x00000fad, length   18 is '_WCHAR_T_DEFINED_ '
+name at offset 0x00000fc0, length   24 is 'MODULE_libnss_nisplus 22'
+name at offset 0x00000fd9, length   29 is 'HAVE_ASM_PREVIOUS_DIRECTIVE 1'
+name at offset 0x00000ff7, length   58 is 'attribute_relro __attribute__ ((section (".data.rel.ro")))'
+name at offset 0x00001032, length   26 is '__DEC128_MIN_EXP__ (-6142)'
+name at offset 0x0000104d, length   20 is 'MODULE_libnss_nis 18'
+name at offset 0x00001062, length   36 is 'libutil_hidden_data_ver(local,name) '
+name at offset 0x00001087, length   26 is '__DEC128_EPSILON__ 1E-33DL'
+name at offset 0x000010a2, length   21 is 'MODULE_libpcprofile 7'
+name at offset 0x000010b8, length   14 is 'MODULE_libc 17'
+name at offset 0x000010c7, length   23 is 'libdl_hidden_def(name) '
+name at offset 0x000010df, length   30 is 'libnss_files_hidden_def(name) '
+name at offset 0x000010fe, length   15 is '__FLT_RADIX__ 2'
+name at offset 0x0000110e, length   30 is 'libnsl_hidden_ver(local,name) '
+name at offset 0x0000112d, length   25 is '__SIZEOF_LONG_DOUBLE__ 16'
+name at offset 0x00001147, length   23 is '__DBL_HAS_QUIET_NAN__ 1'
+name at offset 0x0000115f, length   41 is 'libnss_files_hidden_data_ver(local,name) '
+name at offset 0x00001189, length   19 is 'HAVE_AVXF_SUPPORT 1'
+name at offset 0x0000119d, length  159 is 'libc_freeres_ptr(decl) __make_section_unallocated ("__libc_freeres_ptrs, \"aw\", %nobits") decl __attribute__ ((section ("__libc_freeres_ptrs" __sec_comment)))'
+name at offset 0x0000123d, length   21 is 'HAVE_BUILTIN_MEMSET 1'
+name at offset 0x00001253, length   37 is '__UINT64_MAX__ 18446744073709551615UL'
+name at offset 0x00001279, length   40 is 'libutil_hidden_tls_proto(name,attrs...) '
+name at offset 0x000012a2, length   23 is 'HAVE_LINUX_FANOTIFY_H 1'
+name at offset 0x000012ba, length   20 is 'MODULE_libmemusage 5'
+name at offset 0x000012cf, length   22 is '__LDBL_MAX_EXP__ 16384'
+name at offset 0x000012e6, length   40 is '__INT_LEAST64_MAX__ 9223372036854775807L'
+name at offset 0x0000130f, length   19 is 'MODULE_iconvprogs 1'
+name at offset 0x00001323, length   27 is 'libm_hidden_data_def(name) '
+name at offset 0x0000133f, length   24 is '__INTPTR_TYPE__ long int'
+name at offset 0x00001358, length   37 is '__DEC64_MAX__ 9.999999999999999E384DD'
+name at offset 0x0000137e, length   46 is '__FLT_DENORM_MIN__ 1.40129846432481707092e-45F'
+name at offset 0x000013ad, length   28 is '__GCC_ATOMIC_INT_LOCK_FREE 2'
+name at offset 0x000013ca, length   24 is '__ABI_TAG_VERSION 2,6,32'
+name at offset 0x000013e3, length    9 is '__MMX__ 1'
+name at offset 0x000013ed, length   21 is '__INT_FAST8_MAX__ 127'
+name at offset 0x00001403, length   37 is 'rtld_hidden_tls_proto(name,attrs...) '
+name at offset 0x00001429, length   42 is '__LDBL_MAX__ 1.18973149535723176502e+4932L'
+name at offset 0x00001454, length   15 is 'MODULE_librt 38'
+name at offset 0x00001464, length   28 is '__ORDER_LITTLE_ENDIAN__ 1234'
+name at offset 0x00001481, length  197 is 'libm_ifunc(name,expr) extern void *name ##_ifunc (void) __asm__ (#name); void *name ##_ifunc (void) { __typeof (name) *res = expr; return res; } __asm__ (".type " #name ", %gnu_indirect_function");'
+name at offset 0x00001547, length   38 is '__UINTMAX_MAX__ 18446744073709551615UL'
+name at offset 0x0000156e, length   19 is 'HAVE_BUILTIN_TRAP 1'
+name at offset 0x00001582, length   22 is '__SIZEOF_PTRDIFF_T__ 8'
+name at offset 0x00001599, length   22 is '__DEC128_MANT_DIG__ 34'
+name at offset 0x000015b0, length   30 is 'libnsl_hidden_data_weak(name) '
+name at offset 0x000015cf, length   12 is '__PTRDIFF_T '
+name at offset 0x000015dc, length   18 is '__INT32_TYPE__ int'
+name at offset 0x000015ef, length   28 is 'libm_hidden_ver(local,name) '
+name at offset 0x0000160c, length   32 is 'libresolv_hidden_data_def(name) '
+name at offset 0x0000162d, length   20 is '__DEC32_MAX_EXP__ 97'
+name at offset 0x00001642, length   43 is 'IN_MODULE PASTE_NAME (MODULE_, MODULE_NAME)'
+name at offset 0x0000166e, length   92 is '__make_section_unallocated(section_string) esm (".section " section_string "\n\t.previous");'
+name at offset 0x000016cb, length   18 is 'MODULE_libcrypt 23'
+name at offset 0x000016de, length   67 is 'attribute_tls_model_ie __attribute__ ((tls_model ("initial-exec")))'
+name at offset 0x00001722, length   14 is 'MODULE_rtld 16'
+name at offset 0x00001731, length   28 is 'libdl_hidden_data_def(name) '
+name at offset 0x0000174e, length   93 is 'inhibit_loop_to_libcall __attribute__ ((__optimize__ ("-fno-tree-loop-distribute-patterns")))'
+name at offset 0x000017ac, length   50 is '__DBL_MAX__ ((double)1.79769313486231570815e+308L)'
+name at offset 0x000017df, length   25 is '__INT_LEAST16_MAX__ 32767'
+name at offset 0x000017f9, length   72 is 'attribute_compat_data_section __attribute__ ((section (".data.compat")))'
+name at offset 0x00001842, length   46 is 'symbol_set_define(set) symbol_set_declare(set)'
+name at offset 0x00001871, length   22 is '__GXX_ABI_VERSION 1002'
+name at offset 0x00001888, length   25 is 'libutil_hidden_def(name) '
+name at offset 0x000018a2, length   36 is 'libmvec_hidden_proto(name,attrs...) '
+name at offset 0x000018c7, length   56 is 'attribute_hidden __attribute__ ((visibility ("hidden")))'
+name at offset 0x00001900, length   29 is 'libdl_hidden_ver(local,name) '
+name at offset 0x0000191e, length   19 is 'HAVE_FMA4_SUPPORT 1'
+name at offset 0x00001932, length   11 is '__amd64__ 1'
+name at offset 0x0000193e, length   33 is 'libresolv_hidden_data_weak(name) '
+name at offset 0x00001960, length   34 is '__UINT16_TYPE__ short unsigned int'
+name at offset 0x00001983, length   17 is '__STDC_UTF_16__ 1'
+name at offset 0x00001995, length   35 is 'libnss_files_hidden_data_def(name) '
+name at offset 0x000019b9, length   22 is '__code_mhdel_small__ 1'
+name at offset 0x000019d0, length   29 is '__GCC_ATOMIC_CHAR_LOCK_FREE 2'
+name at offset 0x000019ee, length   62 is 'libc_hidden_data_ver(local,name) hidden_data_ver (local, name)'
+name at offset 0x00001a2d, length   40 is '__UINT_LEAST16_TYPE__ short unsigned int'
+name at offset 0x00001a56, length   21 is '__FLT_MAX_10_EXP__ 38'
+name at offset 0x00001a6c, length   16 is 'NULL ((void *)0)'
+name at offset 0x00001a7d, length   24 is '__INT32_MAX__ 2147483647'
+name at offset 0x00001a96, length   22 is 'MODULE_libthread_db 21'
+name at offset 0x00001aad, length   32 is 'libnss_nisplus_hidden_def(name) '
+name at offset 0x00001ace, length   15 is 'HAVE_ISWCTYPE 1'
+name at offset 0x00001ade, length   31 is 'libmvec_hidden_ver(local,name) '
+name at offset 0x00001afe, length   80 is 'RETURN_ADDRESS(nr) __builtin_extract_return_addr (__builtin_return_address (nr))'
+name at offset 0x00001b4f, length   19 is '__FLT_MANT_DIG__ 24'
+name at offset 0x00001b63, length   25 is 'NO_CTORS_DTORS_SECTIONS 1'
+name at offset 0x00001b7d, length   23 is 'MODULE_libnss_compat 32'
+name at offset 0x00001b95, length   13 is '_GNU_SOURCE 1'
+name at offset 0x00001ba3, length   36 is '__GCC_HAVE_SYNC_COMPARE_AND_SWAP_4 1'
+name at offset 0x00001bc8, length   38 is 'libdl_hidden_tls_proto(name,attrs...) '
+name at offset 0x00001bef, length   22 is 'MODULE_extramodules 13'
+name at offset 0x00001c06, length  147 is '_elf_set_element(set,symbol) static const void *const __elf_set_ ##set ##_element_ ##symbol ##__ __attribute__ ((used, section (#set))) = &(symbol)'
+name at offset 0x00001c9a, length   42 is 'libresolv_hidden_tls_proto(name,attrs...) '
+name at offset 0x00001cc5, length   21 is '__DEC_EVAL_METHOD__ 2'
+name at offset 0x00001cdb, length   14 is '__need_wchar_t'
+name at offset 0x00001cea, length   25 is '__DBL_MIN_10_EXP__ (-307)'
+name at offset 0x00001d04, length   34 is 'librt_hidden_proto(name,attrs...) '
+name at offset 0x00001d27, length   32 is '__UINT_LEAST32_MAX__ 4294967295U'
+name at offset 0x00001d48, length   27 is '__LDBL_MIN_10_EXP__ (-4931)'
+name at offset 0x00001d64, length   21 is '__FLT_EVAL_METHOD__ 0'
+name at offset 0x00001d7a, length   67 is 'symbol_set_end_p(set,ptr) ((ptr) >= (void *const *) &__stop_ ##set)'
+name at offset 0x00001dbe, length  142 is 'stub_warning(name) __make_section_unallocated (".gnu.glibc-stub." #name) link%7f%ff%ff%ffning (name, #name " is not implemented and will always fail")'
+name at offset 0x00001e4d, length   12 is '__x86_64__ 1'
+name at offset 0x00001e5a, length   38 is 'librt_hidden_tls_proto(name,attrs...) '
+name at offset 0x00001e81, length   20 is '__INTMAX_C(c) c ## L'
+name at offset 0x00001e96, length   34 is 'libdl_hidden_data_ver(local,name) '
+name at offset 0x00001eb9, length    9 is '__linux 1'
+name at offset 0x00001ec3, length   38 is 'libresolv_hidden_data_ver(local,name) '
+name at offset 0x00001eea, length   18 is '__ATOMIC_RELAXED 0'
+name at offset 0x00001efd, length   21 is 'HAVE_AVX512_SUPPORT 1'
+name at offset 0x00001f13, length   26 is '__UINT32_MAX__ 4294967295U'
+name at offset 0x00001f2e, length   57 is 'libc_hidden_nolink_sunrpc(name,version) hidden_def (name)'
+name at offset 0x00001f68, length   18 is '__init_array_start'
+name at offset 0x00001f7b, length   65 is 'libc_hidden_builtin_ver(local,name) libc_hidden_ver (local, name)'
+name at offset 0x00001fbd, length   17 is '___int_wchar_t_h '
+name at offset 0x00001fcf, length    8 is '_SIZET_ '
+name at offset 0x00001fd8, length   28 is '__INT_FAST64_TYPE__ long int'
+name at offset 0x00001ff5, length   33 is 'rtld_hidden_proto(name,attrs...) '
+name at offset 0x00002017, length   27 is '__DEC32_MAX__ 9.999999E96DF'
+name at offset 0x00002033, length   15 is 'MODULE_libdl 24'
+name at offset 0x00002043, length   47 is 'libnss_nisplus_hidden_tls_proto(name,attrs...) '
+name at offset 0x00002073, length   30 is '__INT_LEAST16_TYPE__ short int'
+name at offset 0x00002092, length   15 is '__gnu_linux__ 1'
+name at offset 0x000020a2, length   54 is 'libc_hidden_builtin_weak(name) libc_hidden_weak (name)'
+name at offset 0x000020d9, length  120 is 'libc_ifunc_hidden_def1(local,name) __asm__ (".globl " #local "\n\t" ".hidden " #local "\n\t" ".set " #local ", " #name);'
+name at offset 0x00002152, length   16 is '_SIZE_T_DEFINED '
+name at offset 0x00002163, length   14 is '__DBL_DIG__ 15'
+name at offset 0x00002172, length   33 is '__GCC_ATOMIC_CHAR16_T_LOCK_FREE 2'
+name at offset 0x00002194, length   34 is 'librt_hidden_data_ver(local,name) '
+name at offset 0x000021b7, length   12 is '__WCHAR_T__ '
+name at offset 0x000021c4, length   10 is '__LP64__ 1'
+name at offset 0x000021cf, length   29 is '__GCC_ATOMIC_LONG_LOCK_FREE 2'
+name at offset 0x000021ed, length   26 is '__UINT_LEAST16_MAX__ 65535'
+name at offset 0x00002208, length    9 is '_T_WCHAR '
+name at offset 0x00002212, length    7 is '_LP64 1'
+name at offset 0x0000221a, length   19 is '__INT16_MAX__ 32767'
+name at offset 0x0000222e, length   10 is '__x86_64 1'
+name at offset 0x00002239, length   14 is '__CHAR_BIT__ 8'
+name at offset 0x00002248, length   19 is 'MODULE_libnss_db 35'
+name at offset 0x0000225c, length   25 is 'HAVE_ASM_WEAK_DIRECTIVE 1'
+name at offset 0x00002276, length   29 is '__GCC_ATOMIC_BOOL_LOCK_FREE 2'
+name at offset 0x00002294, length   22 is '__FINITE_MATH_ONLY__ 0'
+name at offset 0x000022ab, length   39 is 'libc_hidden_def(name) hidden_def (name)'
+name at offset 0x000022d3, length   19 is 'ARM_PCREL_MOVW_OK 0'
+name at offset 0x000022e7, length   16 is 'LIBC_NONSHARED 1'
+name at offset 0x000022f8, length  207 is 'link_warning(symbol,msg) __make_section_unallocated (".gnu.warning." #symbol) static const char __evoke_link_warning_ ##symbol[] __attribute__ ((used, section (".gnu.warning." #symbol __sec_comment))) = msg;'
+name at offset 0x000023c8, length   69 is 'libc_hidden_tls_proto(name,attrs...) hidden_tls_proto (name, ##attrs)'
+name at offset 0x0000240e, length   66 is 'default_symbol_version(real,name,version) strong_alias(real, name)'
+name at offset 0x00002451, length   18 is '__SHRT_MAX__ 32767'
+name at offset 0x00002464, length   25 is 'MODULE_libBrokenLocale 19'
+name at offset 0x0000247e, length    9 is '__ELF__ 1'
+name at offset 0x00002488, length   34 is '__UINTPTR_TYPE__ long unsigned int'
+name at offset 0x000024ab, length   14 is '__INT16_C(c) c'
+name at offset 0x000024ba, length   27 is '_<GCC_HAVE_DWARF2_CFI_ASM 1'
+name at offset 0x000024d6, length   18 is '__SIZEOF_FLOAT__ 4'
+name at offset 0x000024e9, length   38 is '__DEC32_SUBNORMAL_MIN__ 0.000001E-95DF'
+name at offset 0x00002510, length   29 is 'librt_hidden_data_weak(name) '
+name at offset 0x0000252e, length   22 is '__FLT_HAS_INFINITY__ 1'
+name at offset 0x00002545, length   43 is '__UINT_LEAST64_MAX__ 18446744073709551615UL'
+name at offset 0x00002571, length   10 is '__STDC__ 1'
+name at offset 0x0000257c, length   10 is '__SSE2__ 1'
+name at offset 0x00002587, length   43 is 'libnss_nisplus_hidden_data_ver(local,name) '
+name at offset 0x000025b3, length   22 is '__UINT_FAST8_MAX__ 255'
+name at offset 0x000025ca, length   17 is '__SIZEOF_LONG__ 8'
+name at offset 0x000025dc, length   18 is '__ATOMIC_CONSUME 1'
+name at offset 0x000025ef, length   11 is '__SIZE_T__ '
+name at offset 0x000025fb, length   26 is '__WINT_TYPE__ unsigned int'
+name at offset 0x00002616, length   20 is 'MODULE_libpthread 20'
+name at offset 0x0000262b, length   20 is '__UINT32_C(c) c ## U'
+name at offset 0x00002640, length   28 is '__INT_FAST32_TYPE__ long int'
+name at offset 0x0000265d, length   19 is '__SIZEOF_DOUBLE__ 8'
+name at offset 0x00002671, length   14 is '__UINT8_C(c) c'
+name at offset 0x00002680, length   21 is '__GNUC_PATCHLEVEL__ 3'
+name at offset 0x00002696, length   14 is 'MODULE_nscd 12'
+name at offset 0x000026a5, length   17 is '_WCHAR_T_DEFINED '
+name at offset 0x000026b7, length   27 is 'rtld_hidden_data_def(name) '
+name at offset 0x000026d3, length   15 is '__WINT_MIN__ 0U'
+name at offset 0x000026e3, length   52 is 'static_link_warning(name) static_link_warning1(name)'
+name at offset 0x00002718, length   22 is 'PASTE_NAME1(a,b) a ##b'
+name at offset 0x0000272f, length   12 is 'HAVE_REGEX 1'
+name at offset 0x0000273c, length   19 is 'HAVE_SSE4_SUPPORT 1'
+name at offset 0x00002750, length   24 is 'MODULE_locale_programs 9'
+name at offset 0x00002769, length   16 is '_BSD_PTRDIFF_T_ '
+name at offset 0x0000277a, length   23 is '__LDBL_HAS_INFINITY__ 1'
+name at offset 0x00002792, length   61 is 'libc_hidden_proto(name,attrs...) hidden_proto (name, ##attrs)'
+name at offset 0x000027d0, length   23 is '__GCC_IEC_559_COMPLEX 2'
+name at offset 0x000027e8, length  245 is 'declare_symbol_alias_1(symbol,original,type,size) asm (".globl " __SYMBOL_PREFIX #symbol "\n\t" declare_symbol_alias_1_alias (symbol, original) "\n\t.type " __SYMBOL_PREFIX #symbol ", " "%" #type "\n\t.size " __SYMBOL_PREFIX #symbol ", " #size);'
+name at offset 0x000028de, length   20 is '__SIZEOF_WCHAR_T__ 4'
+name at offset 0x000028f3, length   95 is '_strong_alias(name,aliasname) extern __typeof (name) aliasname __attribute__ ((alias (#name)));'
+name at offset 0x00002953, length   42 is '__UINT_FAST16_MAX__ 18446744073709551615UL'
+name at offset 0x0000297e, length    4 is 'argc'
+name at offset 0x00002983, length   44 is '__FLOAT_WORD_ORDER__ __ORDER_LITTLE_ENDIAN__'
+name at offset 0x000029b0, length   24 is '__INTMAX_TYPE__ long int'
+name at offset 0x000029c9, length   15 is 'HAVE_CONFIG_H 0'
+name at offset 0x000029d9, length   20 is '__DEC32_MANT_DIG__ 7'
+name at offset 0x000029ee, length   12 is 'ENABLE_NLS 1'
+name at offset 0x000029fb, length   44 is '__SIG_ATOMIC_MIN__ (-__SIG_ATOMIC_MAX__ - 1)'
+name at offset 0x00002a28, length   15 is '__libc_csu_init'
+name at offset 0x00002a38, length   22 is 'MODULE_libnss_test1 27'
+name at offset 0x00002a4f, length   25 is 'libnsl_hidden_weak(name) '
+name at offset 0x00002a69, length   18 is '__ATOMIC_ACQUIRE 2'
+name at offset 0x00002a7c, length   15 is '__UINT16_C(c) c'
+name at offset 0x00002a8c, length    4 is 'argv'
+name at offset 0x00002a91, length   14 is '__SSE_MATH__ 1'
+name at offset 0x00002aa0, length   34 is '__UINTMAX_TYPE__ long unsigned int'
+name at offset 0x00002ac3, length   12 is '_T_PTRDIFF_ '
+name at offset 0x00002ad0, length   15 is 'HAVE_WCTYPE_H 1'
+name at offset 0x00002ae0, length   23 is '__DEC128_MAX_EXP__ 6145'
+name at offset 0x00002af8, length  197 is 'GNU C 4.9.3 -m64 -march=x86-64 -mtune=generic -g3 -ggdb3 -O2 -std=gnu99 -fgnu89-inline -fmerge-all-constants -fno-stack-protector -fno-strict-aliasing -frounding-math -fPIC -ftls-model=initial-exec'
+name at offset 0x00002bbe, length   10 is '_T_WCHAR_ '
+name at offset 0x00002bc9, length   42 is '__UINT_FAST64_MAX__ 18446744073709551615UL'
+name at offset 0x00002bf4, length   17 is '__UINT8_MAX__ 255'
+name at offset 0x00002c06, length   71 is 'libc_ifunc_hidden_def(name) libc_ifunc_hidden_def1 (__GI_ ##name, name)'
+name at offset 0x00002c4e, length   32 is '__GCC_ATOMIC_WCHAR_T_LOCK_FREE 2'
+name at offset 0x00002c6f, length   25 is 'libmvec_hidden_def(name) '
+name at offset 0x00002c89, length   25 is '__ORDER_PDP_ENDIAN__ 3412'
+name at offset 0x00002ca3, length   31 is 'libnss_files_hidden_weak(name) '
+name at offset 0x00002cc3, length   24 is '__WINT_MAX__ 4294967295U'
+name at offset 0x00002cdc, length   39 is '__INT_FAST64_MAX__ 9223372036854775807L'
+name at offset 0x00002d04, length   35 is '__SIZE_MAX__ 18446744073709551615UL'
+name at offset 0x00002d28, length   21 is '__FLT_DECIMAL_DIG__ 9'
+name at offset 0x00002d3e, length   13 is '__need_size_t'
+name at offset 0x00002d4c, length   25 is '__LDBL_MIN_EXP__ (-16381)'
+name at offset 0x00002d66, length   14 is 'ASM_LINE_SEP ;'
+name at offset 0x00002d75, length   16 is '__SIZEOF_INT__ 4'
+name at offset 0x00002d86, length   31 is 'libutil_hidden_ver(local,name) '
+name at offset 0x00002da6, length   22 is 'MODULE_memusagestat 10'
+name at offset 0x00002dbd, length   18 is '_WCHAR_T_DECLARED '
+name at offset 0x00002dd0, length   55 is 'offsetof(TYPE,MEMBER) __builtin_offsetof (TYPE, MEMBER)'
+name at offset 0x00002e08, length   21 is '__DEC64_MAX_EXP__ 385'
+name at offset 0x00002e1e, length   34 is '__INT64_MAX__ 9223372036854775807L'
+name at offset 0x00002e41, length   49 is '__LINUX_KERNEL_VER:ION (2 * 65536 + 6 * 256 + 32)'
+name at offset 0x00002e73, length   28 is '__CHAR32_TYPE__ unsigned int'
+name at offset 0x00002e90, length   11 is '__need_NULL'
+name at offset 0x00002e9c, length   21 is '__GNUC_GNU_IBLINE__ 1'
+name at offset 0x00002eb2, length   24 is '__DEC128_MIN__ 1E-6143DL'
+name at offset 0x00002ecb, length   22 is 'HAVE_SSE2AVX_SUPPORT 1'
+name at offset 0x00002ee2, length   17 is '_SIZE_T_DECLARED '
+name at offset 0x00002ef4, length   33 is '__UINT_FAST8_TYPE__ unsigned char'
+name at offset 0x00002f16, length   14 is '__INT32_C(c) c'
+name at offset 0x00002f25, length   21 is 'MODULE_libnss_ldap 30'
+name at offset 0x00002f3b, length   24 is '__LDBL_HAS_QUIET_NAN__ 1'
+name at offset 0x00002f54, length   25 is '__INT8_TYPE__ signed char'
+name at offset 0x00002f6e, length   18 is '__WCHAR_TYPE__ int'
+name at offset 0x00002f81, length   33 is '__LONG_MAX__ 9223372036854775807L'
+name at offset 0x00002fa3, length   14 is 'STDC_HEADERS 1'
+name at offset 0x00002fb2, length   18 is 'MODULE_libgcc_s 25'
+name at offset 0x00002fc5, length   15 is '_GCC_PTRDIFF_T '
+name at offset 0x00002fd5, length   28 is '__UINT32_TYPE__ unsigned int'
+name at offset 0x00002ff2, length   21 is '__sec_comment "\n\t#"'
+name at offset 0x00003008, length   38 is '__UINT_FAST64_TYPE__ long unsigned int'
+name at offset 0x0000302f, length   35 is '__INTMAX_MAX__ 9223372036854775807L'
+name at offset 0x00003053, length   41 is 'libnss_files_hidden_proto(name,attrs...) '
+name at offset 0x0000307d, length  159 is 'libc_freeres_fn(name) static void name (void) __attribute_used__ __libc_freeres_fn_section; text_set_element (__libc_subfreeres, name); static void name (void)'
+name at offset 0x0000311d, length   30 is '__INT_LEAST32_MAX__ 2147483647'
+name at offset 0x0000313c, length   22 is '__SIZEOF_LONG_LONG__ 8'
+name at offset 0x00003153, length   28 is '__UINT8_TYPE__ unsigned char'
+name at offset 0x00003170, length    9 is '__size_t '
+name at offset 0x0000317a, length   15 is '__SSE2_MATH__ 1'
+name at offset 0x0000318a, length   74 is 'libc_hidden_builtin_proto(name,attrs...) libc_hidden_proto (name, ##attrs)'
+name at offset 0x000031d5, length   39 is '__has_include(STR) __has_include__(STR)'
+name at offset 0x000031fd, length    8 is '_T_SIZE '
+name at offset 0x00003206, length   37 is 'libnss_nisplus_hidden_data_def(name) '
+name at offset 0x0000322c, length   28 is 'rtld_hidden_ver(local,name) '
+name at offset 0x00003249, length   45 is 'libnss_files_hidden_tls_proto(name,attrs...) '
+name at offset 0x00003277, length   59 is 'strong_aliLs(name,aliasname) _strong_alias(name, aliasname)'
+name at offset 0x000032b3, length   18 is 'MODULE_iconvdata 2'
+name at offset 0x000032c6, length   24 is 'HAVE_ASM_SET_DIRECTIVE 1'
+name at offset 0x000032df, length   42 is 'REPOBT_BUGS_TO "<http://bugs.gentoo.org/>"'
+name at offset 0x0000330a, length   33 is 'HAVE_CC_INHIBIT_LOOP_TO_LIBCALL 1'
+name at offset 0x0000332c, length   20 is '__SIZEOF_POINTER__ 8'
+name at offset 0x00003341, length   29 is 'librt_hidden_ver(local,name) '
+name at offset 0x0000335f, length   35 is 'libnsl_hidden_proto(name,attrs...) '
+name at offset 0x00003383, length   23 is 'libm_hidden_weak(name) '
+name at offset 0x0000339b, length   58 is 'text_set_element(set,symbol) _elf_set_element(set, symbol)'
+name at offset 0x000033d6, length   22 is 'rtld_hidden_def(name) '
+name at offset 0x000033ed, length   24 is '__WCHAR_MAX__ 2147483647'
+name at offset 0x00003406, length   32 is 'hidden_nolink(name,lib,version) '
+name at offset 0x00003427, length   29 is '__SIG_ATOMIC_MAX__ 2147483647'
+name at offset 0x00003445, length   20 is 'MODULE_libnss_dns 31'
+name at offset 0x0000345a, length   13 is 'HAVE_LIBIDN 1'
+name at offset 0x00003468, length   12 is '__wchar_t__ '
+name at offset 0x00003475, length   38 is '__UINT_FAST16_TYPE__ long unsigned int'
+name at offset 0x0000349c, length   22 is 'libm_hidden_def(name) '
+name at offset 0x000034b3, length   22 is '__USER_LABEL_PREFIX__ '
+name at offset 0x000034ca, length   32 is '__GCC_ATOMIC_POINTER_LOCK_FREE 2'
+name at offset 0x000034eb, length   33 is '__GCC_ATOMIC_CHAR32_T_LOCK_FREE 2'
+name at offset 0x0000350d, length   24 is '__STDC_VERSION__ 199901L'
+name at offset 0x00003526, length   24 is 'HAVE_ASM_UNIQUE_OBJECT 1'
+name at offset 0x0000353f, length    8 is '__unix 1'
+name at offset 0x00003548, length   20 is '__UINT16_MAX__ 65535'
+name at offset 0x0000355d, length   18 is 'MODULE_libnldbl 14'
+name at offset 0x00003570, length   38 is 'libnss_nisplus_hidden_data_weak(name) '
+name at offset 0x00003597, length   26 is '__ATOMIC_HLE_ACQUIRE 65536'
+name at offset 0x000035b2, length    7 is '_LIBC 1'
+name at offset 0x000035ba, length   17 is '__STDC_HOSTED__ 1'
+name at offset 0x000035cc, length   36 is 'libutil_hidden_proto(name,attrs...) '
+name at offset 0x000035f1, length   56 is 'weak_alias(name,aliasname) _weak_alias (name, aliasname)'
+name at offset 0x0000362a, length   28 is 'libre%f3olv_hidden_weak(name) '
+name at offset 0x00003647, length   59 is '/var/tmp/portage/sys-libs/glibc-2.22-r4/work/glibc-2.22/csu'
+name at offset 0x00003683, length   38 is 'libresolv_hidden_proto(name,attrs...) '
+name at offset 0x000036aa, length   36 is '__PTRDIFF_MAX__ 9223372036854775807L'
+name at offset 0x000036cf, length   34 is 'PKGVERSION "(Gentoo 2.22-r4 p13) "'
+name at offset 0x000036f2, length   31 is '__SIZE_TYPE__ long unsigned int'
+name at offset 0x00003712, length   30 is '__GCC_ATOMIC_LLONG_LOCK_FREE 2'
+name at offset 0x00003731, length   19 is '__FLT_MAX_EXP__ 128'
+name at offset 0x00003745, length   73 is '__libc_freeres_fn_section __attribute__ ((section ("__libc_freeres_fn")))'
+name at offset 0x0000378f, length   18 is '__ATOMIC_ACQ_REL 4'
+name at offset 0x000037a2, length   38 is '__UINTPTR_MAX__ 18446744073709551615UL'
+name at offset 0x000037c9, length   15 is '_ANSI_STDDEF_H '
+name at offset 0x000037d9, length   23 is '__DEC32_MIN_EXP__ (-94)'
+name at offset 0x000037f1, length   68 is '_FORTIFY_SOURCE ((defined __OPTIMIZE__ && __OPTIMIZE__ > 0) ? 2 : 0)'
+name at offset 0x00003836, length   23 is '__INT64_TYPE__ long int'
+name at offset 0x0000384e, length   22 is 'MODULE_libnss_files 37'
+name at offset 0x00003865, length   15 is '_FORTIFY_SOURCE'
+name at offset 0x00003875, length   34 is 'symbol_version(real,name,version) '
+name at offset 0x00003898, length  211 is 'libc_ifunc(name,expr) extern void *name ##_ifunc (void) __asm__ (#name); void *name ##_ifunc (void) { INIT_ARCH (); __typeof (name) *res = expr; return res; } __asm__ (".type " #name ", %gnu_indirect_function");'
+name at offset 0x0000396c, length   10 is '__FXSR__ 1'
+name at offset 0x00003977, length   99 is '_weak_alias(name,aliasname) extern __typeof (name) aliasname __attribute__ ((weak, alias (#name)));'
+name at offset 0x000039db, length   29 is 'libnsl_hidden_data_def(name) '
+name at offset 0x000039f9, length    4 is 'size'
+name at offset 0x000039fe, length   16 is '__SYMBOL_PREFIX '
+name at offset 0x00003a0f, length    9 is '__PIC__ 2'
+name at offset 0x00003a19, length   52 is 'libc_hidden_builtin_def(name) libc_hidden_def (name)'
+name at offset 0x00003a4e, length   14 is '_BSD_WCHAR_T_ '
+name at offset 0x00003a5d, length   39 is '__UINT_LEAST64_TYPE__ long unsigned int'
+name at offset 0x00003a85, length   42 is '__FLT_EPSILON__ 1.19209289550781250000e-7F'
+name at offset 0x00003ab0, length  140 is 'symbol_set_declare(set) extern char const __start_ ##set[] __symbol_set_attribute; extern char const __stop_ ##set[] __symbol_set_attribute;'
+name at offset 0x00003b3d, length    8 is '__k8__ 1'
+name at offset 0x00003b46, length   11 is '_STDDEF_H_ '
+name at offset 0x00003b52, length   19 is 'LINK_OBSOLETE_RPC 1'
+name at offset 0x00003b66, length   17 is 'HAVE_EHDR_START 1'
+name at offset 0x00003b78, length   20 is '__LDBL_MANT_DIG__ 64'
+name at offset 0x00003b8d, length   30 is '__GCC_ATOMIC_SHORT_LOCK_FREE 2'
+name at offset 0x00003bac, length   17 is '_LIBC_SYMBOLS_H 1'
+name at offset 0x00003bbe, length   14 is 'USE_LDCONFIG 1'
+name at offset 0x00003bcd, length   24 is '__FLT_MIN_10_EXP__ (-37)'
+name at offset 0x00003be6, length   22 is '__DBL_HAS_INFINITY__ 1'
+name at offset 0x00003bfd, length   19 is '__INT64_C(c) c ## L'
+name at offset 0x00003c11, length   36 is 'weak_function __attribute__ ((weak))'
+name at offset 0x00003c36, length   27 is 'libresolv_hidden_def(name) '
+name at offset 0x00003c52, length   23 is '__FLT_HAS_QUIET_NAN__ 1'
+name at offset 0x00003c6a, length   25 is '__PTRDIFF_TYPE__ long int'
+name at offset 0x00003c84, length   28 is '__INT_FAST16_TYPE__ long int'
+name at offset 0x00003ca1, length   68 is '__DEC128_SUBNORMAL_MIN__ 0.000000000000000000000000000000001E-6143DL'
+name at offset 0x00003ce6, length   43 is 'libnss_nisplus_hidden_proto(name,attrs...) '
+name at offset 0x00003d12, length  181 is 'static_link_warning1(name) link_warning(name, "Using '" #name "' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking")'
+name at offset 0x00003dc8, length   20 is 'HAVE_FORCED_UNWIND =================================================================
+==5973==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x6020000001bb at pc 0x00000058d2db bp 0x7ffdcdc47350 sp 0x7ffdcdc47348
+READ of size 1 at 0x6020000001bb thread T0
+    #0 0x58d2da in dwarf_get_aranges_list /tmp/code/libdwarf/dwarf_arange.c:181:24
+    #1 0x58b656 in dwarf_get_aranges /tmp/code/libdwarf/dwarf_arange.c:339:11
+    #2 0x52c0be in print_aranges /tmp/code/dwarfdump/print_aranges.c:145:12
+    #3 0x517d9f in process_one_file /tmp/code/dwarfdump/dwarfdump.c:1347:9
+    #4 0x517d9f in main /tmp/code/dwarfdump/dwarfdump.c:601
+    #5 0x7fe3b7ced680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+    #6 0x41a488 in _start (/usr/bin/dwarfdump-git+0x41a488)
+
+0x6020000001bb is located 0 bytes to the right of 11-byte region [0x6020000001b0,0x6020000001bb)
+allocated by thread T0 here:
+    #0 0x4d8678 in malloc /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_malloc_linux.cc:67
+    #1 0x7fe3b8dc8cc7 in __libelf_set_rawdata_wrlock /var/tmp/portage/dev-libs/elfutils-0.169-r1/work/elfutils-0.169/libelf/elf_getdata.c:329
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /tmp/code/libdwarf/dwarf_arange.c:181:24 in dwarf_get_aranges_list
+Shadow bytes around the buggy address:
+  0x0c047fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c047fff8000: fa fa 00 00 fa fa 00 00 fa fa 00 00 fa fa 00 00
+  0x0c047fff8010: fa fa 00 00 fa fa 00 00 fa fa 00 00 fa fa 00 00
+  0x0c047fff8020: fa fa 00 00 fa fa 00 00 fa fa 00 00 fa fa 00 00
+=>0x0c047fff8030: fa fa 00 00 fa fa 00[03]fa fa fa fa fa fa fa fa
+  0x0c047fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8060: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8070: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c047fff8080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==5973==ABORTING
+1'
+name at offset 0x00003ddd, length   29 is 'libdl_hidden_data_weak(name) '
+name at offset 0x00003dfb, length   20 is 'MODULE_libSegFault 6'
+name at offset 0x00003e10, length    5 is 'PIC 1'
+name at offset 0x00003e16, length   22 is '__DBL_MAX_10_EXP__ 308'
+name at offset 0x00003e2d, length   11 is '_T_PTRDIFF '
+name at offset 0x00003e39, length   24 is 'libnsl_hidden_def(name) '
+name at offset 0x00003e52, length   13 is '_GCC_WCHAR_T '
+name at offset 0x00003e60, length    9 is '__pic__ 2'
+name at offset 0x00003e6a, length    9 is '__SSE__ 1'
+name at offset 0x00003e74, length   24 is '__BIGGEST_ALIGNMENT__ 16'
+name at offset 0x00003e8d, length   14 is '_SYS_SIZE_T_H '
+name at offset 0x00003e9c, length   53 is '__DBL_EPSILON__ ((double)2.22044604925031308085e-16L)'
+name at offset 0x00003ed2, length   27 is '__ATOMIC_HLE_RELEASE 131072'
+name at offset 0x00003eee, length   57 is '__DEC128_MAX__ 9.999999999999999999999999999999999E6144DL'
+name at offset 0x00003f28, length   20 is '__REGISTER_PREFIX__ '
+name at offset 0x00003f3d, length   17 is 'MODULE_libutil 29'
+name at offset 0x00003f4f, length   15 is 'USE_MULTIARCH 1'
+name at offset 0x00003f5f, length   24 is 'librt_hidden_weak(name) '
+name at offset 0x00003f78, length  101 is 'declare_symbol_alias(symbol,original,type,size) declare_symbol_alias_1 (symbol, original, type, size)'
+name at offset 0x00003fde, length   70 is 'weak_hidden_alias(name,aliasname) _weak_hidden_alias (name, aliasname)'
+name at offset 0x00004025, length   25 is 'HAVE_AVX512_ASM_SUPPORT 1'
+name at offset 0x0000403f, length    9 is '__amd64 1'
+name at offset 0x00004049, length   11 is '__linux__ 1'
+name at offset 0x00004055, length   24 is 'C_SYMBOL_NAME(name) name'
+name at offset 0x0000406e, length   39 is 'libnsl_hidden_tls_proto(name,attrs...) '
+name at offset 0x00004096, length   17 is '__STDC_UTF_32__ 1'
+name at offset 0x000040a8, length   16 is 'MODULE_NAME libc'
+name at offset 0x000040b9, length    6 is '__k8 1'
+name at offset 0x000040c0, length   17 is 'MODULE_libmvec 33'
+name at offset 0x000040d2, length   23 is 'HAVE_INLINED_SYSCALLS 1'
+name at offset 0x000040ea, length   35 is 'libnsl_hidden_data_ver(local,name) '
+name at offset 0x0000410e, length   57 is 'bss_set_element(set,symbol) _elf_set_element(set, symbol)'
+name at offset 0x00004148, length   24 is '__LDBL_MAX_10_EXP__ 4932'
+name at offset 0x00004161, length   22 is '__DEC64_MIN__ 1E-383DD'
+name at offset 0x00004178, length   17 is 'MODULE_lddlibc4 4'
+name at offset 0x0000418a, length   20 is 'MODULE_LIBS_BEGIN 15'
+name at offset 0x0000419f, length   27 is '__PRAGMA_REDEFINE_EXTNAME 1'
+name at offset 0x000041bb, length   23 is '__SIG_ATOMIC_TYPE__ int'
+name at offset 0x000041d3, length   36 is '__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8 1'
+name at offset 0x000041f8, length   24 is 'libdl_hidden_weak(name) '
+name at offset 0x00004211, length   21 is '__LDBL_HAS_DENORM__ 1'
+name at offset 0x00004227, length   39 is 'IS_IN(lib) (IN_MODULE == MODULE_ ##lib)'
+name at offset 0x0000424f, length   36 is 'libmvec_hidden_dat%81_ver(local,name) '
+name at offset 0x00004274, length   11 is '__size_t__ '
+name at offset 0x00004280, length   21 is '__DEC64_MANT_DIG__ 16'
+name at offset 0x00004296, length   20 is '__FLT_HAS_DENORM__ 1'
+name at offset 0x000042ab, length   18 is '__DECIMAL_DIG__ 21'
+
+.debug_aranges

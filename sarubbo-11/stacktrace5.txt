@@ -1,0 +1,85 @@
+=================================================================
+==5190==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x604000000100 at pc 0x0000004c166c bp 0x7ffed6bcbad0 sp 0x7ffed6bcb280
+READ of size 8 at 0x604000000100 thread T0
+    #0 0x4c166b in __asan_memcpy /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_interceptors.cc:466
+    #1 0x55a8ed in print_frame_inst_bytes /tmp/code/dwarfdump/print_frames.c:1416:25
+    #2 0x5580b1 in print_one_cie /tmp/code/dwarfdump/print_frames.c:1191:13
+    #3 0x5607d1 in print_frames /tmp/code/dwarfdump/print_frames.c:2288:17
+    #4 0x517fa3 in process_one_file /tmp/code/dwarfdump/dwarfdump.c:1356:9
+    #5 0x517fa3 in main /tmp/code/dwarfdump/dwarfdump.c:601
+    #6 0x7ff92b38f680 in __libc_start_main /var/tmp/portage/sys-libs/glibc-2.23-r4/work/glibc-2.23/csu/../csu/libc-start.c:289
+    #7 0x41a488 in _start (/usr/bin/dwarfdump-git+0x41a488)
+
+0x604000000100 is located 0 bytes to the right of 48-byte region [0x6040000000d0,0x604000000100)
+allocated by thread T0 here:
+    #0 0x4d8678 in malloc /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_malloc_linux.cc:67
+    #1 0x7ff92c46acc7 in __libelf_set_rawdata_wrlock /var/tmp/portage/dev-libs/elfutils-0.169-r1/work/elfutils-0.169/libelf/elf_getdata.c:329
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /var/tmp/portage/sys-libs/compiler-rt-sanitizers-5.0.0/work/compiler-rt-5.0.0.src/lib/asan/asan_interceptors.cc:466 in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x0c087fff7fd0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c087fff7fe0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c087fff7ff0: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x0c087fff8000: fa fa 00 00 00 00 00 00 fa fa 00 00 00 00 00 00
+  0x0c087fff8010: fa fa fd fd fd fd fd fa fa fa 00 00 00 00 00 00
+=>0x0c087fff8020:[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8030: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8040: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8050: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8060: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c087fff8070: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==5190==ABORTING
+
+.debug_info
+
+.debug_pubnames
+
+.debug_str
+
+.debug_aranges
+
+.debug_frame
+
+fde:
+
+cie:
+<    0>	version				5
+	cie section offset		0 0x00000000
+	augmentation			
+	code_alignment_factor		0
+	data_alignment_factor		18
+	return_address_register		18
+	bytes of initial instructions	35
+	cie length			44
+	initial instructions
+	 0 DW_CFA_def_cfa_sf r18 18 (*data alignment factor=>324)
+	 3 DW_CFA_def_cfa_sf r18 18 (*data alignment factor=>324)
+	 6 DW_CFA_def_cfa_sf r18 18 (*data alignment factor=>324)
+	 9 DW_CFA_def_cfa_sf r18 18 (*data alignment factor=>324)
+	12 DW_CFA_def_cfa_sf r18 18 (*data alignment factor=>324)
+	15 DW_CFA_def_cfa_sf r18 46 (*data alignment factor=>828)
+	18 DW_CFA_GNU_args_size arg size: 46
+	20 DW_CFA_GNU_args_size arg size: 46
+	22 DW_CFA_GNU_args_size arg size: 46
+	24 DW_CFA_GNU_args_size arg size: 46
+	26 DW_CFA_GNU_args_size arg size: 46
+	28 DW_CFA_GNU_args_size arg size: 46
