@@ -433,6 +433,13 @@ runtest $d1 $d2   sarubbo/test2.crashes -a
 # Exposed failure to check off-end in abbreviation reading, corrupted dWARF.
 runtest $d1 $d2   sarubbo/test122.crashes -a
 
+# These exposed weaknesses in decoding frame data in dwarfdump.
+runtest $d1 $d2   sarubbo-11/testcase1.bin -a
+runtest $d1 $d2   sarubbo-11/testcase2.bin -a
+runtest $d1 $d2   sarubbo-11/testcase3.bin -a
+runtest $d1 $d2   sarubbo-11/testcase4.bin -a
+runtest $d1 $d2   sarubbo-11/testcase5.bin -a
+
 # Object file die runs off end of die
 runtest $d1 $d2   puzzor/heap_buf_overflow.o -a
 
