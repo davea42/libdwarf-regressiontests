@@ -27,7 +27,9 @@ diff frame1.base frame1.out >diffs
 if [ $? -ne 0 ]
 then
     echo "FAIL frame1 test.  got diffs in output."
+    echo "To update do: cp frame1.out frame1.base"
     cat diffs
+    echo "To update do: cp frame1.out frame1.base"
     exit 1
 fi
 echo PASS frame1/runtest.sh

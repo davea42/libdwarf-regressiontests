@@ -907,7 +907,7 @@ r=$?
 chkresn $r 'dwgena/runtest.sh' 9
 cd ..
 
-echo "=====START   frame1/runtest.sh"
+echo "=====START   frame1/runtest.sh $cbase"
 cd frame1
 sh runtest.sh $cbase
 r=$?
