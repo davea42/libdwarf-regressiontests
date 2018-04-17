@@ -1,0 +1,50 @@
+April 14, 2018
+
+dwarfdump --print-str-offsets test-clang-dw5.o
+shows an error.
+
+ .debug_str_offsets table 0
+ hdroffset   0x00000000
+ tableoffset 0x00000008
+ unit length 0x00000018
+ entry size  4
+ version     5
+ padding     0x0
+ Number of entries: 5
+(here hex is converted to big endian as in any normal printf)
+ Entry [   0]:  0x00000000 0x00000023 0x0000002c 0x00000060
+ Entry [   4]:  0x00000068
+
+dwarfdump ERROR:  dwarf_next_str_offsets_table:  DW_DLE_STR_OFFSETS_EXTRA_BYTES(408) Unused non-zero bytes end section. Attempting to continue.
+
+Here is the section in hex
+(all the hex is little-endian)
+q3 527:  hxdump -s 0x48 -l 0x20 *5.o
+     48 18000000 05000000 00000000 00000000 ................
+     58 00000000 00000000 00000000 00000000 ................
+
+That's not interesting as it's all zero till the
+relocations (.rela) are applied.
+
+The section is before the .rela relocations are applied,
+here are the bytes after relocations.
+
+18 00 00 00    The length following this 4 byte length number.
+05 00 00 00    The version and the padding defined in the standard.
+
+Following are 5  32 bit offsets into .debug_str.
+00 00 00 00 23 00 00 00 2c 00 00 00 60 00 00 00 68 00 00 00 6c 00 00 00 
+
+The problem is that the version and padding must be counted
+in the length to get all the bytes of the array of offsets.
+
+So the unit length should be 0x1c, not 0x18.
+The dwarfdump output of entries stops at 0x68 and interpretes the
+following 6c as beginning a new table (which fails immediately,
+there is no table, we run off the end of the section).
+
+One assumes the  compiler failed to count the version and pad
+(4 bytes) as part of what 'unit length' covers.
+
+........
+
