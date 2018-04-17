@@ -1,3 +1,12 @@
+2018-04-17  David Anderson
+  * A runtest of emre5 directory objects was typed 
+    incorrectly and has only been
+    generating a usage message for quite some time.
+    It now tests dwp and tied files as it is supposed to.
+  * README.txt: Now mentions that at least one test
+    assumes that a segmentation violation will create a
+    core file (the test fails if ulimit or something else
+    prevents or moves core files).
 2018-01-29  David Anderson
   * dwarfdump-i386-freebsd.O,dwarfdump-x86_64-freebsd.O: 
     New baselines

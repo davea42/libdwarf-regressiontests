@@ -45,6 +45,12 @@ the GNU binutils-dev or equivalent must be installed to get
 bfd.h in a visible standard header location (the 'dwarfextract'
 test will fail without GNU binutils-dev).
 
+One of the tests assumes a segmentation violation (or
+the like) will cause a corefile to be created in
+the local directory.  So the test system's ulimit
+and other core-creation settings must be consistent
+with that.
+
 A source of variation in output is libelf, since 
 libelf traditionally does a poor job of noticing
 invalid Elf and some versions are
@@ -86,19 +92,24 @@ where some checks may be skipped, do:
       ./configure
       export NLIZE=y
       make
+With -fsanitize=address no corefile can be created
+(analyze software catches the segv etc) so
+coredump-related tests cannot work.
 
 
 ======================================================================
-PASS 34297
-FAIL 12 (the 12  differences were due to a change in dwarf.h for DWARF5
-as of this test). Normally all will pass.
-The CPUs/cores in use are all in the general area near 3GHz.
-Run times vary of course.
-As of 31 Jan 2017:
-TIME Ubuntu 16.04 64:   1:20
-TIME Ubuntu 16.04 32:   2:17 Slower than it should be. Hardware?
-TIME FreeBSD 32bitVM:   1:20
-TIME FreeBSD 64bitVM:   1:15
+PASS 36141
+FAIL 3 (the differences due to trivial dwarfdump changes since the
+last baseline update.)
+
+Normally all will pass (FAIL will show 0).
+The CPUs/cores in use are all in the general area of 2.4 to 3 GHz.
+
+As of 17 April 2018, test runtimes in minutes:
+Ubuntu 16.04 64:   24  3GHz cpu, fastest.
+Ubuntu 16.04 32:   35
+FreeBSD 32bitVM:   40 
+FreeBSD 64bitVM:   40
 
 
      
