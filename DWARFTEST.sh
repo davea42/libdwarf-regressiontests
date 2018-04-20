@@ -212,6 +212,12 @@ unifyddname () {
   #nend=$2
   #sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart > $nend
 }
+# For stderr we need to fix the name due to getopt.c
+unifyddnameb () {
+  nstart=$1
+  nend=$2
+  sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart > $nend
+}
 
 totaltestcount=0
 runtest () {
@@ -249,7 +255,7 @@ runtest () {
         #$olddw $*  $targ 1>tmp1a 2>tmp1erra
         echo "old done " `date`
         unifyddname tmp1a tmp1
-        unifyddname tmp1erra tmp1err
+        unifyddnameb tmp1erra tmp1err
         if [ -f core ]
         then
            echo corefile in  $olddw '(old dwarfdump)'
@@ -270,7 +276,7 @@ runtest () {
         echo "new done " `date`
         # No need to unify for new dd name.
         unifyddname tmp2a tmp2
-        unifyddname tmp2erra tmp2err
+        unifyddnameb tmp2erra tmp2err
         date
         if [ -f core ]
         then
@@ -337,12 +343,30 @@ runtest () {
 runtest $d1 $d2   wolff/POC1 -a
 runtest $d1 $d2   wolff/POC1 -b
 
-echo "=====START   test gennames -t and -s same output"
+#Show the usage options list
+runtest $d1 $d2 foo.o -h
+# Some errors in options list use, which
+# should not show the options list
+runtest $d1 $d2 foo.o  -j
+runtest $d1 $d2 foo.o -x unknown
+runtest $d1 $d2 foo.o --unknown-longopt
+runtest $d1 $d2 -M  -M
 
+# This has right idea in .debug_str_offsets, but wrong table length.
 runtest $d1 $d2 enciso8/test-clang-dw5.o --print-str-offsets
+
+# These have .debug_str_offsets sections, but they are empty
+# or bogus (created from a draft, not final, DWARF5, I think)
+# so do not expect much output.
+runtest $d1 $d2 emre3/a.out.dwp --print-str-offsets 
+runtest $d1 $d2 emre3/foo.dwo --print-str-offsets
+runtest $d1 $d2 emre3/main.dwo --print-str-offsets 
+runtest $d1 $d2 emre5/emre5/test33_64_opt_fpo_split.dwp
+runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp 
 
 runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b -c 
 
+echo "=====START   test gennames -t and -s same output"
 # Testing that gennames -t and -s generate the same results.
 ./gennames -s -i $cbase/libdwarf -o .
 chkres $?  gennames-build-s-check
@@ -955,7 +979,11 @@ sh runtest.sh $d1 $d2
 chkres $?  enciso4
 cd ..
 
-runtest $d1 $d2 irixn32/dwarfdump -g  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
+# -g: use old dwarf loclist code.
+runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf  -x abi=mips-irix
+
+# -u lets you provide a cu-name so you can select a CU and 
+# skip others when printing DIEs
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
 #The following is for URI style test completeness
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf%2ec -x name=dwarfdump%2econf  -x abi=mips-irix
