@@ -47,4 +47,23 @@ One assumes the  compiler failed to count the version and pad
 (4 bytes) as part of what 'unit length' covers.
 
 ........
+As of April 20,2018,
+
+test-clang-wpieb-dw5.o
+shows a corrected table.
+Thanks to Wolfgang Pieb for correcting clang.
+
+dwarfdump --print-str-offsets  test-clang-wpieb-dw5.o
+ .debug_str_offsets table 0
+ hdroffset   0x00000000
+ tableoffset 0x00000008
+ unit length 0x00000020
+ entry size  4
+ version     5
+ padding     0x0
+ Number of entries: 7
+ Entry [   0]:  0x00000000 0x00000023 0x0000002c 0x00000052
+ Entry [   4]:  0x0000005a 0x0000005e 0x00000062
+ Wasted bytes in section: 0
+
 
