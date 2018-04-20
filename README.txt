@@ -1,4 +1,6 @@
-This directory (dwarftest) is the base which is used for
+Latest update: April 20, 2017 (small tweaks)
+
+This directory (regressiontests) is the base which is used for
 regression testing of libdwarf.    It will probably only
 be usable on a POSIX compliant system (Unix or Linux or
 possibly Mac).
@@ -103,11 +105,11 @@ FAIL 3 (the differences due to trivial dwarfdump changes since the
 last baseline update.)
 
 Normally all will pass (FAIL will show 0).
-The CPUs/cores in use are all in the general area of 2.4 to 3 GHz.
+The CPUs/cores in use are all in the general area of 2 to 3 GHz.
 
 As of 17 April 2018, test runtimes in minutes:
 Ubuntu 16.04 64:   24  3GHz cpu, fastest.
-Ubuntu 16.04 32:   35
+Ubuntu 16.04 32:   44  Slowest, smallest memory.
 FreeBSD 32bitVM:   40 
 FreeBSD 64bitVM:   40
 
@@ -123,13 +125,23 @@ What follows is some background detail.
 The key scripts are PICKUPBIN RUNALL.sh DWARFTEST.sh CLEANUP
 
 PICKUPBIN:  this builds libdwarf and dwarfdump
-and stores the result in the dwarftest directory.
-The script assumes the directory tree has the following
-directories directly under a main directory (the main
-directory name is not important):
+and stores the result in the regressiontests directory.
+The script assumes the source directory tree 
+is named in the BASEFILES file sourced
+from PICKUPBIN. 
+
+For example, on one machine BASEFILES
+contains the sh(bash) statement naming
+the base source directory
+   libdw=/home/davea/dwarf/regressiontests/../code
+
+Here are the main directories in 'code', the base source
+code directory on a test machine.
    libdwarf
    dwarfgen
    dwarfdump
+   dwarfexample
+That is, just the normal libdwarf/dwarfdump source distribution.
 
 README.txt:  This file.
 
@@ -150,27 +162,27 @@ RUNALL.sh:  Runs RUNALL.sh once.
    reimplemented for libdwarf so it is gone).
 
 CLEANUP:  Cleans up all the temporary results from tests.
-   Does not clean out files created by configure here.
+   Does not clean out files created by configure.
    Use 'make distclean' to clean out those files.
 
 
 The 'zero' directory holds a utility application that
 enables scrubbing sections of object files to all-zero-bytes.
-This is not used for testing.
-This application exists so seemingly proprietary objects can be added to
-the test without revealing any of the compiler-generated
-actual instructions.   Basically one emails a contributor
-the zero.cc source and lets the contributor remove instruction
-bytes from the object (readelf -S is a convenient way to
-get the lists of object offsets and lengths of sections).
-Then the contributor provides the modified object to the
-libdwarf project and we add test code using it to DWARFTEST.sh
-Since libdwarf never pays any attention
-to sections other than those named .eh_frame or .debug_*
-one can use 'zero' to set those other section contents to all-zero
-and preserve proprietary code generation information.  Thus
-making it easier for people to contribute object files.
+This is not used for testing.  This application exists so
+seemingly proprietary objects can be added to the test without
+revealing any of the compiler-generated actual instructions.
 
+Basically one emails a contributor the zero.cc source and
+lets the contributor remove instruction bytes from the object
+(readelf -S is a convenient way to get the lists of object
+offsets and lengths of sections).  Then the contributor
+provides the modified object to the libdwarf project and
+we add test code using it to DWARFTEST.sh Since libdwarf
+never pays any attention to sections other than those named
+.eh_frame or .debug_* one can use 'zero' to set those other
+section contents to all-zero and preserve proprietary code
+generation information.  Thus making it easier for people to
+contribute object files.
 
-David Anderson May 2010
+David Anderson
 

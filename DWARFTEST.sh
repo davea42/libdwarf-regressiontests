@@ -96,6 +96,7 @@ chkresn () {
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
 enciso8/test-clang-dw5.o
+enciso8/test-clang-wpieb-dw5.o
 sarubbo-7/4.crashes.bin
 sarubbo-6/1.crashes.bin
 sarubbo-5/1.crashes.bin
@@ -353,7 +354,10 @@ runtest $d1 $d2 foo.o --unknown-longopt
 runtest $d1 $d2 -M  -M
 
 # This has right idea in .debug_str_offsets, but wrong table length.
-runtest $d1 $d2 enciso8/test-clang-dw5.o --print-str-offsets
+runtest $d1 $d2 enciso8/test-clang-dw5.o -s --print-str-offsets
+# This has a correct table (new clang, soon will be available).
+runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -s --print-str-offsets
+
 
 # These have .debug_str_offsets sections, but they are empty
 # or bogus (created from a draft, not final, DWARF5, I think)
