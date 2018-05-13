@@ -1,0 +1,836 @@
+
+========================================================================
+
+** ELF Header Information
+
+    File Name: test.armlink.elf
+
+    Machine class: ELFCLASS32 (32-bit)
+    Data encoding: ELFDATA2LSB (Little endian)
+    Header version: EV_CURRENT (Current version)
+    Operating System ABI: none
+    ABI Version: 0
+    File Type: ET_EXEC (Executable) (2)
+    Machine: EM_ARM (ARM)
+
+    Image Entry point: Not specified
+    Flags: EF_ARM_ABI_FLOAT_SOFT (0x05000200)
+
+    ARM ELF revision: 5 (ABI version 2)
+
+    Conforms to Soft float procedure-call standard
+
+    Built with
+    Component: ARM Compiler 5.06 update 1 (build 61) Tool: armcc [4d35ad]
+    Component: ARM Compiler 5.06 update 1 (build 61) Tool: armlink [4d35a8]
+
+    Header size: 52 bytes (0x34)
+    Program header entry size: 32 bytes (0x20)
+    Section header entry size: 40 bytes (0x28)
+
+    Program header entries: 1
+    Section header entries: 14
+
+    Program header offset: 3276 (0x00000ccc)
+    Section header offset: 3308 (0x00000cec)
+
+    Section header string table index: 13
+
+========================================================================
+
+** Program header #0 (PT_LOAD) [PF_X + PF_R]
+    Size : 8 bytes
+    Virtual address: 0x00008000 (Alignment 4)
+
+
+========================================================================
+
+** Section #1 'ER_RO' (SHT_PROGBITS) [SHF_ALLOC + SHF_EXECINSTR]
+    Size   : 8 bytes (alignment 4)
+    Address: 0x00008000
+
+
+** Section #2 '.debug_abbrev' (SHT_PROGBITS)
+    Size   : 1444 bytes
+
+  00000000  1: no children: DW_TAG_subrange_type
+    000003 DW_AT_upper_bound          DW_FORM_udata
+  00000007  2: no children: DW_TAG_subrange_type
+  0000000c  3:    children: DW_TAG_array_type
+    00000f DW_AT_sibling              DW_FORM_ref_udata
+    000011 DW_AT_type                 DW_FORM_indirect
+  00000015  4: no children: DW_TAG_base_type
+    000018 DW_AT_byte_size            DW_FORM_data1
+    00001a DW_AT_encoding             DW_FORM_data1
+    00001c DW_AT_name                 DW_FORM_string
+  00000020  5:    children: DW_TAG_compile_unit
+    000023 DW_AT_name                 DW_FORM_string
+    000025 DW_AT_producer             DW_FORM_string
+    000027 DW_AT_language             DW_FORM_data2
+    000029 DW_AT_comp_dir             DW_FORM_string
+    00002b DW_AT_low_pc               DW_FORM_addr
+    00002d DW_AT_high_pc              DW_FORM_addr
+    00002f DW_AT_stmt_list            DW_FORM_data4
+  00000033  6:    children: DW_TAG_compile_unit
+    000036 DW_AT_name                 DW_FORM_string
+    000038 DW_AT_producer             DW_FORM_string
+    00003a DW_AT_language             DW_FORM_data2
+    00003c DW_AT_comp_dir             DW_FORM_string
+    00003e DW_AT_low_pc               DW_FORM_addr
+    000040 DW_AT_high_pc              DW_FORM_addr
+  00000044  7:    children: DW_TAG_compile_unit
+    000047 DW_AT_name                 DW_FORM_string
+    000049 DW_AT_producer             DW_FORM_string
+    00004b DW_AT_language             DW_FORM_data2
+    00004d DW_AT_comp_dir             DW_FORM_string
+    00004f DW_AT_stmt_list            DW_FORM_data4
+  00000053  8:    children: DW_TAG_compile_unit
+    000056 DW_AT_name                 DW_FORM_string
+    000058 DW_AT_producer             DW_FORM_string
+    00005a DW_AT_language             DW_FORM_data2
+    00005c DW_AT_comp_dir             DW_FORM_string
+  00000060  9:    children: DW_TAG_compile_unit
+    000063 DW_AT_name                 DW_FORM_string
+    000065 DW_AT_producer             DW_FORM_string
+    000067 DW_AT_language             DW_FORM_data2
+    000069 DW_AT_comp_dir             DW_FORM_string
+    00006b DW_AT_macro_info           DW_FORM_data4
+    00006d DW_AT_low_pc               DW_FORM_addr
+    00006f DW_AT_high_pc              DW_FORM_addr
+    000071 DW_AT_stmt_list            DW_FORM_data4
+  00000075 10:    children: DW_TAG_compile_unit
+    000078 DW_AT_name                 DW_FORM_string
+    00007a DW_AT_producer             DW_FORM_string
+    00007c DW_AT_language             DW_FORM_data2
+    00007e DW_AT_comp_dir             DW_FORM_string
+    000080 DW_AT_macro_info           DW_FORM_data4
+    000082 DW_AT_stmt_list            DW_FORM_data4
+  00000086 11:    children: DW_TAG_compile_unit
+    000089 DW_AT_name                 DW_FORM_string
+    00008b DW_AT_producer             DW_FORM_string
+    00008d DW_AT_language             DW_FORM_data2
+    00008f DW_AT_low_pc               DW_FORM_addr
+    000091 DW_AT_high_pc              DW_FORM_addr
+    000093 DW_AT_stmt_list            DW_FORM_data4
+  00000097 12:    children: DW_TAG_compile_unit
+    00009a DW_AT_name                 DW_FORM_string
+    00009c DW_AT_producer             DW_FORM_string
+    00009e DW_AT_language             DW_FORM_data2
+    0000a0 DW_AT_low_pc               DW_FORM_addr
+    0000a2 DW_AT_high_pc              DW_FORM_addr
+  000000a6 13:    children: DW_TAG_compile_unit
+    0000a9 DW_AT_name                 DW_FORM_string
+    0000ab DW_AT_producer             DW_FORM_string
+    0000ad DW_AT_language             DW_FORM_data2
+    0000af DW_AT_stmt_list            DW_FORM_data4
+  000000b3 14:    children: DW_TAG_compile_unit
+    0000b6 DW_AT_name                 DW_FORM_string
+    0000b8 DW_AT_producer             DW_FORM_string
+    0000ba DW_AT_language             DW_FORM_data2
+  000000be 15:    children: DW_TAG_compile_unit
+    0000c1 DW_AT_name                 DW_FORM_string
+    0000c3 DW_AT_producer             DW_FORM_string
+    0000c5 DW_AT_language             DW_FORM_data2
+    0000c7 DW_AT_macro_info           DW_FORM_data4
+    0000c9 DW_AT_low_pc               DW_FORM_addr
+    0000cb DW_AT_high_pc              DW_FORM_addr
+    0000cd DW_AT_stmt_list            DW_FORM_data4
+  000000d1 16:    children: DW_TAG_compile_unit
+    0000d4 DW_AT_name                 DW_FORM_string
+    0000d6 DW_AT_producer             DW_FORM_string
+    0000d8 DW_AT_language             DW_FORM_data2
+    0000da DW_AT_macro_info           DW_FORM_data4
+    0000dc DW_AT_stmt_list            DW_FORM_data4
+  000000e0 17: no children: DW_TAG_const_type
+    0000e3 DW_AT_type                 DW_FORM_indirect
+  000000e7 18:    children: DW_TAG_enumeration_type
+    0000ea DW_AT_sibling              DW_FORM_ref_udata
+    0000ec DW_AT_name                 DW_FORM_string
+    0000ee DW_AT_byte_size            DW_FORM_data1
+  000000f2 19:    children: DW_TAG_enumeration_type
+    0000f5 DW_AT_sibling              DW_FORM_ref_udata
+    0000f7 DW_AT_byte_size            DW_FORM_data1
+  000000fb 20: no children: DW_TAG_enumerator
+    0000fe DW_AT_name                 DW_FORM_string
+    000100 DW_AT_const_value          DW_FORM_indirect
+  00000104 21: no children: DW_TAG_enumerator
+    000107 DW_AT_name                 DW_FORM_string
+    000109 DW_AT_const_value          DW_FORM_sdata
+  0000010d 22:    children: DW_TAG_lexical_block
+    000110 DW_AT_sibling              DW_FORM_ref_udata
+    000112 DW_AT_low_pc               DW_FORM_addr
+    000114 DW_AT_high_pc              DW_FORM_addr
+  00000118 23: no children: DW_TAG_lexical_block
+    00011b DW_AT_low_pc               DW_FORM_addr
+    00011d DW_AT_high_pc              DW_FORM_addr
+  00000121 24:    children: DW_TAG_lexical_block
+    000124 DW_AT_sibling              DW_FORM_ref_udata
+  00000128 25: no children: DW_TAG_lexical_block
+  0000012d 26:    children: DW_TAG_lexical_block
+    000130 DW_AT_sibling              DW_FORM_ref_udata
+    000132 DW_AT_low_pc               DW_FORM_addr
+    000134 DW_AT_high_pc              DW_FORM_addr
+    000136 DW_AT_abstract_origin      DW_FORM_ref_addr
+  0000013a 27: no children: DW_TAG_lexical_block
+    00013d DW_AT_low_pc               DW_FORM_addr
+    00013f DW_AT_high_pc              DW_FORM_addr
+    000141 DW_AT_abstract_origin      DW_FORM_ref_addr
+  00000145 28:    children: DW_TAG_lexical_block
+    000148 DW_AT_sibling              DW_FORM_ref_udata
+    00014a DW_AT_abstract_origin      DW_FORM_ref_addr
+  0000014e 29: no children: DW_TAG_lexical_block
+    000151 DW_AT_abstract_origin      DW_FORM_ref_addr
+  00000155 30: no children: DW_TAG_member
+    000158 DW_AT_name                 DW_FORM_string
+    00015a DW_AT_type                 DW_FORM_indirect
+    00015c DW_AT_data_member_location DW_FORM_block
+  00000160 31: no children: DW_TAG_member
+    000163 DW_AT_name                 DW_FORM_string
+    000165 DW_AT_type                 DW_FORM_indirect
+  00000169 32: no children: DW_TAG_member
+    00016c DW_AT_name                 DW_FORM_string
+    00016e DW_AT_type                 DW_FORM_indirect
+    000170 DW_AT_data_member_location DW_FORM_block
+    000172 DW_AT_artificial           DW_FORM_flag
+  00000176 33: no children: DW_TAG_member
+    000179 DW_AT_name                 DW_FORM_string
+    00017b DW_AT_type                 DW_FORM_indirect
+    00017d DW_AT_data_member_location DW_FORM_block
+    00017f DW_AT_byte_size            DW_FORM_data1
+    000181 DW_AT_bit_size             DW_FORM_data1
+    000183 DW_AT_bit_offset           DW_FORM_data1
+  00000187 34: no children: DW_TAG_pointer_type
+    00018a DW_AT_type                 DW_FORM_indirect
+  0000018e 35: no children: DW_TAG_restrict_type
+    000191 DW_AT_type                 DW_FORM_indirect
+  00000195 36: no children: DW_TAG_formal_parameter
+    000198 DW_AT_type                 DW_FORM_indirect
+    00019a DW_AT_name                 DW_FORM_string
+  0000019e 37: no children: DW_TAG_formal_parameter
+    0001a1 DW_AT_type                 DW_FORM_indirect
+  000001a5 38: no children: DW_TAG_formal_parameter
+    0001a8 DW_AT_type                 DW_FORM_indirect
+    0001aa DW_AT_location             DW_FORM_block
+  000001ae 39: no children: DW_TAG_formal_parameter
+    0001b1 DW_AT_type                 DW_FORM_indirect
+    0001b3 DW_AT_location             DW_FORM_data4
+  000001b7 40: no children: DW_TAG_reference_type
+    0001ba DW_AT_type                 DW_FORM_indirect
+  000001be 41:    children: DW_TAG_structure_type
+    0001c1 DW_AT_sibling              DW_FORM_ref_udata
+    0001c3 DW_AT_name                 DW_FORM_string
+    0001c5 DW_AT_byte_size            DW_FORM_udata
+  000001c9 42:    children: DW_TAG_structure_type
+    0001cc DW_AT_sibling              DW_FORM_ref_udata
+    0001ce DW_AT_byte_size            DW_FORM_udata
+  000001d2 43:    children: DW_TAG_structure_type
+    0001d5 DW_AT_sibling              DW_FORM_ref_udata
+    0001d7 DW_AT_name                 DW_FORM_string
+  000001db 44:    children: DW_TAG_structure_type
+  000001e0 45: no children: DW_TAG_structure_type
+    0001e3 DW_AT_name                 DW_FORM_string
+  000001e7 46: no children: DW_TAG_structure_type
+  000001ec 47:    children: DW_TAG_structure_type
+    0001ef DW_AT_sibling              DW_FORM_ref_udata
+    0001f1 DW_AT_artificial           DW_FORM_flag
+    0001f3 DW_AT_name                 DW_FORM_string
+    0001f5 DW_AT_byte_size            DW_FORM_udata
+  000001f9 48:    children: DW_TAG_structure_type
+    0001fc DW_AT_sibling              DW_FORM_ref_udata
+    0001fe DW_AT_artificial           DW_FORM_flag
+    000200 DW_AT_byte_size            DW_FORM_udata
+  00000204 49:    children: DW_TAG_structure_type
+    000207 DW_AT_sibling              DW_FORM_ref_udata
+    000209 DW_AT_artificial           DW_FORM_flag
+    00020b DW_AT_name                 DW_FORM_string
+  0000020f 50:    children: DW_TAG_structure_type
+    000212 DW_AT_artificial           DW_FORM_flag
+  00000216 51: no children: DW_TAG_structure_type
+    000219 DW_AT_artificial           DW_FORM_flag
+    00021b DW_AT_name                 DW_FORM_string
+  0000021f 52: no children: DW_TAG_structure_type
+    000222 DW_AT_artificial           DW_FORM_flag
+  00000226 53:    children: DW_TAG_subprogram
+    000229 DW_AT_sibling              DW_FORM_ref_udata
+    00022b DW_AT_decl_file            DW_FORM_udata
+    00022d DW_AT_decl_line            DW_FORM_udata
+    00022f DW_AT_decl_column          DW_FORM_udata
+    000231 DW_AT_name                 DW_FORM_string
+    000233 DW_AT_external             DW_FORM_flag
+    000235 DW_AT_type                 DW_FORM_indirect
+    000237 DW_AT_low_pc               DW_FORM_addr
+    000239 DW_AT_high_pc              DW_FORM_addr
+  0000023d 54:    children: DW_TAG_subprogram
+    000240 DW_AT_sibling              DW_FORM_ref_udata
+    000242 DW_AT_decl_file            DW_FORM_udata
+    000244 DW_AT_decl_line            DW_FORM_udata
+    000246 DW_AT_decl_column          DW_FORM_udata
+    000248 DW_AT_name                 DW_FORM_string
+    00024a DW_AT_external             DW_FORM_flag
+    00024c DW_AT_low_pc               DW_FORM_addr
+    00024e DW_AT_high_pc              DW_FORM_addr
+  00000252 55:    children: DW_TAG_subprogram
+    000255 DW_AT_sibling              DW_FORM_ref_udata
+    000257 DW_AT_decl_file            DW_FORM_udata
+    000259 DW_AT_decl_line            DW_FORM_udata
+    00025b DW_AT_decl_column          DW_FORM_udata
+    00025d DW_AT_specification        DW_FORM_indirect
+    00025f DW_AT_low_pc               DW_FORM_addr
+    000261 DW_AT_high_pc              DW_FORM_addr
+  00000265 56:    children: DW_TAG_subprogram
+    000268 DW_AT_sibling              DW_FORM_ref_udata
+    00026a DW_AT_decl_file            DW_FORM_udata
+    00026c DW_AT_decl_line            DW_FORM_udata
+    00026e DW_AT_decl_column          DW_FORM_udata
+    000270 DW_AT_name                 DW_FORM_string
+    000272 DW_AT_external             DW_FORM_flag
+    000274 DW_AT_type                 DW_FORM_indirect
+    000276 DW_AT_inline               DW_FORM_udata
+  0000027a 57:    children: DW_TAG_subprogram
+    00027d DW_AT_sibling              DW_FORM_ref_udata
+    00027f DW_AT_decl_file            DW_FORM_udata
+    000281 DW_AT_decl_line            DW_FORM_udata
+    000283 DW_AT_decl_column          DW_FORM_udata
+    000285 DW_AT_name                 DW_FORM_string
+    000287 DW_AT_external             DW_FORM_flag
+    000289 DW_AT_inline               DW_FORM_udata
+  0000028d 58:    children: DW_TAG_subprogram
+    000290 DW_AT_sibling              DW_FORM_ref_udata
+    000292 DW_AT_decl_file            DW_FORM_udata
+    000294 DW_AT_decl_line            DW_FORM_udata
+    000296 DW_AT_decl_column          DW_FORM_udata
+    000298 DW_AT_specification        DW_FORM_indirect
+    00029a DW_AT_inline               DW_FORM_udata
+  0000029e 59:    children: DW_TAG_subprogram
+    0002a1 DW_AT_sibling              DW_FORM_ref_udata
+    0002a3 DW_AT_decl_file            DW_FORM_udata
+    0002a5 DW_AT_decl_line            DW_FORM_udata
+    0002a7 DW_AT_decl_column          DW_FORM_udata
+    0002a9 DW_AT_name                 DW_FORM_string
+    0002ab DW_AT_external             DW_FORM_flag
+    0002ad DW_AT_type                 DW_FORM_indirect
+  000002b1 60:    children: DW_TAG_subprogram
+    0002b4 DW_AT_sibling              DW_FORM_ref_udata
+    0002b6 DW_AT_decl_file            DW_FORM_udata
+    0002b8 DW_AT_decl_line            DW_FORM_udata
+    0002ba DW_AT_decl_column          DW_FORM_udata
+    0002bc DW_AT_name                 DW_FORM_string
+    0002be DW_AT_external             DW_FORM_flag
+  000002c2 61:    children: DW_TAG_subprogram
+    0002c5 DW_AT_sibling              DW_FORM_ref_udata
+    0002c7 DW_AT_decl_file            DW_FORM_udata
+    0002c9 DW_AT_decl_line            DW_FORM_udata
+    0002cb DW_AT_decl_column          DW_FORM_udata
+    0002cd DW_AT_specification        DW_FORM_indirect
+  000002d1 62:    children: DW_TAG_subprogram
+    0002d4 DW_AT_sibling              DW_FORM_ref_udata
+    0002d6 DW_AT_decl_file            DW_FORM_udata
+    0002d8 DW_AT_decl_line            DW_FORM_udata
+    0002da DW_AT_decl_column          DW_FORM_udata
+    0002dc DW_AT_name                 DW_FORM_string
+    0002de DW_AT_external             DW_FORM_flag
+    0002e0 DW_AT_type                 DW_FORM_indirect
+    0002e2 DW_AT_low_pc               DW_FORM_addr
+    0002e4 DW_AT_high_pc              DW_FORM_addr
+    0002e6 DW_AT_frame_base           DW_FORM_data4
+  000002ea 63:    children: DW_TAG_subprogram
+    0002ed DW_AT_sibling              DW_FORM_ref_udata
+    0002ef DW_AT_decl_file            DW_FORM_udata
+    0002f1 DW_AT_decl_line            DW_FORM_udata
+    0002f3 DW_AT_decl_column          DW_FORM_udata
+    0002f5 DW_AT_name                 DW_FORM_string
+    0002f7 DW_AT_external             DW_FORM_flag
+    0002f9 DW_AT_low_pc               DW_FORM_addr
+    0002fb DW_AT_high_pc              DW_FORM_addr
+    0002fd DW_AT_frame_base           DW_FORM_data4
+  00000301 64:    children: DW_TAG_subprogram
+    000304 DW_AT_sibling              DW_FORM_ref_udata
+    000306 DW_AT_decl_file            DW_FORM_udata
+    000308 DW_AT_decl_line            DW_FORM_udata
+    00030a DW_AT_decl_column          DW_FORM_udata
+    00030c DW_AT_specification        DW_FORM_indirect
+    00030e DW_AT_low_pc               DW_FORM_addr
+    000310 DW_AT_high_pc              DW_FORM_addr
+    000312 DW_AT_frame_base           DW_FORM_data4
+  00000316 65:    children: DW_TAG_subprogram
+    000319 DW_AT_sibling              DW_FORM_ref_udata
+    00031b DW_AT_decl_file            DW_FORM_udata
+    00031d DW_AT_decl_line            DW_FORM_udata
+    00031f DW_AT_decl_column          DW_FORM_udata
+    000321 DW_AT_name                 DW_FORM_string
+    000323 DW_AT_external             DW_FORM_flag
+    000325 DW_AT_type                 DW_FORM_indirect
+    000327 DW_AT_low_pc               DW_FORM_addr
+    000329 DW_AT_high_pc              DW_FORM_addr
+    00032b DW_AT_frame_base           DW_FORM_block1
+  0000032f 66:    children: DW_TAG_subprogram
+    000332 DW_AT_sibling              DW_FORM_ref_udata
+    000334 DW_AT_decl_file            DW_FORM_udata
+    000336 DW_AT_decl_line            DW_FORM_udata
+    000338 DW_AT_decl_column          DW_FORM_udata
+    00033a DW_AT_name                 DW_FORM_string
+    00033c DW_AT_external             DW_FORM_flag
+    00033e DW_AT_low_pc               DW_FORM_addr
+    000340 DW_AT_high_pc              DW_FORM_addr
+    000342 DW_AT_frame_base           DW_FORM_block1
+  00000346 67:    children: DW_TAG_subprogram
+    000349 DW_AT_sibling              DW_FORM_ref_udata
+    00034b DW_AT_decl_file            DW_FORM_udata
+    00034d DW_AT_decl_line            DW_FORM_udata
+    00034f DW_AT_decl_column          DW_FORM_udata
+    000351 DW_AT_specification        DW_FORM_indirect
+    000353 DW_AT_low_pc               DW_FORM_addr
+    000355 DW_AT_high_pc              DW_FORM_addr
+    000357 DW_AT_frame_base           DW_FORM_block1
+  0000035b 68:    children: DW_TAG_inlined_subroutine
+    00035e DW_AT_sibling              DW_FORM_ref_udata
+    000360 DW_AT_abstract_origin      DW_FORM_ref_addr
+    000362 DW_AT_low_pc               DW_FORM_addr
+    000364 DW_AT_high_pc              DW_FORM_addr
+  00000368 69:    children: DW_TAG_inlined_subroutine
+    00036b DW_AT_sibling              DW_FORM_ref_udata
+    00036d DW_AT_abstract_origin      DW_FORM_ref_addr
+  00000371 70:    children: DW_TAG_inlined_subroutine
+    000374 DW_AT_sibling              DW_FORM_ref_udata
+    000376 DW_AT_abstract_origin      DW_FORM_ref_addr
+    000378 DW_AT_low_pc               DW_FORM_addr
+    00037a DW_AT_high_pc              DW_FORM_addr
+    00037c DW_AT_call_file            DW_FORM_udata
+    00037e DW_AT_call_line            DW_FORM_udata
+    000380 DW_AT_call_column          DW_FORM_udata
+  00000384 71:    children: DW_TAG_inlined_subroutine
+    000387 DW_AT_sibling              DW_FORM_ref_udata
+    000389 DW_AT_abstract_origin      DW_FORM_ref_addr
+    00038b DW_AT_call_file            DW_FORM_udata
+    00038d DW_AT_call_line            DW_FORM_udata
+    00038f DW_AT_call_column          DW_FORM_udata
+  00000393 72:    children: DW_TAG_subprogram
+    000396 DW_AT_sibling              DW_FORM_ref_udata
+    000398 DW_AT_abstract_origin      DW_FORM_ref_addr
+    00039a DW_AT_low_pc               DW_FORM_addr
+    00039c DW_AT_high_pc              DW_FORM_addr
+  000003a0 73:    children: DW_TAG_subprogram
+    0003a3 DW_AT_sibling              DW_FORM_ref_udata
+    0003a5 DW_AT_abstract_origin      DW_FORM_ref_addr
+    0003a7 DW_AT_low_pc               DW_FORM_addr
+    0003a9 DW_AT_high_pc              DW_FORM_addr
+    0003ab DW_AT_frame_base           DW_FORM_data4
+  000003af 74:    children: DW_TAG_subprogram
+    0003b2 DW_AT_sibling              DW_FORM_ref_udata
+    0003b4 DW_AT_abstract_origin      DW_FORM_ref_addr
+    0003b6 DW_AT_low_pc               DW_FORM_addr
+    0003b8 DW_AT_high_pc              DW_FORM_addr
+    0003ba DW_AT_frame_base           DW_FORM_block1
+  000003be 75:    children: DW_TAG_subprogram
+    0003c1 DW_AT_sibling              DW_FORM_ref_udata
+    0003c3 DW_AT_abstract_origin      DW_FORM_ref_addr
+  000003c7 76:    children: DW_TAG_subprogram
+    0003ca DW_AT_sibling              DW_FORM_ref_udata
+    0003cc DW_AT_name                 DW_FORM_string
+    0003ce DW_AT_declaration          DW_FORM_flag
+    0003d0 DW_AT_artificial           DW_FORM_flag
+    0003d2 DW_AT_type                 DW_FORM_indirect
+    0003d4 DW_AT_external             DW_FORM_flag
+  000003d8 77:    children: DW_TAG_subprogram
+    0003db DW_AT_sibling              DW_FORM_ref_udata
+    0003dd DW_AT_name                 DW_FORM_string
+    0003df DW_AT_declaration          DW_FORM_flag
+    0003e1 DW_AT_artificial           DW_FORM_flag
+    0003e3 DW_AT_external             DW_FORM_flag
+  000003e7 78:    children: DW_TAG_subroutine_type
+    0003ea DW_AT_sibling              DW_FORM_ref_udata
+    0003ec DW_AT_type                 DW_FORM_indirect
+  000003f0 79:    children: DW_TAG_subroutine_type
+    0003f3 DW_AT_sibling              DW_FORM_ref_udata
+  000003f7 80: no children: DW_TAG_typedef
+    0003fa DW_AT_name                 DW_FORM_string
+    0003fc DW_AT_type                 DW_FORM_indirect
+    0003fe DW_AT_decl_file            DW_FORM_udata
+    000400 DW_AT_decl_line            DW_FORM_udata
+    000402 DW_AT_decl_column          DW_FORM_udata
+  00000406 81: no children: DW_TAG_typedef
+    000409 DW_AT_name                 DW_FORM_string
+    00040b DW_AT_type                 DW_FORM_indirect
+    00040d DW_AT_artificial           DW_FORM_flag
+  00000411 82:    children: DW_TAG_union_type
+    000414 DW_AT_sibling              DW_FORM_ref_udata
+    000416 DW_AT_name                 DW_FORM_string
+    000418 DW_AT_byte_size            DW_FORM_udata
+  0000041c 83:    children: DW_TAG_union_type
+    00041f DW_AT_sibling              DW_FORM_ref_udata
+    000421 DW_AT_byte_size            DW_FORM_udata
+  00000425 84:    children: DW_TAG_union_type
+    000428 DW_AT_sibling              DW_FORM_ref_udata
+    00042a DW_AT_name                 DW_FORM_string
+  0000042e 85: no children: DW_TAG_union_type
+    000431 DW_AT_name                 DW_FORM_string
+  00000435 86: no children: DW_TAG_unspecified_parameters
+  0000043a 87: no children: DW_TAG_unspecified_parameters
+    00043d DW_AT_abstract_origin      DW_FORM_ref_addr
+  00000441 88: no children: DW_TAG_variable
+    000444 DW_AT_name                 DW_FORM_string
+    000446 DW_AT_type                 DW_FORM_indirect
+    000448 DW_AT_location             DW_FORM_block
+    00044a DW_AT_start_scope          DW_FORM_udata
+  0000044e 89: no children: DW_TAG_variable
+    000451 DW_AT_name                 DW_FORM_string
+    000453 DW_AT_type                 DW_FORM_indirect
+    000455 DW_AT_location             DW_FORM_block
+  00000459 90: no children: DW_TAG_variable
+    00045c DW_AT_name                 DW_FORM_string
+    00045e DW_AT_type                 DW_FORM_indirect
+    000460 DW_AT_location             DW_FORM_data4
+  00000464 91: no children: DW_TAG_variable
+    000467 DW_AT_name                 DW_FORM_string
+    000469 DW_AT_type                 DW_FORM_indirect
+    00046b DW_AT_start_scope          DW_FORM_udata
+  0000046f 92: no children: DW_TAG_variable
+    000472 DW_AT_name                 DW_FORM_string
+    000474 DW_AT_type                 DW_FORM_indirect
+  00000478 93: no children: DW_TAG_variable
+    00047b DW_AT_name                 DW_FORM_string
+    00047d DW_AT_type                 DW_FORM_indirect
+    00047f DW_AT_location             DW_FORM_block
+    000481 DW_AT_artificial           DW_FORM_flag
+  00000485 94: no children: DW_TAG_variable
+    000488 DW_AT_name                 DW_FORM_string
+    00048a DW_AT_type                 DW_FORM_indirect
+    00048c DW_AT_location             DW_FORM_block
+    00048e DW_AT_start_scope          DW_FORM_udata
+    000490 DW_AT_artificial           DW_FORM_flag
+  00000494 95: no children: DW_TAG_variable
+    000497 DW_AT_name                 DW_FORM_string
+    000499 DW_AT_type                 DW_FORM_indirect
+    00049b DW_AT_location             DW_FORM_data4
+    00049d DW_AT_artificial           DW_FORM_flag
+  000004a1 96: no children: DW_TAG_variable
+    0004a4 DW_AT_name                 DW_FORM_string
+    0004a6 DW_AT_type                 DW_FORM_indirect
+    0004a8 DW_AT_start_scope          DW_FORM_udata
+    0004aa DW_AT_artificial           DW_FORM_flag
+  000004ae 97: no children: DW_TAG_variable
+    0004b1 DW_AT_name                 DW_FORM_string
+    0004b3 DW_AT_type                 DW_FORM_indirect
+    0004b5 DW_AT_artificial           DW_FORM_flag
+  000004b9 98: no children: DW_TAG_variable
+    0004bc DW_AT_abstract_origin      DW_FORM_ref_addr
+    0004be DW_AT_location             DW_FORM_block
+    0004c0 DW_AT_start_scope          DW_FORM_udata
+  000004c4 99: no children: DW_TAG_variable
+    0004c7 DW_AT_abstract_origin      DW_FORM_ref_addr
+    0004c9 DW_AT_location             DW_FORM_data4
+  000004cd 100: no children: DW_TAG_variable
+    0004d0 DW_AT_abstract_origin      DW_FORM_ref_addr
+    0004d2 DW_AT_start_scope          DW_FORM_udata
+  000004d6 101: no children: DW_TAG_variable
+    0004d9 DW_AT_abstract_origin      DW_FORM_ref_addr
+  000004dd 102: no children: DW_TAG_formal_parameter
+    0004e0 DW_AT_abstract_origin      DW_FORM_ref_addr
+  000004e4 103: no children: DW_TAG_formal_parameter
+    0004e7 DW_AT_abstract_origin      DW_FORM_ref_addr
+    0004e9 DW_AT_const_value          DW_FORM_indirect
+  000004ed 104: no children: DW_TAG_formal_parameter
+    0004f0 DW_AT_name                 DW_FORM_string
+    0004f2 DW_AT_type                 DW_FORM_indirect
+    0004f4 DW_AT_location             DW_FORM_block
+  000004f8 105: no children: DW_TAG_formal_parameter
+    0004fb DW_AT_name                 DW_FORM_string
+    0004fd DW_AT_type                 DW_FORM_indirect
+    0004ff DW_AT_location             DW_FORM_data4
+  00000503 106: no children: DW_TAG_formal_parameter
+    000506 DW_AT_name                 DW_FORM_string
+    000508 DW_AT_type                 DW_FORM_indirect
+  0000050c 107: no children: DW_TAG_formal_parameter
+    00050f DW_AT_name                 DW_FORM_string
+    000511 DW_AT_type                 DW_FORM_indirect
+    000513 DW_AT_location             DW_FORM_block
+    000515 DW_AT_artificial           DW_FORM_flag
+  00000519 108: no children: DW_TAG_formal_parameter
+    00051c DW_AT_name                 DW_FORM_string
+    00051e DW_AT_type                 DW_FORM_indirect
+    000520 DW_AT_location             DW_FORM_block
+    000522 DW_AT_start_scope          DW_FORM_udata
+    000524 DW_AT_artificial           DW_FORM_flag
+  00000528 109: no children: DW_TAG_formal_parameter
+    00052b DW_AT_name                 DW_FORM_string
+    00052d DW_AT_type                 DW_FORM_indirect
+    00052f DW_AT_location             DW_FORM_data4
+    000531 DW_AT_artificial           DW_FORM_flag
+  00000535 110: no children: DW_TAG_formal_parameter
+    000538 DW_AT_abstract_origin      DW_FORM_ref_addr
+    00053a DW_AT_location             DW_FORM_block
+  0000053e 111: no children: DW_TAG_formal_parameter
+    000541 DW_AT_abstract_origin      DW_FORM_ref_addr
+    000543 DW_AT_location             DW_FORM_data4
+  00000547 112: no children: DW_TAG_variable
+    00054a DW_AT_name                 DW_FORM_string
+    00054c DW_AT_type                 DW_FORM_indirect
+    00054e DW_AT_location             DW_FORM_block
+    000550 DW_AT_external             DW_FORM_flag
+  00000554 113: no children: DW_TAG_variable
+    000557 DW_AT_name                 DW_FORM_string
+    000559 DW_AT_type                 DW_FORM_indirect
+    00055b DW_AT_external             DW_FORM_flag
+    00055d DW_AT_declaration          DW_FORM_flag
+  00000561 114: no children: DW_TAG_variable
+    000564 DW_AT_name                 DW_FORM_string
+    000566 DW_AT_type                 DW_FORM_indirect
+    000568 DW_AT_const_value          DW_FORM_indirect
+    00056a DW_AT_start_scope          DW_FORM_udata
+  0000056e 115: no children: DW_TAG_variable
+    000571 DW_AT_name                 DW_FORM_string
+    000573 DW_AT_type                 DW_FORM_indirect
+    000575 DW_AT_const_value          DW_FORM_indirect
+  00000579 116: no children: DW_TAG_volatile_type
+    00057c DW_AT_type                 DW_FORM_indirect
+  00000580 117: no children: DW_TAG_unspecified_type
+    000583 DW_AT_name                 DW_FORM_string
+  00000587 118: no children: DW_TAG_imported_unit
+    00058a DW_AT_import               DW_FORM_ref_addr
+  0000058e 119:    children: DW_TAG_compile_unit
+    000591 DW_AT_producer             DW_FORM_string
+    000593 DW_AT_language             DW_FORM_data2
+  00000597 120:    children: DW_TAG_partial_unit
+    00059a DW_AT_producer             DW_FORM_string
+    00059c DW_AT_language             DW_FORM_data2
+
+
+** Section #3 '.debug_frame' (SHT_PROGBITS)
+    Size   : 68 bytes
+
+  CIE 000000: version 3, "armcc+", code align 000004, data align fffffffc, return reg r14
+    DW_CFA_def_cfa_sf r13=0
+    DW_CFA_undefined r0
+    DW_CFA_undefined r1
+    DW_CFA_undefined r2
+    DW_CFA_same_value r3
+    DW_CFA_same_value r4
+    DW_CFA_same_value r5
+    DW_CFA_same_value r6
+    DW_CFA_same_value r7
+    DW_CFA_same_value r8
+    DW_CFA_same_value r9
+    DW_CFA_same_value r10
+    DW_CFA_same_value r11
+    DW_CFA_same_value r12
+    DW_CFA_same_value r14
+    DW_CFA_nop 
+    DW_CFA_nop 
+  FDE 000034: CIE 000000, init loc 008000, range 000008
+
+
+** Section #4 '.debug_info' (SHT_PROGBITS)
+    Size   : 720 bytes
+
+  000000: Header:
+    size 0xa4 bytes, dwarf version 3, abbrevp 0x0, address size 4
+  00000b: 7  = 0x11 (DW_TAG_compile_unit)
+  00000c:   DW_AT_name a.h
+  000010:   DW_AT_producer Component: ARM Compiler 5.06 update 1 (build 61) Tool: armcc [4d35ad]
+  000056:   DW_AT_language DW_LANG_C89
+  000058:   DW_AT_comp_dir /nfs/site/home/pkaletta/armcc_libdwarf_testcase
+  000088:   DW_AT_stmt_list 0x38
+  00008c:   4  = 0x24 (DW_TAG_base_type)
+  00008d:     DW_AT_byte_size 0x4
+  00008e:     DW_AT_encoding DW_ATE_float
+  00008f:     DW_AT_name float
+  000095:   80  = 0x16 (DW_TAG_typedef)
+  000096:     DW_AT_name NUMBER
+  00009d:     DW_AT_type indirect DW_FORM_ref2 0x8c
+  0000a0:     DW_AT_decl_file 0x1
+  0000a1:     DW_AT_decl_line 0x1
+  0000a2:     DW_AT_decl_column 0xf
+  0000a3:   0  null
+  0000a4: 0  padding
+  0000a5: 0  padding
+  0000a6: 0  padding
+  0000a7: 0  padding
+  0000a8: Header:
+    size 0xa8 bytes, dwarf version 3, abbrevp 0x0, address size 4
+  0000b3: 8  = 0x11 (DW_TAG_compile_unit)
+  0000b4:   DW_AT_name b.h
+  0000b8:   DW_AT_producer Component: ARM Compiler 5.06 update 1 (build 61) Tool: armcc [4d35ad]
+  0000fe:   DW_AT_language DW_LANG_C89
+  000100:   DW_AT_comp_dir /nfs/site/home/pkaletta/armcc_libdwarf_testcase
+  000130:   41  = 0x13 (DW_TAG_structure_type)
+  000131:     DW_AT_sibling 0xa9 (0x151)
+  000133:     DW_AT_name POINT
+  000139:     DW_AT_byte_size 0x8
+  00013a:     30  = 0xd (DW_TAG_member)
+  00013b:       DW_AT_name x
+  00013d:       DW_AT_type indirect DW_FORM_ref_addr 0x95
+  000142:       DW_AT_data_member_location  block size 0x2 = { DW_OP_plus_uconst 0 }
+  000145:     30  = 0xd (DW_TAG_member)
+  000146:       DW_AT_name y
+  000148:       DW_AT_type indirect DW_FORM_ref_addr 0x95
+  00014d:       DW_AT_data_member_location  block size 0x2 = { DW_OP_plus_uconst 4 }
+  000150:     0  null
+  000151:   0  null
+  000152: 0  padding
+  000153: 0  padding
+  000154: Header:
+    size 0x98 bytes, dwarf version 3, abbrevp 0x0, address size 4
+  00015f: 10  = 0x11 (DW_TAG_compile_unit)
+  000160:   DW_AT_name test.c
+  000167:   DW_AT_producer Component: ARM Compiler 5.06 update 1 (build 61) Tool: armcc [4d35ad]
+  0001ad:   DW_AT_language DW_LANG_C89
+  0001af:   DW_AT_comp_dir /nfs/site/home/pkaletta/armcc_libdwarf_testcase
+  0001df:   DW_AT_macro_info 0x0
+  0001e3:   DW_AT_stmt_list 0x0
+  0001e7:   34  = 0xf (DW_TAG_pointer_type)
+  0001e8:     DW_AT_type indirect DW_FORM_ref_addr 0x130
+  0001ed:   0  null
+  0001ee: 0  padding
+  0001ef: 0  padding
+  0001f0: Header:
+    size 0xdc bytes, dwarf version 3, abbrevp 0x0, address size 4
+  0001fb: 5  = 0x11 (DW_TAG_compile_unit)
+  0001fc:   DW_AT_name test.c
+  000203:   DW_AT_producer Component: ARM Compiler 5.06 update 1 (build 61) Tool: armcc [4d35ad]
+  000249:   DW_AT_language DW_LANG_C89
+  00024b:   DW_AT_comp_dir /nfs/site/home/pkaletta/armcc_libdwarf_testcase
+  00027b:   DW_AT_low_pc 0x8000
+  00027f:   DW_AT_high_pc 0x8008
+  000283:   DW_AT_stmt_list 0x60
+  000287:   63  = 0x2e (DW_TAG_subprogram)
+  000288:     DW_AT_sibling 0xdd (0x2cd)
+  00028a:     DW_AT_decl_file 0x1
+  00028b:     DW_AT_decl_line 0x4
+  00028c:     DW_AT_decl_column 0x6
+  00028d:     DW_AT_name set_point
+  000297:     DW_AT_external 0x1
+  000298:     DW_AT_low_pc 0x8000
+  00029c:     DW_AT_high_pc 0x8008
+  0002a0:     DW_AT_frame_base 0x0
+  0002a4:     105  = 0x5 (DW_TAG_formal_parameter)
+  0002a5:       DW_AT_name point
+  0002ab:       DW_AT_type indirect DW_FORM_ref_addr 0x1e7
+  0002b0:       DW_AT_location 0x3d
+  0002b4:     105  = 0x5 (DW_TAG_formal_parameter)
+  0002b5:       DW_AT_name x
+  0002b7:       DW_AT_type indirect DW_FORM_ref_addr 0x95
+  0002bc:       DW_AT_location 0x2a
+  0002c0:     105  = 0x5 (DW_TAG_formal_parameter)
+  0002c1:       DW_AT_name y
+  0002c3:       DW_AT_type indirect DW_FORM_ref_addr 0x95
+  0002c8:       DW_AT_location 0x17
+  0002cc:     0  null
+  0002cd:   0  null
+  0002ce: 0  padding
+  0002cf: 0  padding
+
+
+** Section #5 '.debug_line' (SHT_PROGBITS)
+    Size   : 152 bytes
+
+  000000: Header:
+    length 52 (not including this field)
+    version 3
+    prologue length 43
+    minimum instruction length 1
+    default is_stmt 0
+    line base 0
+    line range 6
+    opcode base 13
+    opcode args  0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1
+  00001b:  directory ""                 : 00
+  00001c:  file "test.c": dir 0 time 0x0 length 0: 74 65 73 74 2e 63 00 00 00 00
+  000026:  file "a.h": dir 0 time 0x0 length 0: 61 2e 68 00 00 00 00
+  00002d:  file "b.h": dir 0 time 0x0 length 0: 62 2e 68 00 00 00 00
+  000034:  file ""                      : 00
+  000035:  DW_LNE_end sequence          : 00 01 01          00000000: test.c:1.0
+  000038: Header:
+    length 36 (not including this field)
+    version 3
+    prologue length 26
+    minimum instruction length 1
+    default is_stmt 0
+    line base 0
+    line range 6
+    opcode base 13
+    opcode args  0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1
+  000053:  directory ""                 : 00
+  000054:  file "a.h": dir 0 time 0x0 length 0: 61 2e 68 00 00 00 00
+  00005b:  file ""                      : 00
+  00005c:  DW_LNS_negate_stmt           : 06
+  00005d:  DW_LNE_end sequence          : 00 01 01          00000000: a.h:1.0 [
+  000060: Header:
+    length 52 (not including this field)
+    version 3
+    prologue length 29
+    minimum instruction length 4
+    default is_stmt 0
+    line base 0
+    line range 6
+    opcode base 13
+    opcode args  0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1
+  00007b:  directory ""                 : 00
+  00007c:  file "test.c": dir 0 time 0x0 length 0: 74 65 73 74 2e 63 00 00 00 00
+  000086:  file ""                      : 00
+  000087:  DW_LNE_set_address 0x8000    : 00 05 02 00 80 00 00
+  00008e:  DW_LNS_set_column 1          : 05 01
+  000090:  DW_LNS_negate_stmt           : 06
+  000091:  SPECIAL(4, 0)                : 11                00008000: test.c:5.1 [
+  000092:  SPECIAL(3, 1)                : 16                00008004: test.c:8.1 [
+  000093:  DW_LNS_advance_pc 0x1        : 02 01
+  000095:  DW_LNE_end sequence          : 00 01 01          00008008: test.c:8.1 [
+
+
+** Section #6 '.debug_loc' (SHT_PROGBITS)
+    Size   : 80 bytes
+
+0x000000 [0x0 : 0x8] len 5 DW_OP_breg13 0 DW_OP_nop DW_OP_nop DW_OP_nop
+0x00000f End List
+0x000017 [0x0 : 0x8] len 1 DW_OP_reg2
+0x000022 End List
+0x00002a [0x0 : 0x8] len 1 DW_OP_reg1
+0x000035 End List
+0x00003d [0x0 : 0x8] len 1 DW_OP_reg0
+0x000048 End List
+
+
+** Section #7 '.debug_macinfo' (SHT_PROGBITS)
+    Size   : 16 bytes
+
+  000000: include at line 0 - file 1
+  000003: include at line 1 - file 2
+  000006: end include
+  000007: include at line 2 - file 3
+  00000a: end include
+  00000b: end include
+  00000c: end of translation unit
+
+
+** Section #8 '.debug_pubnames' (SHT_PROGBITS)
+    Size   : 32 bytes
+
+0x00000000:  Compilation unit (32 bytes) vsn 2:
+0x00000006:    reference to offset 0x1f0
+0x0000000a:    224 bytes generated for unit
+0x0000000e:      Offset 0x97 (0x287)
+0x00000012:        73 65 74 5f 70 6f 69 6e 74 00          set_point
+0x0000001c:    End of list for compilation unit (zero offset)
+
+
+** Section #9 '.symtab' (SHT_SYMTAB)
+    Size   : 96 bytes (alignment 4)
+    String table #10 '.strtab'
+    Last local symbol no. 3
+
+
+** Section #10 '.strtab' (SHT_STRTAB)
+    Size   : 156 bytes
+
+
+** Section #11 '.note' (SHT_NOTE)
+    Size   : 20 bytes (alignment 4)
+
+
+** Section #12 '.comment' (SHT_PROGBITS)
+    Size   : 276 bytes
+
+
+** Section #13 '.shstrtab' (SHT_STRTAB)
+    Size   : 156 bytes
+
+

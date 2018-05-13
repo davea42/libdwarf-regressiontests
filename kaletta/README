@@ -1,0 +1,9 @@
+Paul Kaletta provides the following test case,
+demonstrating that armcc generates multiple
+.debug_info (etc) sections and
+libdwarf/dwarfdump cannot handle such.
+Not using Section Groups at all.
+
+This is a surprising situation.
+
+May 13, 2018

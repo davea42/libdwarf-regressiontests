@@ -11,6 +11,9 @@ rm -f dwarf_names_enum.h
 rm -f dwarf_names_new.h
 rm -f dwn_s_out
 rm -f dwn_t_out
+rm -f frame1/framexlocal.c
+rm -f frame1/frame2018.out
+rm -f frame1/selregs2018.out
 rm -f tmp*
 rm -f tmp*err*
 rm -f core
