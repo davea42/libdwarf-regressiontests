@@ -1,0 +1,18 @@
+
+This executable created by  Pedro Navarro 
+about 23 May 2018.
+
+His comments:
+Attached is file that shows the problem. Using objcopy -R I
+removed most of the sections (like .text or .data) and used
+your zero utility to write zeroes in other areas (not that
+it mattered at all as it was a simple test program). I then
+used objcopy --compress-debug-sections on it.
+
+Running dwarfdump -r on it will fail with ./dwarfdump ERROR:
+dwarf_get_aranges:  DW_DLE_ARANGE_OFFSET_BAD (134)
+
+If you do objcopy --decompress-debug-sections, then dwarfdump
+-r will work.
+
+
