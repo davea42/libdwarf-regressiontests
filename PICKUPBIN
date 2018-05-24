@@ -14,12 +14,35 @@ else
 sanitize=
 fi
 
+fixsprintf() {
+f=$1
+# we test with sprintf by  export SPRINTF=y before running this..
+if [ x$SPRINTF = 'xy' ]
+then
+    j=junkfixsprintf
+    j2=junkfixsprintfo
+    j3=junkfixsprintftext
+    cp $f $j2
+    egrep -v '(HAVE_SNPRINTF|HAVE_VSNPRINTF)' <  $f > $j
+    mv $j $f
+    diff $j2 $f > $j3
+    if [ $? -ne 0 ]
+    then
+       echo SPRINTF changed in $f
+       cat $j3
+    fi
+fi
+}
+
 set -x
 # Fix the following line to match the desired libdwarf/dwarfdump source 
 # directory.
 . ./BASEFILES
 
-(cd $libdw/libdwarf; ./configure $sanitize  --enable-oldframecol ; make clean ; make  )
+(cd $libdw/libdwarf; ./configure $sanitize  --enable-oldframecol ; make clean )
+#fixsprintf libdwarf
+(cd $libdw/libdwarf;  make  )
+
 cp $libdw/libdwarf/libdwarf.a libdwoldframecol.a
 if [ $? -ne 0 ]
 then
@@ -27,8 +50,13 @@ then
   exit 1;
 fi
 
-(cd $libdw/libdwarf; ./configure $sanitize --enable-windowspath; make clean ; make  )
-(cd $libdw/dwarfdump ; ./configure $sanitize ; rm dwarfdump ; make clean ; make)
+(cd $libdw/libdwarf; ./configure $sanitize --enable-windowspath; make clean )
+#fixsprintf libdwarf
+(cd $libdw/libdwarf ;  make  )
+
+(cd $libdw/dwarfdump ; ./configure $sanitize ; rm dwarfdump ; make clean )
+#fixsprintf dwarfdump
+(cd $libdw/dwarfdump ;  make)
 cp $libdw/dwarfdump/dwarfdump   dwarfdumpW
 if [ $? -ne 0 ]
 then
@@ -36,16 +64,27 @@ then
   exit 1;
 fi
 
-(cd $libdw/libdwarf;   make clean;  ./configure $sanitize ; make clean ; make )
+(cd $libdw/libdwarf;   make clean;  ./configure $sanitize ; make clean )
+#fixsprintf libdwarf
+(cd $libdw/libdwarf;    make )
 cp $libdw/libdwarf/libdwarf.a libdwarf.a
 if [ $? -ne 0 ]
 then
   echo "No libdwarf.a to copy! giving up."
   exit 1;
 fi
-(cd $libdw/dwarfdump ; make clean ; ./configure $sanitize ; make clean ; make)
-(cd $libdw/dwarfgen ; make clean ; ./configure $sanitize ; make clean ; make)
-(cd $libdw/dwarfexample ; make clean ; ./configure $sanitize ; make clean ; make)
+
+(cd $libdw/dwarfdump ; make clean ; ./configure $sanitize ; make clean )
+fixsprintf dwarfdump
+(cd $libdw/dwarfdump ;  make)
+
+(cd $libdw/dwarfgen ; make clean ; ./configure $sanitize ; make clean )
+#fixsprintf dwarfgen
+(cd $libdw/dwarfgen ;  make)
+
+(cd $libdw/dwarfexample ; make clean ; ./configure $sanitize ; make clean )
+#fixsprintf dwarfexample
+(cd $libdw/dwarfexample ;  make)
 
 cp $libdw/dwarfdump/dwarfdump  .
 if [ $? -ne 0 ]
