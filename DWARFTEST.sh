@@ -95,6 +95,7 @@ chkresn () {
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
+navarro/compressed_aranges_test
 enciso8/test-clang-dw5.o
 enciso8/test-clang-wpieb-dw5.o
 sarubbo-7/4.crashes.bin
@@ -1165,7 +1166,9 @@ do
    echo  "===== $i all options"
    for xtra in "" "-v" "-vv" "-vvv"  "-D" "-H 2" 
    do
-     for k in  $baseopts "-i -M" 
+     # -i forces info load. Try without.
+     #for k in  $baseopts "-i -M" 
+     for k in  $baseopts " -M" 
      do
 	runtest $d1 $d2 $i $k $xtra
      done
