@@ -1189,9 +1189,9 @@ done
 rm -f /tmp/dwba.$$
 rm -f /tmp/dwbb.$$
 echo "base dwarfdump times"
-python3 usertime.py $otimeout
+python3 usertime.py baseline $otimeout
 echo "new  dwarfdump times"
-python3 usertime.py $ntimeout
+python3 usertime.py newversn $ntimeout
 echo PASS $goodcount
 echo FAIL $failcount
 

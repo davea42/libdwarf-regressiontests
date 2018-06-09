@@ -1,4 +1,34 @@
 
+09 June 2018 12PM. Corrected minor bugs.
+baseline Count 18419  Seconds: usr 321.75 sys   6.35 wallclock 332.47 
+baseline Count Non zero status 2346 maxu  21.09 maxw   0.00 
+newversn Count 18426  Seconds: usr 316.32 sys   6.00 wallclock 326.59 
+newversn Count Non zero status 2353 maxu  21.15 maxw   0.00 
+
+
+08 June 5PM. After converting some of print_die to
+esb_append_printf_s,i,u.
+q3 1015: grep Count ALLdd
+baseline Count 18419  Seconds: usr 322.18 sys   5.74 wallclock 332.08 
+baseline Count Non zero status 2346 maxu  21.09 maxw   0.00 
+newversn Count 18421  Seconds: usr 316.95 sys   5.93 wallclock 327.21 
+newversn Count Non zero status 2348 maxu  21.88 maxw   0.00 
+
+
+
+08 June 2018 3PM
+baseline Count 18419  Seconds: usr 322.26 sys   6.38 wallclock 332.69 
+baseline Count Non zero status 2346 maxu  21.08 maxw   0.00 
+newversn Count 18426  Seconds: usr 320.46 sys   5.92 wallclock 330.92 
+newversn Count Non zero status 2353 maxu  21.19 maxw   0.00 
+
+
+08 June 2018 1PM
+baseline
+Count 18419  Seconds: usr 328.97 sys   6.66 wallclock 356.66 
+new
+Count 18426  Seconds: usr 327.36 sys   6.62 wallclock 351.26 
+
 24 May 2018 at 16:30.
 After updating the base dwarfdump shown as 15:30
 baseline

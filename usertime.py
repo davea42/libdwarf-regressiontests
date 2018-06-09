@@ -36,11 +36,8 @@ def sort_class(mydata):
   return lo
 
 
-def processfile():
-  if len(sys.argv) != 2:
-    print("Usage: python useritime.py <usagetimepath>")
-    sys.exit(1)
-  tfilename = sys.argv[1]
+def processfile(path):
+  tfilename = path
   try:
     file = open(tfilename,"r")
   except IOError as message:
@@ -139,13 +136,20 @@ def printtop(recs,max):
     
 
 if __name__ == '__main__':
-  (tcount,nzcount,usecs,ssecs,wsecs,maxu,maxw,reclist) = processfile()
+  if len(sys.argv) != 3:
+    print("Usage: python useritime.py whichisit <usagetimepath>")
+    sys.exit(1)
+  
+  region = sys.argv[1]
+  tfilename = sys.argv[2]
+
+  (tcount,nzcount,usecs,ssecs,wsecs,maxu,maxw,reclist) = processfile(tfilename)
   
   recs = sort_class(reclist)
   recs.reverse()
   printtop(recs,10)
 
-  print("Count %5d  Seconds: usr %6.2f sys %6.2f wallclock %6.2f " %( tcount,usecs,ssecs,wsecs))
-  print("    Non zero status count %d maxu %6.2f maxw %6.2f " % (nzcount,maxu,maxw))
+  print(region,"Count %5d  Seconds: usr %6.2f sys %6.2f wallclock %6.2f " %( tcount,usecs,ssecs,wsecs))
+  print(region,"Count Non zero status %d maxu %6.2f maxw %6.2f " % (nzcount,maxu,maxw))
   
 

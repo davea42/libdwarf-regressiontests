@@ -1,3 +1,8 @@
+2018-06-08  David Anderson
+  * DWARFTEST.sh: Now provides identifying string to the Count output.
+  * runtimesummary: New data
+  * usertime.py: Now prints the identifying string passed in.
+    Easier to understand what runtime is what.
 2018-04-17  David Anderson
   * A runtest of emre5 directory objects was typed 
     incorrectly and has only been
