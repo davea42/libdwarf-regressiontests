@@ -1,4 +1,10 @@
 
+10 June 2018 10AM More sprintf converted.
+baseline Count 18419  Seconds: usr 322.48 sys   6.26 wallclock 332.87 
+baseline Count Non zero status 2346 maxu  21.10 maxw   0.00 
+newversn Count 18426  Seconds: usr 311.70 sys   6.02 wallclock 322.30 
+newversn Count Non zero status 2353 maxu  21.18 maxw   0.00 
+
 09 June 2018 3PM Fixed implementation defined botch converting
   the most-negative value. Revised version usefully faster.
 baseline Count 18419  Seconds: usr 322.14 sys   6.26 wallclock 332.58 
