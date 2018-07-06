@@ -45,8 +45,10 @@ fi
 goodcount=0
 failcount=0
 . ./BASEFILES
-cbase=$libdw
-echo "our code source is " $cbase
+top_srcdir=$libdw
+# Must match the file location in PICKUPBIN 
+top_builddir=/tmp/regressionbuild
+echo "our code source is " $top_srcdir
 if [ $# -eq 0 ]
 then
   d1=./dwarfdump.O
@@ -57,10 +59,11 @@ case $1 in
   * )  echo BAD OPTION NO TEST RUN ; exit 1 ;;
 esac
 fi
+bdir=`pwd`
 echo "old is $d1"
 echo "new is $d2"
-dwlib=$cbase/libdwarf/libdwarf.a
-dwinc=$cbase/libdwarf
+dwlib=$bdir/libdwarf.a
+dwinc=$top_srcdir/libdwarf
 
 baseopts='-F'
 baseopts='-b -c  -f -F -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
@@ -69,7 +72,6 @@ kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky 
 
 # These accumulate times so we can print actual dwarfdump
 # user, sys, clock times at the end (see usertime.py).
-bdir=`pwd`
 . ./RUNTIMEFILES
 rm -f $otimeout 
 rm -f $ntimeout
@@ -373,20 +375,23 @@ runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b -c
 
 echo "=====START   test gennames -t and -s same output"
 # Testing that gennames -t and -s generate the same results.
-./gennames -s -i $cbase/libdwarf -o .
+# The default is -s 
+./gennames -s -i $top_srcdir/libdwarf -o .
 chkres $?  gennames-build-s-check
+
 mv dwarf_names.c dwarfnames-s.c
 chkres $?  dwarfnames_s-mv-check
-cc -Wall $nlizeopt -I $cbase/libdwarf test_dwarfnames.c dwarfnames-s.c -o dwarfnames-s
+
+cc -Wall $nlizeopt -I$top_srcdir/libdwarf -I$top_builddir/libdwarf -I$top_builddir test_dwarfnames.c dwarfnames-s.c -o dwarfnames-s
 chkres $?  dwarfnames_s-compile-check
 ./dwarfnames-s > dwn_s_out
 chkres $? dwarfnames-s-run
 
-./gennames -t  -i $cbase/libdwarf -o .
+./gennames -t  -i $top_srcdir/libdwarf -o .
 chkres $?  gennames-build-t-check
 mv dwarf_names.c dwarfnames-t.c
 chkres $?  dwarfnames_t-mv-check
-cc -Wall $nlizeopt -I  $cbase/libdwarf test_dwarfnames.c dwarfnames-t.c -o dwarfnames-t
+cc -Wall $nlizeopt -I  $top_srcdir/libdwarf -I$top_builddir/libdwarf -I$top_builddir test_dwarfnames.c dwarfnames-t.c -o dwarfnames-t
 chkres $?  dwarfnames_t-compile-check
 ./dwarfnames-t > dwn_t_out
 chkres $? dwarfnames-t-run
@@ -917,16 +922,16 @@ then
 fi
 
 cd findcu 
-sh runtest.sh $cbase  >testoutput
+sh runtest.sh $top_srcdir $top_builddir  >testoutput
 chkres $? 'findcu/cutest-of-a-libdwarf-interface'
 cd ..
 
-echo "=====START   test_harmless"
+echo "=====START  test_harmless"
 if [ -f /usr/include/zlib.h ]
 then
-  cc -Wall -I  $cbase/libdwarf $nlizeopt test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf -lz
+  cc -Wall -I$top_srcdir/libdwarf -I$top_builddir -I$top_builddir/libdwarf  $nlizeopt test_harmless.c  -o test_harmless $dwlib -lelf -lz
 else
-  cc -Wall -I  $cbase/libdwarf $nlizeopt test_harmless.c  -o test_harmless $cbase/libdwarf/libdwarf.a -lelf
+  cc -Wall -I$top_srcdir/libdwarf -I$top_builddir -I$top_builddir/libdwarf  $nlizeopt test_harmless.c  -o test_harmless $dwlib -lelf
 fi
 ./test_harmless >testoutput
 chkres $? 'check harmless-error functionality'
@@ -938,21 +943,21 @@ r=$?
 chkresn $r 'dwgena/runtest.sh' 9
 cd ..
 
-echo "=====START   frame1/runtest.sh $cbase"
+echo "=====START   frame1/runtest.sh $top_srcdir $top_builddir $dwlib"
 cd frame1
-sh runtest.sh $cbase
+sh runtest.sh $top_srcdir $top_builddir $dwlib
 r=$?
 chkres $r frame1
 cd ..
 
 if [ $NLIZE = 'n' ]
 then
-echo "=====START   dwarfextract/runtest.sh"
+echo "=====START   dwarfextract/runtest.sh ../$d2 $top_builddir $top_srcdir $dwlib"
 # This has serious problems with leaks, so
 # do not do $NLIZE for now..
 cd dwarfextract
 rm -f dwarfextract
-sh runtest.sh ../$d2
+sh runtest.sh ../$d2 $top_builddir $top_srcdir $dwlib
 chkres $?  dwarfextract
 cd ..
 else
@@ -970,7 +975,7 @@ if [ $NLIZE = 'n' ]
 then
 echo "=====START   legendre/runtest.sh"
 cd legendre
-sh runtest.sh $cbase
+sh runtest.sh $top_srcdir $top_builddir
 r=$?
 chkres $r  legendre
 cd ..
@@ -1054,7 +1059,7 @@ if [ $NLIZE = 'n' ]
 then
 echo "=====START   test-alex1/runtest"
 cd test-alex1
-sh runtest.sh $dwlib $dwinc
+sh runtest.sh $dwlib $dwinc 
 chkres $?  test-alex1
 cd ..
 else

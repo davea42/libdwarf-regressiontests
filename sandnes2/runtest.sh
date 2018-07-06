@@ -12,7 +12,7 @@ grep 'c:/temp/' <junk.W >junk.noout
 r=$?
 if [ $r -ne 0 ]
 then
-   echo "FAIL sandnes2 Failed to transform name"
+   echo "FAIL sandnes2 Failed to transform name: $r"
    exit 1
 fi
 echo PASS sandnes2/runtest.sh

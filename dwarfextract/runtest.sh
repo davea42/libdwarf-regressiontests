@@ -2,19 +2,21 @@
 #
 #
 dd=$1
-. ../BASEFILES
+top_builddir=$2
+top_srcdir=$3
+dwlib=$4
 if [ x$NLIZE = 'xy' ]
 then
   opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 else
   opt=
 fi
-INCS="-I $libdw/libdwarf  -I /usr/local/include"
+INCS="-I$top_srcdir/libdwarf  -I/usr/local/include -I$top_builddir -I$top_builddir/libdwarf"
 if [ -f /usr/include/zlib.h ]
 then
-  cc -g $opt $INCS dwarfextract.c -o dwarfextract -L ../ -ldwarf -lelf -lz
+  cc -g $opt $INCS dwarfextract.c -o dwarfextract $dwlib -lelf -lz
 else
-  cc -g $opt $INCS dwarfextract.c -o dwarfextract -L ../ -ldwarf -lelf
+  cc -g $opt $INCS dwarfextract.c -o dwarfextract $dwlib -lelf
 fi
 # Use precompiled test1.c test2.c for test consistency.
 #cc -g test1.c test2.c -o test1

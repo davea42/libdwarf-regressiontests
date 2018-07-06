@@ -7,13 +7,14 @@ then
 else
   opt=
 fi
+OPTS="-I$bld -I$bld/libdwarf"
 if [ -f /usr/include/zlib.h ]
 then
-  gcc -DWORKING=1 -I $i  $opt   test.c $l -lelf -lz -o test1
-  gcc -I $i  $opt   test.c  $l -lelf -lz -o test2
+  gcc -DWORKING=1 -I $i  $opt $OPTS  test.c $l -lelf -lz -o test1
+  gcc -I $i  $opt $OPTS  test.c  $l -lelf -lz -o test2
 else
-  gcc -DWORKING=1 -I $i   $opt  test.c $l -lelf -o test1
-  gcc -I $i  $opt   test.c  $l -lelf -o test2
+  gcc -DWORKING=1 -I $i   $opt $OPTS  test.c $l -lelf -o test1
+  gcc -I $i  $opt $OPTS  test.c  $l -lelf -o test2
 fi
 
 ./test1 orig.a.out >out1

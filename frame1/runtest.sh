@@ -1,5 +1,7 @@
 #!/bin/sh
 libdw=$1
+bld=$2
+dwlib=$3
 if [ x$libdw = 'x' ]
 then
     echo "FAIL frame1 runtest.sh, one argument required."
@@ -14,9 +16,9 @@ fi
 cp $libdw/dwarfexample/frame1.c framexlocal.c
 if [ -f /usr/include/zlib.h ]
 then
-  cc -g $opt -I $libdw/libdwarf -L $libdw/libdwarf framexlocal.c -ldwarf -lelf -lz -o frame1
+  cc -g $opt -I$libdw/libdwarf -I$bld -I$bld/libdwarf framexlocal.c $dwlib -lelf -lz -o frame1
 else
-  cc -g $opt  -I $libdw/libdwarf -L $libdw/libdwarf framexlocal.c -ldwarf -lelf -o frame1
+  cc -g $opt  -I$libdw/libdwarf -I$bld -I$bld/libdwarf  framexlocal.c $dwlib -lelf -o frame1
 fi
 if [ $? -ne 0 ]
 then

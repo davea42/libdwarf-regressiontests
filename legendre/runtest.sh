@@ -5,12 +5,14 @@ then
 else
   opt=
 fi
-
+libdw=$1
+bopt=$2
+OPTS="-I$bopt -I$bopt/libdwarf" 
 if [ -f /usr/include/zlib.h ]
 then
-  cc -I $1/libdwarf $opt -DNEW frame_test.c ../libdwarf.a -lelf -lz -o frame_test1
+  cc -I $libdw/libdwarf $opt $OPTS -DNEW frame_test.c ../libdwarf.a -lelf -lz -o frame_test1
 else
-  cc -I $1/libdwarf $opt -DNEW frame_test.c ../libdwarf.a -lelf -o frame_test1
+  cc -I $libdw/libdwarf $opt $OPTS -DNEW frame_test.c ../libdwarf.a -lelf -o frame_test1
 fi
 ./frame_test1
 if [  $? -ne 0 ]
@@ -21,9 +23,9 @@ fi
 
 if [ -f /usr/include/zlib.h ]
 then
-  cc -I $1/libdwarf -DOLD $opt frame_test.c ../libdwoldframecol.a -lelf -lz -o frame_test2
+  cc -I $libdw/libdwarf -DOLD $opt $OPTS frame_test.c ../libdwoldframecol.a -lelf -lz -o frame_test2
 else
-  cc -I $1/libdwarf -DOLD $opt frame_test.c ../libdwoldframecol.a -lelf -o frame_test2
+  cc -I $libdw/libdwarf -DOLD $opt $OPTS frame_test.c ../libdwoldframecol.a -lelf -o frame_test2
 fi
 ./frame_test2
 if [  $? -ne 0 ]

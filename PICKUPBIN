@@ -14,103 +14,80 @@ else
 sanitize=
 fi
 
-fixsprintf() {
-f=$1
-# we test with sprintf by  export SPRINTF=y before running this..
-if [ x$SPRINTF = 'xy' ]
+cur=`pwd`
+top_build=/tmp/regressionbuild
+if [ ! -d $top_build ]
 then
-    j=junkfixsprintf
-    j2=junkfixsprintfo
-    j3=junkfixsprintftext
-    cp $f $j2
-    egrep -v '(HAVE_SNPRINTF|HAVE_VSNPRINTF)' <  $f > $j
-    mv $j $f
-    diff $j2 $f > $j3
-    if [ $? -ne 0 ]
-    then
-       echo SPRINTF changed in $f
-       cat $j3
-    fi
+  mkdir $top_build
 fi
-}
+rm -rf $top_build/*
 
 set -x
-# Fix the following line to match the desired libdwarf/dwarfdump source 
+# Fix the following line to match the desired 
+# libdwarf/dwarfdump source 
 # directory.
 . ./BASEFILES
 
-(cd $libdw/libdwarf; ./configure $sanitize  --enable-oldframecol ; make clean )
-#fixsprintf libdwarf
-(cd $libdw/libdwarf;  make  )
+cd $top_build 
+$libdw/configure $sanitize  --enable-oldframecol ; make clean ; make
 
-cp $libdw/libdwarf/libdwarf.a libdwoldframecol.a
+cp libdwarf/.libs/libdwarf.a $cur/libdwoldframecol.a
 if [ $? -ne 0 ]
 then
   echo "No libdwoldframecol.a copied! giving up."
   exit 1;
 fi
 
-(cd $libdw/libdwarf; ./configure $sanitize --enable-windowspath; make clean )
-#fixsprintf libdwarf
-(cd $libdw/libdwarf ;  make  )
+rm -rf $top_build/*
+$libdw/configure $sanitize --enable-windowspath;make clean ; make 
 
-(cd $libdw/dwarfdump ; ./configure $sanitize ; rm dwarfdump ; make clean )
-#fixsprintf dwarfdump
-(cd $libdw/dwarfdump ;  make)
-cp $libdw/dwarfdump/dwarfdump   dwarfdumpW
+cp dwarfdump/dwarfdump   $cur/dwarfdumpW
 if [ $? -ne 0 ]
 then
   echo "No dwarfdumpW done! giving up."
   exit 1;
 fi
 
-(cd $libdw/libdwarf;   make clean;  ./configure $sanitize ; make clean )
-#fixsprintf libdwarf
-(cd $libdw/libdwarf;    make )
-cp $libdw/libdwarf/libdwarf.a libdwarf.a
+
+rm -rf $top_build/*
+$libdw/configure $sanitize --enable-dwarfgen --enable-dwarfexample ; make clean ;  make 
+if [ $? -ne 0 ]
+then
+  echo "No libdwarf.a built! giving up."
+  exit 1;
+fi
+cp libdwarf/.libs/libdwarf.a $cur/libdwarf.a
 if [ $? -ne 0 ]
 then
   echo "No libdwarf.a to copy! giving up."
   exit 1;
 fi
 
-(cd $libdw/dwarfdump ; make clean ; ./configure $sanitize ; make clean )
-fixsprintf dwarfdump
-(cd $libdw/dwarfdump ;  make)
-
-(cd $libdw/dwarfgen ; make clean ; ./configure $sanitize ; make clean )
-#fixsprintf dwarfgen
-(cd $libdw/dwarfgen ;  make)
-
-(cd $libdw/dwarfexample ; make clean ; ./configure $sanitize ; make clean )
-#fixsprintf dwarfexample
-(cd $libdw/dwarfexample ;  make)
-
-cp $libdw/dwarfdump/dwarfdump  .
+cp dwarfdump/dwarfdump  $cur/dwarfdump
 if [ $? -ne 0 ]
 then
   echo "No dwarfdump to copy! giving up."
   exit 1;
 fi
-cp $libdw/dwarfdump/dwarfdump.conf  .
+cp $libdw/dwarfdump/dwarfdump.conf  $cur/dwarfdump.conf
 if [ $? -ne 0 ]
 then
   echo "No dwarfdump.conf to copy! giving up."
   exit 1;
 fi
-cp $libdw/libdwarf/gennames .
+cp libdwarf/gennames $cur
 if [ $? -ne 0 ]
 then
   echo "No gennames to copy! giving up."
   exit 1;
 fi
-cp $libdw/dwarfgen/dwarfgen .
+cp dwarfgen/dwarfgen  $cur
 if [ $? -ne 0 ]
 then
   echo "No dwarfgen to copy! giving up."
   exit 1;
 fi
-cp $libdw/dwarfexample/simplereader .
+cp dwarfexample/simplereader  $cur
 if [ $? -ne 0 ]
 then
   echo "No simplereader to copy! giving up."

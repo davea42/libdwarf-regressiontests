@@ -46,7 +46,7 @@ echo "start $start"
 stsecs=`date '+%s'`
 if [ $dodd = "y" ]
 then
-  echo begin test dd
+  echo begin test
   ./DWARFTEST.sh dd 2>ALLdd 1>&2
   chkres $? "Failure in DWARFTEST.sh. Possibly coredump new dwarfdump? "
   chkfail ALLdd "running test dd"

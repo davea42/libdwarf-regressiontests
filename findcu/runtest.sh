@@ -1,7 +1,8 @@
 #!/bin/sh
 libdw=$1
+bld=$2
 h="-I$libdw/libdwarf"
-l="-L$libdw/libdwarf"
+l="-L$libdw/libdwarf -L$bld/libdwarf/.libs"
 libs="-ldwarf -lelf"
 if [ x$NLIZE = 'xy' ]
 then
@@ -10,11 +11,13 @@ else
   nli=
 fi
 
+opts="-I$bld -I$bld/libdwarf"
+
 if [ -f /usr/include/zlib.h ]
 then
-  cc $h cutest.c $nli $l -o cutest $libs -lz
+  cc $h $opts  cutest.c $nli $l -o cutest $libs -lz
 else
-  cc $h cutest.c $nli $l -o cutest $libs
+  cc $h $opts cutest.c $nli $l -o cutest $libs
 fi
 ./cutest cutestobj.save
 r=$?
