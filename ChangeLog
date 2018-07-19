@@ -1,3 +1,7 @@
+2018-07-19  David Anderson
+  * DWARFTEST.sh,test-alex1/runtest.sh,test-alex2/runtime.sh: 
+    Had to pass more information so out-of-trunk source 
+    build got key data for compiles in these tests.
 2018-06-08  David Anderson
   * DWARFTEST.sh: Now provides identifying string to the Count output.
   * runtimesummary: New data
