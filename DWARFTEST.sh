@@ -1057,21 +1057,21 @@ fi
 
 if [ $NLIZE = 'n' ]
 then
-echo "=====START   test-alex1/runtest"
+echo "=====START test-alex1/runtest.sh $dwlib $top_builddir $top_srcdir"
 cd test-alex1
-sh runtest.sh $dwlib $dwinc 
+sh runtest.sh $dwlib $top_builddir $top_srcdir
 chkres $?  test-alex1
 cd ..
 else
-echo "=====SKIP   test-alex1/runtest.sh NLIZE as it has leaks"
+echo "=====SKIP test-alex1/runtest.sh NLIZE as it has leaks"
 fi
 
 if [ $NLIZE = 'n' ]
 then
-echo "=====START   test-alex2/runtest $dwlib $dwinc"
+echo "=====START test-alex2/runtest.sh $dwlib $top_builddir $top_srcdir"
 cd test-alex2
-sh runtest.sh $dwlib $dwinc
-chkres $?  test-alex1
+sh runtest.sh $dwlib $top_builddir $top_srcdir
+chkres $?  test-alex2
 cd ..
 else
 echo "=====SKIP   test-alex2/runtest.sh NLIZE as it has leaks"
