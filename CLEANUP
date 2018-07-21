@@ -40,6 +40,7 @@ rm -f williamson/newout
 rm -f williamson/newunminout
 rm -f williamson/core*
 rm -f williamson/vgcore*
+rm -f navarro/getglobals
 rm -f hughes2/*core*
 rm -f dwarfextract/testcout
 rm -f dwarfextract/basecstdout

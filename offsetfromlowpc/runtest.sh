@@ -57,16 +57,41 @@ then
 fi
 
 $gen  -h -t obj -c 0 -o $tx dwarfdump.o  >$t4 2>/dev/null
+if [ $? -ne 0 ]
+then
+  echo "FAIL A run dwarfgen $gen  -h -t obj -c 0 -o $tx dwarfdump.o" 
+  exit 1
+fi
 
 # This one no conversion, DW_FORM_string.
 $gen -r  -t obj -c 0 -o $ty dwarfdump.o  >$t8 2> $t8e
+if [ $? -ne 0 ]
+then
+  echo "FAIL B run dwarfgen $gen -r  -t obj -c 0 -o $ty dwarfdump.o"
+  exit 1
+fi
 $dd -i -M $ty  >$t1 2> /dev/null
+if [ $? -ne 0 ]
+then
+  echo "FAIL C run $dd -i -M $ty "
+  exit 1
+fi
 
 # gens DW_FORM_strp
 echo $gen -r  -s  -t obj -c 0 -o $tz dwarfdump.o  
 $gen -r  -s  -t obj -c 0 -o $tz dwarfdump.o |grep 'Debug_Str:'  >$t9 2> $t9e
+if [ $? -ne 0 ]
+then
+  echo "FAIL D run dwarfgen $gen -r  -s  -t obj -c 0 -o $tz dwarfdump.o"
+  exit 1
+fi
 echo Now show FORM_str and more for $tz >$ta
 $dd -i -M $tz |grep DW_FORM_str  >>$ta 2> /dev/null
+if [ $? -ne 0 ]
+then
+  echo "FAIL E run $dd -i -M $tz "
+  exit 1
+fi
 
 diff basestrpiM  $ta
 if [ $? -ne 0 ]
@@ -101,6 +126,11 @@ then
 fi
 
 $dd -i -M $tx  >$t2 2> /dev/null
+if [ $? -ne 0 ]
+then
+  echo "FAIL F run $dd -i -M $tx "
+  exit 1
+fi
 
 grep high_pc $t2  >$t6 2>/dev/null
 
@@ -117,6 +147,11 @@ then
 fi
 
 $sim --check $tx >$t3  2>/dev/null
+if [ $? -ne 0 ]
+then
+  echo "FAIL G run $sim --check $tx "
+  exit 1
+fi
 
 diff basehighpc3 $t3
 if [ $? -ne 0 ]
@@ -127,6 +162,11 @@ then
 fi
 
 $sim --check $ty >$t7  2>/dev/null
+if [ $? -ne 0 ]
+then
+  echo "FAIL H run $sim --check $tx "
+  exit 1
+fi
 diff basehighpc4 $t7
 if [ $? -ne 0 ]
 then

@@ -1,3 +1,8 @@
+2018-07-21  David Anderson
+  * offsetfromlowpc/runtest.sh: Added checking for successful
+    compiles and tests, generating FAIL when things go wrong.
+2018-07-19  David Anderson
+  * CLEANUP: Added cleanup of navarro/getglobals
 2018-07-19  David Anderson
   * DWARFTEST.sh,test-alex1/runtest.sh,test-alex2/runtime.sh: 
     Had to pass more information so out-of-trunk source 
