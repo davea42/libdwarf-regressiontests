@@ -66,4 +66,11 @@ rm -f gennames
 rm -f dwarfgen
 rm -f simplereader
 rm -f junkckpath
+rm -f config.h.in~
+rm -rf dwarfdump/
+rm -rf 	dwarfexample/
+rm -rf 	dwarfgen/
+rm -rf 	libdwarf/
+rm -f 	libtool
+rm -f 	stamp-h1
 
