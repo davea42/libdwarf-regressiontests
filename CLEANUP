@@ -65,6 +65,5 @@ rm -f dwarfdumpW
 rm -f gennames
 rm -f dwarfgen
 rm -f simplereader
-rm -f BASEFILES
 rm -f junkckpath
 
