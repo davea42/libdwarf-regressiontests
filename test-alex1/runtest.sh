@@ -11,29 +11,29 @@ fi
 OPTS="-I$top_bld -I$top_bld/libdwarf -I$top_src/libdwarf"
 if [ -f /usr/include/zlib.h ]
 then
-  gcc -DWORKING=1 $opt $OPTS  test.c $l -lelf -lz -o test1
+  cc -DWORKING=1 $opt $OPTS  test.c $l -lelf -lz -o test1
   if [ $? -ne 0 ]
   then
-     echo FAIL test-alex1 gcc 1
+     echo FAIL test-alex1 cc 1
      exit 1
   fi
-  gcc  $opt $OPTS  test.c  $l -lelf -lz -o test2
+  cc  $opt $OPTS  test.c  $l -lelf -lz -o test2
   if [ $? -ne 0 ]
   then
-     echo FAIL test-alex1 gcc 2
+     echo FAIL test-alex1 cc 2
      exit 1
   fi
 else
-  gcc -DWORKING=1 $opt $OPTS  test.c $l -lelf -o test1
+  cc -DWORKING=1 $opt $OPTS  test.c $l -lelf -o test1
   if [ $? -ne 0 ]
   then
-     echo FAIL test-alex1 gcc 3
+     echo FAIL test-alex1 cc 3
      exit 1
   fi
-  gcc  $opt $OPTS  test.c  $l -lelf -o test2
+  cc  $opt $OPTS  test.c  $l -lelf -o test2
   if [ $? -ne 0 ]
   then
-     echo FAIL test-alex1 gcc 4
+     echo FAIL test-alex1 cc 4
      exit 1
   fi
 fi
