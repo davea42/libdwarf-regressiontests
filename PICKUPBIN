@@ -29,7 +29,7 @@ set -x
 . ./BASEFILES
 
 cd $top_build 
-$libdw/configure $sanitize  --enable-oldframecol ; make clean ; make
+$libdw/configure $sanitize  --enable-oldframecol ;  make
 
 cp libdwarf/.libs/libdwarf.a $cur/libdwoldframecol.a
 if [ $? -ne 0 ]
@@ -39,7 +39,7 @@ then
 fi
 
 rm -rf $top_build/*
-$libdw/configure $sanitize --enable-windowspath;make clean ; make 
+$libdw/configure $sanitize --enable-windowspath ; make 
 
 cp dwarfdump/dwarfdump   $cur/dwarfdumpW
 if [ $? -ne 0 ]
@@ -50,7 +50,7 @@ fi
 
 
 rm -rf $top_build/*
-$libdw/configure $sanitize --enable-dwarfgen --enable-dwarfexample ; make clean ;  make 
+$libdw/configure $sanitize --enable-dwarfgen --enable-dwarfexample ;  make 
 if [ $? -ne 0 ]
 then
   echo "No libdwarf.a built! giving up."
@@ -75,19 +75,19 @@ then
   echo "No dwarfdump.conf to copy! giving up."
   exit 1;
 fi
-cp libdwarf/gennames $cur
+cp $top_build/libdwarf/gennames $cur
 if [ $? -ne 0 ]
 then
   echo "No gennames to copy! giving up."
   exit 1;
 fi
-cp dwarfgen/dwarfgen  $cur
+cp $top_build/dwarfgen/dwarfgen  $cur
 if [ $? -ne 0 ]
 then
   echo "No dwarfgen to copy! giving up."
   exit 1;
 fi
-cp dwarfexample/simplereader  $cur
+cp $top_build/dwarfexample/simplereader  $cur
 if [ $? -ne 0 ]
 then
   echo "No simplereader to copy! giving up."

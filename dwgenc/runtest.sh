@@ -7,7 +7,8 @@ then
     exit 1
 fi
 
-../dwarfdump --print-debug-names testoutput.o 1>junkstdout 2>junkstderr
+#../dwarfdump --print-debug-names testoutput.o 1>junkstdout 2>junkstderr
+../dwarfdump  -i -M --print-debug-names testoutput.o 1>junkstdout 2>junkstderr
 if [ $? -ne 0 ] 
 then
     echo "FAIL dwgenc  dwarfdump on testinput.o"

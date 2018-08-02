@@ -1,3 +1,48 @@
 
-.debug_names
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000c>  DW_TAG_compile_unit
+                    DW_AT_name                  t.c <form DW_FORM_string>
+                    DW_AT_low_pc                0x00000000 <form DW_FORM_addr>
+                    DW_AT_high_pc               <offset-from-lowpc>44 <form DW_FORM_data1>
+                    DW_AT_language              DW_LANG_C99 <form DW_FORM_data1>
+                    DW_AT_comp_dir              /var/tmp <form DW_FORM_string>
+                    DW_AT_producer              GNU C11 5.4.0 20160609 -mtune=generic -march=x86-64 -g -fstack-protector-strong <form DW_FORM_string>
+
+LOCAL_SYMBOLS:
+< 1><0x00000070>    DW_TAG_subprogram
+                      DW_AT_name                  foo <form DW_FORM_string>
+                      DW_AT_low_pc                0x00000000 <form DW_FORM_addr>
+                      DW_AT_high_pc               <offset-from-lowpc>11 <form DW_FORM_data1>
+                      DW_AT_decl_file             0x00000001 <form DW_FORM_data1>
+                      DW_AT_decl_line             0x00000004 <form DW_FORM_data1>
+                      DW_AT_external              yes(1) <form DW_FORM_flag>
+                      DW_AT_type                  <0x00000082> <form DW_FORM_ref4>
+                      DW_AT_GNU_all_call_sites    yes(1) <form DW_FORM_flag>
+< 1><0x00000082>    DW_TAG_base_type
+                      DW_AT_name                  int <form DW_FORM_string>
+                      DW_AT_byte_size             0x00000004 <form DW_FORM_data1>
+                      DW_AT_encoding              DW_ATE_signed <form DW_FORM_data1>
+< 1><0x00000089>    DW_TAG_subprogram
+                      DW_AT_sibling               <0x000000aa> <form DW_FORM_ref4>
+                      DW_AT_name                  main <form DW_FORM_string>
+                      DW_AT_low_pc                0x0000000b <form DW_FORM_addr>
+                      DW_AT_high_pc               <offset-from-lowpc>33 <form DW_FORM_data1>
+                      DW_AT_decl_file             0x00000001 <form DW_FORM_data1>
+                      DW_AT_decl_line             0x00000008 <form DW_FORM_data1>
+                      DW_AT_external              yes(1) <form DW_FORM_flag>
+                      DW_AT_type                  <0x00000082> <form DW_FORM_ref4>
+                      DW_AT_GNU_all_tail_call_sites yes(1) <form DW_FORM_flag>
+< 2><0x000000a0>      DW_TAG_variable
+                        DW_AT_name                  j <form DW_FORM_string>
+                        DW_AT_decl_file             0x00000001 <form DW_FORM_data1>
+                        DW_AT_decl_line             0x0000000a <form DW_FORM_data1>
+                        DW_AT_type                  <0x00000082> <form DW_FORM_ref4>
+< 1><0x000000aa>    DW_TAG_variable
+                      DW_AT_name                  i <form DW_FORM_string>
+                      DW_AT_decl_file             0x00000001 <form DW_FORM_data1>
+                      DW_AT_decl_line             0x00000003 <form DW_FORM_data1>
+                      DW_AT_external              yes(1) <form DW_FORM_flag>
+                      DW_AT_type                  <0x00000082> <form DW_FORM_ref4>
 

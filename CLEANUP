@@ -40,6 +40,7 @@ rm -f williamson/newout
 rm -f williamson/newunminout
 rm -f williamson/core*
 rm -f williamson/vgcore*
+rm -f BASEFILES
 rm -f navarro/getglobals
 rm -f hughes2/*core*
 rm -f dwarfextract/testcout
@@ -66,6 +67,8 @@ rm -f gennames
 rm -f dwarfgen
 rm -f simplereader
 rm -f junkckpath
+# The following only really do anything if one
+# accidentally did a build configure under regressiontests.
 rm -f config.h.in~
 rm -rf dwarfdump/
 rm -rf 	dwarfexample/
@@ -73,4 +76,7 @@ rm -rf 	dwarfgen/
 rm -rf 	libdwarf/
 rm -f 	libtool
 rm -f 	stamp-h1
-
+rm -f Makefile
+rm -f config.h
+rm -f config.log
+rm -f config.status
