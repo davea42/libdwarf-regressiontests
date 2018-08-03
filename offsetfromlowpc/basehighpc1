@@ -102,9 +102,9 @@
                       DW_AT_high_pc               0x00002452 <form DW_FORM_addr>
                         DW_AT_high_pc               0x00002452 <form DW_FORM_addr>
 Now show FORM_str for junktesthipcoffsetorig.o
-                    DW_AT_producer              GNU C 4.7.3 <form DW_FORM_string>
                     DW_AT_name                  dwarfdump.c <form DW_FORM_string>
                     DW_AT_comp_dir              /home/davea/dwarf/code/dwarfdump <form DW_FORM_string>
+                    DW_AT_producer              GNU C 4.7.3 <form DW_FORM_string>
                       DW_AT_name                  unsigned char <form DW_FORM_string>
                       DW_AT_name                  short unsigned int <form DW_FORM_string>
                       DW_AT_name                  unsigned int <form DW_FORM_string>

@@ -1,7 +1,7 @@
 Now show FORM_str and more for junktesthipcoffsetstrp.o
-                    DW_AT_producer              GNU C 4.7.3 <form DW_FORM_strp>
                     DW_AT_name                  dwarfdump.c <form DW_FORM_strp>
                     DW_AT_comp_dir              /home/davea/dwarf/code/dwarfdump <form DW_FORM_strp>
+                    DW_AT_producer              GNU C 4.7.3 <form DW_FORM_strp>
                       DW_AT_name                  unsigned char <form DW_FORM_strp>
                       DW_AT_name                  short unsigned int <form DW_FORM_strp>
                       DW_AT_name                  unsigned int <form DW_FORM_strp>

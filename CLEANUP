@@ -17,6 +17,7 @@ rm -f frame1/selregs2018.out
 rm -f tmp*
 rm -f tmp*err*
 rm -f core
+rm -f */core
 rm -f junk*
 rm -f ALL*
 rm -f libdwarf.a
@@ -38,7 +39,6 @@ rm -f   dwarfextract/test2out
 rm -f dwarfextract/testc.new
 rm -f williamson/newout
 rm -f williamson/newunminout
-rm -f williamson/core*
 rm -f williamson/vgcore*
 rm -f BASEFILES
 rm -f navarro/getglobals
