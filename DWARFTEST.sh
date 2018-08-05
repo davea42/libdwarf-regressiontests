@@ -943,6 +943,13 @@ r=$?
 chkresn $r 'dwgena/runtest.sh' 9
 cd ..
 
+echo "=====START   dwgenc/runtest.sh"
+cd dwgenc
+sh runtest.sh ../$d2
+r=$?
+chkresn $r 'dwgenc/runtest.sh' 1
+cd ..
+
 echo "=====START   frame1/runtest.sh $top_srcdir $top_builddir $dwlib"
 cd frame1
 sh runtest.sh $top_srcdir $top_builddir $dwlib

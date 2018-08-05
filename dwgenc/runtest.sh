@@ -1,5 +1,4 @@
-
-
+#!/bin/sh
 ../dwarfgen -c 0 --force-empty-dnames -v5 -t obj  -o testoutput.o testinput.o >junkdgstdout 2> junkdgstderr 
 if [ $? -ne 0 ] 
 then
@@ -33,3 +32,5 @@ rm -f junkstderr
 rm -f junkstdout
 rm -f junkdgstdout
 rm -f junkdgstderr
+echo PASS
+exit 0
