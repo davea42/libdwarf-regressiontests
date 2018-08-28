@@ -1,9 +1,7 @@
 #!/bin/sh
 #
-# By default runs all 3 test sets.
-# To run just one, add one  option, one of dd ddtodd2 or dd2
+# By default runs the entire test suite.
 
-dodd=y
 echo "Running all  tests"
 
 chkres() {
@@ -14,21 +12,19 @@ then
 fi
 }
 
-# We expect there to be 2 lines with the FAIL string
-# in the message.
+# We expect there to be 1 fail line saying "FAIL 0".
 chkfail () {
   f=$1
   grep '^FAIL 0$' $f >junkck2 
   c=`wc -l <junkck2`
-  if test $c -ne 2
+  if test $c -ne 1
   then
     rm -f junkck2
     echo "Failure $2"
-    echo "We have $c lines saying FAIL 0 so something is wrong."
-    echo "There should be two FAIL 0 lines if everything passed."
-    echo "Here are the first few FAIL lines:"
+    echo "We expected one line saying FAIL 0 so something is wrong."
+    echo "Here are the first few lines with FAIL:"
     grep FAIL $f |head -n 5
-    echo "Here are the last few lines:"
+    echo "Here are the last few lines of the test output:"
     tail -n 5 $f
     endt=`date`
   else
@@ -37,20 +33,14 @@ chkfail () {
   rm -f junkck2
 }
 
-if [ $dodd = "y" ]
-then
-  rm -f ALLdd 
-fi
+rm -f ALLdd 
 start=`date`
 echo "start $start"
 stsecs=`date '+%s'`
-if [ $dodd = "y" ]
-then
-  echo begin test
-  ./DWARFTEST.sh dd 2>ALLdd 1>&2
-  chkres $? "Failure in DWARFTEST.sh. Possibly coredump new dwarfdump? "
-  chkfail ALLdd "running test dd"
-fi
+echo begin test
+./DWARFTEST.sh dd 2>ALLdd 1>&2
+chkres $? "Failure in DWARFTEST.sh. Possibly coredump new dwarfdump? "
+chkfail ALLdd "running tests"
 ndsecs=`date '+%s'`
 endt=`date`
 echo "start $start"
@@ -60,6 +50,4 @@ showminutes() {
    echo "Run time in minutes: $t"
 }
 showminutes $stsecs $ndsecs
-
-
 exit 0

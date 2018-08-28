@@ -1170,8 +1170,10 @@ runtest $d1 $d2 cristi2/libpthread-2.4.so -R -ka  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj -m 
 runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 
-echo PASS $goodcount
-echo FAIL $failcount
+
+#Lets just drop this report. Wait till the end.
+#echo PASS $goodcount  " after running the first test group"
+#echo FAIL $failcount  " after running the first test group"
 
 for i in $filepaths
 do

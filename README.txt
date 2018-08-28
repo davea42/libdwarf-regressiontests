@@ -51,7 +51,11 @@ One of the tests assumes a segmentation violation (or
 the like) will cause a corefile to be created in
 the local directory.  So the test system's ulimit
 and other core-creation settings must be consistent
-with that.
+with that.  On linux 
+    ulimit -a
+shows the limits.
+    ulimit -c unlimited
+sets the core size you want during the test run.
 
 A source of variation in output is libelf, since 
 libelf traditionally does a poor job of noticing

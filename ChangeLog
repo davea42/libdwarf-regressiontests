@@ -1,3 +1,10 @@
+2018-07-28  David Anderson
+  * DWARFTEST.sh: Removed unnecessary early report of FAIL count.
+  * README.txt: Added mention of specific ulimit commands
+    to avoid a failure in a test that requires a coredump.
+  * RUNALL.sh: Revise the wording to expect a single
+    "FAIL 0" if the tests all go well.
+    Remove some obsolete code referring to "dd".
 2018-07-21  David Anderson
   * offsetfromlowpc/runtest.sh: Added checking for successful
     compiles and tests, generating FAIL when things go wrong.
