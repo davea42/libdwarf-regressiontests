@@ -13,6 +13,14 @@ The alternate image is here, named krb5-1.11.3-38.fc20.x86_64
 
 To get full output, use -x tied=krb5-1.11.3-38.fc20.x86_64
 
+======= Sept 15, 2018
+The .dynamic section appears broken as it starts
+with a string!  Moreover, the PT_DYNAMIC does not
+point (via offset) to the .dynamic section.
+This seems to be a severely broken object,
+at least in Elf terms.
+=======  
+
 David Anderson.
 January 31, 2014.
-Updated Oct 15, 2015.
+Updated Sept 15  2018.
