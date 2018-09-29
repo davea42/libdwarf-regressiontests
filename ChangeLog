@@ -1,3 +1,11 @@
+2018-09-29  David Anderson
+  * SHALIAS.sh: New. Those with non-GNU make
+    will wish to modify this (see its comments)
+    as the tests do require GNU make.
+  * CHECKIFRUNNING.sh, CLEANUP,DWARFTEST.sh,PICKUPBIN,
+    RUNALL.sh: Now refer to ./SHALIAS.sh so the appropriate
+    alias can be created for make (Useful on non-linux).
+  * README.txt: Some comments about SHALIAS.sh and its use.
 2018-07-28  David Anderson
   * DWARFTEST.sh: Removed unnecessary early report of FAIL count.
   * README.txt: Added mention of specific ulimit commands

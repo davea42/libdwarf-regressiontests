@@ -1,5 +1,7 @@
+#!/bin/sh
 # Clean up the temp files left behind by a test.
 set -x
+. ./SHALIAS.sh
 (cd dwgena ; make clean)
 (cd debugfission ; make clean)
 # The /tmp/dwa* files are lock files to prevent running two regr.

@@ -1,9 +1,8 @@
 #!/bin/sh
 #
 # By default runs the entire test suite.
-
 echo "Running all  tests"
-
+. ./SHALIAS.sh
 chkres() {
 if test $1 != 0
 then

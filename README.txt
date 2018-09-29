@@ -1,9 +1,19 @@
-Latest update: April 20, 2017 (small tweaks)
+Latest update: September 29, 2018 
 
 This directory (regressiontests) is the base which is used for
 regression testing of libdwarf.    It will probably only
 be usable on a POSIX compliant system (Unix or Linux or
 possibly Mac).
+
+The Makefiles here do assume gnu make (gmake) as
+of the August 2018 change to using full autoconf/automake.
+For Linux that is not a problem 'make' is gmake.
+For non-linux doing 'gmake' to start the testing 
+does not suffice as there are shell scripts invoked
+and the Makefiles may generate errors.
+For that case modify ./SHALIAS.sh to create an alias
+for make referencing gmake (see the comments in
+SHALIAS.sh).
 
 Here are some tests that relate to specific features
 of groups:

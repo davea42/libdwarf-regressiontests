@@ -1,6 +1,7 @@
 #!/bin/sh
 trap "rm -f /tmp/dwxa.$$ ; rm -f /tmp/dwxb.$$ ; exit" 1 2 15
 echo 'precheck for already running'
+. ./SHALIAS.sh
 # Do this early before doing the build since
 # the build will break any DWARFTEST.sh
 # that is running.

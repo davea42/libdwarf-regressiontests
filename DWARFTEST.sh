@@ -2,6 +2,7 @@
 trap "echo Exit testing due to signal ;  rm -f /tmp/dwbc.$$ /tmp/dwba.$$ /tmp/dwbb.$$ ; exit 1 " 2
 #
 echo 'Starting dwarftesth' `date`
+. ./SHALIAS.sh
 # Here do not use DWARFTEST, we do not want to match the grep from ps
 ps -eaf >/tmp/dwbc.$$ 
 grep DWARFTEST.sh < /tmp/dwbc.$$ >/tmp/dwba.$$
