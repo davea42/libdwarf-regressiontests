@@ -1,0 +1,22 @@
+
+Doug Gilmore pointed out on 4 October 2018 that
+dwarfgen is adding pointless null die at the
+end of .debug_info:
+
+
+"Objects produced by Open64 (opencc) and the Tensilica Xtensa compilers
+(xt-xcc) produce warnings with newer versions of readelf:
+
+bash-3.2$ opencc ipa?.c -g -keep
+bash-3.2$ readelf -wi a.out > oo
+readelf: Warning: Bogus end-of-siblings marker detected at offset 91 in .debug_info section
+bash-3.2$ head ipa?.c
+
+
+The a.out here is such an object.
+
+libdwarf has no 'null die' representation so
+it never returns anything to callers about
+the 0 byte that is a null die and instead
+returns DW_DLV_NO_ENTRY to represent
+the end of a die-list.
