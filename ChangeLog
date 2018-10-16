@@ -1,3 +1,16 @@
+2018-10-15  David Anderson
+   * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,
+     dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
+     Updated baselines for improved test of corrupted dwarf.
+   * dwgena/test2.base.gz,dwgena/test4.base.gz,dwgena/test6.base.gz,
+     dwgena/test7.base.gz,dwgena/test8.base.gz,dwgena/test9.base.gz,
+     dwgenc/testoutput.o: Updated baselines to match the
+     one-byte-shorter change of pro_section.c
+2018-10-14  David Anderson
+  * DWARFTEST.sh: Adding gilmore/a.out to the files to test with.
+  * dwgenc/testoutput.o: Now one byte shorter due to the 
+    correction in libdwarf/pro_section.c  that eliminates
+    a useless zero-byte being emitted.
 2018-09-29  David Anderson
   * SHALIAS.sh: New. Those with non-GNU make
     will wish to modify this (see its comments)
