@@ -370,7 +370,7 @@ runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -s --print-str-offsets
 runtest $d1 $d2 emre3/a.out.dwp --print-str-offsets 
 runtest $d1 $d2 emre3/foo.dwo --print-str-offsets
 runtest $d1 $d2 emre3/main.dwo --print-str-offsets 
-runtest $d1 $d2 emre5/emre5/test33_64_opt_fpo_split.dwp
+runtest $d1 $d2 emre5/test33_64_opt_fpo_split.dwp
 runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp 
 
 runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b -c 
@@ -535,7 +535,7 @@ runtest $d1 $d2  grumbach/test_odb_ada_record_types12_pkg_.o -i -vvv
 runtest $d1 $d2  grumbach/test4.o -i -vvv 
 # Testing DW_AT_GNU_numerator, DW_AT_GNU_denominator and 
 # DW_AT_GNU_bias DWARF attributes.
-runtest $d1 $d2  grumbach/test_biased.o -i -vvv 
+runtest $d1 $d2  grumbach/test_bias.o -i -vvv 
 runtest $d1 $d2  grumbach/test_fixed.o -i -vvv 
 runtest $d1 $d2  grumbach/test_biased.o -ka
 runtest $d1 $d2  grumbach/test_fixed.o -ka
@@ -576,7 +576,7 @@ runtest $d1 $d2  liu/null02.elf -a
 runtest $d1 $d2  liu/NULLdereference0519.elf -a
 runtest $d1 $d2  liu/NULLderefer0505_01.elf -a
 runtest $d1 $d2  liu/NULLdereference0522.elf -a
-runtest $d1 $d2  liu/NULLdereference0522c.elf -a 
+runtest $d1 $d2  liu/NULLdeference0522c.elf -a 
 runtest $d1 $d2  liu/OOB0505_01.elf -a
 runtest $d1 $d2  liu/OOB0505_02_02.elf -a
 runtest $d1 $d2  liu/OOB0505_02.elf -a
@@ -827,13 +827,14 @@ runtest $d1 $d2 vlasceanu/a.out -i -M
 runtest $d1 $d2 vlasceanu/a.out -a 
 runtest $d1 $d2 vlasceanu/a.out -ka 
 
-#Put uri in name
+# Put uri in name. We don't do uri conversion on the input
+# so these fail.
 # Following is for URI testing
 runtest $d1 $d2 moshe%2fhello  -i
 #Put uri in name, let it fail as no translate done.
 # Following is for URI testing
 runtest $d1 $d2 moshe%2fhello  -U -i
-#Put uri in name, do not mention the uri translateion
+#Put uri in name, do not mention the uri translatetion
 # Following is for URI testing
 runtest $d1 $d2 moshe%2fhello  -q -i
 
