@@ -1,3 +1,9 @@
+2018-10-24  David Anderson
+   * macho-kask/README,macho-kask/mach-o-object32,
+     macho-kask/mach-o-object32.dSYM/Contents/Resources/DWARF/mach-o-object32,
+     macho-kask/mach-o-object64,macho-kask/mach-o-object64:
+     A new test directory with mach-o objects in the directory
+     tree such as MacOS uses for dSYM.
 2018-10-15  David Anderson
    * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,
      dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:

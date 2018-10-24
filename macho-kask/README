@@ -3,6 +3,27 @@ mach-o, as test files.
 These are from a slight modification of
 dwarfexample/simplereader.c provided by EK.
 
-September 09 2018
+one dsym is:
+simplereaderi386 
+
+The following is that same dsym,but
+renamed and placed in a lower directory 
+following MacOS practice so if 
+
+#First a placeholder file, which would normally
+#be a MacOS object.
+
+mach-o-object32    
+
+# Next the top of a directory tree which leads to the
+# same dsym content as simplereaderi386.
+mach-o-object32.dSYM
+# The point being to test the ability of libdwarf to
+#automatically drill down the the .dSYM.
+
+# similarly for the X86_64 case.
+
+
+October 23, 2018.
 
 
