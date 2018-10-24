@@ -345,6 +345,20 @@ runtest () {
 }
 # end 'runtest'
 
+# mach-o basic tests.
+runtest $d1 $d2 macho-kask/simplereaderi386   -a 
+runtest $d1 $d2 macho-kask/simplereaderi386   -b 
+runtest $d1 $d2 macho-kask/simplereaderi386   -a -vvv
+runtest $d1 $d2 macho-kask/simplereaderx86_64 -a 
+runtest $d1 $d2 macho-kask/simplereaderx86_64 -b 
+runtest $d1 $d2 macho-kask/simplereaderx86_64 -a -vvv
+# The following 2 should give the same output as the first,
+# in spite of naming a simple text placeholder.
+runtest $d1 $d2 macho-kask/mach-o-object32    -a 
+runtest $d1 $d2 macho-kask/mach-o-object32    -a  -vvv
+runtest $d1 $d2 macho-kask/mach-o-object64    -a 
+runtest $d1 $d2 macho-kask/mach-o-object64    -a  -vvv
+
 # Vulnerability CVE-2017-9998 in libdwarf
 runtest $d1 $d2   wolff/POC1 -a
 runtest $d1 $d2   wolff/POC1 -b
