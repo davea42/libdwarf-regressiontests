@@ -365,6 +365,7 @@ runtest $d1 $d2   wolff/POC1 -b
 
 #Show the usage options list
 runtest $d1 $d2 foo.o -h
+runtest $d1 $d2 foo.o --help
 # Some errors in options list use, which
 # should not show the options list
 runtest $d1 $d2 foo.o  -j
@@ -852,7 +853,7 @@ runtest $d1 $d2 moshe%2fhello  -U -i
 # Following is for URI testing
 runtest $d1 $d2 moshe%2fhello  -q -i
 
-# The -h option does not exist. Try it anyway!
+# The -h option exists now
 runtest $d1 $d2  moshe/hello -h 
 runtest $d1 $d2  moshe/hello -a -vvv -R -M
 runtest $d1 $d2  moshe/hello -a -vvv -R -M -g
