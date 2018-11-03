@@ -359,6 +359,11 @@ runtest $d1 $d2 macho-kask/mach-o-object32    -a  -vvv
 runtest $d1 $d2 macho-kask/mach-o-object64    -a 
 runtest $d1 $d2 macho-kask/mach-o-object64    -a  -vvv
 
+# the following have a DWARF section the last
+# section. _64 failed. Now fixed in libdwarf.
+runtest $d1 $d2  macho-kask/dwarfdump_32 -a
+runtest $d1 $d2  macho-kask/dwarfdump_64 -a
+
 # Vulnerability CVE-2017-9998 in libdwarf
 runtest $d1 $d2   wolff/POC1 -a
 runtest $d1 $d2   wolff/POC1 -b
