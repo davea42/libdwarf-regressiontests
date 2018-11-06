@@ -358,6 +358,8 @@ runtest $d1 $d2 macho-kask/mach-o-object32    -a
 runtest $d1 $d2 macho-kask/mach-o-object32    -a  -vvv
 runtest $d1 $d2 macho-kask/mach-o-object64    -a 
 runtest $d1 $d2 macho-kask/mach-o-object64    -a  -vvv
+# This is G4 big-endian
+runtest $d1 $d2 macho-kask/dwarfdump_G4    -a  -vvv
 
 # the following have a DWARF section the last
 # section. _64 failed. Now fixed in libdwarf.
