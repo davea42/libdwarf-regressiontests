@@ -464,6 +464,13 @@ sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
 chkres $?  hughes2
 cd ..
 
+echo "=====START   implicitconst runtest.sh"
+cd implicitconst
+sh runtest.sh
+chkres $?  implicitconst
+cd ..
+
+
 # All the following have been fuzzed and some have
 # elf that is so badly damaged it is unusable.
 # 08,09,12,14,16 in particular have really bad elf header data.

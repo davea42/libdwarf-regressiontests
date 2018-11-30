@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 import sys
 
-total= 18249.0
+# An approximation of the actual full count.
+total= 18660.0
 
 if __name__ == '__main__':
   if len(sys.argv) == 2:

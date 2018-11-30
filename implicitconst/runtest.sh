@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# We name temp files junk<something> as that way
+# a normal 'make distclean' gets rid of them
+
+# We do not regenerate t1.o as we don't want
+# compiler changes to mean the test becomes
+# meaningless.
+
+dd=../dwarfdump
+dg=../dwarfgen
+
+$dg  -c 0 --add-implicit-const -s -v 5 -t obj -o junkimplcon.o t1.o 1>junkdg.new 2>&1
+if [ $? -ne 0 ]
+then
+ echo FAIL implicitconst in dwarfgen exit code not zero
+ exit 1
+fi
+
+diff dgout.base junkdg.new  1>/dev/null 2>/dev/null
+if [ $? -ne 0 ]
+then
+  echo "FAIL implicitconst diff dgout.base junkdg.new
+  echo "If junkdg.new is correct do: mv junkdg.new dgout.base
+  exit 1
+fi
+
+
+$dd -i -M junkimplcon.o >junk.new
+if [ $? -ne 0 ]
+then
+  echo FAIL $dd build junk.new from junkimplcon.o
+  exit 1
+fi
+
+diff implicit.base junk.new  1>/dev/null 2>/dev/null
+if [ $? -ne 0 ]
+then
+  echo "FAIL implicitconst diff implicit.base junk.new
+  echo "If junk.new is correct do: mv junk.new implicit.base
+  exit 1
+fi
+
+echo PASS implicitconst
+exit 0
+
+
+

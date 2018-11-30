@@ -1,0 +1,12 @@
+Here we want to verify that DW_FORM_implicit_const
+is properly handled by libdwarf.
+
+But we don't quite know how to get any compiler to
+emit that. So instead we use a special option
+to dwarfgen (and a simple C file t1.c compiled
+to its t1.o form) to transform t1.o
+into a new object that contains that DWARF5 FORM.
+
+
+
+November 29, 2018

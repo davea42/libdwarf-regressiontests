@@ -1,0 +1,11 @@
+# This script was how we got started.
+# if we need to regenerate t1.o this may help.
+
+
+exit 0
+
+
+#cc -g -O0 -c t1.c
+../dwarfgen -c 0 --add-implicit-const -s -v 5 -t obj -o implcon.o t1.o
+#../dwarfdump -i -M t1.o      >junkt1
+../dwarfdump -vvv -i -M implcon.o >junkti
