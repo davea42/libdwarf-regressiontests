@@ -345,6 +345,12 @@ runtest () {
 }
 # end 'runtest'
 
+# PE basic tests.
+runtest $d1 $d2 pe1/libexamine-0.dll --print-all 
+runtest $d1 $d2 pe1/libexamine-0.dll --print-info --format-attr-name --format-global-offsets
+runtest $d1 $d2 pe1/libexamine-0.dll --print-info --format-attr-name -vvv
+runtest $d1 $d2 pe1/libexamine-0.dll --print-strings 
+
 # mach-o basic tests.
 runtest $d1 $d2 macho-kask/simplereaderi386   -a 
 runtest $d1 $d2 macho-kask/simplereaderi386   -b 
