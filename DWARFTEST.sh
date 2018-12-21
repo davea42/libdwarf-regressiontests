@@ -351,6 +351,9 @@ runtest $d1 $d2 pe1/libexamine-0.dll --print-info --format-attr-name --format-gl
 runtest $d1 $d2 pe1/libexamine-0.dll --print-info --format-attr-name -vvv
 runtest $d1 $d2 pe1/libexamine-0.dll --print-strings 
 
+runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --print-all 
+runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --print-info --format-attr-name -vvv 
+
 # mach-o basic tests.
 runtest $d1 $d2 macho-kask/simplereaderi386   -a 
 runtest $d1 $d2 macho-kask/simplereaderi386   -b 

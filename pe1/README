@@ -1,0 +1,11 @@
+The PE (Windows) dll
+was created by Vincent Torri using GNU tools
+on a Windows system.
+
+
+The PE dwarfdump executable
+kask-dwarfdump_64.exe
+was created be Eeri Kask using MinGW 
+on a 64bit Windows system.
+
+David Anderson Dec 20 2018.
