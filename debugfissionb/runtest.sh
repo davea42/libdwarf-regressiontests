@@ -98,7 +98,7 @@ m2 $sr moa.base ../macho-kask/simplereaderi386
 m2 $sr moax64.base ../macho-kask/simplereaderx86_64 
 m2 $sr moobject32.base ../macho-kask/mach-o-object32 
 m2 $sr moobject64.base ../macho-kask/mach-o-object64
-m2 $sr moddg4.base ../macho-kask/dwarfdump_g4 
+m2 $sr moddg4.base ../macho-kask/dwarfdump_G4 
 m2 $sr pedll.base ../pe1/libexamine-0.dll 
 m2 $sr peexe64.base ../pe1/kask-dwarfdump_64.exe
 
