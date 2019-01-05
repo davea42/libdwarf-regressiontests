@@ -2,8 +2,8 @@
 libdw=$1
 bld=$2
 h="-I$libdw/libdwarf"
-l="-L$libdw/libdwarf -L$bld/libdwarf/.libs"
-libs="-ldwarf -lelf"
+l="-L$libdw/libdwarf"
+libs="$bld/libdwarf/.libs/libdwarf.a -lelf"
 if [ x$NLIZE = 'xy' ]
 then
   nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
