@@ -4,6 +4,13 @@ It was found by Steve Kaufmann when
 his application crashed reading an object
 with no DWARF present.
 
+The object file t.o is used in
+the debugfissionb/runtest.sh script
+
+=====HOW THE t.o WAS CREATED
+(which is done, leave the t.o here
+unchanged. This is just documentation.)
+
 cc -c t.o
 and then munge the .eh_frame section name
 in the .o. I changed the name to .eh_
@@ -15,6 +22,9 @@ changing a letter f to a NUL byte.
 
 dwarfdump and libdwarf refuse to work
 on such an object with no DWARF.
+But we test it to ensure there is no
+segmentation violation in libdwarf
+for the case.
 
 David Anderson 
 Jan 9, 2019
