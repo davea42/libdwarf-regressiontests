@@ -47,7 +47,8 @@ m() {
   r=$?
   if test  $r  -ne 0
   then
-      echo exit_status  $r >>$tmp
+      echo exit_status  $r $sr $obj  >>$tmp
+      return
   fi
   diff $baseline $tmp
   if test  $?  -ne 0
@@ -55,7 +56,6 @@ m() {
       echo "FAIL test $baseline vs $tmp"
       echo "to update, mv $tmp $baseline"
       isfail="y"
-      #exit 1
   fi
 }
 
@@ -73,34 +73,57 @@ m2() {
   mysr=$1
   baseline=$2
   obj=$3
+  rtype=$4
+  if [ $rtype = "fd" ]
+  then
+     # use dwarf_init() which uses dwarf_init_b()
+     opt="--use-init-fd"
+  else
+     # use dwarf_init_path()
+     opt=""
+  fi
   if [ ! -f $baseline ]
   then
     touch $baseline
   fi
-  tmp=junk.${baseline}
-  $mysr $obj 1> ${tmp} 2>&1
+  tmp=junk.${rtype}.${baseline}
+  $mysr $opt $obj 1> ${tmp} 2>&1
   r=$?
   if test  $r  -ne 0
   then
-      echo exit_status  $r >>$tmp
+      echo exit_status  $r   $sr $opt $obj   >>$tmp
   fi
   diff $baseline $tmp
   if test  $?  -ne 0
   then
-      echo "FAIL test $baseline vs $tmp"
+      echo "FAIL test $baseline vs $tmp using $sr $opt $obj"
       echo "to update, mv $tmp $baseline"
       isfail="y"
       #exit 1
   fi
 }
 
-m2 $sr moa.base ../macho-kask/simplereaderi386 
-m2 $sr moax64.base ../macho-kask/simplereaderx86_64 
-m2 $sr moobject32.base ../macho-kask/mach-o-object32 
-m2 $sr moobject64.base ../macho-kask/mach-o-object64
-m2 $sr moddg4.base ../macho-kask/dwarfdump_G4 
-m2 $sr pedll.base ../pe1/libexamine-0.dll 
-m2 $sr peexe64.base ../pe1/kask-dwarfdump_64.exe
+m2 $sr moa.base ../macho-kask/simplereaderi386  path
+m2 $sr moax64.base ../macho-kask/simplereaderx86_64  path
+m2 $sr moobject32.base ../macho-kask/mach-o-object32  path
+m2 $sr moobject64.base ../macho-kask/mach-o-object64 path
+m2 $sr moddg4.base ../macho-kask/dwarfdump_G4  path
+m2 $sr pedll.base ../pe1/libexamine-0.dll  path
+m2 $sr peexe64.base ../pe1/kask-dwarfdump_64.exe path
+m2 $sr nodwarf.base ../kaufmann/t.o path
+
+m2 $sr moa.base ../macho-kask/simplereaderi386 fd
+m2 $sr moax64.base ../macho-kask/simplereaderx86_64 fd 
+
+# for macho dSYM using fd we need to pass the true dSYM object name
+# because we left simplereader simple in the fd case.
+m2 $sr moobject32.base ../macho-kask/mach-o-object32.dSYM/Contents/Resources/DWARF/mach-o-object32 fd
+m2 $sr moobject64.base ../macho-kask/mach-o-object64.dSYM/Contents/Resources/DWARF/mach-o-object64 fd
+m2 $sr moddg4.base  ../macho-kask/dwarfdump_G4.dSYM/Contents/Resources/DWARF/dwarfdump_G4 fd
+
+m2 $sr pedll.base ../pe1/libexamine-0.dll fd
+m2 $sr peexe64.base ../pe1/kask-dwarfdump_64.exe fd
+m2 $sr nodwarfexit1.base ../kaufmann/t.o fd
 
 if [ $isfail = "y" ]
 then

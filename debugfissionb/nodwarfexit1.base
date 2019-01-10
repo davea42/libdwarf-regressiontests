@@ -1,0 +1,2 @@
+Giving up, cannot do DWARF processing
+exit_status 1 ../simplereader --use-init-fd ../kaufmann/t.o
