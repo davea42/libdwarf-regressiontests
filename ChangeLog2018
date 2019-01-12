@@ -1,0 +1,70 @@
+2018-11-05  David Anderson
+   * DWARFTEST.sh:Added test run on big-endian mach-o
+     object macho-kask/dwarfdump_G4.
+2018-10-24  David Anderson
+   * macho-kask/README,macho-kask/mach-o-object32,
+     macho-kask/mach-o-object32.dSYM/Contents/Resources/DWARF/mach-o-object32,
+     macho-kask/mach-o-object64,macho-kask/mach-o-object64:
+     A new test directory with mach-o objects in the directory
+     tree such as MacOS uses for dSYM.
+2018-10-15  David Anderson
+   * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,
+     dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
+     Updated baselines for improved test of corrupted dwarf.
+   * dwgena/test2.base.gz,dwgena/test4.base.gz,dwgena/test6.base.gz,
+     dwgena/test7.base.gz,dwgena/test8.base.gz,dwgena/test9.base.gz,
+     dwgenc/testoutput.o: Updated baselines to match the
+     one-byte-shorter change of pro_section.c
+2018-10-14  David Anderson
+  * DWARFTEST.sh: Adding gilmore/a.out to the files to test with.
+  * dwgenc/testoutput.o: Now one byte shorter due to the 
+    correction in libdwarf/pro_section.c  that eliminates
+    a useless zero-byte being emitted.
+2018-09-29  David Anderson
+  * SHALIAS.sh: New. Those with non-GNU make
+    will wish to modify this (see its comments)
+    as the tests do require GNU make.
+  * CHECKIFRUNNING.sh, CLEANUP,DWARFTEST.sh,PICKUPBIN,
+    RUNALL.sh: Now refer to ./SHALIAS.sh so the appropriate
+    alias can be created for make (Useful on non-linux).
+  * README.txt: Some comments about SHALIAS.sh and its use.
+2018-07-28  David Anderson
+  * DWARFTEST.sh: Removed unnecessary early report of FAIL count.
+  * README.txt: Added mention of specific ulimit commands
+    to avoid a failure in a test that requires a coredump.
+  * RUNALL.sh: Revise the wording to expect a single
+    "FAIL 0" if the tests all go well.
+    Remove some obsolete code referring to "dd".
+2018-07-21  David Anderson
+  * offsetfromlowpc/runtest.sh: Added checking for successful
+    compiles and tests, generating FAIL when things go wrong.
+2018-07-19  David Anderson
+  * CLEANUP: Added cleanup of navarro/getglobals
+2018-07-19  David Anderson
+  * DWARFTEST.sh,test-alex1/runtest.sh,test-alex2/runtime.sh: 
+    Had to pass more information so out-of-trunk source 
+    build got key data for compiles in these tests.
+2018-06-08  David Anderson
+  * DWARFTEST.sh: Now provides identifying string to the Count output.
+  * runtimesummary: New data
+  * usertime.py: Now prints the identifying string passed in.
+    Easier to understand what runtime is what.
+2018-04-17  David Anderson
+  * A runtest of emre5 directory objects was typed 
+    incorrectly and has only been
+    generating a usage message for quite some time.
+    It now tests dwp and tied files as it is supposed to.
+  * README.txt: Now mentions that at least one test
+    assumes that a segmentation violation will create a
+    core file (the test fails if ulimit or something else
+    prevents or moves core files).
+2018-01-29  David Anderson
+  * dwarfdump-i386-freebsd.O,dwarfdump-x86_64-freebsd.O: 
+    New baselines
+    FreeBSD 9 versions simply won't run on FreeBSD 11.1.
+    So now we start afresh with a new FreeBSD 11.1
+    environment.
+  * sarubbo-11/*.bin: New tests related to reading
+    corrupt frame data. 
+
+

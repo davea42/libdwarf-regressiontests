@@ -406,34 +406,35 @@ runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp
 
 runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b -c 
 
-echo "=====START   test gennames -t and -s same output"
+# NONE of the gennames tests here make much sense now.
+#echo "=====START   test gennames -t and -s same output"
 # Testing that gennames -t and -s generate the same results.
 # The default is -s 
-./gennames -s -i $top_srcdir/libdwarf -o .
-chkres $?  gennames-build-s-check
+#./gennames -s -i $top_srcdir/libdwarf -o .
+#chkres $?  gennames-build-s-check
 
-mv dwarf_names.c dwarfnames-s.c
-chkres $?  dwarfnames_s-mv-check
+#mv dwarf_names.c dwarfnames-s.c
+#chkres $?  dwarfnames_s-mv-check
 
-cc -Wall $nlizeopt -I$top_srcdir/libdwarf -I$top_builddir/libdwarf -I$top_builddir test_dwarfnames.c dwarfnames-s.c -o dwarfnames-s
-chkres $?  dwarfnames_s-compile-check
-./dwarfnames-s > dwn_s_out
-chkres $? dwarfnames-s-run
-
-./gennames -t  -i $top_srcdir/libdwarf -o .
-chkres $?  gennames-build-t-check
-mv dwarf_names.c dwarfnames-t.c
-chkres $?  dwarfnames_t-mv-check
-cc -Wall $nlizeopt -I  $top_srcdir/libdwarf -I$top_builddir/libdwarf -I$top_builddir test_dwarfnames.c dwarfnames-t.c -o dwarfnames-t
-chkres $?  dwarfnames_t-compile-check
-./dwarfnames-t > dwn_t_out
-chkres $? dwarfnames-t-run
-diff dwn_s_out dwn_t_out
-chkres $?  dwarfnames-switch-table-check
-rm -f dwarf_names.c dwarfnames-s.c
-rm -f  dwarfnames-t.c
-rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
-rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h
+#cc -Wall $nlizeopt -I$top_srcdir/libdwarf -I$top_builddir/libdwarf -I$top_builddir test_dwarfnames.c dwarfnames-s.c -o dwarfnames-s
+#chkres $?  dwarfnames_s-compile-check
+#./dwarfnames-s > dwn_s_out
+#chkres $? dwarfnames-s-run
+#
+#./gennames -t  -i $top_srcdir/libdwarf -o .
+#chkres $?  gennames-build-t-check
+#mv dwarf_names.c dwarfnames-t.c
+#chkres $?  dwarfnames_t-mv-check
+#cc -Wall $nlizeopt -I  $top_srcdir/libdwarf -I$top_builddir/libdwarf -I$top_builddir test_dwarfnames.c dwarfnames-t.c -o dwarfnames-t
+#chkres $?  dwarfnames_t-compile-check
+#./dwarfnames-t > dwn_t_out
+#chkres $? dwarfnames-t-run
+#diff dwn_s_out dwn_t_out
+#chkres $?  dwarfnames-switch-table-check
+#rm -f dwarf_names.c dwarfnames-s.c
+#rm -f  dwarfnames-t.c
+#rm -f dwarf-names-s dwarfnames-t dwn_s_out dwn_t_out
+#rm -f dwarf_names_enum.h dwarf_names.h  dwarf_names_new.h
 
 # This is an object with both dwo and non-dwo sections.
 # It's not correct, but it at least has both groups
@@ -745,7 +746,10 @@ sh runtest.sh ../dwarfgen ../$d2  ../simplereader
 chkres $?  offsetfromlowpc
 cd ..
 
-echo "=====START   debugfissionb runtest.sh"
+echo "=====START   debugfissionb/runtest.sh multiplesimplereader tests"
+# tests simple reader and more than one dwarf_init* interface
+# across all object types
+# here kaufmann/t.o is tested as input to simplereader.
 cd debugfissionb
 sh runtest.sh  ../simplereader
 chkres $?  debugfissionb-simplreader
@@ -962,6 +966,7 @@ then
  runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 fi
 
+echo "=====START  findcu runtest.sh $top_srcdir $top_builddir"
 cd findcu 
 sh runtest.sh $top_srcdir $top_builddir  >testoutput
 chkres $? 'findcu/cutest-of-a-libdwarf-interface'
@@ -977,14 +982,14 @@ fi
 ./test_harmless >testoutput
 chkres $? 'check harmless-error functionality'
 
-echo "=====START   dwgena/runtest.sh"
+echo "=====START   dwgena/runtest.sh ../$d2"
 cd dwgena
 sh runtest.sh ../$d2
 r=$?
 chkresn $r 'dwgena/runtest.sh' 9
 cd ..
 
-echo "=====START   dwgenc/runtest.sh"
+echo "=====START   dwgenc/runtest.sh ../$d2"
 cd dwgenc
 sh runtest.sh ../$d2
 r=$?
@@ -1021,7 +1026,7 @@ cd ..
 
 if [ $NLIZE = 'n' ]
 then
-echo "=====START   legendre/runtest.sh"
+echo "=====START   legendre/runtest.sh  $top_srcdir $top_builddir"
 cd legendre
 sh runtest.sh $top_srcdir $top_builddir
 r=$?
@@ -1031,7 +1036,7 @@ else
 echo "=====SKIP   legendre/runtest.sh NLIZE as it has leaks"
 fi
 
-echo "=====START   enciso4/runtest.sh"
+echo "=====START   enciso4/runtest.sh $d1 $d2"
 cd enciso4
 sh runtest.sh $d1 $d2 
 chkres $?  enciso4

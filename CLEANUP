@@ -65,7 +65,7 @@ rm -f  legendre/frame_test2
 rm -f OF*
 rm -f dwarfdump
 rm -f dwarfdumpW
-rm -f gennames
+#rm -f gennames
 rm -f dwarfgen
 rm -f simplereader
 rm -f junkckpath

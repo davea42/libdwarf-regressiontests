@@ -75,12 +75,12 @@ then
   echo "No dwarfdump.conf to copy! giving up."
   exit 1;
 fi
-cp $top_build/libdwarf/gennames $cur
-if [ $? -ne 0 ]
-then
-  echo "No gennames to copy! giving up."
-  exit 1;
-fi
+#cp $top_build/libdwarf/gennames $cur
+#if [ $? -ne 0 ]
+#then
+#  echo "No gennames to copy! giving up."
+#  exit 1;
+#fi
 cp $top_build/dwarfgen/dwarfgen  $cur
 if [ $? -ne 0 ]
 then
