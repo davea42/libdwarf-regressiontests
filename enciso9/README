@@ -1,0 +1,12 @@
+
+This is a very special object file with
+a .debug_line but no corresponding .debug_info,
+so nothing links to the .debug_line.
+
+Produced by Carlos Alberto-Enciso and others
+using a just-modified version of Clang.
+
+Whether this is necessary or desirable (overall)
+is not yet clear.
+
+14 January 2019.
