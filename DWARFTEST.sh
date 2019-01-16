@@ -740,7 +740,9 @@ sh runtest.sh ../$d2
 chkres $?  baddie1
 cd ..
 
-echo "=====START   offsetfromlowpc runtest.sh"
+echo "=====START   offsetfromlowpc sh runtest.sh ../dwarfgen ../$d2  ../simplereader"
+# Also tests dwarfgen and libdwarf with DW_CFA_advance_loc
+# operations
 cd offsetfromlowpc
 sh runtest.sh ../dwarfgen ../$d2  ../simplereader
 chkres $?  offsetfromlowpc

@@ -1,0 +1,25 @@
+
+.debug_frame
+
+fde:
+<    0><0x00000000:0x00b71b00><suppress_check_dwarf><cie offset 0x00000000::cie index     0><fde offset 0x00000010 length: 0x00000020><eh offset none>
+        0x00000000: 
+        0x00000030: 
+        0x00000070: 
+        0x000043b3: 
+        0x004386f6: 
+
+cie:
+<    0>	version				1
+	cie section offset		0 0x00000000
+	augmentation			
+	code_alignment_factor		1
+	data_alignment_factor		1
+	return_address_register		2
+	bytes of initial instructions	3
+	cie length			12
+	initial instructions
+	 0 DW_CFA_nop
+	 1 DW_CFA_nop
+	 2 DW_CFA_nop
+

@@ -26,6 +26,9 @@ t8=junk8.genout
 t8e=junk8.genoutstderr
 t9=junkstrp.genout
 t9e=junkstrp.genoutstderr
+tg1=junkadvlocgen
+tg2=junkadvlocf
+tg3=junkadvlocvf
 rm -f $tx
 rm -f $ty
 rm -f $tz
@@ -41,6 +44,9 @@ rm -f $t8
 rm -f $t8e
 rm -f $t9
 rm -f $t9e
+rm -f $tg1
+rm -f $tg2
+rm -f $tg3
 
 if [ ! -x $gen ]
 then
@@ -173,6 +179,30 @@ if [ $? -ne 0 ]
 then
     echo FAIL offsetfromlowpc/runtest.sh  mismatch non-transformation to offset
     echo "to update baseline do: mv $t7 basehipc4"
+    exit 1
+fi
+
+$gen --add-frame-advance-loc -h -t obj -c 0 -o junk.o dwarfdump.o >$tg1
+if [ $? -ne 0 ]
+then
+  echo "FAIL K run $gen --add-frame-advance-loc -h -t obj -c 0 -o junk.o dwarfdump.o"
+  exit 1
+fi
+
+$dd -f junk.o  > $tg2      2>/dev/null
+diff baseadvlocf $tg2
+if [ $? -ne 0 ]
+then
+    echo FAIL offsetfromlowpc/runtest.sh  advloc err
+    echo "to update baseline do: mv $tg2 baseadvlocf"
+    exit 1
+fi
+$dd -vvv -f junk.o > $tg3     2>/dev/null
+diff baseadvlocvf $tg3
+if [ $? -ne 0 ]
+then
+    echo FAIL offsetfromlowpc/runtest.sh  advloc err
+    echo "to update baseline do: mv $tg3 baseadvlocvf"
     exit 1
 fi
 

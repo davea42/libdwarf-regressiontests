@@ -1,3 +1,15 @@
+2019-01-14 David Anderson
+   * DWARFTEST.sh: Added comments so it will be easier
+     to understand where certain tests are really
+     done.
+   * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,
+     dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
+     New baseline executables.
+   * dwgena/test7.base.gz: We now continue from some line table
+     errors so that changes the baseline a little.
+   * offsetfromlowpc/baseadvlocf,offsetfromlowpc/baseadvlocvf,
+     offsetfromlowpc/runtest.sh: New test case for 
+     DW_CFA_advance_loc* operations.
 2019-01-10 David Anderson
    * DWARFTEST.sh,CLEANUP,PICKUPBIN: In preparation
      for moving to pre-build dwarf_names.c we
