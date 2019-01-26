@@ -82,7 +82,7 @@ rm -f Makefile
 rm -f config.h
 rm -f config.log
 rm -f config.status
-rm -f bigobject/bigobject
-rm -f bigobject/makebig
-rm -f bigobject/a.out
-rm -f bigobject/junk*
+rm -f bigobj/bigobject
+rm -f bigobj/makebig
+rm -f bigobj/a.out
+rm -f bigobj/junk*
