@@ -1,0 +1,5 @@
+
+rm -f bigobject
+rm -f junk*
+rm -f a.out
+

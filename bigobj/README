@@ -1,0 +1,16 @@
+
+We'll construct a (temporary) file over 2GB in size
+and insert a valid small valid object file
+in at the beginning of it
+and copy the section table (and maybe more) up high
+to test the ability to read a big object.
+
+After the test we delete the big object so it's
+not taking up space.
+
+Building hello (which is not something that
+should be necessary, but if such is necessary
+here is the recipe):
+cc -g hello.c -o hello
+
+David Anderson January 24, 2019
