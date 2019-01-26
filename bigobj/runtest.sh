@@ -8,7 +8,6 @@
 # Then verifies dwarfdump works.
 
 dd=../dwarfdump
-dd=dwarfdump
 bn=junkbigobj.new
 bb=bigobj.base
 bo=bigobject
@@ -27,14 +26,12 @@ fi
 if [ $? -ne 0 ]
 then
   echo "FAIL bigobject creation"
-  rm -f makebig
   exit 1
 fi
 
 if [ ! -f ./bigobject ]
 then
   echo "FAIL the file bigobject does not exist"
-  rm -f makebig
   exit 1
 fi
 
@@ -43,23 +40,18 @@ if [ $? -ne 0 ]
 then
   echo "FAIL  dwarfdump of bigobject"
   rm -f bigobject
-  rm -f makebig
   exit 1
 fi
-
-#rm -f bigobject
 
 diff $bb $bn
 if [ $? -ne 0 ]
 then
   echo "FAIL bigobject diff $bb $bn"
   echo "to update: mv $bn $bb"
-  rm -f bigobject
-  rm -f makebig
   exit 1
 fi
-rm -f $bn
 rm -f bigobject
+rm -f $bn
 rm -f makebig
 rm -f a.out
 echo PASS

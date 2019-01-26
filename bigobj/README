@@ -13,4 +13,9 @@ should be necessary, but if such is necessary
 here is the recipe):
 cc -g hello.c -o hello
 
-David Anderson January 24, 2019
+This really only works (at present) on a little-endian
+system as makebig does not, at present, 
+pay attention to the endian-ness of the one value it
+interprets the meaning of (the offset of the section).
+
+David Anderson January 26, 2019
