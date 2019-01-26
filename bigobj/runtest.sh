@@ -1,4 +1,6 @@
 #!/bin/sh
+# Normal use:
+#     sh runtest.sh [../dwarfdump]
 # Creates a temp object bigobject which is
 # over 2GB in size from the executable "hello".  
 # Moves the section headers
@@ -8,6 +10,13 @@
 # Then verifies dwarfdump works.
 
 dd=../dwarfdump
+if [ $# -lt 1 ]
+then
+  dd=../dwarfdump
+else
+  dd=$1
+fi
+
 bn=junkbigobj.new
 bb=bigobj.base
 bo=bigobject
