@@ -24,7 +24,7 @@ rm -f makebig
 rm -f bigobject
 rm -f $bn
 
-gcc makebig.c -o makebig
+cc makebig.c -o makebig
 if [ $? -ne 0 ]
 then
   echo "FAIL bigobject compile of makebig.c"

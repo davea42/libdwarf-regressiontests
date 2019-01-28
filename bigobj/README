@@ -12,10 +12,18 @@ Building hello (which is not something that
 should be necessary, but if such is necessary
 here is the recipe):
 cc -g hello.c -o hello
+If you rebuild hello the section offset in hello
+might have moved...in which case you have to change
+the source of makebig.c (offset of the section table)
+to match the new hello.
 
 This really only works (at present) on a little-endian
 system as makebig does not, at present, 
 pay attention to the endian-ness of the one value it
 interprets the meaning of (the offset of the section).
 
-David Anderson January 26, 2019
+The test only works when run on a 64bit system.
+But the makebig executable can be built, and runs,
+on a 32bit system.
+
+David Anderson January 28, 2019

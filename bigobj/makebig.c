@@ -84,7 +84,7 @@ rwvalid(ssize_t len,ssize_t result,int myerrno,
         printf("object %s %s failed, short %ld %lu\n",
             path,
             msg,
-            len,result);
+            (long)len,(unsigned long)result);
         close(ifd);
         close(ofd);
         exit(1);
@@ -200,7 +200,7 @@ main(int argc, char *argv[])
     indata = malloc(inputsize);
     if (!indata) {
         printf("malloc object %s failed (len %lu)\n",
-            inputobj,inputsize);
+            inputobj,(unsigned long)inputsize);
         close(ifd);
         close(ofd);
         exit(1);
