@@ -1,5 +1,6 @@
 #!/bin/sh
-
+# Testing both implicit const FORM
+# and DW_AT_SUN_func_offsets attribute.
 # We name temp files junk<something> as that way
 # a normal 'make distclean' gets rid of them
 
@@ -10,14 +11,14 @@
 dd=../dwarfdump
 dg=../dwarfgen
 
-$dg  -c 0 --add-implicit-const -s -v 5 -t obj -o junkimplcon.o t1.o 1>junkdg.new 2>&1
+$dg  -c 0 --add-implicit-const --add-sun-func-offsets -s -v 5 -t obj -o junkimplcon.o t1.o 1>junkdg.new 2>&1
 if [ $? -ne 0 ]
 then
  echo FAIL implicitconst in dwarfgen exit code not zero
  exit 1
 fi
 
-diff dgout.base junkdg.new  1>/dev/null 2>/dev/null
+diff dgout.base junkdg.new
 if [ $? -ne 0 ]
 then
   echo "FAIL implicitconst diff dgout.base junkdg.new
@@ -33,7 +34,7 @@ then
   exit 1
 fi
 
-diff implicit.base junk.new  1>/dev/null 2>/dev/null
+diff implicit.base junk.new  
 if [ $? -ne 0 ]
 then
   echo "FAIL implicitconst diff implicit.base junk.new
