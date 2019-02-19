@@ -4,6 +4,8 @@
 
 dd=../dwarfdump
 dg=../dwarfgen
+ddopts=" -M"
+ddopts=
 
 fix='s/.*last time 0x0 .*/last time 0x0/'
 
@@ -12,8 +14,8 @@ fix='s/.*last time 0x0 .*/last time 0x0/'
 
 echo $dg -t obj -c 0  -o junk9.bin ./dwarfgen-bin 
 $dg -t obj -c 0  -o junk9.bin ./dwarfgen-bin >junkgen9.out
-echo $dd -vvv  -a junk9.bin 
-$dd -vvv -a junk9.bin | sed "$fix"   >junk9.new
+echo $dd $ddopts -vvv  -a junk9.bin 
+$dd $ddopts -vvv -a junk9.bin | sed "$fix"   >junk9.new
 zcat test9.base.gz | sed "$fix" >test9.base
 diff test9.base junk9.new
 if [  $?  -ne 0 ]
@@ -25,8 +27,8 @@ fi
 
 echo "$dg -t obj -c 0  -o junk1.bin ./dwarfgen-bin output to junkgen1.out"
 $dg -t obj -c 0  -o junk1.bin ./dwarfgen-bin >junkgen1.out
-echo $dd  -a junk1.bin 
-$dd  -a junk1.bin  | sed "$fix" >junk1.new
+echo $dd  $ddopts -a junk1.bin 
+$dd  $ddopts -a junk1.bin  | sed "$fix" >junk1.new
 zcat test1.base.gz | sed "$fix" >test1.base
 diff test1.base junk1.new
 if [  $?  -ne 0 ]
@@ -36,8 +38,8 @@ then
     exit 1
 fi
 
-echo "$dd -a -vvv junk1.bin  output to junk2.new"
-$dd -a -vvv junk1.bin | sed "$fix" >junk2.new
+echo "$dd $ddopts -a -vvv junk1.bin  output to junk2.new"
+$dd $ddopts -a -vvv junk1.bin | sed "$fix" >junk2.new
 zcat test2.base.gz | sed "$fix" >test2.base
 diff test2.base junk2.new
 if [  $?  -ne 0 ]
@@ -47,8 +49,8 @@ then
     exit 1
 fi
 $dg -t obj -c 10 -o junk3.bin ./dwarfgen-bin >junkgen.out
-echo $dd -a junk3.bin 
-$dd -a junk3.bin |  sed "$fix"  >junk3.new
+echo $dd $ddopts -a junk3.bin 
+$dd $ddopts -a junk3.bin |  sed "$fix"  >junk3.new
 zcat test3.base.gz |  sed "$fix"  >test3.base
 diff test3.base junk3.new
 if [  $?  -ne 0 ]
@@ -58,8 +60,8 @@ then
     exit 1
 fi
 
-echo $dd -a -vvv junk3.bin 
-$dd -a -vvv junk3.bin |  sed "$fix"  >junk4.new
+echo $dd $ddopts -a -vvv junk3.bin 
+$dd $ddopts -a -vvv junk3.bin |  sed "$fix"  >junk4.new
 zcat test4.base.gz |  sed "$fix"  >test4.base
 diff test4.base junk4.new
 if [  $?  -ne 0 ]
