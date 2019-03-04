@@ -97,17 +97,9 @@ LOCAL_SYMBOLS:
 
 .debug_line: line number info for a single cu
 
-.debug_pubnames
-
 .debug_str
 
 .debug_aranges
 
 .debug_frame
-
-.debug_static_func
-
-.debug_static_vars
-
-.debug_weaknames
 

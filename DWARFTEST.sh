@@ -98,6 +98,7 @@ chkresn () {
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 filepaths='moshe/hello
+jborg/simple
 gilmore/a.out
 navarro/compressed_aranges_test
 enciso8/test-clang-dw5.o
