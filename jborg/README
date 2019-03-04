@@ -1,0 +1,17 @@
+
+Simple was built by Jason Borg and provided as a test
+case demonstrating a failure in libdwarf.
+
+The llvm version is creating .debug_pubnames
+but is putting all global offsets into the entry records,
+whereas the DIE offsets each entry refers to 
+are defined by DWARF as offsets from the CU header
+in .debug_info.
+
+Thank you, Jason, for the nice test case.
+simple.go is the source code compiled to produce
+the testcase.
+
+David Anderson
+March 2019.
+
