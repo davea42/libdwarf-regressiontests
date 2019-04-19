@@ -6,30 +6,41 @@
 # which last word is the object file name.
 # When lots of fails this can be useful.
 
+# try:
+#  ./isolatefail.py ../ALLdd |sort |uniq -c >junkerrs
+
 import os
 import sys
 
 def scancontent(path):
   try:
-    fx = open(path,"r")
+    # the errors='replace' ensures any non-unicode
+    # is sensibly replaced Otherwise bad stuff gets
+    # UnicodeDecodeError.
+    # To search for bad stuff (chars >= 'ff) use
+    # byteread.c
+    fx = open(path,"r",errors='replace')
   except IOError as  message:
     print("File",path,"could not be opened: ", message)
     sys.exit(1)
   out = []
   tmp = []
   iline = 0
+  lastline = ''
   saveword = ""
   while 1:
     try:
       line = fx.readline()
     except UnicodeDecodeError as message:
       print("read decode fails, line ",iline,message)
+      print("Pref line",lastline);
       sys.exit(1)
     except IOError as message:
       print("read fails, line ",iline,message)
       sys.exit(1)
     if line == '':
       break
+    lastline = line
     #print("dadebug ",iline,line)
     iline = int(iline) + 1
     l2 = line.strip()
