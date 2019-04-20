@@ -13,3 +13,16 @@ Trying to dump with readelf reports an error:
 section '.debug_abbrev' has the NOBITS type - its contents are unreliable.
 
 Tom
+
+April 19,2019. With dwarfdump currently intesting, we get
+
+/tmp/bld/dwarfdump/dwarfdump ERROR:  dwarf_srcfiles:  DW_DLE_LINE_OFFSET
+_WRONG_FORM(336) Corrupt dwarf. Attempting to continue.
+
+Then we print the rest of the .debug_info (no line data).
+
+The attribute is DW_AT_stmt_list (16)
+and the form is 1 (DW_FORM_addr)
+and that is definitely wrong.
+
+DavidAnderson

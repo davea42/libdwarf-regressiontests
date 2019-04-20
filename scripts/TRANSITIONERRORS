@@ -1,0 +1,39 @@
+April 19, 2019
+This is at the transition from mostly libelf to mostly non-libelf.
+PASS 35179
+FAIL 2436
+
+These all show errors out of readelfobj: corrupt dwarf.
+count   objfile 
+    171 diederen2/pc_dwarf_bad_reloc_empty_debug_info.elf
+    171 diederen3/pc_dwarf_bad_name3.elf
+      1 DW201609-001/DW201609-001-poc
+      1 DW201609-002/DW201609-002-poc
+      1 DW201609-003/poc
+      2 DW201609-004/poc
+
+count   objfile 
+    171 liu/divisionbyzero02.elf corrupt elf
+    171 liu/divisionbyzero.elf corrupt elf
+      1 liu/free_invalid_address.elf corrupt elf
+    177 liu/heapoverflow01b.elf corrupt elf
+    177 liu/infinitloop.elf corrupt elf
+     84 liu/null01.elf corrupt elf
+    171 liu/null02.elf corrupt elf
+      1 liu/NULLdereference0519.elf corrupt elf
+    189 liu/OOB0505_01.elf corrupt elf
+    177 liu/OOB0505_02_02.elf corrupt elf
+    171 liu/OOB0505_02.elf corrupt elf
+    171 liu/OOB_read3_02.elf corrupt elf
+      1 liu/OOB_read4.elf bad chars now printed sanitized
+      1 liu/outofbound01.elf bad chars now printed sanitized
+    237 liu/outofboundread2.elf corrupt elf
+    171 liu/outofboundread.elf corrupt elf, .debug_abbrev sec name, link corrupted.
+      1 sarubbo-5/1.crashes.bin Bad chars, now sanitized.
+      1 sarubbo-6/1.crashes.bin archive!
+      1 sarubbo-7/4.crashes.bin Bad chars, now sanitized
+      1 williamson/heap_buffer_overflow_01.exe err now DW_DLE_FILE_OFFSET_BAD
+      1 williamson/heap_buffer_overflow.exe Err now DW_DLE_FILE_OFFSET_BAD
+      1 williamson/heap_vulnerability_20150201 err now DW_DLE_ELF_SECTION_COUNT_MISMATCH
+      2 xqx/awbug6.elf DW_AT_stmt list attr has form 1 (wrong form).
+~                                                                       
