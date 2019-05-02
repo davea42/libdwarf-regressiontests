@@ -346,6 +346,15 @@ runtest () {
 }
 # end 'runtest'
 
+# sample object with DW_AT_containing type in a use
+# which is standard
+runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr
+runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr --format-extensions
+# sample object with DW_AT_containing type in a use
+# which is  common extension
+runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
+runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
+
 # PE basic tests.
 runtest $d1 $d2 pe1/libexamine-0.dll --print-all 
 runtest $d1 $d2 pe1/libexamine-0.dll --print-info --format-attr-name --format-global-offsets
@@ -479,6 +488,12 @@ echo "=====START   implicitconst runtest.sh"
 cd implicitconst
 sh runtest.sh
 chkres $?  implicitconst
+cd ..
+
+echo "=====START   nolibelf runtest.sh"
+cd nolibelf
+sh runtest.sh
+chkres $?  nolibelf
 cd ..
 
 

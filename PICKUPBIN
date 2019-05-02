@@ -29,6 +29,11 @@ set -x
 . ./BASEFILES
 
 cd $top_build 
+$libdw/configure $sanitize  --disable-libelf ; make
+cp dwarfdump/dwarfdump $cur/dwarfdumpnl
+
+rm -rf $top_build/*
+cd $top_build 
 $libdw/configure $sanitize  --enable-oldframecol ;  make
 
 cp libdwarf/.libs/libdwarf.a $cur/libdwoldframecol.a

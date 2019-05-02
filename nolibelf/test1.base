@@ -1,0 +1,84 @@
+
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000b>  DW_TAG_compile_unit
+                    DW_AT_producer              GNU C11 7.3.0 -mtune=generic -march=x86-64 -g -fstack-protector-strong
+                    DW_AT_language              DW_LANG_C99
+                    DW_AT_name                  test.c
+                    DW_AT_comp_dir              /home/davea/dwarf/regressiontests/nolibelf
+                    DW_AT_low_pc                0x00000000
+                    DW_AT_high_pc               <offset-from-lowpc>22
+                    DW_AT_stmt_list             0x00000000
+
+LOCAL_SYMBOLS:
+< 1><0x0000002d>    DW_TAG_subprogram
+                      DW_AT_external              yes(1)
+                      DW_AT_name                  foo
+                      DW_AT_decl_file             0x00000001 /home/davea/dwarf/regressiontests/nolibelf/test.c
+                      DW_AT_decl_line             0x00000005
+                      DW_AT_prototyped            yes(1)
+                      DW_AT_type                  <0x00000069>
+                      DW_AT_low_pc                0x00000000
+                      DW_AT_high_pc               <offset-from-lowpc>22
+                      DW_AT_frame_base            len 0x0001: 9c: DW_OP_call_frame_cfa
+                      DW_AT_GNU_all_call_sites    yes(1)
+                      DW_AT_sibling               <0x00000069>
+< 2><0x0000004e>      DW_TAG_formal_parameter
+                        DW_AT_name                  myd
+                        DW_AT_decl_file             0x00000001 /home/davea/dwarf/regressiontests/nolibelf/test.c
+                        DW_AT_decl_line             0x00000005
+                        DW_AT_type                  <0x00000070>
+                        DW_AT_location              len 0x0002: 915c: DW_OP_fbreg -36
+< 2><0x0000005c>      DW_TAG_variable
+                        DW_AT_name                  x
+                        DW_AT_decl_file             0x00000001 /home/davea/dwarf/regressiontests/nolibelf/test.c
+                        DW_AT_decl_line             0x00000007
+                        DW_AT_type                  <0x00000069>
+                        DW_AT_location              len 0x0002: 916c: DW_OP_fbreg -20
+< 1><0x00000069>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000004
+                      DW_AT_encoding              DW_ATE_signed
+                      DW_AT_name                  int
+< 1><0x00000070>    DW_TAG_base_type
+                      DW_AT_byte_size             0x00000004
+                      DW_AT_encoding              DW_ATE_unsigned
+                      DW_AT_name                  unsigned int
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x0000000b):
+
+            NS new statement, BB new basic block, ET end of text sequence
+            PE prologue end, EB epilogue begin
+            IS=val ISA number, DI=val discriminator value
+<pc>        [lno,col] NS BB ET PE EB IS= DI= uri: "filepath"
+0x00000000  [   6, 0] NS uri: "/home/davea/dwarf/regressiontests/nolibelf/test.c"
+0x00000007  [   7, 0] NS
+0x0000000e  [   8, 0] NS
+0x00000014  [   9, 0] NS
+0x00000016  [   9, 0] NS ET
+
+.debug_str
+name at offset 0x00000000, length   42 is '/home/davea/dwarf/regressiontests/nolibelf'
+name at offset 0x0000002b, length   12 is 'unsigned int'
+name at offset 0x00000038, length    6 is 'test.c'
+name at offset 0x0000003f, length   70 is 'GNU C11 7.3.0 -mtune=generic -march=x86-64 -g -fstack-protector-strong'
+
+.debug_aranges
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000b>  DW_TAG_compile_unit
+                    DW_AT_producer              GNU C11 7.3.0 -mtune=generic -march=x86-64 -g -fstack-protector-strong
+                    DW_AT_language              DW_LANG_C99
+                    DW_AT_name                  test.c
+                    DW_AT_comp_dir              /home/davea/dwarf/regressiontests/nolibelf
+                    DW_AT_low_pc                0x00000000
+                    DW_AT_high_pc               <offset-from-lowpc>22
+                    DW_AT_stmt_list             0x00000000
+
+
+arange starts at 0x00000000, length of 0x00000016, cu_die_offset = 0x0000000b
+arange end
+
+.debug_frame
+

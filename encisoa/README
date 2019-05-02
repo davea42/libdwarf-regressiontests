@@ -1,0 +1,10 @@
+These are from Carlos Alberto-Enciso and
+contain an example of the common GNU
+use of the standard DW_AT_containing_type.
+
+In dwarfdump we call a couple uses as standard.
+The instance of DW_AT_containing_type under
+a DW_TAG_structure_type we call an extension
+(an extension not shown in the .o example here).
+
+01 May 2019.
