@@ -30,6 +30,13 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
+/* Set to 1 if __attribute__ ((unused)) is available. */
+#undef HAVE_UNUSED_ATTRIBUTE
+
+/* Set to 1 if stdint.h is available. */
+#undef HAVE_STDINT_H
+
+
 /* Define to the address where bug reports for this package should be sent. */
 #undef PACKAGE_BUGREPORT
 
