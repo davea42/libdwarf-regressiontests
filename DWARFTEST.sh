@@ -27,6 +27,15 @@ then
   exit 1
 fi
 
+if [ -x /usr/bin/python3 ]
+then
+  mypydir=python3
+  mypycom=python3 
+else
+  mypydir=python2
+  mypycom=python
+fi
+
 # Do the following two for address-sanitization.
 # Not all tests will be run in that case.
 
@@ -236,7 +245,7 @@ runtest () {
 	shift
 	
         totaltestcount=`expr $totaltestcount + 1`
-        pctstring=`python3 showpct.py $totaltestcount`
+        pctstring=`$mypycom $mypydir/showpct.py $totaltestcount`
         echo "=====START Pct $pctstring  $*  $targ" 
         rm -f core
         rm -f tmp1 tmp2 tmp3
@@ -1267,9 +1276,9 @@ done
 rm -f /tmp/dwba.$$
 rm -f /tmp/dwbb.$$
 echo "base dwarfdump times"
-python3 usertime.py baseline $otimeout
+$mypycom $mypydir/usertime.py baseline $otimeout
 echo "new  dwarfdump times"
-python3 usertime.py newversn $ntimeout
+$mypycom $mypydir/usertime.py newversn $ntimeout
 echo PASS $goodcount
 echo FAIL $failcount
 
