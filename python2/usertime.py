@@ -41,7 +41,7 @@ def processfile(path):
   try:
     file = open(tfilename,"r")
   except IOError , message:
-    print "File could not be opened: ", message, file=sys.stderr 
+    print >> sys.stderr, "File could not be opened: ", message
     sys.exit(1)
   linecount = 0
   maxusecs = 0.0
