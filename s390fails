@@ -14,16 +14,31 @@ of an inapplicable constant (not located yet).
 
 2)
 sh  debugfissionb/runtest.sh
-< Hash found.
-< <0> tag: 2 DW_TAG_class_type  name: "new_allocator<std::tr1::__detail::_
-Hash_node<std::pair<const gold::Symbol* const, int>, false> >" FORM 0x1f02
- "DW_FORM_GNU_str_index"
----
-> tuhash DW_DLV_NO_ENTRY.
-FAIL test thash1.base vs junk.thash1.base
+On home sys:
+../simplereader --cufissionhash=0441e597e1e38549 ./ld-new.dwp
+Hex key = 0x0441e597e1e38549
 
-and cu hash not found either.
+Getting fission data for CU key 0441e597e1e38549
+Hash found.
 
+  Fission section     = .debug_cu_index
+  Fission index       = 0x00000025
+  Fission hash        = 0x0441e597e1e38549
+  Fission entries     = offset     size        DW_SECTn
+  DW_SECT_INFO        = 0x006e0d71 0x0003325e  1
+  DW_SECT_ABBREV      = 0x000319cc 0x000016a1  3
+  DW_SECT_LINE        = 0x0001e718 0x00000e1b  4
+  DW_SECT_STR_OFFSETS = 0x0020f0a8 0x00011488  6
+q3 605: 
+
+And on s390
+ ../simplereader --cufissionhash=0441e597e1e38549 ./ld-new.dwp
+Hex key = 0x0441e597e1e38549
+
+Getting fission data for CU key 0441e597e1e38549
+cufissionhash DW_DLV_NO_ENTRY.
+
+Another issue:
 ../simplereader ../pe1/kask-dwarfdump_64.exe
 Error in dwarf_next_cu_header: DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE (342) Corrupt dwarf
 
