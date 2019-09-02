@@ -14,20 +14,32 @@ of an inapplicable constant (not located yet).
 
 2)
 sh  debugfissionb/runtest.sh
-Not finding fission sections.
+< Hash found.
+< <0> tag: 2 DW_TAG_class_type  name: "new_allocator<std::tr1::__detail::_
+Hash_node<std::pair<const gold::Symbol* const, int>, false> >" FORM 0x1f02
+ "DW_FORM_GNU_str_index"
+---
+> tuhash DW_DLV_NO_ENTRY.
+FAIL test thash1.base vs junk.thash1.base
+
+and cu hash not found either.
+
+../simplereader ../pe1/kask-dwarfdump_64.exe
+Error in dwarf_next_cu_header: DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE (342) Corrupt dwarf
 
 3)
 =====START   data16 runtest.sh
 FAIL data16 build junk.bin from dwarfgen
 FAIL data16  
 The MIN_INST_LENGTH pro_line.h shows is wrong
-for the object/host (depends on a define) 
+for the object/host (depends on a that define) 
 
 4)
 FAIL dwgena test DWARF2 -vvv 9
 update via: mv junk9.new test9.base ; gzip test9.base
 FAIL dwgena/runtest.sh
-Ah. this is not good either.
+The MIN_INST_LENGTH pro_line.h shows is wrong
+for the object/host (depends on a that define) 
 
 
 5)
