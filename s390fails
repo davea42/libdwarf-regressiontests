@@ -1,0 +1,42 @@
+
+2 Sep 2019
+The following represent issues/bugs. 
+Things to be fixed.
+Everything else works, I believe.
+
+1)
+=====START   offsetfromlowpc sh runtest.sh ../dwarfgen .././dwarfdump  ../simplereader
+FAIL C run .././dwarfdump -i -M junktesthipcoffsetorig.o
+FAIL offsetfromlowpc
+diff baseadvlocf junkadvlocf
+Here we get an odd frame address. Surely another issue
+of an inapplicable constant (not located yet).
+
+2)
+sh  debugfissionb/runtest.sh
+Not finding fission sections.
+
+3)
+=====START   data16 runtest.sh
+FAIL data16 build junk.bin from dwarfgen
+FAIL data16  
+The MIN_INST_LENGTH pro_line.h shows is wrong
+for the object/host (depends on a define) 
+
+4)
+FAIL dwgena test DWARF2 -vvv 9
+update via: mv junk9.new test9.base ; gzip test9.base
+FAIL dwgena/runtest.sh
+Ah. this is not good either.
+
+
+5)
+=====START   dwarfextract/runtest.sh .././dwarfdump /tmp/regressionbuild /home/linux1/dwarf/regressiontests/../code /home/linux1/dwarf/regressiontests/libdwarf.a
+dwarfextract.c:91:17: fatal error: bfd.h: No such file or directory
+ #include <bfd.h>
+                 ^
+compilation terminated.
+runtest.sh: line 23: ./dwarfextract: No such file or directory
+FAIL dwarfextract test0
+FAIL dwarfextract
+
