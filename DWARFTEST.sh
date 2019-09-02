@@ -27,13 +27,19 @@ then
   exit 1
 fi
 
-if [ -x /usr/bin/python3 ]
+# In FreeBSD python2 &3 in /usr/local/bin, not /usr/bin
+p3=`which python3`
+if [ $? -eq 0 ]
 then
   mypydir=python3
-  mypycom=python3 
+  mypycom=$p3
 else
-  mypydir=python2
-  mypycom=python
+  p2=`which python2`
+  if [ $? -eq 0 ]
+  then
+    mypydir=python2
+    mypycom=$p2
+  fi
 fi
 
 # Do the following two for address-sanitization.
