@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if  [ $# -eq 0 ]
+then
+    echo supply file with list of objects
+    exit 1
+fi
+path=$1
+
+while read n
+do
+  readelfobj $n | grep '[.]gnu_debuglink' >/tmp/junk2
+  if [ $? -eq 0 ]
+  then
+    echo "debuglink in $n"
+  #else
+  #  echo "NO debuglink in $n"
+  fi
+done  < $path
+
