@@ -2,7 +2,7 @@
 
 if  [ $# -eq 0 ]
 then
-    echo supply file with list of objects
+    echo supply file with list of objects in a file
     exit 1
 fi
 path=$1
@@ -12,7 +12,8 @@ do
   readelfobj $n | grep '[.]gnu_debuglink' >/tmp/junk2
   if [ $? -eq 0 ]
   then
-    echo "debuglink in $n"
+    echo -n  $n " " >/tmp/junk3
+    cat /tmp/junk3 /tmp/junk2
   #else
   #  echo "NO debuglink in $n"
   fi

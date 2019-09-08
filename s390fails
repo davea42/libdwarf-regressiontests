@@ -4,6 +4,9 @@ The following represent issues/bugs.
 Things to be fixed.
 Everything else works, I believe.
 
+s390 C predefines by GNUc:
+__s390x__ or __s390__
+
 1)
 =====START   offsetfromlowpc sh runtest.sh ../dwarfgen .././dwarfdump  ../simplereader
 FAIL C run .././dwarfdump -i -M junktesthipcoffsetorig.o
@@ -48,6 +51,7 @@ FAIL data16 build junk.bin from dwarfgen
 FAIL data16  
 The MIN_INST_LENGTH pro_line.h shows is wrong
 for the object/host (depends on a that define) 
+Now setting MIN_INST_LENGTH to 1 always in pro_frame.h
 
 4)
 FAIL dwgena test DWARF2 -vvv 9
@@ -55,6 +59,7 @@ update via: mv junk9.new test9.base ; gzip test9.base
 FAIL dwgena/runtest.sh
 The MIN_INST_LENGTH pro_line.h shows is wrong
 for the object/host (depends on a that define) 
+Now setting MIN_INST_LENGTH to 1 always in pro_frame.h
 
 
 5)

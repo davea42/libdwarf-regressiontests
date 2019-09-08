@@ -361,6 +361,15 @@ runtest () {
 }
 # end 'runtest'
 
+# .gnu_debuglink section tests.
+runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
+if [ -f /lib/x86_64-linux-gnu/libc-2.27.so ]
+then
+  runtest $d1 $d2 /lib/x86_64-linux-gnu/libc-2.27.so --print-gnu-debuglink
+else
+  echo "=====SKIP  --print-gnu-debuglink /lib/x86_64-linux-gnu/libc-2.27.so"
+fi
+
 # sample object with DW_AT_containing type in a use
 # which is standard
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr
