@@ -1,0 +1,18 @@
+#!/bin/bash
+# Expects a line with readelfobj as emitted by scripts/checkforsection
+
+if  [ $# -eq 0 ]
+then
+    echo supply file with list of objects in a file
+    exit 1
+fi
+path=$1
+
+while read name n s l sect flag 
+do
+  echo
+  echo $name
+  hxdump -s $s -l $l $name
+done  < $path
+
+
