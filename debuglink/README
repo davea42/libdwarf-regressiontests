@@ -1,0 +1,22 @@
+#September 8, 2019
+#
+#See https://sourceware.org/gdb/onlinedocs/gdb/Separate-Debug-Files.html
+#
+#Building a small application to check the crc
+#and to also be an example of the debuglink crc
+#calculation.
+#
+#Build with
+   cc -g -Wall -Werror crc32.c -o crc32 
+   objcopy --only-keep-debug crc32 crc32.debug
+   objcopy --strip-debug crc32
+   objcopy --add-gnu-debuglink=crc32.debug crc32
+   dwarfdump --print-gnu-debuglink crc32
+   ./crc32
+
+#See the objcopy man page  and the
+#web page shown aboveas --only-keep-debug
+#by itself creates a "build id" version.
+#
+#Normally the application will not be rebuilt,
+#but used for testing.

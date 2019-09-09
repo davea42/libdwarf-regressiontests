@@ -362,6 +362,10 @@ runtest () {
 # end 'runtest'
 
 # .gnu_debuglink section tests.
+cd debuglink
+sh runtest.sh
+cd ..
+
 runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
 if [ -f /lib/x86_64-linux-gnu/libc-2.27.so ]
 then
