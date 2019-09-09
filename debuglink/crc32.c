@@ -122,18 +122,21 @@ int main()
     memset(&statbuf,0,sizeof(struct stat));
     fd = open(path,O_RDONLY|O_BINARY);
     if (fd < 1) {
+         free(readbuf);
          printf("Open of %s failed\n",path);
          exit(1);
     }
 
     res = fstat(fd,&statbuf);
     if (res) {
+         free(readbuf);
          printf("fstat failed on %s\n",path);
          exit(1);
     }
 
     filesize = statbuf.st_size;
     if (filesize < 1) {
+         free(readbuf);
          printf("Empty file! %s ignored.\n",path);
          exit(1);
     }
@@ -149,6 +152,7 @@ int main()
         }
         num = read(fd,readbuf,readsize);
         if ((size_t)num != readsize) {
+             free(readbuf);
              printf("Read of readsize %lu failed, got %ld bytes\n",
                  (unsigned long)readsize,(long)num);
              exit(1);
@@ -158,5 +162,6 @@ int main()
         remaining -= readsize;
     }
     dump_bytes(" crc in order: ",(unsigned char *)&crc,4);
+    free(readbuf);
     return 0;
 }

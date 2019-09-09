@@ -1,6 +1,14 @@
 #!/bin/sh
 dd=../dwarfdump
 
+if [ x$NLIZE = 'xy' ]
+then
+  nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
+else
+  nli=
+fi
+
+
 $dd --print-gnu-debuglink crc32 >junklink
 diff baselink junklink 
 if [ $? -ne 0 ]
@@ -10,7 +18,7 @@ then
     exit 1
 fi
 
-cc crc32.c -o junkcrc32 > junkcompilestdout 2> junkcompileoutstderr
+cc $nli crc32.c -o junkcrc32 > junkcompilestdout 2> junkcompileoutstderr
 if [ $? -ne 0 ]
 then
     echo FAIL compile debuglink/junkcrc32
