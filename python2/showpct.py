@@ -2,7 +2,7 @@
 import sys
 
 # An approximation of the actual full count.
-total= 18660.0
+total= 18860.0
 
 if __name__ == '__main__':
   if len(sys.argv) == 2:
