@@ -9,21 +9,26 @@ else
 fi
 
 
+# The suggested text emitted is /home on ubuntu
+# and /usr/home on freebsd. Lets change /usr/home
+# to plain home
 $dd --print-gnu-debuglink crc32 >junklink
-diff baselink junklink 
+sed  'sx/usr/home/x/home/x' <junklink >junklinkx
+diff baselink junklinkx 
 if [ $? -ne 0 ]
 then
     echo "FAIL debuglink base link wrong"
-    echo "To update: mv junklink baselink"
+    echo "To update: mv junklinkx baselink"
     exit 1
 fi
 
 $dd --print-gnu-debuglink crc32.debug >junklinkc
-diff baselinkc junklinkc
+sed  'sx/usr/home/x/home/x' <junklinkc >junklinkcx
+diff baselinkc junklinkcx
 if [ $? -ne 0 ]
 then
     echo "FAIL debuglink base link wrong"
-    echo "To update: mv junklinkc baselinkc"
+    echo "To update: mv junklinkcx baselinkc"
     exit 1
 fi
 
