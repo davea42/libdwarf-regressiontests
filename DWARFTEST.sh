@@ -361,7 +361,14 @@ runtest () {
 }
 # end 'runtest'
 
-# .gnu_debuglink section tests.
+# New September 11, 2019.
+echo "=====START  testoffdie runtest.sh $top_srcdir $top_builddir"
+cd testoffdie
+sh runtest.sh $top_srcdir $top_builddir
+cd ..
+
+# .gnu_debuglink and .note.gnu.build-id  section tests.
+echo "=====START  debuglink  runtest.sh"
 cd debuglink
 sh runtest.sh
 cd ..

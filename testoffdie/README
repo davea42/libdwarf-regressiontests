@@ -1,0 +1,11 @@
+This test reproduces (in top of trunk master
+as of Sept 10, 2019) a libdwarf segfault.
+
+The problem was in the revised version of
+dwarf_siblingof() and dwarf_siblingof_b().
+
+Thanks to Steve Kaufmann for reporting the problem
+and helping to understand the call sequence
+that exposed the bug.
+
+
