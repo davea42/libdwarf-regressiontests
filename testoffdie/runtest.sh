@@ -24,10 +24,20 @@ then
    echo FAIL compile testoffdie/testoffdie.c 
 fi
 
-./junkoffdie
+./junkoffdie >junkout
 r=$?
 if [ $r -ne 0 ]
 then
    echo FAIL run  testoffdie/junkoffdie 
    exit 1
 fi
+diff baseout junkout
+if [ $? -ne 0 ]
+then
+  echo "FAIL mismatch expected from testoffdie/runtest.sh $1 $2"
+  echo " To update expected result: mv junkout baseout"
+  exit 1
+fi
+echo PASS testoffdie/runtest.sh
+exit 0
+
