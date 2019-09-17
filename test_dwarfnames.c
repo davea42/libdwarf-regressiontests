@@ -1,7 +1,8 @@
-
-/* Test code to verify table and switch code work
-   in libdwarf.
+/*  Copyright (c) 2019  David Anderson
+    This code is hereby placed into the public domain.
 */
+/* Test code to verify table and switch code work
+   in libdwarf. */
 
 
 #include <stdio.h>

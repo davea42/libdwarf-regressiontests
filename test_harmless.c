@@ -1,4 +1,6 @@
-
+/*  Copyright (c) 2019  David Anderson
+    This code is hereby placed into the public domain.
+*/
 /* Test code to verify the correct functioning of the
    dwarf 'harmless error' interfaces
    in libdwarf.
@@ -6,7 +8,6 @@
    On an irregular basis it is wise to run this under
    valgrind (or the like) to verify there is no space leakage.
 */
-
 
 #include <stdio.h>
 #include <dwarf.h>

@@ -27,6 +27,22 @@ then
   exit 1
 fi
 
+endian=L
+cc testendian.c -o testendian
+if [ $? -eq 0 ]
+then
+  endian=`./testendian`
+  if [ $? -eq 0 ]
+  then
+    echo "Test Host Endianness (via testendian.c) (B or L): $endian"
+  else
+    echo "FAIL determining test host endianness. Assume littleendian"
+  fi
+else
+  echo "FAIL compiling test host endianness test. Assume littleendian"
+fi
+echo "Test Host Endianness in use: $endian"
+
 # In FreeBSD python2 &3 in /usr/local/bin, not /usr/bin
 p3=`which python3`
 if [ $? -eq 0 ]
@@ -41,16 +57,6 @@ else
     mypycom=$p2
   fi
 fi
-
-intelbase=y
-uname -a >/tmp/unameout
-egrep '(x86_64|i686|i386)'   </tmp/unameout >/dev/null
-if [ $? -ne 0 ]
-then
-  intelbase=n
-fi
-
-
 
 # Do the following two for address-sanitization.
 # Not all tests will be run in that case.
@@ -1068,7 +1074,7 @@ cd ..
 
 if [ $NLIZE = 'n' ]
 then
-  if [ $intelbase = "y" ]
+  if [ $endian = 'L' ]
   then
     echo "=====START   dwarfextract/runtest.sh ../$d2 $top_builddir $top_srcdir $dwlib"
     # This has serious problems with leaks, so
@@ -1079,7 +1085,7 @@ then
     chkres $?  dwarfextract
     cd ..
   else
-    echo "=====SKIP  dwarfextract/runtest.sh with non-intel"
+    echo "=====SKIP  dwarfextract/runtest.sh with big endian test host"
   fi
 else
 echo "=====SKIP  dwarfextract/runtest.sh with NLIZE"
