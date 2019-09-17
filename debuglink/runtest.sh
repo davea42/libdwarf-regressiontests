@@ -11,24 +11,27 @@ fi
 
 # The suggested text emitted is /home on ubuntu
 # and /usr/home on freebsd. Lets change /usr/home
-# to plain home
+# to plain home.  s390 ubuntu base is /home/ubuntu
+# so fix that one too.
 $dd --print-gnu-debuglink crc32 >junklink
 sed  'sx/usr/home/x/home/x' <junklink >junklinkx
-diff baselink junklinkx 
+sed  'sx/home/ubuntu/x/home/davea/x' <junklinkx >junklinky
+diff baselink junklinky 
 if [ $? -ne 0 ]
 then
     echo "FAIL debuglink base link wrong"
-    echo "To update: mv junklinkx baselink"
+    echo "To update: mv junklinky baselink"
     exit 1
 fi
 
 $dd --print-gnu-debuglink crc32.debug >junklinkc
 sed  'sx/usr/home/x/home/x' <junklinkc >junklinkcx
-diff baselinkc junklinkcx
+sed  'sx/home/ubuntu/x/home/davea/x' <junklinkcx >junklinkcy
+diff baselinkc junklinkcy
 if [ $? -ne 0 ]
 then
     echo "FAIL debuglink base link wrong"
-    echo "To update: mv junklinkcx baselinkc"
+    echo "To update: mv junklinkcy baselinkc"
     exit 1
 fi
 

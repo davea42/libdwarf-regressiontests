@@ -1,3 +1,11 @@
+2019-09-17 David Anderson
+   * DWARFTEST.sh: Now uses testendian.c
+     to determine test host endianness.
+   * test_dwarfnames.c,test_harmless.c: Indentation
+     fixed and trailing whitespace removed.
+   * testendian.c: New test for test host endianess
+     as at least one test (dwarfextract) was not
+     written to allow anything but little-endian testing.
 2019-04-25 David Anderson
    * PICKUPBIN: Now builds a dwarfdump with --disable-libelf
      and copies it to the top level for testing as dwarfdumpnl.

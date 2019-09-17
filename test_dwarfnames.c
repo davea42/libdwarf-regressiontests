@@ -1,8 +1,8 @@
 /*  Copyright (c) 2019  David Anderson
     This code is hereby placed into the public domain.
 */
-/* Test code to verify table and switch code work
-   in libdwarf. */
+/*  Test code to verify table and switch code work
+    in libdwarf. */
 
 
 #include <stdio.h>
@@ -11,19 +11,18 @@
 
 typedef int (*tfunc)(unsigned int, const char **out);
 
-
 static void
 run_test(tfunc callme, const char *name)
 {
     unsigned i;
     for ( i = 0; i < 50; ++i) {
-          const char *out = 0;
-          int res = callme(i,&out);
-          if(res == DW_DLV_OK) {
-             printf(" %s %d %s\n",name,i,out);
-          } else {
-             printf(" %s %d not valid code \n",name,i);
-          }
+        const char *out = 0;
+        int res = callme(i,&out);
+        if(res == DW_DLV_OK) {
+            printf(" %s %d %s\n",name,i,out);
+        } else {
+            printf(" %s %d not valid code \n",name,i);
+        }
     }
 }
 

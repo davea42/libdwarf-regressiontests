@@ -4,7 +4,7 @@
 /* Test code to verify the correct functioning of the
    dwarf 'harmless error' interfaces
    in libdwarf.
-  
+
    On an irregular basis it is wise to run this under
    valgrind (or the like) to verify there is no space leakage.
 */
@@ -72,14 +72,14 @@ run_test1()
     }
     if(strcmp(harmless[0],hbuf[0]) ) {
         printf("Failure,  \"%s\" vs \"%s\" 1 error wrong string line %d\n",
-           harmless[0],hbuf[0],__LINE__);
+            harmless[0],hbuf[0],__LINE__);
         return 1;
     }
     if(hbuf[1] != 0) {
         printf("Failure, 1 error bad terminator line %d\n",__LINE__);
         return 1;
     }
-    return 0; 
+    return 0;
 }
 static int
 run_test2()
@@ -97,13 +97,15 @@ run_test2()
         return 1;
     }
     if(strcmp(harmless[1],hbuf[0]) ) {
-        printf("Failure,  \"%s\" vs \"%s\" 1 error wrong string line %d\n",
-           harmless[1],hbuf[0],__LINE__);
+        printf("Failure,  \"%s\" vs \"%s\" 1 error wrong "
+            "string line %d\n",
+            harmless[1],hbuf[0],__LINE__);
         return 1;
     }
     if(strcmp(harmless[2],hbuf[1]) ) {
-        printf("Failure,  \"%s\" vs \"%s\" 1 error wrong string line %d\n",
-           harmless[2],hbuf[1],__LINE__);
+        printf("Failure,  \"%s\" vs \"%s\" 1 error wrong "
+            "string line %d\n",
+            harmless[2],hbuf[1],__LINE__);
         return 1;
     }
     if(hbuf[2] != 0) {
@@ -116,10 +118,11 @@ run_test2()
     }
     res = dwarf_get_harmless_error_list(dbg,2,&hbuf[0],&totalct);
     if(res != DW_DLV_NO_ENTRY) {
-        printf("Failure, 1 error expected no new entry line %d\n",__LINE__);
+        printf("Failure, 1 error expected no new entry "
+            "line %d\n",__LINE__);
         return 1;
     }
-    return 0; 
+    return 0;
 }
 static int
 run_test3()
@@ -142,22 +145,22 @@ run_test3()
     }
     if(strcmp(harmless[1],hbuf[0]) ) {
         printf("Failure,  \"%s\" vs \"%s\" 1 error wrong string line %d\n",
-           harmless[1],hbuf[0],__LINE__);
+            harmless[1],hbuf[0],__LINE__);
         return 1;
     }
     if(strcmp(harmless[2],hbuf[1]) ) {
         printf("Failure,  \"%s\" vs \"%s\" 1 error wrong string line %d\n",
-           harmless[2],hbuf[1],__LINE__);
+            harmless[2],hbuf[1],__LINE__);
         return 1;
     }
     if(strcmp(harmless[3],hbuf[2]) ) {
         printf("Failure,  \"%s\" vs \"%s\" 1 error wrong string line %d\n",
-           harmless[3],hbuf[2],__LINE__);
+            harmless[3],hbuf[2],__LINE__);
         return 1;
     }
     if(strcmp(harmless[4],hbuf[3]) ) {
         printf("Failure,  \"%s\" vs \"%s\" 1 error wrong string line %d\n",
-           harmless[4],hbuf[3],__LINE__);
+            harmless[4],hbuf[3],__LINE__);
         return 1;
     }
     if(hbuf[4] != 0) {
@@ -179,6 +182,7 @@ run_test4()
     unsigned totalct = 0;
     int res = DW_DLV_ERROR;
     int oldsize = 0;
+
     dwarf_insert_harmless_error(dbg,harmless[0]);
     dwarf_insert_harmless_error(dbg,harmless[1]);
     dwarf_insert_harmless_error(dbg,harmless[2]);
@@ -190,7 +194,6 @@ run_test4()
             oldsize,DW_HARMLESS_ERROR_CIRCULAR_LIST_DEFAULT_SIZE,__LINE__);
         return 1;
     }
-    
     res = dwarf_get_harmless_error_list(dbg,8,&hbuf[0],&totalct);
     if(res != DW_DLV_OK) {
         printf("Failure, expected OK result line %d\n",__LINE__);
@@ -202,12 +205,12 @@ run_test4()
     }
     if(strcmp(harmless[3],hbuf[0]) ) {
         printf("Failure,  \"%s\" vs \"%s\" 1 error wrong string line %d\n",
-           harmless[3],hbuf[0],__LINE__);
+            harmless[3],hbuf[0],__LINE__);
         return 1;
     }
     if(strcmp(harmless[4],hbuf[1]) ) {
         printf("Failure,  \"%s\" vs \"%s\" 1 error wrong string line %d\n",
-           harmless[4],hbuf[1],__LINE__);
+            harmless[4],hbuf[1],__LINE__);
         return 1;
     }
     if(hbuf[2] != 0) {
@@ -216,7 +219,8 @@ run_test4()
     }
     res = dwarf_get_harmless_error_list(dbg,2,&hbuf[0],&totalct);
     if(res != DW_DLV_NO_ENTRY) {
-        printf("Failure, 1 error expected no new entry line %d\n",__LINE__);
+        printf("Failure, 1 error expected no new entry line %d\n",
+            __LINE__);
         return 1;
     }
     return 0;
@@ -243,15 +247,15 @@ int main()
     }
 
     refill_hbuff();
-    errcount += run_test0(); 
+    errcount += run_test0();
     refill_hbuff();
-    errcount += run_test1(); 
+    errcount += run_test1();
     refill_hbuff();
-    errcount += run_test2(); 
+    errcount += run_test2();
     refill_hbuff();
-    errcount += run_test3(); 
+    errcount += run_test3();
     refill_hbuff();
-    errcount += run_test4(); 
+    errcount += run_test4();
     refill_hbuff();
 
     res = dwarf_finish(dbg,&error);
@@ -260,7 +264,7 @@ int main()
     }
     close(fd);
     if(errcount > 0) {
-        printf("FAIL harmless test, %d errors\n",errcount); 
+        printf("FAIL harmless test, %d errors\n",errcount);
     } else {
         printf("PASS harmless test\n");
     }
