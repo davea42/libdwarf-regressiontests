@@ -19,6 +19,8 @@
 
 #define CRCDATATYPE unsigned long
 
+#define CRCPRINTSIZE 4
+
 unsigned long
 gnu_debuglink_crc32 (unsigned long crc,
                      unsigned char *buf, size_t len)
@@ -100,7 +102,7 @@ dump_bytes(const char * msg,unsigned char *  start, unsigned long len)
 }
 
 
-int main()
+int main(int argc,char *argv[] )
 {
     char * path = "crc32.debug";
     int fd = 0;
@@ -110,7 +112,14 @@ int main()
     int res;
     struct stat statbuf;
     unsigned char * readbuf = 0;
+    unsigned bigendian = 0;
     CRCDATATYPE crc = 0;
+
+    if (argc > 1) {
+        if (!strcmp("--B",argv[1])) {
+           bigendian=1;
+        }
+    }
 
     readbuf = malloc(batchsize);
     if(!readbuf) {
@@ -161,7 +170,32 @@ int main()
         crc = revcrc;
         remaining -= readsize;
     }
-    dump_bytes(" crc in order: ",(unsigned char *)&crc,4);
+#ifdef BIGEND
+    {
+        unsigned offset = sizeof(crc) - CRCPRINTSIZE;
+        /*  For test purposes (so we get identical results
+            on big-endian as to little-endian)
+            we swap the bytes here. Though that
+            is not intended (apparently) by the GNU
+            crc documentation. */
+        unsigned char bytes[CRCPRINTSIZE];
+        unsigned char * origbytes = ((unsigned char *)&crc)+offset;
+        int i = 0;
+         
+        for (i = 0; i < CRCPRINTSIZE; ++i ) {
+            bytes[i] = *(origbytes + (CRCPRINTSIZE -1 -i));
+        }
+        dump_bytes(" crc in order: ",
+             bytes,
+            CRCPRINTSIZE);
+    } 
+#else
+    {
+        dump_bytes(" crc in order: ",
+            (unsigned char *)&crc,
+            CRCPRINTSIZE);
+    }
+#endif
     free(readbuf);
     return 0;
 }

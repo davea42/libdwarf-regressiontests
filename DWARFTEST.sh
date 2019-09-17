@@ -28,6 +28,7 @@ then
 fi
 
 endian=L
+export endian
 cc testendian.c -o testendian
 if [ $? -eq 0 ]
 then

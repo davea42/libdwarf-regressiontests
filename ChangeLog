@@ -6,6 +6,9 @@
    * testendian.c: New test for test host endianess
      as at least one test (dwarfextract) was not
      written to allow anything but little-endian testing.
+   * debuglink/crc32.c,debuglink/runtest.sh: These
+     now adjust so that, for test purposes, the hex output
+     is identical for little vs big endian test hosts.
 2019-04-25 David Anderson
    * PICKUPBIN: Now builds a dwarfdump with --disable-libelf
      and copies it to the top level for testing as dwarfdumpnl.

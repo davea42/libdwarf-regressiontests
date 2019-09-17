@@ -1,12 +1,18 @@
 #!/bin/sh
 dd=../dwarfdump
-
 if [ x$NLIZE = 'xy' ]
 then
   nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 else
   nli=
 fi
+if [ x$endian = "xB" ]
+then
+	beopt=-DBIGEND
+else
+	beopt=
+fi
+
 
 
 # The suggested text emitted is /home on ubuntu
@@ -35,7 +41,7 @@ then
     exit 1
 fi
 
-cc $nli crc32.c -o junkcrc32 > junkcompilestdout 2> junkcompileoutstderr
+cc $nli $beopt crc32.c -o junkcrc32 > junkcompilestdout 2> junkcompileoutstderr
 if [ $? -ne 0 ]
 then
     echo FAIL compile debuglink/junkcrc32
