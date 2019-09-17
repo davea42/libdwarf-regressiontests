@@ -42,6 +42,16 @@ else
   fi
 fi
 
+intelbase=y
+uname -a >/tmp/unameout
+egrep '(x86_64|i686|i386)'   </tmp/unameout >/dev/null
+if [ $? -ne 0 ]
+then
+  intelbase=n
+fi
+
+
+
 # Do the following two for address-sanitization.
 # Not all tests will be run in that case.
 
@@ -1058,14 +1068,19 @@ cd ..
 
 if [ $NLIZE = 'n' ]
 then
-echo "=====START   dwarfextract/runtest.sh ../$d2 $top_builddir $top_srcdir $dwlib"
-# This has serious problems with leaks, so
-# do not do $NLIZE for now..
-cd dwarfextract
-rm -f dwarfextract
-sh runtest.sh ../$d2 $top_builddir $top_srcdir $dwlib
-chkres $?  dwarfextract
-cd ..
+  if [ $intelbase = "y" ]
+  then
+    echo "=====START   dwarfextract/runtest.sh ../$d2 $top_builddir $top_srcdir $dwlib"
+    # This has serious problems with leaks, so
+    # do not do $NLIZE for now..
+    cd dwarfextract
+    rm -f dwarfextract
+    sh runtest.sh ../$d2 $top_builddir $top_srcdir $dwlib
+    chkres $?  dwarfextract
+    cd ..
+  else
+    echo "=====SKIP  dwarfextract/runtest.sh with non-intel"
+  fi
 else
 echo "=====SKIP  dwarfextract/runtest.sh with NLIZE"
 fi

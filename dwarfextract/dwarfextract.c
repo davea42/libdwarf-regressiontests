@@ -1462,7 +1462,7 @@ walk_die_and_children(Dwarf_Debug dbg, Dwarf_Die die, Dwarf_P_Die parent_p_die)
 			*/
 
 			if (producer_p_die == (Dwarf_P_Die)DW_DLV_BADADDR) {
-				__asm__("int $3");
+				/*__asm__("int $3"); bad for testing libdwarf */
 				printf ("first dwarf_die_link failed\n");
 				exit(1);
 			}
