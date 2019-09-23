@@ -1,15 +1,20 @@
 #!/bin/sh
 # This should create testhipcoffset.o  with several
 # instances of DW_AT_high_pc being a class constant (offset).
-# The dwarfdump.o has all the high pc as class address.
+# The dwarfdump??.o has all the high pc as class address.
 # WE don't check for non-zero exit codes of dwarfgen
 # as with --enable-sanitized there are leaks.
+# The add-frame-advance_loc don't fully work with
+# 32 bit because the big address values get chopped to 32bit.
 
 #set -x
 # arg 1 is dwarfgen name, 2 is dwarfdumpname 3 is simplereader
 gen=$1
 dd=$2
 sim=$3
+
+objf=dwarfdumpLE32V2.o
+objf2=dwarfdumpLE64V4.o
 
 tx=junktesthipcoffset.o
 ty=junktesthipcoffsetorig.o
@@ -64,18 +69,18 @@ then
     exit 1
 fi
 
-$gen  -h -t obj -c 0 -o $tx dwarfdump.o  >$t4 2>/dev/null
+$gen  --high-pc-as-const -t obj -c 0 -o $tx $objf  >$t4 2>/dev/null
 #if [ $? -ne 0 ]
 #then
-#  echo "FAIL A run dwarfgen $gen  -h -t obj -c 0 -o $tx dwarfdump.o" 
+#  echo "FAIL A run dwarfgen $gen  -h -t obj -c 0 -o $tx $objf" 
 #  exit 1
 #fi
 
 # This one no conversion, DW_FORM_string.
-$gen -r  -t obj -c 0 -o $ty dwarfdump.o  >$t8 2> $t8e
+$gen --show-reloc-details  -t obj -c 0 -o $ty $objf  >$t8 2> $t8e
 #if [ $? -ne 0 ]
 #then
-#  echo "FAIL B run dwarfgen $gen -r  -t obj -c 0 -o $ty dwarfdump.o"
+#  echo "FAIL B run dwarfgen $gen -r  -t obj -c 0 -o $ty $objf"
 #  exit 1
 #fi
 $dd -i -M $ty  >$t1 2> /dev/null
@@ -86,17 +91,17 @@ then
 fi
 
 # gens DW_FORM_strp
-$gen -r  -s  -t obj -c 0 -o $tz dwarfdump.o |grep 'Debug_Str:'  >$t9 2> $t9e
+$gen --show-reloc-details  --default-form-strp  -t obj -c 0 -o $tz $objf |grep 'Debug_Str:'  >$t9 2> $t9e
 #if [ $? -ne 0 ]
 #then
-#  echo "FAIL D run dwarfgen $gen -r  -s  -t obj -c 0 -o $tz dwarfdump.o"
+#  echo "FAIL D run dwarfgen $gen -r  -s  -t obj -c 0 -o $tz $objf"
 #  exit 1
 #fi
 echo Now show FORM_str and more for $tz >$ta
 $dd -i -M $tz |grep DW_FORM_str  >>$ta 2> /dev/null
 if [ $? -ne 0 ]
 then
-  echo "FAIL E run $dd -i -M $tz "
+  echo "FAIL E run $dd -i -M $tz | grep DW_FORM_str"
   exit 1
 fi
 
@@ -144,7 +149,7 @@ grep high_pc $t2  >$t6 2>/dev/null
 diff   basehighpc2 $t6
 if [ $? -ne 0 ]
 then
-    echo "did: $gen  -h -t obj -c 0 -o $tx dwarfdump.o  >$t4 "
+    echo "did: $gen  -h -t obj -c 0 -o $tx $objf  >$t4 "
     echo "did: $dd -i -M $tx > $t6"
     echo "did: diff   basehighpc2 $t6"
     echo FAIL diff basehighpc2 $t6
@@ -182,10 +187,10 @@ then
     exit 1
 fi
 
-$gen --add-frame-advance-loc -h -t obj -c 0 -o junk.o dwarfdump.o >$tg1
+$gen --add-frame-advance-loc --high-pc-as-const -t obj -c 0 -o junk.o $objf >$tg1
 if [ $? -ne 0 ]
 then
-  echo "FAIL K run $gen --add-frame-advance-loc -h -t obj -c 0 -o junk.o dwarfdump.o"
+  echo "FAIL K run $gen --add-frame-advance-loc -h -t obj -c 0 -o junk.o $objf"
   exit 1
 fi
 
