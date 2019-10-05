@@ -1,3 +1,8 @@
+2019-10-04 David Anderson
+   * offsetfromlowpc/baseadvlocf,offsetfromlowpc/baseadvlocvf,
+     offsetfromlowpc/runtest.sh: Now the test of the advance-8
+     CFA instruction applies to a 64bit pointer object and
+     the fde code-length is adjusted usefully.
 2019-09-17 David Anderson
    * DWARFTEST.sh: Now uses testendian.c
      to determine test host endianness.

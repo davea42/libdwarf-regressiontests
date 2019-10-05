@@ -9,9 +9,9 @@
 
 #set -x
 # arg 1 is dwarfgen name, 2 is dwarfdumpname 3 is simplereader
-gen=$1
-dd=$2
-sim=$3
+gen=../dwarfgen
+dd=../dwarfdump
+sim=../simplereader
 
 objf=dwarfdumpLE32V2.o
 objf2=dwarfdumpLE64V4.o
@@ -187,27 +187,27 @@ then
     exit 1
 fi
 
-$gen --add-frame-advance-loc --high-pc-as-const -t obj -c 0 -o junk.o $objf >$tg1
+$gen --add-frame-advance-loc -p 8 -f 4 -v 4  --high-pc-as-const -t obj -c 0 -o junk.o $objf2 >$tg1
 if [ $? -ne 0 ]
 then
-  echo "FAIL K run $gen --add-frame-advance-loc -h -t obj -c 0 -o junk.o $objf"
+  echo "FAIL K run $gen --add-frame-advance-loc ...  -h -t obj -c 0 -o junk.o $objf"
   exit 1
+fi
+$dd -vvv -f junk.o > $tg3     2>/dev/null
+diff baseadvlocvf $tg3
+if [ $? -ne 0 ]
+then
+    echo FAIL dwarfdump -vvv -f  junk.o offsetfromlowpc advloc err
+    echo "to update baseline do: mv $tg3 baseadvlocvf"
+    exit 1
 fi
 
 $dd -f junk.o  > $tg2      2>/dev/null
 diff baseadvlocf $tg2
 if [ $? -ne 0 ]
 then
-    echo FAIL offsetfromlowpc/runtest.sh  advloc err
+    echo FAIL dwarfdump -f junk.o  offsetfromlowpc advloc err
     echo "to update baseline do: mv $tg2 baseadvlocf"
-    exit 1
-fi
-$dd -vvv -f junk.o > $tg3     2>/dev/null
-diff baseadvlocvf $tg3
-if [ $? -ne 0 ]
-then
-    echo FAIL offsetfromlowpc/runtest.sh  advloc err
-    echo "to update baseline do: mv $tg3 baseadvlocvf"
     exit 1
 fi
 
