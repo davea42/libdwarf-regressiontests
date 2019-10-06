@@ -1,3 +1,7 @@
+2019-10-06 David Anderson
+   * dwarfdump-s390.O: Corrected libdwarf endianness issues
+     so the s390  big endian dwarfdump works as well as the
+     little-endian versions do.
 2019-10-05 David Anderson
    * dwgena/test2.base.gz,dwgena/test4.base.gz,dwgena/test7.base.gz,
      dwgena/test8.base.gz,dwgena/test9.base.gz: Changed dwarfgen
