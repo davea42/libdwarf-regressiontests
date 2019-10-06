@@ -1,3 +1,9 @@
+2019-10-05 David Anderson
+   * dwgena/test2.base.gz,dwgena/test4.base.gz,dwgena/test7.base.gz,
+     dwgena/test8.base.gz,dwgena/test9.base.gz: Changed dwarfgen
+     setting of the standard opcodes from 10 to 13 (to match
+     common practice) so this update the baselines to account
+     for the 3 extra bytes in the header.
 2019-10-04 David Anderson
    * offsetfromlowpc/baseadvlocf,offsetfromlowpc/baseadvlocvf,
      offsetfromlowpc/runtest.sh: Now the test of the advance-8
