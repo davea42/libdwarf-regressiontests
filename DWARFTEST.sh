@@ -465,6 +465,7 @@ runtest $d1 $d2 emre3/foo.dwo --print-str-offsets
 runtest $d1 $d2 emre3/main.dwo --print-str-offsets 
 runtest $d1 $d2 emre5/test33_64_opt_fpo_split.dwp
 runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp 
+runtest $d1 $d2 emre6/class_64_opt_fpo_split --print-gnu-debuglink
 
 runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b -c 
 
@@ -792,6 +793,7 @@ runtest $d1 $d2 emre/input.o -a
 
 # Has a type unit so we can see the index for such.
 runtest $d1 $d2 emre2/emre.ex -I
+runtest $d1 $d2 emre2/emre.ex --print-gnu-debuglink
 
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -i -x tied=emre5/test33_64_opt_fpo_split 
 
