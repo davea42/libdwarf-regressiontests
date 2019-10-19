@@ -36,10 +36,10 @@ rm -f ALLdd
 start=`date`
 echo "start $start"
 stsecs=`date '+%s'`
-echo begin test
+echo begin regressiontests RUNALL.sh
 ./DWARFTEST.sh dd 2>ALLdd 1>&2
 chkres $? "Failure in DWARFTEST.sh. Possibly coredump new dwarfdump? "
-chkfail ALLdd "running tests"
+chkfail ALLdd "RUNALL.sh regressiontests"
 ndsecs=`date '+%s'`
 endt=`date`
 echo "start $start"

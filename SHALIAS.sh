@@ -13,3 +13,8 @@
 # then uncomment:
 # alias make=/usr/local/bin/gmake
 
+# Once the correct aliases set up
+# either leave it in regression tests
+# or copy the modified version to ~/SHALIAS.sh
+# scripts/run-all-tests.sh uses this
+# convention. 

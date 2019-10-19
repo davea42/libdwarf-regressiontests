@@ -1,7 +1,7 @@
 #!/bin/sh
 trap "echo Exit testing due to signal ;  rm -f /tmp/dwbc.$$ /tmp/dwba.$$ /tmp/dwbb.$$ ; exit 1 " 2
 #
-echo 'Starting dwarftesth' `date`
+echo 'Starting regressiontests: DWARFTEST.sh' `date`
 . ./SHALIAS.sh
 # Here do not use DWARFTEST, we do not want to match the grep from ps
 ps -eaf >/tmp/dwbc.$$ 
@@ -140,8 +140,8 @@ sarubbo-6/1.crashes.bin
 sarubbo-5/1.crashes.bin
 sarubbo-4/libresolv.a
 jacobs/test.o
-klingler/dwarfgen_zdebug
-klingler/test_with_zdebug
+klingler/dwarfgen-zdebug
+klingler/test-with-zdebug
 diederen2/pc_dwarf_bad_attributes.elf
 diederen2/pc_dwarf_bad_sibling2.elf
 diederen2/pc_dwarf_bad_reloc_empty_debug_info.elf
@@ -151,7 +151,7 @@ diederen2/pc_dwarf_bad_string_offset.elf
 diederen3/pc_dwarf_bad_name3.elf
 emre3/a.out.dwp
 emre3/foo.dwo
-emre3/main
+emre3/main.dwo
 emre3/foo.o
 emre3/main.o 
 diederen/hello
@@ -195,9 +195,8 @@ ia64/hxdump.ia64
 ia64/mytry.ia64 
 ia32/mytry.ia32  
 ia32/libc.so.6 
-x86-64/x86_64testcase.o 
 testcase/testcase 
-Test-eh/eh-frame.386 
+test-eh/eh-frame.386 
 test-eh/test-eh.386 
 mutatee/test1.mutatee_gcc.exe 
 cristi2/libpthread-2.4.so 
@@ -233,6 +232,8 @@ irix64/libc.so
 irixn32/libc.so 
 irixn32/dwarfdump' 
 
+# Was in the list, but does not exist!
+#x86-64/x86_64testcase.o 
 
 
 stripx() {
@@ -382,18 +383,21 @@ runtest () {
 echo "=====START  testoffdie runtest.sh $top_srcdir $top_builddir"
 cd testoffdie
 sh runtest.sh $top_srcdir $top_builddir
+chkres $? "testoffdie/runtest.sh"
 cd ..
 
 # .gnu_debuglink and .note.gnu.build-id  section tests.
 echo "=====START  debuglink  runtest.sh"
 cd debuglink
 sh runtest.sh
+chkres $? "debuglink/runtest.sh"
 cd ..
 
 runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
 if [ -f /lib/x86_64-linux-gnu/libc-2.27.so ]
 then
   runtest $d1 $d2 /lib/x86_64-linux-gnu/libc-2.27.so --print-gnu-debuglink
+  chkres $? "libc-2.27.so --print-gnu-debuglink"
 else
   echo "=====SKIP  --print-gnu-debuglink /lib/x86_64-linux-gnu/libc-2.27.so"
 fi
@@ -645,7 +649,7 @@ runtest $d1 $d2  grumbach/test4.o -i -vvv
 # DW_AT_GNU_bias DWARF attributes.
 runtest $d1 $d2  grumbach/test_bias.o -i -vvv 
 runtest $d1 $d2  grumbach/test_fixed.o -i -vvv 
-runtest $d1 $d2  grumbach/test_biased.o -ka
+runtest $d1 $d2  grumbach/test_bias.o -ka
 runtest $d1 $d2  grumbach/test_fixed.o -ka
 
 
@@ -838,7 +842,7 @@ if [ $NLIZE = 'n' ]
 then
   cd data16
   sh runtest.sh
-  chkres $?  data16
+  chkres $?  "data16/runtest.sh"
   cd ..
 else
   echo "=====SKIP  data16/runtest.sh with NLIZE"
@@ -860,6 +864,8 @@ else
   echo "=====SKIP  sarubbo-9 with NLIZE"
 fi
 
+# This tries to use a nonexistent file. So we see the dwarfdump fail message.
+runtest $d1 $d2 nonexistentobj.o -i
 
 # This validates standard-based handling of DW_FORM_ref_addr
 runtest $d1 $d2 diederen/hello -i
@@ -1103,14 +1109,14 @@ cd ..
 
 if [ $NLIZE = 'n' ]
 then
-echo "=====START   legendre/runtest.sh  $top_srcdir $top_builddir"
-cd legendre
-sh runtest.sh $top_srcdir $top_builddir
-r=$?
-chkres $r  legendre
-cd ..
+  echo "=====START   legendre/runtest.sh  $top_srcdir $top_builddir"
+  cd legendre
+  sh runtest.sh $top_srcdir $top_builddir
+  r=$?
+  chkres $r  legendre
+  cd ..
 else
-echo "=====SKIP   legendre/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP   legendre/runtest.sh NLIZE as it has leaks"
 fi
 
 echo "=====START   enciso4/runtest.sh $d1 $d2"
@@ -1187,24 +1193,26 @@ fi
 
 if [ $NLIZE = 'n' ]
 then
-echo "=====START test-alex1/runtest.sh $dwlib $top_builddir $top_srcdir"
-cd test-alex1
-sh runtest.sh $dwlib $top_builddir $top_srcdir
-chkres $?  test-alex1
-cd ..
+  echo "=====START test-alex1/runtest.sh $dwlib $top_builddir $top_srcdir"
+  cd test-alex1
+  chkres $?  "cd to test-alex1"
+  sh runtest.sh $dwlib $top_builddir $top_srcdir
+  chkres $?  test-alex1
+  cd ..
 else
-echo "=====SKIP test-alex1/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP test-alex1/runtest.sh NLIZE as it has leaks"
 fi
 
 if [ $NLIZE = 'n' ]
 then
-echo "=====START test-alex2/runtest.sh $dwlib $top_builddir $top_srcdir"
-cd test-alex2
-sh runtest.sh $dwlib $top_builddir $top_srcdir
-chkres $?  test-alex2
-cd ..
+  echo "=====START test-alex2/runtest.sh $dwlib $top_builddir $top_srcdir"
+  cd test-alex2
+  chkres $?  "cd to test-alex2"
+  sh runtest.sh $dwlib $top_builddir $top_srcdir
+  chkres $?  test-alex2
+  cd ..
 else
-echo "=====SKIP   test-alex2/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP   test-alex2/runtest.sh NLIZE as it has leaks"
 fi
 
 # We need this to not do all DIE printing. FIXME
@@ -1331,4 +1339,9 @@ echo "new  dwarfdump times"
 $mypycom $mypydir/usertime.py newversn $ntimeout
 echo PASS $goodcount
 echo FAIL $failcount
-
+echo 'Ending regressiontests: DWARFTEST.sh' `date`
+if [ $failcount -ne 0 ]
+then
+   exit 1
+fi
+exit 0
