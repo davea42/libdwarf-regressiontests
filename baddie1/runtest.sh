@@ -51,6 +51,5 @@ m $dd badsiblingbeforeitself testincorrectbeforeitself incorrectbeforeitself.bas
 m $dd badsiblingbeforechild testincorrectbeforechild incorrectbeforechild.base
 m $dd badsiblingnest testincorrectnest incorrectnest.base
 m $dd badsiblingnest2 testincorrectnest2 incorrectnest2.base
-
-echo PASS baddies
+echo "PASS baddies/runtest.sh"
 exit 0

@@ -63,6 +63,6 @@ rm -f bigobject
 rm -f $bn
 rm -f makebig
 rm -f a.out
-echo PASS
+echo "PASS bigobj/runtest.sh"
 exit 0
 

@@ -130,6 +130,5 @@ then
   echo FAIL debugfissionb  simplereader interfaces test
   exit 1
 fi
-
-echo PASS debugfissionb  simplereader interfaces test
+echo "PASS debugfissionb/runtest.sh  simplereader interfaces test"
 exit 0

@@ -41,6 +41,8 @@ then
  echo FAIL data16 failed to add data16 to junktest.o  by dwarfgen
  exit 1
 fi
+echo "PASS data16/runtest.sh"
+exit 0
 
 
 

@@ -26,4 +26,5 @@ then
    echo FAIL cutest, interface did not work.
    exit 1
 fi
+echo "PASS findcu/runtest.sh"
 exit 0

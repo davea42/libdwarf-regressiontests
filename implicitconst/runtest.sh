@@ -41,9 +41,5 @@ then
   echo "If junk.new is correct do: mv junk.new implicit.base
   exit 1
 fi
-
-echo PASS implicitconst
+echo PASS implicitconst/runtest.sh
 exit 0
-
-
-

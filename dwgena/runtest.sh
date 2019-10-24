@@ -123,8 +123,7 @@ then
     echo "update via: mv junk6.new test6.base ; gzip test6.base"
     exit 1
 fi
-
-echo PASS dwgena 
+echo "PASS dwgena/runtest.sh"
 exit 0
 
 

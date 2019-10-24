@@ -38,6 +38,6 @@ then
   echo " To update expected result: mv junkout baseout"
   exit 1
 fi
-echo PASS testoffdie/runtest.sh
+echo "PASS testoffdie/runtest.sh"
 exit 0
 

@@ -23,4 +23,5 @@ then
     echo FAIL dwarf_get_form_class in test-alex2
     exit 1
 fi
+echo "PASS test-alex2/runtest.sh"
 exit 0

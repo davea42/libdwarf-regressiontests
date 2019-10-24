@@ -58,4 +58,4 @@ then
    echo "If junk4 is correct do: mv junk4 test4.base"
    exit 1
 fi
-echo PASS nolibelf
+echo PASS nolibelf/runtest.sh

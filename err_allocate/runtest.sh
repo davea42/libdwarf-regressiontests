@@ -45,7 +45,7 @@ then
     echo "To update baseline  do mv junk_alloc_test_out alloc_test.base"
     exit 1
 fi
-echo PASS err_allocate 
+echo "PASS err_allocate/runtest.sh" 
 rm -f junk_alloc_test_out
 rm -f alloc_test
 rm -f diffs

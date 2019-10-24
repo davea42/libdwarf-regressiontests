@@ -32,5 +32,5 @@ rm -f junkstderr
 rm -f junkstdout
 rm -f junkdgstdout
 rm -f junkdgstderr
-echo PASS
+echo "PASS dwgenc/runtest.sh"
 exit 0

@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # By default runs the entire test suite.
-echo "Running all  tests"
+echo "Running all regressiontests tests"
 . ./SHALIAS.sh
 chkres() {
 if test $1 != 0
@@ -32,18 +32,20 @@ chkfail () {
   rm -f junkck2
 }
 
+loc=`pwd`
 rm -f ALLdd 
 start=`date`
-echo "start $start"
+echo "start regressiontests in $loc at: $start"
 stsecs=`date '+%s'`
-echo begin regressiontests RUNALL.sh
+echo "Begin regressiontests    $loc/RUNALL.sh" 
+echo "Write regressiontests to $loc/ALLdd" 
 ./DWARFTEST.sh dd 2>ALLdd 1>&2
-chkres $? "Failure in DWARFTEST.sh. Possibly coredump new dwarfdump? "
+chkres $? "Failure in regressiontests DWARFTEST.sh. Possibly coredump new dwarfdump? "
 chkfail ALLdd "RUNALL.sh regressiontests"
 ndsecs=`date '+%s'`
 endt=`date`
-echo "start $start"
-echo "end   $endt"
+echo "start regressiontests $start "
+echo "end   regressiontests $endt"
 showminutes() {
    t=`expr  \( $2 \- $1 \+ 29  \) \/ 60`
    echo "Run time in minutes: $t"

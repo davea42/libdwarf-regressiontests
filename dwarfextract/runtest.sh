@@ -76,5 +76,5 @@ then
     echo "Fix with: mv testc.new testc.base"
     exit 1
 fi
-echo PASS dwarfextract c
+echo "PASS dwarfextractruntest.sh"
 exit 0

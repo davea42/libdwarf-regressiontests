@@ -54,5 +54,5 @@ then
     echo "update via : mv junk5.new archivedwo-iMvvv.base ; gzip archivedwo-iMvvv.base"
     exit 1
 fi
-echo PASS debug fission
+echo "PASS debugfission/runtest.sh"
 exit 0

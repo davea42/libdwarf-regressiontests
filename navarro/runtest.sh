@@ -12,3 +12,11 @@ then
  exit 1
 fi
 ./getglobals
+if [ $? -ne 0 ]
+then
+ echo FAIL to run navarro/getglobals
+ exit 1
+fi
+echo PASS navarro/runtest.sh
+exit 0
+

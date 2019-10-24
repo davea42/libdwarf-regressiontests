@@ -49,10 +49,7 @@ then
 fi
 
 }
-
 m "$r" "--passnullerror"                  $tobj ne.base  y
 m "$r" "--simpleerrhand --passnullerror"  $tobj hne.base n
-
-
-echo "PASS hughes2/simplereader (coredump was expected, ignore it)"
+echo "PASS hughes2/runtest.sh simplereader (coredump was expected, ignore it)"
 exit 0

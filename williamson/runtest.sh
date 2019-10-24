@@ -47,7 +47,5 @@ rm -f core*
 t=hbo_unminimized.exe
 m $dd $t newunminout baseunminout
 rm -f core*
-echo PASS williamson tests
+echo "PASS williamson/runtest.sh tests"
 exit 0
-
-

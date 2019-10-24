@@ -6,11 +6,10 @@
 # The problem here is that it is dwarf2 and elf64 yet 32bit address
 # so things go wrong. We need to specify address size is 4.
 # So we need a dwarfdump.conf flag here.
-set -x
 zcat frame_problem.elf.gz > junk.frame_problem.elf
 if [ $# -ne 2 ]
 then
-    echo Wrong number of args
+    echo "enciso4/runtest.sh Wrong number of args"
     exit 1
 fi
 
@@ -21,7 +20,7 @@ commonopts="-x name=../dwarfdump.conf -x abi=ppc32bitaddress"
 $newdd -f  $commonopts junk.frame_problem.elf >junk.f.out
 if [ $? -ne 0 ] 
 then
-    echo FAIL error -f enciso4/junk.frame_problem.elf
+    echo "FAIL error -f enciso4/runtest.sh junk.frame_problem.elf"
     exit 1
 fi
 # The  -F  version runs over 20 minutes, so we skip that.
@@ -32,5 +31,5 @@ fi
 #    echo FAIL error -F enciso4/junk.frame_problem.elf
 #    exit 1
 #fi
-echo PASS dumped enciso4/junk.frame_problem.elf
+echo "PASS enciso4/runtest.sh: dumped enciso4/junk.frame_problem.elf"
 exit 0

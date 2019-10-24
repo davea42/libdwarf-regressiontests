@@ -53,7 +53,8 @@ fi
 diff out1 out2 >outdiffs
 if [ $? -ne  0 ]
 then
-	echo FAIL alex-s test in test-alex1.
+	echo "FAIL alex-s test in test-alex1."
 	exit 1
 fi
+echo "PASS test-alex1/runtest.sh"
 exit 0

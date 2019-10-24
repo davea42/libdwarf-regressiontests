@@ -35,5 +35,5 @@ then
 fi
 rm -f ./frame_test1
 rm -f ./frame_test2
-echo PASS legendre frame test
+echo "PASS legendre/runtest.sh frame test"
 exit 0

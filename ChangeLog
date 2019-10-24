@@ -1,3 +1,18 @@
+2019-10-24 David Anderson
+   * RUNALL.sh,baddie1/runtest.sh,bigobj/runtest.sh,
+     data16/runtest.sh,debugfission/runtest.sh,
+     debugfissionb/runtest.sh,dwarfextract/runtest.sh,
+     dwgena/runtest.sh,dwgenc/runtest.sh,
+     enciso4/runtest.sh,err_allocate/runtest.sh,
+     findcu/runtest.sh,frame1/runtest.sh,hughes2/runtest.sh
+     implicitconst/runtest.sh,legendre/runtest.sh,
+     navarro/runtest.sh,nolibelf/runtest.sh,
+     offsetfromlowpc/runtest.sh,strsize/runtest.sh,
+     test-alex1/runtest.sh,test-alex2/runtest.sh,
+     testoffdie/runtest.sh, williamson/runtest.sh:
+     Doing a better job (in echo statements) to report
+     what passed, and in some cases, what failed.
+     Making it easier to work with the results.
 2019-10-06 David Anderson
    * dwarfdump-s390.O: Corrected libdwarf endianness issues
      so the s390  big endian dwarfdump works as well as the

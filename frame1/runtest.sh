@@ -68,12 +68,7 @@ then
     echo "To update do: cp frame2018.out frame2018.base"
     exit 1
 fi
-
-
-
-
-
-echo PASS frame1/runtest.sh
+echo "PASS frame1/runtest.sh"
 rm -f junk*
 rm -f frame1.out
 rm -f diffs
@@ -81,5 +76,4 @@ rm -f frame1
 rm -f frame2018.out
 rm -f selregs2018.out
 rm -f framexlocal.c
-
 exit 0
