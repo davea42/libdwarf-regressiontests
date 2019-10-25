@@ -65,7 +65,7 @@ m $dd badsiblingnest         testincorrectnest         \
       incorrectnest.base         "-i -G"
 m $dd badsiblingnest2        testincorrectnest2        \
       incorrectnest2.base        "-i -G"
-m $dd badsiblingnest2        testlinetaberr            \
+m $dd badsiblingnest2        testincorrectlinetab      \
       linetaberr.base            "-l"
 echo "PASS baddie1/runtest.sh"
 exit 0
