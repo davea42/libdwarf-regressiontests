@@ -1,0 +1,254 @@
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x0000000b):
+
+            NS new statement, BB new basic block, ET end of text sequence
+            PE prologue end, EB epilogue begin
+            IS=val ISA number, DI=val discriminator value
+<pc>        [lno,col] NS BB ET PE EB IS= DI= uri: "filepath"
+0xfff40000  [  36, 0] NS uri: "/home/kpit/fsfsrc/rx-v10.01-src/newlib-1.18.0/libgloss/rx/crt0.S"
+0xfff40004  [  39, 0] NS
+0xfff40009  [  40, 0] NS
+0xfff4000f  [  41, 0] NS
+0xfff40016  [  43, 0] NS
+0xfff4001c  [  44, 0] NS
+0xfff40022  [  45, 0] NS
+0xfff40028  [  46, 0] NS
+0xfff4002a  [  48, 0] NS
+0xfff40030  [  49, 0] NS
+0xfff40032  [  50, 0] NS
+0xfff40038  [  51, 0] NS
+0xfff4003a  [  56, 0] NS
+0xfff40040  [  58, 0] NS
+0xfff40044  [  66, 0] NS
+0xfff40046  [  67, 0] NS
+0xfff40048  [  68, 0] NS
+0xfff4004a  [  69, 0] NS
+0xfff4004e  [  78, 0] NS
+0xfff40052  [  83, 0] NS
+0xfff40058  [  84, 0] NS
+0xfff4005e  [  85, 0] NS
+0xfff40062  [  90, 0] NS
+0xfff40068  [  91, 0] NS
+0xfff4006e  [  92, 0] NS
+0xfff40070  [  93, 0] NS
+0xfff40074  [  98, 0] NS
+0xfff4007a  [  99, 0] NS
+0xfff40080  [ 100, 0] NS
+0xfff40083  [ 105, 0] NS
+0xfff40085  [ 106, 0] NS
+0xfff40087  [ 107, 0] NS
+0xfff40089  [ 108, 0] NS
+0xfff4008c  [ 109, 0] NS
+0xfff4008e  [ 110, 0] NS
+0xfff40090  [ 111, 0] NS
+0xfff40092  [ 112, 0] NS
+0xfff40094  [ 113, 0] NS
+0xfff40096  [ 114, 0] NS
+0xfff40098  [ 116, 0] NS
+0xfff4009a  [ 117, 0] NS
+0xfff4009c  [ 119, 0] NS
+0xfff4009d  [ 119, 0] NS ET
+0xfff441e5  [ 130, 0] NS
+0xfff441e9  [ 130, 0] NS ET
+
+.debug_line: line number info for a single cu
+
+dwarfdump ERROR:  dwarf_srclines:  DW_DLE_LINE_TABLE_BAD reading extended op we are off this line table at section offset 0x123 .. Attempting to continue.
+
+CU Name = <unknown>
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x0000000b GOFF = 0x000000c8, Low PC = unknown   , High PC = unknown   
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x00000292):
+
+            NS new statement, BB new basic block, ET end of text sequence
+            PE prologue end, EB epilogue begin
+            IS=val ISA number, DI=val discriminator value
+<pc>        [lno,col] NS BB ET PE EB IS= DI= uri: "filepath"
+0xfff43a96  [1139, 0] NS uri: "/home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c"
+0xfff43a98  [ 873, 0] NS
+0xfff43a9a  [ 875, 0] NS
+0xfff43a9c  [ 876, 0] NS
+0xfff43a9e  [ 913, 0] NS
+0xfff43aa3  [ 915, 0] NS
+0xfff43aaa  [ 919, 0] NS
+0xfff43adc  [ 921, 0] NS
+0xfff43ae0  [ 927, 0] NS
+0xfff43ae8  [ 926, 0] NS
+0xfff43aea  [ 928, 0] NS
+0xfff43aec  [ 926, 0] NS
+0xfff43aef  [ 927, 0] NS
+0xfff43af2  [ 928, 0] NS
+0xfff43af5  [ 931, 0] NS
+0xfff43b5a  [1141, 0] NS
+0xfff43b5d  [ 989, 0] NS
+0xfff43b64  [1008, 0] NS
+0xfff43b94  [1009, 0] NS
+0xfff43b99  [1019, 0] NS
+0xfff43ba8  [1141, 0] NS
+0xfff43bab  [ 940, 0] NS
+0xfff43bb0  [ 943, 0] NS
+0xfff43bdf  [ 945, 0] NS
+0xfff43be4  [ 954, 0] NS
+0xfff43bf1  [ 955, 0] NS
+0xfff43bf3  [ 973, 0] NS
+0xfff43c4d  [1141, 0] NS
+0xfff43c50  [ 989, 0] NS
+0xfff43c54  [1141, 0] NS
+0xfff43c57  [1008, 0] NS
+0xfff43c66  [ 919, 0] NS
+0xfff43c75  [ 941, 0] NS
+0xfff43c7b  [ 943, 0] NS
+0xfff43c82  [1043, 0] NS
+0xfff43c87  [1045, 0] NS
+0xfff43c89  [1043, 0] NS
+0xfff43c8e  [1045, 0] NS
+0xfff43c91  [1049, 0] NS
+0xfff43c99  [1046, 0] NS
+0xfff43ca1  [1049, 0] NS
+0xfff43ca7  [1046, 0] NS
+0xfff43ca9  [1049, 0] NS
+0xfff43cba  [1044, 0] NS
+0xfff43cbd  [1049, 0] NS
+0xfff43d00  [1050, 0] NS
+0xfff43d23  [1049, 0] NS
+0xfff43d25  [1050, 0] NS
+0xfff43d36  [1052, 0] NS
+0xfff43d46  [1141, 0] NS
+0xfff43d49  [ 964, 0] NS
+0xfff43d4e  [ 963, 0] NS
+0xfff43d51  [ 968, 0] NS
+0xfff43d59  [ 965, 0] NS
+0xfff43d5e  [ 968, 0] NS
+0xfff43d61  [ 965, 0] NS
+0xfff43d64  [ 968, 0] NS
+0xfff43d66  [ 965, 0] NS
+0xfff43d69  [ 968, 0] NS
+0xfff43d75  [ 966, 0] NS
+0xfff43d77  [ 968, 0] NS
+0xfff43d7c  [ 966, 0] NS
+0xfff43d7f  [ 968, 0] NS
+0xfff43dd1  [ 919, 0] NS
+0xfff43dd9  [1052, 0] NS
+0xfff43def  [1054, 0] NS
+0xfff43df1  [1141, 0] NS
+0xfff43df4  [1008, 0] NS
+0xfff43e03  [ 943, 0] NS
+0xfff43e0b  [1019, 0] NS
+0xfff43e0f  [1141, 0] NS
+0xfff43e12  [1049, 0] NS
+0xfff43e21  [ 973, 0] NS
+0xfff43e29  [ 931, 0] NS
+0xfff43e31  [ 943, 0] NS
+0xfff43e40  [ 943, 0] NS ET
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x000009ac):
+
+            NS new statement, BB new basic block, ET end of text sequence
+            PE prologue end, EB epilogue begin
+            IS=val ISA number, DI=val discriminator value
+<pc>        [lno,col] NS BB ET PE EB IS= DI= uri: "filepath"
+0xfff43e40  [1127, 0] NS uri: "/home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c"
+0xfff43e42  [ 873, 0] NS
+0xfff43e44  [ 875, 0] NS
+0xfff43e46  [ 876, 0] NS
+0xfff43e48  [ 913, 0] NS
+0xfff43e4d  [ 915, 0] NS
+0xfff43e54  [ 919, 0] NS
+0xfff43e83  [ 921, 0] NS
+0xfff43e87  [ 927, 0] NS
+0xfff43e8f  [ 926, 0] NS
+0xfff43e91  [ 928, 0] NS
+0xfff43e93  [ 926, 0] NS
+0xfff43e96  [ 927, 0] NS
+0xfff43e99  [ 928, 0] NS
+0xfff43e9c  [ 931, 0] NS
+0xfff43ee6  [ 973, 0] NS
+0xfff43ef5  [ 980, 0] NS
+0xfff43ef8  [ 982, 0] NS
+0xfff43efa  [1133, 0] NS
+0xfff43efd  [ 989, 0] NS
+0xfff43f01  [1008, 0] NS
+0xfff43f33  [1009, 0] NS
+0xfff43f38  [1019, 0] NS
+0xfff43f43  [1022, 0] NS
+0xfff43f50  [1033, 0] NS
+0xfff43f54  [1133, 0] NS
+0xfff43f57  [ 940, 0] NS
+0xfff43f5c  [ 943, 0] NS
+0xfff43f8b  [ 945, 0] NS
+0xfff43f90  [ 954, 0] NS
+0xfff43f9c  [ 973, 0] NS
+0xfff43fe3  [1008, 0] NS
+0xfff43ff2  [ 919, 0] NS
+0xfff44001  [ 941, 0] NS
+0xfff44007  [ 943, 0] NS
+0xfff4400e  [1043, 0] NS
+0xfff44013  [1045, 0] NS
+0xfff44015  [1043, 0] NS
+0xfff4401a  [1045, 0] NS
+0xfff4401d  [1049, 0] NS
+0xfff44025  [1046, 0] NS
+0xfff4402a  [1049, 0] NS
+0xfff4402d  [1046, 0] NS
+0xfff44030  [1049, 0] NS
+0xfff44032  [1046, 0] NS
+0xfff44034  [1049, 0] NS
+0xfff44045  [1044, 0] NS
+0xfff44048  [1047, 0] NS
+0xfff4404b  [1049, 0] NS
+0xfff4408e  [1050, 0] NS
+0xfff440b1  [1049, 0] NS
+0xfff440b3  [1050, 0] NS
+0xfff440cc  [1052, 0] NS
+0xfff440db  [1050, 0] NS
+0xfff440dd  [1063, 0] NS
+0xfff440e7  [1064, 0] NS
+0xfff440f1  [1066, 0] NS
+0xfff440f6  [1133, 0] NS
+0xfff440f9  [ 964, 0] NS
+0xfff440fe  [ 963, 0] NS
+0xfff44101  [ 968, 0] NS
+0xfff44106  [ 965, 0] NS
+0xfff44108  [ 968, 0] NS
+0xfff4410b  [ 965, 0] NS
+0xfff44113  [ 968, 0] NS
+0xfff44116  [ 965, 0] NS
+0xfff44119  [ 968, 0] NS
+0xfff44127  [ 966, 0] NS
+0xfff44129  [ 968, 0] NS
+0xfff4412d  [ 966, 0] NS
+0xfff44130  [ 968, 0] NS
+0xfff4416e  [ 919, 0] NS
+0xfff44176  [1055, 0] NS
+0xfff44189  [1008, 0] NS
+0xfff44198  [ 943, 0] NS
+0xfff441a0  [1049, 0] NS
+0xfff441af  [ 931, 0] NS
+0xfff441b4  [1019, 0] NS
+0xfff441b6  [1033, 0] NS
+0xfff441bd  [1052, 0] NS
+0xfff441c8  [ 943, 0] NS
+0xfff441d7  [ 943, 0] NS ET
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x00001100):
+ Line table is present (offset 0x0000039f) but no lines present
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x000011b0):
+
+            NS new statement, BB new basic block, ET end of text sequence
+            PE prologue end, EB epilogue begin
+            IS=val ISA number, DI=val discriminator value
+<pc>        [lno,col] NS BB ET PE EB IS= DI= uri: "filepath"
+0xfff441dc  [  34, 0] NS uri: "/home/kpit/fsfsrc/rx-v10.01-src/newlib-1.18.0/libgloss/rx/crtn.S"
+0xfff441e0  [  35, 0] NS
+0xfff441e4  [  36, 0] NS
+0xfff441e5  [  36, 0] NS ET
+0xfff441ed  [  42, 0] NS
+0xfff441ee  [  42, 0] NS ET
+

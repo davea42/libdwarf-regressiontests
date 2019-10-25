@@ -1,12 +1,13 @@
 #!/bin/sh
 # Pass in dwarfdump path like ../dwarfdump
 
-dd=$1
+dd=../dwarfdump
 . ../BASEFILES
 bdir=".."
 . ../RUNTIMEFILES
 # Avoid spurious differences because of the names of the
 # various dwarfdump versions being tested.
+  echo "====== command:  $dwdumper $opts $obj"  >> $ntimeout
 # This only deals with names like /tmp*dwarfdump2 and /tmp*dwarfdump
 # and .*/dwarfdump2 and .*/dwarfdump
 unifyddname () {
@@ -24,14 +25,20 @@ unifyddname () {
   rm -f $t3
 }
 
+echo "====== $ntimeout"
 
 m() {
+set -x
   dwdumper=$1
   obj=$2
   test=$3
   base=$4
-  echo "====== " "$dwdumper -i -G $obj"  >> $ntimeout
-  $wrtimen $dwdumper -i -G $obj 1>junk1 2>&1
+  opts="$5"
+  echo "====== command:  $dwdumper $opts $obj"  >> $ntimeout
+  echo "====== ntimeout $ntimeout wrtimen: $wrtimen"
+  echo "====== base: $base test: $test" 
+  echo "====== $wrtimen $dwdumper $opts  $obj"
+  $wrtimen $dwdumper $opts $obj 1>junk1 2>&1
   unifyddname junk1 $test
   diff $base $test
   if test  $?  -ne 0
@@ -44,12 +51,21 @@ m() {
 
 # The test_sibling_loop.o will not terminate unless
 # dwarfdump[2] is from February 2013 or later.
-m $dd test_sibling_loop.o testincorrecta incorrectdies.base
-m $dd badsiblingatchild testincorrectatchild incorrectatchild.base
-m $dd badsiblingatitself testincorrectatitself incorrectatitself.base
-m $dd badsiblingbeforeitself testincorrectbeforeitself incorrectbeforeitself.base
-m $dd badsiblingbeforechild testincorrectbeforechild incorrectbeforechild.base
-m $dd badsiblingnest testincorrectnest incorrectnest.base
-m $dd badsiblingnest2 testincorrectnest2 incorrectnest2.base
-echo "PASS baddies/runtest.sh"
+m $dd test_sibling_loop.o    testincorrecta            \
+      incorrectdies.base         "-i -G"
+m $dd badsiblingatchild      testincorrectatchild      \
+      incorrectatchild.base  "-i -G"
+m $dd badsiblingatitself     testincorrectatitself     \
+      incorrectatitself.base     "-i -G"
+m $dd badsiblingbeforeitself testincorrectbeforeitself \
+      incorrectbeforeitself.base "-i -G"
+m $dd badsiblingbeforechild  testincorrectbeforechild  \
+      incorrectbeforechild.base  "-i -G"
+m $dd badsiblingnest         testincorrectnest         \
+      incorrectnest.base         "-i -G"
+m $dd badsiblingnest2        testincorrectnest2        \
+      incorrectnest2.base        "-i -G"
+m $dd badsiblingnest2        testlinetaberr            \
+      linetaberr.base            "-l"
+echo "PASS baddie1/runtest.sh"
 exit 0
