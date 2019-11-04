@@ -3,8 +3,20 @@
 /* Define if building universal (internal helper macro) */
 #undef AC_APPLE_UNIVERSAL_BUILD
 
+/* Set to 1 as we are building with libelf */
+#undef DWARF_WITH_LIBELF
+
+/* Set to 1 as we are building dwarfgen */
+#undef HAVE_DWARFGEN
+
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the <libelf.h> header file. */
+#undef HAVE_LIBELF_H
+
+/* Define to 1 if you have the <libelf/libelf.h> header file. */
+#undef HAVE_LIBELF_LIBELF_H
 
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
@@ -29,13 +41,6 @@
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
-
-/* Set to 1 if __attribute__ ((unused)) is available. */
-#undef HAVE_UNUSED_ATTRIBUTE
-
-/* Set to 1 if stdint.h is available. */
-#undef HAVE_STDINT_H
-
 
 /* Define to the address where bug reports for this package should be sent. */
 #undef PACKAGE_BUGREPORT

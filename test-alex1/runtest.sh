@@ -2,40 +2,42 @@
 l=$1
 top_bld=$2
 top_src=$3
+withlibelf=$4
+withlibz=$5
 if [ x$NLIZE = 'xy' ]
 then
   opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 else
   opt=
 fi
-OPTS="-I$top_bld -I$top_bld/libdwarf -I$top_src/libdwarf"
-if [ -f /usr/include/zlib.h ]
+if [ x$withlibz = "x" ]
 then
-  cc -DWORKING=1 $opt $OPTS  test.c $l -lelf -lz -o test1
-  if [ $? -ne 0 ]
-  then
+  echo "Missing final withlibz arg in test-alex1/runtest.sh"
+  echo "FAIL test-alex1 due to missing withlibz arg"
+  exit 1
+fi
+libs=
+if [ $withlibelf = "withlibelf" ]
+then
+  libs="$libs -lelf"
+fi
+if [ $withlibz = "withlibz" ]
+then
+  libs="$libs -lz"
+fi
+
+OPTS="-I$top_bld -I$top_bld/libdwarf -I$top_src/libdwarf"
+cc -DWORKING=1 $opt $OPTS  test.c $l $libs -o test1
+if [ $? -ne 0 ]
+then
      echo FAIL test-alex1 cc 1
      exit 1
-  fi
-  cc  $opt $OPTS  test.c  $l -lelf -lz -o test2
-  if [ $? -ne 0 ]
-  then
+fi
+cc  $opt $OPTS  test.c  $l $libs -o test2
+if [ $? -ne 0 ]
+then
      echo FAIL test-alex1 cc 2
      exit 1
-  fi
-else
-  cc -DWORKING=1 $opt $OPTS  test.c $l -lelf -o test1
-  if [ $? -ne 0 ]
-  then
-     echo FAIL test-alex1 cc 3
-     exit 1
-  fi
-  cc  $opt $OPTS  test.c  $l -lelf -o test2
-  if [ $? -ne 0 ]
-  then
-     echo FAIL test-alex1 cc 4
-     exit 1
-  fi
 fi
 
 ./test1 orig.a.out >out1

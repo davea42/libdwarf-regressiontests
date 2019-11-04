@@ -1,10 +1,37 @@
 #!/bin/sh
 # execed sh runtest.sh $top_srcdir $top_builddir
+# we ignore $3 arg.  On non-linux it's not so
+# simple to test for zlib.h, the zlib.h test below does
+# not work on such systems.
 src=$1
 bld=$2
+withlibelf=$3
+withlibz=$4
+echo "entering testoffdie/runtest.sh $src $bld $withlibelf $withlibz"
 h="-I$src/libdwarf"
 l="-L$src/libdwarf"
-libs="$bld/libdwarf/.libs/libdwarf.a -lelf"
+libs="$bld/libdwarf/.libs/libdwarf.a"
+if [ x$withlibelf = "xwithlibelf" ]
+then
+  libs="$libs -lelf"
+fi
+if [ x$withlibz = "xwithlibz" ]
+then
+  libs="$libs -lz"
+fi
+if [ x$withlibz = "x" ]
+then
+  echo "Improper arg withlibz!"
+  echo FAIL testoffdie withlibz not set
+  exit 1
+fi
+if [ x$withlibelf = "x" ]
+then
+  echo "Improper arg withlibelf!"
+  echo FAIL testoffdie withlibelf not set
+  exit 1
+fi
+
 if [ x$NLIZE = 'xy' ]
 then
   nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
@@ -13,15 +40,11 @@ else
 fi
 
 opts="-I$bld -I$bld/libdwarf"
-if [ -f /usr/include/zlib.h ]
-then
-  cc $h $opts  testoffdie.c $nli $l -o junkoffdie $libs -lz
-else
-  cc $h $opts testoffdie.c $nli $l -o junkoffdie $libs
-fi
+cc $h $opts  testoffdie.c $nli $l -o junkoffdie $libs
 if [ $? -ne 0 ]
 then
    echo FAIL compile testoffdie/testoffdie.c 
+   exit 1
 fi
 
 ./junkoffdie >junkout

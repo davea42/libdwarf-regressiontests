@@ -1,16 +1,23 @@
 #!/bin/sh
 libdw=$1
+withlibelf=$2
+withlibz=$3
 if [ x$NLIZE = 'xy' ]
 then 
   opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 else
   opt=
 fi
-if [ -f /usr/include/zlib.h ]
+libs=
+if [ $withlibelf = "withlibelf"]
 then
-  cc -g $opt  -I $libdw/libdwarf -L $libdw/libdwarf alloc_test.c -ldwarf -lelf -lz -o alloc_test
-else
-  cc -g $opt  -I $libdw/libdwarf -L $libdw/libdwarf alloc_test.c -ldwarf -lelf -o alloc_test
+  libs="-lelf"
+fi
+if [ $withlibz = "withlibz"]
+then
+  libs="$libs -lz"
+fi
+cc -g $opt  -I $libdw/libdwarf -L $libdw/libdwarf alloc_test.c -ldwarf $libs -o alloc_test
 fi
 
 if [ $? -ne 0 ]

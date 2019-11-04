@@ -4,8 +4,17 @@
 echo $libdw/libdwarf
 dw=$libdw/libdwarf
 echo $dw/libdwarf
-echo "cc -g -I $dw -L$dw get_globals.c -o getglobals -ldwarf -lelf -lz"
-cc -g -I $dw -L $dw get_globals.c -ldwarf -lelf -lz -o getglobals
+libs=
+if [ $withlibelf = "withlibelf" ]
+then
+  libs="$libs -lelf"
+fi
+if [ $withlibz = "withlibz" ]
+then
+  libs="$libs -lz"
+fi
+
+cc -g -I $dw -L $dw get_globals.c -ldwarf $libs -o getglobals
 if [ $? -ne 0 ]
 then
  echo FAIL to compile navarro/getglobals

@@ -22,6 +22,7 @@ AC_CANONICAL_SYSTEM
 # the directory containing the libdwarf, dwarfdump, 
 # dwarfgen, and dwarfexample source directories.
 
+
 here=`pwd`
 fullpath=$here/../code
 
@@ -29,7 +30,6 @@ AC_ARG_ENABLE(libdwarf,
   AC_HELP_STRING([--enable-libdwarf=sourcedirectory],
   [Give the full path to the libdwarf/dwarfdump source base]),
   [ ],[ ])
-
 rm -f junkckpath
 echo libdwarfval $enableval
 if test x$enableval != 'x'
@@ -44,6 +44,45 @@ then
   fi
   fullpath=$enableval
   rm -f junkckpath
+fi
+
+AC_ARG_ENABLE([libelf],
+   [AS_HELP_STRING([--disable-libelf],
+     [disable use of libelf (default is enable) @<:@default=yes@:>@])],
+   [ AS_IF(
+        [test "x${enableval}" = "xyes"],
+        [dwarf_with_libelf="withlibelf"],
+        [dwarf_with_libelf="nolibelf"])
+   ],
+   [dwarf_with_libelf="withlibelf"])
+
+if test  $dwarf_with_libelf = "withlibelf" ; then
+  AC_CHECK_HEADERS(libelf.h libelf/libelf.h)
+
+  ### if no libelf.h add no -lelf and turn off
+  ### libelf recognition.
+  if test "x${ac_cv_header_libelf_h}" != "xyes" -a "x${ac_cv_header_libelf_libelf_h}" != "xyes"  ;then
+    dwarf_with_libelf="nolibelf"
+    echo "no libelf headers, so no libelf" 
+  else
+    echo "Allowing use of libelf."
+  fi
+fi
+
+if test $dwarf_with_libelf = "withlibelf" ; then
+  enable_dwarfgen="yes"
+  AC_DEFINE([DWARF_WITH_LIBELF],[1],
+    [Set to 1 as we are building with libelf])
+  AC_DEFINE([HAVE_DWARFGEN],[1],
+    [Set to 1 as we are building dwarfgen])
+else
+  enable_dwarfgen="no"
+fi
+
+if test $dwarf_with_libelf = "withlibelf" ; then
+  AC_SUBST(withlibelf,"withlibelf")
+else
+  AC_SUBST(withlibelf,"nolibelf")
 fi
 
 
@@ -110,6 +149,12 @@ then
   cp BASEFILES.in BASEFILES
 fi
 echo "libdw=$fullpath" >> BASEFILES
+
+echo "Configuration Options Summary:"
+echo
+echo " have libelf............: ${dwarf_with_libelf}"
+echo " dwarfgen...............: ${enable_dwarfgen}"
+echo
 
 echo "Ready to test dwarfdump."
 

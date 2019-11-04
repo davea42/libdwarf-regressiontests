@@ -1,17 +1,27 @@
 #!/bin/sh
 # execute as  runtest.sh <old dd name> <new dd name> 
 # unpack the executable  (lots of zeroes, so it compresses well).
-# zcat is the same as gunzip -c  
+# zcat (gzcat on MacOS) is the same as gunzip -c  
 
 # The problem here is that it is dwarf2 and elf64 yet 32bit address
 # so things go wrong. We need to specify address size is 4.
 # So we need a dwarfdump.conf flag here.
-zcat frame_problem.elf.gz > junk.frame_problem.elf
+ourzcat=zcat
+which gzcat 1>/dev/null
+if [ $? -eq 0 ]
+then
+  # On MacOS gzcat does what zcat does on Linux.
+  ourzcat=gzcat
+fi
+
+$ourzcat frame_problem.elf.gz > junk.frame_problem.elf
 if [ $# -ne 2 ]
 then
     echo "enciso4/runtest.sh Wrong number of args"
     exit 1
 fi
+
+
 
 olddd=../$1
 newdd=../$2

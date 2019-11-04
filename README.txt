@@ -1,9 +1,29 @@
-Latest update: September 29, 2018 
+Latest update: October 29, 2019 
+
+NEWS October 2019: configure --disable-libelf
+will result in tests that neither link to libelf
+nor require libelf (so dwarfgen will not
+be built and cannot be tested in such
+environments).  But the majority of tests
+can proceed as normal.
+
 
 This directory (regressiontests) is the base which is used for
 regression testing of libdwarf.    It will probably only
-be usable on a POSIX compliant system (Unix or Linux or
-possibly Mac).
+be usable on a POSIX compliant system (Unix or Linux or,
+by using configure --disable-libelf, MacOS).
+
+Summary of overall regressiontests options:
+   ./configure [--disable-libelf]
+   make
+
+Summary of overall regressiontests including make check
+and cmake (from code directory, not regressiontests).
+   cd /path/to/code
+   sh FIX-CONFIGURE-TIMES
+   sh run-all-tests.sh [--disable-libelf]
+See below for additional details.
+
 
 The Makefiles here do assume gnu make (gmake) as
 of the August 2018 change to using full autoconf/automake.
@@ -138,7 +158,7 @@ What follows is some background detail.
 
 The key scripts are PICKUPBIN RUNALL.sh DWARFTEST.sh CLEANUP
 
-PICKUPBIN:  this builds libdwarf and dwarfdump
+PICKUPBIN [withlibelf|nolibelf]:  this builds libdwarf and dwarfdump
 and stores the result in the regressiontests directory.
 The script assumes the source directory tree 
 is named in the BASEFILES file sourced
@@ -159,7 +179,7 @@ That is, just the normal libdwarf/dwarfdump source distribution.
 
 README.txt:  This file.
 
-DWARFTEST.sh:  Runs a specific test set.
+DWARFTEST.sh [withlibelf|nolibelf]:  Runs a specific test set.
    This relies on having dwarfdump alter the program_name
    it gets from argv[0] so that /dwarfdump.O becomes
    /dwarfdump  Doing this avoids sed commands (see
@@ -167,18 +187,13 @@ DWARFTEST.sh:  Runs a specific test set.
    reduces DWARFTEST.sh runtime by 70% compared
    to using sed. It's not that sed is slow, it is simply
    that some of the test output files are very large.
-  
 
-RUNALL.sh:  Runs RUNALL.sh once.
+RUNALL.sh [withlibelf|nolibelf]:  Runs RUNALL.sh once.
    Comparing dwarfdump.O output vs the new dwarfdump.
-   (It did more when dwarfdump2 existed, but dwarfdump2
-   was no longer needed once tsearch was
-   reimplemented for libdwarf so it is gone).
 
 CLEANUP:  Cleans up all the temporary results from tests.
    Does not clean out files created by configure.
    Use 'make distclean' to clean out those files.
-
 
 The 'zero' directory holds a utility application that
 enables scrubbing sections of object files to all-zero-bytes.
@@ -186,7 +201,7 @@ This is not used for testing.  This application exists so
 seemingly proprietary objects can be added to the test without
 revealing any of the compiler-generated actual instructions.
 
-Basically one emails a contributor the zero.cc source and
+One emails a contributor the zero.cc source and
 lets the contributor remove instruction bytes from the object
 (readelf -S is a convenient way to get the lists of object
 offsets and lengths of sections).  Then the contributor

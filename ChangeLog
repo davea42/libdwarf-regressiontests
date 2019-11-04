@@ -1,3 +1,47 @@
+2019-11-04 David Anderson
+   * CHECKIFRUNNING.sh: Quote some paths with "".
+   * CLEANUP: Add cleanup of temp files in checkforzlib
+     directory.
+   * DWARFTEST.sh:a Now supports options withlibelf or nolibelf.
+     So we can avoid tests that rely on libelf when there
+     is no libelf.  If cc is not available (as a command)
+     try gcc instead.  Separate out things like the -E and -o
+     options so if no libelf we do not use those dwarfdump
+     options. If we don't have certain /usr/bin/time options
+     suppress the use of /usr/bin/time.
+   * Makefile.in: Pick up withlibelf/nolibelf from configure.
+     Pass one or the other on to other scripts.
+   * PICKUPBIN: Now allow nolibelf option so we do not
+     try to build things (dwarfgen!) that cannot possibly
+     build.
+   * README.txt: Documenting the new configure etc options.
+   * RUNALL.sh: How honors nolibelf/withlibelf .
+   * RUNTIMEFILES: If we cannot use the /usr/bin/time
+     -o option (because it's not available) then turn off
+     using /usr/bin/time.  The summing of user time etc
+     across the processes is not that important.
+   * baddie/runtest.sh: Remove use of /usr/bin/time
+   * config.h.in: add DWARF_WITH_LIBELF HAVE_DWARFGEN
+     for proper test setup by configure.ac.
+   * configure.ac: Add --disable-libelf option 
+     so we can avoid pointless test failures for thing
+     that cannot work without libelf.
+   * configure: Regenerated.
+   * debugfission/runtest.sh: When zcat missing use
+     gzcat (MacOS).
+   * dwarfextract/runtest.sh,err_allocate/runtest.sh,
+     findcu/runtest.sh,frame1/runtest.sh,
+     legendre/runtest.sh,navarro/runtest.sh,
+     strsize/runtest.sh,test-alex2/runtest.sh,
+     testoffdie/runtest.sh: Now 
+     honor lack of libelf
+     and will not try to link with it if libelf is missing.
+   * test_harmless.c: Now uses dwarf_init_path() as
+     that allows it to work on MacOS with dSYM debug.
+   * s390fails: Just internal documentation, most
+     now deleted as tests pass on s390.
+   * dwgena/runtest.sh,enciso4/runtest.sh: When zcat missing use
+     gzcat (MacOS).
 2019-10-24 David Anderson
    * RUNALL.sh,baddie1/runtest.sh,bigobj/runtest.sh,
      data16/runtest.sh,debugfission/runtest.sh,

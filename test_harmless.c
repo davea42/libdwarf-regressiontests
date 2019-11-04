@@ -235,14 +235,23 @@ int main()
     Dwarf_Ptr errarg = 0;
     Dwarf_Error error = 0;
     const char *filepath= "./test_harmless";
-    int fd = open(filepath,O_RDONLY);
-    if(fd < 0) {
-        printf("Failure attempting to open %s\n",filepath);
-        exit(1);
-    }
-    res = dwarf_init(fd,DW_DLC_READ,errhand,errarg, &dbg,&error);
+    char truepath[3000];
+    unsigned truepathsize = sizeof(truepath);
+
+    res = dwarf_init_path(filepath,
+        truepath,truepathsize,
+        DW_DLC_READ,DW_GROUPNUMBER_ANY,errhand,errarg, &dbg,"",0,0,
+        &error);
+     
     if(res != DW_DLV_OK) {
-        printf("Giving up, cannot do DWARF processing\n");
+        printf("test_harmless cannot do DWARF processing "
+            "dwarf_init failed.\n");
+        if (res == DW_DLV_ERROR) {
+            printf("test_harmless: dwarf_init returned ERROR."
+                " Err %s \n",dwarf_errmsg(error));
+        } else {
+            printf("test_harmless: dwarf_init returned NO_ENTRY!\n");
+        }
         exit(1);
     }
 
@@ -262,7 +271,6 @@ int main()
     if(res != DW_DLV_OK) {
         printf("dwarf_finish failed!\n");
     }
-    close(fd);
     if(errcount > 0) {
         printf("FAIL harmless test, %d errors\n",errcount);
     } else {

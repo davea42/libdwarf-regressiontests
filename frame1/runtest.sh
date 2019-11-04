@@ -2,9 +2,16 @@
 libdw=$1
 bld=$2
 dwlib=$3
-if [ x$libdw = 'x' ]
+withlibelf=$4
+withlibz=$5
+if [ x$withlibz = "x" ]
 then
-    echo "FAIL frame1 runtest.sh, one argument required."
+   echo "FAIL frame1 runtest.sh does not have all 5 args: withlibz missing"
+   exit 1
+fi
+if [ x$withlibelf = "x" ]
+then
+    echo "FAIL frame1 runtest.sh, does not have all 5 args: withlibelf missing"
     exit 1
 fi
 if [ x$NLIZE = 'xy' ]
@@ -13,13 +20,20 @@ then
 else
   opt=
 fi
-cp $libdw/dwarfexample/frame1.c framexlocal.c
-if [ -f /usr/include/zlib.h ]
+libs=
+if [ $withlibelf = "withlibelf" ]
 then
-  cc -g $opt -I$libdw/libdwarf -I$bld -I$bld/libdwarf framexlocal.c $dwlib -lelf -lz -o frame1
-else
-  cc -g $opt  -I$libdw/libdwarf -I$bld -I$bld/libdwarf  framexlocal.c $dwlib -lelf -o frame1
+  libs="-lelf"
 fi
+if [ $withlibz = "withlibz" ]
+then
+  libs="$libs -lz"
+fi
+
+cp $libdw/dwarfexample/frame1.c framexlocal.c
+echo "cc -g $opt -I$libdw/libdwarf -I$bld -I$bld/libdwarf framexlocal.c $dwlib $libs -o frame1"
+cc -g $opt -I$libdw/libdwarf -I$bld -I$bld/libdwarf framexlocal.c $dwlib $libs -o frame1
+
 if [ $? -ne 0 ]
 then
     echo FAIL building framexlocal.c

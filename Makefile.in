@@ -3,21 +3,22 @@
 # Running these tests multiple times simultaneously
 # in a single directory will result in incorrect results and errors.
 
+buildwithlibelf = @withlibelf@
 all:  pretest build testonly
 
 test: pretest build testonly
 
 build: pretest
-	sh ./PICKUPBIN
+	sh ./PICKUPBIN $(buildwithlibelf)
 
 testonly:
-	sh ./RUNALL.sh
+	sh ./RUNALL.sh $(buildwithlibelf)
 pretest:
 	sh CHECKIFRUNNING.sh
 
 # RUNALL.sh does this
 dd:
-	./DWARFTEST.sh dd 2>ALLdd 1>&2
+	./DWARFTEST.sh $(buildwithlibelf) 2>ALLdd 1>&2
 
 clean:
 	sh ./CLEANUP

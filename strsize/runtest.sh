@@ -1,3 +1,5 @@
+#!/bin/sh
+
 dd=../dwarfdump
 gen=../dwarfgen
 t1=junkstdout

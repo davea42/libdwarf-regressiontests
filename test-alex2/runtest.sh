@@ -3,13 +3,26 @@
 l=$1
 top_builddir=$2
 top_srcdir=$3
+withlibelf=$4
+withlibz=$5
 OPTS="-I$top_builddir -I$top_builddir/libdwarf -I$top_srcdir/libdwarf"
-if [ -f /usr/include/zlib.h ]
+if [ x$withlibz = "x" ]
 then
-  cc -DWORKING=1 $OPTS  test.c $l -lelf -lz -o test2
-else
-  cc -DWORKING=1 $OPTS  test.c $l -lelf -o test2
+  echo "FAIL test-alex2. missing withlibz arg 5. $withlibelf , $withlibz"
+  exit 1
 fi
+libs=
+if [ $withlibelf = "withlibelf" ]
+then
+  libs="$libs -lelf"
+fi
+if [ $withlibz = "withlibz" ]
+then
+  libs="$libs -lz"
+fi
+
+
+cc -DWORKING=1 $OPTS  test.c $l $libs -o test2
 
 ./test2 orig.a.out >out1
 if [ $? != 0 ]

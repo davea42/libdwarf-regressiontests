@@ -34,11 +34,13 @@ set -x
   test=$3
   base=$4
   opts="$5"
-  echo "====== command:  $dwdumper $opts $obj"  >> $ntimeout
-  echo "====== ntimeout $ntimeout wrtimen: $wrtimen"
-  echo "====== base: $base test: $test" 
-  echo "====== $wrtimen $dwdumper $opts  $obj"
-  $wrtimen $dwdumper $opts $obj 1>junk1 2>&1
+  # Skip all this timing stuff. No longer wanted, really.
+  #echo "====== command:  $dwdumper $opts $obj"  >> $ntimeout
+  #echo "====== ntimeout $ntimeout wrtimen: $wrtimen"
+  #echo "====== base: $base test: $test" 
+  #echo "====== $wrtimen $dwdumper $opts  $obj"
+  #$wrtimen 
+  $dwdumper $opts $obj 1>junk1 2>&1
   unifyddname junk1 $test
   diff $base $test
   if test  $?  -ne 0

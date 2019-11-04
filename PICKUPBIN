@@ -7,12 +7,40 @@
 # It should be sufficiently efficient to do by default, but
 # we will see.
 #  The gcc option is -fsanitize=address and the like
+
+# dwarfgen and libelf go together here.
+withlibelf="withlibelf"
+libelfopt="--enable-libelf"
+if [ $# -eq 0 ]
+then
+   echo "PICKUPBIN defaults to withlibelf."
+fi
+if [ $# -gt 0 ]
+then
+  withlibelf="withlibelf"
+  if [ $1 = "nolibelf" ]
+  then
+    withlibelf="nolibelf"
+    echo "PICKUPBIN set to nolibelf."
+    libelfopt="--disable-libelf"
+  else 
+    if [ $1 != "withlibelf" ]
+    then
+      echo "Improper argument to PICKUPBIN, use withlibelf or nolibelf"
+      exit 1
+    fi
+    echo "PICKUPBIN set to withlibelf."
+  fi
+fi
+
+
 if [ x$NLIZE = 'xy' ]
 then
 sanitize="--enable-sanitize"
 else
 sanitize=
 fi
+
 
 cur=`pwd`
 top_build=/tmp/regressionbuild
@@ -22,19 +50,23 @@ then
 fi
 rm -rf $top_build/*
 
-set -x
 # Fix the following line to match the desired 
 # libdwarf/dwarfdump source 
 # directory.
 . ./BASEFILES
 
 cd $top_build 
+echo "PICKUPBIN configure --disable-libelf for dwarfdumpnl"
+set -x
 $libdw/configure $sanitize  --disable-libelf ; make
+set +x
 cp dwarfdump/dwarfdump $cur/dwarfdumpnl
 
 rm -rf $top_build/*
 cd $top_build 
-$libdw/configure $sanitize  --enable-oldframecol ;  make
+set -x
+$libdw/configure $sanitize $libelfopt  --enable-oldframecol ;  make
+set +x
 
 cp libdwarf/.libs/libdwarf.a $cur/libdwoldframecol.a
 if [ $? -ne 0 ]
@@ -44,7 +76,11 @@ then
 fi
 
 rm -rf $top_build/*
-$libdw/configure $sanitize --enable-windowspath ; make 
+
+echo "PICKUPBIN configure $libelfop for --enable-windowspath"
+set -x
+$libdw/configure $sanitize $libelfopt --enable-windowspath ; make 
+set +x
 
 cp dwarfdump/dwarfdump   $cur/dwarfdumpW
 if [ $? -ne 0 ]
@@ -55,7 +91,18 @@ fi
 
 
 rm -rf $top_build/*
-$libdw/configure $sanitize --enable-dwarfgen --enable-dwarfexample ;  make 
+if [ $withlibelf = "withlibelf" ]
+then
+  echo "PICKUPBIN configure --enable-dwarfgen --enable-dwarfexample"
+  set -x
+  $libdw/configure $sanitize --enable-dwarfgen --enable-dwarfexample ;  make 
+  set +x
+else
+  echo "PICKUPBIN configure --diable-libelf --enable-dwarfexample"
+  set -x
+  $libdw/configure $sanitize --disable-libelf --enable-dwarfexample ;  make 
+  set +x
+fi
 if [ $? -ne 0 ]
 then
   echo "No libdwarf.a built! giving up."
@@ -80,17 +127,14 @@ then
   echo "No dwarfdump.conf to copy! giving up."
   exit 1;
 fi
-#cp $top_build/libdwarf/gennames $cur
-#if [ $? -ne 0 ]
-#then
-#  echo "No gennames to copy! giving up."
-#  exit 1;
-#fi
-cp $top_build/dwarfgen/dwarfgen  $cur
-if [ $? -ne 0 ]
+if [ $withlibelf = "withlibelf" ]
 then
-  echo "No dwarfgen to copy! giving up."
-  exit 1;
+  cp $top_build/dwarfgen/dwarfgen  $cur
+  if [ $? -ne 0 ]
+  then
+    echo "No dwarfgen to copy! giving up."
+    exit 1;
+  fi
 fi
 cp $top_build/dwarfexample/simplereader  $cur
 if [ $? -ne 0 ]

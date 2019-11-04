@@ -1,3 +1,5 @@
+# Copyright 2019. David Anderson
+# This file is hereby placed in the public domain.
 
 echo " Inspect the first two output cases manually for errors."
 echo "xxxxxxxxx" > testdata

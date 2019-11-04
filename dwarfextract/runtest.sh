@@ -10,6 +10,14 @@ dd=$1
 top_builddir=$2
 top_srcdir=$3
 dwlib=$4
+withlibelf=$5
+withlibz=$6
+if [ x$withlibz = "x" ]
+then
+   echo "FAIL dwarfextract runtest.sh missing libz arg"
+   exit 1
+fi
+
 if [ x$NLIZE = 'xy' ]
 then
   opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
@@ -17,12 +25,12 @@ else
   opt=
 fi
 INCS="-I$top_srcdir/libdwarf  -I/usr/local/include -I$top_builddir -I$top_builddir/libdwarf"
-if [ -f /usr/include/zlib.h ]
+libs="-lelf"
+if [ $withlibz ]
 then
-  cc -g $opt $INCS dwarfextract.c -o dwarfextract $dwlib -lelf -lz
-else
-  cc -g $opt $INCS dwarfextract.c -o dwarfextract $dwlib -lelf
+  libs="$libs -lz"
 fi
+cc -g $opt $INCS dwarfextract.c -o dwarfextract $dwlib $libs
 # Use precompiled test1.c test2.c for test consistency.
 #cc -g test1.c test2.c -o test1
 ./dwarfextract test1 test1out >basestdout
@@ -49,12 +57,7 @@ then
 fi
 echo PASS dwarfextract
 
-if [ -f /usr/include/zlib.h ]
-then
-  cc -g $opt -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwarf -lelf -lz
-else
-  cc -g $opt -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwarf -lelf
-fi
+cc -g $opt -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwarf $libs
 ./dwarfextractc test1 testcout >basecstdout
 if [  $?  -ne 0 ]
 then

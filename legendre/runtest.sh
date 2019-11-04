@@ -7,13 +7,27 @@ else
 fi
 libdw=$1
 bopt=$2
-OPTS="-I$bopt -I$bopt/libdwarf" 
-if [ -f /usr/include/zlib.h ]
+withlibelf=$3
+withlibz=$4
+if [ x$withlibz = "x" ]
 then
-  cc -I $libdw/libdwarf $opt $OPTS -DNEW frame_test.c ../libdwarf.a -lelf -lz -o frame_test1
-else
-  cc -I $libdw/libdwarf $opt $OPTS -DNEW frame_test.c ../libdwarf.a -lelf -o frame_test1
+   echo "FAIL frame1 runtest.sh missing arguments"
+   exit 1
 fi
+
+OPTS="-I$bopt -I$bopt/libdwarf" 
+libs=
+if [ $withlibelf = "withlibelf" ]
+then
+  libs="$libs -lelf"
+fi
+if [ $withlibz = "withlibz" ]
+then
+  libs="$libs -lz"
+fi
+
+
+cc -I $libdw/libdwarf $opt $OPTS -DNEW frame_test.c ../libdwarf.a $libs -o frame_test1
 ./frame_test1
 if [  $? -ne 0 ]
 then
@@ -21,12 +35,7 @@ then
   exit 1
 fi
 
-if [ -f /usr/include/zlib.h ]
-then
-  cc -I $libdw/libdwarf -DOLD $opt $OPTS frame_test.c ../libdwoldframecol.a -lelf -lz -o frame_test2
-else
-  cc -I $libdw/libdwarf -DOLD $opt $OPTS frame_test.c ../libdwoldframecol.a -lelf -o frame_test2
-fi
+cc -I $libdw/libdwarf -DOLD $opt $OPTS frame_test.c ../libdwoldframecol.a $libs -o frame_test2
 ./frame_test2
 if [  $? -ne 0 ]
 then

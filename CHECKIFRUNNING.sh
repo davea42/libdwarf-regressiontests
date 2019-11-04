@@ -5,7 +5,7 @@ echo 'precheck for already running'
 # Do this early before doing the build since
 # the build will break any DWARFTEST.sh
 # that is running.
-if [ -f /tmp/dwba* ]
+if [ -f "/tmp/dwba*" ]
 then
   echo "Only one DWARFTEST.sh can run at a time on a machine"
   echo "Something is wrong, DWARFTEST.sh already running, "
@@ -13,7 +13,7 @@ then
   echo "exists, so exit non-zero and stop"
   exit 1
 fi
-if [ -f /tmp/dwbb* ]
+if [ -f "/tmp/dwbb*" ]
 then
   echo "Only one DWARFTEST.sh can run at a time on a machine"
   echo "Something is wrong, DWARFTEST.sh already running, "
