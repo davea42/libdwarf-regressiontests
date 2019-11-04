@@ -26,8 +26,8 @@ rm -f libdwarf.a
 rm -f testoutput
 rm -f libdwoldframecol.a
 rm -f test_harmless
-rm -f checkforzlib/a.out
-rm -f checkforzlib/junk*
+rm -f checkforlibz/a.out
+rm -f checkforlibz/junk*
 rm -f baddie1/testincorrect*
 rm -f test-alex1/test1
 rm -f        test-alex1/test2
