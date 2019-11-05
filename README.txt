@@ -96,7 +96,11 @@ offset to size before checking for a value >
 the size of the entire file so an overflow in the
 add would result in letting the read proceed.
 Freebsd libelf is a bit better than Ubuntu
-in testing for legitimate Elf.
+libelf in testing for legitimate Elf.
+Note that libdwarf no longer requires libelf
+exist and libdwarf's elf reader code is
+careful to validate Elf object contents
+for reasonableness.
 
 To run a full test:
 	./configure

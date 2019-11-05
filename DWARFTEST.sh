@@ -1463,10 +1463,15 @@ do
 done
 rm -f /tmp/dwba.$$
 rm -f /tmp/dwbb.$$
-echo "base dwarfdump times"
-$mypycom $mypydir/usertime.py baseline $otimeout
-echo "new  dwarfdump times"
-$mypycom $mypydir/usertime.py newversn $ntimeout
+if [ x$wrtimeo = "x" ]
+then
+  echo "No /usr/bin/times available to report"
+else
+  echo "base dwarfdump times"
+  $mypycom $mypydir/usertime.py baseline $otimeout
+  echo "new  dwarfdump times"
+  $mypycom $mypydir/usertime.py newversn $ntimeout
+fi
 echo PASS $goodcount
 echo FAIL $failcount
 echo 'Ending regressiontests: DWARFTEST.sh' `date`
