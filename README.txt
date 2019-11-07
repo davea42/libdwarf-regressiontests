@@ -1,39 +1,33 @@
-Latest update: October 29, 2019 
+Latest update: 7 November 2019
 
-NEWS October 2019: configure --disable-libelf
-will result in tests that neither link to libelf
-nor require libelf (so dwarfgen will not
-be built and cannot be tested in such
-environments).  But the majority of tests
-can proceed as normal.
-
+NEWS November 2019: 
+The regression tests have now been run in full with no errors
+on Linux little endian (Ubuntu 18.04 32 and 64bit), FreeBSD
+little endian (32 and 64 bit), s390 big endian (Ubuntu 18.04),
+and MacOS Catalina little endian (64 bit,using the Apple
+Command Line Tools).
+In some environments a few tests must be skipped and
+those report 'SKIP' in the test output.
 
 This directory (regressiontests) is the base which is used for
-regression testing of libdwarf.    It will probably only
-be usable on a POSIX compliant system (Unix or Linux or,
-by using configure --disable-libelf, MacOS).
+regression testing of libdwarf.    It will probably only be
+usable on a POSIX compliant system (for example Unix, Linux, FreeBSD,
+or MacOS).
 
 Summary of overall regressiontests options:
    ./configure [--disable-libelf]
    make
 
-Summary of overall regressiontests including make check
-and cmake (from code directory, not regressiontests).
-   cd /path/to/code
-   sh FIX-CONFIGURE-TIMES
-   sh run-all-tests.sh [--disable-libelf]
-See below for additional details.
+See code/README for the overall scripts/run-all-tests.sh
+script.
 
-
-The Makefiles here do assume gnu make (gmake) as
-of the August 2018 change to using full autoconf/automake.
-For Linux that is not a problem 'make' is gmake.
-For non-linux doing 'gmake' to start the testing 
-does not suffice as there are shell scripts invoked
-and the Makefiles may generate errors.
-For that case modify ./SHALIAS.sh to create an alias
-for make referencing gmake (see the comments in
-SHALIAS.sh).
+The Makefiles here do assume gnu make (gmake) as of the
+August 2018 change to using full autoconf/automake.  For Linux
+that is not a problem 'make' is gmake.  For non-linux doing
+'gmake' to start the testing does not suffice as there are
+shell scripts invoked and the Makefiles may generate errors.
+For that case modify ./SHALIAS.sh to create an alias for make
+referencing gmake (see the comments in SHALIAS.sh).
 
 Here are some tests that relate to specific features
 of groups:

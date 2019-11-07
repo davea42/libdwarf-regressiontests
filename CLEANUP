@@ -17,6 +17,7 @@ rm -f frame1/framexlocal.c
 rm -f frame1/frame2018.out
 rm -f frame1/selregs2018.out
 rm -f tmp*
+rm -f testendian
 rm -f tmp*err*
 rm -f core
 rm -f */core

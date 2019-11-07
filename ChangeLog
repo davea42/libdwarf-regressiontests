@@ -1,3 +1,7 @@
+2019-11-07 David Anderson
+   * CLEANUP: Removing the testendian executable now.
+   * README.txt: More explicit about running the full
+     test set.
 2019-11-04 David Anderson
    * CHECKIFRUNNING.sh: Quote some paths with "".
    * CLEANUP: Add cleanup of temp files in checkforzlib
