@@ -1,8 +1,13 @@
 /*  The source here is from
     https://sourceware.org/gdb/onlinedocs/gdb/Separate-Debug-Files.html
 
-    It's unclear what the copyright status of this code is, given
-    it is IEEE 802.3 with specific data points.
+    The calculation is IEEE 802.3 with specific data points.
+    As such this is mathematics defined by IEEE and
+    is not copyrightable.
+
+    In addition, it is essential that people wanting to
+    write code that interoperates with gcc/gdb be able
+    to use exactly this code.
 */
 
 #include <sys/types.h>

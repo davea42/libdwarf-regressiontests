@@ -1,3 +1,6 @@
+2019-11-10 David Anderson
+   * CLEANUP: Removing the  set -x left in accidentally.
+   * debuglink/crc32.c: Added commentary.
 2019-11-07 David Anderson
    * CLEANUP: Removing the testendian executable now.
    * README.txt: More explicit about running the full

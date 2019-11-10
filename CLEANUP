@@ -1,6 +1,5 @@
 #!/bin/sh
 # Clean up the temp files left behind by a test.
-set -x
 . ./SHALIAS.sh
 (cd dwgena ; make clean)
 (cd debugfission ; make clean)
