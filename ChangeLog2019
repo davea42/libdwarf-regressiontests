@@ -1,0 +1,119 @@
+2019-11-10 David Anderson
+   * CLEANUP: Removing the  set -x left in accidentally.
+   * debuglink/crc32.c: Added commentary.
+2019-11-07 David Anderson
+   * CLEANUP: Removing the testendian executable now.
+   * README.txt: More explicit about running the full
+     test set.
+2019-11-04 David Anderson
+   * CHECKIFRUNNING.sh: Quote some paths with "".
+   * CLEANUP: Add cleanup of temp files in checkforzlib
+     directory.
+   * DWARFTEST.sh:a Now supports options withlibelf or nolibelf.
+     So we can avoid tests that rely on libelf when there
+     is no libelf.  If cc is not available (as a command)
+     try gcc instead.  Separate out things like the -E and -o
+     options so if no libelf we do not use those dwarfdump
+     options. If we don't have certain /usr/bin/time options
+     suppress the use of /usr/bin/time.
+   * Makefile.in: Pick up withlibelf/nolibelf from configure.
+     Pass one or the other on to other scripts.
+   * PICKUPBIN: Now allow nolibelf option so we do not
+     try to build things (dwarfgen!) that cannot possibly
+     build.
+   * README.txt: Documenting the new configure etc options.
+   * RUNALL.sh: How honors nolibelf/withlibelf .
+   * RUNTIMEFILES: If we cannot use the /usr/bin/time
+     -o option (because it's not available) then turn off
+     using /usr/bin/time.  The summing of user time etc
+     across the processes is not that important.
+   * baddie/runtest.sh: Remove use of /usr/bin/time
+   * config.h.in: add DWARF_WITH_LIBELF HAVE_DWARFGEN
+     for proper test setup by configure.ac.
+   * configure.ac: Add --disable-libelf option 
+     so we can avoid pointless test failures for thing
+     that cannot work without libelf.
+   * configure: Regenerated.
+   * debugfission/runtest.sh: When zcat missing use
+     gzcat (MacOS).
+   * dwarfextract/runtest.sh,err_allocate/runtest.sh,
+     findcu/runtest.sh,frame1/runtest.sh,
+     legendre/runtest.sh,navarro/runtest.sh,
+     strsize/runtest.sh,test-alex2/runtest.sh,
+     testoffdie/runtest.sh: Now 
+     honor lack of libelf
+     and will not try to link with it if libelf is missing.
+   * test_harmless.c: Now uses dwarf_init_path() as
+     that allows it to work on MacOS with dSYM debug.
+   * s390fails: Just internal documentation, most
+     now deleted as tests pass on s390.
+   * dwgena/runtest.sh,enciso4/runtest.sh: When zcat missing use
+     gzcat (MacOS).
+2019-10-24 David Anderson
+   * RUNALL.sh,baddie1/runtest.sh,bigobj/runtest.sh,
+     data16/runtest.sh,debugfission/runtest.sh,
+     debugfissionb/runtest.sh,dwarfextract/runtest.sh,
+     dwgena/runtest.sh,dwgenc/runtest.sh,
+     enciso4/runtest.sh,err_allocate/runtest.sh,
+     findcu/runtest.sh,frame1/runtest.sh,hughes2/runtest.sh
+     implicitconst/runtest.sh,legendre/runtest.sh,
+     navarro/runtest.sh,nolibelf/runtest.sh,
+     offsetfromlowpc/runtest.sh,strsize/runtest.sh,
+     test-alex1/runtest.sh,test-alex2/runtest.sh,
+     testoffdie/runtest.sh, williamson/runtest.sh:
+     Doing a better job (in echo statements) to report
+     what passed, and in some cases, what failed.
+     Making it easier to work with the results.
+2019-10-06 David Anderson
+   * dwarfdump-s390.O: Corrected libdwarf endianness issues
+     so the s390  big endian dwarfdump works as well as the
+     little-endian versions do.
+2019-10-05 David Anderson
+   * dwgena/test2.base.gz,dwgena/test4.base.gz,dwgena/test7.base.gz,
+     dwgena/test8.base.gz,dwgena/test9.base.gz: Changed dwarfgen
+     setting of the standard opcodes from 10 to 13 (to match
+     common practice) so this update the baselines to account
+     for the 3 extra bytes in the header.
+2019-10-04 David Anderson
+   * offsetfromlowpc/baseadvlocf,offsetfromlowpc/baseadvlocvf,
+     offsetfromlowpc/runtest.sh: Now the test of the advance-8
+     CFA instruction applies to a 64bit pointer object and
+     the fde code-length is adjusted usefully.
+2019-09-17 David Anderson
+   * DWARFTEST.sh: Now uses testendian.c
+     to determine test host endianness.
+   * test_dwarfnames.c,test_harmless.c: Indentation
+     fixed and trailing whitespace removed.
+   * testendian.c: New test for test host endianess
+     as at least one test (dwarfextract) was not
+     written to allow anything but little-endian testing.
+   * debuglink/crc32.c,debuglink/runtest.sh: These
+     now adjust so that, for test purposes, the hex output
+     is identical for little vs big endian test hosts.
+2019-04-25 David Anderson
+   * PICKUPBIN: Now builds a dwarfdump with --disable-libelf
+     and copies it to the top level for testing as dwarfdumpnl.
+   * nolibelf: Added directory for testing a nolibelf dwarfdump
+     which is named dwarfdumpnl here.
+   * CLEANUP: rm dwarfdumpnl.
+   * DWARFTEST.sh: run nolibelf/runtest.sh
+   * nolibelf:  A directory with the test script and test files.
+   * encisoa: A directory with new test object relating to
+     DW_AT_containing_type use in gcc.
+2019-01-14 David Anderson
+   * DWARFTEST.sh: Added comments so it will be easier
+     to understand where certain tests are really
+     done.
+   * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,
+     dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
+     New baseline executables.
+   * dwgena/test7.base.gz: We now continue from some line table
+     errors so that changes the baseline a little.
+   * offsetfromlowpc/baseadvlocf,offsetfromlowpc/baseadvlocvf,
+     offsetfromlowpc/runtest.sh: New test case for 
+     DW_CFA_advance_loc* operations.
+2019-01-10 David Anderson
+   * DWARFTEST.sh,CLEANUP,PICKUPBIN: In preparation
+     for moving to pre-build dwarf_names.c we
+     do not explicitly test gennames here.
+
