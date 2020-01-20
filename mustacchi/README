@@ -1,0 +1,23 @@
+Communication received  20 January 2020
+
+Robert Mustacchi reports that dwarfdump/libdwarf don't work
+right an object file created  by Clang version 9.
+The issue is equally true with Clang 6.
+
+The object files were generated with the following commands.
+
+clang -c -m32 -gdwarf-4 t.c -o m32t.o
+
+clang -c -m64 -gdwarf-4 t.c -o m64t.o
+
+m64t.o is generated with .rela sections and libdwarf
+deals with them just fine.
+
+m32t.o is generated with .rel sections, but in the relocations
+for the .debug_info section strp (string) entries
+the section value has zero but the symtab entry for the 
+symbol the relocation refers to has a (usually) non-zero st_value.
+
+libdwarf has not expected that .rel relocations needed
+to be read!
+
