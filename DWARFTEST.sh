@@ -485,6 +485,17 @@ else
   cd ..
 fi
 
+# See mustacchi/README. 
+# Clang generates a slightly unusual relocation set for -m32.
+# As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
+cd mustacchi
+sh runtest.sh
+chkres $? "mustacchi/runtest.sh"
+cd ..
+
+# This version works already
+runtest $d1 $d2 mustacchi/m64t.o -i -M
+
 runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
 if [ -f /lib/x86_64-linux-gnu/libc-2.27.so ]
 then
