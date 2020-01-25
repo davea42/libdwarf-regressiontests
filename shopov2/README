@@ -1,0 +1,19 @@
+
+23 January 2020
+
+Stoyan Shopov notified of a some bugs.
+
+He is using Clang 9.0.0 on Microsoft.
+
+Target of the Elf build is arm-none-gabi.
+
+A) compiler complains about uninitialized
+   Dwarf_Sig8 (this was fixed in libdwarf/dwarfdump
+   source January 16.
+
+B) on one source file dwarfdump reports "cannot get
+   forumudata on DW_FORM_loclistx" Actually the
+   form is DW_FORM_rnglistx (one bug).
+   In print_die.c, line 5936.
+   In addition in dwarf_form.c, DW_FORM_rnglistx
+=================
