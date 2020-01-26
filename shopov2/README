@@ -17,3 +17,16 @@ B) on one source file dwarfdump reports "cannot get
    In print_die.c, line 5936.
    In addition in dwarf_form.c, DW_FORM_rnglistx
 =================
+
+Stoyan Shopov writes:
+Of course, please feel free to use the test ELF file as you see fit.
+The source code is in this github repository:
+
+Test file source:
+https://github.com/stoyan-shopov/troll-test-drive-snapshots
+The archive name is ' troll-test-drive-files-clang-dwarf5.7z'
+
+It is a compilation of the firmware for the 'blackmagic' debug probe for arm cortex cpus, the original project is here:
+https://github.com/blacksphere/blackmagic/wiki
+
+==================
