@@ -1,0 +1,1 @@
+clang -target arm-none-eabi -ggdb3 -gdwarf-5 -c -o decltest-dw5.o decltest.c

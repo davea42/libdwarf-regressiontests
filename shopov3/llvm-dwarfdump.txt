@@ -1,0 +1,169 @@
+decltest-dw5.o:	file format ELF32-arm-little
+
+.debug_abbrev contents:
+Abbrev table for offset: 0x00000000
+[1] DW_TAG_compile_unit	DW_CHILDREN_yes
+	DW_AT_producer	DW_FORM_strx1
+	DW_AT_language	DW_FORM_data2
+	DW_AT_name	DW_FORM_strx1
+	DW_AT_str_offsets_base	DW_FORM_sec_offset
+	DW_AT_stmt_list	DW_FORM_sec_offset
+	DW_AT_comp_dir	DW_FORM_strx1
+	DW_AT_low_pc	DW_FORM_addrx
+	DW_AT_high_pc	DW_FORM_data4
+	DW_AT_addr_base	DW_FORM_sec_offset
+
+[2] DW_TAG_variable	DW_CHILDREN_no
+	DW_AT_name	DW_FORM_strx1
+	DW_AT_type	DW_FORM_ref4
+	DW_AT_external	DW_FORM_flag_present
+	DW_AT_decl_file	DW_FORM_data1
+	DW_AT_decl_line	DW_FORM_data1
+	DW_AT_location	DW_FORM_exprloc
+
+[3] DW_TAG_base_type	DW_CHILDREN_no
+	DW_AT_name	DW_FORM_strx1
+	DW_AT_encoding	DW_FORM_data1
+	DW_AT_byte_size	DW_FORM_data1
+
+[4] DW_TAG_subprogram	DW_CHILDREN_no
+	DW_AT_low_pc	DW_FORM_addrx
+	DW_AT_high_pc	DW_FORM_data4
+	DW_AT_frame_base	DW_FORM_exprloc
+	DW_AT_name	DW_FORM_strx1
+	DW_AT_decl_file	DW_FORM_data1
+	DW_AT_decl_line	DW_FORM_data1
+	DW_AT_prototyped	DW_FORM_flag_present
+	DW_AT_type	DW_FORM_ref4
+	DW_AT_external	DW_FORM_flag_present
+
+
+.debug_info contents:
+0x00000000: Compile Unit: length = 0x0000003e version = 0x0005 unit_type = DW_UT_compile abbr_offset = 0x0000 addr_size = 0x04 (next unit at 0x00000042)
+
+0x0000000c: DW_TAG_compile_unit
+              DW_AT_producer	("clang version 9.0.0 (https://github.com/msys2/MINGW-packages.git fdafa4d8c4022588676c8ec0985dafaf834258ae)")
+              DW_AT_language	(DW_LANG_C99)
+              DW_AT_name	("decltest.c")
+              DW_AT_str_offsets_base	(0x00000008)
+              DW_AT_stmt_list	(0x00000000)
+              DW_AT_comp_dir	("C:\\tmp")
+              DW_AT_low_pc	(0x0000000000000000)
+              DW_AT_high_pc	(0x000000000000002c)
+              DW_AT_addr_base	(0x00000008)
+
+0x00000023:   DW_TAG_variable
+                DW_AT_name	("decl_test")
+                DW_AT_type	(0x0000002e "int")
+                DW_AT_external	(true)
+                DW_AT_decl_file	("C:\tmp\decltest.c")
+                DW_AT_decl_line	(3)
+                DW_AT_location	(DW_OP_addrx 0x0)
+
+0x0000002e:   DW_TAG_base_type
+                DW_AT_name	("int")
+                DW_AT_encoding	(DW_ATE_signed)
+                DW_AT_byte_size	(0x04)
+
+0x00000032:   DW_TAG_subprogram
+                DW_AT_low_pc	(0x0000000000000000)
+                DW_AT_high_pc	(0x000000000000002c)
+                DW_AT_frame_base	(DW_OP_reg11 R11)
+                DW_AT_name	("main")
+                DW_AT_decl_file	("C:\tmp\decltest.c")
+                DW_AT_decl_line	(5)
+                DW_AT_prototyped	(true)
+                DW_AT_type	(0x0000002e "int")
+                DW_AT_external	(true)
+
+0x00000041:   NULL
+
+.debug_frame contents:
+
+00000000 00000010 ffffffff CIE
+  Version:               4
+  Augmentation:          ""
+  Address size:          4
+  Segment desc size:     0
+  Code alignment factor: 1
+  Data alignment factor: -4
+  Return address column: 14
+
+  DW_CFA_def_cfa: reg13 +0
+  DW_CFA_nop:
+  DW_CFA_nop:
+
+00000014 00000010 00000000 FDE cie=00000000 pc=00000000...0000002c
+  DW_CFA_advance_loc: 4
+  DW_CFA_def_cfa_offset: +4
+  DW_CFA_nop:
+
+
+.debug_line contents:
+debug_line[0x00000000]
+Line table prologue:
+    total_length: 0x0000005c
+         version: 5
+    address_size: 4
+ seg_select_size: 0
+ prologue_length: 0x00000037
+ min_inst_length: 1
+max_ops_per_inst: 1
+ default_is_stmt: 1
+       line_base: -5
+      line_range: 14
+     opcode_base: 13
+standard_opcode_lengths[DW_LNS_copy] = 0
+standard_opcode_lengths[DW_LNS_advance_pc] = 1
+standard_opcode_lengths[DW_LNS_advance_line] = 1
+standard_opcode_lengths[DW_LNS_set_file] = 1
+standard_opcode_lengths[DW_LNS_set_column] = 1
+standard_opcode_lengths[DW_LNS_negate_stmt] = 0
+standard_opcode_lengths[DW_LNS_set_basic_block] = 0
+standard_opcode_lengths[DW_LNS_const_add_pc] = 0
+standard_opcode_lengths[DW_LNS_fixed_advance_pc] = 1
+standard_opcode_lengths[DW_LNS_set_prologue_end] = 0
+standard_opcode_lengths[DW_LNS_set_epilogue_begin] = 0
+standard_opcode_lengths[DW_LNS_set_isa] = 1
+include_directories[  0] = "C:\\tmp"
+file_names[  0]:
+           name: "decltest.c"
+      dir_index: 0
+   md5_checksum: 341d30b417ba9d5892f066a7e979d64b
+
+Address            Line   Column File   ISA Discriminator Flags
+------------------ ------ ------ ------ --- ------------- -------------
+0x0000000000000000      6      0      0   0             0  is_stmt
+0x000000000000000c      7     12      0   0             0  is_stmt prologue_end
+0x000000000000001c      8      9      0   0             0  is_stmt
+0x0000000000000020      8      2      0   0             0 
+0x0000000000000028      0      2      0   0             0 
+0x000000000000002c      0      2      0   0             0  end_sequence
+
+.debug_str contents:
+0x00000000: "clang version 9.0.0 (https://github.com/msys2/MINGW-packages.git fdafa4d8c4022588676c8ec0985dafaf834258ae)"
+0x0000006b: "decltest.c"
+0x00000076: "C:\tmp"
+0x0000007d: "decl_test"
+0x00000087: "int"
+0x0000008b: "main"
+
+.debug_line_str contents:
+0x00000000: "C:\\tmp"
+0x00000007: "decltest.c"
+
+.debug_addr contents:
+Addr Section: length = 0x0000000c, version = 0x0005, addr_size = 0x04, seg_size = 0x00
+Addrs: [
+0x00000000
+0x00000000
+]
+
+.debug_str_offsets contents:
+0x00000000: Contribution size = 28, Format = DWARF32, Version = 5
+0x00000008: 00000000 "clang version 9.0.0 (https://github.com/msys2/MINGW-packages.git fdafa4d8c4022588676c8ec0985dafaf834258ae)"
+0x0000000c: 0000006b "decltest.c"
+0x00000010: 00000076 "C:\tmp"
+0x00000014: 0000007d "decl_test"
+0x00000018: 00000087 "int"
+0x0000001c: 0000008b "main"
