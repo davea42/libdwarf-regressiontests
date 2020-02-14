@@ -1,8 +1,13 @@
 February 11, 2020
 
 Stoyan Shopov noted some DWARF oddities and provided the
-test cases here. His words:
+test cases here. 
 
+The dw5 test case shows case where .rel. is involved yet relocation
+is needed. The dw4 test case does not do things the same way
+with relocations.
+
+His words:
 I noticed something about printing file names for source code
 declaration attributes (e.g. DW_AT_decl_file/DW_AT_call_file)
 when the attribute value is 0, but it may be a confusion from
@@ -14,6 +19,8 @@ resolves the filename and prints it. I guess that is because in
 dwarf5 the entry with index 0 is now explicitly present in the
 line number program, whereas prior to dwarf5, the entries with
 index 0 for the filename and directory were defined implicitly.
+
+
 
 It is a bit confusing to me why in the dwarf5 document,
 in section 2.14, it is explicitly stated that "The value

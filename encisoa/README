@@ -1,3 +1,5 @@
+
+
 These are from Carlos Alberto-Enciso and
 contain an example of the common GNU
 use of the standard DW_AT_containing_type.
@@ -8,3 +10,12 @@ a DW_TAG_structure_type we call an extension
 (an extension not shown in the .o example here).
 
 01 May 2019.
+
+========new information. 2020-02-13.
+
+In this file .rela.debug_info record 8 has addend of 0xac
+And the data is in .debug_info at 0ffset 0x33. That data
+is already including the offset of 0xac.
+
+So adding the .debug_info value to the addend 
+results in a string offset which is incorrect.
