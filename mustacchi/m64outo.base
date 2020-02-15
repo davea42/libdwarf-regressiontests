@@ -13,13 +13,32 @@ COMPILE_UNIT<header overall offset = 0x00000000>:
 LOCAL_SYMBOLS:
 < 1><0x0000001e>    DW_TAG_variable
                       DW_AT_name                  foo <form DW_FORM_strp>
-                      DW_AT_type                  <0x0000002f> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x00000033> <form DW_FORM_ref4>
                       DW_AT_external              yes(1) <form DW_FORM_flag_present>
                       DW_AT_decl_file             0x00000001 /tmp/t.c <form DW_FORM_data1>
                       DW_AT_decl_line             0x00000002 <form DW_FORM_data1>
-                      DW_AT_location              len 0x0005: 0304000000: DW_OP_addr 0x00000004
-< 1><0x0000002f>    DW_TAG_base_type
+                      DW_AT_location              len 0x0009: 030400000000000000: DW_OP_addr 0x00000004
+< 1><0x00000033>    DW_TAG_base_type
                       DW_AT_name                  int <form DW_FORM_strp>
                       DW_AT_encoding              DW_ATE_signed <form DW_FORM_data1>
                       DW_AT_byte_size             0x00000004 <form DW_FORM_data1>
+
+[  6] .rela.debug_info:
+Offset     Addend     Reloc Type                 Index   Symbol Name
+0x00000006 0x00000000 R_X86_64_32                <    3> .debug_abbrev
+0x0000000c 0x00000000 R_X86_64_32                <    2> .debug_str
+0x00000012 0x00000036 R_X86_64_32                <    2> .debug_str
+0x00000016 0x00000000 R_X86_64_32                <    5> .debug_line
+0x0000001a 0x0000003a R_X86_64_32                <    2> .debug_str
+0x0000001f 0x0000003f R_X86_64_32                <    2> .debug_str
+0x0000002b 0x00000000 R_X86_64_64                <    6> foo
+0x00000034 0x00000043 R_X86_64_32                <    2> .debug_str
+
+[ 10] .rela.debug_pubnames:
+Offset     Addend     Reloc Type                 Index   Symbol Name
+0x00000006 0x00000000 R_X86_64_32                <    4> .debug_info
+
+[ 12] .rela.debug_pubtypes:
+Offset     Addend     Reloc Type                 Index   Symbol Name
+0x00000006 0x00000000 R_X86_64_32                <    4> .debug_info
 

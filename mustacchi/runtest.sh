@@ -5,22 +5,35 @@
 
 dd=../dwarfdump
 
-$dd -i -M m32t.o >junktest.x 
-grep foo <junktest.x 1>/dev/null 2>/dev/null
+$dd -o -i -M m64t.o >junktest64o.x 
+
+$dd  -Ei -i -M m32t.o >junktestei.x 
+grep foo <junktest64o.x 1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]
 then
  echo "FAIL mustacchi m32t.o missing foo symbol"
  exit 1
 fi
 
-diff m32out.base junktest.x
+
+diff m32outei.base junktestei.x
 if [ $? -ne 0 ]
 then
-  echo "FAIL mustacchi m32t.o dwarfdump output does not match."
+  echo "FAIL mustacchi m32t.o libelf output does not match."
   echo "If the new version is correct, update with:"
-  echo "   mv junktest.x m32out.base"
+  echo "   mv junktestei.x m32outei.base"
   exit 1
 fi
 
-echo "PASS mustacchi/runtest.sh"
+
+diff m64outo.base junktest64o.x
+if [ $? -ne 0 ]
+then
+  echo "FAIL mustacchi m64t.o libelf output does not match."
+  echo "If the new version is correct, update with:"
+  echo "   mv junktest64o.x m64outo.base"
+  exit 1
+fi
+
+echo "PASS mustacchi/runtest.sh libelf"
 exit 0

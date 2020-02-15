@@ -7,34 +7,4 @@ The dw5 test case shows case where .rel. is involved yet relocation
 is needed. The dw4 test case does not do things the same way
 with relocations.
 
-His words:
-I noticed something about printing file names for source code
-declaration attributes (e.g. DW_AT_decl_file/DW_AT_call_file)
-when the attribute value is 0, but it may be a confusion from
-my side.
 
-For dwarf5, clang 9 actually can emit a value of zero for
-such attributes. Dwarfdump only prints 0, and llvm-dwarfdump
-resolves the filename and prints it. I guess that is because in
-dwarf5 the entry with index 0 is now explicitly present in the
-line number program, whereas prior to dwarf5, the entries with
-index 0 for the filename and directory were defined implicitly.
-
-
-
-It is a bit confusing to me why in the dwarf5 document,
-in section 2.14, it is explicitly stated that "The value
-0 indicates that no source file has been specified.", one
-would guess this should not be true for dwarf5, as the file
-entry at index 0 is now explicitly present in the line number
-program. Actually, this seems to me a bit strange even for
-dwarf versions prior to 5, because (the way I understand it),
-it would not allow a compiler to refer to the implicit entries
-at index 0, and thus to refer to the 'primary file' of a
-compilation unit. Maybe that is why all compilers that I have
-inspected debug information for, explicitly define the 'primary
-file' of a compilation unit in the line number program header,
-and never actually refer to the implicit entry 0 from the line
-number program. I was also thinking about posting some kind
-of clarification request in the form of an issue at the dwarf
-website, I am somewhat confused about those zero-index entries.

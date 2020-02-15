@@ -158,12 +158,14 @@ echo "new is $d2"
 dwlib=$bdir/libdwarf.a
 dwinc=$top_srcdir/libdwarf
 
+# -o and oi and E and Ei are to ensure that things
+# work properly when using libelf. Including relocations.
 baseopts='-F'
 if [ x$withlibelf = "xwithlibelf" ]
 then
-  baseopts='-b -c  -f -F -i -l -m -o -p -r -s -ta -tf -tv -y -w  -N'
+  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N  -o -oi -E -Ei'
 else
-  baseopts='-b -c  -f -F -i -l -m    -p -r -s -ta -tf -tv -y -w  -N'
+  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N'
 fi
 
 kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku -kuf"
@@ -230,6 +232,8 @@ diederen/hello
 hughes/libkrb5support.so.0.1.debug
 shopov1/main.exe
 shopov2/clang-9.0.0-test-dwarf5.elf
+shopov3/decltest-dw4.o
+shopov3/decltest-dw5.o
 k10m/main_knc.o
 pasztory/a.out64
 relocerr64/tls32.o
@@ -492,14 +496,20 @@ runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -a
 # See mustacchi/README. 
 # Clang generates a slightly unusual relocation set for -m32.
 # As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
-# Bug not fixed. FIXME and uncomment the test
-#cd mustacchi
-#sh runtest.sh
-#chkres $? "mustacchi/runtest.sh"
-#cd ..
-
-# This version works already
-runtest $d1 $d2 mustacchi/m64t.o -i -M
+if [ x$withlibelf = "xnolibelf" ]
+then
+  cd mustacchi
+  sh runtest.sh
+  chkres $? "mustacchi/runtestnolibelf.sh"
+  cd ..
+else
+  cd mustacchi
+  sh runtest.sh
+  chkres $? "mustacchi/runtest.sh"
+  sh runtestnolibelf.sh
+  chkres $? "mustacchi/runtestnolibelf.sh"
+  cd ..
+fi
 
 runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
 if [ -f /lib/x86_64-linux-gnu/libc-2.27.so ]
