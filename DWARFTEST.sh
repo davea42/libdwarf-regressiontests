@@ -158,12 +158,12 @@ echo "new is $d2"
 dwlib=$bdir/libdwarf.a
 dwinc=$top_srcdir/libdwarf
 
-# -o and oi and E and Ei are to ensure that things
+#  oi and  Ei are to ensure that things
 # work properly when using libelf. Including relocations.
-baseopts='-F'
+#baseopts='-F'
 if [ x$withlibelf = "xwithlibelf" ]
 then
-  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N  -o -oi -E -Ei'
+  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
 else
   baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N'
 fi
@@ -196,13 +196,13 @@ chkresn () {
 }
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
-filepaths=""
-if [ x$withlibelf = "xnolibelf" ]
-then
-    echo "=====SKIP sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a because nolibelf"
-else
-    filepaths='sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a'
-fi
+#filepaths=""
+#if [ x$withlibelf = "xnolibelf" ]
+#then
+#    echo "=====SKIP sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a because nolibelf"
+#else
+#    filepaths='sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a'
+#fi
 
 echo "dadebug list filepaths"
 filepaths='$filepaths moshe/hello
@@ -525,6 +525,11 @@ fi
 # which is standard
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr --format-extensions
+if [ x$withlibelf = "xnolibelf" ]
+then
+  runtest $d1 $d2 encisoa/DW_AT_containing_type.o -o --check-tag-attr
+  runtest $d1 $d2 encisoa/DW_AT_containing_type.o -Ei --check-tag-attr --format-extensions
+fi
 # sample object with DW_AT_containing type in a use
 # which is  common extension
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
@@ -584,6 +589,11 @@ runtest $d1 $d2 -M  -M
 runtest $d1 $d2 enciso8/test-clang-dw5.o -s --print-str-offsets
 # This has a correct table (new clang, soon will be available).
 runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -s --print-str-offsets
+if [ $withlibelf = "withlibelf" ]
+then
+  runtest $d1 $d2 enciso8/test-clang-dw5.o -o -s --print-str-offsets
+  runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -o -s --print-str-offsets
+fi
 
 
 # These have .debug_str_offsets sections, but they are empty
@@ -623,6 +633,10 @@ runtest $d1 $d2   marcel/crash7 -a
 # Got DW_DLE_RELOC_SECTION_RELOC_TARGET_SIZE_UNKNOWN due to
 # presence of unexpected R_X86_64_PC32
 runtest $d1 $d2   convey/foo.g3-O0-strictdwarf.o -F
+if [ $withlibelf = "withlibelf" ]
+then
+  runtest $d1 $d2   convey/foo.g3-O0-strictdwarf.o -oi -F
+fi
 
 # Before 4 March 2017 would terminate early with error.
 runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a
@@ -1457,7 +1471,6 @@ runtest $d1 $d2 cristi2/libpthread-2.4.so -R -ka  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj -m 
 runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 
-
 #Lets just drop this report. Wait till the end.
 #echo PASS $goodcount  " after running the first test group"
 #echo FAIL $failcount  " after running the first test group"
@@ -1465,13 +1478,16 @@ runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 for i in $filepaths
 do
    echo  "===== $i all options"
-   for xtra in "" "-v" "-vv" "-vvv"  "-D" "-H 2" 
+   for xtra in "-v" "-vv" "-vvv" "-D" "-H 2" 
    do
-     # -i forces info load. Try without.
-     #for k in  $baseopts "-i -M" 
      for k in  $baseopts " -M" 
      do
-	runtest $d1 $d2 $i $k $xtra
+	    runtest $d1 $d2 $i $k $xtra
+        if [ x$withlibelf = "xwithlibelf" ]
+        then
+           # Force use of libelf
+           runtest $d1 $d2 $i $k $xtra " -oi"
+        fi
      done
    done
 done

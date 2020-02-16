@@ -1,1 +1,12 @@
-2020-01-06 placeholder
+2020-02-16 David Anderson
+    * DWARFTEST.sh: Ensuring the libelf-reading code is tested now
+      by adding -oi option to nearly all test sets. Now the
+      overall test-run count is about 51000.
+    * dwarfdump-i386-ubuntu.O,dwarfdump-x86_64-freebsd.O,
+      dwarfdump-x86_64-ubuntu.O: New baselines with .rela and .rel
+      issues fixed.
+
+    * python2/showpct.py,python3/showpct.py: Fix percent
+      denominator.
+    * showpct.py: Ensure this one not used by altering print()
+
