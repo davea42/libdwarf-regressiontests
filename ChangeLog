@@ -1,4 +1,15 @@
 2020-02-16 David Anderson
+    * DWARFTEST.sh: Added one-time messags about timing.
+      Revised the check for timeing functionality so all
+      tests here of that are consistently expressed
+      (The inconsistent one was wrong).
+    * RUNTIMEFILES: It has been failing to do what it should
+      (so we record user and system time of the tests)
+      for some time, but now is fixed and we emit a one-time
+      message saying how the check here went..
+    * python2/showpct.py,python3/showpct.py: These now get
+      a sensible percent-done and are more easily maintainable.
+2020-02-16 David Anderson
     * DWARFTEST.sh: Ensuring the libelf-reading code is tested now
       by adding -oi option to nearly all test sets. Now the
       overall test-run count is about 51000.

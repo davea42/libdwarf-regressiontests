@@ -173,9 +173,14 @@ kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky 
 # These accumulate times so we can print actual dwarfdump
 # user, sys, clock times at the end (see usertime.py).
 . ./RUNTIMEFILES
+if [ x$wrtimeo != "x" ]
+then
+  echo "We are able to do /usr/bin/time timing."
+else
+  echo "We are not able to do /usr/bin/time timing."
+fi
 rm -f $otimeout 
 rm -f $ntimeout
-echo "dadebug did rm timeout"
 chkres () {
   if [ $1 = 0 ]
   then
@@ -204,7 +209,6 @@ chkresn () {
 #    filepaths='sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a'
 #fi
 
-echo "dadebug list filepaths"
 filepaths='$filepaths moshe/hello
 jborg/simple
 gilmore/a.out
@@ -1505,14 +1509,16 @@ do
 done
 rm -f /tmp/dwba.$$
 rm -f /tmp/dwbb.$$
-if [ x$wrtimeo = "x" ]
+if [ x$wrtimeo != "x" ]
 then
-  echo "No /usr/bin/times available to report"
-else
   echo "base dwarfdump times"
+  echo "$mypycom $mypydir/usertime.py baseline $otimeout"
   $mypycom $mypydir/usertime.py baseline $otimeout
   echo "new  dwarfdump times"
+  echo "$mypycom $mypydir/usertime.py newversn $ntimeout"
   $mypycom $mypydir/usertime.py newversn $ntimeout
+else
+  echo "No /usr/bin/time data available to report"
 fi
 echo PASS $goodcount
 echo FAIL $failcount

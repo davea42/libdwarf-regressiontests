@@ -1,5 +1,6 @@
 #
 # Setting up /usr/bin/time recording.
+bdir=.
 otimeout=$bdir/junktimeouto
 ntimeout=$bdir/junktimeoutn
 wrtimeo="/usr/bin/time -o $otimeout -a -p "
@@ -10,4 +11,11 @@ then
   # Without the -o -a options we give up on this timing info
   wrtimeo=
   wrtimen=
+  echo "/usr/bin/time data is not being recorded"
+  echo " with $wrtimeo"
+  echo " and $wrtimen"
+else
+  echo "/usr/bin/time data is in $otimeout and $ntimeout"
+  echo " using $wrtimeo"
+  echo " and $wrtimen"
 fi
