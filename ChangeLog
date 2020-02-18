@@ -1,3 +1,9 @@
+2020-02-18 David Anderson
+    * DWARFTEST.sh:  Now allows a shorter test (not one that
+      should be routinely used, but handy once in a while)
+    * dwarfdump-i386-ubuntu.O,dwarfdump-x86_64-freebsd.O,
+      dwarfdump-x86_64-ubuntu.O: New baselines with improved
+      reporting of dwarf5 line table headers.
 2020-02-16 David Anderson
     * DWARFTEST.sh: Added one-time messags about timing.
       Revised the check for timeing functionality so all

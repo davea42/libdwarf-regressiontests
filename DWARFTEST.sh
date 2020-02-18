@@ -11,6 +11,9 @@ then
   echo "Defaults to  withlibelf"
   withlibelf="withlibelf"
 fi
+shortest=n
+#comment the following line out for a normal test.
+#shortest=y
 if [ $# -gt 0 ]
 then
    withlibelf=$1
@@ -1478,35 +1481,37 @@ runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 #Lets just drop this report. Wait till the end.
 #echo PASS $goodcount  " after running the first test group"
 #echo FAIL $failcount  " after running the first test group"
-
-for i in $filepaths
-do
-   echo  "===== $i all options"
-   for xtra in "-v" "-vv" "-vvv" "-D" "-H 2" 
-   do
-     for k in  $baseopts " -M" 
+if [ x$shortest = "xn" ]
+then
+  for i in $filepaths
+  do
+     echo  "===== $i all options"
+     for xtra in "-v" "-vv" "-vvv" "-D" "-H 2" 
      do
-	    runtest $d1 $d2 $i $k $xtra
-        if [ x$withlibelf = "xwithlibelf" ]
-        then
-           # Force use of libelf
-           runtest $d1 $d2 $i $k $xtra " -oi"
-        fi
+       for k in  $baseopts " -M" 
+       do
+	      runtest $d1 $d2 $i $k $xtra
+          if [ x$withlibelf = "xwithlibelf" ]
+          then
+             # Force use of libelf
+             runtest $d1 $d2 $i $k $xtra " -oi"
+          fi
+       done
      done
-   done
-done
-for i in $filepaths
-do
-   echo ===== $i all checking options
-   # -kd ensures we report the test statistics
-   for xtra in "" "-kd"  "-ki" 
-   do
-     for k in  $kopts
+  done
+  for i in $filepaths
+  do
+     echo ===== $i all checking options
+     # -kd ensures we report the test statistics
+     for xtra in "" "-kd"  "-ki" 
      do
-       runtest $d1 $d2 $i $k $xtra
+       for k in  $kopts
+       do
+         runtest $d1 $d2 $i $k $xtra
+       done
      done
-   done
-done
+  done
+fi   
 rm -f /tmp/dwba.$$
 rm -f /tmp/dwbb.$$
 if [ x$wrtimeo != "x" ]
