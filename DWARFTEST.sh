@@ -123,10 +123,12 @@ then
   ASAN_OPTIONS=
   export ASAN_OPTIONS
   nlizeopt=
+  echo "Not using -fsanitize*"
 else
   ASAN_OPTIONS="allocator_may_return_null=1"
   export ASAN_OPTIONS
   nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
+  echo "Using -fsanitize=leak (etc)"
 fi
 
 goodcount=0
