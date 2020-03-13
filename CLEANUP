@@ -7,6 +7,10 @@
 # tests at the same time as two-at-once will not work!
 rm -f /tmp/dwa.*
 rm -f /tmp/dwb.*
+
+# Needed for --print-alloc-sums
+rm -f libdwallocs
+rm -f */libdwallocs
 rm -f dwarf_names.h
 rm -f dwarf_names_enum.h
 rm -f dwarf_names_new.h

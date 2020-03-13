@@ -1,3 +1,19 @@
+2020-03-13 David Anderson
+    * CLEANUP: Added a remove of vglog, something created
+      by a special test script.
+    * DWARFTEST.sh: Now allows for optional suppress-dealloc-tree
+      testing.
+    * baddie1/linetaberr.base: New baseline as
+      we now emit the major error count (if > 0)
+      at the end of each dwarfdump run.
+    * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,
+      dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O,:
+      New baseline executables. New baseline as
+      we now emit the major error count (if > 0)
+      at the end of each dwarfdump run.  And
+      there has been improvements in some error messages
+      and in leak prevention.
+
 2020-02-18 David Anderson
     * DWARFTEST.sh:  Now allows a shorter test (not one that
       should be routinely used, but handy once in a while)

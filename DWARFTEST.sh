@@ -14,8 +14,21 @@ fi
 shortest=n
 #comment the following line out for a normal test.
 #shortest=y
-suppresstree=""
+suppresstree=
 #suppresstree="--suppress-de-alloc-tree"
+if [ "x$suppresstree"  = "x--suppress-de-alloc-tree" ]
+then
+  echo "Testing --suppress-de-alloc-tree now."
+else
+  if [ "x$suppresstree"  = "x" ]
+  then
+    echo "Not testing --suppress-de-alloc-tree  (normal case)."
+  else
+    echo "Not testing --suppress-de-alloc-tree  (normal case)."
+    echo "Setting odd suppresstree value to no value"
+    suppresstree=
+  fi
+fi
 if [ $# -gt 0 ]
 then
    withlibelf=$1

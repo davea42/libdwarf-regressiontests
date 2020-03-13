@@ -252,3 +252,4 @@ Source lines (from CU-DIE at .debug_info offset 0x000011b0):
 0xfff441ed  [  42, 0] NS
 0xfff441ee  [  42, 0] NS ET
 
+There was 1 DWARF error reported: see ERROR above.
