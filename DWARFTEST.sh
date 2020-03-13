@@ -14,6 +14,8 @@ fi
 shortest=n
 #comment the following line out for a normal test.
 #shortest=y
+suppresstree=""
+#suppresstree="--suppress-de-alloc-tree"
 if [ $# -gt 0 ]
 then
    withlibelf=$1
@@ -48,6 +50,8 @@ else
 fi
 cd ..
 echo "build with libz?  $withlibz"
+# The following is needed for --print-alloc-sums
+rm -f libdwallocs
 
 # Here do not use DWARFTEST, we do not want to match the grep from ps
 ps -eaf >/tmp/dwbc.$$ 
@@ -405,9 +409,9 @@ runtest () {
         echo "======" $tmplist $targ >> $ntimeout
         if [ x$wrtimen != "x" ]
         then
-          $wrtimen $newdw  $* $targ  1>tmp2a 2>tmp2erra
+          $wrtimen $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
         else
-          $newdw  $* $targ  1>tmp2a 2>tmp2erra
+          $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
         fi
         echo "new done " `date`
         # No need to unify for new dd name.
