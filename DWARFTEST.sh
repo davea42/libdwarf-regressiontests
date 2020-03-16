@@ -5,47 +5,45 @@ echo 'Starting regressiontests: DWARFTEST.sh' `date`
 . ./SHALIAS.sh
 stsecs=`date '+%s'`
 # dwarfgen and libelf go together here.
+withlibelf="withlibelf"
 if [ $# -eq 0 ]
 then
   echo "DWARFTESTS.sh no withlibelf/nolibelf argument"
   echo "Defaults to  withlibelf"
-  withlibelf="withlibelf"
+  withlibelf=withlibelf
 fi
 shortest=n
 #comment the following line out for a normal test.
 #shortest=y
 suppresstree=
 #suppresstree="--suppress-de-alloc-tree"
-if [ "x$suppresstree"  = "x--suppress-de-alloc-tree" ]
-then
-  echo "Testing --suppress-de-alloc-tree now."
-else
-  if [ "x$suppresstree"  = "x" ]
-  then
-    echo "Not testing --suppress-de-alloc-tree  (normal case)."
-  else
-    echo "Not testing --suppress-de-alloc-tree  (normal case)."
-    echo "Setting odd suppresstree value to no value"
-    suppresstree=
-  fi
-fi
-if [ $# -gt 0 ]
-then
-   withlibelf=$1
-   if [ $1 = "nolibelf" ]
-   then
-     echo "DWARFTESTS.sh arg is nolibelf"
-     withlibelf="nolibelf"
-   else
-     if [ $1 != "withlibelf" ]
-     then
-       echo "Improper argument to DWARFTEST.sh, use withlibelf or nolibelf"
-       exit 1
-     fi
-     echo "DWARFTESTS.sh arg is withlibelf"
-   fi
-fi
-echo "build with libelf?  $withlibelf"
+#suppresstree="--suppress-de-alloc-tree --print-alloc-sums"
+
+for i in $*
+do
+  case $i in
+  nolibelf) echo "DWARFTESTS.sh arg is $i"
+        withlibelf="nolibelf" 
+        shift;;
+
+  --suppress-de-alloc-tree) echo "DWARFTESTS.sh arg is $i"
+        echo "Suppressing de_alloc_tree"
+        suppresstree=$i 
+        shift;;
+
+  withlibelf) echo "DWARFTESTS.sh arg is $i"
+        withlibelf="withlibelf" 
+        shift;;
+
+  *)
+       echo "Improper argument $i to DWARFTEST.sh" 
+       echo "use withlibelf or nolibelf"
+       echo "or use --suppress-de-alloc-tree"
+       exit 1 ;;
+  esac
+done
+echo "build with libelf       ?  $withlibelf"
+echo "suppress de alloc tree  ?  $suppresstree"
 
 if [ ! -f ./BASEFILES -o ! -f ./dwarfdump ]
 then
@@ -157,23 +155,6 @@ top_builddir=/tmp/regressionbuild
 echo "our code source is " $top_srcdir
 d1=./dwarfdump.O
 d2=./dwarfdump
-if [ $# -eq 1 ]
-then
-  case $1 in
-    withlibelf ) d1=./dwarfdump.O ;  d2=./dwarfdump ;;
-    nolibelf )  d1=./dwarfdump.O ;  d2=./dwarfdump ;;
-    *  )  echo "DWARFTEST.sh BAD OPTION NO TEST RUN "
-        exit 1 ;;
-  esac
-else 
-  if [ $# -eq 0 ]
-  then
-    echo "DWARFTEST.sh with no options." 
-  else
-    echo "Too many options to DWARFTEST.sh. NO TEST RUN."
-    exit 1
-  fi
-fi
 bdir=`pwd`
 echo "old is $d1"
 echo "new is $d2"
@@ -668,7 +649,6 @@ fi
 runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a
 # the fix had no effect on this, which works ok.
 runtest $d1 $d2   emre6/class_64_opt_fpo_split -a
-
 
 if [ $withlibelf = "withlibelf" ]
 then
