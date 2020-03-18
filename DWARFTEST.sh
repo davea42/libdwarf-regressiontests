@@ -15,9 +15,17 @@ fi
 shortest=n
 #comment the following line out for a normal test.
 #shortest=y
+
 suppresstree=
+#next line is the dwarfdump option to suppress de alloc tree
 #suppresstree="--suppress-de-alloc-tree"
 #suppresstree="--suppress-de-alloc-tree --print-alloc-sums"
+#Now with env var.
+if [ x$SUPPRESSDEALLOC = "xy" ]
+then
+   suppresstree="--suppress-de-alloc-tree" 
+fi
+
 
 for i in $*
 do
@@ -25,7 +33,7 @@ do
   nolibelf) echo "DWARFTESTS.sh arg is $i"
         withlibelf="nolibelf" 
         shift;;
-
+  # Makefile does not yet support this option
   --suppress-de-alloc-tree) echo "DWARFTESTS.sh arg is $i"
         echo "Suppressing de_alloc_tree"
         suppresstree=$i 
@@ -42,8 +50,6 @@ do
        exit 1 ;;
   esac
 done
-echo "build with libelf......... $withlibelf"
-echo "suppress de alloc tree.... $suppresstree"
 
 if [ ! -f ./BASEFILES -o ! -f ./dwarfdump ]
 then
@@ -60,7 +66,17 @@ else
   withlibz="withlibz"
 fi
 cd ..
-echo "build with libz?  $withlibz"
+echo "build with libelf.........: $withlibelf"
+echo "build with libz...........: $withlibz"
+# The following is a dwarfdump option
+# and tells dwarfdump to ask libdwarf to do less!
+if [ "x$suppresstree" = "x--suppress-de-alloc-tree" ]
+then
+  echo "Suppress de_alloc_tree....: yes"
+else
+  echo "Suppress de_alloc_tree....: no"
+  suppresstree=
+fi
 # The following is needed for --print-alloc-sums
 rm -f libdwallocs
 
@@ -74,8 +90,9 @@ echo "dwba.$$"
 cat /tmp/dwba.$$
 grep DWARFTEST.sh </tmp/dwba.$$ > /tmp/dwbb.$$
 ct=`wc -l </tmp/dwbb.$$`
-echo "Number of DWARFTEST.sh running: $ct"
-echo "dwbb.$$"
+echo "DWARFTEST.sh running......: $ct"
+echo "Lock file.................: /tmp/dwbb.$$"
+echo "Lock file content follows.:"
 cat /tmp/dwbb.$$
 if [ $ct -gt 1 ]
 then
@@ -83,7 +100,7 @@ then
   echo "Something is wrong, DWARFTEST.sh already running: $ct"
   echo "dwbb.$$ contains:"
   echo /tmp/dwbb.$$
-  echo "do        : rm /tmp/dwba* /tmp/dwbb* "
+  echo "do......................: rm /tmp/dwba* /tmp/dwbb* "
   echo "Check with: ps -eaf |grep DWARF"
   exit 1
 fi
@@ -100,18 +117,16 @@ $CC testendian.c -o testendian
 if [ $? -eq 0 ]
 then
   endian=`./testendian`
-  if [ $? -eq 0 ]
+  if [ $? -ne 0 ]
   then
-    echo "Test Host Endianness (via testendian.c) (B or L): $endian"
-  else
-    echo "FAIL determining test host endianness. Assume littleendian"
+    echo "FAIL test host endianness.: Assume littleendian(L)"
     endian=L
   fi
 else
-  echo "FAIL compiling test host endianness test. Assume littleendian"
+  echo "FAIL compile endianness....: Assume littleendian(L)"
 fi
 export endian
-echo "Test Host Endianness in use: $endian"
+echo "Host Endianness...........: $endian"
 
 # In FreeBSD python2 &3 in /usr/local/bin, not /usr/bin
 p3=`which python3`
@@ -138,12 +153,12 @@ then
   ASAN_OPTIONS=
   export ASAN_OPTIONS
   nlizeopt=
-  echo "Not using -fsanitize*"
+  echo "Using -fsanitize .........: FALSE"
 else
   ASAN_OPTIONS="allocator_may_return_null=1"
   export ASAN_OPTIONS
   nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
-  echo "Using -fsanitize=leak (etc)"
+  echo "Using -fsanitize=leak.....: TRUE"
 fi
 
 goodcount=0
@@ -152,7 +167,7 @@ failcount=0
 top_srcdir=$libdw
 # Must match the file location in PICKUPBIN 
 top_builddir=/tmp/regressionbuild
-echo "our code source is " $top_srcdir
+echo "code source...............: $top_srcdir"
 d1=./dwarfdump.O
 d2=./dwarfdump
 bdir=`pwd`
@@ -178,9 +193,9 @@ kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky 
 . ./RUNTIMEFILES
 if [ x$wrtimeo != "x" ]
 then
-  echo "We are able to do /usr/bin/time timing."
+  echo "/usr/bin/time timing......: yes"
 else
-  echo "We are not able to do /usr/bin/time timing."
+  echo "/usr/bin/time timing......: no"
 fi
 rm -f $otimeout 
 rm -f $ntimeout
