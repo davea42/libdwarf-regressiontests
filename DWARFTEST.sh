@@ -42,8 +42,8 @@ do
        exit 1 ;;
   esac
 done
-echo "build with libelf       ?  $withlibelf"
-echo "suppress de alloc tree  ?  $suppresstree"
+echo "build with libelf......... $withlibelf"
+echo "suppress de alloc tree.... $suppresstree"
 
 if [ ! -f ./BASEFILES -o ! -f ./dwarfdump ]
 then

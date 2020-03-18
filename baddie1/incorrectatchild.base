@@ -96,3 +96,4 @@ dwarfdump:  A parent DW_AT_sibling of 0x00000158 points at the first child 0x000
 CU Name = t.c
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x0000007f GOFF = 0x0000013c, Low PC = 0x00000000, High PC = 0x00000000
+There was 1 DWARF error reported: see ERROR above.

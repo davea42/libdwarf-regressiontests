@@ -40,3 +40,4 @@ dwarfdump:  A parent DW_AT_sibling of 0x00000050 points at the first child 0x000
 CU Name = test.cpp
 CU Producer = SN Systems ps3ppusnc - 'ps3ppucf.exe' 999.9.11873.1 (dev,unified @180914 checking) WIN32
 DIE OFF = 0x00000039 GOFF = 0x00000039, Low PC = 0x00000000, High PC = 0x00000048
+There was 1 DWARF error reported: see ERROR above.

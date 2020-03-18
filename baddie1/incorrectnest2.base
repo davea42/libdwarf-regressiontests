@@ -1970,3 +1970,4 @@ dwarfdump:  Die stack sibling error, outer global offset 0x00000f9b less than in
 CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000538 GOFF = 0x00000ed9, Low PC = 0xfff43e40, High PC = 0xfff441d7
+There was 1 DWARF error reported: see ERROR above.
