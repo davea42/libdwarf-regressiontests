@@ -1,6 +1,11 @@
 #!/bin/sh
 trap "echo Exit testing due to signal ;  rm -f /tmp/dwbc.$$ /tmp/dwba.$$ /tmp/dwbb.$$ ; exit 1 " 2
 #
+echo "Env vars that affect the tests. If you wish"
+echo "do one or more"
+echo "of these before running the tests."
+echo "  To do sanity:  export NLIZE=y"
+echo "  To suppress de_alloc_tree: export SUPPRESSDEALLOC=y"
 echo 'Starting regressiontests: DWARFTEST.sh' `date`
 . ./SHALIAS.sh
 stsecs=`date '+%s'`
@@ -83,10 +88,10 @@ rm -f libdwallocs
 # Here do not use DWARFTEST, we do not want to match the grep from ps
 ps -eaf >/tmp/dwbc.$$ 
 grep DWARFTEST.sh < /tmp/dwbc.$$ >/tmp/dwba.$$
-echo "/tmp/dwbc.$$"
-echo  wc -l /tmp/dwbc.$$
+     "Suppress de_alloc_tree....: no"
+echo "wc -l /tmp/dwbc.$$........: " `wc -l /tmp/dwbc.$$`
 rm -f /tmp/dwbc.$$
-echo "dwba.$$"
+echo "Show loc file dwba.$$.....:"
 cat /tmp/dwba.$$
 grep DWARFTEST.sh </tmp/dwba.$$ > /tmp/dwbb.$$
 ct=`wc -l </tmp/dwbb.$$`
@@ -171,8 +176,8 @@ echo "code source...............: $top_srcdir"
 d1=./dwarfdump.O
 d2=./dwarfdump
 bdir=`pwd`
-echo "old is $d1"
-echo "new is $d2"
+echo "old is....................: $d1"
+echo "new is....................: $d2"
 dwlib=$bdir/libdwarf.a
 dwinc=$top_srcdir/libdwarf
 

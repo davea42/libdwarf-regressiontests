@@ -1,4 +1,6 @@
 2020-03-18 David Anderson
+    * RegressionTestsResults.ods: latest with
+      suppres-dealloc and -fsanitize. 
     * DWARFTEST.sh: Now allows for optional suppress-dealloc-tree
       via "export SUPPRESSTREE=y"
       And did some cleanup of echo statements for a better
