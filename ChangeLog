@@ -2,9 +2,11 @@
     * RegressionTestsResults.ods: latest with
       suppres-dealloc and -fsanitize. 
     * DWARFTEST.sh: Now allows for optional suppress-dealloc-tree
-      via "export SUPPRESSTREE=y"
+      via "export SUPPRESSDEALLOCTREE=y"
       And did some cleanup of echo statements for a better
       appearance.
+      To turn on -fsanitize etc, "export NLIZE=y"
+      Both can be turned on.
     * RUNTIMEFILES: Clean up echo stmts for a better appearance. 
 2020-03-13 David Anderson
     * RegressionTestsResults.ods: New. Keeping track

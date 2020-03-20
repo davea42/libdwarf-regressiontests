@@ -5,7 +5,7 @@ echo "Env vars that affect the tests. If you wish"
 echo "do one or more"
 echo "of these before running the tests."
 echo "  To do sanity:  export NLIZE=y"
-echo "  To suppress de_alloc_tree: export SUPPRESSDEALLOC=y"
+echo "  To suppress de_alloc_tree: export SUPPRESSDEALLOCTREE=y"
 echo 'Starting regressiontests: DWARFTEST.sh' `date`
 . ./SHALIAS.sh
 stsecs=`date '+%s'`
@@ -26,7 +26,7 @@ suppresstree=
 #suppresstree="--suppress-de-alloc-tree"
 #suppresstree="--suppress-de-alloc-tree --print-alloc-sums"
 #Now with env var.
-if [ x$SUPPRESSDEALLOC = "xy" ]
+if [ x$SUPPRESSDEALLOCTREE = "xy" ]
 then
    suppresstree="--suppress-de-alloc-tree" 
 fi
@@ -88,7 +88,6 @@ rm -f libdwallocs
 # Here do not use DWARFTEST, we do not want to match the grep from ps
 ps -eaf >/tmp/dwbc.$$ 
 grep DWARFTEST.sh < /tmp/dwbc.$$ >/tmp/dwba.$$
-     "Suppress de_alloc_tree....: no"
 echo "wc -l /tmp/dwbc.$$........: " `wc -l /tmp/dwbc.$$`
 rm -f /tmp/dwbc.$$
 echo "Show loc file dwba.$$.....:"
