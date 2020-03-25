@@ -69,6 +69,9 @@ int main()
 
         res = dwarf_get_globals(dbg,&glob,&globcount,&error);
         printresval("","get globals",res,__LINE__);
+        if (res == DW_DLV_ERROR) {
+          dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+        }
         if (res != DW_DLV_OK) {
             printf("FAIL bad status\n");
             exit(1);
@@ -77,12 +80,16 @@ int main()
     }
     res = dwarf_offdie(dbg,dieoff,&funcdie,&error);
     printresval("","offdie",res,__LINE__);
-    if (res != DW_DLV_OK) {
+    if (res == DW_DLV_ERROR) {
+        dwarf_dealloc(dbg,error,DW_DLA_ERROR);
         printf("FAIL bad status\n");
         exit(1);
     }
     res = dwarf_diename(funcdie,&diename,&error);
     printresval("","diename",res,__LINE__);
+    if (res == DW_DLV_ERROR) {
+        dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+    }
     if (res != DW_DLV_OK) {
         printf("FAIL bad status\n");
         exit(1);
@@ -91,6 +98,9 @@ int main()
 
     res = dwarf_child(funcdie,&childdie,&error);
     printresval("","child",res,__LINE__);
+    if (res == DW_DLV_ERROR) {
+        dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+    }
     if (res != DW_DLV_OK) {
         printf("FAIL bad status\n");
         exit(1);
@@ -101,11 +111,17 @@ int main()
 
         res = dwarf_tag(childdie,&dietag,&error);
         printresval("  ","dwarf_tag",res,__LINE__);
+        if (res == DW_DLV_ERROR) {
+            dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+        }
         if (res != DW_DLV_OK) {
             printf("FAIL bad status\n");
             exit(1);
         }
         res = dwarf_get_TAG_name(dietag,&tagname);
+        if (res == DW_DLV_ERROR) {
+            dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+        }
         printresval("  ","get tag name",res,__LINE__);
         if (res != DW_DLV_OK) {
             printf("FAIL bad status\n");
@@ -122,6 +138,9 @@ int main()
 
             res = dwarf_dieoffset(childdie,&offarg,&error);
             printresval("  ","get arg die offset",res,__LINE__);
+            if (res == DW_DLV_ERROR) {
+               dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+            }
             if (res != DW_DLV_OK) {
                 printf("FAIL bad status\n");
                 exit(1);
@@ -130,6 +149,9 @@ int main()
                 (unsigned long)offarg);
 
             res = dwarf_attr(childdie,DW_AT_type,&attr,&error);
+            if (res == DW_DLV_ERROR) {
+                dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+            }
             printresval("  ","get child DW_AT_type",res,__LINE__);
             if (res != DW_DLV_OK) {
                 printf("FAIL bad status\n");
@@ -137,6 +159,9 @@ int main()
             }
             res = dwarf_whatform(attr,&aform,&error);
             printresval("  ","Form",res,__LINE__);
+            if (res == DW_DLV_ERROR) {
+                dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+            }
             if (res != DW_DLV_OK) {
                 printf("FAIL bad status\n");
                 exit(1);
@@ -146,6 +171,9 @@ int main()
             printf("  Form %d %s\n",aform,formname);
             res = dwarf_global_formref(attr,&typeoffset,&error);
             printresval("  ","global formref",res,__LINE__);
+            if (res == DW_DLV_ERROR) {
+                dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+            }
             if (res != DW_DLV_OK) {
                 printf("FAIL bad status\n");
                 exit(1);
@@ -154,18 +182,27 @@ int main()
                 (unsigned long)typeoffset);
             res = dwarf_offdie(dbg,typeoffset,&typedie,&error);
             printresval("   ","offdie for type die",res,__LINE__);
+            if (res == DW_DLV_ERROR) {
+                dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+            }
             if (res != DW_DLV_OK) {
                 printf("FAIL bad status\n");
                 exit(1);
             }
             res = dwarf_tag(typedie,&dietag,&error);
             printresval("   ","dwarf_tag of typedie",res,__LINE__);
+            if (res == DW_DLV_ERROR) {
+                dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+            }
             if (res != DW_DLV_OK) {
                 printf("FAIL bad status\n");
                 exit(1);
             }
             res = dwarf_get_TAG_name(dietag,&tagname);
             printresval("   ","get  tag name",res,__LINE__);
+            if (res == DW_DLV_ERROR) {
+                dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+            }
             if (res != DW_DLV_OK) {
                 printf("FAIL bad status\n");
                 exit(1);
@@ -174,19 +211,24 @@ int main()
             res = dwarf_diename(typedie,&diename,&error);
             printresval("   ","type-diename",res,__LINE__);
             if (res == DW_DLV_ERROR) {
+                dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+            }
+            if (res == DW_DLV_ERROR) {
                 printf("FAIL bad status\n");
                 exit(1);
             }
             if (res == DW_DLV_OK) {
                 printf("   type diename %s\n",diename);
             }
-
             dwarf_dealloc(dbg,typedie,DW_DLA_DIE);
             
         }
         printf("  Now do siblingof call line %d\n",__LINE__);
         res = dwarf_siblingof(dbg,childdie,&diesib,&error);
         printresval("  ","child sibling",res,__LINE__);
+        if (res == DW_DLV_ERROR) {
+            dwarf_dealloc(dbg,error,DW_DLA_ERROR);
+        }
         if (res == DW_DLV_NO_ENTRY) {
             break;
         }
@@ -197,7 +239,6 @@ int main()
         dwarf_dealloc(dbg,childdie,DW_DLA_DIE);
         childdie = diesib;
     }
-
     res = dwarf_finish(dbg,&error);
     printresval("","finish",res,__LINE__);
     return 0;
