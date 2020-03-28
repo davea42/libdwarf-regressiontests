@@ -1,11 +1,11 @@
 #!/bin/sh
 trap "echo Exit testing due to signal ;  rm -f /tmp/dwbc.$$ /tmp/dwba.$$ /tmp/dwbb.$$ ; exit 1 " 2
 #
-echo "Env vars that affect the tests. If you wish"
-echo "do one or more"
-echo "of these before running the tests."
-echo "  To do sanity:  export NLIZE=y"
-echo "  To suppress de_alloc_tree: export SUPPRESSDEALLOCTREE=y"
+echo "Env vars that affect the tests:" 
+echo "  If you wish do one or more of these before running the tests."
+echo "  Add sanity..............: export NLIZE=y"
+echo "  Suppress de_alloc_tree..: export SUPPRESSDEALLOCTREE=y"
+echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE ; unset NLIZE"
 echo 'Starting regressiontests: DWARFTEST.sh' `date`
 . ./SHALIAS.sh
 stsecs=`date '+%s'`
@@ -85,12 +85,14 @@ fi
 # The following is needed for --print-alloc-sums
 rm -f libdwallocs
 
-# Here do not use DWARFTEST, we do not want to match the grep from ps
+# We do not use DWARFTEST in ps -eaf |grep DWARFTEST as we do not want to 
+# match the grep from ps
 ps -eaf >/tmp/dwbc.$$ 
-grep DWARFTEST.sh < /tmp/dwbc.$$ >/tmp/dwba.$$
+grep DWARFTEST.sh < /tmp/dwbc.$$ >/tmp/dwba.$$ 2>/dev/null
 echo "wc -l /tmp/dwbc.$$........: " `wc -l /tmp/dwbc.$$`
 rm -f /tmp/dwbc.$$
-echo "Show loc file dwba.$$.....:"
+echo "Lock file.................: /tmp/dwba.$$"
+echo "Lock file content follows.:"
 cat /tmp/dwba.$$
 grep DWARFTEST.sh </tmp/dwba.$$ > /tmp/dwbb.$$
 ct=`wc -l </tmp/dwbb.$$`
@@ -98,6 +100,7 @@ echo "DWARFTEST.sh running......: $ct"
 echo "Lock file.................: /tmp/dwbb.$$"
 echo "Lock file content follows.:"
 cat /tmp/dwbb.$$
+ct=`wc -l </tmp/dwbb.$$`
 if [ $ct -gt 1 ]
 then
   echo "Only one DWARFTEST.sh can run at a time on a machine"
@@ -157,13 +160,14 @@ then
   ASAN_OPTIONS=
   export ASAN_OPTIONS
   nlizeopt=
-  echo "Using -fsanitize .........: FALSE"
+  echo "Using -fsanitize .........: no"
 else
   ASAN_OPTIONS="allocator_may_return_null=1"
   export ASAN_OPTIONS
   nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
-  echo "Using -fsanitize=leak.....: TRUE"
+  echo "Using -fsanitize=leak.....: yes"
 fi
+
 
 goodcount=0
 failcount=0
@@ -179,6 +183,7 @@ echo "old is....................: $d1"
 echo "new is....................: $d2"
 dwlib=$bdir/libdwarf.a
 dwinc=$top_srcdir/libdwarf
+
 
 #  oi and  Ei are to ensure that things
 # work properly when using libelf. Including relocations.

@@ -28,7 +28,6 @@ unifyddname () {
 echo "====== $ntimeout"
 
 m() {
-set -x
   dwdumper=$1
   obj=$2
   test=$3
