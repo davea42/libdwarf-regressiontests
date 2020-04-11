@@ -80,5 +80,5 @@ COMPILE_UNIT<header overall offset = 0x00000000>:
 arange starts at 0x00000000, length of 0x00000016, cu_die_offset = 0x0000000b
 arange end
 
-.debug_frame
+.debug_frame is not present
 
