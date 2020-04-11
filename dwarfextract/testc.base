@@ -101,5 +101,5 @@ LOCAL_SYMBOLS:
 
 .debug_aranges
 
-.debug_frame
+.debug_frame is not present
 
