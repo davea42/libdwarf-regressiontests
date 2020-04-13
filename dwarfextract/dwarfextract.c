@@ -88,6 +88,8 @@
 /*#include <malloc.h>  */ /* stdlib.h has malloc now. */
 #include <string.h>
 #include <sys/time.h>
+/*  Freebsd bfd.h has this word after a function prototype. Drop it. */
+#define  ATTRIBUTE_PRINTF_1
 #include <bfd.h>
 #include <assert.h>
 #include <stdlib.h>
@@ -594,7 +596,7 @@ main(int argc, char *argv[])
 	close (outfd);
 	if (Pflag) {
 		gettimeofday(&tv, &tz);
-		printf ("elapsed time: %ld seconds\n", tv.tv_sec-startsec);
+		printf ("elapsed time: %ld seconds\n", (long)tv.tv_sec-startsec);
 	}
 	exit(0);
 }
