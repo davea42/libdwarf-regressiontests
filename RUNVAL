@@ -1,0 +1,13 @@
+#This is solely for tracking down bugs.
+#Ignore this.
+opts=" -l -vvv liu/free_invalid_address.elf"
+
+./dwarfdump.O $opts >junko
+#/tmp/dwarfdump $opts >junkn
+# --track-origins=yes (an expensive option to valgrind)
+valgrind --log-file=./vglog --leak-check=full   /tmp/dwarfdump $opts >junkn
+#echo                 >junkcmd
+#echo "b _dwarf_error" >>junkcmd
+#echo "b _dwarf_error_string" >>junkcmd
+#echo "r -l $opts "    >>junkcmd
+#gdb -x junkcmd /tmp/dwarfdump
