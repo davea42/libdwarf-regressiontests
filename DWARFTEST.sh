@@ -75,13 +75,6 @@ echo "build with libelf.........: $withlibelf"
 echo "build with libz...........: $withlibz"
 # The following is a dwarfdump option
 # and tells dwarfdump to ask libdwarf to do less!
-if [ "x$suppresstree" = "x--suppress-de-alloc-tree" ]
-then
-  echo "Suppress de_alloc_tree....: yes"
-else
-  echo "Suppress de_alloc_tree....: no"
-  suppresstree=
-fi
 # The following is needed for --print-alloc-sums
 rm -f libdwallocs
 
@@ -166,6 +159,13 @@ else
   export ASAN_OPTIONS
   nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
   echo "Using -fsanitize=leak.....: yes"
+fi
+if [ "x$suppresstree" = "x--suppress-de-alloc-tree" ]
+then
+  echo "Suppress de_alloc_tree....: yes"
+else
+  echo "Suppress de_alloc_tree....: no"
+  suppresstree=
 fi
 
 
