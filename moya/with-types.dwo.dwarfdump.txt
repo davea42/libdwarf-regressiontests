@@ -1,0 +1,31 @@
+Section Groups data
+  Number of Elf-like sections:    7
+  Number of groups           :    1
+  Group to print             :    2
+  Count of map entries       :    5
+  [index]  group section
+  [    0]    2     2 .debug_info.dwo
+  [    1]    2     3 .debug_str_offsets.dwo
+  [    2]    2     4 .debug_str.dwo
+  [    3]    2     5 .debug_abbrev.dwo
+  [    4]    2     6 .debug_line.dwo
+
+.debug_info.dwo
+
+/usr/local/google/home/jgorbe/code/libdwarf-code/dwarfdump/dwarfdump ERROR:  Failure reading CU header or DIE, corrupt DWARF:  DW_DLE_UNIT_TYPE_NOT_HANDLED(386) Possibly incomplete dwarf5 support. Attempting to continue.
+/usr/local/google/home/jgorbe/code/libdwarf-code/dwarfdump/dwarfdump ERROR:  attempting to print .debug_info:  DW_DLE_UNIT_TYPE_NOT_HANDLED(386) Possibly incomplete dwarf5 support (386)
+attempting to continue.
+
+.debug_str.dwo
+name at offset 0x00000000, length    9 is '_Z2f13foo'
+name at offset 0x0000000a, length    2 is 'f1'
+name at offset 0x0000000d, length    3 is 'foo'
+name at offset 0x00000011, length  104 is 'clang version 11.0.0 (https://github.com/llvm/llvm-project.git cf30aafa2d1ed79daabe979fedf9c34affb8b2a0)'
+name at offset 0x0000007a, length   13 is 'with-types.cc'
+name at offset 0x00000088, length   14 is 'with-types.dwo'
+
+.debug_aranges
+
+.debug_frame is not present
+
+There were 2 DWARF errors reported: see ERROR above.

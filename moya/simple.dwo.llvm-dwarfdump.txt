@@ -1,0 +1,22 @@
+simple.dwo:	file format elf64-x86-64
+
+.debug_info.dwo contents:
+0x00000000: Compile Unit: length = 0x00000023 version = 0x0005 unit_type = DW_UT_split_compile abbr_offset = 0x0000 addr_size = 0x08 DWO_id = 0x533bae166ed17ec8 (next unit at 0x00000027)
+
+0x00000014: DW_TAG_compile_unit
+              DW_AT_producer	("clang version 11.0.0 (https://github.com/llvm/llvm-project.git cf30aafa2d1ed79daabe979fedf9c34affb8b2a0)")
+              DW_AT_language	(DW_LANG_C_plus_plus_14)
+              DW_AT_name	("simple.cc")
+              DW_AT_dwo_name	("simple.dwo")
+
+0x0000001a:   DW_TAG_subprogram
+                DW_AT_low_pc	(indexed (00000000) address = <unresolved>)
+                DW_AT_high_pc	(0x00000006)
+                DW_AT_frame_base	(DW_OP_reg6 RBP)
+                DW_AT_linkage_name	("_Z2f1v")
+                DW_AT_name	("f1")
+                DW_AT_decl_file	(0x00)
+                DW_AT_decl_line	(2)
+                DW_AT_external	(true)
+
+0x00000026:   NULL

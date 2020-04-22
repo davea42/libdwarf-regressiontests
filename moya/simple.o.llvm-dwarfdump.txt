@@ -1,0 +1,14 @@
+simple.o:	file format elf64-x86-64
+
+.debug_info contents:
+0x00000000: Compile Unit: length = 0x00000024 version = 0x0005 unit_type = DW_UT_skeleton abbr_offset = 0x0000 addr_size = 0x08 DWO_id = 0x533bae166ed17ec8 (next unit at 0x00000028)
+
+0x00000014: DW_TAG_skeleton_unit
+              DW_AT_stmt_list	(0x00000000)
+              DW_AT_str_offsets_base	(0x00000008)
+              DW_AT_comp_dir	("/tmp")
+              DW_AT_GNU_pubnames	(true)
+              DW_AT_dwo_name	("simple.dwo")
+              DW_AT_low_pc	(0x0000000000000000)
+              DW_AT_high_pc	(0x0000000000000006)
+              DW_AT_addr_base	(0x00000008)
