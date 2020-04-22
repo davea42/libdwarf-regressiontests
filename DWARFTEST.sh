@@ -389,7 +389,7 @@ runtest () {
         rm -f OFo OFn  OFo1 OFn1 
         rm -f OFo2 OFn2
         rm -f OFo3 OFn3
-	rm -f OFobkup
+	    rm -f OFobkup
 
         # Running an old one till baselines established.
         echo "old start " `date`
@@ -490,7 +490,7 @@ runtest () {
         rm -f tmp1err tmp2err tmp3err 
         rm -f tmp1errb tmp1errc
         rm -f tmp1berr tmp2berr
-	rm -f OFobkup
+	    rm -f OFobkup
         rm -f OFo OFn  OFo1 OFn1 
         rm -f OFo2 OFn2
         rm -f OFo3 OFn3
