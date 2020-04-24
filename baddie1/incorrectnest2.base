@@ -1965,9 +1965,32 @@ LOCAL_SYMBOLS:
                                               DW_AT_high_pc               0xfff440e7
                                               DW_AT_sibling               <0x000005fb GOFF=0x00000f9c>
 
-dwarfdump:  Die stack sibling error, outer global offset 0x00000f9b less than inner global offset 0x00000f9c, the DIE tree is erroneous. 
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000f9b less than inner global offset 0x00000f9c, the DIE tree is erroneous. 
 
 CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000538 GOFF = 0x00000ed9, Low PC = 0xfff43e40, High PC = 0xfff441d7
-There was 1 DWARF error reported: see ERROR above.
+< 6><0x00000545 GOFF=0x00000ee6>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x0000042a GOFF=0x00000dcb>
+                                                DW_AT_location              <loclist at offset 0x000013f3 with 1 entries follows>
+			[ 0]< offset pair low-off : 0x000002a0 addr  0xfff440e0 high-off  0x000002b9 addr 0xfff440f9>DW_OP_reg3
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000f9b less than inner global offset 0x00000f9c, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x00000545 GOFF = 0x00000ee6, Low PC = 0xfff43e40, High PC = 0xfff441d7
+
+dwarfdump ERROR:  ERROR: dwarf_siblingof fails tracing siblings of a DIE.:  There is no abbrev present for code 0x178 .. Attempting to continue.
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x00000545 GOFF = 0x00000ee6, Low PC = 0xfff43e40, High PC = 0xfff441d7
+
+dwarfdump ERROR:  printing .debug_info had a problem.:  There is no abbrev present for code 0x178 .. Attempting to continue.
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x00000545 GOFF = 0x00000ee6, Low PC = 0xfff43e40, High PC = 0xfff441d7
+
+There were 6 DWARF errors reported: see ERROR above.

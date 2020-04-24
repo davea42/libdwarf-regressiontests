@@ -35,9 +35,16 @@ LOCAL_SYMBOLS:
                                         DW_AT_declaration           yes(1)
                                         DW_AT_type                  <0x00000025 GOFF=0x00000025>
 
-dwarfdump:  A parent DW_AT_sibling of 0x00000050 points at the first child 0x00000050 so the die tree is corrupt (showing section, not CU, offsets).  
+dwarfdump ERROR:  ERROR: A parent DW_AT_sibling of 0x00000050 points at the first child 0x00000050 so the die tree is corrupt (showing section, not CU, offsets). :  DW_DLE_USER_DECLARED_ERROR: ERROR: A parent DW_AT_sibling of 0x00000050 points at the first child 0x00000050 so the die tree is corrupt (showing section, not CU, offsets). . Attempting to continue.
 
 CU Name = test.cpp
 CU Producer = SN Systems ps3ppusnc - 'ps3ppucf.exe' 999.9.11873.1 (dev,unified @180914 checking) WIN32
 DIE OFF = 0x00000039 GOFF = 0x00000039, Low PC = 0x00000000, High PC = 0x00000048
-There was 1 DWARF error reported: see ERROR above.
+
+dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_USER_DECLARED_ERROR: ERROR: A parent DW_AT_sibling of 0x00000050 points at the first child 0x00000050 so the die tree is corrupt (showing section, not CU, offsets). . Attempting to continue.
+
+CU Name = test.cpp
+CU Producer = SN Systems ps3ppusnc - 'ps3ppucf.exe' 999.9.11873.1 (dev,unified @180914 checking) WIN32
+DIE OFF = 0x00000039 GOFF = 0x00000039, Low PC = 0x00000000, High PC = 0x00000048
+
+There were 3 DWARF errors reported: see ERROR above.

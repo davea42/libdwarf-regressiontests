@@ -9,15 +9,16 @@ opts="-ka liu/OOB_read4.elf"
 opts="-kn sarubbo-7/4.crashes.bin"
 opts="--check-tag-attr debugfissionb/ld-new"
 opts="-ka -kd -P -R -M dwarf4/ddg4.5dwarf-4"
-opts="-a shopov2/clang-9.0.0-test-dwarf5.elf"
 opts="-ka -ki liu/outofbound01.elf"
 opts="-i -H 1 irixn32/dwarfdump"
+opts="--suppress-de-alloc-tree -a shopov2/clang-9.0.0-test-dwarf5.elf"
+opts="--suppress-de-alloc-tree -a  sarubbo/test433.crashes"
+opts="--suppress-de-alloc-tree -r -v  -oi  liu/infinitloop.elf"
+opts=" -ka -cGNU%20AS -M -R  modula2/write-fixed"
 
-
-
-./dwarfdump.O  $opts >junko
-/tmp/dwarfdump $opts >junkn
-#valgrind --log-file=./vglog --leak-check=full --show-leak-kinds=all  /tmp/dwarfdump $opts >junkn
+#./dwarfdump.O  $opts >junko
+#/tmp/dwarfdump $opts >junkn
+valgrind --log-file=./vglog --leak-check=full --show-leak-kinds=all  /tmp/dwarfdump $opts >junkn
 #./dwarfdump.O -i -G -M debugfissionb/ld-new >junkia
 
 # --track-origins=yes (an expensive option to valgrind)
@@ -26,5 +27,5 @@ echo                 >junkcmd
 #echo "b dwarf_die_abbrev_code" >>junkcmd
 #echo "b _dwarf_error" >>junkcmd
 #echo "b _dwarf_error_string" >>junkcmd
-echo "r -l $opts "    >>junkcmd
-#gdb -x junkcmd /tmp/dwarfdump
+echo "r  $opts "    >>junkcmd
+#gdb -x junkcmd .//dwarfdump

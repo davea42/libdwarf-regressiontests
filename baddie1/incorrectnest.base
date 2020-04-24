@@ -1965,9 +1965,245 @@ LOCAL_SYMBOLS:
                                               DW_AT_high_pc               0xfff440e7
                                               DW_AT_sibling               <0x0000054f GOFF=0x00000ef0>
 
-dwarfdump:  Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000ef0, the DIE tree is erroneous. 
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000ef0, the DIE tree is erroneous. 
 
 CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000538 GOFF = 0x00000ed9, Low PC = 0xfff43e40, High PC = 0xfff441d7
-There was 1 DWARF error reported: see ERROR above.
+< 6><0x00000545 GOFF=0x00000ee6>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x0000042a GOFF=0x00000dcb>
+                                                DW_AT_location              <loclist at offset 0x000013f3 with 1 entries follows>
+			[ 0]< offset pair low-off : 0x000002a0 addr  0xfff440e0 high-off  0x000002b9 addr 0xfff440f9>DW_OP_reg3
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000ef0, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x00000545 GOFF = 0x00000ee6, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 5><0x0000054f GOFF=0x00000ef0>            DW_TAG_lexical_block
+                                              DW_AT_ranges                0x000002a0
+		ranges: 3 at .debug_ranges offset 672 (0x000002a0) (24 bytes)
+			[ 0] range entry    0x0000024e 0x00000271
+			[ 1] range entry    0x00000273 0x0000028c
+			[ 2] range end      0x00000000 0x00000000
+                                              DW_AT_sibling               <0x0000059d GOFF=0x00000f3e>
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x0000054f GOFF = 0x00000ef0, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x00000558 GOFF=0x00000ef9>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x000003b6 GOFF=0x00000d57>
+                                                DW_AT_location              <loclist at offset 0x00001406 with 1 entries follows>
+			[ 0]< offset pair low-off : 0x00000273 addr  0xfff440b3 high-off  0x00000286 addr 0xfff440c6>DW_OP_reg2
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x00000558 GOFF = 0x00000ef9, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x00000561 GOFF=0x00000f02>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x000003c2 GOFF=0x00000d63>
+                                                DW_AT_location              <loclist at offset 0x00001419 with 1 entries follows>
+			[ 0]< offset pair low-off : 0x00000275 addr  0xfff440b5 high-off  0x00000288 addr 0xfff440c8>DW_OP_reg10
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x00000561 GOFF = 0x00000f02, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x0000056a GOFF=0x00000f0b>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x000003ce GOFF=0x00000d6f>
+                                                DW_AT_location              <loclist at offset 0x0000142c with 1 entries follows>
+			[ 0]< offset pair low-off : 0x00000273 addr  0xfff440b3 high-off  0x00000281 addr 0xfff440c1>DW_OP_reg12
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x0000056a GOFF = 0x00000f0b, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x00000573 GOFF=0x00000f14>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x000003da GOFF=0x00000d7b>
+                                                DW_AT_location              <loclist at offset 0x0000143f with 2 entries follows>
+			[ 0]< offset pair low-off : 0x00000275 addr  0xfff440b5 high-off  0x0000027e addr 0xfff440be>DW_OP_reg11
+			[ 1]< offset pair low-off : 0x0000027e addr  0xfff440be high-off  0x0000028a addr 0xfff440ca>DW_OP_reg11
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x00000573 GOFF = 0x00000f14, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x0000057c GOFF=0x00000f1d>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x000003e6 GOFF=0x00000d87>
+                                                DW_AT_location              DW_OP_reg10
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x0000057c GOFF = 0x00000f1d, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x00000583 GOFF=0x00000f24>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x000003f2 GOFF=0x00000d93>
+                                                DW_AT_location              DW_OP_reg12
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x00000583 GOFF = 0x00000f24, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x0000058a GOFF=0x00000f2b>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x000003fe GOFF=0x00000d9f>
+                                                DW_AT_location              <loclist at offset 0x0000145d with 1 entries follows>
+			[ 0]< offset pair low-off : 0x00000273 addr  0xfff440b3 high-off  0x00000275 addr 0xfff440b5>DW_OP_reg11
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x0000058a GOFF = 0x00000f2b, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x00000593 GOFF=0x00000f34>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x0000040a GOFF=0x00000dab>
+                                                DW_AT_location              <loclist at offset 0x00001470 with 3 entries follows>
+			[ 0]< offset pair low-off : 0x00000273 addr  0xfff440b3 high-off  0x000002b9 addr 0xfff440f9>DW_OP_reg13
+			[ 1]< offset pair low-off : 0x00000336 addr  0xfff44176 high-off  0x00000349 addr 0xfff44189>DW_OP_reg13
+			[ 2]< offset pair low-off : 0x0000037d addr  0xfff441bd high-off  0x00000388 addr 0xfff441c8>DW_OP_reg13
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x00000593 GOFF = 0x00000f34, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 5><0x0000059d GOFF=0x00000f3e>            DW_TAG_lexical_block
+                                              DW_AT_ranges                0x000002b8
+		ranges: 8 at .debug_ranges offset 696 (0x000002b8) (64 bytes)
+			[ 0] range entry    0x000001dd 0x000001e5
+			[ 1] range entry    0x00000360 0x0000036f
+			[ 2] range entry    0x00000271 0x00000273
+			[ 3] range entry    0x0000020b 0x0000024e
+			[ 4] range entry    0x000001f4 0x00000205
+			[ 5] range entry    0x000001f0 0x000001f2
+			[ 6] range entry    0x000001ea 0x000001ed
+			[ 7] range end      0x00000000 0x00000000
+                                              DW_AT_sibling               <0x000005e6 GOFF=0x00000f87>
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x0000059d GOFF = 0x00000f3e, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x000005a6 GOFF=0x00000f47>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x0000035c GOFF=0x00000cfd>
+                                                DW_AT_location              <loclist at offset 0x00001499 with 5 entries follows>
+			[ 0]< offset pair low-off : 0x0000020b addr  0xfff4404b high-off  0x0000022b addr 0xfff4406b>DW_OP_reg15
+			[ 1]< offset pair low-off : 0x0000022b addr  0xfff4406b high-off  0x000002b9 addr 0xfff440f9>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+			[ 2]< offset pair low-off : 0x00000336 addr  0xfff44176 high-off  0x00000349 addr 0xfff44189>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+			[ 3]< offset pair low-off : 0x00000360 addr  0xfff441a0 high-off  0x0000036f addr 0xfff441af>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+			[ 4]< offset pair low-off : 0x0000037d addr  0xfff441bd high-off  0x00000388 addr 0xfff441c8>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x000005a6 GOFF = 0x00000f47, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x000005af GOFF=0x00000f50>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x00000368 GOFF=0x00000d09>
+                                                DW_AT_location              <loclist at offset 0x000014e8 with 5 entries follows>
+			[ 0]< offset pair low-off : 0x0000020b addr  0xfff4404b high-off  0x00000261 addr 0xfff440a1>DW_OP_reg13
+			[ 1]< offset pair low-off : 0x00000261 addr  0xfff440a1 high-off  0x000002b9 addr 0xfff440f9>DW_OP_breg4+0 DW_OP_const2u 65535 DW_OP_and DW_OP_stack_value
+			[ 2]< offset pair low-off : 0x00000336 addr  0xfff44176 high-off  0x00000349 addr 0xfff44189>DW_OP_breg4+0 DW_OP_const2u 65535 DW_OP_and DW_OP_stack_value
+			[ 3]< offset pair low-off : 0x00000360 addr  0xfff441a0 high-off  0x0000036f addr 0xfff441af>DW_OP_reg13
+			[ 4]< offset pair low-off : 0x0000037d addr  0xfff441bd high-off  0x00000388 addr 0xfff441c8>DW_OP_breg4+0 DW_OP_const2u 65535 DW_OP_and DW_OP_stack_value
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x000005af GOFF = 0x00000f50, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x000005b8 GOFF=0x00000f59>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x00000374 GOFF=0x00000d15>
+                                                DW_AT_location              <loclist at offset 0x00001539 with 4 entries follows>
+			[ 0]< offset pair low-off : 0x00000214 addr  0xfff44054 high-off  0x0000021f addr 0xfff4405f>DW_OP_reg12
+			[ 1]< offset pair low-off : 0x0000021f addr  0xfff4405f high-off  0x00000221 addr 0xfff44061>DW_OP_reg12
+			[ 2]< offset pair low-off : 0x00000221 addr  0xfff44061 high-off  0x0000024c addr 0xfff4408c>DW_OP_reg12
+			[ 3]< offset pair low-off : 0x00000360 addr  0xfff441a0 high-off  0x0000036f addr 0xfff441af>DW_OP_reg12
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x000005b8 GOFF = 0x00000f59, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x000005c1 GOFF=0x00000f62>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x00000380 GOFF=0x00000d21>
+                                                DW_AT_location              <loclist at offset 0x0000156d with 4 entries follows>
+			[ 0]< offset pair low-off : 0x00000243 addr  0xfff44083 high-off  0x0000024a addr 0xfff4408a>DW_OP_reg11
+			[ 1]< offset pair low-off : 0x0000024a addr  0xfff4408a high-off  0x0000024e addr 0xfff4408e>DW_OP_reg11
+			[ 2]< offset pair low-off : 0x00000360 addr  0xfff441a0 high-off  0x0000036a addr 0xfff441aa>DW_OP_reg11
+			[ 3]< offset pair low-off : 0x0000036a addr  0xfff441aa high-off  0x0000036f addr 0xfff441af>DW_OP_reg11
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x000005c1 GOFF = 0x00000f62, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x000005ca GOFF=0x00000f6b>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x0000038c GOFF=0x00000d2d>
+                                                DW_AT_location              <loclist at offset 0x000015a1 with 4 entries follows>
+			[ 0]< offset pair low-off : 0x0000020b addr  0xfff4404b high-off  0x00000211 addr 0xfff44051>DW_OP_reg10
+			[ 1]< offset pair low-off : 0x00000214 addr  0xfff44054 high-off  0x00000221 addr 0xfff44061>DW_OP_reg10
+			[ 2]< offset pair low-off : 0x00000221 addr  0xfff44061 high-off  0x00000223 addr 0xfff44063>DW_OP_reg10
+			[ 3]< offset pair low-off : 0x00000223 addr  0xfff44063 high-off  0x0000022d addr 0xfff4406d>DW_OP_reg10
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x000005ca GOFF = 0x00000f6b, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x000005d3 GOFF=0x00000f74>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x00000398 GOFF=0x00000d39>
+                                                DW_AT_location              <loclist at offset 0x000015d5 with 8 entries follows>
+			[ 0]< offset pair low-off : 0x0000022d addr  0xfff4406d high-off  0x0000023a addr 0xfff4407a>DW_OP_reg10
+			[ 1]< offset pair low-off : 0x0000023a addr  0xfff4407a high-off  0x00000240 addr 0xfff44080>DW_OP_reg7
+			[ 2]< offset pair low-off : 0x00000243 addr  0xfff44083 high-off  0x00000273 addr 0xfff440b3>DW_OP_reg7
+			[ 3]< offset pair low-off : 0x00000273 addr  0xfff440b3 high-off  0x000002b9 addr 0xfff440f9>DW_OP_reg7
+			[ 4]< offset pair low-off : 0x00000336 addr  0xfff44176 high-off  0x00000349 addr 0xfff44189>DW_OP_reg7
+			[ 5]< offset pair low-off : 0x00000360 addr  0xfff441a0 high-off  0x0000036c addr 0xfff441ac>DW_OP_reg7
+			[ 6]< offset pair low-off : 0x0000036c addr  0xfff441ac high-off  0x0000036f addr 0xfff441af>DW_OP_reg7
+			[ 7]< offset pair low-off : 0x0000037d addr  0xfff441bd high-off  0x00000388 addr 0xfff441c8>DW_OP_reg7
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x000005d3 GOFF = 0x00000f74, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 6><0x000005dc GOFF=0x00000f7d>              DW_TAG_variable
+                                                DW_AT_abstract_origin       <0x000003a4 GOFF=0x00000d45>
+                                                DW_AT_location              <loclist at offset 0x00001635 with 5 entries follows>
+			[ 0]< offset pair low-off : 0x0000020b addr  0xfff4404b high-off  0x00000225 addr 0xfff44065>DW_OP_reg11
+			[ 1]< offset pair low-off : 0x00000238 addr  0xfff44078 high-off  0x000002b9 addr 0xfff440f9>DW_OP_reg15
+			[ 2]< offset pair low-off : 0x00000336 addr  0xfff44176 high-off  0x00000349 addr 0xfff44189>DW_OP_reg15
+			[ 3]< offset pair low-off : 0x00000360 addr  0xfff441a0 high-off  0x0000036f addr 0xfff441af>DW_OP_reg15
+			[ 4]< offset pair low-off : 0x0000037d addr  0xfff441bd high-off  0x00000388 addr 0xfff441c8>DW_OP_reg15
+
+dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x000005dc GOFF = 0x00000f7d, Low PC = 0xfff43e40, High PC = 0xfff441d7
+< 5><0x000005e6 GOFF=0x00000f87>            DW_TAG_lexical_block
+                                              DW_AT_low_pc                0xfff44176
+                                              DW_AT_high_pc               0xfff44189
+
+dwarfdump ERROR:  ERROR: A parent DW_AT_sibling of 0x00000ee5 points before the first child 0x00000f90 so the die tree is corrupt (showing section, not CU, offsets). :  DW_DLE_USER_DECLARED_ERROR: ERROR: A parent DW_AT_sibling of 0x00000ee5 points before the first child 0x00000f90 so the die tree is corrupt (showing section, not CU, offsets). . Attempting to continue.
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x000005e6 GOFF = 0x00000f87, Low PC = 0xfff43e40, High PC = 0xfff441d7
+
+dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_USER_DECLARED_ERROR: ERROR: A parent DW_AT_sibling of 0x00000ee5 points before the first child 0x00000f90 so the die tree is corrupt (showing section, not CU, offsets). . Attempting to continue.
+
+CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
+CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
+DIE OFF = 0x000005e6 GOFF = 0x00000f87, Low PC = 0xfff43e40, High PC = 0xfff441d7
+
+There were 41 DWARF errors reported: see ERROR above.
