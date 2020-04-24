@@ -561,10 +561,6 @@ then
   runtest $d1 $d2 encisoa/DW_AT_containing_type.o -o --check-tag-attr
   runtest $d1 $d2 encisoa/DW_AT_containing_type.o -Ei --check-tag-attr --format-extensions
 fi
-# sample object with DW_AT_containing type in a use
-# which is  common extension
-runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
-runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 
 # PE basic tests.
 runtest $d1 $d2 pe1/libexamine-0.dll --print-all 
@@ -933,6 +929,16 @@ runtest $d1 $d2 comdatex/example.o -i
 runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=2
 runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 
+
+# If the output files are too different the FreeBSD
+# VMs get stuck on a couple of these and the diff never
+# finishes (at least in our lifetime).
+# Just comment these debugfissionb/ld-new tests 
+# out and skip them in that case.
+# sample object with DW_AT_containing type in a use
+# which is  common extension
+runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
+runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 # This is a .dwp file with .debug_cu_index and .debug_tu_index.
 # Results are so large (500MB) it is unwise to run all options
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
@@ -940,6 +946,13 @@ runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
 runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
 runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
 runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
+# This has a .gdb_index   file print
+# Unwise to run all options.
+runtest $d1 $d2  debugfissionb/ld-new -I
+runtest $d1 $d2  debugfissionb/ld-new -I  -v -v -v
+runtest $d1 $d2  debugfissionb/ld-new -a  
+runtest $d1 $d2  debugfissionb/ld-new -ka  
+# End of problematic debugfissionb/ld-new tests.
 
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
@@ -950,12 +963,6 @@ runtest $d1 $d2 emre2/emre.ex --print-gnu-debuglink
 
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -i -x tied=emre5/test33_64_opt_fpo_split 
 
-# This has a .gdb_index   file print
-# Unwise to run all options.
-runtest $d1 $d2  debugfissionb/ld-new -I
-runtest $d1 $d2  debugfissionb/ld-new -I  -v -v -v
-runtest $d1 $d2  debugfissionb/ld-new -a  
-runtest $d1 $d2  debugfissionb/ld-new -ka  
 
 echo "=====START   baddie1 runtest.sh"
 cd baddie1
