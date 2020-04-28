@@ -3,7 +3,7 @@
 # So it's testing the new dwarfdump.
 
 
-dd=$1
+dd=../dwarfdump
 ourzcat=zcat
 which gzcat 1>/dev/null
 if [ $? -eq 0 ]

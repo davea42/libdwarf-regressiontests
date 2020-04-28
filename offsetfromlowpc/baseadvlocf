@@ -11,18 +11,18 @@ fde:
         0x44386ca39: <off r3=s > <off r4=s > <off r5=s > <off r6=s > <off r7=s > 
 
 cie:
-<    0>	version				4
-	cie section offset		0 0x00000000
-	augmentation			
-	code_alignment_factor		1
-	data_alignment_factor		1
-	return_address_register		2
-	bytes of initial instructions	5
-	cie length			16
-	initial instructions
-	 0 DW_CFA_nop
-	 1 DW_CFA_nop
-	 2 DW_CFA_nop
-	 3 DW_CFA_nop
-	 4 DW_CFA_nop
+<    0> version      4
+  cie section offset    0 0x00000000
+  augmentation                  
+  code_alignment_factor         1
+  data_alignment_factor         1
+  return_address_register       2
+  bytes of initial instructions 5
+  cie length                    16
+  initial instructions
+   0 DW_CFA_nop
+   1 DW_CFA_nop
+   2 DW_CFA_nop
+   3 DW_CFA_nop
+   4 DW_CFA_nop
 

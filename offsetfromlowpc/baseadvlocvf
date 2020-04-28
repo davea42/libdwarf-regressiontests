@@ -10,36 +10,36 @@ fde:
         0x004386f6: <off r3=s > <off r4=s > <off r5=s > <off r6=s > 
         0x44386ca39: <off r3=s > <off r4=s > <off r5=s > <off r6=s > <off r7=s > 
  fde section offset 20 0x00000014 cie offset for fde: 0 0x00000000
-	 0 DW_CFA_advance_loc 48  (48 * 1)
-	 1 DW_CFA_same_value r3
-	 3 DW_CFA_advance_loc1 64
-	 5 DW_CFA_same_value r4
-	 7 DW_CFA_advance_loc2 17219
-	10 DW_CFA_same_value r5
-	12 DW_CFA_advance_loc4 4408131
-	17 DW_CFA_same_value r6
-	19 DW_CFA_MIPS_advance_loc8 18308350787
-	28 DW_CFA_same_value r7
-	30 DW_CFA_nop
-	31 DW_CFA_nop
-	32 DW_CFA_nop
-	33 DW_CFA_nop
-	34 DW_CFA_nop
-	35 DW_CFA_nop
+   0 DW_CFA_advance_loc 48  (48 * 1)
+   1 DW_CFA_same_value r3
+   3 DW_CFA_advance_loc1 64
+   5 DW_CFA_same_value r4
+   7 DW_CFA_advance_loc2 17219
+  10 DW_CFA_same_value r5
+  12 DW_CFA_advance_loc4 4408131
+  17 DW_CFA_same_value r6
+  19 DW_CFA_MIPS_advance_loc8 18308350787
+  28 DW_CFA_same_value r7
+  30 DW_CFA_nop
+  31 DW_CFA_nop
+  32 DW_CFA_nop
+  33 DW_CFA_nop
+  34 DW_CFA_nop
+  35 DW_CFA_nop
 
 cie:
-<    0>	version				4
-	cie section offset		0 0x00000000
-	augmentation			
-	code_alignment_factor		1
-	data_alignment_factor		1
-	return_address_register		2
-	bytes of initial instructions	5
-	cie length			16
-	initial instructions
-	 0 DW_CFA_nop
-	 1 DW_CFA_nop
-	 2 DW_CFA_nop
-	 3 DW_CFA_nop
-	 4 DW_CFA_nop
+<    0> version      4
+  cie section offset    0 0x00000000
+  augmentation                  
+  code_alignment_factor         1
+  data_alignment_factor         1
+  return_address_register       2
+  bytes of initial instructions 5
+  cie length                    16
+  initial instructions
+   0 DW_CFA_nop
+   1 DW_CFA_nop
+   2 DW_CFA_nop
+   3 DW_CFA_nop
+   4 DW_CFA_nop
 

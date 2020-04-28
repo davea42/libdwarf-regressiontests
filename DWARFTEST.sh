@@ -167,7 +167,19 @@ else
   echo "Suppress de_alloc_tree....: no"
   suppresstree=
 fi
-
+myhost=`hostname`
+echo   "hostname..................: $myhost"
+# Only suppress anything if we find the diffs are so
+# big that some machines or VMs will not complete 
+# handling the really big diffs in a sensible time.
+#if [ x$myhost != "xbsd32" -a x$myhost != "xbsd64" ]
+#then
+#  suppressbigdiffs=y
+#else
+#  suppressbigdiffs=n
+#fi
+suppressbigdiffs=n
+echo   "suppress big diffs........: $suppressbigdiffs"
 
 goodcount=0
 failcount=0
@@ -799,6 +811,7 @@ runtest $d1 $d2  grumbach/test_fixed.o -ka
 
 
 # Testing SHF_COMPRESSED .debug* section reading.
+# see suppressbigdiff below.
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
 runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
 # .eh_frame is not actually compressed...
@@ -942,16 +955,28 @@ runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 # This is a .dwp file with .debug_cu_index and .debug_tu_index.
 # Results are so large (500MB) it is unwise to run all options
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
-runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
-runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
-runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
-runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
+if [ $suppressbigdiffs = "n" ]
+then
+  # Testing SHF_COMPRESSED .debug* section reading.
+  # we do get through these two so no need to suppress. See above.
+  #runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
+  #runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
+  # A big object.
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
+  runtest $d1 $d2  debugfissionb/ld-new -a  
+  runtest $d1 $d2  debugfissionb/ld-new -ka  
+else
+  # Skip on vms a bit too weak to do this big a diff
+  # in a reasonable time if it really has differences.
+  echo "SKIP  some debugfissionb/ld-new.dwp tests"
+fi
 # This has a .gdb_index   file print
 # Unwise to run all options.
 runtest $d1 $d2  debugfissionb/ld-new -I
 runtest $d1 $d2  debugfissionb/ld-new -I  -v -v -v
-runtest $d1 $d2  debugfissionb/ld-new -a  
-runtest $d1 $d2  debugfissionb/ld-new -ka  
 # End of problematic debugfissionb/ld-new tests.
 
 # A very short debug_types file. Used to result in error due to bug.
