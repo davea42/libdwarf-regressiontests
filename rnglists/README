@@ -1,0 +1,7 @@
+Objects with .debug_rnglists
+
+Compiled  with gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04).
+example:
+  gcc -gdwarf-5 -O2  -c  extractdba.o
+
+April 28 2020
