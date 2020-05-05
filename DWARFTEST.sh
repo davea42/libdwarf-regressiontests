@@ -533,8 +533,13 @@ else
   cd ..
 fi
 
-runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -a
+runtest $d1 $d2 rnglists/readelfobj -vv  --print-raw-rnglists
+runtest $d1 $d2 rnglists/linelen.o  -v --print-raw-rnglists
+runtest $d1 $d2 rnglists/extractdba.o -v  --print-raw-rnglists
+runtest $d1 $d2 rnglists/pe_map.o -v --print-raw-rnglists
+runtest $d1 $d2 rnglists/pe_map.o  --print-raw-rnglists
 
+runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -a
 
 # See mustacchi/README. 
 # Clang generates a slightly unusual relocation set for -m32.
