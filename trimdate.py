@@ -57,7 +57,7 @@ if __name__ == '__main__':
   try:
     file = open(fn,"r")
   except IOError as message:
-    print "FAIL open ",fn,"errormessage",message
+    print("FAIL open ",fn,"errormessage",message)
     sys.exit(1)
   print("Start stripping dates")
   while 1:
@@ -69,9 +69,7 @@ if __name__ == '__main__':
       # eof
       break
      
-    if isdateitem(rec) == "y":
-       print("DATE:xxx")
-    else:
+    if not isdateitem(rec) == "y":
        print(rec)
   print("Done stripping dates")
 
