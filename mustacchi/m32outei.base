@@ -22,7 +22,7 @@ LOCAL_SYMBOLS:
                       DW_AT_external              yes(1) <form DW_FORM_flag_present>
                       DW_AT_decl_file             0x00000001 /tmp/t.c <form DW_FORM_data1>
                       DW_AT_decl_line             0x00000002 <form DW_FORM_data1>
-                      DW_AT_location              len 0x0005: 0304000000: DW_OP_addr 0x00000004
+                      DW_AT_location              len 0x0005: 0x0304000000: DW_OP_addr 0x00000004 <form DW_FORM_exprloc>
 < 1><0x0000002f>    DW_TAG_base_type
                       DW_AT_name                  int <form DW_FORM_strp>
                       DW_AT_encoding              DW_ATE_signed <form DW_FORM_data1>
