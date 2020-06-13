@@ -6,6 +6,9 @@ echo "  If you wish do one or more of these before running the tests."
 echo "  Add sanity..............: export NLIZE=y"
 echo "  Suppress de_alloc_tree..: export SUPPRESSDEALLOCTREE=y"
 echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE ; unset NLIZE"
+# On certain VMs if too much change, we get stuck at 1% done forever.
+# suppress those very few tests via:
+# export SUPPRESSBIGDIFFS=y
 echo 'Starting regressiontests: DWARFTEST.sh' `date`
 . ./SHALIAS.sh
 stsecs=`date '+%s'`
@@ -19,6 +22,7 @@ then
 fi
 shortest=n
 #comment the following line out for a normal test.
+#No env var provided for this. Unsure the last time used. 
 #shortest=y
 
 suppresstree=
@@ -30,7 +34,6 @@ if [ x$SUPPRESSDEALLOCTREE = "xy" ]
 then
    suppresstree="--suppress-de-alloc-tree" 
 fi
-
 
 for i in $*
 do
@@ -167,20 +170,18 @@ else
   echo "Suppress de_alloc_tree....: no"
   suppresstree=
 fi
-myhost=`hostname`
-echo   "hostname..................: $myhost"
 # Only suppress anything if we find the diffs are so
 # big that some machines or VMs will not complete 
 # handling the really big diffs in a sensible time.
-#if [ x$myhost != "xbsd32" -a x$myhost != "xbsd64" ]
-#then
-#  suppressbigdiffs=y
-#else
-#  suppressbigdiffs=n
-#fi
 suppressbigdiffs=n
+if [ x$SUPPRESSBIGDIFFS = "xy" ]
+then
+  suppressbigdiffs=y
+fi
 echo   "suppress big diffs........: $suppressbigdiffs"
 
+myhost=`hostname`
+echo   "hostname..................: $myhost"
 goodcount=0
 failcount=0
 . ./BASEFILES
@@ -976,7 +977,7 @@ then
 else
   # Skip on vms a bit too weak to do this big a diff
   # in a reasonable time if it really has differences.
-  echo "SKIP  some debugfissionb/ld-new.dwp tests"
+  echo "=====SKIP  some debugfissionb/ld-new.dwp tests"
 fi
 # This has a .gdb_index   file print
 # Unwise to run all options.

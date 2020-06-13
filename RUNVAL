@@ -1,41 +1,17 @@
 #This is solely for tracking down bugs.
 #Ignore this.
-opts=" -l -vvv liu/free_invalid_address.elf"
-opts="-a macho-kask/dwarfdump_32"
-opts="-a -R -v -v -v -v -v -v -x line5=std  ppc2/powerpc-750-linux-gnu-hello-static"
-opts="-ka -ki liu/outofbound01.elf"
-opts="-i -H 1 irixn32/dwarfdump"
-opts="--suppress-de-alloc-tree -a shopov2/clang-9.0.0-test-dwarf5.elf"
-opts="-v --print-raw-rnglists rnglists/pe_map.o"
-opts=" -i -vvv -M  shopov2/clang-9.0.0-test-dwarf5.elf"
-opts=" -i -vvv --print-raw-rnglists -M rnglists/readelfobj"
-opts="-i -x tied=debugfissionb/ld-new  debugfissionb/ld-new.dwp"
-# check the following -done
-opts="-ka  shopov3/decltest-dw5.o"
-# check the following -done
-opts="-f -v -oi shopov3/decltest-dw5.o"
-# check the following
-opts="-kuf -kd shopov2/clang-9.0.0-test-dwarf5.elf"
-opts="-f xqx-b/aw.elf"
-#This one needs checking 'outside a valid text ranges'
-opts=" -ka  debugfissionb/ld-new"
-opts="--suppress-de-alloc-tree -l -v -oi liu/OOB_read3_02.elf"
-opts="--suppress-de-alloc-tree -ka debugfissionb/ld-new.dwp"
-opts="-a -G -M rnglists/readelfobj"
-opts="--suppress-de-alloc-tree -a debugfissionb/ld-new.dwp"
-opts="-a debugfissionb/ld-new.dwp"
-opts="--suppress-de-alloc-tree -a -G -M rnglists/readelfobj"
 opts=" -vvv --print-raw-loclists -M rnglists/readelfobj"
 opts="--check-tag-attr  encisoa/DW_AT_containing_type.o"
 opts=" -M -v --print-all  pe1/libexamine-0.dll"
 opts=" -M -v -a emre5/test33_64_opt_fpo_split.dwp"
 opts=" -M -v -a macho-kask/simplereaderi386"
 opts="-a -M -v shopov2/clang-9.0.0-test-dwarf5.elf"
+opts="--suppress-de-alloc-tree -b -v shopov2/clang-9.0.0-test-dwarf5.elf"
+opts="--suppress-de-alloc-tree -a shopov2/clang-9.0.0-test-dwarf5.elf"
 
 #./dwarfdump.O  $opts >junko
-dwarfdump $opts >junko
-/tmp/dwarfdump $opts >junkn
-exit 0
+#dwarfdump $opts >junko
+#/tmp/dwarfdump $opts >junkn
 
 # -show_reachable shows things alloc before it could get control. 14KB.
 #drmemory --  /tmp/dwarfdump $opts >junkdrmemory
@@ -43,7 +19,7 @@ exit 0
 
 #time /tmp/dwarfdump $opts >junkx
 
-#vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=all"
+vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=all"
 #vgopts="--tool=massif  --xtree-memory=allocs --xtree-memory-file=/tmp/massif-out.ms"
 #vgopts="--tool=massif  --xtree-memory=full --xtree-memory-file=/tmp/massif-out.ms"
 #vgopts="--tool=callgrind  "
@@ -51,7 +27,8 @@ exit 0
 
 #dwarfdump  $opts >junko
 #/tmp/dwarfdump $opts
-#valgrind $vgopts  /tmp/dwarfdump $opts >junkn
+valgrind $vgopts  /tmp/dwarfdump $opts >junkn
+exit 0
 #massif-visualizer /tmp/massif-out.ms
 
 #./dwarfdump.O -i -M debugfissionb/ld-new >junkia
