@@ -8,10 +8,17 @@ opts=" -M -v -a macho-kask/simplereaderi386"
 opts="-a -M -v shopov2/clang-9.0.0-test-dwarf5.elf"
 opts="--suppress-de-alloc-tree -b -v shopov2/clang-9.0.0-test-dwarf5.elf"
 opts="--suppress-de-alloc-tree -a shopov2/clang-9.0.0-test-dwarf5.elf"
+opts="-km -ki sarubbo-7/4.crashes.bin"
+opts=" -i -vvv encisoa/DW_AT_containing_type.o"
+opts=" --print-raw-loclists -i -m -vv allen1/todd-allen-gcc-4.4.4-bin.exe"
+opts=" -i -M -v  pe1/libexamine-0.dll"
+opts="-a -vvv liu/NULLdereference0519.elf"
+
 
 #./dwarfdump.O  $opts >junko
-#dwarfdump $opts >junko
-#/tmp/dwarfdump $opts >junkn
+dwarfdump -b liu/NULLdereference0519.elf >junkabb
+/tmp/dwarfdump $opts >junkn
+exit 0
 
 # -show_reachable shows things alloc before it could get control. 14KB.
 #drmemory --  /tmp/dwarfdump $opts >junkdrmemory
