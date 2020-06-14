@@ -177,8 +177,10 @@ suppressbigdiffs=n
 if [ x$SUPPRESSBIGDIFFS = "xy" ]
 then
   suppressbigdiffs=y
+  echo   "suppress big diffs........: yes"
+else
+  echo   "suppress big diffs........: no"
 fi
-echo   "suppress big diffs........: $suppressbigdiffs"
 
 myhost=`hostname`
 echo   "hostname..................: $myhost"
