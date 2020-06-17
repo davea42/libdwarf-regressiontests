@@ -1,0 +1,10 @@
+17 June 2020
+
+Jorge Gorbe Moya created this test case
+source and dwo
+to show some DWARF5 features (which as of June 13
+libdwarf got wrong).
+
+Actually creating the dwo is apparently
+complicated (for one thing one needs
+latest clang) but we do not need to build it.
