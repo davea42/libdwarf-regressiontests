@@ -572,6 +572,9 @@ else
   echo "=====SKIP  --print-gnu-debuglink /lib/x86_64-linux-gnu/libc-2.27.so"
 fi
 
+# DWARF5 test, new 17 June 2020.
+runtest $d1 $d2 moya2/filecheck.dwo -a -M
+runtest $d1 $d2 moya2/filecheck.dwo -a -vvv -M
 # sample object with DW_AT_containing type in a use
 # which is standard
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr

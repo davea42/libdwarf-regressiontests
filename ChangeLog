@@ -1,3 +1,5 @@
+2020-06-17 David Anderson
+    * moya2/*: New testcase for DWARF5 support.
 2020-03-18 David Anderson
     * RegressionTestsResults.ods: latest with
       suppres-dealloc and -fsanitize. 
