@@ -714,8 +714,8 @@ LOCAL_SYMBOLS:
                                       DW_AT_high_pc               0xfff43e40
                                       DW_AT_frame_base            0x0000009e
       .debug_loc      offset  : 0x0000009e   <loclist at offset 0x0000009e with 2 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x00000002>DW_OP_breg0+4
-   [ 1]<low addr           0x00000002 high addr 0x000003aa>DW_OP_breg0+32
+   [ 0]<low addr           0xfff43a96 high addr 0xfff43a98>DW_OP_breg0+4
+   [ 1]<low addr           0xfff43a98 high addr 0xfff43e40>DW_OP_breg0+32
                                       DW_AT_sibling               <0x000006e1 GOFF=0x00000968>
 < 2><0x00000462 GOFF=0x000006e9>      DW_TAG_formal_parameter
                                         DW_AT_name                  n
@@ -724,14 +724,14 @@ LOCAL_SYMBOLS:
                                         DW_AT_type                  <0x00000090 GOFF=0x00000317>
                                         DW_AT_location              0x000000be
       .debug_loc      offset  : 0x000000be   <loclist at offset 0x000000be with 8 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x00000095>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 1]<low addr           0x000000c7 high addr 0x00000112>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 2]<low addr           0x00000115 high addr 0x0000018a>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 3]<low addr           0x000001ba high addr 0x000001be>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 4]<low addr           0x000001c1 high addr 0x000002ac>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 5]<low addr           0x000002b3 high addr 0x0000034d>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 6]<low addr           0x0000035e high addr 0x00000379>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 7]<low addr           0x0000037c high addr 0x000003aa>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 0]<low addr           0xfff43a96 high addr 0xfff43b2b>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 1]<low addr           0xfff43b5d high addr 0xfff43ba8>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 2]<low addr           0xfff43bab high addr 0xfff43c20>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 3]<low addr           0xfff43c50 high addr 0xfff43c54>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 4]<low addr           0xfff43c57 high addr 0xfff43d42>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 5]<low addr           0xfff43d49 high addr 0xfff43de3>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 6]<low addr           0xfff43df4 high addr 0xfff43e0f>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 7]<low addr           0xfff43e12 high addr 0xfff43e40>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
 < 2><0x00000470 GOFF=0x000006f7>      DW_TAG_formal_parameter
                                         DW_AT_name                  d
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
@@ -739,12 +739,12 @@ LOCAL_SYMBOLS:
                                         DW_AT_type                  <0x00000090 GOFF=0x00000317>
                                         DW_AT_location              0x00000146
       .debug_loc      offset  : 0x00000146   <loclist at offset 0x00000146 with 6 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x00000064>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 1]<low addr           0x000000c7 high addr 0x00000145>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 2]<low addr           0x000001ba high addr 0x00000227>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 3]<low addr           0x0000033b high addr 0x00000343>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 4]<low addr           0x0000035e high addr 0x0000037c>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 5]<low addr           0x0000039b high addr 0x000003aa>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 0]<low addr           0xfff43a96 high addr 0xfff43afa>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 1]<low addr           0xfff43b5d high addr 0xfff43bdb>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 2]<low addr           0xfff43c50 high addr 0xfff43cbd>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 3]<low addr           0xfff43dd1 high addr 0xfff43dd9>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 4]<low addr           0xfff43df4 high addr 0xfff43e12>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 5]<low addr           0xfff43e31 high addr 0xfff43e40>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
 < 2><0x0000047e GOFF=0x00000705>      DW_TAG_inlined_subroutine
                                         DW_AT_abstract_origin       <0x00000107 GOFF=0x0000038e>
                                         DW_AT_entry_pc              0xfff43a98
@@ -768,32 +768,32 @@ LOCAL_SYMBOLS:
                                           DW_AT_abstract_origin       <0x00000123 GOFF=0x000003aa>
                                           DW_AT_location              0x000001ae
       .debug_loc      offset  : 0x000001ae   <loclist at offset 0x000001ae with 7 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x0000002c>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 1]<low addr           0x000000c7 high addr 0x00000145>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 2]<low addr           0x000001ba high addr 0x000001da>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 3]<low addr           0x000001df high addr 0x000001f6>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 4]<low addr           0x0000033b high addr 0x0000033e>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 5]<low addr           0x0000035e high addr 0x0000037c>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 6]<low addr           0x0000039b high addr 0x000003aa>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 0]<low addr           0xfff43a96 high addr 0xfff43ac2>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 1]<low addr           0xfff43b5d high addr 0xfff43bdb>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 2]<low addr           0xfff43c50 high addr 0xfff43c70>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 3]<low addr           0xfff43c75 high addr 0xfff43c8c>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 4]<low addr           0xfff43dd1 high addr 0xfff43dd4>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 5]<low addr           0xfff43df4 high addr 0xfff43e12>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 6]<low addr           0xfff43e31 high addr 0xfff43e40>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
 < 3><0x0000049d GOFF=0x00000724>        DW_TAG_formal_parameter
                                           DW_AT_abstract_origin       <0x00000119 GOFF=0x000003a0>
                                           DW_AT_location              0x00000226
       .debug_loc      offset  : 0x00000226   <loclist at offset 0x00000226 with 15 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x0000004f>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 1]<low addr           0x0000004f high addr 0x0000005c>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [ 2]<low addr           0x000000c7 high addr 0x00000110>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 3]<low addr           0x00000110 high addr 0x00000112>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [ 4]<low addr           0x00000115 high addr 0x0000015d>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 5]<low addr           0x000001ba high addr 0x000001bc>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 6]<low addr           0x000001bc high addr 0x000001be>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [ 7]<low addr           0x000001be high addr 0x000001c1>DW_OP_reg5 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [ 8]<low addr           0x000001c1 high addr 0x0000020b>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 9]<low addr           0x0000020b high addr 0x0000020e>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [10]<low addr           0x000002b3 high addr 0x000002ce>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [11]<low addr           0x0000033b high addr 0x00000343>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [12]<low addr           0x0000035e high addr 0x00000377>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [13]<low addr           0x00000377 high addr 0x00000379>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [14]<low addr           0x0000039b high addr 0x000003aa>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 0]<low addr           0xfff43a96 high addr 0xfff43ae5>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 1]<low addr           0xfff43ae5 high addr 0xfff43af2>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [ 2]<low addr           0xfff43b5d high addr 0xfff43ba6>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 3]<low addr           0xfff43ba6 high addr 0xfff43ba8>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [ 4]<low addr           0xfff43bab high addr 0xfff43bf3>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 5]<low addr           0xfff43c50 high addr 0xfff43c52>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 6]<low addr           0xfff43c52 high addr 0xfff43c54>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [ 7]<low addr           0xfff43c54 high addr 0xfff43c57>DW_OP_reg5 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [ 8]<low addr           0xfff43c57 high addr 0xfff43ca1>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 9]<low addr           0xfff43ca1 high addr 0xfff43ca4>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [10]<low addr           0xfff43d49 high addr 0xfff43d64>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [11]<low addr           0xfff43dd1 high addr 0xfff43dd9>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [12]<low addr           0xfff43df4 high addr 0xfff43e0d>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [13]<low addr           0xfff43e0d high addr 0xfff43e0f>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [14]<low addr           0xfff43e31 high addr 0xfff43e40>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
 < 3><0x000004a6 GOFF=0x0000072d>        DW_TAG_lexical_block
                                           DW_AT_ranges                0x000000a0
   ranges: 9 at .debug_ranges offset 160 (0x000000a0) (72 bytes)
@@ -816,116 +816,116 @@ LOCAL_SYMBOLS:
                                             DW_AT_abstract_origin       <0x00000159 GOFF=0x000003e0>
                                             DW_AT_location              0x0000031e
       .debug_loc      offset  : 0x0000031e   <loclist at offset 0x0000031e with 12 entries follows>
-   [ 0]<low addr           0x00000004 high addr 0x00000059>DW_OP_reg3
-   [ 1]<low addr           0x00000059 high addr 0x000000c7>DW_OP_reg14
-   [ 2]<low addr           0x000000c7 high addr 0x0000011a>DW_OP_reg3
-   [ 3]<low addr           0x0000015d high addr 0x000001ba>DW_OP_reg14
-   [ 4]<low addr           0x000001ba high addr 0x000001e5>DW_OP_reg3
-   [ 5]<low addr           0x000001ec high addr 0x00000227>DW_OP_reg3
-   [ 6]<low addr           0x00000227 high addr 0x0000027d>DW_OP_reg3
-   [ 7]<low addr           0x000002bb high addr 0x0000033b>DW_OP_reg14
-   [ 8]<low addr           0x0000033b high addr 0x00000343>DW_OP_reg3
-   [ 9]<low addr           0x0000035e high addr 0x0000036d>DW_OP_reg3
-   [10]<low addr           0x00000375 high addr 0x0000038b>DW_OP_reg3
-   [11]<low addr           0x0000038b high addr 0x0000039b>DW_OP_reg14
+   [ 0]<low addr           0xfff43a9a high addr 0xfff43aef>DW_OP_reg3
+   [ 1]<low addr           0xfff43aef high addr 0xfff43b5d>DW_OP_reg14
+   [ 2]<low addr           0xfff43b5d high addr 0xfff43bb0>DW_OP_reg3
+   [ 3]<low addr           0xfff43bf3 high addr 0xfff43c50>DW_OP_reg14
+   [ 4]<low addr           0xfff43c50 high addr 0xfff43c7b>DW_OP_reg3
+   [ 5]<low addr           0xfff43c82 high addr 0xfff43cbd>DW_OP_reg3
+   [ 6]<low addr           0xfff43cbd high addr 0xfff43d13>DW_OP_reg3
+   [ 7]<low addr           0xfff43d51 high addr 0xfff43dd1>DW_OP_reg14
+   [ 8]<low addr           0xfff43dd1 high addr 0xfff43dd9>DW_OP_reg3
+   [ 9]<low addr           0xfff43df4 high addr 0xfff43e03>DW_OP_reg3
+   [10]<low addr           0xfff43e0b high addr 0xfff43e21>DW_OP_reg3
+   [11]<low addr           0xfff43e21 high addr 0xfff43e31>DW_OP_reg14
 < 4><0x000004c3 GOFF=0x0000074a>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x00000164 GOFF=0x000003eb>
                                             DW_AT_location              0x000003aa
       .debug_loc      offset  : 0x000003aa   <loclist at offset 0x000003aa with 9 entries follows>
-   [ 0]<low addr           0x00000004 high addr 0x0000002c>DW_OP_reg4
-   [ 1]<low addr           0x000000c7 high addr 0x00000156>DW_OP_reg4
-   [ 2]<low addr           0x000001ba high addr 0x000001da>DW_OP_reg4
-   [ 3]<low addr           0x000001df high addr 0x000001f6>DW_OP_reg4
-   [ 4]<low addr           0x000001f8 high addr 0x0000026c>DW_OP_reg4
-   [ 5]<low addr           0x000002b3 high addr 0x000002be>DW_OP_reg4
-   [ 6]<low addr           0x0000033b high addr 0x0000033e>DW_OP_reg4
-   [ 7]<low addr           0x0000035e high addr 0x0000038b>DW_OP_reg4
-   [ 8]<low addr           0x0000039b high addr 0x000003aa>DW_OP_reg4
+   [ 0]<low addr           0xfff43a9a high addr 0xfff43ac2>DW_OP_reg4
+   [ 1]<low addr           0xfff43b5d high addr 0xfff43bec>DW_OP_reg4
+   [ 2]<low addr           0xfff43c50 high addr 0xfff43c70>DW_OP_reg4
+   [ 3]<low addr           0xfff43c75 high addr 0xfff43c8c>DW_OP_reg4
+   [ 4]<low addr           0xfff43c8e high addr 0xfff43d02>DW_OP_reg4
+   [ 5]<low addr           0xfff43d49 high addr 0xfff43d54>DW_OP_reg4
+   [ 6]<low addr           0xfff43dd1 high addr 0xfff43dd4>DW_OP_reg4
+   [ 7]<low addr           0xfff43df4 high addr 0xfff43e21>DW_OP_reg4
+   [ 8]<low addr           0xfff43e31 high addr 0xfff43e40>DW_OP_reg4
 < 4><0x000004cc GOFF=0x00000753>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x0000016f GOFF=0x000003f6>
                                             DW_AT_location              0x00000415
       .debug_loc      offset  : 0x00000415   <loclist at offset 0x00000415 with 17 entries follows>
-   [ 0]<low addr           0x00000006 high addr 0x0000005f>DW_OP_reg1
-   [ 1]<low addr           0x0000005f high addr 0x000000a4>DW_OP_reg5
-   [ 2]<low addr           0x000000c7 high addr 0x00000112>DW_OP_reg1
-   [ 3]<low addr           0x00000115 high addr 0x0000015d>DW_OP_reg1
-   [ 4]<low addr           0x0000015d high addr 0x00000199>DW_OP_reg5
-   [ 5]<low addr           0x000001ba high addr 0x000001be>DW_OP_reg1
-   [ 6]<low addr           0x000001be high addr 0x000001c1>DW_OP_reg5
-   [ 7]<low addr           0x000001c1 high addr 0x00000227>DW_OP_reg1
-   [ 8]<low addr           0x00000227 high addr 0x000002ac>DW_OP_breg1+0 DW_OP_breg14+0 DW_OP_shl DW_OP_stack_value
-   [ 9]<low addr           0x000002b3 high addr 0x000002e9>DW_OP_reg1
-   [10]<low addr           0x000002e9 high addr 0x0000033b>DW_OP_reg5
-   [11]<low addr           0x0000033b high addr 0x00000343>DW_OP_reg1
-   [12]<low addr           0x00000343 high addr 0x0000034d>DW_OP_breg1+0 DW_OP_breg14+0 DW_OP_shl DW_OP_stack_value
-   [13]<low addr           0x0000035e high addr 0x00000379>DW_OP_reg1
-   [14]<low addr           0x0000037c high addr 0x0000038b>DW_OP_breg1+0 DW_OP_breg14+0 DW_OP_shl DW_OP_stack_value
-   [15]<low addr           0x0000038b high addr 0x0000039b>DW_OP_reg5
-   [16]<low addr           0x0000039b high addr 0x000003aa>DW_OP_reg1
+   [ 0]<low addr           0xfff43a9c high addr 0xfff43af5>DW_OP_reg1
+   [ 1]<low addr           0xfff43af5 high addr 0xfff43b3a>DW_OP_reg5
+   [ 2]<low addr           0xfff43b5d high addr 0xfff43ba8>DW_OP_reg1
+   [ 3]<low addr           0xfff43bab high addr 0xfff43bf3>DW_OP_reg1
+   [ 4]<low addr           0xfff43bf3 high addr 0xfff43c2f>DW_OP_reg5
+   [ 5]<low addr           0xfff43c50 high addr 0xfff43c54>DW_OP_reg1
+   [ 6]<low addr           0xfff43c54 high addr 0xfff43c57>DW_OP_reg5
+   [ 7]<low addr           0xfff43c57 high addr 0xfff43cbd>DW_OP_reg1
+   [ 8]<low addr           0xfff43cbd high addr 0xfff43d42>DW_OP_breg1+0 DW_OP_breg14+0 DW_OP_shl DW_OP_stack_value
+   [ 9]<low addr           0xfff43d49 high addr 0xfff43d7f>DW_OP_reg1
+   [10]<low addr           0xfff43d7f high addr 0xfff43dd1>DW_OP_reg5
+   [11]<low addr           0xfff43dd1 high addr 0xfff43dd9>DW_OP_reg1
+   [12]<low addr           0xfff43dd9 high addr 0xfff43de3>DW_OP_breg1+0 DW_OP_breg14+0 DW_OP_shl DW_OP_stack_value
+   [13]<low addr           0xfff43df4 high addr 0xfff43e0f>DW_OP_reg1
+   [14]<low addr           0xfff43e12 high addr 0xfff43e21>DW_OP_breg1+0 DW_OP_breg14+0 DW_OP_shl DW_OP_stack_value
+   [15]<low addr           0xfff43e21 high addr 0xfff43e31>DW_OP_reg5
+   [16]<low addr           0xfff43e31 high addr 0xfff43e40>DW_OP_reg1
 < 4><0x000004d5 GOFF=0x0000075c>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x0000017a GOFF=0x00000401>
                                             DW_AT_location              0x000004e7
       .debug_loc      offset  : 0x000004e7   <loclist at offset 0x000004e7 with 21 entries follows>
-   [ 0]<low addr           0x00000008 high addr 0x0000004f>DW_OP_reg2
-   [ 1]<low addr           0x0000004f high addr 0x0000005c>DW_OP_reg15
-   [ 2]<low addr           0x0000005c high addr 0x0000006c>DW_OP_reg15
-   [ 3]<low addr           0x000000c7 high addr 0x00000110>DW_OP_reg2
-   [ 4]<low addr           0x00000110 high addr 0x00000115>DW_OP_reg15
-   [ 5]<low addr           0x00000115 high addr 0x00000153>DW_OP_reg2
-   [ 6]<low addr           0x00000153 high addr 0x00000170>DW_OP_reg10
-   [ 7]<low addr           0x000001ba high addr 0x000001bc>DW_OP_reg2
-   [ 8]<low addr           0x000001bc high addr 0x000001c1>DW_OP_reg15
-   [ 9]<low addr           0x000001c1 high addr 0x0000020b>DW_OP_reg2
-   [10]<low addr           0x0000020b high addr 0x0000020e>DW_OP_reg15
-   [11]<low addr           0x00000227 high addr 0x00000251>DW_OP_reg2
-   [12]<low addr           0x0000028f high addr 0x000002b3>DW_OP_reg7
-   [13]<low addr           0x000002b3 high addr 0x000002ce>DW_OP_reg2
-   [14]<low addr           0x000002d3 high addr 0x00000318>DW_OP_reg13
-   [15]<low addr           0x00000338 high addr 0x0000033b>DW_OP_reg10
-   [16]<low addr           0x0000033b high addr 0x00000343>DW_OP_reg2
-   [17]<low addr           0x00000343 high addr 0x0000035e>DW_OP_reg7
-   [18]<low addr           0x0000035e high addr 0x00000377>DW_OP_reg2
-   [19]<low addr           0x00000377 high addr 0x0000037c>DW_OP_reg15
-   [20]<low addr           0x0000039b high addr 0x000003aa>DW_OP_reg2
+   [ 0]<low addr           0xfff43a9e high addr 0xfff43ae5>DW_OP_reg2
+   [ 1]<low addr           0xfff43ae5 high addr 0xfff43af2>DW_OP_reg15
+   [ 2]<low addr           0xfff43af2 high addr 0xfff43b02>DW_OP_reg15
+   [ 3]<low addr           0xfff43b5d high addr 0xfff43ba6>DW_OP_reg2
+   [ 4]<low addr           0xfff43ba6 high addr 0xfff43bab>DW_OP_reg15
+   [ 5]<low addr           0xfff43bab high addr 0xfff43be9>DW_OP_reg2
+   [ 6]<low addr           0xfff43be9 high addr 0xfff43c06>DW_OP_reg10
+   [ 7]<low addr           0xfff43c50 high addr 0xfff43c52>DW_OP_reg2
+   [ 8]<low addr           0xfff43c52 high addr 0xfff43c57>DW_OP_reg15
+   [ 9]<low addr           0xfff43c57 high addr 0xfff43ca1>DW_OP_reg2
+   [10]<low addr           0xfff43ca1 high addr 0xfff43ca4>DW_OP_reg15
+   [11]<low addr           0xfff43cbd high addr 0xfff43ce7>DW_OP_reg2
+   [12]<low addr           0xfff43d25 high addr 0xfff43d49>DW_OP_reg7
+   [13]<low addr           0xfff43d49 high addr 0xfff43d64>DW_OP_reg2
+   [14]<low addr           0xfff43d69 high addr 0xfff43dae>DW_OP_reg13
+   [15]<low addr           0xfff43dce high addr 0xfff43dd1>DW_OP_reg10
+   [16]<low addr           0xfff43dd1 high addr 0xfff43dd9>DW_OP_reg2
+   [17]<low addr           0xfff43dd9 high addr 0xfff43df4>DW_OP_reg7
+   [18]<low addr           0xfff43df4 high addr 0xfff43e0d>DW_OP_reg2
+   [19]<low addr           0xfff43e0d high addr 0xfff43e12>DW_OP_reg15
+   [20]<low addr           0xfff43e31 high addr 0xfff43e40>DW_OP_reg2
 < 4><0x000004de GOFF=0x00000765>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x00000185 GOFF=0x0000040c>
                                             DW_AT_location              0x000005d6
       .debug_loc      offset  : 0x000005d6   <loclist at offset 0x000005d6 with 1 entries follows>
-   [ 0]<low addr           0x000002bb high addr 0x000002d0>DW_OP_reg11
+   [ 0]<low addr           0xfff43d51 high addr 0xfff43d66>DW_OP_reg11
 < 4><0x000004e7 GOFF=0x0000076e>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x00000190 GOFF=0x00000417>
                                             DW_AT_location              0x000005e9
       .debug_loc      offset  : 0x000005e9   <loclist at offset 0x000005e9 with 2 entries follows>
-   [ 0]<low addr           0x0000028f high addr 0x000002b0>DW_OP_reg11
-   [ 1]<low addr           0x00000343 high addr 0x00000356>DW_OP_reg11
+   [ 0]<low addr           0xfff43d25 high addr 0xfff43d46>DW_OP_reg11
+   [ 1]<low addr           0xfff43dd9 high addr 0xfff43dec>DW_OP_reg11
 < 4><0x000004f0 GOFF=0x00000777>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x0000019b GOFF=0x00000422>
                                             DW_AT_location              0x00000607
       .debug_loc      offset  : 0x00000607   <loclist at offset 0x00000607 with 5 entries follows>
-   [ 0]<low addr           0x000000be high addr 0x000000c4>DW_OP_lit0 DW_OP_stack_value
-   [ 1]<low addr           0x00000153 high addr 0x0000015d>DW_OP_lit1 DW_OP_stack_value
-   [ 2]<low addr           0x0000015d high addr 0x000001b7>DW_OP_reg2
-   [ 3]<low addr           0x00000338 high addr 0x0000033b>DW_OP_reg2
-   [ 4]<low addr           0x0000038b high addr 0x00000393>DW_OP_reg2
+   [ 0]<low addr           0xfff43b54 high addr 0xfff43b5a>DW_OP_lit0 DW_OP_stack_value
+   [ 1]<low addr           0xfff43be9 high addr 0xfff43bf3>DW_OP_lit1 DW_OP_stack_value
+   [ 2]<low addr           0xfff43bf3 high addr 0xfff43c4d>DW_OP_reg2
+   [ 3]<low addr           0xfff43dce high addr 0xfff43dd1>DW_OP_reg2
+   [ 4]<low addr           0xfff43e21 high addr 0xfff43e29>DW_OP_reg2
 < 4><0x000004f9 GOFF=0x00000780>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x000001a6 GOFF=0x0000042d>
                                             DW_AT_location              0x00000648
       .debug_loc      offset  : 0x00000648   <loclist at offset 0x00000648 with 2 entries follows>
-   [ 0]<low addr           0x000001ec high addr 0x000001f1>DW_OP_reg5
-   [ 1]<low addr           0x000002b3 high addr 0x000002b8>DW_OP_reg7
+   [ 0]<low addr           0xfff43c82 high addr 0xfff43c87>DW_OP_reg5
+   [ 1]<low addr           0xfff43d49 high addr 0xfff43d4e>DW_OP_reg7
 < 4><0x00000502 GOFF=0x00000789>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x000001b0 GOFF=0x00000437>
                                             DW_AT_location              0x00000666
       .debug_loc      offset  : 0x00000666   <loclist at offset 0x00000666 with 9 entries follows>
-   [ 0]<low addr           0x00000046 high addr 0x0000006a>DW_OP_reg7
-   [ 1]<low addr           0x000000fe high addr 0x00000115>DW_OP_reg14
-   [ 2]<low addr           0x00000149 high addr 0x00000165>DW_OP_reg3
-   [ 3]<low addr           0x000001ec high addr 0x000002b3>DW_OP_reg14
-   [ 4]<low addr           0x000002b3 high addr 0x0000033b>DW_OP_reg3
-   [ 5]<low addr           0x00000343 high addr 0x0000035e>DW_OP_reg14
-   [ 6]<low addr           0x00000375 high addr 0x00000379>DW_OP_reg14
-   [ 7]<low addr           0x00000379 high addr 0x0000037c>DW_OP_reg2
-   [ 8]<low addr           0x0000037c high addr 0x0000038b>DW_OP_reg14
+   [ 0]<low addr           0xfff43adc high addr 0xfff43b00>DW_OP_reg7
+   [ 1]<low addr           0xfff43b94 high addr 0xfff43bab>DW_OP_reg14
+   [ 2]<low addr           0xfff43bdf high addr 0xfff43bfb>DW_OP_reg3
+   [ 3]<low addr           0xfff43c82 high addr 0xfff43d49>DW_OP_reg14
+   [ 4]<low addr           0xfff43d49 high addr 0xfff43dd1>DW_OP_reg3
+   [ 5]<low addr           0xfff43dd9 high addr 0xfff43df4>DW_OP_reg14
+   [ 6]<low addr           0xfff43e0b high addr 0xfff43e0f>DW_OP_reg14
+   [ 7]<low addr           0xfff43e0f high addr 0xfff43e12>DW_OP_reg2
+   [ 8]<low addr           0xfff43e12 high addr 0xfff43e21>DW_OP_reg14
 < 4><0x0000050b GOFF=0x00000792>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x000001bb GOFF=0x00000442>
 < 4><0x00000510 GOFF=0x00000797>          DW_TAG_lexical_block
@@ -940,14 +940,14 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x00000341 GOFF=0x000005c8>
                                               DW_AT_location              0x000006d1
       .debug_loc      offset  : 0x000006d1   <loclist at offset 0x000006d1 with 2 entries follows>
-   [ 0]<low addr           0x000002a0 high addr 0x000002b3>DW_OP_reg3
-   [ 1]<low addr           0x00000343 high addr 0x00000356>DW_OP_reg3
+   [ 0]<low addr           0xfff43d36 high addr 0xfff43d49>DW_OP_reg3
+   [ 1]<low addr           0xfff43dd9 high addr 0xfff43dec>DW_OP_reg3
 < 5><0x00000522 GOFF=0x000007a9>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x0000034c GOFF=0x000005d3>
                                               DW_AT_location              0x000006ef
       .debug_loc      offset  : 0x000006ef   <loclist at offset 0x000006ef with 2 entries follows>
-   [ 0]<low addr           0x000002a0 high addr 0x000002b3>DW_OP_breg13+0 DW_OP_const2u 65535 DW_OP_and DW_OP_breg12+0 DW_OP_const2u 65535 DW_OP_and DW_OP_lit16 DW_OP_shl DW_OP_plus DW_OP_stack_value
-   [ 1]<low addr           0x00000343 high addr 0x00000356>DW_OP_breg13+0 DW_OP_const2u 65535 DW_OP_and DW_OP_breg12+0 DW_OP_const2u 65535 DW_OP_and DW_OP_lit16 DW_OP_shl DW_OP_plus DW_OP_stack_value
+   [ 0]<low addr           0xfff43d36 high addr 0xfff43d49>DW_OP_breg13+0 DW_OP_const2u 65535 DW_OP_and DW_OP_breg12+0 DW_OP_const2u 65535 DW_OP_and DW_OP_lit16 DW_OP_shl DW_OP_plus DW_OP_stack_value
+   [ 1]<low addr           0xfff43dd9 high addr 0xfff43dec>DW_OP_breg13+0 DW_OP_const2u 65535 DW_OP_and DW_OP_breg12+0 DW_OP_const2u 65535 DW_OP_and DW_OP_lit16 DW_OP_shl DW_OP_plus DW_OP_stack_value
 < 5><0x0000052b GOFF=0x000007b2>            DW_TAG_lexical_block
                                               DW_AT_ranges                0x00000108
   ranges: 7 at .debug_ranges offset 264 (0x00000108) (56 bytes)
@@ -963,57 +963,57 @@ LOCAL_SYMBOLS:
                                                 DW_AT_abstract_origin       <0x0000035c GOFF=0x000005e3>
                                                 DW_AT_location              0x0000072b
       .debug_loc      offset  : 0x0000072b   <loclist at offset 0x0000072b with 3 entries follows>
-   [ 0]<low addr           0x00000227 high addr 0x00000247>DW_OP_reg10
-   [ 1]<low addr           0x00000247 high addr 0x0000026c>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
-   [ 2]<low addr           0x0000037c high addr 0x0000038b>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+   [ 0]<low addr           0xfff43cbd high addr 0xfff43cdd>DW_OP_reg10
+   [ 1]<low addr           0xfff43cdd high addr 0xfff43d02>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+   [ 2]<low addr           0xfff43e12 high addr 0xfff43e21>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
 < 6><0x0000053d GOFF=0x000007c4>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x00000368 GOFF=0x000005ef>
                                                 DW_AT_location              0x0000075c
       .debug_loc      offset  : 0x0000075c   <loclist at offset 0x0000075c with 2 entries follows>
-   [ 0]<low addr           0x00000227 high addr 0x00000280>DW_OP_reg13
-   [ 1]<low addr           0x0000037c high addr 0x0000038b>DW_OP_reg13
+   [ 0]<low addr           0xfff43cbd high addr 0xfff43d16>DW_OP_reg13
+   [ 1]<low addr           0xfff43e12 high addr 0xfff43e21>DW_OP_reg13
 < 6><0x00000546 GOFF=0x000007cd>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x00000374 GOFF=0x000005fb>
                                                 DW_AT_location              0x0000077a
       .debug_loc      offset  : 0x0000077a   <loclist at offset 0x0000077a with 4 entries follows>
-   [ 0]<low addr           0x00000230 high addr 0x0000023b>DW_OP_reg12
-   [ 1]<low addr           0x0000023b high addr 0x0000023d>DW_OP_reg12
-   [ 2]<low addr           0x0000023d high addr 0x00000268>DW_OP_reg12
-   [ 3]<low addr           0x0000037c high addr 0x0000038b>DW_OP_reg12
+   [ 0]<low addr           0xfff43cc6 high addr 0xfff43cd1>DW_OP_reg12
+   [ 1]<low addr           0xfff43cd1 high addr 0xfff43cd3>DW_OP_reg12
+   [ 2]<low addr           0xfff43cd3 high addr 0xfff43cfe>DW_OP_reg12
+   [ 3]<low addr           0xfff43e12 high addr 0xfff43e21>DW_OP_reg12
 < 6><0x0000054f GOFF=0x000007d6>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x00000380 GOFF=0x00000607>
                                                 DW_AT_location              0x000007ae
       .debug_loc      offset  : 0x000007ae   <loclist at offset 0x000007ae with 4 entries follows>
-   [ 0]<low addr           0x0000025f high addr 0x00000266>DW_OP_reg11
-   [ 1]<low addr           0x00000266 high addr 0x0000026a>DW_OP_reg11
-   [ 2]<low addr           0x0000037c high addr 0x00000386>DW_OP_reg11
-   [ 3]<low addr           0x00000386 high addr 0x0000038b>DW_OP_reg11
+   [ 0]<low addr           0xfff43cf5 high addr 0xfff43cfc>DW_OP_reg11
+   [ 1]<low addr           0xfff43cfc high addr 0xfff43d00>DW_OP_reg11
+   [ 2]<low addr           0xfff43e12 high addr 0xfff43e1c>DW_OP_reg11
+   [ 3]<low addr           0xfff43e1c high addr 0xfff43e21>DW_OP_reg11
 < 6><0x00000558 GOFF=0x000007df>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x0000038c GOFF=0x00000613>
                                                 DW_AT_location              0x000007e2
       .debug_loc      offset  : 0x000007e2   <loclist at offset 0x000007e2 with 4 entries follows>
-   [ 0]<low addr           0x00000227 high addr 0x0000022d>DW_OP_reg15
-   [ 1]<low addr           0x00000230 high addr 0x0000023d>DW_OP_reg15
-   [ 2]<low addr           0x0000023d high addr 0x0000023f>DW_OP_reg15
-   [ 3]<low addr           0x0000023f high addr 0x00000249>DW_OP_reg15
+   [ 0]<low addr           0xfff43cbd high addr 0xfff43cc3>DW_OP_reg15
+   [ 1]<low addr           0xfff43cc6 high addr 0xfff43cd3>DW_OP_reg15
+   [ 2]<low addr           0xfff43cd3 high addr 0xfff43cd5>DW_OP_reg15
+   [ 3]<low addr           0xfff43cd5 high addr 0xfff43cdf>DW_OP_reg15
 < 6><0x00000561 GOFF=0x000007e8>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x00000398 GOFF=0x0000061f>
                                                 DW_AT_location              0x00000816
       .debug_loc      offset  : 0x00000816   <loclist at offset 0x00000816 with 7 entries follows>
-   [ 0]<low addr           0x00000249 high addr 0x00000256>DW_OP_reg15
-   [ 1]<low addr           0x00000256 high addr 0x0000025c>DW_OP_reg7
-   [ 2]<low addr           0x0000025f high addr 0x0000028f>DW_OP_reg7
-   [ 3]<low addr           0x0000028f high addr 0x000002b3>DW_OP_reg7
-   [ 4]<low addr           0x00000343 high addr 0x0000035e>DW_OP_reg7
-   [ 5]<low addr           0x0000037c high addr 0x00000388>DW_OP_reg7
-   [ 6]<low addr           0x00000388 high addr 0x0000038b>DW_OP_reg7
+   [ 0]<low addr           0xfff43cdf high addr 0xfff43cec>DW_OP_reg15
+   [ 1]<low addr           0xfff43cec high addr 0xfff43cf2>DW_OP_reg7
+   [ 2]<low addr           0xfff43cf5 high addr 0xfff43d25>DW_OP_reg7
+   [ 3]<low addr           0xfff43d25 high addr 0xfff43d49>DW_OP_reg7
+   [ 4]<low addr           0xfff43dd9 high addr 0xfff43df4>DW_OP_reg7
+   [ 5]<low addr           0xfff43e12 high addr 0xfff43e1e>DW_OP_reg7
+   [ 6]<low addr           0xfff43e1e high addr 0xfff43e21>DW_OP_reg7
 < 6><0x0000056a GOFF=0x000007f1>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x000003a4 GOFF=0x0000062b>
                                                 DW_AT_location              0x0000086b
       .debug_loc      offset  : 0x0000086b   <loclist at offset 0x0000086b with 3 entries follows>
-   [ 0]<low addr           0x00000227 high addr 0x00000241>DW_OP_reg11
-   [ 1]<low addr           0x00000254 high addr 0x0000029e>DW_OP_reg10
-   [ 2]<low addr           0x0000037c high addr 0x0000038b>DW_OP_reg10
+   [ 0]<low addr           0xfff43cbd high addr 0xfff43cd7>DW_OP_reg11
+   [ 1]<low addr           0xfff43cea high addr 0xfff43d34>DW_OP_reg10
+   [ 2]<low addr           0xfff43e12 high addr 0xfff43e21>DW_OP_reg10
 < 5><0x00000574 GOFF=0x000007fb>            DW_TAG_lexical_block
                                               DW_AT_ranges                0x00000140
   ranges: 3 at .debug_ranges offset 320 (0x00000140) (24 bytes)
@@ -1024,26 +1024,26 @@ LOCAL_SYMBOLS:
                                                 DW_AT_abstract_origin       <0x000003b6 GOFF=0x0000063d>
                                                 DW_AT_location              0x00000894
       .debug_loc      offset  : 0x00000894   <loclist at offset 0x00000894 with 2 entries follows>
-   [ 0]<low addr           0x0000028f high addr 0x000002ac>DW_OP_reg13
-   [ 1]<low addr           0x00000343 high addr 0x0000034a>DW_OP_reg13
+   [ 0]<low addr           0xfff43d25 high addr 0xfff43d42>DW_OP_reg13
+   [ 1]<low addr           0xfff43dd9 high addr 0xfff43de0>DW_OP_reg13
 < 6><0x00000582 GOFF=0x00000809>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x000003c2 GOFF=0x00000649>
                                                 DW_AT_location              0x000008b2
       .debug_loc      offset  : 0x000008b2   <loclist at offset 0x000008b2 with 2 entries follows>
-   [ 0]<low addr           0x00000292 high addr 0x000002ac>DW_OP_reg12
-   [ 1]<low addr           0x00000343 high addr 0x00000345>DW_OP_reg12
+   [ 0]<low addr           0xfff43d28 high addr 0xfff43d42>DW_OP_reg12
+   [ 1]<low addr           0xfff43dd9 high addr 0xfff43ddb>DW_OP_reg12
 < 6><0x0000058b GOFF=0x00000812>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x000003ce GOFF=0x00000655>
                                                 DW_AT_location              0x000008d0
       .debug_loc      offset  : 0x000008d0   <loclist at offset 0x000008d0 with 2 entries follows>
-   [ 0]<low addr           0x0000028f high addr 0x000002b3>DW_OP_reg4
-   [ 1]<low addr           0x00000343 high addr 0x0000035e>DW_OP_reg4
+   [ 0]<low addr           0xfff43d25 high addr 0xfff43d49>DW_OP_reg4
+   [ 1]<low addr           0xfff43dd9 high addr 0xfff43df4>DW_OP_reg4
 < 6><0x00000594 GOFF=0x0000081b>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x000003da GOFF=0x00000661>
                                                 DW_AT_location              0x000008ee
       .debug_loc      offset  : 0x000008ee   <loclist at offset 0x000008ee with 2 entries follows>
-   [ 0]<low addr           0x00000292 high addr 0x0000029b>DW_OP_reg3
-   [ 1]<low addr           0x0000029b high addr 0x000002a0>DW_OP_reg3
+   [ 0]<low addr           0xfff43d28 high addr 0xfff43d31>DW_OP_reg3
+   [ 1]<low addr           0xfff43d31 high addr 0xfff43d36>DW_OP_reg3
 < 6><0x0000059d GOFF=0x00000824>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x000003e6 GOFF=0x0000066d>
                                                 DW_AT_location              DW_OP_reg12
@@ -1054,15 +1054,15 @@ LOCAL_SYMBOLS:
                                                 DW_AT_abstract_origin       <0x000003fe GOFF=0x00000685>
                                                 DW_AT_location              0x0000090c
       .debug_loc      offset  : 0x0000090c   <loclist at offset 0x0000090c with 4 entries follows>
-   [ 0]<low addr           0x0000028f high addr 0x000002b0>DW_OP_reg2
-   [ 1]<low addr           0x000002b0 high addr 0x000002b3>DW_OP_breg11+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
-   [ 2]<low addr           0x00000343 high addr 0x0000035b>DW_OP_reg2
-   [ 3]<low addr           0x0000035b high addr 0x0000035e>DW_OP_breg11+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+   [ 0]<low addr           0xfff43d25 high addr 0xfff43d46>DW_OP_reg2
+   [ 1]<low addr           0xfff43d46 high addr 0xfff43d49>DW_OP_breg11+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+   [ 2]<low addr           0xfff43dd9 high addr 0xfff43df1>DW_OP_reg2
+   [ 3]<low addr           0xfff43df1 high addr 0xfff43df4>DW_OP_breg11+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
 < 6><0x000005b4 GOFF=0x0000083b>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x0000040a GOFF=0x00000691>
                                                 DW_AT_location              0x00000948
       .debug_loc      offset  : 0x00000948   <loclist at offset 0x00000948 with 1 entries follows>
-   [ 0]<low addr           0x0000028f high addr 0x00000292>DW_OP_reg3
+   [ 0]<low addr           0xfff43d25 high addr 0xfff43d28>DW_OP_reg3
 < 4><0x000005bf GOFF=0x00000846>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000158
   ranges: 3 at .debug_ranges offset 344 (0x00000158) (24 bytes)
@@ -1074,52 +1074,52 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x000002bb GOFF=0x00000542>
                                               DW_AT_location              0x0000095b
       .debug_loc      offset  : 0x0000095b   <loclist at offset 0x0000095b with 2 entries follows>
-   [ 0]<low addr           0x0000015d high addr 0x00000190>DW_OP_reg4
-   [ 1]<low addr           0x0000038b high addr 0x00000393>DW_OP_reg4
+   [ 0]<low addr           0xfff43bf3 high addr 0xfff43c26>DW_OP_reg4
+   [ 1]<low addr           0xfff43e21 high addr 0xfff43e29>DW_OP_reg4
 < 5><0x000005d1 GOFF=0x00000858>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000002c7 GOFF=0x0000054e>
                                               DW_AT_location              0x00000979
       .debug_loc      offset  : 0x00000979   <loclist at offset 0x00000979 with 2 entries follows>
-   [ 0]<low addr           0x0000015d high addr 0x0000019c>DW_OP_reg7
-   [ 1]<low addr           0x0000038b high addr 0x00000393>DW_OP_reg7
+   [ 0]<low addr           0xfff43bf3 high addr 0xfff43c32>DW_OP_reg7
+   [ 1]<low addr           0xfff43e21 high addr 0xfff43e29>DW_OP_reg7
 < 5><0x000005da GOFF=0x00000861>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000002d3 GOFF=0x0000055a>
                                               DW_AT_location              0x00000997
       .debug_loc      offset  : 0x00000997   <loclist at offset 0x00000997 with 4 entries follows>
-   [ 0]<low addr           0x0000017b high addr 0x00000186>DW_OP_reg15
-   [ 1]<low addr           0x00000186 high addr 0x000001b5>DW_OP_reg15
-   [ 2]<low addr           0x0000038b high addr 0x0000038e>DW_OP_reg15
-   [ 3]<low addr           0x0000038e high addr 0x00000393>DW_OP_reg15
+   [ 0]<low addr           0xfff43c11 high addr 0xfff43c1c>DW_OP_reg15
+   [ 1]<low addr           0xfff43c1c high addr 0xfff43c4b>DW_OP_reg15
+   [ 2]<low addr           0xfff43e21 high addr 0xfff43e24>DW_OP_reg15
+   [ 3]<low addr           0xfff43e24 high addr 0xfff43e29>DW_OP_reg15
 < 5><0x000005e3 GOFF=0x0000086a>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000002df GOFF=0x00000566>
                                               DW_AT_location              0x000009cb
       .debug_loc      offset  : 0x000009cb   <loclist at offset 0x000009cb with 2 entries follows>
-   [ 0]<low addr           0x000001a8 high addr 0x000001b3>DW_OP_reg1
-   [ 1]<low addr           0x000001b3 high addr 0x000001b7>DW_OP_reg1
+   [ 0]<low addr           0xfff43c3e high addr 0xfff43c49>DW_OP_reg1
+   [ 1]<low addr           0xfff43c49 high addr 0xfff43c4d>DW_OP_reg1
 < 5><0x000005ec GOFF=0x00000873>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000002eb GOFF=0x00000572>
                                               DW_AT_location              0x000009e9
       .debug_loc      offset  : 0x000009e9   <loclist at offset 0x000009e9 with 6 entries follows>
-   [ 0]<low addr           0x00000168 high addr 0x0000016a>DW_OP_reg3
-   [ 1]<low addr           0x00000172 high addr 0x00000178>DW_OP_reg3
-   [ 2]<low addr           0x0000017b high addr 0x00000188>DW_OP_reg3
-   [ 3]<low addr           0x00000188 high addr 0x00000192>DW_OP_reg3
-   [ 4]<low addr           0x0000038b high addr 0x00000390>DW_OP_reg3
-   [ 5]<low addr           0x00000390 high addr 0x00000393>DW_OP_reg3
+   [ 0]<low addr           0xfff43bfe high addr 0xfff43c00>DW_OP_reg3
+   [ 1]<low addr           0xfff43c08 high addr 0xfff43c0e>DW_OP_reg3
+   [ 2]<low addr           0xfff43c11 high addr 0xfff43c1e>DW_OP_reg3
+   [ 3]<low addr           0xfff43c1e high addr 0xfff43c28>DW_OP_reg3
+   [ 4]<low addr           0xfff43e21 high addr 0xfff43e26>DW_OP_reg3
+   [ 5]<low addr           0xfff43e26 high addr 0xfff43e29>DW_OP_reg3
 < 5><0x000005f5 GOFF=0x0000087c>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000002f7 GOFF=0x0000057e>
                                               DW_AT_location              0x00000a33
       .debug_loc      offset  : 0x00000a33   <loclist at offset 0x00000a33 with 3 entries follows>
-   [ 0]<low addr           0x00000192 high addr 0x00000194>DW_OP_reg3
-   [ 1]<low addr           0x0000019f high addr 0x000001a5>DW_OP_reg5
-   [ 2]<low addr           0x000001a8 high addr 0x000001b3>DW_OP_reg5
+   [ 0]<low addr           0xfff43c28 high addr 0xfff43c2a>DW_OP_reg3
+   [ 1]<low addr           0xfff43c35 high addr 0xfff43c3b>DW_OP_reg5
+   [ 2]<low addr           0xfff43c3e high addr 0xfff43c49>DW_OP_reg5
 < 5><0x000005fe GOFF=0x00000885>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000303 GOFF=0x0000058a>
                                               DW_AT_location              0x00000a5c
       .debug_loc      offset  : 0x00000a5c   <loclist at offset 0x00000a5c with 3 entries follows>
-   [ 0]<low addr           0x00000170 high addr 0x0000019c>DW_OP_reg10
-   [ 1]<low addr           0x0000019c high addr 0x000001ba>DW_OP_reg7
-   [ 2]<low addr           0x0000038b high addr 0x00000393>DW_OP_reg10
+   [ 0]<low addr           0xfff43c06 high addr 0xfff43c32>DW_OP_reg10
+   [ 1]<low addr           0xfff43c32 high addr 0xfff43c50>DW_OP_reg7
+   [ 2]<low addr           0xfff43e21 high addr 0xfff43e29>DW_OP_reg10
 < 4><0x00000608 GOFF=0x0000088f>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000170
   ranges: 5 at .debug_ranges offset 368 (0x00000170) (40 bytes)
@@ -1133,8 +1133,8 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x0000024f GOFF=0x000004d6>
                                               DW_AT_location              0x00000a85
       .debug_loc      offset  : 0x00000a85   <loclist at offset 0x00000a85 with 2 entries follows>
-   [ 0]<low addr           0x00000134 high addr 0x0000015d>DW_OP_reg12
-   [ 1]<low addr           0x000002b3 high addr 0x000002cb>DW_OP_reg12
+   [ 0]<low addr           0xfff43bca high addr 0xfff43bf3>DW_OP_reg12
+   [ 1]<low addr           0xfff43d49 high addr 0xfff43d61>DW_OP_reg12
 < 5><0x0000061a GOFF=0x000008a1>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000243 GOFF=0x000004ca>
 < 4><0x00000620 GOFF=0x000008a7>          DW_TAG_lexical_block
@@ -1148,52 +1148,52 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x000001e9 GOFF=0x00000470>
                                               DW_AT_location              0x00000aa3
       .debug_loc      offset  : 0x00000aa3   <loclist at offset 0x00000aa3 with 2 entries follows>
-   [ 0]<low addr           0x00000062 high addr 0x0000009b>DW_OP_reg4
-   [ 1]<low addr           0x00000393 high addr 0x0000039b>DW_OP_reg4
+   [ 0]<low addr           0xfff43af8 high addr 0xfff43b31>DW_OP_reg4
+   [ 1]<low addr           0xfff43e29 high addr 0xfff43e31>DW_OP_reg4
 < 5><0x00000632 GOFF=0x000008b9>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000001f5 GOFF=0x0000047c>
                                               DW_AT_location              0x00000ac1
       .debug_loc      offset  : 0x00000ac1   <loclist at offset 0x00000ac1 with 2 entries follows>
-   [ 0]<low addr           0x00000073 high addr 0x000000a7>DW_OP_reg10
-   [ 1]<low addr           0x00000393 high addr 0x0000039b>DW_OP_reg10
+   [ 0]<low addr           0xfff43b09 high addr 0xfff43b3d>DW_OP_reg10
+   [ 1]<low addr           0xfff43e29 high addr 0xfff43e31>DW_OP_reg10
 < 5><0x0000063b GOFF=0x000008c2>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000201 GOFF=0x00000488>
                                               DW_AT_location              0x00000adf
       .debug_loc      offset  : 0x00000adf   <loclist at offset 0x00000adf with 4 entries follows>
-   [ 0]<low addr           0x00000086 high addr 0x00000091>DW_OP_reg3
-   [ 1]<low addr           0x00000091 high addr 0x000000c0>DW_OP_reg3
-   [ 2]<low addr           0x00000393 high addr 0x00000396>DW_OP_reg3
-   [ 3]<low addr           0x00000396 high addr 0x0000039b>DW_OP_reg3
+   [ 0]<low addr           0xfff43b1c high addr 0xfff43b27>DW_OP_reg3
+   [ 1]<low addr           0xfff43b27 high addr 0xfff43b56>DW_OP_reg3
+   [ 2]<low addr           0xfff43e29 high addr 0xfff43e2c>DW_OP_reg3
+   [ 3]<low addr           0xfff43e2c high addr 0xfff43e31>DW_OP_reg3
 < 5><0x00000644 GOFF=0x000008cb>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x0000020d GOFF=0x00000494>
                                               DW_AT_location              0x00000b13
       .debug_loc      offset  : 0x00000b13   <loclist at offset 0x00000b13 with 2 entries follows>
-   [ 0]<low addr           0x000000b3 high addr 0x000000be>DW_OP_reg1
-   [ 1]<low addr           0x000000be high addr 0x000000c2>DW_OP_reg1
+   [ 0]<low addr           0xfff43b49 high addr 0xfff43b54>DW_OP_reg1
+   [ 1]<low addr           0xfff43b54 high addr 0xfff43b58>DW_OP_reg1
 < 5><0x0000064d GOFF=0x000008d4>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000219 GOFF=0x000004a0>
                                               DW_AT_location              0x00000b31
       .debug_loc      offset  : 0x00000b31   <loclist at offset 0x00000b31 with 6 entries follows>
-   [ 0]<low addr           0x00000073 high addr 0x00000075>DW_OP_reg15
-   [ 1]<low addr           0x0000007d high addr 0x00000083>DW_OP_reg15
-   [ 2]<low addr           0x00000086 high addr 0x00000093>DW_OP_reg15
-   [ 3]<low addr           0x00000093 high addr 0x0000009d>DW_OP_reg15
-   [ 4]<low addr           0x00000393 high addr 0x00000398>DW_OP_reg15
-   [ 5]<low addr           0x00000398 high addr 0x0000039b>DW_OP_reg15
+   [ 0]<low addr           0xfff43b09 high addr 0xfff43b0b>DW_OP_reg15
+   [ 1]<low addr           0xfff43b13 high addr 0xfff43b19>DW_OP_reg15
+   [ 2]<low addr           0xfff43b1c high addr 0xfff43b29>DW_OP_reg15
+   [ 3]<low addr           0xfff43b29 high addr 0xfff43b33>DW_OP_reg15
+   [ 4]<low addr           0xfff43e29 high addr 0xfff43e2e>DW_OP_reg15
+   [ 5]<low addr           0xfff43e2e high addr 0xfff43e31>DW_OP_reg15
 < 5><0x00000656 GOFF=0x000008dd>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000225 GOFF=0x000004ac>
                                               DW_AT_location              0x00000b7b
       .debug_loc      offset  : 0x00000b7b   <loclist at offset 0x00000b7b with 3 entries follows>
-   [ 0]<low addr           0x0000009d high addr 0x0000009f>DW_OP_reg15
-   [ 1]<low addr           0x000000aa high addr 0x000000b0>DW_OP_reg5
-   [ 2]<low addr           0x000000b3 high addr 0x000000be>DW_OP_reg5
+   [ 0]<low addr           0xfff43b33 high addr 0xfff43b35>DW_OP_reg15
+   [ 1]<low addr           0xfff43b40 high addr 0xfff43b46>DW_OP_reg5
+   [ 2]<low addr           0xfff43b49 high addr 0xfff43b54>DW_OP_reg5
 < 5><0x0000065f GOFF=0x000008e6>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000231 GOFF=0x000004b8>
                                               DW_AT_location              0x00000ba4
       .debug_loc      offset  : 0x00000ba4   <loclist at offset 0x00000ba4 with 3 entries follows>
-   [ 0]<low addr           0x0000007b high addr 0x000000a7>DW_OP_reg7
-   [ 1]<low addr           0x000000a7 high addr 0x000000c7>DW_OP_reg10
-   [ 2]<low addr           0x00000393 high addr 0x0000039b>DW_OP_reg7
+   [ 0]<low addr           0xfff43b11 high addr 0xfff43b3d>DW_OP_reg7
+   [ 1]<low addr           0xfff43b3d high addr 0xfff43b5d>DW_OP_reg10
+   [ 2]<low addr           0xfff43e29 high addr 0xfff43e31>DW_OP_reg7
 < 4><0x00000669 GOFF=0x000008f0>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000001b0
   ranges: 4 at .debug_ranges offset 432 (0x000001b0) (32 bytes)
@@ -1206,7 +1206,7 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x000001d7 GOFF=0x0000045e>
                                               DW_AT_location              0x00000bcd
       .debug_loc      offset  : 0x00000bcd   <loclist at offset 0x00000bcd with 1 entries follows>
-   [ 0]<low addr           0x0000002e high addr 0x00000041>DW_OP_reg10
+   [ 0]<low addr           0xfff43ac4 high addr 0xfff43ad7>DW_OP_reg10
 < 5><0x0000067b GOFF=0x00000902>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000001cb GOFF=0x00000452>
 < 4><0x00000681 GOFF=0x00000908>          DW_TAG_lexical_block
@@ -1221,7 +1221,7 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x00000321 GOFF=0x000005a8>
                                               DW_AT_location              0x00000be0
       .debug_loc      offset  : 0x00000be0   <loclist at offset 0x00000be0 with 1 entries follows>
-   [ 0]<low addr           0x000000e8 high addr 0x000000fc>DW_OP_reg5
+   [ 0]<low addr           0xfff43b7e high addr 0xfff43b92>DW_OP_reg5
 < 5><0x00000693 GOFF=0x0000091a>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000315 GOFF=0x0000059c>
 < 4><0x00000699 GOFF=0x00000920>          DW_TAG_lexical_block
@@ -1238,49 +1238,49 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x00000261 GOFF=0x000004e8>
                                               DW_AT_location              0x00000bf3
       .debug_loc      offset  : 0x00000bf3   <loclist at offset 0x00000bf3 with 1 entries follows>
-   [ 0]<low addr           0x000002e9 high addr 0x0000033b>DW_OP_reg4
+   [ 0]<low addr           0xfff43d7f high addr 0xfff43dd1>DW_OP_reg4
 < 5><0x000006a7 GOFF=0x0000092e>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x0000026d GOFF=0x000004f4>
                                               DW_AT_location              0x00000c06
       .debug_loc      offset  : 0x00000c06   <loclist at offset 0x00000c06 with 1 entries follows>
-   [ 0]<low addr           0x000002e9 high addr 0x0000033b>DW_OP_reg7
+   [ 0]<low addr           0xfff43d7f high addr 0xfff43dd1>DW_OP_reg7
 < 5><0x000006b0 GOFF=0x00000937>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000279 GOFF=0x00000500>
                                               DW_AT_location              0x00000c19
       .debug_loc      offset  : 0x00000c19   <loclist at offset 0x00000c19 with 3 entries follows>
-   [ 0]<low addr           0x000002f2 high addr 0x000002fd>DW_OP_reg15
-   [ 1]<low addr           0x000002fd high addr 0x000002ff>DW_OP_reg15
-   [ 2]<low addr           0x000002ff high addr 0x0000033b>DW_OP_reg15
+   [ 0]<low addr           0xfff43d88 high addr 0xfff43d93>DW_OP_reg15
+   [ 1]<low addr           0xfff43d93 high addr 0xfff43d95>DW_OP_reg15
+   [ 2]<low addr           0xfff43d95 high addr 0xfff43dd1>DW_OP_reg15
 < 5><0x000006b9 GOFF=0x00000940>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000285 GOFF=0x0000050c>
                                               DW_AT_location              0x00000c42
       .debug_loc      offset  : 0x00000c42   <loclist at offset 0x00000c42 with 3 entries follows>
-   [ 0]<low addr           0x00000323 high addr 0x0000032e>DW_OP_reg12
-   [ 1]<low addr           0x0000032e high addr 0x00000330>DW_OP_reg12
-   [ 2]<low addr           0x00000330 high addr 0x0000033b>DW_OP_reg12
+   [ 0]<low addr           0xfff43db9 high addr 0xfff43dc4>DW_OP_reg12
+   [ 1]<low addr           0xfff43dc4 high addr 0xfff43dc6>DW_OP_reg12
+   [ 2]<low addr           0xfff43dc6 high addr 0xfff43dd1>DW_OP_reg12
 < 5><0x000006c2 GOFF=0x00000949>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000291 GOFF=0x00000518>
                                               DW_AT_location              0x00000c6b
       .debug_loc      offset  : 0x00000c6b   <loclist at offset 0x00000c6b with 4 entries follows>
-   [ 0]<low addr           0x000002e9 high addr 0x000002ef>DW_OP_reg11
-   [ 1]<low addr           0x000002f2 high addr 0x000002ff>DW_OP_reg11
-   [ 2]<low addr           0x000002ff high addr 0x00000301>DW_OP_reg11
-   [ 3]<low addr           0x00000301 high addr 0x0000033b>DW_OP_reg11
+   [ 0]<low addr           0xfff43d7f high addr 0xfff43d85>DW_OP_reg11
+   [ 1]<low addr           0xfff43d88 high addr 0xfff43d95>DW_OP_reg11
+   [ 2]<low addr           0xfff43d95 high addr 0xfff43d97>DW_OP_reg11
+   [ 3]<low addr           0xfff43d97 high addr 0xfff43dd1>DW_OP_reg11
 < 5><0x000006cb GOFF=0x00000952>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x0000029d GOFF=0x00000524>
                                               DW_AT_location              0x00000c9f
       .debug_loc      offset  : 0x00000c9f   <loclist at offset 0x00000c9f with 5 entries follows>
-   [ 0]<low addr           0x0000030e high addr 0x00000310>DW_OP_reg10
-   [ 1]<low addr           0x0000031a high addr 0x00000320>DW_OP_reg10
-   [ 2]<low addr           0x00000323 high addr 0x00000330>DW_OP_reg10
-   [ 3]<low addr           0x00000330 high addr 0x00000335>DW_OP_reg10
-   [ 4]<low addr           0x00000335 high addr 0x0000033b>DW_OP_reg10
+   [ 0]<low addr           0xfff43da4 high addr 0xfff43da6>DW_OP_reg10
+   [ 1]<low addr           0xfff43db0 high addr 0xfff43db6>DW_OP_reg10
+   [ 2]<low addr           0xfff43db9 high addr 0xfff43dc6>DW_OP_reg10
+   [ 3]<low addr           0xfff43dc6 high addr 0xfff43dcb>DW_OP_reg10
+   [ 4]<low addr           0xfff43dcb high addr 0xfff43dd1>DW_OP_reg10
 < 5><0x000006d4 GOFF=0x0000095b>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000002a9 GOFF=0x00000530>
                                               DW_AT_location              0x00000cde
       .debug_loc      offset  : 0x00000cde   <loclist at offset 0x00000cde with 2 entries follows>
-   [ 0]<low addr           0x000002e9 high addr 0x00000303>DW_OP_reg12
-   [ 1]<low addr           0x00000318 high addr 0x0000033b>DW_OP_reg13
+   [ 0]<low addr           0xfff43d7f high addr 0xfff43d99>DW_OP_reg12
+   [ 1]<low addr           0xfff43dae high addr 0xfff43dd1>DW_OP_reg13
 < 1><0x000006e1 GOFF=0x00000968>    DW_TAG_array_type
                                       DW_AT_type                  <0x00000048 GOFF=0x000002cf>
                                       DW_AT_sibling               <0x000006f1 GOFF=0x00000978>
@@ -1792,8 +1792,8 @@ LOCAL_SYMBOLS:
                                       DW_AT_high_pc               0xfff441d7
                                       DW_AT_frame_base            0x00000cfc
       .debug_loc      offset  : 0x00000cfc   <loclist at offset 0x00000cfc with 2 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x00000002>DW_OP_breg0+4
-   [ 1]<low addr           0x00000002 high addr 0x00000397>DW_OP_breg0+32
+   [ 0]<low addr           0xfff43e40 high addr 0xfff43e42>DW_OP_breg0+4
+   [ 1]<low addr           0xfff43e42 high addr 0xfff441d7>DW_OP_breg0+32
                                       DW_AT_sibling               <0x0000071b GOFF=0x000010bc>
 < 2><0x00000462 GOFF=0x00000e03>      DW_TAG_formal_parameter
                                         DW_AT_name                  u
@@ -1802,14 +1802,14 @@ LOCAL_SYMBOLS:
                                         DW_AT_type                  <0x00000090 GOFF=0x00000a31>
                                         DW_AT_location              0x00000d1c
       .debug_loc      offset  : 0x00000d1c   <loclist at offset 0x00000d1c with 8 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x0000008e>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 1]<low addr           0x000000bd high addr 0x0000010d>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 2]<low addr           0x00000117 high addr 0x0000015e>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 3]<low addr           0x000001a3 high addr 0x0000020b>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 4]<low addr           0x000002b9 high addr 0x00000336>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 5]<low addr           0x00000349 high addr 0x00000360>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 6]<low addr           0x0000036f high addr 0x00000378>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 7]<low addr           0x00000388 high addr 0x00000397>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 0]<low addr           0xfff43e40 high addr 0xfff43ece>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 1]<low addr           0xfff43efd high addr 0xfff43f4d>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 2]<low addr           0xfff43f57 high addr 0xfff43f9e>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 3]<low addr           0xfff43fe3 high addr 0xfff4404b>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 4]<low addr           0xfff440f9 high addr 0xfff44176>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 5]<low addr           0xfff44189 high addr 0xfff441a0>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 6]<low addr           0xfff441af high addr 0xfff441b8>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 7]<low addr           0xfff441c8 high addr 0xfff441d7>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
 < 2><0x00000470 GOFF=0x00000e11>      DW_TAG_formal_parameter
                                         DW_AT_name                  v
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
@@ -1817,14 +1817,14 @@ LOCAL_SYMBOLS:
                                         DW_AT_type                  <0x00000090 GOFF=0x00000a31>
                                         DW_AT_location              0x00000da4
       .debug_loc      offset  : 0x00000da4   <loclist at offset 0x00000da4 with 8 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x0000005f>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 1]<low addr           0x000000bd high addr 0x00000106>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 2]<low addr           0x00000117 high addr 0x00000164>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 3]<low addr           0x000001a3 high addr 0x00000208>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 4]<low addr           0x000002b9 high addr 0x00000336>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 5]<low addr           0x00000349 high addr 0x00000360>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 6]<low addr           0x00000374 high addr 0x00000376>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 7]<low addr           0x00000388 high addr 0x00000397>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 0]<low addr           0xfff43e40 high addr 0xfff43e9f>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 1]<low addr           0xfff43efd high addr 0xfff43f46>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 2]<low addr           0xfff43f57 high addr 0xfff43fa4>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 3]<low addr           0xfff43fe3 high addr 0xfff44048>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 4]<low addr           0xfff440f9 high addr 0xfff44176>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 5]<low addr           0xfff44189 high addr 0xfff441a0>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 6]<low addr           0xfff441b4 high addr 0xfff441b6>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 7]<low addr           0xfff441c8 high addr 0xfff441d7>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
 < 2><0x0000047e GOFF=0x00000e1f>      DW_TAG_variable
                                         DW_AT_name                  w
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
@@ -1832,10 +1832,10 @@ LOCAL_SYMBOLS:
                                         DW_AT_type                  <0x00000090 GOFF=0x00000a31>
                                         DW_AT_location              0x00000e2c
       .debug_loc      offset  : 0x00000e2c   <loclist at offset 0x00000e2c with 4 entries follows>
-   [ 0]<low addr           0x000000ba high addr 0x000000ba>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 1]<low addr           0x00000114 high addr 0x00000114>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 2]<low addr           0x00000114 high addr 0x00000117>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 3]<low addr           0x000002b6 high addr 0x000002b6>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 0]<low addr           0xfff43efa high addr 0xfff43efa>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 1]<low addr           0xfff43f54 high addr 0xfff43f54>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 2]<low addr           0xfff43f54 high addr 0xfff43f57>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 3]<low addr           0xfff440f6 high addr 0xfff440f6>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
 < 2><0x0000048c GOFF=0x00000e2d>      DW_TAG_inlined_subroutine
                                         DW_AT_abstract_origin       <0x00000107 GOFF=0x00000aa8>
                                         DW_AT_entry_pc              0xfff43e42
@@ -1854,32 +1854,32 @@ LOCAL_SYMBOLS:
                                           DW_AT_abstract_origin       <0x00000123 GOFF=0x00000ac4>
                                           DW_AT_location              0x00000e74
       .debug_loc      offset  : 0x00000e74   <loclist at offset 0x00000e74 with 9 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x0000002c>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 1]<low addr           0x000000bd high addr 0x00000106>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 2]<low addr           0x00000117 high addr 0x00000147>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 3]<low addr           0x000001a3 high addr 0x000001bc>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 4]<low addr           0x000001c1 high addr 0x000001d8>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 5]<low addr           0x0000032e high addr 0x00000331>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 6]<low addr           0x00000349 high addr 0x00000360>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 7]<low addr           0x00000374 high addr 0x00000376>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
-   [ 8]<low addr           0x00000388 high addr 0x00000397>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 0]<low addr           0xfff43e40 high addr 0xfff43e6c>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 1]<low addr           0xfff43efd high addr 0xfff43f46>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 2]<low addr           0xfff43f57 high addr 0xfff43f87>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 3]<low addr           0xfff43fe3 high addr 0xfff43ffc>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 4]<low addr           0xfff44001 high addr 0xfff44018>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 5]<low addr           0xfff4416e high addr 0xfff44171>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 6]<low addr           0xfff44189 high addr 0xfff441a0>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 7]<low addr           0xfff441b4 high addr 0xfff441b6>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
+   [ 8]<low addr           0xfff441c8 high addr 0xfff441d7>DW_OP_reg3 DW_OP_piece 4 DW_OP_reg4 DW_OP_piece 4
 < 3><0x000004aa GOFF=0x00000e4b>        DW_TAG_formal_parameter
                                           DW_AT_abstract_origin       <0x00000119 GOFF=0x00000aba>
                                           DW_AT_location              0x00000f0c
       .debug_loc      offset  : 0x00000f0c   <loclist at offset 0x00000f0c with 13 entries follows>
-   [ 0]<low addr           0x00000000 high addr 0x0000004c>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 1]<low addr           0x0000004c high addr 0x00000059>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [ 2]<low addr           0x000000bd high addr 0x00000108>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 3]<low addr           0x00000108 high addr 0x0000010d>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [ 4]<low addr           0x00000117 high addr 0x00000154>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 5]<low addr           0x00000154 high addr 0x00000157>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [ 6]<low addr           0x000001a3 high addr 0x000001f0>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 7]<low addr           0x000002b9 high addr 0x000002d3>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 8]<low addr           0x0000032e high addr 0x00000336>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [ 9]<low addr           0x00000349 high addr 0x00000360>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [10]<low addr           0x00000374 high addr 0x0000037a>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
-   [11]<low addr           0x0000037a high addr 0x0000037d>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
-   [12]<low addr           0x00000388 high addr 0x00000397>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 0]<low addr           0xfff43e40 high addr 0xfff43e8c>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 1]<low addr           0xfff43e8c high addr 0xfff43e99>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [ 2]<low addr           0xfff43efd high addr 0xfff43f48>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 3]<low addr           0xfff43f48 high addr 0xfff43f4d>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [ 4]<low addr           0xfff43f57 high addr 0xfff43f94>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 5]<low addr           0xfff43f94 high addr 0xfff43f97>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [ 6]<low addr           0xfff43fe3 high addr 0xfff44030>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 7]<low addr           0xfff440f9 high addr 0xfff44113>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 8]<low addr           0xfff4416e high addr 0xfff44176>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [ 9]<low addr           0xfff44189 high addr 0xfff441a0>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [10]<low addr           0xfff441b4 high addr 0xfff441ba>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
+   [11]<low addr           0xfff441ba high addr 0xfff441bd>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg15 DW_OP_piece 4
+   [12]<low addr           0xfff441c8 high addr 0xfff441d7>DW_OP_reg1 DW_OP_piece 4 DW_OP_reg2 DW_OP_piece 4
 < 3><0x000004b3 GOFF=0x00000e54>        DW_TAG_lexical_block
                                           DW_AT_ranges                0x00000250
   ranges: 5 at .debug_ranges offset 592 (0x00000250) (40 bytes)
@@ -1898,116 +1898,116 @@ LOCAL_SYMBOLS:
                                             DW_AT_abstract_origin       <0x00000159 GOFF=0x00000afa>
                                             DW_AT_location              0x00000fe4
       .debug_loc      offset  : 0x00000fe4   <loclist at offset 0x00000fe4 with 15 entries follows>
-   [ 0]<low addr           0x00000004 high addr 0x00000056>DW_OP_reg3
-   [ 1]<low addr           0x00000056 high addr 0x000000bd>DW_OP_reg14
-   [ 2]<low addr           0x000000bd high addr 0x00000106>DW_OP_reg3
-   [ 3]<low addr           0x00000117 high addr 0x0000011c>DW_OP_reg3
-   [ 4]<low addr           0x0000015c high addr 0x000001a3>DW_OP_reg14
-   [ 5]<low addr           0x000001a3 high addr 0x000001c7>DW_OP_reg3
-   [ 6]<low addr           0x000001ce high addr 0x00000208>DW_OP_reg3
-   [ 7]<low addr           0x00000208 high addr 0x0000029d>DW_OP_reg3
-   [ 8]<low addr           0x000002c1 high addr 0x0000032e>DW_OP_reg14
-   [ 9]<low addr           0x0000032e high addr 0x00000339>DW_OP_reg3
-   [10]<low addr           0x00000349 high addr 0x00000358>DW_OP_reg3
-   [11]<low addr           0x00000360 high addr 0x0000036f>DW_OP_reg3
-   [12]<low addr           0x0000036f high addr 0x00000374>DW_OP_reg14
-   [13]<low addr           0x00000374 high addr 0x00000376>DW_OP_reg3
-   [14]<low addr           0x0000037d high addr 0x00000383>DW_OP_reg3
+   [ 0]<low addr           0xfff43e44 high addr 0xfff43e96>DW_OP_reg3
+   [ 1]<low addr           0xfff43e96 high addr 0xfff43efd>DW_OP_reg14
+   [ 2]<low addr           0xfff43efd high addr 0xfff43f46>DW_OP_reg3
+   [ 3]<low addr           0xfff43f57 high addr 0xfff43f5c>DW_OP_reg3
+   [ 4]<low addr           0xfff43f9c high addr 0xfff43fe3>DW_OP_reg14
+   [ 5]<low addr           0xfff43fe3 high addr 0xfff44007>DW_OP_reg3
+   [ 6]<low addr           0xfff4400e high addr 0xfff44048>DW_OP_reg3
+   [ 7]<low addr           0xfff44048 high addr 0xfff440dd>DW_OP_reg3
+   [ 8]<low addr           0xfff44101 high addr 0xfff4416e>DW_OP_reg14
+   [ 9]<low addr           0xfff4416e high addr 0xfff44179>DW_OP_reg3
+   [10]<low addr           0xfff44189 high addr 0xfff44198>DW_OP_reg3
+   [11]<low addr           0xfff441a0 high addr 0xfff441af>DW_OP_reg3
+   [12]<low addr           0xfff441af high addr 0xfff441b4>DW_OP_reg14
+   [13]<low addr           0xfff441b4 high addr 0xfff441b6>DW_OP_reg3
+   [14]<low addr           0xfff441bd high addr 0xfff441c3>DW_OP_reg3
 < 4><0x000004d0 GOFF=0x00000e71>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x00000164 GOFF=0x00000b05>
                                             DW_AT_location              0x00001091
       .debug_loc      offset  : 0x00001091   <loclist at offset 0x00001091 with 8 entries follows>
-   [ 0]<low addr           0x00000004 high addr 0x0000002c>DW_OP_reg4
-   [ 1]<low addr           0x000000bd high addr 0x00000147>DW_OP_reg4
-   [ 2]<low addr           0x000001a3 high addr 0x000001bc>DW_OP_reg4
-   [ 3]<low addr           0x000001c1 high addr 0x000001d8>DW_OP_reg4
-   [ 4]<low addr           0x000001da high addr 0x000002b9>DW_OP_reg4
-   [ 5]<low addr           0x0000032e high addr 0x00000331>DW_OP_reg4
-   [ 6]<low addr           0x00000336 high addr 0x0000036f>DW_OP_reg4
-   [ 7]<low addr           0x00000374 high addr 0x00000397>DW_OP_reg4
+   [ 0]<low addr           0xfff43e44 high addr 0xfff43e6c>DW_OP_reg4
+   [ 1]<low addr           0xfff43efd high addr 0xfff43f87>DW_OP_reg4
+   [ 2]<low addr           0xfff43fe3 high addr 0xfff43ffc>DW_OP_reg4
+   [ 3]<low addr           0xfff44001 high addr 0xfff44018>DW_OP_reg4
+   [ 4]<low addr           0xfff4401a high addr 0xfff440f9>DW_OP_reg4
+   [ 5]<low addr           0xfff4416e high addr 0xfff44171>DW_OP_reg4
+   [ 6]<low addr           0xfff44176 high addr 0xfff441af>DW_OP_reg4
+   [ 7]<low addr           0xfff441b4 high addr 0xfff441d7>DW_OP_reg4
 < 4><0x000004d9 GOFF=0x00000e7a>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x0000016f GOFF=0x00000b10>
                                             DW_AT_location              0x000010f1
       .debug_loc      offset  : 0x000010f1   <loclist at offset 0x000010f1 with 19 entries follows>
-   [ 0]<low addr           0x00000006 high addr 0x0000005c>DW_OP_reg1
-   [ 1]<low addr           0x0000005c high addr 0x0000009d>DW_OP_reg5
-   [ 2]<low addr           0x000000b5 high addr 0x000000b8>DW_OP_reg1
-   [ 3]<low addr           0x000000bd high addr 0x0000010d>DW_OP_reg1
-   [ 4]<low addr           0x00000110 high addr 0x00000114>DW_OP_reg3
-   [ 5]<low addr           0x00000114 high addr 0x00000114>DW_OP_reg1
-   [ 6]<low addr           0x00000114 high addr 0x00000117>DW_OP_reg3
-   [ 7]<low addr           0x00000117 high addr 0x0000015c>DW_OP_reg1
-   [ 8]<low addr           0x0000015c high addr 0x00000193>DW_OP_reg5
-   [ 9]<low addr           0x000001a3 high addr 0x0000020b>DW_OP_reg1
-   [10]<low addr           0x0000020b high addr 0x000002a5>DW_OP_reg1
-   [11]<low addr           0x000002a7 high addr 0x000002b9>DW_OP_reg3
-   [12]<low addr           0x000002b9 high addr 0x000002f0>DW_OP_reg1
-   [13]<low addr           0x000002f0 high addr 0x0000032e>DW_OP_reg5
-   [14]<low addr           0x0000032e high addr 0x0000036f>DW_OP_reg1
-   [15]<low addr           0x0000036f high addr 0x00000374>DW_OP_reg5
-   [16]<low addr           0x00000374 high addr 0x00000376>DW_OP_reg1
-   [17]<low addr           0x00000376 high addr 0x00000378>DW_OP_reg3
-   [18]<low addr           0x00000378 high addr 0x00000397>DW_OP_reg1
+   [ 0]<low addr           0xfff43e46 high addr 0xfff43e9c>DW_OP_reg1
+   [ 1]<low addr           0xfff43e9c high addr 0xfff43edd>DW_OP_reg5
+   [ 2]<low addr           0xfff43ef5 high addr 0xfff43ef8>DW_OP_reg1
+   [ 3]<low addr           0xfff43efd high addr 0xfff43f4d>DW_OP_reg1
+   [ 4]<low addr           0xfff43f50 high addr 0xfff43f54>DW_OP_reg3
+   [ 5]<low addr           0xfff43f54 high addr 0xfff43f54>DW_OP_reg1
+   [ 6]<low addr           0xfff43f54 high addr 0xfff43f57>DW_OP_reg3
+   [ 7]<low addr           0xfff43f57 high addr 0xfff43f9c>DW_OP_reg1
+   [ 8]<low addr           0xfff43f9c high addr 0xfff43fd3>DW_OP_reg5
+   [ 9]<low addr           0xfff43fe3 high addr 0xfff4404b>DW_OP_reg1
+   [10]<low addr           0xfff4404b high addr 0xfff440e5>DW_OP_reg1
+   [11]<low addr           0xfff440e7 high addr 0xfff440f9>DW_OP_reg3
+   [12]<low addr           0xfff440f9 high addr 0xfff44130>DW_OP_reg1
+   [13]<low addr           0xfff44130 high addr 0xfff4416e>DW_OP_reg5
+   [14]<low addr           0xfff4416e high addr 0xfff441af>DW_OP_reg1
+   [15]<low addr           0xfff441af high addr 0xfff441b4>DW_OP_reg5
+   [16]<low addr           0xfff441b4 high addr 0xfff441b6>DW_OP_reg1
+   [17]<low addr           0xfff441b6 high addr 0xfff441b8>DW_OP_reg3
+   [18]<low addr           0xfff441b8 high addr 0xfff441d7>DW_OP_reg1
 < 4><0x000004e2 GOFF=0x00000e83>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x0000017a GOFF=0x00000b1b>
                                             DW_AT_location              0x000011ca
       .debug_loc      offset  : 0x000011ca   <loclist at offset 0x000011ca with 20 entries follows>
-   [ 0]<low addr           0x00000008 high addr 0x0000004c>DW_OP_reg2
-   [ 1]<low addr           0x0000004c high addr 0x00000059>DW_OP_reg15
-   [ 2]<low addr           0x00000059 high addr 0x00000069>DW_OP_reg15
-   [ 3]<low addr           0x000000bd high addr 0x00000108>DW_OP_reg2
-   [ 4]<low addr           0x00000108 high addr 0x00000110>DW_OP_reg15
-   [ 5]<low addr           0x00000110 high addr 0x00000114>DW_OP_reg15
-   [ 6]<low addr           0x00000114 high addr 0x00000154>DW_OP_reg2
-   [ 7]<low addr           0x00000154 high addr 0x00000166>DW_OP_reg2
-   [ 8]<low addr           0x000001a3 high addr 0x000001f0>DW_OP_reg2
-   [ 9]<low addr           0x00000208 high addr 0x00000235>DW_OP_reg2
-   [10]<low addr           0x00000273 high addr 0x000002a7>DW_OP_reg7
-   [11]<low addr           0x000002a7 high addr 0x000002b6>DW_OP_reg2
-   [12]<low addr           0x000002b9 high addr 0x000002d3>DW_OP_reg2
-   [13]<low addr           0x000002d9 high addr 0x00000314>DW_OP_reg13
-   [14]<low addr           0x0000032b high addr 0x00000336>DW_OP_reg2
-   [15]<low addr           0x00000336 high addr 0x00000349>DW_OP_reg7
-   [16]<low addr           0x00000349 high addr 0x00000360>DW_OP_reg2
-   [17]<low addr           0x00000374 high addr 0x0000037d>DW_OP_reg2
-   [18]<low addr           0x0000037d high addr 0x00000388>DW_OP_reg7
-   [19]<low addr           0x00000388 high addr 0x00000397>DW_OP_reg2
+   [ 0]<low addr           0xfff43e48 high addr 0xfff43e8c>DW_OP_reg2
+   [ 1]<low addr           0xfff43e8c high addr 0xfff43e99>DW_OP_reg15
+   [ 2]<low addr           0xfff43e99 high addr 0xfff43ea9>DW_OP_reg15
+   [ 3]<low addr           0xfff43efd high addr 0xfff43f48>DW_OP_reg2
+   [ 4]<low addr           0xfff43f48 high addr 0xfff43f50>DW_OP_reg15
+   [ 5]<low addr           0xfff43f50 high addr 0xfff43f54>DW_OP_reg15
+   [ 6]<low addr           0xfff43f54 high addr 0xfff43f94>DW_OP_reg2
+   [ 7]<low addr           0xfff43f94 high addr 0xfff43fa6>DW_OP_reg2
+   [ 8]<low addr           0xfff43fe3 high addr 0xfff44030>DW_OP_reg2
+   [ 9]<low addr           0xfff44048 high addr 0xfff44075>DW_OP_reg2
+   [10]<low addr           0xfff440b3 high addr 0xfff440e7>DW_OP_reg7
+   [11]<low addr           0xfff440e7 high addr 0xfff440f6>DW_OP_reg2
+   [12]<low addr           0xfff440f9 high addr 0xfff44113>DW_OP_reg2
+   [13]<low addr           0xfff44119 high addr 0xfff44154>DW_OP_reg13
+   [14]<low addr           0xfff4416b high addr 0xfff44176>DW_OP_reg2
+   [15]<low addr           0xfff44176 high addr 0xfff44189>DW_OP_reg7
+   [16]<low addr           0xfff44189 high addr 0xfff441a0>DW_OP_reg2
+   [17]<low addr           0xfff441b4 high addr 0xfff441bd>DW_OP_reg2
+   [18]<low addr           0xfff441bd high addr 0xfff441c8>DW_OP_reg7
+   [19]<low addr           0xfff441c8 high addr 0xfff441d7>DW_OP_reg2
 < 4><0x000004eb GOFF=0x00000e8c>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x00000185 GOFF=0x00000b26>
                                             DW_AT_location              0x000012ae
       .debug_loc      offset  : 0x000012ae   <loclist at offset 0x000012ae with 1 entries follows>
-   [ 0]<low addr           0x000002c1 high addr 0x000002db>DW_OP_reg10
+   [ 0]<low addr           0xfff44101 high addr 0xfff4411b>DW_OP_reg10
 < 4><0x000004f4 GOFF=0x00000e95>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x00000190 GOFF=0x00000b31>
                                             DW_AT_location              0x000012c1
       .debug_loc      offset  : 0x000012c1   <loclist at offset 0x000012c1 with 1 entries follows>
-   [ 0]<low addr           0x00000103 high addr 0x00000110>DW_OP_lit1 DW_OP_stack_value
+   [ 0]<low addr           0xfff43f43 high addr 0xfff43f50>DW_OP_lit1 DW_OP_stack_value
 < 4><0x000004fd GOFF=0x00000e9e>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x0000019b GOFF=0x00000b3c>
                                             DW_AT_location              0x000012d5
       .debug_loc      offset  : 0x000012d5   <loclist at offset 0x000012d5 with 4 entries follows>
-   [ 0]<low addr           0x00000110 high addr 0x00000114>DW_OP_lit0 DW_OP_stack_value
-   [ 1]<low addr           0x00000154 high addr 0x0000015c>DW_OP_lit1 DW_OP_stack_value
-   [ 2]<low addr           0x0000029d high addr 0x000002b6>DW_OP_lit0 DW_OP_stack_value
-   [ 3]<low addr           0x00000376 high addr 0x0000037d>DW_OP_lit0 DW_OP_stack_value
+   [ 0]<low addr           0xfff43f50 high addr 0xfff43f54>DW_OP_lit0 DW_OP_stack_value
+   [ 1]<low addr           0xfff43f94 high addr 0xfff43f9c>DW_OP_lit1 DW_OP_stack_value
+   [ 2]<low addr           0xfff440dd high addr 0xfff440f6>DW_OP_lit0 DW_OP_stack_value
+   [ 3]<low addr           0xfff441b6 high addr 0xfff441bd>DW_OP_lit0 DW_OP_stack_value
 < 4><0x00000506 GOFF=0x00000ea7>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x000001a6 GOFF=0x00000b47>
                                             DW_AT_location              0x0000130d
       .debug_loc      offset  : 0x0000130d   <loclist at offset 0x0000130d with 2 entries follows>
-   [ 0]<low addr           0x000001ce high addr 0x000001d3>DW_OP_reg5
-   [ 1]<low addr           0x000002b9 high addr 0x000002be>DW_OP_reg7
+   [ 0]<low addr           0xfff4400e high addr 0xfff44013>DW_OP_reg5
+   [ 1]<low addr           0xfff440f9 high addr 0xfff440fe>DW_OP_reg7
 < 4><0x0000050f GOFF=0x00000eb0>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x000001b0 GOFF=0x00000b51>
                                             DW_AT_location              0x0000132b
       .debug_loc      offset  : 0x0000132b   <loclist at offset 0x0000132b with 8 entries follows>
-   [ 0]<low addr           0x00000043 high addr 0x00000056>DW_OP_reg4
-   [ 1]<low addr           0x000000f3 high addr 0x00000117>DW_OP_reg14
-   [ 2]<low addr           0x0000014b high addr 0x0000015c>DW_OP_reg4
-   [ 3]<low addr           0x000001ce high addr 0x000002b9>DW_OP_reg14
-   [ 4]<low addr           0x000002b9 high addr 0x000002d3>DW_OP_reg4
-   [ 5]<low addr           0x00000336 high addr 0x00000349>DW_OP_reg14
-   [ 6]<low addr           0x00000360 high addr 0x0000036f>DW_OP_reg14
-   [ 7]<low addr           0x00000374 high addr 0x00000388>DW_OP_reg14
+   [ 0]<low addr           0xfff43e83 high addr 0xfff43e96>DW_OP_reg4
+   [ 1]<low addr           0xfff43f33 high addr 0xfff43f57>DW_OP_reg14
+   [ 2]<low addr           0xfff43f8b high addr 0xfff43f9c>DW_OP_reg4
+   [ 3]<low addr           0xfff4400e high addr 0xfff440f9>DW_OP_reg14
+   [ 4]<low addr           0xfff440f9 high addr 0xfff44113>DW_OP_reg4
+   [ 5]<low addr           0xfff44176 high addr 0xfff44189>DW_OP_reg14
+   [ 6]<low addr           0xfff441a0 high addr 0xfff441af>DW_OP_reg14
+   [ 7]<low addr           0xfff441b4 high addr 0xfff441c8>DW_OP_reg14
 < 4><0x00000518 GOFF=0x00000eb9>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x000001bb GOFF=0x00000b5c>
 < 4><0x0000051d GOFF=0x00000ebe>          DW_TAG_lexical_block
@@ -2023,18 +2023,18 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x00000341 GOFF=0x00000ce2>
                                               DW_AT_location              0x0000138b
       .debug_loc      offset  : 0x0000138b   <loclist at offset 0x0000138b with 3 entries follows>
-   [ 0]<low addr           0x0000028a high addr 0x0000029d>DW_OP_reg11
-   [ 1]<low addr           0x00000336 high addr 0x0000033c>DW_OP_reg11
-   [ 2]<low addr           0x0000037d high addr 0x00000388>DW_OP_reg11
+   [ 0]<low addr           0xfff440ca high addr 0xfff440dd>DW_OP_reg11
+   [ 1]<low addr           0xfff44176 high addr 0xfff4417c>DW_OP_reg11
+   [ 2]<low addr           0xfff441bd high addr 0xfff441c8>DW_OP_reg11
 < 5><0x0000052f GOFF=0x00000ed0>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x0000034c GOFF=0x00000ced>
                                               DW_AT_location              0x000013b4
       .debug_loc      offset  : 0x000013b4   <loclist at offset 0x000013b4 with 5 entries follows>
-   [ 0]<low addr           0x0000028c high addr 0x0000029d>DW_OP_reg10
-   [ 1]<low addr           0x0000029d high addr 0x000002a0>DW_OP_reg3
-   [ 2]<low addr           0x00000336 high addr 0x0000033c>DW_OP_reg10
-   [ 3]<low addr           0x0000033c high addr 0x00000349>DW_OP_reg3
-   [ 4]<low addr           0x0000037d high addr 0x00000388>DW_OP_reg10
+   [ 0]<low addr           0xfff440cc high addr 0xfff440dd>DW_OP_reg10
+   [ 1]<low addr           0xfff440dd high addr 0xfff440e0>DW_OP_reg3
+   [ 2]<low addr           0xfff44176 high addr 0xfff4417c>DW_OP_reg10
+   [ 3]<low addr           0xfff4417c high addr 0xfff44189>DW_OP_reg3
+   [ 4]<low addr           0xfff441bd high addr 0xfff441c8>DW_OP_reg10
 < 5><0x00000538 GOFF=0x00000ed9>            DW_TAG_lexical_block
                                               DW_AT_low_pc                0xfff440dd
                                               DW_AT_high_pc               0xfff440e7
@@ -2049,7 +2049,7 @@ DIE OFF = 0x00000538 GOFF = 0x00000ed9, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x0000042a GOFF=0x00000dcb>
                                                 DW_AT_location              0x000013f3
       .debug_loc      offset  : 0x000013f3   <loclist at offset 0x000013f3 with 1 entries follows>
-   [ 0]<low addr           0x000002a0 high addr 0x000002b9>DW_OP_reg3
+   [ 0]<low addr           0xfff440e0 high addr 0xfff440f9>DW_OP_reg3
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000ef0, the DIE tree is erroneous. 
 
@@ -2073,7 +2073,7 @@ DIE OFF = 0x0000054f GOFF = 0x00000ef0, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x000003b6 GOFF=0x00000d57>
                                                 DW_AT_location              0x00001406
       .debug_loc      offset  : 0x00001406   <loclist at offset 0x00001406 with 1 entries follows>
-   [ 0]<low addr           0x00000273 high addr 0x00000286>DW_OP_reg2
+   [ 0]<low addr           0xfff440b3 high addr 0xfff440c6>DW_OP_reg2
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
 
@@ -2084,7 +2084,7 @@ DIE OFF = 0x00000558 GOFF = 0x00000ef9, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x000003c2 GOFF=0x00000d63>
                                                 DW_AT_location              0x00001419
       .debug_loc      offset  : 0x00001419   <loclist at offset 0x00001419 with 1 entries follows>
-   [ 0]<low addr           0x00000275 high addr 0x00000288>DW_OP_reg10
+   [ 0]<low addr           0xfff440b5 high addr 0xfff440c8>DW_OP_reg10
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
 
@@ -2095,7 +2095,7 @@ DIE OFF = 0x00000561 GOFF = 0x00000f02, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x000003ce GOFF=0x00000d6f>
                                                 DW_AT_location              0x0000142c
       .debug_loc      offset  : 0x0000142c   <loclist at offset 0x0000142c with 1 entries follows>
-   [ 0]<low addr           0x00000273 high addr 0x00000281>DW_OP_reg12
+   [ 0]<low addr           0xfff440b3 high addr 0xfff440c1>DW_OP_reg12
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
 
@@ -2106,8 +2106,8 @@ DIE OFF = 0x0000056a GOFF = 0x00000f0b, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x000003da GOFF=0x00000d7b>
                                                 DW_AT_location              0x0000143f
       .debug_loc      offset  : 0x0000143f   <loclist at offset 0x0000143f with 2 entries follows>
-   [ 0]<low addr           0x00000275 high addr 0x0000027e>DW_OP_reg11
-   [ 1]<low addr           0x0000027e high addr 0x0000028a>DW_OP_reg11
+   [ 0]<low addr           0xfff440b5 high addr 0xfff440be>DW_OP_reg11
+   [ 1]<low addr           0xfff440be high addr 0xfff440ca>DW_OP_reg11
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
 
@@ -2136,7 +2136,7 @@ DIE OFF = 0x00000583 GOFF = 0x00000f24, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x000003fe GOFF=0x00000d9f>
                                                 DW_AT_location              0x0000145d
       .debug_loc      offset  : 0x0000145d   <loclist at offset 0x0000145d with 1 entries follows>
-   [ 0]<low addr           0x00000273 high addr 0x00000275>DW_OP_reg11
+   [ 0]<low addr           0xfff440b3 high addr 0xfff440b5>DW_OP_reg11
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
 
@@ -2147,9 +2147,9 @@ DIE OFF = 0x0000058a GOFF = 0x00000f2b, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x0000040a GOFF=0x00000dab>
                                                 DW_AT_location              0x00001470
       .debug_loc      offset  : 0x00001470   <loclist at offset 0x00001470 with 3 entries follows>
-   [ 0]<low addr           0x00000273 high addr 0x000002b9>DW_OP_reg13
-   [ 1]<low addr           0x00000336 high addr 0x00000349>DW_OP_reg13
-   [ 2]<low addr           0x0000037d high addr 0x00000388>DW_OP_reg13
+   [ 0]<low addr           0xfff440b3 high addr 0xfff440f9>DW_OP_reg13
+   [ 1]<low addr           0xfff44176 high addr 0xfff44189>DW_OP_reg13
+   [ 2]<low addr           0xfff441bd high addr 0xfff441c8>DW_OP_reg13
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f3e, the DIE tree is erroneous. 
 
@@ -2178,11 +2178,11 @@ DIE OFF = 0x0000059d GOFF = 0x00000f3e, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x0000035c GOFF=0x00000cfd>
                                                 DW_AT_location              0x00001499
       .debug_loc      offset  : 0x00001499   <loclist at offset 0x00001499 with 5 entries follows>
-   [ 0]<low addr           0x0000020b high addr 0x0000022b>DW_OP_reg15
-   [ 1]<low addr           0x0000022b high addr 0x000002b9>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
-   [ 2]<low addr           0x00000336 high addr 0x00000349>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
-   [ 3]<low addr           0x00000360 high addr 0x0000036f>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
-   [ 4]<low addr           0x0000037d high addr 0x00000388>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+   [ 0]<low addr           0xfff4404b high addr 0xfff4406b>DW_OP_reg15
+   [ 1]<low addr           0xfff4406b high addr 0xfff440f9>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+   [ 2]<low addr           0xfff44176 high addr 0xfff44189>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+   [ 3]<low addr           0xfff441a0 high addr 0xfff441af>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
+   [ 4]<low addr           0xfff441bd high addr 0xfff441c8>DW_OP_breg4+0 DW_OP_lit16 DW_OP_shr DW_OP_stack_value
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
 
@@ -2193,11 +2193,11 @@ DIE OFF = 0x000005a6 GOFF = 0x00000f47, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x00000368 GOFF=0x00000d09>
                                                 DW_AT_location              0x000014e8
       .debug_loc      offset  : 0x000014e8   <loclist at offset 0x000014e8 with 5 entries follows>
-   [ 0]<low addr           0x0000020b high addr 0x00000261>DW_OP_reg13
-   [ 1]<low addr           0x00000261 high addr 0x000002b9>DW_OP_breg4+0 DW_OP_const2u 65535 DW_OP_and DW_OP_stack_value
-   [ 2]<low addr           0x00000336 high addr 0x00000349>DW_OP_breg4+0 DW_OP_const2u 65535 DW_OP_and DW_OP_stack_value
-   [ 3]<low addr           0x00000360 high addr 0x0000036f>DW_OP_reg13
-   [ 4]<low addr           0x0000037d high addr 0x00000388>DW_OP_breg4+0 DW_OP_const2u 65535 DW_OP_and DW_OP_stack_value
+   [ 0]<low addr           0xfff4404b high addr 0xfff440a1>DW_OP_reg13
+   [ 1]<low addr           0xfff440a1 high addr 0xfff440f9>DW_OP_breg4+0 DW_OP_const2u 65535 DW_OP_and DW_OP_stack_value
+   [ 2]<low addr           0xfff44176 high addr 0xfff44189>DW_OP_breg4+0 DW_OP_const2u 65535 DW_OP_and DW_OP_stack_value
+   [ 3]<low addr           0xfff441a0 high addr 0xfff441af>DW_OP_reg13
+   [ 4]<low addr           0xfff441bd high addr 0xfff441c8>DW_OP_breg4+0 DW_OP_const2u 65535 DW_OP_and DW_OP_stack_value
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
 
@@ -2208,10 +2208,10 @@ DIE OFF = 0x000005af GOFF = 0x00000f50, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x00000374 GOFF=0x00000d15>
                                                 DW_AT_location              0x00001539
       .debug_loc      offset  : 0x00001539   <loclist at offset 0x00001539 with 4 entries follows>
-   [ 0]<low addr           0x00000214 high addr 0x0000021f>DW_OP_reg12
-   [ 1]<low addr           0x0000021f high addr 0x00000221>DW_OP_reg12
-   [ 2]<low addr           0x00000221 high addr 0x0000024c>DW_OP_reg12
-   [ 3]<low addr           0x00000360 high addr 0x0000036f>DW_OP_reg12
+   [ 0]<low addr           0xfff44054 high addr 0xfff4405f>DW_OP_reg12
+   [ 1]<low addr           0xfff4405f high addr 0xfff44061>DW_OP_reg12
+   [ 2]<low addr           0xfff44061 high addr 0xfff4408c>DW_OP_reg12
+   [ 3]<low addr           0xfff441a0 high addr 0xfff441af>DW_OP_reg12
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
 
@@ -2222,10 +2222,10 @@ DIE OFF = 0x000005b8 GOFF = 0x00000f59, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x00000380 GOFF=0x00000d21>
                                                 DW_AT_location              0x0000156d
       .debug_loc      offset  : 0x0000156d   <loclist at offset 0x0000156d with 4 entries follows>
-   [ 0]<low addr           0x00000243 high addr 0x0000024a>DW_OP_reg11
-   [ 1]<low addr           0x0000024a high addr 0x0000024e>DW_OP_reg11
-   [ 2]<low addr           0x00000360 high addr 0x0000036a>DW_OP_reg11
-   [ 3]<low addr           0x0000036a high addr 0x0000036f>DW_OP_reg11
+   [ 0]<low addr           0xfff44083 high addr 0xfff4408a>DW_OP_reg11
+   [ 1]<low addr           0xfff4408a high addr 0xfff4408e>DW_OP_reg11
+   [ 2]<low addr           0xfff441a0 high addr 0xfff441aa>DW_OP_reg11
+   [ 3]<low addr           0xfff441aa high addr 0xfff441af>DW_OP_reg11
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
 
@@ -2236,10 +2236,10 @@ DIE OFF = 0x000005c1 GOFF = 0x00000f62, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x0000038c GOFF=0x00000d2d>
                                                 DW_AT_location              0x000015a1
       .debug_loc      offset  : 0x000015a1   <loclist at offset 0x000015a1 with 4 entries follows>
-   [ 0]<low addr           0x0000020b high addr 0x00000211>DW_OP_reg10
-   [ 1]<low addr           0x00000214 high addr 0x00000221>DW_OP_reg10
-   [ 2]<low addr           0x00000221 high addr 0x00000223>DW_OP_reg10
-   [ 3]<low addr           0x00000223 high addr 0x0000022d>DW_OP_reg10
+   [ 0]<low addr           0xfff4404b high addr 0xfff44051>DW_OP_reg10
+   [ 1]<low addr           0xfff44054 high addr 0xfff44061>DW_OP_reg10
+   [ 2]<low addr           0xfff44061 high addr 0xfff44063>DW_OP_reg10
+   [ 3]<low addr           0xfff44063 high addr 0xfff4406d>DW_OP_reg10
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
 
@@ -2250,14 +2250,14 @@ DIE OFF = 0x000005ca GOFF = 0x00000f6b, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x00000398 GOFF=0x00000d39>
                                                 DW_AT_location              0x000015d5
       .debug_loc      offset  : 0x000015d5   <loclist at offset 0x000015d5 with 8 entries follows>
-   [ 0]<low addr           0x0000022d high addr 0x0000023a>DW_OP_reg10
-   [ 1]<low addr           0x0000023a high addr 0x00000240>DW_OP_reg7
-   [ 2]<low addr           0x00000243 high addr 0x00000273>DW_OP_reg7
-   [ 3]<low addr           0x00000273 high addr 0x000002b9>DW_OP_reg7
-   [ 4]<low addr           0x00000336 high addr 0x00000349>DW_OP_reg7
-   [ 5]<low addr           0x00000360 high addr 0x0000036c>DW_OP_reg7
-   [ 6]<low addr           0x0000036c high addr 0x0000036f>DW_OP_reg7
-   [ 7]<low addr           0x0000037d high addr 0x00000388>DW_OP_reg7
+   [ 0]<low addr           0xfff4406d high addr 0xfff4407a>DW_OP_reg10
+   [ 1]<low addr           0xfff4407a high addr 0xfff44080>DW_OP_reg7
+   [ 2]<low addr           0xfff44083 high addr 0xfff440b3>DW_OP_reg7
+   [ 3]<low addr           0xfff440b3 high addr 0xfff440f9>DW_OP_reg7
+   [ 4]<low addr           0xfff44176 high addr 0xfff44189>DW_OP_reg7
+   [ 5]<low addr           0xfff441a0 high addr 0xfff441ac>DW_OP_reg7
+   [ 6]<low addr           0xfff441ac high addr 0xfff441af>DW_OP_reg7
+   [ 7]<low addr           0xfff441bd high addr 0xfff441c8>DW_OP_reg7
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
 
@@ -2268,11 +2268,11 @@ DIE OFF = 0x000005d3 GOFF = 0x00000f74, Low PC = 0xfff43e40, High PC = 0xfff441d
                                                 DW_AT_abstract_origin       <0x000003a4 GOFF=0x00000d45>
                                                 DW_AT_location              0x00001635
       .debug_loc      offset  : 0x00001635   <loclist at offset 0x00001635 with 5 entries follows>
-   [ 0]<low addr           0x0000020b high addr 0x00000225>DW_OP_reg11
-   [ 1]<low addr           0x00000238 high addr 0x000002b9>DW_OP_reg15
-   [ 2]<low addr           0x00000336 high addr 0x00000349>DW_OP_reg15
-   [ 3]<low addr           0x00000360 high addr 0x0000036f>DW_OP_reg15
-   [ 4]<low addr           0x0000037d high addr 0x00000388>DW_OP_reg15
+   [ 0]<low addr           0xfff4404b high addr 0xfff44065>DW_OP_reg11
+   [ 1]<low addr           0xfff44078 high addr 0xfff440f9>DW_OP_reg15
+   [ 2]<low addr           0xfff44176 high addr 0xfff44189>DW_OP_reg15
+   [ 3]<low addr           0xfff441a0 high addr 0xfff441af>DW_OP_reg15
+   [ 4]<low addr           0xfff441bd high addr 0xfff441c8>DW_OP_reg15
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000ee5 less than inner global offset 0x00000f87, the DIE tree is erroneous. 
 
