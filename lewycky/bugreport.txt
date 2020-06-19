@@ -40,3 +40,22 @@ On 6/18/20 11:44 PM, Nick Lewycky wrote:
 > -- no debconf information
 >
 
+The problem is that libdwarf did not know about
+relocation R_X86_64_PC64.
+The following source change fixed the problem
+diff --git a/libdwarf/dwarf_elf_rel_detector.c b/libdwarf/dwarf_elf_rel_detector.c
+index 747bc93..5d46d57 100644
+--- a/libdwarf/dwarf_elf_rel_detector.c
++++ b/libdwarf/dwarf_elf_rel_detector.c
+@@ -339,6 +339,9 @@ _dwarf_is_64bit_abs_reloc(unsigned int type, unsigned machine)
+ #if defined (R_X86_64_64)
+             | (type == R_X86_64_64)
+ #endif
++#if defined (R_X86_64_PC64)
++            | (type == R_X86_64_PC64)
++#endif
+ #if defined (R_X86_64_DTPOFF32)
+             | (type == R_X86_64_DTPOFF64)
+ #endif
+
+
