@@ -1,0 +1,42 @@
+
+On 6/18/20 11:44 PM, Nick Lewycky wrote:
+> Package: dwarfdump
+> Version: 20200114-1
+> Severity: normal
+>
+> Dear Maintainer,
+>
+> I have an ordinary x86-64 ELF .o file (attached) which was produced by LLVM,
+> but dwarfdump issues an error when asked to dump the .eh_frame:
+>
+> $ dwarfdump -F function_0.o
+>
+> .eh_frame
+>
+> dwarfdump ERROR:  dwarf_get_fde_list: DW_DLE_RELOC_SECTION_RELOC_TARGET_SIZE_UNKNOWN (233) so doing a relocation is unsafe
+>
+> -- System Information:
+> Debian Release: bullseye/sid
+>   APT prefers stable-updates
+>   APT policy: (500, 'stable-updates'), (500, 'testing'), (500, 'stable')
+> Architecture: amd64 (x86_64)
+> Foreign Architectures: i386
+>
+> Kernel: Linux 5.6.0-1-amd64 (SMP w/8 CPU cores)
+> Locale: LANG=en_US.UTF-8, LC_CTYPE=en_US.UTF-8 (charmap=UTF-8), LANGUAGE=en_US.UTF-8 (charmap=UTF-8)
+> Shell: /bin/sh linked to /usr/bin/dash
+> Init: systemd (via /run/systemd/system)
+> LSM: AppArmor: enabled
+>
+> Versions of packages dwarfdump depends on:
+> ii  libc6      2.30-8
+> ii  libdwarf1  20200114-1
+> ii  libelf1    0.176-1.1
+>
+> dwarfdump recommends no packages.
+>
+> dwarfdump suggests no packages.
+>
+> -- no debconf information
+>
+
