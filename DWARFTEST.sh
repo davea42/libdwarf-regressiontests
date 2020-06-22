@@ -524,6 +524,7 @@ else
   cd ..
 fi
 
+
 # .gnu_debuglink and .note.gnu.build-id  section tests.
 if [ x$withlibelf = "xnolibelf" ]
 then
@@ -536,13 +537,21 @@ else
   cd ..
 fi
 
+#DWARF5 with .debug_rnglists and .debug_loclists
+runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print_raw_rnglists
+runtest $d1 $d2 moya2/filecheck.dwo -ka --print_raw_rnglists
+
 runtest $d1 $d2 rnglists/readelfobj -vv  --print-raw-rnglists
+runtest $d1 $d2 rnglists/readelfobj -ka
 runtest $d1 $d2 rnglists/linelen.o  -v --print-raw-rnglists
+runtest $d1 $d2 rnglists/linelen.o  -ka 
 runtest $d1 $d2 rnglists/extractdba.o -v  --print-raw-rnglists
+runtest $d1 $d2 rnglists/extractdba.o -v  -ka
 runtest $d1 $d2 rnglists/pe_map.o -v --print-raw-rnglists
 runtest $d1 $d2 rnglists/pe_map.o  --print-raw-rnglists
 
 runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -a
+runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -ka
 
 # See mustacchi/README. 
 # Clang generates a slightly unusual relocation set for -m32.

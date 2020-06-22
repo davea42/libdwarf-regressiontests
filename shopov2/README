@@ -30,3 +30,37 @@ It is a compilation of the firmware for the 'blackmagic' debug probe for arm cor
 https://github.com/blacksphere/blackmagic/wiki
 
 ==================
+
+The loclists are incorrect in this object.
+*** DWARF CHECK: .debug_loc: Address outside a valid .text range ***
+
+CU Name = (indexed string: 0x00000001)target\adiv5.c
+CU Producer = (indexed string: 0x00000000)clang version 9.0.0 (https://github.com/msys2/MINGW-packages.git fdafa4d8c4022588676c8ec0985dafaf834258ae)
+DIE OFF = 0x00000197 GOFF = 0x00000197, Low PC = 0x080000c0, High PC = unknown
+Offset = 0x0000000c, Base = 0x080000c0, Low = 0x10000190 (rawlow = 0x080000d0), High = 0x100001a2 (rawhigh = 0x080000e2)
+DW_AT_location
+      .debug_loclists offset  : 0x0000000c
+      bytes total this loclist:   6
+      number of entries       :   2
+      context number          :   0
+      version                 :   5
+      address size            :   4
+      offset size             :   4
+      offset of context       : 0x00000000
+      offset table entrycount :   0
+      offset of this list set : 0x0000000c
+      length of context       : 3900
+      end of context offset   : 0x00000f3c
+      DW_AT_loclists_base     : 0x0000000c
+      DW_AT_low_pc(base addr) : 0x080000c0
+      DW_AT_addr_base         : 0x00000008
+   <debug_loclists offset 0x0000000c with 2 entries follows>
+   [ 0]<DW_LLE_offset_pair   0x080000d0 0x080000e2>
+   [ 0]<start,end            0x10000190 0x100001a2>DW_OP_reg0
+   [ 1]<end-of-list>
+The offset_pair is not really an offset_pair but start/end..
+A compiler bug.
+
+In addition in this run we erroneously print during a check run.
+
+===================
