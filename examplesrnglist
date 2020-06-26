@@ -1,0 +1,49 @@
+
+rnglists/readelfobj DW 5.
+
+With no -vv 
+
+                        DW_AT_ranges                0x000000f4 <form DW_FORM_sec_offset>
+
+      Offset of rnglists entries: 0x000000f4
+      [ 0] start,end             0x00006310 0x000063f0
+      [ 1] start,end             0x00006420 0x0000645d
+      [ 2] start,end             0x000066b8 0x000066cf
+      [ 3] start,end             0x000066f3 0x00006702
+      [ 4] end of list
+With -vv
+                        DW_AT_ranges                0x000000f4 <form DW_FORM_sec_offset 23>
+
+      Offset of rnglists entries: 0x000000f4
+      Index of rnglist head     : 0
+      rnglist head version      : 5
+      Record count rnglist set  : 5
+      Bytes this rnglist set    : 21
+      offset size               : 4
+      address size              : 8
+      CU DW_AT_low_pc (baseaddr): 0x00005780
+      section offset CU rnglists: 0x00000000
+      section length CU rnglists: 0x00000144 (324)
+                                                       secoff
+      [ 0] DW_RLE_offset_pair    0x00000b90 0x00000c70 0x000000f4
+      [ 0] start,end             0x00006310 0x000063f0 0x000000f4
+      [ 1] DW_RLE_offset_pair    0x00000ca0 0x00000cdd 0x000000f9
+      [ 1] start,end             0x00006420 0x0000645d 0x000000f9
+
+
+========================
+
+
+ moya2/filecheck.dwo"
+
+
+< 2><0x00000217>      DW_TAG_lexical_block
+
+/tmp/dwarfdump ERROR:  Cannot print range attribute for DW_AT_ranges:  DW_DLE_RNGLISTS_ERROR: rnglists table index of 1 is unusable unless it is in a tied file. libdwarf is incomplete. FIXME. Attempting to continue.
+
+CU Name = (indexed string: 0x00000052)au
+CU Producer = (indexed string: 0x00000051)ax
+DIE OFF = 0x00000217 GOFF = 0x00000217, Low PC = unknown   , High PC = unknown
+DW_AT_ranges                0x00000001 <form DW_FORM_rnglistx>
+
+
