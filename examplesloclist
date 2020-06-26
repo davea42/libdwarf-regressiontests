@@ -51,6 +51,17 @@ moya2/filecheck.dwo
 
 =================
 
+>                       DW_AT_location              0x030000ac0c  <form DW_FORM_block 9>DW_OP_addr 0x0000ac0c <form DW_FORM_block 9>
+FAIL -R -a -M -v -v -v -v -v -v ref_addr/ELF3.elf
+
+contrast with
+>                       DW_AT_location              0x03e0d7540000000000 DW_OP_addr 0x0054d7e0
+FAIL -i -vv -oi jborg/simple
+
+
+
+=================
+
 pasztory/a.out64
  pe1/libexamine-0.dll
                         DW_AT_decl_line             0x0000004b <form DW_FORM_data1 11>
@@ -115,4 +126,28 @@ Bad format on the AT line.
 >       .debug_loc.dwo  offset  : 0x0000a79b
 >       <dwo loclist at offset 0x0000a79b with 4 entries follows>
 FAIL emre6/class_64_opt_fpo_split.dwp
+
+====================
+> ./dwarfdump ERROR:  ERROR: Cannot get location list data:  DW_DLE_LOCLIST_OFFSET_BAD(356) Corrupt dwarf. Attempting to continue.
+>
+> CU Name = test.c
+> CU Producer = ARM C/C++ Compiler, RVCT4.0 [Build 400]
+> DIE OFF = 0x0000008b GOFF = 0x0000008b, Low PC = 0x000080b0, High PC = 0x000080c4
+>
+69c76
+< There were 3 DWARF errors reported: see ERROR above.
+---
+> There were 4 DWARF errors reported: see ERROR above.
+FAIL -i -H 2 liu/OOB0517_03.elf
+
+=============================
+> DW_AT_location              0x0000d12e0x0000d12e
+>       .debug_loc      offset  : 0x0000d12e
+...
+FAIL -kF -ki hughes/libkrb5support.so.0.1.debug
+
+=======================
+> DW_AT_frame_base            5330x00000215
+...
+FAIL -kb -ki marinescu/stream.o.test
 

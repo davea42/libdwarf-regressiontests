@@ -1,24 +1,44 @@
 #This is solely for tracking down bugs.
 #Ignore all this.
-opts="-a -vvv --print-raw-loclists --print-raw-rnglists  shopov2/clang-9.0.0-test-dwarf5.elf"
-opts="-a -vvv --print-raw-loclists shopov2/clang-9.0.0-test-dwarf5.elf"
+# shopov2/clang-9.0.0-test-dwarf5.elf AT_location FORM_sec_offset
+#       DW_AT_data_member_location  0 <form DW_FORM_data1 11>
+#     DW_AT_ranges                 <form DW_FORM_rnglistx 35>
+#       NOTE: missing the value on the ranges on that line
+#  mucci/main.o  AT_location FORM_data4 
+# Run each with and without -v.Different look matters.
+
+
+opts="-a -M -v -v -v -v -v -v -x line5=std  mucci/main.o"
+kopts="-c -R -ka -v -v -v -v -v -v -x line5=std  mucci/main.o"
+opts="-a -M -v -v -v -v -v -v -x line5=std  mucci/main.o"
+kopts="-c -R -ka -v -v -v -v -v -v -x line5=std  mucci/main.o"
+opts="-a -M -vv shopov2/clang-9.0.0-test-dwarf5.elf"
 kopts="-ka shopov2/clang-9.0.0-test-dwarf5.elf"
-opts="-i -vv -M  pe1/kask-dwarfdump_64.exe"
-kopts="-ka pe1/kask-dwarfdump_64.exe"
+opts=" -a  -M moya2/filecheck.dwo"
+kopts=" -ka  -M moya2/filecheck.dwo"
+opts=" -a -vv  ppc2/powerpc-750-linux-gnu-hello-static"
+kopts=" -ka -vv  ppc2/powerpc-750-linux-gnu-hello-static"
+opts=" -a -vv  pasztory/a.out64"
+kopts=" -ka -vv  pasztory/a.out64"
+opts="--print-info --format-attr-name -vvv pe1/libexamine-0.dll"
+kopts="-ka -vvv pe1/libexamine-0.dll"
+opts=" -a -M macho-kask/simplereaderx86_64"
+kopts=" -ka macho-kask/simplereaderx86_64"
 
-opts="  -i -v    liu/OOB0517_03.elf"
-kopts=" -ka     liu/OOB0517_03.elf"
 
 
-./dwarfdump.O  $opts >junko
+
+
+/tmp/dwarfdumpo  $opts >junko
+/tmp/dwarfdumpo  $kopts >junkok
+/tmp/dwarfdump -vv $opts >junkvv
 /tmp/dwarfdump $opts >junkn
 /tmp/dwarfdump $kopts >junknk
-#readelfobj ppc2/powerpc-750-linux-gnu-hello-static >junkro
 exit 0
 
+#readelfobj ppc2/powerpc-750-linux-gnu-hello-static >junkro
 # -show_reachable shows things alloc before it could get control. 14KB.
 #drmemory --  /tmp/dwarfdump $opts >junkdrmemory
-
 
 #time /tmp/dwarfdump $opts >junkx
 #
@@ -37,8 +57,8 @@ exit 0
 #./dwarfdump.O -i -M debugfissionb/ld-new >junkia
 # --track-origins=yes (an expensive option to valgrind)
 echo                 >junkcmd
-echo "b likelycmp" >>junkcmd
-#echo "b _dwarf_error_string" >>junkcmd
+#echo "b likelycmp" >>junkcmd
+echo "b _dwarf_error_string" >>junkcmd
 echo "r  $kopts "    >>junkcmd
 gdb -x junkcmd /tmp/dwarfdump 
 exit 0

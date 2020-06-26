@@ -83,7 +83,7 @@ LOCAL_SYMBOLS:
                       DW_AT_decl_file             0x00000001
                       DW_AT_decl_line             0x00000007
                       DW_AT_external              yes(1)
-                      DW_AT_frame_base            DW_OP_constu 0
+                      DW_AT_frame_base            0x1000 DW_OP_constu 0
                       DW_AT_type                  <0x00000091>
 < 1><0x00000120>    DW_TAG_subprogram
                       DW_AT_name                  tfunc2
@@ -92,7 +92,7 @@ LOCAL_SYMBOLS:
                       DW_AT_decl_file             0x00000001
                       DW_AT_decl_line             0x00000006
                       DW_AT_external              yes(1)
-                      DW_AT_frame_base            DW_OP_constu 56
+                      DW_AT_frame_base            0x1038 DW_OP_constu 56
                       DW_AT_type                  <0x00000091>
 
 .debug_line: line number info for a single cu

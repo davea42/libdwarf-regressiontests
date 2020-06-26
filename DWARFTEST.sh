@@ -177,10 +177,25 @@ suppressbigdiffs=n
 if [ x$SUPPRESSBIGDIFFS = "xy" ]
 then
   suppressbigdiffs=y
-  echo   "suppress big diffs........: yes"
+  echo "suppress big diffs........: yes"
 else
-  echo   "suppress big diffs........: no"
+  echo "suppress big diffs........: no"
 fi
+
+# Speeds up diff on big files with small differences.
+echo a >/tmp/junkadwtests
+echo a >/tmp/junkbdwtests
+diffopt="--speed-large-files"
+diff $diffopt /tmp/junkadwtests /tmp/junkbdwtests 2>/dev/null
+if [ $? -ne 0 ]
+then
+  # the option is not supported.  
+  diffopt=""
+  echo "speed up big diffs........: no"
+else 
+  echo "speed up big diffs........: yes"
+fi
+rm /tmp/junkadwtests /tmp/junkbdwtests
 
 myhost=`hostname`
 echo   "hostname..................: $myhost"
@@ -470,7 +485,7 @@ runtest () {
         if [ -f OFn3 -o -f OFo3 ]
         then
           touch OFn3 OFo3
-          diff OFo3 OFn3
+          diff $diffopt OFo3 OFn3
           if [ $? = 0 ]
           then
             goodcount=`expr $goodcount + 1`
@@ -481,7 +496,7 @@ runtest () {
         fi
 
         # 
-        diff tmp1 tmp3
+        diff $diffopt tmp1 tmp3
         if [ $? = 0 ]
         then
           goodcount=`expr $goodcount + 1`
@@ -492,7 +507,7 @@ runtest () {
 
         grep -v Usage   tmp1err >tmp1berr
         grep -v Usage   tmp2err >tmp2berr
-        diff tmp1berr tmp2berr
+        diff $diffopt tmp1berr tmp2berr
         if [ $? = 0 ]
         then
           goodcount=`expr $goodcount + 1`
@@ -536,6 +551,9 @@ else
   chkres $? "debuglink/runtest.sh"
   cd ..
 fi
+
+# tiny and severly damaged 'object' file.
+runtest $d1 $d2 kapus/bad.obj -a
 
 #DWARF5 with .debug_rnglists and .debug_loclists
 runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print_raw_rnglists

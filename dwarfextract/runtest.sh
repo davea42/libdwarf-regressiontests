@@ -37,6 +37,7 @@ cc -g $opt $INCS dwarfextract.c -o dwarfextract $dwlib $libs
 if [  $?  -ne 0 ] 
 then
     echo FAIL dwarfextract test0 top_builddir=$2 top_srcdir=$3 dwlib=$4
+    echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
 
     exit 1
 fi
@@ -45,6 +46,7 @@ if [  $?  -ne 0 ]
 then
     echo FAIL dwarfextract dwex-1 top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "Fix with: mv basestdout basestdout.base"
+    echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1
 fi
 $dd -a test1out >test1.new
@@ -53,6 +55,7 @@ if [  $?  -ne 0 ]
 then
     echo FAIL dwarfextract test1 top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "Fix with: mv test1.new test1.base"
+    echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1
 fi
 echo PASS dwarfextract
@@ -62,6 +65,7 @@ cc -g $opt -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwa
 if [  $?  -ne 0 ]
 then
     echo FAIL dwarfextract looking for error top_builddir=$2 top_srcdir=$3 dwlib=$4
+    echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1
 fi
 diff basecstdout basecstdout.base
@@ -69,6 +73,7 @@ if [  $?  -ne 0 ]
 then
     echo FAIL dwarfextract dwexc-1 top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "Fix with: mv basecstdout basecstdout.base"
+    echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1
 fi
 $dd -a testcout >testc.new
@@ -77,6 +82,7 @@ if [  $?  -ne 0 ]
 then
     echo FAIL dwarfextract testc  top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "Fix with: mv testc.new testc.base"
+    echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1
 fi
 echo "PASS dwarfextractruntest.sh"

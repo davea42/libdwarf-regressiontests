@@ -1,3 +1,14 @@
+2020-06-26 David Anderson
+    * DWARFTEST.sh: Using  diff option
+      --speed-large-files 
+      to hopefully speed up diffing the kind of difference we see.
+    * baseline updates
+      baddie1/*.base
+      debugfission/*.base.gz
+      dwarfextract/*.base
+      dwgena/test*.base.gz
+    * dwarfextract/runtest.sh: Now the test script
+      reveals, on FAIL, how to rerun the script.
 2020-06-17 David Anderson
     * moya2/*: New testcase for DWARF5 support.
 2020-03-18 David Anderson
