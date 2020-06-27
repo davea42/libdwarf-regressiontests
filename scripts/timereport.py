@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 #
 #  Report on the timings in an ALLdd file
 #  to try to figure out what is slow
