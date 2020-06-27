@@ -6,7 +6,7 @@
 
 import sys
 import os
-import datetime
+#import datetime
 from datetime import timedelta
 from datetime import datetime
 
@@ -32,48 +32,64 @@ from datetime import datetime
 
 class xtime:
   def __init__(self):
+    # These are all datetime objects
     self._firstostart = False
     self._lastnewdone = False
     self._curostart = False
     self._curndone = False
+    self._curfile = "<none>"
 
-mdict = { "Jan":"01", "Feb":"02", "Mar":"03", "Apr":"04", 
-"May":"05", "Jun":"06", "Jul":"07", "Aug":"08",
-"Sep":"09", "Oct":"10", "Nov":"11", "Dec":"12" }
-
-def twodigday(d):
-  ds = str(d)
-  if len(ds) < 2:
-    ds = " "+ds
-  return ds
+mdict = { "Jan":1, "Feb":2, "Mar":3, "Apr":4, 
+"May":5, "Jun":6, "Jul":7, "Aug":8,
+"Sep":9, "Oct":10, "Nov":11, "Dec":12 }
 
 def extractdate(rec):
   wds = rec.split()
   mt = wds[3]
   month = mdict[mt]
-  day = twodigday(wds[4])
+  day = wds[4]
   year = wds[7]
   tm = wds[5]
-  ds = str(year) + '-' + month + day 
-  return ds + ' ' +tm
+  tmwds = tm.split(":")
+  dt = datetime(int(year),int(month),int(day),\
+    int(tmwds[0]),int(tmwds[1]),int(tmwds[2]))
+  return dt
 
-
+maxdetect = 20
 def recordcurrent(rec,xt):
+  if rec.startswith("=====START Pct "):
+    wds = rec.split()
+    n = ' '.join(wds[3:])
+    xt._curfile = n
+    return True
   if rec.startswith("old start "):
-    dtxt = extractdate(rec)
-    #dt = datetime.fromisoformat(dtxt)
+    #print("dadebug",rec);
+    dt = extractdate(rec)
+    if not xt._firstostart:
+      xt._firstostart = dt 
+    xt._curostart = dt
+    if xt._curndone:
+      td = dt - xt._curndone
+      print("Shell tm",td,xt._curfile)
+      if td.total_seconds() > maxdetect:
+        print("=====shellt notable",td,xt._curfile)
     return True
   if rec.startswith("old done "):
-    dtxt = extractdate(rec)
-    #dt = datetime.fromisoformat(dtxt)
-    return True
+    dt = extractdate(rec)
+    return False
   if rec.startswith("new start "):
-    dtxt = extractdate(rec)
-    #dt = datetime.fromisoformat(dtxt)
-    return True
+    dt = extractdate(rec)
+    return False
   if rec.startswith("new done "):
-    dtxt = extractdate(rec)
-    #dt = datetime.fromisoformat(dtxt)
+    #print("dadebug",rec);
+    dt = extractdate(rec)
+    xt._lastnewdone = dt 
+    xt._curndone = dt
+    if xt._curostart:
+      td = dt - xt._curostart
+      print("Run time",td,xt._curfile)
+      if td.total_seconds() > maxdetect:
+        print("=====runtime notable",td,xt._curfile)
     return True
   return False
 
@@ -104,7 +120,14 @@ def isdateitem(rec):
   return False
 
 def printoverall(xt):
-  print("FIXME")
+  if not xt._firstostart:
+    print("Incomplete file")
+    return
+  if not xt._lastnewdone:
+    print("Incomplete file")
+    return
+  td =  xt._lastnewdone -  xt._firstostart
+  print("Overall run time",td)
 
 if __name__ == '__main__':
   fn="ALLdd"
@@ -119,7 +142,7 @@ if __name__ == '__main__':
   except IOError as message:
     print("FAIL open ",fn,"errormessage",message)
     sys.exit(1)
-  maxreccount = 10
+  maxreccount = 1000000
   recordcount = 0
   xt = xtime()
   while 1:
@@ -130,13 +153,13 @@ if __name__ == '__main__':
     if len(rec) < 1:
       # eof
       break
-    recordcount = int(recordcount) + 1
     if int(recordcount) > maxreccount:
       break
     #if not isdateitem(rec):
     #  continue 
-    recordcurrent(rec,xt)
-
+    x = recordcurrent(rec,xt)
+    if x:
+      recordcount = int(recordcount) + 1
   printoverall(xt)  
 
 
