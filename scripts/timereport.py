@@ -38,6 +38,10 @@ class xtime:
     self._curostart = False
     self._curndone = False
     self._curfile = "<none>"
+    self._testcount = 0
+
+    # code or shell runtime > this  will be called 'notable'
+    self._notablekey = 20
 
 mdict = { "Jan":1, "Feb":2, "Mar":3, "Apr":4, 
 "May":5, "Jun":6, "Jul":7, "Aug":8,
@@ -55,11 +59,10 @@ def extractdate(rec):
     int(tmwds[0]),int(tmwds[1]),int(tmwds[2]))
   return dt
 
-maxdetect = 20
 def recordcurrent(rec,xt):
   if rec.startswith("=====START Pct "):
     wds = rec.split()
-    n = ' '.join(wds[3:])
+    n = ' '.join(wds[1:])
     xt._curfile = n
     return True
   if rec.startswith("old start "):
@@ -68,10 +71,11 @@ def recordcurrent(rec,xt):
     if not xt._firstostart:
       xt._firstostart = dt 
     xt._curostart = dt
+    xt._testcount = int(xt._testcount) +1
     if xt._curndone:
       td = dt - xt._curndone
       print("Shell tm",td,xt._curfile)
-      if td.total_seconds() > maxdetect:
+      if td.total_seconds() > xt._notablekey:
         print("=====shellt notable",td,xt._curfile)
     return True
   if rec.startswith("old done "):
@@ -88,7 +92,7 @@ def recordcurrent(rec,xt):
     if xt._curostart:
       td = dt - xt._curostart
       print("Run time",td,xt._curfile)
-      if td.total_seconds() > maxdetect:
+      if td.total_seconds() > float(xt._notablekey):
         print("=====runtime notable",td,xt._curfile)
     return True
   return False
@@ -128,10 +132,11 @@ def printoverall(xt):
     return
   td =  xt._lastnewdone -  xt._firstostart
   print("Overall run time",td)
+  print("Test count      ",xt._testcount)
+  print("Seconds per test",td.total_seconds()/float(xt._testcount))
 
 if __name__ == '__main__':
   fn="ALLdd"
-  fn="timereport.txt"
   if len(sys.argv) >1:
     fn = sys.argv[1]
   count=0

@@ -6,9 +6,16 @@ echo "  If you wish do one or more of these before running the tests."
 echo "  Add sanity..............: export NLIZE=y"
 echo "  Suppress de_alloc_tree..: export SUPPRESSDEALLOCTREE=y"
 echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE ; unset NLIZE"
-# On certain VMs if too much change, we get stuck at 1% done forever.
-# suppress those very few tests via:
+
+# On certain VMs if too much change, we get
+# stuck at 1% done forever (and after 10 hours
+# far from done with the tests).
+# suppress those tests via:
 # export SUPPRESSBIGDIFFS=y
+# It is not test runtime that is the problem.
+# If the actual result difference is substantial
+# the shell time doing diff etc takes too long.
+
 echo 'Starting regressiontests: DWARFTEST.sh' `date`
 . ./SHALIAS.sh
 stsecs=`date '+%s'`
@@ -275,7 +282,6 @@ enciso8/test-clang-wpieb-dw5.o
 sarubbo-7/4.crashes.bin
 sarubbo-5/1.crashes.bin
 jacobs/test.o
-klingler/dwarfgen-zdebug
 klingler/test-with-zdebug
 diederen2/pc_dwarf_bad_attributes.elf
 diederen2/pc_dwarf_bad_sibling2.elf
@@ -310,14 +316,11 @@ relocerr64/sh4a-32-tls.o
 relocerr64/sparc64-32-tls.o
 relocerr64/sparc64-64-tls.o
 enciso6/ranges.o
-dwgenb/dwarfgen
 moshe/a.out.t
 marinescu/stream.o.test
 simonian/test-gcc-4.3.0  
 simonian/test-gcc-4.5.1
 enciso3/test.o
-dwarf4/dd2g4.5dwarf-4	
-dwarf4/ddg4.5dwarf-4
 x86/dwarfdumpv4.3 
 allen1/todd-allen-gcc-4.4.4-bin.exe
 wynn/unoptimised.axf
@@ -369,6 +372,15 @@ liu/outofboundread.elf
 irix64/libc.so 
 irixn32/libc.so 
 irixn32/dwarfdump' 
+
+
+if [ "$suppressbigdiffs" != "y" ]
+then
+  filepaths="dwgenb/dwarfgen $filepaths"
+  filepaths="klingler/dwarfgen-zdebug $filepaths"
+  filepaths="dwarf4/dd2g4.5dwarf-4 $filepaths"
+  filepaths="dwarf4/ddg4.5dwarf-4 $filepaths"
+fi
 
 # Was in the list, but does not exist!
 #x86-64/x86_64testcase.o 
@@ -485,36 +497,54 @@ runtest () {
         if [ -f OFn3 -o -f OFo3 ]
         then
           touch OFn3 OFo3
-          diff $diffopt OFo3 OFn3
+          #cmp  OFo3 OFn3
+          #if [ $? -ne 0 ]
+          #then
+            diff $diffopt OFo3 OFn3
+            if [ $? -eq 0 ]
+            then
+              goodcount=`expr $goodcount + 1`
+            else
+              echo "FAIL -O file=path"  $* $targ
+              failcount=`expr $failcount + 1`
+            fi
+          #else
+          #  goodcount=`expr $goodcount + 1`
+          #fi
+        fi
+
+        # 
+        #cmp tmp1 tmp3
+        #if [ $? -ne 0 ]
+        #then
+          diff $diffopt tmp1 tmp3
           if [ $? = 0 ]
           then
             goodcount=`expr $goodcount + 1`
           else
-            echo "FAIL -O file=path"  $* $targ
+            echo FAIL  $* $targ
             failcount=`expr $failcount + 1`
           fi
-        fi
-
-        # 
-        diff $diffopt tmp1 tmp3
-        if [ $? = 0 ]
-        then
-          goodcount=`expr $goodcount + 1`
-        else
-          echo FAIL  $* $targ
-          failcount=`expr $failcount + 1`
-        fi
+        #else
+        #  goodcount=`expr $goodcount + 1`
+        #fi
 
         grep -v Usage   tmp1err >tmp1berr
         grep -v Usage   tmp2err >tmp2berr
-        diff $diffopt tmp1berr tmp2berr
-        if [ $? = 0 ]
-        then
-          goodcount=`expr $goodcount + 1`
-        else
-          echo FAIL Usage  $* $targ
-          failcount=`expr $failcount + 1`
-        fi
+        #cmp tmp1berr tmp2berr
+        #if [ $? -ne 0 ]
+        #then
+          diff $diffopt tmp1berr tmp2berr
+          if [ $? = 0 ]
+          then
+            goodcount=`expr $goodcount + 1`
+          else
+            echo FAIL Usage  $* $targ
+            failcount=`expr $failcount + 1`
+          fi
+        #else
+        #  goodcount=`expr $goodcount + 1`
+        #fi
         rm -f core
         rm -f tmp1 tmp2 tmp3
         rm -f tmp1err tmp2err tmp3err 
@@ -847,14 +877,6 @@ runtest $d1 $d2  grumbach/test_fixed.o -i -vvv
 runtest $d1 $d2  grumbach/test_bias.o -ka
 runtest $d1 $d2  grumbach/test_fixed.o -ka
 
-
-# Testing SHF_COMPRESSED .debug* section reading.
-# see suppressbigdiff below.
-runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
-runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
-# .eh_frame is not actually compressed...
-runtest $d1 $d2  klingler2/compresseddebug.amd64 -F
-
 # The object has a bad ELF section type. So should
 # generate an error.  Should not coredump.
 runtest $d1 $d2  xqx/awbug6.elf -i 
@@ -981,29 +1003,25 @@ runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=2
 runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 
 
-# If the output files are too different the FreeBSD
-# VMs get stuck on a couple of these and the diff never
-# finishes (at least in our lifetime).
-# Just comment these debugfissionb/ld-new tests 
-# out and skip them in that case.
-# sample object with DW_AT_containing type in a use
-# which is  common extension
-runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
-runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
-# This is a .dwp file with .debug_cu_index and .debug_tu_index.
-# Results are so large (500MB) it is unwise to run all options
-runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
+# Results are so large that if there are differences 
+# the diffs will take hours, allow ignoring these.
 if [ $suppressbigdiffs = "n" ]
 then
+  runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
+  runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
   # Testing SHF_COMPRESSED .debug* section reading.
-  # we do get through these two so no need to suppress. See above.
-  #runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
-  #runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
+  runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
+  runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
+  # .eh_frame is not actually compressed...
+  runtest $d1 $d2  klingler2/compresseddebug.amd64 -F
+
   # A big object.
   runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
   runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
   runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
   runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
+  runtest $d1 $d2  debugfissionb/ld-new -I
   runtest $d1 $d2  debugfissionb/ld-new -a  
   runtest $d1 $d2  debugfissionb/ld-new -ka  
 else
@@ -1011,11 +1029,6 @@ else
   # in a reasonable time if it really has differences.
   echo "=====SKIP  some debugfissionb/ld-new.dwp tests"
 fi
-# This has a .gdb_index   file print
-# Unwise to run all options.
-runtest $d1 $d2  debugfissionb/ld-new -I
-runtest $d1 $d2  debugfissionb/ld-new -I  -v -v -v
-# End of problematic debugfissionb/ld-new tests.
 
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
@@ -1209,24 +1222,32 @@ runtest $d1 $d2  moshe/hello -a -vvv -R -M -g
 runtest $d1 $d2  moshe/hello -ka -vvv -R -M
 runtest $d1 $d2  moshe/a.out.t -a -vvv -R -M
 runtest $d1 $d2  moshe/a.out.t -ka -vvv -R -M
-runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
-runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
-# ka p, where we test a warning message is generated (p is printing option)
-# And should run like just -p (as of Jan 2015 erroneously did many checks).
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -p  -R -M 
-# normal ka, full checks
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka  -R -M 
-# ka P, where P means print CU names per compiler.
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M 
-# ka P kd, where so print CU names and error summary per compiler
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M 
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i  
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -g
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -v
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d -v
+
+if [ "$suppressbigdiffs" != "y" ]
+then
+  # Some of these are the same tests done based on $filelist
+  runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
+  runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
+  # ka p, where we test a warning message is generated 
+  # (p is printing option)
+  # And should run like just -p (as of Jan 2015 erroneously 
+  # did many checks).
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -p  -R -M 
+  # normal ka, full checks
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka  -R -M 
+  # ka P, where P means print CU names per compiler.
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M 
+  # ka P kd, where so print CU names and error summary per compiler
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M 
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i  
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -g
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d -v
+else
+  echo "SKIP various dwarf4/ddg4.5dwarf-4 tests"
+fi
 
 runtest $d1 $d2  marinescu/hello.original -ka -x abi=ppc
 # Following is for URI testing
