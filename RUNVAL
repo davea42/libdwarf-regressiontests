@@ -24,17 +24,18 @@ opts="--print-info --format-attr-name -vvv pe1/libexamine-0.dll"
 kopts="-ka -vvv pe1/libexamine-0.dll"
 opts=" -a -M macho-kask/simplereaderx86_64"
 kopts=" -ka macho-kask/simplereaderx86_64"
+opts=" -a -M moya2/filecheck.dwo"
 
 
 
 
 
-/tmp/dwarfdumpo  $opts >junko
-/tmp/dwarfdumpo  $kopts >junkok
-/tmp/dwarfdump -vv $opts >junkvv
-/tmp/dwarfdump $opts >junkn
-/tmp/dwarfdump $kopts >junknk
-exit 0
+#/tmp/dwarfdumpo  $opts >junko
+#/tmp/dwarfdumpo  $kopts >junkok
+#/tmp/dwarfdump -vv $opts >junkvv
+#/tmp/dwarfdump $opts >junkn
+#/tmp/dwarfdump $kopts >junknk
+#exit 0
 
 #readelfobj ppc2/powerpc-750-linux-gnu-hello-static >junkro
 # -show_reachable shows things alloc before it could get control. 14KB.
@@ -42,7 +43,7 @@ exit 0
 
 #time /tmp/dwarfdump $opts >junkx
 #
-#vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=all"
+vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=all"
 #vgopts="--tool=massif  --xtree-memory=allocs --xtree-memory-file=/tmp/massif-out.ms"
 #vgopts="--tool=massif  --xtree-memory=full --xtree-memory-file=/tmp/massif-out.ms"
 #vgopts="--tool=callgrind  "
@@ -50,8 +51,8 @@ exit 0
 
 #dwarfdump  $opts >junko
 #/tmp/dwarfdump $opts
-#valgrind $vgopts  /tmp/dwarfdump $opts >junkn
-#exit 0
+valgrind $vgopts  /tmp/dwarfdump $opts >junkn
+exit 0
 #massif-visualizer /tmp/massif-out.ms
 
 #./dwarfdump.O -i -M debugfissionb/ld-new >junkia
