@@ -29,3 +29,8 @@ fix this problem:
              _dwarf_error(dbg,error,DW_DLE_DIE_ABBREV_BAD);
 
 July 5, 2017
+================================
+Notice that the debug_line section offset and length
+are severely corrupted.
+
+June 28,2020
