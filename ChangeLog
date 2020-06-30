@@ -1,3 +1,12 @@
+2020-06-30 David Anderson
+    * RegressionTestsResults.ods: Latest results. Pass
+      with -fsanitize and suppressing de-alloc-tree.
+    * baddie1/incorrectnest.base: to match latest dwarfdump.
+    * baddie1/incorrectnest2.base: to match latest dwarfdump.
+    * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,
+    * dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
+      Now match latest dwarfdump.
+    * dwarfdump-s390.O: not fully up to date yet.
 2020-06-26 David Anderson
     * DWARFTEST.sh: Using  diff option
       --speed-large-files 
