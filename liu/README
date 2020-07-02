@@ -103,3 +103,59 @@ some checks were needed in dwarf_arange.c
 
 testcase:
 infiniteloop.elf
+
+=============
+2 July 2020
+OOB0505_02.elf has gdb_index, but it is corrupted
+and  dwarfdump gets:
+
+.gdb_index
+  Version             : 0x00000008
+  CU list offset      : 0x00000018
+  Address area offset : 0x00000098
+  Symbol table offset : 0x00000098
+  Constant pool offset: 0x00002188
+  section size        : 0x0000241f
+  CU list. array length: 8 format: [entry#] cuoffset culength
+    [   0] 0x00000000 0x0000006e
+    [   1] 0x0000006e 0x0000007e
+    [   2] 0x000000ec 0x00000061
+    [   3] 0x0000014d 0x000003d4
+    [   4] 0x00000521 0x00000349
+    [   5] 0x00000862 0x000000e6
+    [   6] 0x00000950 0x000001a2
+    [   7] 0x00000af2 0x00000061
+
+  TU list. array length: 0 format: [entry#] cuoffset culength signature
+
+  Address table array length: 12 format: [entry#] lowpc highpc cu-index
+    [   0] 0x00400738 0x0040074d    2
+    [   1] 0x00400757 0x0040075c    7
+    [   2] 0x00400800 0x0040082a    0
+    [   3] 0x00400946 0x00400a2f    3
+    [   4] 0x00400a30 0x00400a55    3
+    [   5] 0x00400a56 0x00400ab6    3
+    [   6] 0x00400ab6 0x00400af0    4
+    [   7] 0x00400af0 0x00400b32    5
+    [   8] 0x00400b40 0x00400ba6    6
+    [   9] 0x00400bb0 0x00400bb6    6
+    [  10] 0x00400c30 0x00400c34    2
+    [  11] 0x00400c39 0x00400c3e    7
+
+
+  Symbol table: length 1024 format: [entry#] symindex cuindex [type] "name" or
+                           format: [entry#]  "name" , list of  cuindex [type]
+  [  18]   4 [static  type(1)     ] "unsigned long"
+  [  40]   6 [global  function(3) ] "__libc_csu_fini"
+  [  52]   1 [static  type(1)     ] "short unsigned int"
+  [  68] "unsigned char"
+            1 [static  type(1)     ]
+            4 [static  type(1)     ]
+  [  93]   4 [static  type(1)     ] "unsigned short"
+  [  94]   1 [global  var-enum(2) ] "_IO_stdin_used"
+ERROR: dwarf_get_gdbindex_string_by_offset call failed with DW_DLV_ERROR  on offset 0x303000 (3158016). Major error
+
+dwarfdump ERROR:  printing the gdb index section had a problem :  DW_DLE_GDB_INDEX_CUVEC_ERROR(264). Attempting to continue.
+ERROR: elf_getdata() (Elf64) failed to get symbol table elf_getdata returned NULL.
+
+================
