@@ -29,4 +29,15 @@ The error "dwarfdump NO ENTRY:  pubtype dwarf_offdie : die offset does not refer
 
 --------------------
 
+See https://sourceware.org/gdb/onlinedocs/gdb/Index-Section-Format.html#Index-Section-Format
+
+ddg4.5dwarf-4-gdb-index was created from ddg4.5dwarf-4
+by 
+   cp ddg4.5dwarf-4 ddg4.5dwarf-4-gdb-index
+   gdb-add-index ddg4.5dwarf-4-gdb-index
+on 2 July 2020 by DavidAnderson.
+This created a version 8 gdbindex.
+
+
+
 

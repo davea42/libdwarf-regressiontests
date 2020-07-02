@@ -225,11 +225,12 @@ dwinc=$top_srcdir/libdwarf
 #  oi and  Ei are to ensure that things
 # work properly when using libelf. Including relocations.
 #baseopts='-F'
+# -I is the same as --print-fission
 if [ x$withlibelf = "xwithlibelf" ]
 then
-  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
+  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N --print-fission'
 else
-  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N'
+  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N --print-fission'
 fi
 
 kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku -kuf"
@@ -629,6 +630,8 @@ else
   echo "=====SKIP  --print-gnu-debuglink /lib/x86_64-linux-gnu/libc-2.27.so"
 fi
 
+# Test ensuring R_386_GOTPC relocation understood. June 202
+runtest $d1 $d2 mustacchi/relgotpc.o -a -M
 # DWARF5 test, new 17 June 2020.
 runtest $d1 $d2 moya2/filecheck.dwo -a -M
 runtest $d1 $d2 moya2/filecheck.dwo -a -vvv -M
@@ -1226,6 +1229,7 @@ runtest $d1 $d2  moshe/a.out.t -ka -vvv -R -M
 if [ "$suppressbigdiffs" != "y" ]
 then
   # Some of these are the same tests done based on $filelist
+  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4-gdb-index --print_fission
   runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
   runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
   runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
