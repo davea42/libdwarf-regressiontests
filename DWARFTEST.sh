@@ -225,12 +225,11 @@ dwinc=$top_srcdir/libdwarf
 #  oi and  Ei are to ensure that things
 # work properly when using libelf. Including relocations.
 #baseopts='-F'
-# -I is the same as --print-fission
 if [ x$withlibelf = "xwithlibelf" ]
 then
-  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N --print-fission'
+  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
 else
-  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N --print-fission'
+  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
 fi
 
 kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku -kuf"
@@ -583,6 +582,22 @@ else
   cd ..
 fi
 
+#gcc using -gsplit-dwarf option
+# debuglink via DWARF4. frame one via DWARF5
+runtest $d1 $d2 gsplitdwarf/getdebuglink                  --print_fission -a 
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --print_fission -a
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=gsplitdwarf/getdebuglink --print_fission -a
+runtest $d1 $d2 gsplitdwarf/frame1-frame1.dwo             -a --print-fission
+runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=gsplitdwarf/frame1 -a --print-fission 
+runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission
+# Same but now with -vv
+runtest $d1 $d2 gsplitdwarf/getdebuglink -a -vv --print_fission 
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo -a -vv --print_fission
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=gsplitdwarf/getdebuglink -a -vv --print_fission
+runtest $d1 $d2 gsplitdwarf/frame1.dwo -a -vv --print-fission
+runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=gsplitdwarf/frame1 -a -vv --print-fission 
+runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission -vv
+
 # tiny and severly damaged 'object' file.
 runtest $d1 $d2 kapus/bad.obj -a
 
@@ -601,6 +616,48 @@ runtest $d1 $d2 rnglists/pe_map.o  --print-raw-rnglists
 
 runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -a
 runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -ka
+
+# FILES with .gdb_index
+# -I is the same as --print-fission
+runtest $d1 $d2 debugfissionb/ld-new                    --print-fission
+runtest $d1 $d2 debugfissionb/ld-new               -vvv --print-fission
+runtest $d1 $d2 dwarf4/ddg4.5dwarf-4-gdb-index          --print-fission
+runtest $d1 $d2 dwarf4/ddg4.5dwarf-4-gdb-index     -vvv --print-fission
+runtest $d1 $d2 emre2/emre.ex                           --print-fission
+runtest $d1 $d2 emre2/emre.ex                      -vvv --print-fission
+runtest $d1 $d2 emre4/test19_64_dbg                     --print-fission
+runtest $d1 $d2 emre4/test19_64_dbg                -vvv --print-fission
+runtest $d1 $d2 emre5/test33_64_opt_fpo_split           --print-fission
+runtest $d1 $d2 emre5/test33_64_opt_fpo_split      -vvv --print-fission
+runtest $d1 $d2 emre6/class_64_opt_fpo_split            --print-fission
+runtest $d1 $d2 emre6/class_64_opt_fpo_split       -vvv --print-fission
+runtest $d1 $d2 hughes/krb5-1.11.3-38.fc20.x86_64       --print-fission
+runtest $d1 $d2 hughes/krb5-1.11.3-38.fc20.x86_64  -vvv --print-fission
+runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug      --print-fission
+runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -vvv --print-fission
+runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug        --print-fission
+runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug   -vvv  --print-fission
+runtest $d1 $d2 liu/OOB0505_02.elf                     --print-fission
+runtest $d1 $d2 liu/OOB0505_02.elf                 -vvv --print-fission
+runtest $d1 $d2 liu/heapoverflow01b.elf                 --print-fission
+runtest $d1 $d2 liu/heapoverflow01b.elf            -vvv --print-fission
+# FILES with .debug_cu__index and .debug_tu_index
+runtest $d1 $d2 debugfissionb/ld-new.dwp                --print-fission
+runtest $d1 $d2 debugfissionb/ld-new.dwp           -vvv --print-fission
+runtest $d1 $d2 emre3/a.out.dwp                         --print-fission
+runtest $d1 $d2 emre3/a.out.dwp                    -vvv --print-fission
+runtest $d1 $d2 emre5/test33_64_opt_fpo_split.dwp       --print-fission
+runtest $d1 $d2 emre5/test33_64_opt_fpo_split.dwp  -vvv --print-fission
+runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp        --print-fission
+runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp   -vvv --print-fission
+runtest $d1 $d2 liu/NULLdereference0519.elf             --print-fission
+runtest $d1 $d2 liu/NULLdereference0519.elf        -vvv --print-fission
+runtest $d1 $d2 liu/OOB0517_02.elf                      --print-fission
+runtest $d1 $d2 liu/OOB0517_02.elf                 -vvv --print-fission
+runtest $d1 $d2 liu/OOB_read4.elf                       --print-fission
+runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
+
+
 
 # See mustacchi/README. 
 # Clang generates a slightly unusual relocation set for -m32.

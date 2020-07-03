@@ -9,13 +9,14 @@ path=$1
 
 while read n
 do
-  readelfobj $n | grep '[.]gnu_debuglink' >/tmp/junk2
+  #echo "do $n"
+  readelfobj $n | grep '[.]debug_names' >/tmp/junk2
   if [ $? -eq 0 ]
   then
     echo -n  $n " " >/tmp/junk3
     cat /tmp/junk3 /tmp/junk2
   #else
-  #  echo "NO debuglink in $n"
+  #  echo "NO such section in $n"
   fi
 done  < $path
 
