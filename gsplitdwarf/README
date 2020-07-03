@@ -1,4 +1,7 @@
 July 3, 2020
 Source is dwarfexample/debuglink code in the libdwarf/dwarfdump source tree.
+The build was -gsplit-dwarf -gdwarf-4
 
-The build was -gsplit-dwarf
+frame1 is also from libdwarf code/dwarfexample, the frame1.c example.
+-gsplit-dwarf -gdwarf-5
+
