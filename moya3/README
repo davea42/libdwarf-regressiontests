@@ -1,0 +1,11 @@
+8 July 2020
+
+Jorge Gorbe Moya writes:
+I'm trying to update our internal copy of libdwarf to HEAD
+and I've found a problem with how DW_AT_GNU_ranges_base is
+treated. It seems to be an existing problem unveiled by one
+of the fixes at HEAD rather than a completely new bug. I'll
+try to explain. Let's take a look at the following listing
+(line numbers are from an older revision, not HEAD):
+
+He provides the object files here.
