@@ -9,3 +9,12 @@ try to explain. Let's take a look at the following listing
 (line numbers are from an older revision, not HEAD):
 
 He provides the object files here.
+
+---------------
+10 July 2020 by davea
+The fix was slighly different than he or I thought
+because creating the CU context meant there was no need
+to read attribute values, the CU context had them
+(once the CU_context setter stopped discarding DW_AT_GNU_ranges_base)!
+
+

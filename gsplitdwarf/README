@@ -5,3 +5,56 @@ The build was -gsplit-dwarf -gdwarf-4
 frame1 is also from libdwarf code/dwarfexample, the frame1.c example.
 -gsplit-dwarf -gdwarf-5
 
+frame1 sections:
+[ 0] 0x00000000 0x00000000
+[ 1] 0x00000238 0x0000001c .interp
+[ 2] 0x00000254 0x00000020 .note.ABI-tag
+[ 3] 0x00000274 0x00000024 .note.gnu.build-id
+[ 4] 0x00000298 0x00000024 .gnu.hash
+[ 5] 0x000002c0 0x00000498 .dynsym
+[ 6] 0x00000758 0x00000209 .dynstr
+[ 7] 0x00000962 0x00000062 .gnu.version
+[ 8] 0x000009c8 0x00000060 .gnu.version_r
+[ 9] 0x00000a28 0x00003690 .rela.dyn
+[10] 0x000040b8 0x000003f0 .rela.plt
+[11] 0x000044a8 0x00000017 .init
+[12] 0x000044c0 0x000002b0 .plt
+[13] 0x00004770 0x00000008 .plt.got
+[14] 0x00004780 0x00062862 .text
+[15] 0x00066fe4 0x00000009 .fini
+[16] 0x00066ff0 0x00010b33 .rodata
+[17] 0x00077b24 0x00001774 .eh_frame_hdr
+[18] 0x00079298 0x00005e40 .eh_frame
+[19] 0x0007f470 0x00000008 .init_array
+[20] 0x0007f478 0x00000008 .fini_array
+[21] 0x0007f480 0x000007d8 .data.rel.ro
+[22] 0x0007fc58 0x00000210 .dynamic
+[23] 0x0007fe68 0x00000190 .got
+[24] 0x00080000 0x00001300 .data
+[25] 0x00081300 0x00000048 .bss
+[26] 0x00081300 0x00000029 .comment
+[27] 0x00081329 0x00000750 .debug_aranges
+[28] 0x00081a79 0x0000084f .debug_info
+[29] 0x000822c8 0x00000378 .debug_abbrev
+[30] 0x00082640 0x0000ffb7 .debug_line
+[31] 0x000925f7 0x000004cf .debug_str
+[32] 0x00092ac6 0x000032f0 .debug_addr
+[33] 0x00095db6 0x00006136 .debug_gnu_pubnames
+[34] 0x0009beec 0x0000c5d0 .debug_gnu_pubtypes
+[35] 0x000a84bc 0x000003b3 .debug_rnglists
+[36] 0x000a8870 0x00005898 .symtab
+[37] 0x000ae108 0x000050ad .strtab
+[38] 0x000b31b5 0x0000018f .shstrtab
+
+frame1.dwo sections
+[ 0] 0x00000000 0x00000000
+[ 1] 0x00000040 0x00000b32 .debug_info.dwo
+[ 2] 0x00000b72 0x00000223 .debug_abbrev.dwo
+[ 3] 0x00000d95 0x0000016b .debug_line.dwo
+[ 4] 0x00000f00 0x000002e4 .debug_str_offsets.dwo
+[ 5] 0x000011e4 0x00000914 .debug_str.dwo
+[ 6] 0x00001af8 0x00000090 .symtab
+[ 7] 0x00001b88 0x00000001 .strtab
+[ 8] 0x00001b89 0x00000073 .shstrtab
+
+

@@ -557,6 +557,20 @@ runtest () {
 }
 # end 'runtest'
 
+#=============BEGIN THE TESTS===============
+
+/*  printing .debug_gnu_pubnames and .debug_gnu_pubtypes
+runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
+runtest $d1 $d2 debugfission/target.o  --print-debug-gnu
+runtest $d1 $d2 gsplitdwarf/frame1     --print-debug-gnu
+runtest $d1 $d2 gsplitdwarf/getdebuglink --print-debug-gnu
+runtest $d1 $d2 moya/simple.o          --print-debug-gnu
+runtest $d1 $d2 moya/with-types.o      --print-debug-gnu
+runtest $d1 $d2 moya3/ranges_base.o    -a -G -M -v
+runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v
+runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=moya3/ranges_base.o
+
+
 # New September 11, 2019.
 if [ x$withlibelf = "xnolibelf" ]
 then
@@ -568,6 +582,8 @@ else
   chkres $? "testoffdie/runtest.sh"
   cd ..
 fi
+
+
 
 
 # .gnu_debuglink and .note.gnu.build-id  section tests.
