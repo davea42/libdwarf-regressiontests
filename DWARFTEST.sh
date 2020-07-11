@@ -559,7 +559,7 @@ runtest () {
 
 #=============BEGIN THE TESTS===============
 
-/*  printing .debug_gnu_pubnames and .debug_gnu_pubtypes
+# printing .debug_gnu_pubnames and .debug_gnu_pubtypes
 runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
 runtest $d1 $d2 debugfission/target.o  --print-debug-gnu
 runtest $d1 $d2 gsplitdwarf/frame1     --print-debug-gnu
