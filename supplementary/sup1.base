@@ -1,0 +1,10 @@
+
+.debug_sup
+  Version              : 2
+  Supplementary file   : 0 (no}
+  Filename             : fake-file/fake-file-name
+  Checksum Length      : 22
+  Checksum bytes in hex:
+    66616b6520636865636b73756d5f636f
+    6e74656e7400
+

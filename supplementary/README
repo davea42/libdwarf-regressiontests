@@ -1,0 +1,11 @@
+
+July 14, 2020
+Using
+  dwarfgen --add-debug-sup -t obj \
+  -o dwarfstringsup.o -c 0 libdwarf_la-dwarfstring.o
+
+created dwarfstringsup.o from the libdwarf object file.
+
+It fake section content, but it enables verification the
+dwarfdump option --print-debug-sup
+actually works.
