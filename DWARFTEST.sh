@@ -557,7 +557,14 @@ runtest () {
 }
 # end 'runtest'
 
-#=============BEGIN THE TESTS===============
+
+echo "=============BEGIN THE TESTS==============="
+
+# Checking that we can print the .debug_sup section
+cd supplementary
+sh runtest.sh 
+chkres $? "supplementary/runtest.sh"
+cd ..
 
 # printing .debug_gnu_pubnames and .debug_gnu_pubtypes
 runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
@@ -582,6 +589,7 @@ else
   chkres $? "testoffdie/runtest.sh"
   cd ..
 fi
+
 
 
 
