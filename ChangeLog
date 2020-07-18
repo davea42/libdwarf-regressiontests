@@ -1,3 +1,9 @@
+2020-07-18 David Anderson
+    * dwarfdump-i386-freebsd.O,dwarfdump-x86_64-freebsd.O:
+      A disk drive crashed (many many errors) 
+      so built new VMs with FreeBSD 12.1 and tested. 
+      Looks good. The new VMs seem to run faster
+      than the old ones.
 2020-06-30 David Anderson
     * RegressionTestsResults.ods: Latest results. Pass
       with -fsanitize and suppressing de-alloc-tree.
