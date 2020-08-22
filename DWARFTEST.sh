@@ -626,6 +626,8 @@ runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission -vv
 runtest $d1 $d2 kapus/bad.obj -a
 
 #DWARF5 with .debug_rnglists and .debug_loclists
+runtest $d1 $d2 moya4/hello -ka -v
+runtest $d1 $d2 moya4/hello -a -v -M 
 runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print_raw_rnglists
 runtest $d1 $d2 moya2/filecheck.dwo -ka --print_raw_rnglists
 
