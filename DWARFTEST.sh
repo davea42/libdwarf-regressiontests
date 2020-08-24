@@ -1123,7 +1123,8 @@ runtest $d1 $d2 emre/input.o -a
 runtest $d1 $d2 emre2/emre.ex -I
 runtest $d1 $d2 emre2/emre.ex --print-gnu-debuglink
 
-runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -i -x tied=emre5/test33_64_opt_fpo_split 
+runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=emre5/test33_64_opt_fpo_split 
+runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=emre5/test33_64_opt_fpo_split 
 
 
 echo "=====START   baddie1 runtest.sh"
