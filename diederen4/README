@@ -1,0 +1,31 @@
+
+This example provided by Arnaud Diederen
+August 26, 2020.
+Part of his email:
+
+Using libdwarf's `dwarfdump`, however, will not segfault.
+
+That's because one of the key differences between `dwarfdump`
+and our tool, is in how it treats errors: it treats them more lightly
+than `dwarfdump`, and soldiers on, proceeding as if nothing
+bad happened.
+
+But modifying dwarfdump/print_die.c in the following way,
+*just* so it keeps trying to extract attributes, and keeps
+processing the compile unit, will reveal the bug:
+---
+> diff --git a/print_die.c.orig b/print_die.c
+> index 193dd58..c8ed296 100644
+> --- a/print_die.c.orig
+> +++ b/print_die.c
+> @@ -2000,7 +2000,7 @@ print_one_die(Dwarf_Debug dbg, Dwarf_Die die,
+>                      &bSawHigh,
+>                      &highAddr,
+>                      &attr_match_localb,err);
+> -                if (aresb == DW_DLV_ERROR) {
+> +                if (aresb == DW_DLV_ERROR && 0) {
+>                      struct esb_s m;
+>  
+>                      esb_constructor(&m);
+
+-----------
