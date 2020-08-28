@@ -2133,16 +2133,16 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000545 GOFF = 0x00000ee6, Low PC = 0xfff43e40, High PC = 0xfff441d7
 
-dwarfdump ERROR:  ERROR: dwarf_siblingof fails tracing siblings of a DIE.:  DW_DLE_DIE_ABBREV_LIST_NULL: There is no abbrev present for code 376 in this compilation unit. The highest known code is 376 .. Attempting to continue.
+dwarfdump ERROR:  ERROR: dwarf_siblingof fails tracing siblings of a DIE.:  DW_DLE_DIE_ABBREV_LIST_NULL: There is no abbrev present for code 376 in this compilation unit. The highest known code in any compilation unit is 376 .. Attempting to continue.
 
 CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000545 GOFF = 0x00000ee6, Low PC = 0xfff43e40, High PC = 0xfff441d7
 
-dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_DIE_ABBREV_LIST_NULL: There is no abbrev present for code 376 in this compilation unit. The highest known code is 376 .. Attempting to continue.
+dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_DIE_ABBREV_LIST_NULL: There is no abbrev present for code 376 in this compilation unit. The highest known code in any compilation unit is 376 .. Attempting to continue.
 
 CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000545 GOFF = 0x00000ee6, Low PC = 0xfff43e40, High PC = 0xfff441d7
 
-There were 6 DWARF errors reported: see ERROR above.
+There were 4 DWARF errors reported: see ERROR above.

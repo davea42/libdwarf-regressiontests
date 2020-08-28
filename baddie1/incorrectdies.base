@@ -47,4 +47,4 @@ CU Name = test.cpp
 CU Producer = SN Systems ps3ppusnc - 'ps3ppucf.exe' 999.9.11873.1 (dev,unified @180914 checking) WIN32
 DIE OFF = 0x00000039 GOFF = 0x00000039, Low PC = 0x00000000, High PC = 0x00000048
 
-There were 3 DWARF errors reported: see ERROR above.
+There were 2 DWARF errors reported: see ERROR above.

@@ -2384,4 +2384,4 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x000005e6 GOFF = 0x00000f87, Low PC = 0xfff43e40, High PC = 0xfff441d7
 
-There were 41 DWARF errors reported: see ERROR above.
+There were 21 DWARF errors reported: see ERROR above.

@@ -15,6 +15,8 @@ echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE ; unset NLIZE"
 # It is not test runtime that is the problem.
 # If the actual result difference is substantial
 # the shell time doing diff etc takes too long.
+# 28 August 2020. Completely revamped the way
+# tests are counted and the way $suppressbigdiffs is implemented. 
 
 echo 'Starting regressiontests: DWARFTEST.sh' `date`
 . ./SHALIAS.sh
@@ -188,6 +190,8 @@ then
 else
   echo "suppress big diffs........: no"
 fi
+#for filediff() when suppressbigdiffs=y
+maxdiffile=50000000
 
 # Speeds up diff on big files with small differences.
 echo a >/tmp/junkadwtests
@@ -248,19 +252,21 @@ rm -f $ntimeout
 chkres () {
   if [ $1 = 0 ]
   then
-    goodcount=`expr $goodcount + 1`
+    #goodcount=`expr $goodcount + 1`
+    return 0
   else
     echo FAIL  $2
-    failcount=`expr $failcount + 1`
+    #failcount=`expr $failcount + 1`
   fi
 }
 chkresn () {
   if [ $1 = 0 ]
   then
-    goodcount=`expr $goodcount + $3`
+    #goodcount=`expr $goodcount + $3`
+    return 0
   else
     echo FAIL  $2
-    failcount=`expr $failcount + $3`
+    #failcount=`expr $failcount + $3`
   fi
 }
 
@@ -290,6 +296,7 @@ diederen2/pc_dwarf_bad_sibling.elf
 diederen2/pc_dwarf_bad_reloc_section_link.elf
 diederen2/pc_dwarf_bad_string_offset.elf
 diederen3/pc_dwarf_bad_name3.elf
+diederen4/mips_dwarf_bad_interr_30368.elf
 emre3/a.out.dwp
 emre3/foo.dwo
 emre3/main.dwo
@@ -409,6 +416,64 @@ unifyddnameb () {
   sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart > $nend
 }
 
+# Some files to be diff'd can be 5+GB. 
+# Files which are too big will often take hours before
+# finishing diff. 
+# At least on the freebsd VMs where I test.
+# With the native host OS it is usually not necessary to 
+# set suppressbigdiffs=y  .
+filediff() {
+t1=$1
+t2=$2
+targ=$3
+#echo "dadebug" $t1 $t2 $targ
+shift ; shift ; shift
+if [ "$suppressbigdiffs" = "y" ]
+then
+  $mypydir/checksize.py $maxdiffile $t1  $t2
+  if [ $?  -eq 0 ]
+  then
+    # Ok to diff
+    diff $diffopt $t1 $t2
+    if [ $? -eq 0 ]
+    then
+      #goodcount=`expr $goodcount + 1`
+      return 0
+    else
+      #echo "FAIL -O "  $* $targ
+      #failcount=`expr $failcount + 1`
+      return 1
+    fi
+  else
+    # too big to diff
+    cmp $t1 $t2
+    if [ $? -eq 0 ]
+    then
+      echo "PASS cmp Identical "  $* $targ
+      #goodcount=`expr $goodcount + 1`
+      return 0
+    else
+      echo "FAIL cmp "  $* $targ
+      #failcount=`expr $failcount + 1`
+      return 1
+    fi
+  fi
+else
+  diff $diffopt $t1 $t2
+  if [ $? -eq 0 ]
+  then
+        #echo "PASS -O "  $* $targ
+        #goodcount=`expr $goodcount + 1`
+        return 0
+  else
+        #echo "FAIL -O "  $* $targ
+        #failcount=`expr $failcount + 1`
+        return 1
+  fi
+fi
+return 0
+}
+
 totaltestcount=0
 runtest () {
 	olddw=$1
@@ -417,143 +482,123 @@ runtest () {
 	shift
 	shift
 	shift
-	
-        totaltestcount=`expr $totaltestcount + 1`
-        pctstring=`$mypycom $mypydir/showpct.py $totaltestcount`
-        echo "=====START Pct $pctstring  $*  $targ" 
-        rm -f core
-        rm -f tmp1 tmp2 tmp3
-        rm -f tmp1err tmp2err tmp3err 
-        rm -f tmp1errb tmp1errc
-        rm -f tmp1berr tmp2berr
-        # OFo OFn are targets of dwarfdump -O file=path
-        #
-        rm -f OFo OFn  OFo1 OFn1 
-        rm -f OFo2 OFn2
-        rm -f OFo3 OFn3
-	    rm -f OFobkup
+	allgood="y"
+    totaltestcount=`expr $totaltestcount + 1`
+    pctstring=`$mypycom $mypydir/showpct.py $totaltestcount`
+    echo "=====START Pct $pctstring  $*  $targ" 
+    rm -f core
+    rm -f tmp1 tmp2 tmp3
+    rm -f tmp1err tmp2err tmp3err 
+    rm -f tmp1errb tmp1errc
+    rm -f tmp1berr tmp2berr
+    # testOfile OFn OF* are targets of dwarfdump -O file=testOfile
+    rm -f testOfile OFn  OFo1 OFn1 
+    rm -f OFo2 OFn2
+    rm -f OFo3 OFn3
 
-        # Running an old one till baselines established.
-        echo "old start " `date`
-        tmplist="$*"
-        #echo "dadebug tmplist baseline line5 difference-fix ",$tmplist 
-        # dadebug temp strip -x
-        #tmplist2=`stripx "$*"`
-        # echo "dadebug tmplist2 ",$tmplist2 
-        echo "======" $tmplist $targ >> $otimeout
-        if [ x$wrtimeo != "x" ]
-        then
+    # Running an old one till baselines established.
+    echo "old start " `date`
+    tmplist="$*"
+    #echo "dadebug tmplist baseline line5 difference-fix ",$tmplist 
+    # dadebug temp strip -x
+    #tmplist2=`stripx "$*"`
+    # echo "dadebug tmplist2 ",$tmplist2 
+    echo "======" $tmplist $targ >> $otimeout
+    if [ x$wrtimeo != "x" ]
+    then
           $wrtimeo $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
-        else
+    else
           $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
-        fi
-        #$olddw $*  $targ 1>tmp1a 2>tmp1erra
-        echo "old done " `date`
-        unifyddname tmp1a tmp1
-        unifyddnameb tmp1erra tmp1err
-        if [ -f core ]
-        then
+    fi
+    #$olddw $*  $targ 1>tmp1a 2>tmp1erra
+    echo "old done " `date`
+    unifyddname tmp1a tmp1
+    unifyddnameb tmp1erra tmp1err
+    if [ -f core ]
+    then
            echo corefile in  $olddw '(old dwarfdump)'
            rm core
-        fi
-        if [ -f OFo ] 
-        then
-           unifyddname OFo OFo1
-           grep -v Usage   OFo1 >OFo2
-           # Delete date on first line
-           sed '1d' OFo2 >OFo3
-           cp OFo OFobkup
-        fi
+    fi
+    # To deal with the -O file=path naming dwarfdump output.
+    if [ -f testOfile ] 
+    then
+      echo "Test(old)  -O file=testOfile"
+      unifyddname testOfile OFo1
+      grep -v Usage   OFo1 >OFo2
+      # Delete date on first line
+      sed '1d' OFo2 >OFo3
+      cp testOfile 
+    fi
+    # We will now build the other file=testOfile if such is involved
+    rm -f testOfile
+    echo "new start " `date`
+    echo "======" $tmplist $targ >> $ntimeout
+    if [ x$wrtimen != "x" ]
+    then
+      $wrtimen $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+    else
+      $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+    fi
+    echo "new done " `date`
+    # No need to unify for new dd name.
+    unifyddname tmp2a tmp2
+    unifyddnameb tmp2erra tmp2err
+    date
+    if [ -f core ]
+    then
+      echo corefile in  $newdw
+      exit 1
+    fi
+    cat tmp2  >tmp3
+    if [ -f testOfile ]
+    then
+      # testing -O file=path
+      unifyddname testOfile OFn1
+      grep -v Usage   OFn1 >OFn2
+      # Delete date on first line
+      sed '1d' OFn2 >OFn3
+    fi
+    if [ -f OFn3 -o -f OFo3 ]
+    then
+      echo "Test -O file=testOfile"
+      # testing -O file=path
+      touch OFn3 OFo3
+      filediff OFn3 OFo3  $*  $targ
+      if [ $? -ne 0 ]
+      then
+             allgood=n
+             echo "FAIL -O file=testOfile"  $* $targ
+      fi
+    fi
 
-        echo "new start " `date`
-        echo "======" $tmplist $targ >> $ntimeout
-        if [ x$wrtimen != "x" ]
-        then
-          $wrtimen $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
-        else
-          $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
-        fi
-        echo "new done " `date`
-        # No need to unify for new dd name.
-        unifyddname tmp2a tmp2
-        unifyddnameb tmp2erra tmp2err
-        date
-        if [ -f core ]
-        then
-           echo corefile in  $newdw
-           exit 1
-        fi
-        cat tmp2  >tmp3
-        if [ -f OFo ] 
-        then
-           # Here OFo is really OFn
-           unifyddname OFo OFn1
-           cp OFo OFnbkup
-           grep -v Usage   OFn1 >OFn2
-           # Delete date on first line
-           sed '1d' OFn2 >OFn3
-        fi
+    filediff tmp1 tmp3  $* $targ
+    if [ $? -ne 0 ]
+    then
+      allgood=n
+    fi
+    grep -v Usage   tmp1err >tmp1berr
+    grep -v Usage   tmp2err >tmp2berr
 
-        if [ -f OFn3 -o -f OFo3 ]
-        then
-          touch OFn3 OFo3
-          #cmp  OFo3 OFn3
-          #if [ $? -ne 0 ]
-          #then
-            diff $diffopt OFo3 OFn3
-            if [ $? -eq 0 ]
-            then
-              goodcount=`expr $goodcount + 1`
-            else
-              echo "FAIL -O file=path"  $* $targ
-              failcount=`expr $failcount + 1`
-            fi
-          #else
-          #  goodcount=`expr $goodcount + 1`
-          #fi
-        fi
-
-        # 
-        #cmp tmp1 tmp3
-        #if [ $? -ne 0 ]
-        #then
-          diff $diffopt tmp1 tmp3
-          if [ $? = 0 ]
-          then
-            goodcount=`expr $goodcount + 1`
-          else
-            echo FAIL  $* $targ
-            failcount=`expr $failcount + 1`
-          fi
-        #else
-        #  goodcount=`expr $goodcount + 1`
-        #fi
-
-        grep -v Usage   tmp1err >tmp1berr
-        grep -v Usage   tmp2err >tmp2berr
-        #cmp tmp1berr tmp2berr
-        #if [ $? -ne 0 ]
-        #then
-          diff $diffopt tmp1berr tmp2berr
-          if [ $? = 0 ]
-          then
-            goodcount=`expr $goodcount + 1`
-          else
-            echo FAIL Usage  $* $targ
-            failcount=`expr $failcount + 1`
-          fi
-        #else
-        #  goodcount=`expr $goodcount + 1`
-        #fi
-        rm -f core
-        rm -f tmp1 tmp2 tmp3
-        rm -f tmp1err tmp2err tmp3err 
-        rm -f tmp1errb tmp1errc
-        rm -f tmp1berr tmp2berr
-	    rm -f OFobkup
-        rm -f OFo OFn  OFo1 OFn1 
-        rm -f OFo2 OFn2
-        rm -f OFo3 OFn3
+    filediff tmp1berr tmp2berr  $* $targ
+    if [ $? -ne 0 ]
+    then
+      allgood=n
+    fi
+    if [ $allgood = "y" ]
+    then
+      goodcount=`expr $goodcount + 1`
+    else
+      echo "FAIL  $* $targ"
+      failcount=`expr $failcount + 1`
+    fi
+    rm -f core
+    rm -f tmp1 tmp2 tmp3
+    rm -f tmp1err tmp2err tmp3err 
+    rm -f tmp1errb tmp1errc
+    rm -f tmp1berr tmp2berr
+    rm -f testOfile OFn  OFo1 OFn1 
+    rm -f OFo2 OFn2
+    rm -f OFo3 OFn3
 }
 # end 'runtest'
 
@@ -1067,7 +1112,7 @@ runtest $d1 $d2 emre3/a.out.dwp -i -d
 runtest $d1 $d2 emre3/a.out.dwp -i -d -v
 runtest $d1 $d2 emre3/a.out.dwp -I
 
-runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -i -O file=./OFo
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -i -O file=./testOfile
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kD
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kG
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -ku
@@ -1091,30 +1136,23 @@ runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 
 # Results are so large that if there are differences 
 # the diffs will take hours, allow ignoring these.
-if [ $suppressbigdiffs = "n" ]
-then
-  runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
-  runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
-  runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
+runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
+runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
+runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
   # Testing SHF_COMPRESSED .debug* section reading.
-  runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
-  runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
+runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
+runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
   # .eh_frame is not actually compressed...
-  runtest $d1 $d2  klingler2/compresseddebug.amd64 -F
+runtest $d1 $d2  klingler2/compresseddebug.amd64 -F
 
   # A big object.
-  runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
-  runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
-  runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
-  runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
-  runtest $d1 $d2  debugfissionb/ld-new -I
-  runtest $d1 $d2  debugfissionb/ld-new -a  
-  runtest $d1 $d2  debugfissionb/ld-new -ka  
-else
-  # Skip on vms a bit too weak to do this big a diff
-  # in a reasonable time if it really has differences.
-  echo "=====SKIP  some debugfissionb/ld-new.dwp tests"
-fi
+runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
+runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
+runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
+runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
+runtest $d1 $d2  debugfissionb/ld-new -I
+runtest $d1 $d2  debugfissionb/ld-new -a  
+runtest $d1 $d2  debugfissionb/ld-new -ka  
 
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
@@ -1310,32 +1348,27 @@ runtest $d1 $d2  moshe/hello -ka -vvv -R -M
 runtest $d1 $d2  moshe/a.out.t -a -vvv -R -M
 runtest $d1 $d2  moshe/a.out.t -ka -vvv -R -M
 
-if [ "$suppressbigdiffs" != "y" ]
-then
-  # Some of these are the same tests done based on $filelist
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4-gdb-index --print_fission
-  runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
-  runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
-  # ka p, where we test a warning message is generated 
-  # (p is printing option)
-  # And should run like just -p (as of Jan 2015 erroneously 
-  # did many checks).
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -p  -R -M 
-  # normal ka, full checks
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka  -R -M 
-  # ka P, where P means print CU names per compiler.
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M 
-  # ka P kd, where so print CU names and error summary per compiler
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M 
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i  
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -g
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d
-  runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d -v
-else
-  echo "SKIP various dwarf4/ddg4.5dwarf-4 tests"
-fi
+# Some of these are the same tests done based on $filelist
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4-gdb-index --print_fission
+runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
+runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
+# ka p, where we test a warning message is generated 
+# (p is printing option)
+# And should run like just -p (as of Jan 2015 erroneously 
+# did many checks).
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -p  -R -M 
+# normal ka, full checks
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka  -R -M 
+# ka P, where P means print CU names per compiler.
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M 
+# ka P kd, where so print CU names and error summary per compiler
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M 
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i  
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -g
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d -v
 
 runtest $d1 $d2  marinescu/hello.original -ka -x abi=ppc
 # Following is for URI testing
