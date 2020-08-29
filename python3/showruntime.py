@@ -12,10 +12,17 @@ def isdateitem(rec):
     return "os"
   if rec.startswith("new done "):
     return "nd"
-  return "n"
 
 def extracttime(s):
-  # create a time record, return it or False.
+  wds = s.split()
+  if len(wds) < 4:
+    print("Malformed date",s);
+    sys.exit(1)
+  fy = wds[2].split("-")
+  ft = wds[3].split(":")
+  dt = datetime.datetime(int(fy[0]),int(fy[1]),int(fy[2]),\
+    int(ft[0]),int(ft[1]),int(ft[2]))
+  return dt
 
 if __name__ == '__main__':
   fn="ALLdd"
@@ -25,6 +32,8 @@ if __name__ == '__main__':
   starttext = ""
   osd = False
   ndd = False
+  biggestrun = False
+  biggestitem = ""
   failcount = 0
   print("trimdate on file",fn)
   try:
@@ -40,16 +49,34 @@ if __name__ == '__main__':
     if len(rec) < 1:
       # eof
       break
-    typerec = istimeiten(rec)
+    typerec = isdateitem(rec)
     if  typerec == "st":
       if osd and ndd: 
-      startext = rec
+        diff = ndd-osd
+        if diff.total_seconds() > 0:
+          print(rec) 
+          print("dwarfdump secs",diff.total_seconds())
+          if not biggestrun or diff > biggestrun:
+            biggestrun = diff
+            biggestitem = starttext
+      starttext = rec
+      #print(rec)
     elif typerec == "os":
       osd = extracttime(rec)
+      if ndd:
+        diff = osd - ndd
+        if diff.total_seconds() > 0:
+          print(starttext)
+          print("shell secs   ",diff.total_seconds())
     elif typerec == "nd":
       ndd = extracttime(rec)
     else:
       continue
+  if osd and ndd:
+    diff = ndd-osd
+    print("dwarfdump run time secs",diff.total_seconds())
+  print("biggest delta, seconds",biggestrun.total_seconds())
+  print("biggest was           ",biggestitem)
      
     
 
