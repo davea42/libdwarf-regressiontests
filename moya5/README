@@ -1,0 +1,39 @@
+29 August 2020
+The original long lines have been altered so they fit
+in a 70 character window.
+
+Jorge Gorbe Moya writes:
+
+I've noticed a problem with indexed
+string attributes in DWARF5 split-dwarf binaries. It can be
+reproduced with the attached hello world example (compilation
+instructions in a comment in hello.c). Running `dwarfdump -a
+-v hello.dwp` prints the following compile unit:
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x00000014>  DW_TAG_compile_unit <abbrev 1>
+  DW_AT_producer              (indexed string: 0x00000002)main
+  DW_AT_language              DW_LANG_C99
+  DW_AT_name                  (indexed string: 0x00000003)int
+  DW_AT_dwo_name              (indexed string: 0x00000004)
+   clang version 12.0.0 (https://github.com/llvm/
+   llvm-project.git 6a7b6dd54b207945ba4b3750496036c6280ab522)
+
+where DW_AT_producer should be "clang version 12.0.0 ...",
+DW_AT_name should be "hello.c" and DW_AT_dwo_name should be
+"hello.dwo".
+
+dwarfdump prints the contents of .debug_str.dwo correctly,
+and the indices above match the strings in the table
+(DW_AT_producer is 2, DW_AT_name is 3, DW_AT_dwo_name is 4):
+
+.debug_str.dwo                                                                              
+name at offset 0x00000000, length    4 is 'main'                                            
+name at offset 0x00000005, length    3 is 'int'                                                                                                                                          
+name at offset 0x00000009, length  104 is 
+  'clang version 12.0.0 (https://github.com/llvm/
+  llvm-project.git 6a7b6dd54b207945ba4b3750496036c6280ab522)'                                      
+name at offset 0x00000072, length    7 is 'hello.c'                                          
+name at offset 0x0000007a, length    9 is 'hello.dwo'
+
+
