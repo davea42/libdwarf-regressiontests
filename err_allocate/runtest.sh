@@ -22,7 +22,7 @@ fi
 
 if [ $? -ne 0 ]
 then
-    echo FAIL building err_allocate/alloc_test .c
+    echo fail building err_allocate/alloc_test .c
     exit 1
 fi
 ./alloc_test >junk_alloc_test_out
@@ -36,18 +36,18 @@ then
     then
       echo "PASS with dealloc failed, NLIZE, check output next."
     else
-      echo FAIL RUNNNG err_allocate/alloc_test NLIZE=y .c
+      echo fail RUNNNG err_allocate/alloc_test NLIZE=y .c
       exit 1
     fi
   else
-    echo FAIL RUNNNG err_allocate/alloc_test .c
+    echo fail RUNNNG err_allocate/alloc_test .c
     exit 1
   fi
 fi
 diff alloc_test.base junk_alloc_test_out  >diffs
 if [ $? -ne 0 ]
 then
-    echo "FAIL err_allocate test.  got diffs in output."
+    echo "fail err_allocate test.  got diffs in output."
     cat diffs
     echo "To update baseline  do mv junk_alloc_test_out alloc_test.base"
     exit 1

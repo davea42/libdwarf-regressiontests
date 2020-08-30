@@ -2,12 +2,12 @@
 # Pass in simplereader path like ../simplereader
 if [ $# -ne 1 ]
 then
-   echo FAIL: Missing required executable path.
+   echo fail: Missing required executable path.
    exit 1
 fi
 if [ ! -x $1 ]
 then
-   echo "FAIL: executable not marked executable: $1"
+   echo "fail: executable not marked executable: $1"
    exit 1
 fi
 sr=$1
@@ -53,7 +53,7 @@ m() {
   diff $baseline $tmp
   if test  $?  -ne 0
   then
-      echo "FAIL test $baseline vs $tmp"
+      echo "fail test $baseline vs $tmp"
       echo "to update, mv $tmp $baseline"
       isfail="y"
   fi
@@ -96,7 +96,7 @@ m2() {
   diff $baseline $tmp
   if test  $?  -ne 0
   then
-      echo "FAIL test $baseline vs $tmp using $sr $opt $obj"
+      echo "fail test $baseline vs $tmp using $sr $opt $obj"
       echo "to update, mv $tmp $baseline"
       isfail="y"
       #exit 1
@@ -127,7 +127,7 @@ m2 $sr nodwarfexit1.base ../kaufmann/t.o fd
 
 if [ $isfail = "y" ]
 then
-  echo FAIL debugfissionb  simplereader interfaces test
+  echo fail debugfissionb  simplereader interfaces test
   exit 1
 fi
 echo "PASS debugfissionb/runtest.sh  simplereader interfaces test"

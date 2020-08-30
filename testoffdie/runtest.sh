@@ -22,13 +22,13 @@ fi
 if [ x$withlibz = "x" ]
 then
   echo "Improper arg withlibz!"
-  echo FAIL testoffdie withlibz not set
+  echo fail testoffdie withlibz not set
   exit 1
 fi
 if [ x$withlibelf = "x" ]
 then
   echo "Improper arg withlibelf!"
-  echo FAIL testoffdie withlibelf not set
+  echo fail testoffdie withlibelf not set
   exit 1
 fi
 
@@ -43,7 +43,7 @@ opts="-I$bld -I$bld/libdwarf"
 cc $h $opts  testoffdie.c $nli $l -o junkoffdie $libs
 if [ $? -ne 0 ]
 then
-   echo FAIL compile testoffdie/testoffdie.c 
+   echo fail compile testoffdie/testoffdie.c 
    exit 1
 fi
 
@@ -51,13 +51,13 @@ fi
 r=$?
 if [ $r -ne 0 ]
 then
-   echo FAIL run  testoffdie/junkoffdie 
+   echo fail run  testoffdie/junkoffdie 
    exit 1
 fi
 diff baseout junkout
 if [ $? -ne 0 ]
 then
-  echo "FAIL mismatch expected from testoffdie/runtest.sh $1 $2"
+  echo "fail mismatch expected from testoffdie/runtest.sh $1 $2"
   echo " To update expected result: mv junkout baseout"
   exit 1
 fi

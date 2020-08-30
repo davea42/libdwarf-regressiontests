@@ -17,13 +17,13 @@ fi
 cc -g -I $dw -L $dw get_globals.c -ldwarf $libs -o getglobals
 if [ $? -ne 0 ]
 then
- echo FAIL to compile navarro/getglobals
+ echo fail to compile navarro/getglobals
  exit 1
 fi
 ./getglobals
 if [ $? -ne 0 ]
 then
- echo FAIL to run navarro/getglobals
+ echo fail to run navarro/getglobals
  exit 1
 fi
 echo PASS navarro/runtest.sh

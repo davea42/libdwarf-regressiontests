@@ -18,7 +18,7 @@ echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE ; unset NLIZE"
 # 28 August 2020. Completely revamped the way
 # tests are counted and the way $suppressbigdiffs is implemented. 
 
-echo 'Starting regressiontests: DWARFTEST.sh' `date`
+echo 'Starting regressiontests: DWARFTEST.sh'  `date "+%Y-%m-%d %H:%M:%S"`
 . ./SHALIAS.sh
 stsecs=`date '+%s'`
 # dwarfgen and libelf go together here.
@@ -29,10 +29,6 @@ then
   echo "Defaults to  withlibelf"
   withlibelf=withlibelf
 fi
-shortest=n
-#comment the following line out for a normal test.
-#No env var provided for this. Unsure the last time used. 
-#shortest=y
 
 suppresstree=
 #next line is the dwarfdump option to suppress de alloc tree
@@ -154,6 +150,8 @@ else
     mypycom=$p2
   fi
 fi
+echo "Host Endianness...........: $endian"
+echo "Python....................: $mypycom"
 
 # Do the following two for address-sanitization.
 # Not all tests will be run in that case.
@@ -191,7 +189,7 @@ else
   echo "suppress big diffs........: no"
 fi
 #for filediff() when suppressbigdiffs=y
-maxdiffile=50000000
+maxdiffile=30000000
 
 # Speeds up diff on big files with small differences.
 echo a >/tmp/junkadwtests
@@ -212,6 +210,7 @@ myhost=`hostname`
 echo   "hostname..................: $myhost"
 goodcount=0
 failcount=0
+skipcount=0
 . ./BASEFILES
 top_srcdir=$libdw
 # Must match the file location in PICKUPBIN 
@@ -252,21 +251,21 @@ rm -f $ntimeout
 chkres () {
   if [ $1 = 0 ]
   then
-    #goodcount=`expr $goodcount + 1`
+    goodcount=`expr $goodcount + 1`
     return 0
   else
     echo FAIL  $2
-    #failcount=`expr $failcount + 1`
+    failcount=`expr $failcount + 1`
   fi
 }
 chkresn () {
   if [ $1 = 0 ]
   then
-    #goodcount=`expr $goodcount + $3`
+    goodcount=`expr $goodcount + $3`
     return 0
   else
     echo FAIL  $2
-    #failcount=`expr $failcount + $3`
+    failcount=`expr $failcount + $3`
   fi
 }
 
@@ -275,8 +274,9 @@ chkresn () {
 #if [ x$withlibelf = "xnolibelf" ]
 #then
 #    echo "=====SKIP sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a because nolibelf"
+#     skipcount=`expr $skipcount + 1`
 #else
-#    filepaths='sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a'
+#    filepaths="sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a $filepaths"'
 #fi
 
 filepaths='$filepaths moshe/hello
@@ -378,20 +378,23 @@ liu/outofboundread2.elf
 liu/outofboundread.elf
 irix64/libc.so 
 irixn32/libc.so 
-irixn32/dwarfdump' 
-
-
-if [ "$suppressbigdiffs" != "y" ]
+irixn32/dwarfdump
+dwgenb/dwarfgen
+klingler/dwarfgen-zdebug
+dwarf4/dd2g4.5dwarf-4
+dwarf4/ddg4.5dwarf-4
+' 
+if [ x$withlibelf = "xnolibelf" ]
 then
-  filepaths="dwgenb/dwarfgen $filepaths"
-  filepaths="klingler/dwarfgen-zdebug $filepaths"
-  filepaths="dwarf4/dd2g4.5dwarf-4 $filepaths"
-  filepaths="dwarf4/ddg4.5dwarf-4 $filepaths"
+     echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because nolibelf"
+     skipcount=`expr $skipcount + 2`
+else
+     filepaths="sarubbo-6/1.crashes.bin $filepaths"'
+     filepaths="sarubbo-4/libresolv.a $filepaths"'
 fi
 
 # Was in the list, but does not exist!
 #x86-64/x86_64testcase.o 
-
 
 stripx() {
     #x=`echo $* | sed -e 's/-g//'`
@@ -425,23 +428,18 @@ unifyddnameb () {
 filediff() {
 t1=$1
 t2=$2
-targ=$3
-#echo "dadebug" $t1 $t2 $targ
-shift ; shift ; shift
+shift ; shift  
 if [ "$suppressbigdiffs" = "y" ]
 then
-  $mypydir/checksize.py $maxdiffile $t1  $t2
+  $mypycom $mypydir/checksize.py $maxdiffile $t1  $t2
   if [ $?  -eq 0 ]
   then
     # Ok to diff
     diff $diffopt $t1 $t2
     if [ $? -eq 0 ]
     then
-      #goodcount=`expr $goodcount + 1`
       return 0
     else
-      #echo "FAIL -O "  $* $targ
-      #failcount=`expr $failcount + 1`
       return 1
     fi
   else
@@ -449,12 +447,10 @@ then
     cmp $t1 $t2
     if [ $? -eq 0 ]
     then
-      echo "PASS cmp Identical "  $* $targ
-      #goodcount=`expr $goodcount + 1`
+      echo "pass cmp Identical "  $* 
       return 0
     else
-      echo "FAIL cmp "  $* $targ
-      #failcount=`expr $failcount + 1`
+      echo "fail cmp Differ "  $*
       return 1
     fi
   fi
@@ -462,19 +458,14 @@ else
   diff $diffopt $t1 $t2
   if [ $? -eq 0 ]
   then
-        #echo "PASS -O "  $* $targ
-        #goodcount=`expr $goodcount + 1`
         return 0
   else
-        #echo "FAIL -O "  $* $targ
-        #failcount=`expr $failcount + 1`
         return 1
   fi
 fi
 return 0
 }
 
-totaltestcount=0
 runtest () {
 	olddw=$1
 	newdw=$2
@@ -483,9 +474,13 @@ runtest () {
 	shift
 	shift
 	allgood="y"
-    totaltestcount=`expr $totaltestcount + 1`
-    pctstring=`$mypycom $mypydir/showpct.py $totaltestcount`
-    echo "=====START Pct $pctstring  $*  $targ" 
+    #  Add 1 to show our number. We have not yet
+    #  counted it as a good or a fail.
+    totalct=`expr $goodcount + $failcount + $skipcount +1`
+    pctstring=`$mypycom $mypydir/showpct.py $totalcount`
+    echo  "=====START Pct $pctstring $* $targ" 
+    #echo "=====START $* $targ" 
+    echo  "=====STATS Pct $pctstring ct: $totalct"
     rm -f core
     rm -f tmp1 tmp2 tmp3
     rm -f tmp1err tmp2err tmp3err 
@@ -497,7 +492,7 @@ runtest () {
     rm -f OFo3 OFn3
 
     # Running an old one till baselines established.
-    echo "old start " `date`
+    echo "old start " `date "+%Y-%m-%d %H:%M:%S"`
     tmplist="$*"
     #echo "dadebug tmplist baseline line5 difference-fix ",$tmplist 
     # dadebug temp strip -x
@@ -511,7 +506,7 @@ runtest () {
           $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
     fi
     #$olddw $*  $targ 1>tmp1a 2>tmp1erra
-    echo "old done " `date`
+    echo "old done " `date "+%Y-%m-%d %H:%M:%S"`
     unifyddname tmp1a tmp1
     unifyddnameb tmp1erra tmp1err
     if [ -f core ]
@@ -531,7 +526,7 @@ runtest () {
     fi
     # We will now build the other file=testOfile if such is involved
     rm -f testOfile
-    echo "new start " `date`
+    echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     echo "======" $tmplist $targ >> $ntimeout
     if [ x$wrtimen != "x" ]
     then
@@ -539,11 +534,11 @@ runtest () {
     else
       $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
     fi
-    echo "new done " `date`
+    echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
     # No need to unify for new dd name.
     unifyddname tmp2a tmp2
     unifyddnameb tmp2erra tmp2err
-    date
+    date "+%Y-%m-%d %H:%M:%S"
     if [ -f core ]
     then
       echo corefile in  $newdw
@@ -605,7 +600,9 @@ runtest () {
 
 echo "=============BEGIN THE TESTS==============="
 
+echo  "=====BLOCK individual tests and runtest.sh tests"
 # Checking that we can print the .debug_sup section
+echo "=====START  supplementary  runtest.sh"
 cd supplementary
 sh runtest.sh 
 chkres $? "supplementary/runtest.sh"
@@ -627,6 +624,7 @@ runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=moya3/ranges_base
 if [ x$withlibelf = "xnolibelf" ]
 then
   echo "=====SKIP  testoffdie  runtest.sh nolibelf $withlibz "
+  skipcount=`expr $skipcount + 1`
 else
   echo "=====START  testoffdie runtest.sh $top_srcdir $top_builddir $withlibelf $withlibz"
   cd testoffdie 
@@ -643,8 +641,9 @@ fi
 if [ x$withlibelf = "xnolibelf" ]
 then
   echo "=====SKIP  debuglink  runtest.sh nolibelf"
+  skipcount=`expr $skipcount + 1`
 else
-  echo "=====START  debuglink  runtest.sh"
+  echo "=====START  debuglink runtest.sh $withlibelf $withlibz"
   cd debuglink
   sh runtest.sh $withlibelf $withlibz
   chkres $? "debuglink/runtest.sh"
@@ -735,11 +734,13 @@ runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
 # As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
 if [ x$withlibelf = "xnolibelf" ]
 then
+  echo "=====START  mustacchi runtest.sh nolibelf"
   cd mustacchi
   sh runtest.sh
   chkres $? "mustacchi/runtestnolibelf.sh"
   cd ..
 else
+  echo "=====START  mustacchi runtest.sh withlibelf" 
   cd mustacchi
   sh runtest.sh
   chkres $? "mustacchi/runtest.sh"
@@ -749,13 +750,13 @@ else
 fi
 
 runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
+
 if [ -f /lib/x86_64-linux-gnu/libc-2.27.so ]
 then
-  echo "=====START  --print-gnu-debuglink /lib/x86_64-linux-gnu/libc-2.27.so"
   runtest $d1 $d2 /lib/x86_64-linux-gnu/libc-2.27.so --print-gnu-debuglink
-  chkres $? "libc-2.27.so --print-gnu-debuglink"
 else
   echo "=====SKIP  --print-gnu-debuglink /lib/x86_64-linux-gnu/libc-2.27.so"
+  skipcount=`expr $skipcount + 1`
 fi
 
 # Test ensuring R_386_GOTPC relocation understood. June 202
@@ -810,11 +811,11 @@ runtest $d1 $d2   wolff/POC1 -b
 #Show the usage options list
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START foo.o -h --help"
   runtest $d1 $d2 foo.o -h
   runtest $d1 $d2 foo.o --help
 else
   echo "=====SKIP foo.o -h --help"
+  skipcount=`expr $skipcount + 2`
 fi
 # Some errors in options list use, which
 # should not show the options list
@@ -883,27 +884,30 @@ runtest $d1 $d2   emre6/class_64_opt_fpo_split -a
 
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START   hughes2 runtest.sh"
+  echo "=====START  hughes2 runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf"
   cd hughes2
   sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
   chkres $?  hughes2
   cd ..
 else
   echo "=====SKIP   hughes2 runtest.sh no libelf as coredump is a bit unix/linux specific"
+  skipcount=`expr $skipcount + 1`
 fi
 
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START   implicitconst runtest.sh"
+  echo "=====START   implicitconst sh runtest.sh"
   cd implicitconst
   sh runtest.sh
   chkres $?  implicitconst
   cd ..
 else
   echo "=====SKIP   implicitconst sh runtest.sh no libelf"
+  skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   nolibelf runtest.sh"
+
+echo "=====START  nolibelf runtest.sh "
 cd nolibelf
 sh runtest.sh
 chkres $?  nolibelf
@@ -1165,75 +1169,80 @@ runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=emre5/test3
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=emre5/test33_64_opt_fpo_split 
 
 
-echo "=====START   baddie1 runtest.sh"
 cd baddie1
+echo "=====START  baddie1/runtest.sh"
 sh runtest.sh ../$d2 
 chkres $?  baddie1
 cd ..
 
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START   offsetfromlowpc sh runtest.sh ../dwarfgen ../$d2  ../simplereader"
   # Also tests dwarfgen and libdwarf with DW_CFA_advance_loc
   # operations
+  echo "=====START  offsetfromlowpc/runtest.sh ../dwarfgen ../$d2  ../simplereader"
   cd offsetfromlowpc
   sh runtest.sh ../dwarfgen ../$d2  ../simplereader
   chkres $?  offsetfromlowpc
   cd ..
 else
-  echo "=====SKIP   offsetfromlowpc sh runtest.sh no libelf"
+  skipcount=`expr $skipcount + 1`
+  echo "=====SKIP  offsetfromlowpc sh runtest.sh no libelf"
 fi
 
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START   strsize sh runtest.sh "
+  echo "=====START  strsize/runtest.sh"
   cd strsize
   sh runtest.sh 
   chkres $? strsize
   cd ..
 else
+  skipcount=`expr $skipcount + 1`
   echo "=====SKIP   strsize sh runtest.sh no libelf"
 fi
 
-echo "=====START   debugfissionb/runtest.sh multiplesimplereader tests"
 # tests simple reader and more than one dwarf_init* interface
 # across all object types
 # here kaufmann/t.o is tested as input to simplereader.
+echo "=====START  debugfissionb runtest.sh ../simplereader"
 cd debugfissionb
 sh runtest.sh  ../simplereader
 chkres $?  debugfissionb-simplreader
 cd ..
 
-echo "=====START   debugfission runtest.sh"
+echo "=====START  debugfission runtest.sh ../$d2"
 cd debugfission
 sh runtest.sh  ../$d2 
 chkres $?  debugfission
 cd ..
 
-echo "=====START   data16 runtest.sh"
+#echo "=====START   data16 runtest.sh"
 if [ $NLIZE = 'n' -a $withlibelf = "withlibelf" ]
 then
+echo "=====START  data16 runtest.sh ../$d2"
   cd data16
   sh runtest.sh
   chkres $?  "data16/runtest.sh"
   cd ..
 else
+  skipcount=`expr $skipcount + 1`
   echo "=====SKIP  data16/runtest.sh with NLIZE or if no libelf"
 fi
 
 if [ $NLIZE = 'n' ]
 then
   runtest $d1 $d2   sarubbo-8/1.crashes.bin  -a -b -c -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
-  chkres $?  sarubbo-8 
 else
+  skipcount=`expr $skipcount + 1`
   echo "=====SKIP  sarubbo-8 with NLIZE"
 fi
 
 if [ $NLIZE = 'n' ]
 then
   runtest  $d1 $d2   sarubbo-9/3.crashes.bin -a -b -c -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
-  chkres $?  sarubbo-9
+  chkres $?  sarubbo-8 
 else
+  skipcount=`expr $skipcount + 1`
   echo "=====SKIP  sarubbo-9 with NLIZE"
 fi
 
@@ -1276,7 +1285,8 @@ if test $withlibelf = "withlibelf" ; then
   runtest $d1 $d2 enciso5/sample_S_option.o  -Ex
   runtest $d1 $d2 enciso5/sample_S_option.o  -Ed
 else
-  echo "=====SKIP a range of -E options, not usable with no libelf" 
+  skipcount=`expr $skipcount + 18`
+  echo "=====SKIP 18 -E options, not usable with no libelf" 
 fi
 
 # AARCH64 Arm 64bit.
@@ -1340,7 +1350,8 @@ if [ $withlibelf = "withlibelf" ]
 then
   runtest $d1 $d2  moshe/hello -h 
 else
-  echo "====SKIP runtest $d1 $d2  moshe/hello -h nolibelf"
+  skipcount=`expr $skipcount + 1`
+  echo "====SKIP 1 runtest $d1 $d2  moshe/hello -h nolibelf"
 fi
 runtest $d1 $d2  moshe/hello -a -vvv -R -M
 runtest $d1 $d2  moshe/hello -a -vvv -R -M -g
@@ -1434,12 +1445,13 @@ if test $withlibelf = "withlibelf" ; then
   chkres $? 'findcu/cutest-of-a-libdwarf-interface'
   cd ..
 else
+  skipcount=`expr $skipcount + 1`
   echo "=====SKIP  findcu runtest.sh $top_srcdir $top_builddir $withlibelf $withlibz"
 fi
 
 
 
-echo "=====START  test_harmless"
+  echo "=====START  test_harmless"
   libopts=''
   if test $withlibelf = "withlibelf" 
   then
@@ -1463,7 +1475,8 @@ if test $withlibelf = "withlibelf" ; then
   chkresn $r 'dwgena/runtest.sh' 9
   cd ..
 else
-  echo "====SKIP dwgena/runtest.sh no libelf"
+  skipcount=`expr $skipcount + 1`
+  echo "====SKIP 1 dwgena/runtest.sh no libelf"
 fi
 
 if test $withlibelf = "withlibelf" ; then
@@ -1474,11 +1487,13 @@ if test $withlibelf = "withlibelf" ; then
   chkresn $r 'dwgenc/runtest.sh' 1
   cd ..
 else
-  echo "====SKIP dwgenc/runtest.sh no libelf"
+  skipcount=`expr $skipcount + 1`
+  echo "====SKIP 1 dwgenc/runtest.sh no libelf"
 fi
 
 echo "=====START   frame1/runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz"
 cd frame1
+echo "sh runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz"
 sh runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz
 r=$?
 chkres $r frame1
@@ -1499,13 +1514,16 @@ then
       chkres $?  dwarfextract
       cd ..
     else
-        echo "====SKIP dwarfextract/runtest.sh $withlibelf $withlibz"
+      skipcount=`expr $skipcount + 1`
+      echo "====SKIP 1 dwarfextract/runtest.sh $withlibelf $withlibz"
     fi
   else
-    echo "=====SKIP  dwarfextract/runtest.sh with big endian test host"
+    skipcount=`expr $skipcount + 1`
+    echo "=====SKIP 1 dwarfextract/runtest.sh with big endian test host"
   fi
 else
-echo "=====SKIP  dwarfextract/runtest.sh with NLIZE"
+  skipcount=`expr $skipcount + 1`
+  echo "=====SKIP 1 dwarfextract/runtest.sh with NLIZE"
 fi
 
 echo "=====START   sandnes2/runtest.sh"
@@ -1524,7 +1542,8 @@ then
   chkres $r  legendre
   cd ..
 else
-  echo "=====SKIP   legendre/runtest.sh NLIZE as it has leaks"
+  skipcount=`expr $skipcount + 1`
+  echo "=====SKIP 1  legendre/runtest.sh NLIZE as it has leaks"
 fi
 
 echo "=====START   enciso4/runtest.sh $d1 $d2"
@@ -1586,45 +1605,46 @@ if test $withlibelf = "withlibelf" ; then
       runtest $d1 $d2 $i $o
     done
   done
-else
-  echo "=====SKIP a range of -o options and test objects, no libelf"
-fi
-
-
-
-
-
-if [  $type = "dd2" ]
-then
-  # Running dd on this file is too slow. Only dd2 ok.
-  # The issue is the number of registers and which
-  # frame reg access interface is used for -f and -F.
-  runtest $d1 $d2  ia32/libpt_linux_x86_r.so.1 -a -vvv -R -F
-  runtest $d1 $d2  ia32/libpt_linux_x86_r.so.1 -c -vvv -R -F
+else 
+  echo "PASS 18 we skip" 
+  goodcount=`expr $goodcount + 18`
+  echo "=====SKIP 18 range of -o options and test objects, no libelf"
 fi
 
 if [ $NLIZE = 'n' ]
 then
   echo "=====START test-alex1/runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz"
   cd test-alex1
-  chkres $?  "cd to test-alex1"
-  sh runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz
-  chkres $?  test-alex1
-  cd ..
+  if [ $? -ne 0 ] 
+  then
+    echo "FAIL cd to test-alex1 to run test-alex1/runtest.sh!"
+    failcount=`expr $failcount + 1`
+  else
+    sh runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz
+    chkres $?  test-alex1
+    cd ..
+  fi
 else
-  echo "=====SKIP test-alex1/runtest.sh NLIZE as it has leaks"
+  skipcount=`expr $skipcount + 1`
+  echo "=====SKIP 1 test-alex1/runtest.sh NLIZE as it has leaks"
 fi
 
 if [ $NLIZE = 'n' ]
 then
   echo "=====START test-alex2/runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz"
   cd test-alex2
-  chkres $?  "cd to test-alex2"
-  sh runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz
-  chkres $?  test-alex2
-  cd ..
+  if [ $? -ne 0 ]
+  then
+    echo "FAIL cd to test-alex2 to run test-alex2/runtest.sh!"
+    failcount=`expr $failcount + 1`
+  else
+    sh runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz
+    chkres $?  test-alex2
+    cd ..
+  fi
 else
-  echo "=====SKIP   test-alex2/runtest.sh NLIZE as it has leaks"
+  skipcount=`expr $skipcount + 1`
+  echo "=====SKIP 1 test-alex2/runtest.sh NLIZE as it has leaks"
 fi
 
 # We need this to not do all DIE printing. FIXME
@@ -1713,14 +1733,9 @@ runtest $d1 $d2 cristi2/libpthread-2.4.so -R -ka  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj -m 
 runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 
-#Lets just drop this report. Wait till the end.
-#echo PASS $goodcount  " after running the first test group"
-#echo FAIL $failcount  " after running the first test group"
-if [ x$shortest = "xn" ]
-then
-  for i in $filepaths
-  do
-     echo  "===== $i all options"
+for i in $filepaths
+do
+     echo  "=====BLOCK $i all options"
      for xtra in "-v" "-vv" "-vvv" "-D" "-H 2" 
      do
        for k in  $baseopts " -M" 
@@ -1730,13 +1745,15 @@ then
           then
              # Force use of libelf
              runtest $d1 $d2 $i $k $xtra " -oi"
+          else
+             skipcount=`expr $skipcount + 1`
           fi
        done
      done
-  done
-  for i in $filepaths
-  do
-     echo ===== $i all checking options
+done
+for i in $filepaths
+do
+     echo "=====BLOCK $i all checking options"
      # -kd ensures we report the test statistics
      for xtra in "" "-kd"  "-ki" 
      do
@@ -1745,8 +1762,7 @@ then
          runtest $d1 $d2 $i $k $xtra
        done
      done
-  done
-fi   
+done
 rm -f /tmp/dwba.$$
 rm -f /tmp/dwbb.$$
 if [ x$wrtimeo != "x" ]
@@ -1760,8 +1776,11 @@ then
 else
   echo "No /usr/bin/time data available to report"
 fi
-echo PASS $goodcount
-echo FAIL $failcount
+echo "PASS  $goodcount"
+echo "FAIL  $failcount"
+echo "SKIP  $skipcount"
+totalcount=`expr $goodcount + $failcount + $skipcount`
+echo "TOTAL $totalcount"
 echo 'Ending regressiontests: DWARFTEST.sh' `date`
 ndsecs=`date '+%s'`
 showminutes() {

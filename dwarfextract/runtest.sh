@@ -14,7 +14,7 @@ withlibelf=$5
 withlibz=$6
 if [ x$withlibz = "x" ]
 then
-   echo "FAIL dwarfextract runtest.sh missing libz arg"
+   echo "fail dwarfextract runtest.sh missing libz arg"
    exit 1
 fi
 
@@ -36,7 +36,7 @@ cc -g $opt $INCS dwarfextract.c -o dwarfextract $dwlib $libs
 ./dwarfextract test1 test1out >basestdout
 if [  $?  -ne 0 ] 
 then
-    echo FAIL dwarfextract test0 top_builddir=$2 top_srcdir=$3 dwlib=$4
+    echo fail dwarfextract test0 top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
 
     exit 1
@@ -44,7 +44,7 @@ fi
 diff basestdout basestdout.base
 if [  $?  -ne 0 ] 
 then
-    echo FAIL dwarfextract dwex-1 top_builddir=$2 top_srcdir=$3 dwlib=$4
+    echo fail dwarfextract dwex-1 top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "Fix with: mv basestdout basestdout.base"
     echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1
@@ -53,7 +53,7 @@ $dd -a test1out >test1.new
 diff test1.base test1.new
 if [  $?  -ne 0 ] 
 then
-    echo FAIL dwarfextract test1 top_builddir=$2 top_srcdir=$3 dwlib=$4
+    echo fail dwarfextract test1 top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "Fix with: mv test1.new test1.base"
     echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1
@@ -64,14 +64,14 @@ cc -g $opt -DPRODUCER_INIT_C=1 $INCS dwarfextract.c -o dwarfextractc -L .. -ldwa
 ./dwarfextractc test1 testcout >basecstdout
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwarfextract looking for error top_builddir=$2 top_srcdir=$3 dwlib=$4
+    echo fail dwarfextract looking for error top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1
 fi
 diff basecstdout basecstdout.base
 if [  $?  -ne 0 ] 
 then
-    echo FAIL dwarfextract dwexc-1 top_builddir=$2 top_srcdir=$3 dwlib=$4
+    echo fail dwarfextract dwexc-1 top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "Fix with: mv basecstdout basecstdout.base"
     echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1
@@ -80,7 +80,7 @@ $dd -a testcout >testc.new
 diff testc.base testc.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwarfextract testc  top_builddir=$2 top_srcdir=$3 dwlib=$4
+    echo fail dwarfextract testc  top_builddir=$2 top_srcdir=$3 dwlib=$4
     echo "Fix with: mv testc.new testc.base"
     echo "rerun: runtest.sh $1 $2 $3 $4 $5 $6"
     exit 1

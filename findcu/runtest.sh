@@ -5,7 +5,7 @@ withlibelf=$3
 withlibz=$4
 if [ x$withlibz = "x" ]
 then
-   echo "FAIL findcu runtest.sh missing arguments"
+   echo "fail findcu runtest.sh missing arguments"
    exit 1
 fi
 h="-I$libdw/libdwarf"
@@ -33,7 +33,7 @@ cc $h $opts  cutest.c $nli $l -o cutest $libs
 r=$?
 if [ $r -ne 0 ]
 then
-   echo FAIL cutest, interface did not work.
+   echo fail cutest, interface did not work.
    exit 1
 fi
 echo "PASS findcu/runtest.sh"

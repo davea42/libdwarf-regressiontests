@@ -27,27 +27,27 @@ rm -f $bn
 cc makebig.c -o makebig
 if [ $? -ne 0 ]
 then
-  echo "FAIL bigobject compile of makebig.c"
+  echo "fail bigobject compile of makebig.c"
   exit 1
 fi
 
 ./makebig 2500000000
 if [ $? -ne 0 ]
 then
-  echo "FAIL bigobject creation"
+  echo "fail bigobject creation"
   exit 1
 fi
 
 if [ ! -f ./bigobject ]
 then
-  echo "FAIL the file bigobject does not exist"
+  echo "fail the file bigobject does not exist"
   exit 1
 fi
 
 $dd bigobject  1> $bn 2>&1 
 if [ $? -ne 0 ]
 then
-  echo "FAIL  dwarfdump of bigobject"
+  echo "fail  dwarfdump of bigobject"
   rm -f bigobject
   exit 1
 fi
@@ -55,7 +55,7 @@ fi
 diff $bb $bn
 if [ $? -ne 0 ]
 then
-  echo "FAIL bigobject diff $bb $bn"
+  echo "fail bigobject diff $bb $bn"
   echo "to update: mv $bn $bb"
   exit 1
 fi

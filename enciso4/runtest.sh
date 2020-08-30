@@ -30,7 +30,7 @@ commonopts="-x name=../dwarfdump.conf -x abi=ppc32bitaddress"
 $newdd -f  $commonopts junk.frame_problem.elf >junk.f.out
 if [ $? -ne 0 ] 
 then
-    echo "FAIL error -f enciso4/runtest.sh junk.frame_problem.elf"
+    echo "fail error -f enciso4/runtest.sh junk.frame_problem.elf"
     exit 1
 fi
 # The  -F  version runs over 20 minutes, so we skip that.
@@ -38,7 +38,7 @@ fi
 #$newdd -F  $commonopts junk.frame_problem.elf >junk.F.out
 #if [ $? -ne 0 ] 
 #then
-#    echo FAIL error -F enciso4/junk.frame_problem.elf
+#    echo fail error -F enciso4/junk.frame_problem.elf
 #    exit 1
 #fi
 echo "PASS enciso4/runtest.sh: dumped enciso4/junk.frame_problem.elf"

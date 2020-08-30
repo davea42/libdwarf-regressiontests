@@ -11,7 +11,7 @@ dg=../dwarfgen
 cc -g -O0 -c test.c
 if [ $? -ne 0 ]
 then
-  echo FAIL data16 compile.
+  echo fail data16 compile.
   exit 1
 fi
 mv test.o junktest.o
@@ -19,26 +19,26 @@ $dd -i -M junktest.o >junktest.ddo
 grep DW_FORM_data16 <junktest.ddo 1>/dev/null 2>/dev/null
 if [ $? -eq 0 ]
 then
- echo FAIL data16 already have DW_FORM_data16
+ echo fail data16 already have DW_FORM_data16
  exit 1
 fi
 
 $dg --adddata16 -t obj -c 0 -o junk.bin  ./junktest.o 1>junk1.out 2>junkstderr.out 
 if [ $? -ne 0 ]
 then
-  echo FAIL data16 build junk.bin from dwarfgen
+  echo fail data16 build junk.bin from dwarfgen
   exit 1
 fi
 $dd -i -M junk.bin  >junkdata16.new 2>/dev/null
 if [ $? -ne 0 ]
 then
-  echo FAIL data16 dwarfdump junk.bin from dwarfgen
+  echo fail data16 dwarfdump junk.bin from dwarfgen
   exit 1
 fi
 grep DW_FORM_data16 <junkdata16.new 1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]
 then
- echo FAIL data16 failed to add data16 to junktest.o  by dwarfgen
+ echo fail data16 failed to add data16 to junktest.o  by dwarfgen
  exit 1
 fi
 echo "PASS data16/runtest.sh"
@@ -51,14 +51,14 @@ exit 0
 $dd -i -M  test.bin  >junkdata16.new 2>/dev/null
 if [ $? -ne 0 ]
 then
-  echo FAIL data16 dwarfdump -i -M data16.bin from dwarfgen
+  echo fail data16 dwarfdump -i -M data16.bin from dwarfgen
   exit 1
 fi
 
 diff data16.base junkdata16.new  1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]
 then
-  echo "FAIL data16 diff data16.base  junkdata16.new"
+  echo "fail data16 diff data16.base  junkdata16.new"
   echo "If data16.new is correct do: mv junkdata16.new data16.base"
   exit 1
 fi
@@ -68,7 +68,7 @@ fi
 $dg -t obj --adddata16 -c 0 -o junk3.bin  ./test.bin 1>junk2.out 2>junk2stderr.out
 if [ $? -ne 0 ]
 then
-  echo FAIL data16 build junk2.bin  from junk.bin via dwarfgen
+  echo fail data16 build junk2.bin  from junk.bin via dwarfgen
   exit 1
 fi
 
@@ -76,21 +76,21 @@ fi
 $dd -i -M junk3.bin  >junk2data16.new 2>/dev/null
 if [ $? -ne 0 ]
 then
-  echo FAIL data16 dwarfdump on junk3.bin from dwarfgen
+  echo fail data16 dwarfdump on junk3.bin from dwarfgen
   exit 1
 fi
 
 grep DW_FORM_data16 <junk2data16.new 1>junk4data16.new 2>/dev/null
 if [ $? -ne 0 ]
 then
- echo FAIL data16 failed to add data16 to test.bin by dwarfgen
+ echo fail data16 failed to add data16 to test.bin by dwarfgen
  exit 1
 fi
 
 diff data16-2.base junk4data16.new  1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]
 then
-  echo "FAIL data16 diff data16-2.base junk4data16.new"
+  echo "fail data16 diff data16-2.base junk4data16.new"
   echo "If data16.new is correct do: mv junk4data16.new data16-2.base"
   exit 1
 fi

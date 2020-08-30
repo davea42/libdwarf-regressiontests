@@ -1,7 +1,7 @@
 #!/bin/sh
 if [ $# -ne 2 ]
 then
-   echo "FAIL hughes2/simplereader two args required, not $#"
+   echo "fail hughes2/simplereader two args required, not $#"
    exit 1
 fi
 r=$1
@@ -22,7 +22,7 @@ then
   then
     if [ ! -f *core* ]  
     then
-      echo "FAIL hughes2/simplereader expected  corefile! "
+      echo "fail hughes2/simplereader expected  corefile! "
       exit 1
     fi
   else
@@ -33,8 +33,8 @@ else
   then
     if [ -f *core* ]  
     then
-      echo "FAIL hughes2/simplereader got a corefile unexpectedly"
-      exit 1Y
+      echo "fail hughes2/simplereader got a corefile unexpectedly"
+      exit 1
     fi
   else
     echo 'hughes2 test 2: $NLIZE set so skip checking on corefile' 
@@ -43,7 +43,7 @@ fi
 diff $b $bt
 if [ $? -ne 0 ]
 then
-    echo "FAIL hughes2/simplereader $e $opts $t" 
+    echo "fail hughes2/simplereader $e $opts $t" 
     echo "update with mv $bt $b"
     exit 1
 fi

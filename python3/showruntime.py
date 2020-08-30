@@ -29,6 +29,7 @@ if __name__ == '__main__':
   if len(sys.argv) >1:
     fn = sys.argv[1]
   count=0
+  smallestinteresting = 5
   starttext = ""
   osd = False
   ndd = False
@@ -53,7 +54,7 @@ if __name__ == '__main__':
     if  typerec == "st":
       if osd and ndd: 
         diff = ndd-osd
-        if diff.total_seconds() > 0:
+        if diff.total_seconds() > float(smallestinteresting):
           print(rec) 
           print("dwarfdump secs",diff.total_seconds())
           if not biggestrun or diff > biggestrun:
@@ -65,9 +66,11 @@ if __name__ == '__main__':
       osd = extracttime(rec)
       if ndd:
         diff = osd - ndd
-        if diff.total_seconds() > 0:
+        if diff.total_seconds() > float(smallestinteresting):
           print(starttext)
           print("shell secs   ",diff.total_seconds())
+          if not biggestrun or diff > biggestrun:
+            biggestrun = diff
     elif typerec == "nd":
       ndd = extracttime(rec)
     else:

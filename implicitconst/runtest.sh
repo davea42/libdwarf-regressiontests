@@ -14,14 +14,14 @@ dg=../dwarfgen
 $dg  -c 0 --add-implicit-const --add-sun-func-offsets -s -v 5 -t obj -o junkimplcon.o t1.o 1>junkdg.new 2>&1
 if [ $? -ne 0 ]
 then
- echo FAIL implicitconst in dwarfgen exit code not zero
+ echo fail implicitconst in dwarfgen exit code not zero
  exit 1
 fi
 
 diff dgout.base junkdg.new
 if [ $? -ne 0 ]
 then
-  echo "FAIL implicitconst diff dgout.base junkdg.new
+  echo "fail implicitconst diff dgout.base junkdg.new
   echo "If junkdg.new is correct do: mv junkdg.new dgout.base
   exit 1
 fi
@@ -30,14 +30,14 @@ fi
 $dd -i -M junkimplcon.o >junk.new
 if [ $? -ne 0 ]
 then
-  echo FAIL $dd build junk.new from junkimplcon.o
+  echo fail $dd build junk.new from junkimplcon.o
   exit 1
 fi
 
 diff implicit.base junk.new  
 if [ $? -ne 0 ]
 then
-  echo "FAIL implicitconst diff implicit.base junk.new
+  echo "fail implicitconst diff implicit.base junk.new
   echo "If junk.new is correct do: mv junk.new implicit.base
   exit 1
 fi

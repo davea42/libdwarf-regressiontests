@@ -11,7 +11,7 @@ withlibelf=$3
 withlibz=$4
 if [ x$withlibz = "x" ]
 then
-   echo "FAIL frame1 runtest.sh missing arguments"
+   echo "fail frame1 runtest.sh missing arguments"
    exit 1
 fi
 
@@ -31,7 +31,7 @@ cc -I $libdw/libdwarf $opt $OPTS -DNEW frame_test.c ../libdwarf.a $libs -o frame
 ./frame_test1
 if [  $? -ne 0 ]
 then
-  echo FAIL frame CFA reg new
+  echo fail frame CFA reg new
   exit 1
 fi
 
@@ -39,7 +39,7 @@ cc -I $libdw/libdwarf -DOLD $opt $OPTS frame_test.c ../libdwoldframecol.a $libs 
 ./frame_test2
 if [  $? -ne 0 ]
 then
-  echo FAIL frame CFA reg old
+  echo fail frame CFA reg old
   exit 1
 fi
 rm -f ./frame_test1

@@ -27,7 +27,7 @@ $ourzcat test9.base.gz | sed "$fix" >test9.base
 diff test9.base junk9.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwgena test DWARF2 -vvv 9
+    echo fail dwgena test DWARF2 -vvv 9
     echo "update via: mv junk9.new test9.base ; gzip test9.base"
     exit 1
 fi
@@ -40,7 +40,7 @@ $ourzcat test1.base.gz | sed "$fix" >test1.base
 diff test1.base junk1.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwgena test DWARF2 1
+    echo fail dwgena test DWARF2 1
     echo "update via: mv junk1.new test1.base ; gzip test1.base"
     exit 1
 fi
@@ -51,7 +51,7 @@ $ourzcat test2.base.gz | sed "$fix" >test2.base
 diff test2.base junk2.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwgena test 2
+    echo fail dwgena test 2
     echo "update via: mv junk2.new test2.base ; gzip test2.base"
     exit 1
 fi
@@ -62,7 +62,7 @@ $ourzcat test3.base.gz |  sed "$fix"  >test3.base
 diff test3.base junk3.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwgena test 3
+    echo fail dwgena test 3
     echo "update via: mv junk3.new test3.base ; gzip test3.base"
     exit 1
 fi
@@ -73,7 +73,7 @@ $ourzcat test4.base.gz |  sed "$fix"  >test4.base
 diff test4.base junk4.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwgena test 4
+    echo fail dwgena test 4
     echo "update via: mv junk4.new test4.base ; gzip test4.base"
     exit 1
 fi
@@ -87,7 +87,7 @@ $ourzcat test5.base.gz |  sed "$fix"  >test5.base
 diff test5.base junk5.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwgena test 5
+    echo fail dwgena test 5
     echo "update via: mv junk5.new test5.base ; gzip test5.base"
     exit 1
 fi
@@ -100,7 +100,7 @@ $ourzcat test8.base.gz |  sed "$fix"  >test8.base
 diff test8.base junk8.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwgena test DWARF3 8
+    echo fail dwgena test DWARF3 8
     echo "update via: mv junk8.new test8.base ; gzip test8.base"
     exit 1
 fi
@@ -113,7 +113,7 @@ $ourzcat test7.base.gz |  sed "$fix"  >test7.base
 diff test7.base junk7.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwgena test DWARF4 7
+    echo fail dwgena test DWARF4 7
     echo "update via: mv junk7.new test7.base ; gzip test7.base"
     exit 1
 fi
@@ -126,7 +126,7 @@ $ourzcat test6.base.gz |  sed "$fix"  >test6.base
 diff test6.base junk6.new
 if [  $?  -ne 0 ]
 then
-    echo FAIL dwgena test DWARF5 6
+    echo fail dwgena test DWARF5 6
     echo "update via: mv junk6.new test6.base ; gzip test6.base"
     exit 1
 fi

@@ -34,7 +34,7 @@ m() {
   diff $base $test
   if test  $?  -ne 0
   then
-      echo "FAIL test williamson/...exe mismatch base $base vs $test "
+      echo "fail test williamson/...exe mismatch base $base vs $test "
       exit 1
   fi
 }
