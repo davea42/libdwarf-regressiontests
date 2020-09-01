@@ -1,0 +1,95 @@
+
+.debug_info
+
+../dwarfdump ERROR:  ERROR: Failure reading CU header or DIE, corrupt DWARF:  DW_DLE_VERSION_STAMP_ERROR: The version should be 5 but we find 96 instead.. Attempting to continue.
+
+../dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_VERSION_STAMP_ERROR: The version should be 5 but we find 96 instead.. Attempting to continue.
+
+.debug_str
+name at offset 0x00000000, length    5 is 'close'
+name at offset 0x00000006, length    7 is 'tv_nsec'
+name at offset 0x0000000e, length    6 is 'optarg'
+name at offset 0x00000015, length   12 is 'pe_map_unset'
+name at offset 0x00000022, length    7 is 'st_size'
+name at offset 0x0000002a, length    6 is 'tv_sec'
+name at offset 0x00000031, length    4 is 'open'
+name at offset 0x00000036, length    8 is '__mode_t'
+name at offset 0x0000003f, length    7 is 'st_ctim'
+name at offset 0x00000047, length    4 is '__fd'
+name at offset 0x0000004c, length    8 is 'filename'
+name at offset 0x00000055, length   17 is '__syscall_slong_t'
+name at offset 0x00000067, length    6 is '__path'
+name at offset 0x0000006e, length    9 is '__environ'
+name at offset 0x00000078, length    8 is 'st_nlink'
+name at offset 0x00000081, length    7 is 'st_rdev'
+name at offset 0x00000089, length    9 is 'short int'
+name at offset 0x00000093, length    6 is 'Pe_Map'
+name at offset 0x0000009a, length   10 is 'st_blksize'
+name at offset 0x000000a5, length   13 is 'long long int'
+name at offset 0x000000b3, length    6 is 'st_gid'
+name at offset 0x000000ba, length    8 is 'long int'
+name at offset 0x000000c3, length    7 is 'from_fd'
+name at offset 0x000000cb, length    9 is '__nlink_t'
+name at offset 0x000000d5, length    8 is 'pe_map.c'
+name at offset 0x000000de, length   12 is '__open_alias'
+name at offset 0x000000eb, length   13 is 'unsigned char'
+name at offset 0x000000f9, length    4 is 'stat'
+name at offset 0x000000fe, length   81 is 'GNU C11 7.5.0 -mtune=generic -march=x86-64 -gdwarf-5 -O2 -fstack-protector-strong'
+name at offset 0x00000150, length    6 is 'st_ino'
+name at offset 0x00000157, length   11 is 'signed char'
+name at offset 0x00000163, length    5 is 'fstat'
+name at offset 0x00000169, length   12 is 'unsigned int'
+name at offset 0x00000176, length    7 is '__oflag'
+name at offset 0x0000017e, length    6 is 'opterr'
+name at offset 0x00000185, length   11 is '__blksize_t'
+name at offset 0x00000191, length    7 is 'st_atim'
+name at offset 0x00000199, length   18 is 'pe_map_set_from_fd'
+name at offset 0x000001ac, length    4 is 'char'
+name at offset 0x000001b1, length    4 is 'mmap'
+name at offset 0x000001b6, length    9 is '__statbuf'
+name at offset 0x000001c0, length    6 is 'optind'
+name at offset 0x000001c7, length    6 is 'st_dev'
+name at offset 0x000001ce, length    6 is '__pad0'
+name at offset 0x000001d5, length    9 is 'st_blocks'
+name at offset 0x000001df, length    8 is '__fxstat'
+name at offset 0x000001e8, length    7 is '__ino_t'
+name at offset 0x000001f0, length    6 is 'st_uid'
+name at offset 0x000001f7, length   18 is 'short unsigned int'
+name at offset 0x0000020a, length   17 is 'long unsigned int'
+name at offset 0x0000021c, length    8 is '__time_t'
+name at offset 0x00000225, length   20 is 'pe_map_set_from_file'
+name at offset 0x0000023a, length    7 is '__off_t'
+name at offset 0x00000242, length    4 is 'size'
+name at offset 0x00000247, length    7 is '__dev_t'
+name at offset 0x0000024f, length    6 is 'munmap'
+name at offset 0x00000256, length   16 is '__glibc_reserved'
+name at offset 0x00000267, length    7 is 'st_mtim'
+name at offset 0x0000026f, length    8 is 'timespec'
+name at offset 0x00000278, length   24 is '/home/davea/misc/pe_test'
+name at offset 0x00000291, length    7 is '__uid_t'
+name at offset 0x00000299, length    6 is 'optopt'
+name at offset 0x000002a0, length    7 is 'st_mode'
+name at offset 0x000002a8, length   16 is '__stack_chk_fail'
+name at offset 0x000002b9, length    4 is 'base'
+name at offset 0x000002be, length   10 is '__blkcnt_t'
+name at offset 0x000002c9, length    7 is '__gid_t'
+
+.debug_aranges
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000c>  DW_TAG_compile_unit
+                    DW_AT_producer              GNU C11 7.5.0 -mtune=generic -march=x86-64 -gdwarf-5 -O2 -fstack-protector-strong
+                    DW_AT_language              DW_LANG_C11
+                    DW_AT_name                  pe_map.c
+                    DW_AT_comp_dir              /home/davea/misc/pe_test
+                    DW_AT_low_pc                0x00000000
+                    DW_AT_high_pc               <offset-from-lowpc>329
+                    DW_AT_stmt_list             0x00000000
+
+
+arange starts at 0x00000000, length of 0x00000149, cu_die_offset = 0x0000000c
+arange end
+
+.debug_frame is not present
+
+There were 2 DWARF errors reported: see ERROR above.
