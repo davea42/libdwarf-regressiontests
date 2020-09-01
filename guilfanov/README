@@ -1,0 +1,8 @@
+1 September 2020
+
+This is a small fuzzed  object file submitted
+by Ilfak Guilfanov. 
+
+Caused libdwarf to do inappropriate frees
+and crash due to a return-on-error that
+was left out of dwarf_loclists.c .
