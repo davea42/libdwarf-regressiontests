@@ -1,0 +1,20 @@
+
+2 September 2020
+
+Another nice testcase from Jorge Gorbe Moya.
+
+Demonstrating a leak in line table code.
+
+We've recently found via fuzzing a
+memory leak in read_line_table_program. At
+dwarf_line_table_reader_common.h:1232 the function
+returns an error without freeing head_chain. It can be
+reproduced by running an AddressSanitizer-enabled dwarfdump
+--suppress-de-alloc-tree on the attached test case (valgrind
+should work as well, but I haven't tried).
+
+Adding a call to _dwarf_free_chain_entries(dbg, head_chain,
+line_count) before returning the error fixes the problem
+for me.
+
+
