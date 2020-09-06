@@ -478,7 +478,7 @@ runtest () {
     #  Add 1 to show our number. We have not yet
     #  counted it as a good or a fail.
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
-    pctstring=`$mypycom $mypydir/showpct.py $totalcount`
+    pctstring=`$mypycom $mypydir/showpct.py $totalct`
     echo  "=====START Pct $pctstring $* $targ" 
     #echo "=====START $* $targ" 
     echo  "=====STATS Pct $pctstring ct: $totalct"
@@ -605,17 +605,17 @@ echo  "=====BLOCK individual tests and runtest.sh tests"
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  runtest.sh"
 cd supplementary
-sh runtest.sh 
-chkres $? "supplementary/runtest.sh"
+  sh runtest.sh 
+  chkres $? "supplementary/runtest.sh"
 cd ..
 
-cd guilvanov 
-sh runtest.sh 
-# A fuzzed object which can crash libdwarf due to a bug.
-# hangs libdwarf/dwarfdump.
-chkres $? "guilfanov/runtest.sh"
+echo "=====START  guilfanov  runtest.sh"
+cd guilfanov 
+  sh runtest.sh 
+  # A fuzzed object which can crash libdwarf due to a bug.
+  # hangs libdwarf/dwarfdump.
+  chkres $? "guilfanov/runtest.sh"
 cd ..
-
 # printing .debug_gnu_pubnames and .debug_gnu_pubtypes
 runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
 runtest $d1 $d2 debugfission/target.o  --print-debug-gnu
@@ -683,9 +683,9 @@ runtest $d1 $d2 moya4/hello -a -v -M
 runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print_raw_rnglists
 runtest $d1 $d2 moya2/filecheck.dwo -ka --print_raw_rnglists
 # Checking .debug_str_offsets used properly
-runtest $d1 $d2 moya5/hello.dwo -a -M -v --print-str-offsets
-runtest $d1 $d2 moya5/hello.dwo --file-tied=moya5/hello -a -M -v --print-str-offsets
-runtest $d1 $d2 moya5/hello -a -M -v --print-str-offsets
+runtest $d1 $d2 moya5/hello.dwo -a -M -v --print-str-offsets 
+runtest $d1 $d2 moya5/hello.dwo --file-tied=moya5/hello -a -M -v --print-str-offsets --print-strings
+runtest $d1 $d2 moya5/hello -a -M -v --print-str-offsets --print-strings
 
 runtest $d1 $d2 rnglists/readelfobj -vv  --print-raw-rnglists
 runtest $d1 $d2 rnglists/readelfobj -ka
@@ -1788,9 +1788,9 @@ then
 else
   echo "No /usr/bin/time data available to report"
 fi
-echo "PASS  $goodcount"
-echo "FAIL  $failcount"
-echo "SKIP  $skipcount"
+echo "PASS $goodcount"
+echo "FAIL $failcount"
+echo "SKIP $skipcount"
 totalcount=`expr $goodcount + $failcount + $skipcount`
 echo "TOTAL $totalcount"
 echo 'Ending regressiontests: DWARFTEST.sh' `date`
