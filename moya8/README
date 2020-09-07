@@ -1,0 +1,33 @@
+September 2, 2020
+
+Jorge Gorbe Moya writes:
+
+There's also an index-out-of-bounds error in
+dwarf_xu_index.c. I haven't been able to reproduce it with
+dwarfdump because we're using dwarf_elf_init and dwarfdump uses
+a newer API that catches some other ELF error in the fuzzed
+test case (see attachment) before reaching this point. It
+might still be possible to reach this error using the newer
+API with a less corrupt file (or at least one that is corrupted
+in a different way), I have tried to fiddle with a hex editor
+in order to make it reach that point with a larger num_secs
+but haven't succeeded so far.
+
+The problem happens in dwarf_xu_index.c:166. gx_section_id
+is an array of 9 elements and the index is read (line 265)
+from the DWARF file and is never bounds-checked.
+
+=======
+If one uses dwarfdump -i etc it want to use the new interface.
+But add -oi to the option list and if libelf was present
+during the libdwarf/dwarfdump
+build it will use libelf instead and much more is reported
+by valgrind.
+
+with -oi added dwarfdump reports:
+/tmp/dwarfdump ERROR:  dwarf_elf_init_b:  ERROR: DW_DLE_XU_NAME_COL_ERROR  The section number of 9  is too high. There sections 1-8 are listed in DWARF5 table 7.1.
+
+CU Name =
+CU Producer =
+DIE OFF = 0x00000000 GOFF = 0x00000000, Low PC = unknown   , High PC = unknown
+

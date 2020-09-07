@@ -1,0 +1,11 @@
+2 September 2020
+
+A report from Jorge Gorbe Moya:
+
+Good news! One of the remaining fuzzer reports has
+a repro case that also reproduces the out of bounds
+access with upstream dwarfdump. Please take a look at the
+attachment. AddressSanitizer output follows (for the sake of
+completeness, doesn't really apport anything new).
+
+
