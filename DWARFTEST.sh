@@ -686,6 +686,19 @@ runtest $d1 $d2 moya2/filecheck.dwo -ka --print_raw_rnglists
 runtest $d1 $d2 moya5/hello.dwo -a -M -v --print-str-offsets 
 runtest $d1 $d2 moya5/hello.dwo --file-tied=moya5/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya5/hello -a -M -v --print-str-offsets --print-strings
+runtest $d1 $d2 moya6/hello.dwp -a -M -v --print-str-offsets --print-strings
+runtest $d1 $d2 moya6/hello.dwp --file-tied = moya6/hello -a -M -v --print-str-offsets --print-strings
+runtest $d1 $d2 moya7/read-line-table-program-leak-test -a -M -v 
+if [ x$withlibelf = "xwithlibelf" ]
+then
+  # the -oi forces dwarftump to use libelf for this test
+  # of the .debug_cu_index section.
+  runtest $d1 $d2 moya8/index-out-of-bounds-test -oi -a -M -v 
+else
+  echo "==== SKIP -oi -a -M -v  moya8/index-out-of-bounds-test"
+fi
+runtest $d1 $d2 moya8/index-out-of-bounds-test  -a -M -v 
+runtest $d1 $d2 moya9/oob-repro -a -M -v --print-str-offsets --print-strings 
 
 runtest $d1 $d2 rnglists/readelfobj -vv  --print-raw-rnglists
 runtest $d1 $d2 rnglists/readelfobj -ka

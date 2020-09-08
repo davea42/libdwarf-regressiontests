@@ -24,7 +24,7 @@ opts="--print-info --format-attr-name -vvv pe1/libexamine-0.dll"
 kopts="-ka -vvv pe1/libexamine-0.dll"
 opts=" -a -M macho-kask/simplereaderx86_64"
 kopts=" -ka macho-kask/simplereaderx86_64"
-opts=" -a -M moya2/filecheck.dwo"
+opts="--suppress-de-alloc-tree -ka -x tied=emre5/test33_64_opt_fpo_split emre5/test33_64_opt_fpo_split.dwp"
 
 
 
@@ -53,6 +53,8 @@ vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=
 #/tmp/dwarfdump $opts
 valgrind $vgopts  /tmp/dwarfdump $opts >junkn
 exit 0
+
+
 #massif-visualizer /tmp/massif-out.ms
 
 #./dwarfdump.O -i -M debugfissionb/ld-new >junkia
