@@ -1,4 +1,4 @@
-This test reproduces (in top of trunk master
+This test reproduces (in top of trunk
 as of Sept 10, 2019) a libdwarf segfault.
 
 The problem was in the revised version of
