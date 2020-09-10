@@ -1,0 +1,54 @@
+September 10 2020.
+
+Jorge Gorbe Moya writes:
+
+After some more debugging I am convinced that there's a problem
+with dwarf_get_ranges_a ignoring cc_rnglists_base. I also have
+enlisted David Blaikie (cc'd here) to help me interpret what
+I was seeing and teach me how to make clang produce the right
+DWARF to reproduce the issue and now we have a new binary
+for the test suite, attached to this message :)
+
+I haven't attached sources this time because the process is
+a little tricky, modifying LLVM intermediate code by hand to
+generate a "hole" so that clang would output a lexical block
+with two separate address ranges. Feel free to ask for the
+details if you're curious.
+
+If you objdump -dC the attached binary you'll get the following
+disassembly for the f4() function:
+
+    0000000000401160 <f4>:
+      401160:       55                      push   %rbp
+      401161:       48 89 e5                mov    %rsp,%rbp
+      401164:       48 83 ec 10             sub    $0x10,%rsp
+      401168:       c7 45 fc 07 00 00 00    movl   $0x7,-0x4(%rbp)
+      40116f:       e8 dc ff ff ff          callq  401150 <f3>
+      401174:       e8 d7 ff ff ff          callq  401150 <f3>      # <==== inserted manually to create a "hole", you'll see ranges skip this call
+      401179:       e8 d2 ff ff ff          callq  401150 <f3>
+      40117e:       48 83 c4 10             add    $0x10,%rsp
+      401182:       5d                      pop    %rbp
+      401183:       c3                      retq
+      401184:       66 2e 0f 1f 84 00 00    nopw   %cs:0x0(%rax,%rax,1)
+      40118b:       00 00 00
+      40118e:       66 90                   xchg   %ax,%ax
+
+And this is what dwarfdump -a -v --file-tied=ranges3 ranges3.dwp prints for it at HEAD
+
+    < 1><0x00000024>    DW_TAG_subprogram <abbrev 3>
+                          DW_AT_low_pc                (addr_index: 0x00000001)0x00401160
+                          DW_AT_high_pc               <offset-from-lowpc>36
+                          DW_AT_frame_base            len 0x0001: 0x56: DW_OP_reg6
+                          DW_AT_name                  (indexed string: 0x00000001)f4                                                                                                         
+                          DW_AT_decl_file             0x00000001                                 
+                          DW_AT_decl_line             0x00000002                                 
+                          DW_AT_external              yes(1)                                     
+
+    < 2><0x0000002f>      DW_TAG_lexical_block <abbrev 4>                                      
+                            DW_AT_ranges                0x00000000                               
+
+      ranges: 3 at .debug_ranges offset 0 (0x00000000) (48 bytes)                                
+       [ 0] range entry    0x00401128 0x00401134                                                 
+       [ 1] range entry    0x00401139 0x0040113e                                                 
+       [ 2] range end      0x00000000 0x00000000
+
