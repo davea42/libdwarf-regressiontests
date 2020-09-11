@@ -699,6 +699,9 @@ else
 fi
 runtest $d1 $d2 moya8/index-out-of-bounds-test  -a -M -v 
 runtest $d1 $d2 moya9/oob-repro -a -M -v --print-str-offsets --print-strings 
+runtest $d1 $d2 moya-rb/ranges3.dwp -a -M -v -a -v --file-tied=moya-rb/ranges3 
+runtest $d1 $d2 moya-rb/ranges3 -a -M -v 
+
 
 runtest $d1 $d2 rnglists/readelfobj -vv  --print-raw-rnglists
 runtest $d1 $d2 rnglists/readelfobj -ka
