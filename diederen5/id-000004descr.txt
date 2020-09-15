@@ -1,0 +1,68 @@
+impact: rce
+bug type: heap-o
+binary : dwarfdump
+file: print_frames.c
+function: load_nested_proc_name
+version: 2020-08-23 11:02:46-07:00   Package Version "20200822"
+
+result:
+```
+=================================================================
+==1994==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x603000001560 at pc 0x00000058df71 bp 0x7fffffffc1a0 sp 0x7fffffffc198
+READ of size 8 at 0x603000001560 thread T0
+    #0 0x58df70 in dwarf_dealloc /home/casper/targets/struct/libdwarf/latest/BUILD/libdwarf/dwarf_alloc.c:764:18
+    #1 0x58df70 in dwarf_dealloc_error /home/casper/targets/struct/libdwarf/latest/BUILD/libdwarf/dwarf_alloc.c:639:5
+    #2 0x569eff in load_nested_proc_name /home/casper/targets/struct/libdwarf/latest/BUILD/dwarfdump/print_frames.c:728:13
+    #3 0x569ad4 in load_nested_proc_name /home/casper/targets/struct/libdwarf/latest/BUILD/dwarfdump/print_frames.c:648:25
+    #4 0x569ad4 in load_nested_proc_name /home/casper/targets/struct/libdwarf/latest/BUILD/dwarfdump/print_frames.c:648:25
+    #5 0x566c1b in get_fde_proc_name_by_address /home/casper/targets/struct/libdwarf/latest/BUILD/dwarfdump/print_frames.c:871:23
+    #6 0x566c1b in print_one_fde /home/casper/targets/struct/libdwarf/latest/BUILD/dwarfdump/print_frames.c:1075:16
+    #7 0x566c1b in print_frames /home/casper/targets/struct/libdwarf/latest/BUILD/dwarfdump/print_frames.c:2957:25
+    #8 0x50670c in process_one_file /home/casper/targets/struct/libdwarf/latest/BUILD/dwarfdump/dwarfdump.c:1376:20
+    #9 0x502373 in main /home/casper/targets/struct/libdwarf/latest/BUILD/dwarfdump/dwarfdump.c:683:9
+    #10 0x7ffff69edb96 in __libc_start_main /build/glibc-2ORdQG/glibc-2.27/csu/../csu/libc-start.c:310
+    #11 0x41b7f9 in _start (/home/casper/targets/struct/libdwarf/latest/fuzzrun/dwarfdump+0x41b7f9)
+
+0x603000001560 is located 8 bytes to the right of 24-byte region [0x603000001540,0x603000001558)
+allocated by thread T0 here:
+    #0 0x4a83b0 in malloc /home/casper/fuzz/fuzzdeps/llvm-9.0.0.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:145
+    #1 0x64ed43 in allocate_ts_entry /home/casper/targets/struct/libdwarf/latest/BUILD/libdwarf/dwarf_tsearchhash.c:339:29
+    #2 0x64ed43 in tsearch_inner /home/casper/targets/struct/libdwarf/latest/BUILD/libdwarf/dwarf_tsearchhash.c:505:9
+    #3 0x64e6a0 in _dwarf_tsearch /home/casper/targets/struct/libdwarf/latest/BUILD/libdwarf/dwarf_tsearchhash.c:531:9
+    #4 0x58dc31 in _dwarf_get_alloc /home/casper/targets/struct/libdwarf/latest/BUILD/libdwarf/dwarf_alloc.c:583:22
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/casper/targets/struct/libdwarf/latest/BUILD/libdwarf/dwarf_alloc.c:764:18 in dwarf_dealloc
+Shadow bytes around the buggy address:
+  0x0c067fff8250: fd fa fa fa fd fd fd fa fa fa fd fd fd fa fa fa
+  0x0c067fff8260: fd fd fd fa fa fa fd fd fd fa fa fa fd fd fd fa
+  0x0c067fff8270: fa fa 00 00 00 fa fa fa fd fd fd fa fa fa fd fd
+  0x0c067fff8280: fd fa fa fa fd fd fd fa fa fa fd fd fd fa fa fa
+  0x0c067fff8290: fd fd fd fa fa fa fd fd fd fa fa fa fd fd fd fa
+=>0x0c067fff82a0: fa fa 00 00 00 00 fa fa 00 00 00 fa[fa]fa 00 00
+  0x0c067fff82b0: 00 fa fa fa 00 00 00 00 fa fa fd fd fd fa fa fa
+  0x0c067fff82c0: fd fd fd fa fa fa fd fd fd fa fa fa fa fa fa fa
+  0x0c067fff82d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff82e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff82f0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==1994==ABORTING
+```

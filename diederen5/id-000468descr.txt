@@ -1,0 +1,78 @@
+impact: rce
+bug type: UAF
+binary : dwarfdump
+file: dwarf_alloc.c
+function: freecontextlist
+version: 2020-08-23 11:02:46-07:00   Package Version "20200822"
+
+
+result:
+```
+=================================================================
+==69369==ERROR: AddressSanitizer: heap-use-after-free on address 0x615000000ec0 at pc 0x0000006213c3 bp 0x7fffffffd690 sp 0x7fffffffd688
+READ of size 8 at 0x615000000ec0 thread T0
+    #0 0x6213c2 in freecontextlist /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_alloc.c:935:48
+    #1 0x6213c2 in _dwarf_free_all_of_one_debug /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_alloc.c:981:5
+    #2 0x6bd486 in dwarf_object_finish /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_init_finish.c:1708:11
+    #3 0x527414 in process_one_file /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:1618:12
+    #4 0x51c398 in main /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:683:9
+    #5 0x7ffff69edb96 in __libc_start_main /build/glibc-2ORdQG/glibc-2.27/csu/../csu/libc-start.c:310
+    #6 0x41b679 in _start (/home/casper/targets/struct/libdwarf/20200905/fuzzrun/dwarfdump+0x41b679)
+
+0x615000000ec0 is located 448 bytes inside of 480-byte region [0x615000000d00,0x615000000ee0)
+freed by thread T0 here:
+    #0 0x4a7f10 in free /home/casper/fuzz/fuzzdeps/llvm-9.0.0.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:123
+    #1 0x63bf47 in dwarf_offdie_b /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_die_deliv.c:614:39
+    #2 0x5fcde0 in print_pubname_style_entry /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_pubnames.c:126:12
+    #3 0x5fcde0 in print_all_pubnames_style_records /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_pubnames.c:576:20
+    #4 0x611f21 in print_types /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_types.c:100:17
+    #5 0x523a9e in process_one_file /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:1444:16
+    #6 0x51c398 in main /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:683:9
+    #7 0x7ffff69edb96 in __libc_start_main /build/glibc-2ORdQG/glibc-2.27/csu/../csu/libc-start.c:310
+
+previously allocated by thread T0 here:
+    #0 0x4a8230 in malloc /home/casper/fuzz/fuzzdeps/llvm-9.0.0.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:145
+    #1 0x61bc12 in _dwarf_get_alloc /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_alloc.c:539:17
+    #2 0x63b70a in dwarf_offdie_b /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_die_deliv.c:2660:19
+    #3 0x5fcde0 in print_pubname_style_entry /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_pubnames.c:126:12
+    #4 0x5fcde0 in print_all_pubnames_style_records /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_pubnames.c:576:20
+    #5 0x611f21 in print_types /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_types.c:100:17
+    #6 0x523a9e in process_one_file /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:1444:16
+    #7 0x51c398 in main /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:683:9
+    #8 0x7ffff69edb96 in __libc_start_main /build/glibc-2ORdQG/glibc-2.27/csu/../csu/libc-start.c:310
+
+SUMMARY: AddressSanitizer: heap-use-after-free /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_alloc.c:935:48 in freecontextlist
+Shadow bytes around the buggy address:
+  0x0c2a7fff8180: fd fd fd fd fd fd fd fd fd fd fd fd fa fa fa fa
+  0x0c2a7fff8190: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c2a7fff81a0: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c2a7fff81b0: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c2a7fff81c0: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+=>0x0c2a7fff81d0: fd fd fd fd fd fd fd fd[fd]fd fd fd fa fa fa fa
+  0x0c2a7fff81e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c2a7fff81f0: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c2a7fff8200: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c2a7fff8210: fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd fd
+  0x0c2a7fff8220: fd fd fd fd fd fd fd fd fd fd fd fd fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==69369==ABORTING
+```

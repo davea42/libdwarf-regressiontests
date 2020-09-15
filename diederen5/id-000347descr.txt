@@ -1,0 +1,79 @@
+impact: rce
+bug type: heap-o
+binary : dwarfdump
+file: print_die.c
+function: print_one_die
+version: 2020-08-23 11:02:46-07:00   Package Version "20200822"
+
+result:
+```
+==93304==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x603000001c80 at pc 0x00000061c3f9 bp 0x7fffffffb900 sp 0x7fffffffb8f8
+READ of size 8 at 0x603000001c80 thread T0
+    #0 0x61c3f8 in dwarf_dealloc /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_alloc.c:764:18
+    #1 0x61c3f8 in dwarf_dealloc_error /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_alloc.c:639:5
+    #2 0x58ca05 in print_one_die /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:2014:21
+    #3 0x586ff4 in print_die_and_children_internal /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:1363:21
+    #4 0x587a68 in print_die_and_children_internal /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:1563:23
+    #5 0x581884 in print_die_and_children /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:1209:11
+    #6 0x581884 in print_one_die_section /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:1036:28
+    #7 0x581884 in print_infos /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:464:12
+    #8 0x520aef in process_one_file /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:1197:15
+    #9 0x51c398 in main /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:683:9
+    #10 0x7ffff69edb96 in __libc_start_main /build/glibc-2ORdQG/glibc-2.27/csu/../csu/libc-start.c:310
+    #11 0x41b679 in _start (/home/casper/targets/struct/libdwarf/20200905/fuzzrun/dwarfdump+0x41b679)
+
+0x603000001c80 is located 16 bytes to the left of 24-byte region [0x603000001c90,0x603000001ca8)
+allocated by thread T0 here:
+    #0 0x4a8230 in malloc /home/casper/fuzz/fuzzdeps/llvm-9.0.0.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:145
+    #1 0x622082 in _dwarf_special_no_dbg_error_malloc /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_alloc.c:1060:25
+    #2 0x6f71b4 in _dwarf_get_loclist_lle_count /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_loc.c:475:19
+    #3 0x6f71b4 in _dwarf_original_loclist_build /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_loc.c:1795:21
+    #4 0x6f71b4 in dwarf_get_loclist_c /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_loc.c:2405:16
+    #5 0x5b32e0 in print_location_list /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:5101:16
+    #6 0x5b1e75 in print_location_description /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:3126:16
+    #7 0x59072f in print_attribute /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:3640:15
+    #8 0x58c8d3 in print_one_die /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:1990:25
+    #9 0x586ff4 in print_die_and_children_internal /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:1363:21
+    #10 0x587a68 in print_die_and_children_internal /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:1563:23
+    #11 0x581884 in print_die_and_children /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:1209:11
+    #12 0x581884 in print_one_die_section /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:1036:28
+    #13 0x581884 in print_infos /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/print_die.c:464:12
+    #14 0x520aef in process_one_file /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:1197:15
+    #15 0x51c398 in main /home/casper/targets/struct/libdwarf/20200905/BUILD/dwarfdump/dwarfdump.c:683:9
+    #16 0x7ffff69edb96 in __libc_start_main /build/glibc-2ORdQG/glibc-2.27/csu/../csu/libc-start.c:310
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /home/casper/targets/struct/libdwarf/20200905/BUILD/libdwarf/dwarf_alloc.c:764:18 in dwarf_dealloc
+Shadow bytes around the buggy address:
+  0x0c067fff8340: fd fa fa fa fd fd fd fd fa fa fd fd fd fa fa fa
+  0x0c067fff8350: fd fd fd fa fa fa fd fd fd fa fa fa fd fd fd fd
+  0x0c067fff8360: fa fa fd fd fd fa fa fa fd fd fd fa fa fa fd fd
+  0x0c067fff8370: fd fa fa fa fd fd fd fa fa fa fd fd fd fa fa fa
+  0x0c067fff8380: 00 00 00 fa fa fa 00 00 00 fa fa fa fd fd fd fa
+=>0x0c067fff8390:[fa]fa 00 00 00 fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff83a0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff83b0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff83c0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff83d0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x0c067fff83e0: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+  Shadow gap:              cc
+==93304==ABORTING
+```
