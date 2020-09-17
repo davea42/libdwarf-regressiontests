@@ -1,0 +1,10 @@
+15 September 2020
+
+This is a series of fuzzed object files, each
+with serious object and/or DWARF errors.
+Each provokes, in libdwarf, a segmentation violation,
+a leak, or both.
+
+Thanks to Arnaud Diederen and Ilfak Guilfanov
+for providing these testcases.
+

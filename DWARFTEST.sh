@@ -167,7 +167,7 @@ then
 else
   ASAN_OPTIONS="allocator_may_return_null=1"
   export ASAN_OPTIONS
-  nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
+  nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize=undefined -fno-omit-frame-pointer"
   echo "Using -fsanitize=leak.....: yes"
 fi
 if [ "x$suppresstree" = "x--suppress-de-alloc-tree" ]
@@ -290,6 +290,7 @@ sarubbo-7/4.crashes.bin
 sarubbo-5/1.crashes.bin
 jacobs/test.o
 klingler/test-with-zdebug
+diederen/hello
 diederen2/pc_dwarf_bad_attributes.elf
 diederen2/pc_dwarf_bad_sibling2.elf
 diederen2/pc_dwarf_bad_reloc_empty_debug_info.elf
@@ -298,12 +299,18 @@ diederen2/pc_dwarf_bad_reloc_section_link.elf
 diederen2/pc_dwarf_bad_string_offset.elf
 diederen3/pc_dwarf_bad_name3.elf
 diederen4/mips_dwarf_bad_interr_30368.elf
+diederen5/id-000004-sig-06-src-000503-001305-op-splice-rep-2
+diederen5/id-000010-sig-06-src-000503-001305-op-splice-rep-2
+diederen5/id-000017-sig-06-src-000034-op-havoc-rep-8
+diederen5/id-000075-sig-06-src-000517-op-havoc-rep-16
+diederen5/id-000256-sig-06-src-001757-001290-op-splice-rep-16
+diederen5/id-000347-sig-06-src-001923-op-havoc-rep-2
+diederen5/id-000468-sig-06-src-002858-op-havoc-rep-16
 emre3/a.out.dwp
 emre3/foo.dwo
 emre3/main.dwo
 emre3/foo.o
 emre3/main.o 
-diederen/hello
 hughes/libkrb5support.so.0.1.debug
 shopov1/main.exe
 shopov2/clang-9.0.0-test-dwarf5.elf
@@ -616,6 +623,7 @@ cd guilfanov
   # hangs libdwarf/dwarfdump.
   chkres $? "guilfanov/runtest.sh"
 cd ..
+
 # printing .debug_gnu_pubnames and .debug_gnu_pubtypes
 runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
 runtest $d1 $d2 debugfission/target.o  --print-debug-gnu
