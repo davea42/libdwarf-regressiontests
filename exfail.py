@@ -26,6 +26,8 @@ def printblock(b,failcount_in):
 
 if __name__ == '__main__':
   fn="ALLdd"
+  if len(sys.argv) > 1:
+    fn = sys.argv[1]
   count=0
   failcount = 0
   try:
