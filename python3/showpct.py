@@ -2,7 +2,7 @@
 import sys
 
 #Just a bit above the real total
-realtotal= 28200.0
+realtotal= 29400.0
 total = realtotal
 
 if __name__ == '__main__':

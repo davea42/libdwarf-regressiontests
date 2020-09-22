@@ -306,6 +306,11 @@ diederen5/id-000075-sig-06-src-000517-op-havoc-rep-16
 diederen5/id-000256-sig-06-src-001757-001290-op-splice-rep-16
 diederen5/id-000347-sig-06-src-001923-op-havoc-rep-2
 diederen5/id-000468-sig-06-src-002858-op-havoc-rep-16
+moya-loc/loclists
+moya-loc/loclists.dwo
+moya-loc/loclists2.dwo
+moya-loc/loclists2.dwp
+moya-loc/main.dwo
 emre3/a.out.dwp
 emre3/foo.dwo
 emre3/main.dwo
@@ -697,6 +702,9 @@ runtest $d1 $d2 moya5/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya6/hello.dwp -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya6/hello.dwp --file-tied = moya6/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya7/read-line-table-program-leak-test -a -M -v 
+runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=moya-loc/loclists -a -M -v 
+runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=moya-loc/loclists -ka
+
 if [ x$withlibelf = "xwithlibelf" ]
 then
   # the -oi forces dwarftump to use libelf for this test
