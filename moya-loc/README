@@ -1,0 +1,27 @@
+September 11, 2020
+
+Jorge Gorbe Moya adds this testcase set
+as it exposes further issues.
+
+He writes:
+
+The code after the FIXME ends up returning a
+"DW_DLE_LOCLISTS_ERROR: loclists table index of 0 is unusable
+without a tied file." error because the test case has more
+than one loclists context.
+
+David Blaikie:
+ when reading a split-dwarf full unit the contents of
+.debug_cu_index should be used instead of DW_AT_loclists_base,
+and the handling should be similar to rnglistsx in split
+full units.
+
+The problem reproduces with 
+dwarfdump -a -v --file-tied=loclists loclists.dwp
+and the attached test case.
+Note the error message complains about a missing tied
+file even if we pass one.
+
+    < 2><0x00000025>      DW_TAG_variable <abbrev 3>
+
+/usr/local/google/home/jgorbe/code/libdwarf/build/dwarfdump/dwarfdump ERROR:  ERROR: dwarf_get_loclist_c fails:  DW_DLE_LOCLISTS_ERROR: loclists table index of 0 is unusable without a tied file.. Attempting to continue.

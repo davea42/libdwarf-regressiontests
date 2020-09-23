@@ -712,6 +712,7 @@ then
   runtest $d1 $d2 moya8/index-out-of-bounds-test -oi -a -M -v 
 else
   echo "==== SKIP -oi -a -M -v  moya8/index-out-of-bounds-test"
+  skipcount=`expr $skipcount + 1`
 fi
 runtest $d1 $d2 moya8/index-out-of-bounds-test  -a -M -v 
 runtest $d1 $d2 moya9/oob-repro -a -M -v --print-str-offsets --print-strings 
@@ -1229,8 +1230,8 @@ then
   chkres $?  offsetfromlowpc
   cd ..
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP  offsetfromlowpc sh runtest.sh no libelf"
+  skipcount=`expr $skipcount + 1`
 fi
 
 if [ $withlibelf = "withlibelf" ]
@@ -1241,8 +1242,8 @@ then
   chkres $? strsize
   cd ..
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP   strsize sh runtest.sh no libelf"
+  skipcount=`expr $skipcount + 1`
 fi
 
 # tests simple reader and more than one dwarf_init* interface
@@ -1269,8 +1270,8 @@ echo "=====START  data16 runtest.sh ../$d2"
   chkres $?  "data16/runtest.sh"
   cd ..
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP  data16/runtest.sh with NLIZE or if no libelf"
+  skipcount=`expr $skipcount + 1`
 fi
 
 if [ $NLIZE = 'n' ]
@@ -1286,8 +1287,8 @@ then
   runtest  $d1 $d2   sarubbo-9/3.crashes.bin -a -b -c -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
   chkres $?  sarubbo-8 
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP  sarubbo-9 with NLIZE"
+  skipcount=`expr $skipcount + 1`
 fi
 
 # This tries to use a nonexistent file. So we see the dwarfdump fail message.
@@ -1329,8 +1330,8 @@ if test $withlibelf = "withlibelf" ; then
   runtest $d1 $d2 enciso5/sample_S_option.o  -Ex
   runtest $d1 $d2 enciso5/sample_S_option.o  -Ed
 else
-  skipcount=`expr $skipcount + 18`
   echo "=====SKIP 18 -E options, not usable with no libelf" 
+  skipcount=`expr $skipcount + 18 `
 fi
 
 # AARCH64 Arm 64bit.
@@ -1394,8 +1395,8 @@ if [ $withlibelf = "withlibelf" ]
 then
   runtest $d1 $d2  moshe/hello -h 
 else
-  skipcount=`expr $skipcount + 1`
   echo "====SKIP 1 runtest $d1 $d2  moshe/hello -h nolibelf"
+  skipcount=`expr $skipcount + 1`
 fi
 runtest $d1 $d2  moshe/hello -a -vvv -R -M
 runtest $d1 $d2  moshe/hello -a -vvv -R -M -g
@@ -1489,8 +1490,8 @@ if test $withlibelf = "withlibelf" ; then
   chkres $? 'findcu/cutest-of-a-libdwarf-interface'
   cd ..
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP  findcu runtest.sh $top_srcdir $top_builddir $withlibelf $withlibz"
+  skipcount=`expr $skipcount + 1`
 fi
 
 
@@ -1519,8 +1520,8 @@ if test $withlibelf = "withlibelf" ; then
   chkresn $r 'dwgena/runtest.sh' 9
   cd ..
 else
-  skipcount=`expr $skipcount + 1`
   echo "====SKIP 1 dwgena/runtest.sh no libelf"
+  skipcount=`expr $skipcount + 1`
 fi
 
 if test $withlibelf = "withlibelf" ; then
@@ -1531,8 +1532,8 @@ if test $withlibelf = "withlibelf" ; then
   chkresn $r 'dwgenc/runtest.sh' 1
   cd ..
 else
-  skipcount=`expr $skipcount + 1`
   echo "====SKIP 1 dwgenc/runtest.sh no libelf"
+  skipcount=`expr $skipcount + 1`
 fi
 
 echo "=====START   frame1/runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz"
@@ -1558,16 +1559,16 @@ then
       chkres $?  dwarfextract
       cd ..
     else
-      skipcount=`expr $skipcount + 1`
       echo "====SKIP 1 dwarfextract/runtest.sh $withlibelf $withlibz"
+      skipcount=`expr $skipcount + 1`
     fi
   else
-    skipcount=`expr $skipcount + 1`
     echo "=====SKIP 1 dwarfextract/runtest.sh with big endian test host"
+    skipcount=`expr $skipcount + 1`
   fi
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP 1 dwarfextract/runtest.sh with NLIZE"
+  skipcount=`expr $skipcount + 1`
 fi
 
 echo "=====START   sandnes2/runtest.sh"
@@ -1586,8 +1587,8 @@ then
   chkres $r  legendre
   cd ..
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP 1  legendre/runtest.sh NLIZE as it has leaks"
+  skipcount=`expr $skipcount + 1`
 fi
 
 echo "=====START   enciso4/runtest.sh $d1 $d2"
@@ -1610,11 +1611,6 @@ runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32
 # only checks and reports on errors found in CUs with producer GNU AS.
 runtest $d1 $d2 modula2/write-fixed -ka -cGNU%20AS  -M -R
 runtest $d1 $d2 modula2/write-fixed -ka -M -R
-
-
-
-
-
 runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v
 runtest $d1 $d2  sparc/tcombined.o -ka -R  -v -v -v -v -v -v
 runtest $d1 $d2  kartashev2/combined.o -a -R  -v -v -v -v -v -v
@@ -1650,9 +1646,8 @@ if test $withlibelf = "withlibelf" ; then
     done
   done
 else 
-  echo "PASS 18 we skip" 
-  goodcount=`expr $goodcount + 18`
-  echo "=====SKIP 18 range of -o options and test objects, no libelf"
+  echo "=====SKIP 18*7 range of -o options and test objects, no libelf"
+  skipcount=`expr $skipcount + 18 + 18 + 18 + 18 + 18 + 18 + 18`
 fi
 
 if [ $NLIZE = 'n' ]
@@ -1687,8 +1682,8 @@ then
     cd ..
   fi
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP 1 test-alex2/runtest.sh NLIZE as it has leaks"
+  skipcount=`expr $skipcount + 1`
 fi
 
 # We need this to not do all DIE printing. FIXME
