@@ -629,6 +629,12 @@ cd guilfanov
   chkres $? "guilfanov/runtest.sh"
 cd ..
 
+
+# example of command mistakes. Too many object names
+# or no object names. Neither reads any object file.
+runtest $d1 $d2 moya/simple.o moya3/ranges_base.dwo
+runtest $d1 $d2 --print-debug-gnu
+
 # printing .debug_gnu_pubnames and .debug_gnu_pubtypes
 runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
 runtest $d1 $d2 debugfission/target.o  --print-debug-gnu
