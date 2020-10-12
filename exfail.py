@@ -29,6 +29,7 @@ if __name__ == '__main__':
   if len(sys.argv) > 1:
     fn = sys.argv[1]
   count=0
+  rcount = 1
   failcount = 0
   try:
     file = open(fn,"r")
@@ -38,12 +39,16 @@ if __name__ == '__main__':
   block = []
   while 1:
     try:
-      rec = file.readline().strip()
+      reci = file.readline()
     except EOFError:
-        break
-    if len(rec) < 1:
-      # eof
+      print("Hit EOF ")
       break
+    #print(rcount,reci,end="")
+    rcount = int(rcount) +1
+    if len(reci) < 1:
+      print("Rec len 0, stop");
+      break
+    rec = reci.strip()
     if rec.startswith("====") == 1:
       failcount = printblock(block,failcount)
       count = int(count) +1
