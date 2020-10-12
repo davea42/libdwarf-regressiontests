@@ -1,0 +1,8 @@
+
+This test case arrived 10 October 2020.
+
+
+Thanks to Casper Sun for passing it along.
+He reports there is a heap overflow
+exposed by the testcase.
+=====
