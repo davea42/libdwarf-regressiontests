@@ -6,3 +6,33 @@ Thanks to Casper Sun for passing it along.
 He reports there is a heap overflow
 exposed by the testcase.
 =====
+impact: rce
+bug type: heap-o
+file: dwarf_line_table_reader_common.h
+function: read_line_table_program
+version: 2020-10-10
+
+result:
+```
+=================================================================
+==127983==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x61100000025e at pc 0x000000751bfc bp 0x7ffc34742d70 sp 0x7ffc34742d68
+READ of size 1 at 0x61100000025e thread T0
+    #0 0x751bfb in read_line_table_program /home/casper/targets/struct/libdwarf/afl/BUILD/libdwarf/./dwarf_line_table_reader_common.h:2384:45
+    #1 0x74059d in print_actuals_and_locals /home/casper/targets/struct/libdwarf/afl/BUILD/libdwarf/dwarf_print_lines.c:826:19
+    #2 0x74059d in _dwarf_internal_printlines /home/casper/targets/struct/libdwarf/afl/BUILD/libdwarf/dwarf_print_lines.c:639:11
+    #3 0x5e08f8 in print_line_numbers_this_cu /home/casper/targets/struct/libdwarf/afl/BUILD/dwarfdump/print_lines.c:908:17
+    #4 0x581791 in print_one_die_section /home/casper/targets/struct/libdwarf/afl/BUILD/dwarfdump/print_die.c:1096:26
+    #5 0x581791 in print_infos /home/casper/targets/struct/libdwarf/afl/BUILD/dwarfdump/print_die.c:464:12
+    #6 0x51f56e in process_one_file /home/casper/targets/struct/libdwarf/afl/BUILD/dwarfdump/dwarfdump.c:1204:15
+    #7 0x51af54 in main /home/casper/targets/struct/libdwarf/afl/BUILD/dwarfdump/dwarfdump.c:683:9
+    #8 0x7f241ff27b96 in __libc_start_main /build/glibc-2ORdQG/glibc-2.27/csu/../csu/libc-start.c:310
+    #9 0x41b679 in _start (/home/casper/targets/struct/libdwarf/afl/fuzzrun/dwarfdump+0x41b679)
+
+0x61100000025e is located 0 bytes to the right of 222-byte region [0x611000000180,0x61100000025e)
+allocated by thread T0 here:
+    #0 0x4a8230 in malloc /home/casper/fuzz/fuzzdeps/llvm-9.0.0.src/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:145
+    #1 0x7ac980 in elf_load_nolibelf_section /home/casper/targets/struct/libdwarf/afl/BUILD/libdwarf/dwarf_elfread.c:254:26
+...
+reproduce steps:
+1. compile latest libdwarf with asan
+2. run command `./dwarfdump -vv -a poc`
