@@ -32,6 +32,7 @@ then
   echo "Only one DWARFTEST.sh can run at a time on a machine"
   echo "Something is wrong, DWARFTEST.sh already running: $ct"
   echo "exit non-zero and stop"
+  ls /tmp/dwbx*
   rm -f /tmp/dwbxa.$$
   rm -f /tmp/dwbxb.$$
   exit 1

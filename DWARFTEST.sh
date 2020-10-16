@@ -497,6 +497,7 @@ runtest () {
     rm -f core
     rm -f tmp1 tmp2 tmp3
     rm -f tmp1err tmp2err tmp3err 
+    rm -f tmp1erra  tmp2erra
     rm -f tmp1errb tmp1errc
     rm -f tmp1berr tmp2berr
     # testOfile OFn OF* are targets of dwarfdump -O file=testOfile
@@ -551,7 +552,7 @@ runtest () {
     # No need to unify for new dd name.
     unifyddname tmp2a tmp2
     unifyddnameb tmp2erra tmp2err
-    date "+%Y-%m-%d %H:%M:%S"
+    #date "+%Y-%m-%d %H:%M:%S"
     if [ -f core ]
     then
       echo corefile in  $newdw
@@ -629,6 +630,11 @@ cd guilfanov
   chkres $? "guilfanov/runtest.sh"
 cd ..
 
+#  A fuzzed object which hit a poorly written sanity
+#  offset test. Test received 10 october 2020.
+runtest $d1 $d2 c-sun/poc -vv -a
+# ensure we catch the corruption without -vv
+runtest $d1 $d2 c-sun/poc -a
 
 # example of command mistakes. Too many object names
 # or no object names. Neither reads any object file.
@@ -843,11 +849,12 @@ runtest $d1 $d2 macho-kask/simplereaderx86_64 -b
 runtest $d1 $d2 macho-kask/simplereaderx86_64 -a -vvv
 # The following 2 should give the same output as the first,
 # in spite of naming a simple text placeholder.
-runtest $d1 $d2 macho-kask/mach-o-object32    -a 
-runtest $d1 $d2 macho-kask/mach-o-object32    -a  -vvv
-runtest $d1 $d2 macho-kask/mach-o-object64    -a 
-runtest $d1 $d2 macho-kask/mach-o-object64    -a  -vvv
-# This is G4 big-endian
+# now the mach-o-object32/63 placeholders are useless.
+#runtest $d1 $d2 macho-kask/mach-o-object32    -a 
+#runtest $d1 $d2 macho-kask/mach-o-object32    -a  -vvv
+#runtest $d1 $d2 macho-kask/mach-o-object64    -a 
+#runtest $d1 $d2 macho-kask/mach-o-object64    -a  -vvv
+# This is G4 big-endian with dSYM
 runtest $d1 $d2 macho-kask/dwarfdump_G4    -a  -vvv
 
 # the following have a DWARF section the last
@@ -1390,10 +1397,14 @@ runtest $d1 $d2 vlasceanu/a.out -ka
 # Following is for URI testing
 runtest $d1 $d2 moshe%2fhello  -i
 #Put uri in name, let it fail as no translate done.
-# Following is for URI testing
+# Following is for URI testing and is supposed to fail
+# as we suppress uri translation with -U. So it
+# will fail to print anything but cannot-find-file.
 runtest $d1 $d2 moshe%2fhello  -U -i
+# same but with long option
+runtest $d1 $d2 moshe%2fhello  --format-suppress-uri -i
 #Put uri in name, do not mention the uri translatetion
-# Following is for URI testing
+# Following is for URI testing and it prints DWARF.
 runtest $d1 $d2 moshe%2fhello  -q -i
 
 # The -h option exists now

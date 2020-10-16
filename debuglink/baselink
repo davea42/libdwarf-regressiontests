@@ -1,7 +1,4 @@
-
-.gnu_debuglink
- Debuglink name  : crc32.debug   crc 0X: ff d1 a7 66 
- Debuglink target: /home/davea/dwarf/regressiontests/debuglink/crc32.debug
+Filename by debuglink is /home/davea/dwarf/regressiontests/debuglink/crc32.debug
 
 .note.gnu.build-id
  Build-id  type     : 3
@@ -11,9 +8,5 @@
  Possible .gnu_debuglink/.note.gnu.build-id pathnames for
  an alternate object file with more detailed DWARF
   [0] /usr/lib/debug/.build-id/de/d392f18f6fe0f223bc6ab845b90158b69a07a4.debug
-  [1] /home/davea/dwarf/regressiontests/debuglink/crc32.debug
-       file above is an Elf object
-  [2] /home/davea/dwarf/regressiontests/debuglink/.debug/crc32.debug
-  [3] /usr/lib/debug/home/davea/dwarf/regressiontests/debuglink/crc32.debug
 
 
