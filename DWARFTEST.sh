@@ -632,6 +632,7 @@ cd ..
 
 #  A fuzzed object which hit a poorly written sanity
 #  offset test. Test received 10 october 2020.
+#  libdwarf vulnerability DW202010-001
 runtest $d1 $d2 c-sun/poc -vv -a
 # ensure we catch the corruption without -vv
 runtest $d1 $d2 c-sun/poc -a
