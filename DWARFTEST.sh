@@ -640,7 +640,14 @@ runtest $d1 $d2 c-sun/poc -a
 # example of command mistakes. Too many object names
 # or no object names. Neither reads any object file.
 runtest $d1 $d2 moya/simple.o moya3/ranges_base.dwo
-runtest $d1 $d2 --print-debug-gnu
+runtest $d1 $d2  --print-debug-gnu
+
+# Examples of turning off sanitized() calls.
+# Unsafe for your terminal/window to use these
+# on corrupted object files or objects with unusual
+# string encodings.
+runtest $d1 $d2  moya3/ranges_base.dwo --no-sanitize-strings
+runtest $d1 $d2  moya3/ranges_base.dwo -x nosanitizestrings
 
 # printing .debug_gnu_pubnames and .debug_gnu_pubtypes
 runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
