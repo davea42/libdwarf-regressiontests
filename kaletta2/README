@@ -1,0 +1,40 @@
+
+From
+Paul Kaletta. 22 October 2020
+
+I'm currently trying to understand a little bit more about gcc's
+-fdebug-types-section option.  I wrote the C testcase:
+
+
+When I compile this file with
+
+$ gcc -g -fdebug-types-section -c minimal_fdebug_types_section.c
+
+and run dwarfdump on the output:
+
+$ dwarfdump -iGM minimal_fdebug_types_section.o
+
+I see that the variable a5 to g5 are of type:
+
+< 1><0x000000a2 GOFF=0x000000a2> DW_TAG_structure_type
+                                      DW_AT_signature 0xe83beaa6d6f58683 <form DW_FORM_ref_sig8>
+
+However, no .debug_types section appears...  In a hex-editor I
+see that the debug information for struct A, B, C are present.
+
+They appear in the dwarfdump output, when I link the object file
+with a int main(void) { return 0 } routine into an executable
+program.  Why can dwarfdump find the .debug_types section in
+executables, but not in object files?
+
+
+
+-------------
+By DavidA
+The short form dwarfdump option
+  -x groupnumber=3
+works
+but the long form
+   --format-group=3
+seems to get rejected.
+Bug in dwarfdump?
