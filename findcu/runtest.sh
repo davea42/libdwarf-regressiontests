@@ -15,7 +15,7 @@ then
    echo "fail findcu runtest.sh missing arguments"
    exit 1
 fi
-h="-I$libdw/libdwarf"
+h="-I$libdw/libdwarf -I$codedir/libdwarf"
 l="-L$libdw/libdwarf"
 libs="$bld/libdwarf/.libs/libdwarf.a"
 if [ x$NLIZE = 'xy' ]
@@ -24,7 +24,7 @@ then
 else
   nli=
 fi
-opts="-I$bld -I$bld/libdwarf"
+opts="-I$bld -I$bld/libdwarf -I$codedir/libdwarf"
 
 if [ $withlibelf = "withlibelf" ]
 then

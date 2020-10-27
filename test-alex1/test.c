@@ -1,9 +1,9 @@
-#include <libdwarf.h>
-#include <dwarf.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include "dwarf.h"
+#include "libdwarf.h"
 
 /*#define WORKING 1 */
 

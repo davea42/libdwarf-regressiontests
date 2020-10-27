@@ -14,7 +14,7 @@ bld=$libbld
 withlibelf=$1
 withlibz=$2
 echo "entering testoffdie/runtest.sh  $withlibelf $withlibz"
-h="-I$testsrc/libdwarf"
+h="-I$testsrc/libdwarf -I$codedir/libdwarf"
 l="-L$src/libdwarf"
 libs="$bld/libdwarf/.libs/libdwarf.a"
 if [ x$withlibelf = "xwithlibelf" ]

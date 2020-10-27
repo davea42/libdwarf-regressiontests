@@ -33,10 +33,10 @@ if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
 fi
-
+iopts="-I$bld -I$bld/libdwarf -I$codedir/libdwarf -I$libbld/libdwarf"
 cp $libdw/dwarfexample/frame1.c framexlocal.c
-echo "cc -g $opt -I$libdw/libdwarf -I$bld -I$libbld/libdwarf framexlocal.c $dwlib $libs -o frame1"
-cc -g $opt -I$libdw/libdwarf -I$bld -I$bld/libdwarf framexlocal.c $dwlib $libs -o frame1
+echo "cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1"
+cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1
 
 if [ $? -ne 0 ]
 then

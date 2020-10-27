@@ -6,12 +6,10 @@
 ts=$testsrc/test-alex2
 tf=$bldtest/test-alex2
 l=$bldtest/libdwarf.a
-top_builddir=$bldtest
-top_srcdir=$testsrc
 withlibelf=$1
 withlibz=$2
 
-OPTS="-I$top_builddir -I$top_builddir/libdwarf -I$top_srcdir/libdwarf"
+OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/libdwarf -I$libbld/libdwarf"
 if [ x$withlibz = "x" ]
 then
   echo "fail test-alex2. missing withlibz"
