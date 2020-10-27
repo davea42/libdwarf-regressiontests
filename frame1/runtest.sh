@@ -34,7 +34,7 @@ then
   libs="$libs -lz"
 fi
 iopts="-I$bld -I$bld/libdwarf -I$codedir/libdwarf -I$libbld/libdwarf"
-cp $libdw/dwarfexample/frame1.c framexlocal.c
+cpfmissing $libdw/dwarfexample/frame1.c framexlocal.c
 echo "cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1"
 cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1
 
