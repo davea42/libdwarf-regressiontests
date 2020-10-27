@@ -5,6 +5,10 @@
 
 dd=../dwarfdump
 ourzcat=zcat
+. ../BASEFILES
+ts=$testsrc/debugfission
+tf=$bldtest/debugfission
+
 which gzcat 1>/dev/null
 if [ $? -eq 0 ]
 then
@@ -12,53 +16,72 @@ then
   ourzcat=gzcat
 fi
 
-$dd -a archive.o  >junk1.new
-$ourzcat archiveo.base.gz >archiveo.base
-diff archiveo.base junk1.new
+b=archiveo.base
+bz=archiveo.base.gz
+$dd -a $ts/archive.o  >junk1.new
+$ourzcat $ts/$bz > $b
+diff $b junk1.new
 if [  $?  -ne 0 ]
 then
     echo fail debugfission archiveo test 1
-    echo "update via : mv junk1.new archiveo.base ; gzip archiveo.base"
+    echo "update in $tf via : mv junk1.new $b"
+    echo " gzip $b ; mv $bz  $ts/$bz"
     exit 1
 fi
 
-$dd -a archive.dwo  >junk2.new
-$ourzcat archivedwo.base.gz >archivedwo.base
-diff archivedwo.base junk2.new
+b=archivedwo.base
+bz=archivedwo.base.gz
+jt=junk2.new
+$dd -a $ts/archive.dwo  >$jt
+$ourzcat $ts/$bz >$b
+diff $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission archivedwo 2
-    echo "update via : mv junk2.new archivedwo.base ; gzip archivedwo.base"
+    echo "update in $tf via : mv $jt $b"
+    echo " gzip $b ; mv $bz  $testsrc/$bz"
     exit 1
 fi
 
-$dd -a target.o  >junk3.new
-$ourzcat targeto.base.gz > targeto.base
-diff  targeto.base junk3.new
+b=targeto.base
+bz=targeto.base.gz
+jt=junk3.new
+$dd -a $ts/target.o  >$jt
+$ourzcat $ts/$bz > $b
+diff  $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission targeto test 3
-    echo "update via : mv junk3.new targeto.base ; gzip targeto.base"
+    echo "update via : $jt $b"
+    echo " gzip $b ; mv $bz  $testsrc/$bz"
     exit 1
 fi
 
-$dd -a target.dwo  >junk4.new
-$ourzcat targetdwo.base.gz > targetdwo.base
-diff  targetdwo.base junk4.new
+b=targetdwo.base
+bz=targetdwo.base.gz
+jt=junk4.new
+$dd -a $ts/target.dwo  >$jt
+$ourzcat $ts/$bz > $b
+diff  $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission targetdwo 4
-    echo "update via : mv junk4.new targetdwo.base ; gzip targetdwo.base"
+    echo "update via : cp $jt $b"
+    echo " gzip $b ; mv $bz  $testsrc/$bz"
     exit 1
 fi
 
-$dd -i -M -vvv archive.dwo  >junk5.new
-$ourzcat archivedwo-iMvvv.base.gz >archivedwo-iMvvv.base
-diff archivedwo-iMvvv.base junk5.new
+b=archivedwo-iMvvv.base
+bz=archivedwo-iMvvv.base.gz
+jt=junk5.new
+$dd -i -M -vvv $ts/archive.dwo  >$jt
+$ourzcat $ts/$bz >$b
+diff  $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission archivedwo-iMvvv 5
-    echo "update via : mv junk5.new archivedwo-iMvvv.base ; gzip archivedwo-iMvvv.base"
+    echo "update via : cp $jt $b"
+    echo " gzip $b ; mv $bz  $testsrc/$bz"
     exit 1
 fi
 echo "PASS debugfission/runtest.sh"

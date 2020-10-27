@@ -1,3 +1,33 @@
+2020-10-26 David Anderson
+    * All this enables running of a regression test
+      outside of the test sources.
+    * BASEFILES: This is created by configure and
+      has settings for all the important directories
+      used in testing.
+    * BASEFUNCS: Added a shell file with script functions
+      used by multiple runntest.sh scripts.
+    * CHECKIFRUNNING.sh: Removed use of ps, just use
+      simple test run directory file as lock file. 
+    * CLEANUP: the reorganization left a couple files
+      needing to be cleaned out after a test.
+    * DWARFTEST.sh: Removed use of ps -eaf, not needed
+      now.  New shell functions let us shorten the
+      script while doing more than before. 
+      running each 'runtest.sh' can now omit the
+      directory names. BASEFILES has them all and
+      each runtest.sh references it.
+    * Makefile.in: Adds creating Makefile using @srcdir@
+      and references test base dir rather than "."
+    * NEWS: A new file mentioning the new ability to run
+      a regression test in whatever empty directory
+      one wants to.
+    * PICKUPBIN: Uses BASEFILES to get the needed directories
+      so the build can put them into the testing directory.
+    * RUNALL.sh: Refers to the newly appropriate directories
+    * */runtest.sh: Every runtest.sh changed to use
+      BASEFILES to get directory information (no longer
+      passed on the runtest.sh invocation lines.
+      They all required significant change.
 2020-07-18 David Anderson
     * dwarfdump-i386-freebsd.O,dwarfdump-x86_64-freebsd.O:
       A disk drive crashed (many many errors) 

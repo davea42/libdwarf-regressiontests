@@ -1,6 +1,10 @@
 #!/bin/sh
 
 . ../BASEFILES
+ts=$testsrc/navarro
+tf=$bldtest/navarro
+
+
 echo $libdw/libdwarf
 dw=$libdw/libdwarf
 echo $dw/libdwarf
@@ -14,7 +18,7 @@ then
   libs="$libs -lz"
 fi
 
-cc -g -I $dw -L $dw get_globals.c -ldwarf $libs -o getglobals
+cc -g -I $dw -L $dw $ts/get_globals.c -ldwarf $libs -o getglobals
 if [ $? -ne 0 ]
 then
  echo fail to compile navarro/getglobals
@@ -28,4 +32,3 @@ then
 fi
 echo PASS navarro/runtest.sh
 exit 0
-

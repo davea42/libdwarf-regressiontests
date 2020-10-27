@@ -12,9 +12,13 @@
 gen=../dwarfgen
 dd=../dwarfdump
 sim=../simplereader
+. ../BASEFILES
+ts=$testsrc/offsetfromlowpc
+tf=$bldtest/offsetfromlowpc
 
-objf=dwarfdumpLE32V2.o
-objf2=dwarfdumpLE64V4.o
+
+objf=$ts/dwarfdumpLE32V2.o
+objf2=$ts/dwarfdumpLE64V4.o
 
 tx=junktesthipcoffset.o
 ty=junktesthipcoffsetorig.o
@@ -103,21 +107,21 @@ then
   exit 1
 fi
 
-diff basestrpiM  $ta
+diff $ts/basestrpiM  $ta
 if [ $? -ne 0 ]
 then
     echo fail diff basestrpiM $ta . Object gen is $tz
     echo fail offsetfromlowpc/runtest.sh Generating strp strings
-    echo "to update baseline do: mv $ta basestrpiM"
+    echo "to update baseline do: mv $tf/$ta $ts/basestrpiM"
     exit 1
 fi
 
-diff basestrpgenout  $t9
+diff $ts/basestrpgenout  $t9
 if [ $? -ne 0 ]
 then
     echo fail diff basestrpgenout $t9. Object gen is $tz
     echo fail offsetfromlowpc/runtest.sh Generating strp strings
-    echo "to update baseline do: mv $t9 basestrpgenout"
+    echo "to update baseline do: mv $tf/$t9 $ts/basestrpgenout"
     exit 1
 fi
 
@@ -126,12 +130,12 @@ grep high_pc $t1 >$t5
 echo Now show FORM_str for $ty >> $t5
 grep DW_FORM_str $t1 >>$t5
 
-diff  basehighpc1 $t5
+diff  $ts/basehighpc1 $t5
 if [ $? -ne 0 ]
 then
     echo fail diff basehighpc1 $t5 object gen is $ty
     echo fail offsetfromlowpc/runtest.sh  incorrect list of high_pc data.
-    echo "to update baseline do: mv $t5 basehighpc1"
+    echo "to update baseline do: mv $tf/$t5 $ts/basehighpc1"
     exit 1
 fi
 
@@ -144,14 +148,15 @@ fi
 
 grep high_pc $t2  >$t6 2>/dev/null
 
-diff   basehighpc2 $t6
+bas=basehighpc2
+diff  $ts/$bas $t6
 if [ $? -ne 0 ]
 then
     echo "did: $gen  -h -t obj -c 0 -o $tx $objf  >$t4 "
     echo "did: $dd -i -M $tx > $t6"
-    echo "did: diff   basehighpc2 $t6"
+    echo "did: diff $bas $t6"
     echo fail diff basehighpc2 $t6
-    echo "to update baseline do: mv $t6 basehighpc2"
+    echo "to update baseline do: mv $tf/$t6 $ts/$bas"
     echo fail offsetfromlowpc/runtest.sh  incorrect transformed high_pc offset
     exit 1
 fi
@@ -163,12 +168,13 @@ then
   exit 1
 fi
 
-diff basehighpc3 $t3
+bas=basehighpc3
+diff $ts/$bas $t3
 if [ $? -ne 0 ]
 then
-    echo "fail offsetfromlowpc/runtest.sh  mismatch transformation to offset"
-    echo "to update baseline do: mv $t3 basehighpc3"
-    exit 1
+  echo "fail offsetfromlowpc/runtest.sh mismatch transformation to offset"
+  echo "to update baseline do: mv $tf/$t3 $ts/$bas"
+  exit 1
 fi
 
 $sim --check $ty >$t7  2>/dev/null
@@ -177,20 +183,22 @@ then
   echo "fail H run $sim --check $tx "
   exit 1
 fi
-diff basehighpc4 $t7
+bas=basehighpc4
+diff $ts/$bas $t7
 if [ $? -ne 0 ]
 then
     echo fail dwarfdump -vvv -f  junk.o offsetfromlowpc advloc err
-    echo "to update baseline do: mv $t7 basehighpc4"
+    echo "to update baseline do: mv $tf/$t7 $ts/$bas"
     exit 1
 fi
 
+bas=baseadvlocf
 $dd -f junk.o  > $tg2      2>/dev/null
-diff baseadvlocf $tg2
+diff $ts/$bas $tg2
 if [ $? -ne 0 ]
 then
     echo "fail dwarfdump -f junk.o  offsetfromlowpc advloc err"
-    echo "to update baseline do: mv $tg2 baseadvlocf"
+    echo "to update baseline do: mv $tf/$tg2 $ts/$bas"
     exit 1
 fi
 

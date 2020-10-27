@@ -1,0 +1,12 @@
+2020-10-27:
+  It is now possible to run the regression tests
+  in any directory in the usual way, for example: 
+  cd /tmp/dwtesting
+  /path/to/regressiontests/configure
+  make
+  (the assumption is that here /path/to/code
+  holds the libdwarf/dwarfdump source).
+  We suggest using a full-path to configure.
+  All testing temporary files will then be in /tmp/dwtesting.
+  Running in the regressiontests directory is works too,
+  with ./configure

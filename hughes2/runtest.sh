@@ -1,11 +1,16 @@
 #!/bin/sh
-if [ $# -ne 2 ]
+if [ $# -ne 1 ]
 then
-   echo "fail hughes2/simplereader two args required, not $#"
+   echo "fail hughes2/simplereader one arg required, not $#"
+   echo "fail  the arg required is an elf object full path "
    exit 1
 fi
-r=$1
-tobj=$2 
+r=../simplereader
+tobj=$1
+
+. ../BASEFILES
+ts=$testsrc/hughes2
+tf=$bldtest/hughes2
 
 m() {
 e=$1
@@ -40,7 +45,7 @@ else
     echo 'hughes2 test 2: $NLIZE set so skip checking on corefile' 
   fi
 fi
-diff $b $bt
+diff $ts/$b $bt
 if [ $? -ne 0 ]
 then
     echo "fail hughes2/simplereader $e $opts $t" 

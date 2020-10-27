@@ -1,8 +1,9 @@
 #!/bin/sh
-# execute as  runtest.sh <old dd name> <new dd name> 
+# execute as  runtest.sh
 # unpack the executable  (lots of zeroes, so it compresses well).
 # zcat (gzcat on MacOS) is the same as gunzip -c  
-
+olddd=../dwarfdump.O
+newdd=../dwarfdump
 # The problem here is that it is dwarf2 and elf64 yet 32bit address
 # so things go wrong. We need to specify address size is 4.
 # So we need a dwarfdump.conf flag here.
@@ -13,21 +14,21 @@ then
   # On MacOS gzcat does what zcat does on Linux.
   ourzcat=gzcat
 fi
+. ../BASEFILES
+ts=$testsrc/enciso4
+tf=$bldtest/enciso4
 
-$ourzcat frame_problem.elf.gz > junk.frame_problem.elf
-if [ $# -ne 2 ]
+j=junk.frame_problem.elf 
+$ourzcat $ts/frame_problem.elf.gz > $j
+if [ $# -ne 0 ]
 then
-    echo "enciso4/runtest.sh Wrong number of args"
+    echo "enciso4/runtest.sh Wrong number of args, $#. Expect 0."
     exit 1
 fi
 
-
-
-olddd=../$1
-newdd=../$2
 commonopts="-x name=../dwarfdump.conf -x abi=ppc32bitaddress"
 #   -f runs in about a minute.
-$newdd -f  $commonopts junk.frame_problem.elf >junk.f.out
+$newdd -f  $commonopts $j  >junk.f.out
 if [ $? -ne 0 ] 
 then
     echo "fail error -f enciso4/runtest.sh junk.frame_problem.elf"
@@ -35,7 +36,7 @@ then
 fi
 # The  -F  version runs over 20 minutes, so we skip that.
 # eh_frame is pretty big, 0x1ab0e0 bytes.
-#$newdd -F  $commonopts junk.frame_problem.elf >junk.F.out
+#$newdd -F  $commonopts $j >junk.F.out
 #if [ $? -ne 0 ] 
 #then
 #    echo fail error -F enciso4/junk.frame_problem.elf

@@ -1,4 +1,10 @@
 #!/bin/sh
+
+. ../BASEFILES
+
+ts=$testsrc/err_allocate
+tf=$bldtest/err_allocate
+
 libdw=$1
 withlibelf=$2
 withlibz=$3
@@ -17,7 +23,9 @@ if [ $withlibz = "withlibz"]
 then
   libs="$libs -lz"
 fi
-cc -g $opt  -I $libdw/libdwarf -L $libdw/libdwarf alloc_test.c -ldwarf $libs -o alloc_test
+
+
+cc -g $opt  -I $libdw/libdwarf -L $libdw/libdwarf $ts/alloc_test.c -ldwarf $libs -o alloc_test
 fi
 
 if [ $? -ne 0 ]
@@ -44,12 +52,12 @@ then
     exit 1
   fi
 fi
-diff alloc_test.base junk_alloc_test_out  >diffs
+diff $ts/alloc_test.base junk_alloc_test_out  >diffs
 if [ $? -ne 0 ]
 then
     echo "fail err_allocate test.  got diffs in output."
     cat diffs
-    echo "To update baseline  do mv junk_alloc_test_out alloc_test.base"
+    echo "To update baseline  do mv $tf/junk_alloc_test_out $ts/alloc_test.base"
     exit 1
 fi
 echo "PASS err_allocate/runtest.sh" 

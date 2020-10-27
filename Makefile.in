@@ -1,28 +1,29 @@
 # Makefile which builds builds the code to test and
 # runs the executables.
 # Running these tests multiple times simultaneously
-# in a single directory will result in incorrect results and errors.
+# in a single directory will result in incorrect 
+# results and errors.
+# We use BASEFILES to give tests the needed context.
 
 buildwithlibelf = @withlibelf@
+testsrc = @srcdir@
 all:  pretest build testonly
 
 test: pretest build testonly
 
 build: pretest
-	sh ./PICKUPBIN $(buildwithlibelf)
+	sh $(testsrc)/PICKUPBIN $(buildwithlibelf) 
 
+check: pretest testonly
 testonly:
-	sh ./RUNALL.sh $(buildwithlibelf)
+	sh $(testsrc)/RUNALL.sh $(buildwithlibelf)
 pretest:
-	sh CHECKIFRUNNING.sh
-
+	sh $(testsrc)/CHECKIFRUNNING.sh
 # RUNALL.sh does this
 dd:
-	./DWARFTEST.sh $(buildwithlibelf) 2>ALLdd 1>&2
-
+	$(testsrc)/DWARFTEST.sh $(buildwithlibelf)  2>ALLdd 1>&2
 clean:
-	sh ./CLEANUP
-
+	sh $(testsrc)/CLEANUP 
 distclean: clean
 	rm -f Makefile
 	rm -f config.h

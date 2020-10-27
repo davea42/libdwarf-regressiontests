@@ -1,9 +1,14 @@
 #!/bin/sh
-l=$1
-top_bld=$2
-top_src=$3
-withlibelf=$4
-withlibz=$5
+
+. ../BASEFILES
+ts=$testsrc/test-alex1
+tf=$bldtest/test-alex1
+top_bld=$bldtest
+top_src=$testsrc
+. $testsrc/BASEFUNCS
+
+withlibelf=$1
+withlibz=$2
 if [ x$NLIZE = 'xy' ]
 then
   opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
@@ -26,20 +31,20 @@ then
   libs="$libs -lz"
 fi
 
-OPTS="-I$top_bld -I$top_bld/libdwarf -I$top_src/libdwarf"
-cc -DWORKING=1 $opt $OPTS  test.c $l $libs -o test1
+OPTS="-I$top_bld -I$top_bld/libdwarf -I$libbld/libdwarf"
+echo "cc -DWORKING=1 $opt $OPTS  $ts/test.c $bldtest/libdwarf.a $libs -o test1"
+cc -DWORKING=1 $opt $OPTS  $ts/test.c $bldtest/libdwarf.a $libs -o test1
 if [ $? -ne 0 ]
 then
-     echo fail test-alex1 cc 1
      exit 1
 fi
-cc  $opt $OPTS  test.c  $l $libs -o test2
+cc  $opt $OPTS  $ts/test.c $bldtest/libdwarf.a  $libs -o test2
 if [ $? -ne 0 ]
 then
      echo fail test-alex1 cc 2
      exit 1
 fi
-
+cpifmissing $ts/orig.a.out orig.a.out
 ./test1 orig.a.out >out1
 if [ $? -ne 0 ]
 then

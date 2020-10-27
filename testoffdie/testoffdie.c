@@ -33,9 +33,9 @@ printresval(const char *prefix,const char *msg,int res,int line)
     printf("%sRes val %s: %d %s  line %d\n",prefix,msg,res,rn,line);
 }
 
-int main()
+int main(int argc, char **argv)
 {
-    const char *filename = "../irixn32/dwarfdump";
+    const char *filename = 0;
     int      res = 0;
     char     true_path[200];
     unsigned true_path_bufferlen = sizeof(true_path);
@@ -51,7 +51,11 @@ int main()
     const char *tagname = 0;
     Dwarf_Unsigned offarg = 0;
 
-
+    if (argc != 2) {
+        printf("Requires one argument, path to test source.\n");
+        exit(1);
+    }
+    filename = argv[1];
 
     res = dwarf_init_path(filename,
         true_path, true_path_bufferlen,

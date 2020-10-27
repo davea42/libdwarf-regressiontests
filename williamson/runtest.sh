@@ -2,27 +2,11 @@
 # We expect a core file, we do not worry about that.
 # Hopeless bogus executable.
 
-dd=$1
+dd=../dwarfdump
 . ../BASEFILES
-# Avoid spurious differences because of the names of the
-# various dwarfdump versions being tested.
-# This only deals with names like /tmp*dwarfdump2 and /tmp*dwarfdump
-# and .*/dwarfdump2 and .*/dwarfdump
-unifyddname () {
-  nstart=$1
-  nend=$2
-  t1=junku1
-  t2=junku2
-  t3=junku3
-  sed -e 'sx\/tmp.*\/dwarfdump2xdwarfdumpx' < $nstart >$t1
-  sed -e 'sx\..*\/dwarfdump2xdwarfdumpx' <$t1 >$t2
-  sed -e 'sx\/tmp.*\/dwarfdumpxdwarfdumpx' < $t2 >$t3
-  sed -e 'sx\..*\/dwarfdumpxdwarfdumpx' < $t3 >$nend
-  rm -f $t1
-  rm -f $t2
-  rm -f $t3
-}
-
+ts=$testsrc/williamson
+tf=$bldtest/williamson
+. $testsrc/BASEFUNCS
 
 m() {
   dwdumper=$1
@@ -41,11 +25,11 @@ m() {
 
 # The test_sibling_loop.o will not terminate unless
 # dwarfdump[2] is from February 2013 or later.
-t=heap_buffer_overflow.exe
-m $dd $t newout baseout
+t=$ts/heap_buffer_overflow.exe
+m $t newout baseout
 rm -f core*
-t=hbo_unminimized.exe
-m $dd $t newunminout baseunminout
+t=$ts/hbo_unminimized.exe
+m $t newunminout baseunminout
 rm -f core*
 echo "PASS williamson/runtest.sh tests"
 exit 0

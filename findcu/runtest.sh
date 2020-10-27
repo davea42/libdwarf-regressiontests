@@ -1,8 +1,15 @@
 #!/bin/sh
-libdw=$1
-bld=$2
-withlibelf=$3
-withlibz=$4
+
+. ../BASEFILES
+
+ts=$testsrc/findcu
+tf=$bldtest/findcu
+
+libdw=$libbld
+bld=$libbld
+
+withlibelf=$1
+withlibz=$2
 if [ x$withlibz = "x" ]
 then
    echo "fail findcu runtest.sh missing arguments"
@@ -28,8 +35,8 @@ then
   libs="$libs -lz"
 fi
 
-cc $h $opts  cutest.c $nli $l -o cutest $libs
-./cutest cutestobj.save
+cc $h $opts  $ts/cutest.c $nli $l -o cutest $libs
+./cutest $ts/cutestobj.save
 r=$?
 if [ $r -ne 0 ]
 then

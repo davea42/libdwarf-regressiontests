@@ -1,12 +1,12 @@
 #!/bin/sh
-trap "echo Exit testing due to signal ;  rm -f /tmp/dwbc.$$ /tmp/dwba.$$ /tmp/dwbb.$$ ; exit 1 " 2
+trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
 echo "Env vars that affect the tests:" 
 echo "  If you wish do one or more of these before running the tests."
 echo "  Add sanity..............: export NLIZE=y"
 echo "  Suppress de_alloc_tree..: export SUPPRESSDEALLOCTREE=y"
-echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE ; unset NLIZE"
-
+echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE"
+echo "  Revert to normal test...: unset NLIZE"
 # On certain VMs if too much change, we get
 # stuck at 1% done forever (and after 10 hours
 # far from done with the tests).
@@ -19,7 +19,25 @@ echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE ; unset NLIZE"
 # tests are counted and the way $suppressbigdiffs is implemented. 
 
 echo 'Starting regressiontests: DWARFTEST.sh'  `date "+%Y-%m-%d %H:%M:%S"`
-. ./SHALIAS.sh
+
+s=SHALIAS.sh
+if [ ! -f ./$s ]
+then
+  echo "./$s cannot be found in " `pwd`
+  echo "do configure  and make build before running the tests"
+  exit 1
+fi
+. ./$s
+
+b=BASEFILES
+if [ ! -f ./$b ]
+then
+  echo "./$b cannot be found in " `pwd`
+  echo "do configure  and make build before running the tests"
+  exit 1
+fi
+. ./$b
+
 stsecs=`date '+%s'`
 # dwarfgen and libelf go together here.
 withlibelf="withlibelf"
@@ -29,6 +47,7 @@ then
   echo "Defaults to  withlibelf"
   withlibelf=withlibelf
 fi
+dwbb=$bldtest/dwbb
 
 suppresstree=
 #next line is the dwarfdump option to suppress de alloc tree
@@ -39,6 +58,30 @@ if [ x$SUPPRESSDEALLOCTREE = "xy" ]
 then
    suppresstree="--suppress-de-alloc-tree" 
 fi
+okcd() {
+   s=$1
+   if [ $s -ne 0 ]
+   then
+      echo " FAILED cd to $2"
+      exit 1
+   fi
+}
+
+mklocal() {
+  d=$1
+  if [ ! -d $d ] 
+  then
+     rm -f $d
+     mkdir $d
+     if [ $? -ne 0 ]
+     then
+       echo "Unable to create local dir %d"
+       exit 1
+     fi
+  fi
+  cd $d 
+  okcd $? $d
+}
 
 for i in $*
 do
@@ -64,54 +107,42 @@ do
   esac
 done
 
-if [ ! -f ./BASEFILES -o ! -f ./dwarfdump ]
+if [ ! -f ./dwarfdump ]
 then
-  echo "./BASEFILES and ./dwarfdump needed. do configure and make buildbefore running the tests"
+  echo " ./dwarfdump needed." 
+  echo "do configure  and make build before running the tests"
+  exit 1
+fi
+. ./BASEFILES
+
+mklocal checkforlibz
+  sh $testsrc/checkforlibz/runtest.sh
+  if [ $? -ne 0 ]
+  then
+    withlibz="nolibz"
+  else
+    withlibz="withlibz"
+  fi
+cd ..
+
+echo "Lock file.................: $dwbb"
+if [ -f $dwbb ]
+then
+  echo "Lock file exists with content:"
+  cat $dwbb
+  echo "DWARFTEST.sh exits. Take no other action"
   exit 1
 fi
 
-cd checkforlibz
-sh runtest.sh
-if [ $? -ne 0 ]
-then
-  withlibz="nolibz"
-else
-  withlibz="withlibz"
-fi
-cd ..
 echo "build with libelf.........: $withlibelf"
 echo "build with libz...........: $withlibz"
-# The following is a dwarfdump option
-# and tells dwarfdump to ask libdwarf to do less!
-# The following is needed for --print-alloc-sums
-rm -f libdwallocs
-
-# We do not use DWARFTEST in ps -eaf |grep DWARFTEST as we do not want to 
-# match the grep from ps
-ps -eaf >/tmp/dwbc.$$ 
-grep DWARFTEST.sh < /tmp/dwbc.$$ >/tmp/dwba.$$ 2>/dev/null
-echo "wc -l /tmp/dwbc.$$........: " `wc -l /tmp/dwbc.$$`
-rm -f /tmp/dwbc.$$
-echo "Lock file.................: /tmp/dwba.$$"
+echo "test source...............: $testsrc"
+echo "library source............: $codedir"
+echo "test build................: $bldtest"
+echo "library build.............: $libbld"
+echo "DWARFTEST lock set at.....: " `date "+%Y-%m-%d %H:%M:%S"` >$dwbb
 echo "Lock file content follows.:"
-cat /tmp/dwba.$$
-grep DWARFTEST.sh </tmp/dwba.$$ > /tmp/dwbb.$$
-ct=`wc -l </tmp/dwbb.$$`
-echo "DWARFTEST.sh running......: $ct"
-echo "Lock file.................: /tmp/dwbb.$$"
-echo "Lock file content follows.:"
-cat /tmp/dwbb.$$
-ct=`wc -l </tmp/dwbb.$$`
-if [ $ct -gt 1 ]
-then
-  echo "Only one DWARFTEST.sh can run at a time on a machine"
-  echo "Something is wrong, DWARFTEST.sh already running: $ct"
-  echo "dwbb.$$ contains:"
-  echo /tmp/dwbb.$$
-  echo "do......................: rm /tmp/dwba* /tmp/dwbb* "
-  echo "Check with: ps -eaf |grep DWARF"
-  exit 1
-fi
+cat $dwbb
 
 endian=L
 CC=cc
@@ -121,7 +152,7 @@ then
   # No native cc. Try gcc.
   CC=gcc
 fi
-$CC testendian.c -o testendian
+$CC $testsrc/testendian.c -o testendian
 if [ $? -eq 0 ]
 then
   endian=`./testendian`
@@ -193,10 +224,10 @@ fi
 maxdiffile=31457280
 
 # Speeds up diff on big files with small differences.
-echo a >/tmp/junkadwtests
-echo a >/tmp/junkbdwtests
+echo a >$bldtest/junkadwtests
+echo a >$bldtest/junkbdwtests
 diffopt="--speed-large-files"
-diff $diffopt /tmp/junkadwtests /tmp/junkbdwtests 2>/dev/null
+diff $diffopt $bldtest/junkadwtests $bldtest/junkbdwtests 2>/dev/null
 if [ $? -ne 0 ]
 then
   # the option is not supported.  
@@ -205,25 +236,22 @@ then
 else 
   echo "speed up big diffs........: yes"
 fi
-rm /tmp/junkadwtests /tmp/junkbdwtests
+rm $bldtest/junkadwtests $bldtest/junkbdwtests
 
 myhost=`hostname`
 echo   "hostname..................: $myhost"
 goodcount=0
 failcount=0
 skipcount=0
-. ./BASEFILES
-top_srcdir=$libdw
-# Must match the file location in PICKUPBIN 
-top_builddir=/tmp/regressionbuild
-echo "code source...............: $top_srcdir"
+
+top_builddir=$bldtest
+echo   "test code source..........: $testsrc"
 d1=./dwarfdump.O
 d2=./dwarfdump
-bdir=`pwd`
-echo "old is....................: $d1"
-echo "new is....................: $d2"
-dwlib=$bdir/libdwarf.a
-dwinc=$top_srcdir/libdwarf
+echo   "old is....................: $d1"
+echo   "new is....................: $d2"
+dwlib=$bldtest/libdwarf.a
+dwinc=$codedir/libdwarf
 
 
 #  oi and  Ei are to ensure that things
@@ -240,7 +268,7 @@ kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky 
 
 # These accumulate times so we can print actual dwarfdump
 # user, sys, clock times at the end (see usertime.py).
-. ./RUNTIMEFILES
+. $testsrc/RUNTIMEFILES
 if [ x$wrtimeo != "x" ]
 then
   echo "/usr/bin/time timing......: yes"
@@ -444,7 +472,7 @@ t2=$2
 shift ; shift  
 if [ "$suppressbigdiffs" = "y" ]
 then
-  $mypycom $mypydir/checksize.py $maxdiffile $t1  $t2
+  $mypycom $testsrc/$mypydir/checksize.py $maxdiffile $t1  $t2
   if [ $?  -eq 0 ]
   then
     # Ok to diff
@@ -482,7 +510,7 @@ return 0
 runtest () {
 	olddw=$1
 	newdw=$2
-	targ=$3
+	targ=$testsrc/$3
 	shift
 	shift
 	shift
@@ -490,7 +518,7 @@ runtest () {
     #  Add 1 to show our number. We have not yet
     #  counted it as a good or a fail.
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
-    pctstring=`$mypycom $mypydir/showpct.py $totalct`
+    pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
     echo  "=====START Pct $pctstring $* $targ" 
     #echo "=====START $* $targ" 
     echo  "=====STATS Pct $pctstring ct: $totalct"
@@ -519,13 +547,12 @@ runtest () {
     else
           $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
     fi
-    #$olddw $*  $targ 1>tmp1a 2>tmp1erra
     echo "old done " `date "+%Y-%m-%d %H:%M:%S"`
     unifyddname tmp1a tmp1
     unifyddnameb tmp1erra tmp1err
     if [ -f core ]
     then
-           echo corefile in  $olddw '(old dwarfdump)'
+           echo "corefile in  $olddw '(old dwarfdump)'"
            rm core
     fi
     # To deal with the -O file=path naming dwarfdump output.
@@ -617,14 +644,14 @@ echo "=============BEGIN THE TESTS==============="
 echo  "=====BLOCK individual tests and runtest.sh tests"
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  runtest.sh"
-cd supplementary
-  sh runtest.sh 
+mklocal supplementary
+  sh $testsrc/supplementary/runtest.sh 
   chkres $? "supplementary/runtest.sh"
 cd ..
 
 echo "=====START  guilfanov  runtest.sh"
-cd guilfanov 
-  sh runtest.sh 
+mklocal guilfanov
+  sh $testsrc/guilfanov/runtest.sh 
   # A fuzzed object which can crash libdwarf due to a bug.
   # hangs libdwarf/dwarfdump.
   chkres $? "guilfanov/runtest.sh"
@@ -636,6 +663,21 @@ cd ..
 runtest $d1 $d2 c-sun/poc -vv -a
 # ensure we catch the corruption without -vv
 runtest $d1 $d2 c-sun/poc -a
+
+# Doc used to be wrong about the spelling
+# of the long form
+runtest $d1 $d2 -i -vv -x groupnumber=3 \
+  kaletta2/minimal_fdebug_types_section.o
+runtest $d1 $d2 -i -vv --format-group-number=3 \
+  kaletta2/minimal_fdebug_types_section.o
+
+# These files are Arm and the compiler
+# is generating section groups but without
+# any use of the Elf GROUP flag.
+# No documentation I can find explains how it
+# is supposed to work with these people's linker.
+runtest $d1 $d2 -i -vv  kaletta/test.armlink.elf
+runtest $d1 $d2 -i -vv  kaletta/test.o
 
 # example of command mistakes. Too many object names
 # or no object names. Neither reads any object file.
@@ -667,10 +709,10 @@ then
   echo "=====SKIP  testoffdie  runtest.sh nolibelf $withlibz "
   skipcount=`expr $skipcount + 1`
 else
-  echo "=====START  testoffdie runtest.sh $top_srcdir $top_builddir $withlibelf $withlibz"
-  cd testoffdie 
-  sh runtest.sh $top_srcdir $top_builddir $withlibelf $withlibz
-  chkres $? "testoffdie/runtest.sh"
+  echo "=====START  testoffdie runtest.sh $withlibelf $withlibz"
+  mklocal testoffdie
+    sh $testsrc/testoffdie/runtest.sh $withlibelf $withlibz
+    chkres $? "testoffdie/runtest.sh"
   cd ..
 fi
 
@@ -678,18 +720,18 @@ fi
 
 
 
-# .gnu_debuglink and .note.gnu.build-id  section tests.
-if [ x$withlibelf = "xnolibelf" ]
-then
-  echo "=====SKIP  debuglink  runtest.sh nolibelf"
-  skipcount=`expr $skipcount + 1`
-else
+## .gnu_debuglink and .note.gnu.build-id  section tests.
+#if [ x$withlibelf = "xnolibelf" ]
+#then
+#  echo "=====SKIP  debuglink  runtest.sh nolibelf"
+#  skipcount=`expr $skipcount + 1`
+#else
   echo "=====START  debuglink runtest.sh $withlibelf $withlibz"
-  cd debuglink
-  sh runtest.sh $withlibelf $withlibz
-  chkres $? "debuglink/runtest.sh"
+  mklocal debuglink
+    sh $testsrc/debuglink/runtest.sh $withlibelf $withlibz
+    chkres $? "debuglink/runtest.sh"
   cd ..
-fi
+#fi
 
 #gcc using -gsplit-dwarf option
 # debuglink via DWARF4. frame one via DWARF5
@@ -800,17 +842,20 @@ runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
 if [ x$withlibelf = "xnolibelf" ]
 then
   echo "=====START  mustacchi runtest.sh nolibelf"
-  cd mustacchi
-  sh runtest.sh
-  chkres $? "mustacchi/runtestnolibelf.sh"
+  mklocal mustacchi
+    sh $testsrc/mustacchi/runtestnolibelf.sh 
+    chkres $? "mustacchi/runtestnolibelf.sh"
   cd ..
 else
   echo "=====START  mustacchi runtest.sh withlibelf" 
-  cd mustacchi
-  sh runtest.sh
-  chkres $? "mustacchi/runtest.sh"
-  sh runtestnolibelf.sh
-  chkres $? "mustacchi/runtestnolibelf.sh"
+  mklocal mustacchi
+    l=mustacchi
+    cp $testsrc/$l/mt32.o  $bldtest/$l/mt32.o
+    cp $testsrc/$l/mt64.o  $bldtest/$l/mt64.o
+    sh $testsrc/mustacchi/runtest.sh
+    chkres $? "mustacchi/runtest.sh"
+    sh $testsrc/mustacchi/runtestnolibelf.sh
+    chkres $? "mustacchi/runtestnolibelf.sh"
   cd ..
 fi
 
@@ -950,10 +995,10 @@ runtest $d1 $d2   emre6/class_64_opt_fpo_split -a
 
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START  hughes2 runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf"
-  cd hughes2
-  sh runtest.sh ../simplereader ../corruptdwarf-a/simplereader.elf
-  chkres $?  hughes2
+  echo "=====START  hughes2 runtest.sh $testsource/corruptdwarf-a/simplereader.elf"
+  mklocal hughes2
+    sh $testsrc/hughes2/runtest.sh $testsrc/corruptdwarf-a/simplereader.elf
+    chkres $?  hughes2
   cd ..
 else
   echo "=====SKIP   hughes2 runtest.sh no libelf as coredump is a bit unix/linux specific"
@@ -963,9 +1008,9 @@ fi
 if [ $withlibelf = "withlibelf" ]
 then
   echo "=====START   implicitconst sh runtest.sh"
-  cd implicitconst
-  sh runtest.sh
-  chkres $?  implicitconst
+  mklocal implicitconst
+    sh $testsrc/implicitconst/runtest.sh
+    chkres $?  implicitconst
   cd ..
 else
   echo "=====SKIP   implicitconst sh runtest.sh no libelf"
@@ -974,9 +1019,9 @@ fi
 
 
 echo "=====START  nolibelf runtest.sh "
-cd nolibelf
-sh runtest.sh
-chkres $?  nolibelf
+mklocal nolibelf
+  sh $testsrc/nolibelf/runtest.sh
+  chkres $?  nolibelf
 cd ..
 
 
@@ -1235,20 +1280,20 @@ runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=emre5/test3
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=emre5/test33_64_opt_fpo_split 
 
 
-cd baddie1
 echo "=====START  baddie1/runtest.sh"
-sh runtest.sh ../$d2 
-chkres $?  baddie1
+mklocal baddie1
+  sh $testsrc/baddie1/runtest.sh ../$d2 
+  chkres $?  baddie1
 cd ..
 
 if [ $withlibelf = "withlibelf" ]
 then
   # Also tests dwarfgen and libdwarf with DW_CFA_advance_loc
   # operations
-  echo "=====START  offsetfromlowpc/runtest.sh ../dwarfgen ../$d2  ../simplereader"
-  cd offsetfromlowpc
-  sh runtest.sh ../dwarfgen ../$d2  ../simplereader
-  chkres $?  offsetfromlowpc
+  echo "=====START  offsetfromlowpc/runtest.sh"
+  mklocal offsetfromlowpc
+    sh $testsrc/offsetfromlowpc/runtest.sh 
+    chkres $?  offsetfromlowpc
   cd ..
 else
   echo "=====SKIP  offsetfromlowpc sh runtest.sh no libelf"
@@ -1258,9 +1303,9 @@ fi
 if [ $withlibelf = "withlibelf" ]
 then
   echo "=====START  strsize/runtest.sh"
-  cd strsize
-  sh runtest.sh 
-  chkres $? strsize
+  mklocal strsize
+    sh $testsrc/strsize/runtest.sh 
+    chkres $? strsize
   cd ..
 else
   echo "=====SKIP   strsize sh runtest.sh no libelf"
@@ -1270,25 +1315,25 @@ fi
 # tests simple reader and more than one dwarf_init* interface
 # across all object types
 # here kaufmann/t.o is tested as input to simplereader.
-echo "=====START  debugfissionb runtest.sh ../simplereader"
-cd debugfissionb
-sh runtest.sh  ../simplereader
-chkres $?  debugfissionb-simplreader
+echo "=====START debugfissionb runtest.sh ../simplereader"
+mklocal debugfissionb
+  sh $testsrc/debugfissionb/runtest.sh  
+  chkres $?  debugfissionb-simplreader
 cd ..
 
-echo "=====START  debugfission runtest.sh ../$d2"
-cd debugfission
-sh runtest.sh  ../$d2 
-chkres $?  debugfission
+echo "=====START debugfission runtest.sh ../$d2"
+mklocal debugfission
+  sh $testsrc/debugfission/runtest.sh  ../$d2 
+  chkres $?  debugfission
 cd ..
 
-#echo "=====START   data16 runtest.sh"
+#echo "=====START data16 runtest.sh"
 if [ $NLIZE = 'n' -a $withlibelf = "withlibelf" ]
 then
 echo "=====START  data16 runtest.sh ../$d2"
-  cd data16
-  sh runtest.sh
-  chkres $?  "data16/runtest.sh"
+  mklocal data16
+    sh $testsrc/data16/runtest.sh
+    chkres $?  "data16/runtest.sh"
   cd ..
 else
   echo "=====SKIP  data16/runtest.sh with NLIZE or if no libelf"
@@ -1509,13 +1554,13 @@ runtest $d1 $d2  lloyd/arange.elf  -kr
 runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 
 if test $withlibelf = "withlibelf" ; then
-  echo "=====START  findcu runtest.sh $top_srcdir $top_builddir $withlibelf $withlibz"
-  cd findcu 
-  sh runtest.sh $top_srcdir $top_builddir $withlibelf $withlibz 
-  chkres $? 'findcu/cutest-of-a-libdwarf-interface'
+  echo "=====START  findcu runtest.sh $withlibelf $withlibz"
+  mklocal findcu 
+    sh $testsrc/findcu/runtest.sh  $withlibelf $withlibz 
+    chkres $? 'findcu/cutest-of-a-libdwarf-interface'
   cd ..
 else
-  echo "=====SKIP  findcu runtest.sh $top_srcdir $top_builddir $withlibelf $withlibz"
+  echo "=====SKIP  findcu runtest.sh  $withlibelf $withlibz"
   skipcount=`expr $skipcount + 1`
 fi
 
@@ -1531,18 +1576,18 @@ fi
   then
     libopts="$libopts -lz"
   fi
-  echo "test_harmless: $CC -Wall -I$top_srcdir/libdwarf -I$top_builddir -I$top_builddir/libdwarf  -gdwarf $nlizeopt test_harmless.c  -o test_harmless $dwlib $libopts"
-  $CC -Wall -I$top_srcdir/libdwarf -I$top_builddir -I$top_builddir/libdwarf  -gdwarf $nlizeopt test_harmless.c  -o test_harmless $dwlib $libopts
+  echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld  -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless $dwlib $libopts"
+  $CC -Wall -I$codedir/libdwarf -I$libbld -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless $dwlib $libopts
   chkres $? 'check harmless-error compiling test-harmless.c failed'
   ./test_harmless
   chkres $? 'check harmless-error execution failed'
 
 if test $withlibelf = "withlibelf" ; then
   echo "=====START   dwgena/runtest.sh ../$d2"
-  cd dwgena
-  sh runtest.sh ../$d2
-  r=$?
-  chkresn $r 'dwgena/runtest.sh' 9
+  mklocal dwgena
+    sh $testsrc/dwgena/runtest.sh
+    r=$?
+    chkresn $r 'dwgena/runtest.sh' 9
   cd ..
 else
   echo "====SKIP 1 dwgena/runtest.sh no libelf"
@@ -1551,10 +1596,10 @@ fi
 
 if test $withlibelf = "withlibelf" ; then
   echo "=====START   dwgenc/runtest.sh ../$d2"
-  cd dwgenc
-  sh runtest.sh ../$d2
-  r=$?
-  chkresn $r 'dwgenc/runtest.sh' 1
+  mklocal dwgenc
+    sh $testsrc/dwgenc/runtest.sh ../$d2
+    r=$?
+    chkresn $r 'dwgenc/runtest.sh' 1
   cd ..
 else
   echo "====SKIP 1 dwgenc/runtest.sh no libelf"
@@ -1562,11 +1607,11 @@ else
 fi
 
 echo "=====START   frame1/runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz"
-cd frame1
-echo "sh runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz"
-sh runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz
-r=$?
-chkres $r frame1
+mklocal frame1 
+  echo "sh runtest.sh  $withlibelf $withlibz"
+  sh $testsrc/frame1/runtest.sh $withlibelf $withlibz
+  r=$?
+  chkres $r frame1
 cd ..
 
 if [ $NLIZE = 'n' ]
@@ -1575,13 +1620,13 @@ then
   then
     if [ $withlibelf = "withlibelf" ]
     then
-      echo "=====START   dwarfextract/runtest.sh ../$d2 $top_builddir $top_srcdir $dwlib $withlibelf $withlibz"
+      echo "=====START   dwarfextract/runtest.sh $withlibelf $withlibz"
       # This has serious problems with leaks, so
       # do not do $NLIZE for now..
-      cd dwarfextract
-      rm -f dwarfextract
-      sh runtest.sh ../$d2 $top_builddir $top_srcdir $dwlib $withlibelf $withlibz
-      chkres $?  dwarfextract
+      mklocal dwarfextract
+        rm -f dwarfextract
+        sh $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz
+        chkres $?  dwarfextract
       cd ..
     else
       echo "====SKIP 1 dwarfextract/runtest.sh $withlibelf $withlibz"
@@ -1597,29 +1642,29 @@ else
 fi
 
 echo "=====START   sandnes2/runtest.sh"
-cd sandnes2
-sh runtest.sh
-r=$?
-chkres $r  sandnes2
+mklocal sandnes2
+  sh $testsrc/sandnes2/runtest.sh
+  r=$?
+  chkres $r  sandnes2
 cd ..
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START   legendre/runtest.sh  $top_srcdir $top_builddir $withlibelf $withlibz"
-  cd legendre
-  sh runtest.sh $top_srcdir $top_builddir $withlibelf $withlibz
-  r=$?
-  chkres $r  legendre
+  echo "=====START   legendre/runtest.sh $withlibelf $withlibz"
+  mklocal legendre
+    sh $testsrc/legendre/runtest.sh $withlibelf $withlibz
+    r=$?
+    chkres $r  legendre
   cd ..
 else
   echo "=====SKIP 1  legendre/runtest.sh NLIZE as it has leaks"
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   enciso4/runtest.sh $d1 $d2"
-cd enciso4
-sh runtest.sh $d1 $d2 
-chkres $?  enciso4
+echo "=====START   enciso4/runtest.sh "
+mklocal enciso4
+  sh $testsrc/enciso4/runtest.sh
+  chkres $?  enciso4
 cd ..
 
 # -g: use old dwarf loclist code.
@@ -1677,17 +1722,11 @@ fi
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START test-alex1/runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz"
-  cd test-alex1
-  if [ $? -ne 0 ] 
-  then
-    echo "FAIL cd to test-alex1 to run test-alex1/runtest.sh!"
-    failcount=`expr $failcount + 1`
-  else
-    sh runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz
+  echo "=====START test-alex1/runtest.sh $withlibelf $withlibz"
+  mklocal test-alex1
+    sh $testsrc/test-alex1/runtest.sh $withlibelf $withlibz
     chkres $?  test-alex1
-    cd ..
-  fi
+  cd ..
 else
   skipcount=`expr $skipcount + 1`
   echo "=====SKIP 1 test-alex1/runtest.sh NLIZE as it has leaks"
@@ -1695,17 +1734,11 @@ fi
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START test-alex2/runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz"
-  cd test-alex2
-  if [ $? -ne 0 ]
-  then
-    echo "FAIL cd to test-alex2 to run test-alex2/runtest.sh!"
-    failcount=`expr $failcount + 1`
-  else
-    sh runtest.sh $dwlib $top_builddir $top_srcdir $withlibelf $withlibz
+  echo "=====START test-alex2/runtest.sh $withlibelf $withlibz"
+  mklocal test-alex2
+    sh $testsrc/test-alex2/runtest.sh $withlibelf $withlibz
     chkres $?  test-alex2
-    cd ..
-  fi
+  cd ..
 else
   echo "=====SKIP 1 test-alex2/runtest.sh NLIZE as it has leaks"
   skipcount=`expr $skipcount + 1`
@@ -1827,16 +1860,16 @@ do
        done
      done
 done
-rm -f /tmp/dwba.$$
-rm -f /tmp/dwbb.$$
+rm -f $dwba
+rm -f $dwbb
 if [ x$wrtimeo != "x" ]
 then
   echo "base dwarfdump times"
-  echo "$mypycom $mypydir/usertime.py baseline $otimeout"
-  $mypycom $mypydir/usertime.py baseline $otimeout
+  echo "$mypycom $testsrc/$mypydir/usertime.py baseline $otimeout"
+  $mypycom $testsrc/$mypydir/usertime.py baseline $otimeout
   echo "new  dwarfdump times"
-  echo "$mypycom $mypydir/usertime.py newversn $ntimeout"
-  $mypycom $mypydir/usertime.py newversn $ntimeout
+  echo "$mypycom $testsrc/$mypydir/usertime.py newversn $ntimeout"
+  $mypycom $testsrc/$mypydir/usertime.py newversn $ntimeout
 else
   echo "No /usr/bin/time data available to report"
 fi

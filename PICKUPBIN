@@ -11,14 +11,11 @@
 # dwarfgen and libelf go together here.
 withlibelf="withlibelf"
 libelfopt="--enable-libelf"
-if [ $# -eq 0 ]
+
+withlibelf="withlibelf"
+if [ $# -eq 1 ]
 then
-   echo "PICKUPBIN defaults to withlibelf."
-fi
-if [ $# -gt 0 ]
-then
-  withlibelf="withlibelf"
-  if [ $1 = "nolibelf" ]
+if [ $1 = "nolibelf" ]
   then
     withlibelf="nolibelf"
     echo "PICKUPBIN set to nolibelf."
@@ -31,36 +28,69 @@ then
     fi
     echo "PICKUPBIN set to withlibelf."
   fi
+else
+  echo "PICKUPBIN set to withlibelf."
 fi
-
+if [ ! -f BASEFILES ]
+then
+    echo "./BASEFILES missing. Run configure"
+    exit 1
+fi
+. ./BASEFILES
+if [ "$testsrc" = "$codedir" ]
+then
+  echo "testsrc and codedir are $testsrc, not allowed"
+  echo "Giving up"
+  exit 1
+fi
+if [ "$bldtest" = "$codedir" ]
+then
+  echo "buildtest and codedir are $codedir, dangerous"
+  echo "Giving up"
+  exit 1
+fi
 
 if [ x$NLIZE = 'xy' ]
 then
-sanitize="--enable-sanitize"
+  sanitize="--enable-sanitize"
 else
-sanitize=
+  sanitize=
 fi
 
+top_build="$libbld"
+targetdir="$bldtest"
 
-cur=`pwd`
-top_build=/tmp/regressionbuild
-if [ ! -d $top_build ]
+if [ ! -d $libbld ]
 then
-  mkdir $top_build
+  if [ -f $libbld ]
+  then
+    rm $libbld
+    if [ $? -ne 0 ]
+    then
+       echo "Something very wrong with $libbld"
+       echo "Not a directory, a file we cannot rm"
+       exit 1
+    fi
+  fi
+  mkdir $libbld
+  if [ $? -ne 0 ]
+  then
+    echo "Something very wrong with $libbld"
+    echo "Cannot create the directory"
+    exit 1
+  fi
 fi
-rm -rf $top_build/*
 
 # Fix the following line to match the desired 
 # libdwarf/dwarfdump source 
 # directory.
-. ./BASEFILES
 
 cd $top_build 
 echo "PICKUPBIN configure --disable-libelf for dwarfdumpnl"
 set -x
 $libdw/configure $sanitize  --disable-libelf ; make
 set +x
-cp dwarfdump/dwarfdump $cur/dwarfdumpnl
+cp dwarfdump/dwarfdump $targetdir/dwarfdumpnl
 
 rm -rf $top_build/*
 cd $top_build 
@@ -68,7 +98,7 @@ set -x
 $libdw/configure $sanitize $libelfopt  --enable-oldframecol ;  make
 set +x
 
-cp libdwarf/.libs/libdwarf.a $cur/libdwoldframecol.a
+cp libdwarf/.libs/libdwarf.a $targetdir/libdwoldframecol.a
 if [ $? -ne 0 ]
 then
   echo "No libdwoldframecol.a copied! giving up."
@@ -76,13 +106,12 @@ then
 fi
 
 rm -rf $top_build/*
-
 echo "PICKUPBIN configure $libelfop for --enable-windowspath"
 set -x
 $libdw/configure $sanitize $libelfopt --enable-windowspath ; make 
 set +x
 
-cp dwarfdump/dwarfdump   $cur/dwarfdumpW
+cp dwarfdump/dwarfdump   $targetdir/dwarfdumpW
 if [ $? -ne 0 ]
 then
   echo "No dwarfdumpW done! giving up."
@@ -108,20 +137,20 @@ then
   echo "No libdwarf.a built! giving up."
   exit 1;
 fi
-cp libdwarf/.libs/libdwarf.a $cur/libdwarf.a
+cp libdwarf/.libs/libdwarf.a $targetdir/libdwarf.a
 if [ $? -ne 0 ]
 then
   echo "No libdwarf.a to copy! giving up."
   exit 1;
 fi
 
-cp dwarfdump/dwarfdump  $cur/dwarfdump
+cp dwarfdump/dwarfdump  $targetdir/dwarfdump
 if [ $? -ne 0 ]
 then
   echo "No dwarfdump to copy! giving up."
   exit 1;
 fi
-cp $libdw/dwarfdump/dwarfdump.conf  $cur/dwarfdump.conf
+cp $codedir/dwarfdump/dwarfdump.conf  $targetdir/dwarfdump.conf
 if [ $? -ne 0 ]
 then
   echo "No dwarfdump.conf to copy! giving up."
@@ -129,14 +158,14 @@ then
 fi
 if [ $withlibelf = "withlibelf" ]
 then
-  cp $top_build/dwarfgen/dwarfgen  $cur
+  cp dwarfgen/dwarfgen  $targetdir/dwarfgen
   if [ $? -ne 0 ]
   then
     echo "No dwarfgen to copy! giving up."
     exit 1;
   fi
 fi
-cp $top_build/dwarfexample/simplereader  $cur
+cp dwarfexample/simplereader  $targetdir/simplereader
 if [ $? -ne 0 ]
 then
   echo "No simplereader to copy! giving up."

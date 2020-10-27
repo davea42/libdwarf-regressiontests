@@ -1,8 +1,13 @@
 #!/bin/sh
-../dwarfgen -c 0 --force-empty-dnames -v5 -t obj  -o testoutput.o testinput.o >junkdgstdout 2> junkdgstderr 
+
+. ../BASEFILES
+ts=$testsrc/dwgenc
+tf=$bldtest/dwgenc
+
+../dwarfgen -c 0 --force-empty-dnames -v5 -t obj  -o testoutput.o $ts/testinput.o >junkdgstdout 2> junkdgstderr 
 if [ $? -ne 0 ] 
 then
-    echo "fail dwgenc  dwarfgen on testinput.o"
+    echo "fail dwgenc  dwarfgen on $ts/testinput.o"
     exit 1
 fi
 
@@ -14,18 +19,18 @@ then
     exit 1
 fi
 
-diff junkstdout base.stdout
+diff junkstdout $ts/base.stdout
 if [ $?  -ne 0 ]
 then
    echo "fail dwgenc dwarfdump."
-   echo "update baseline with 'mv junkstdout base.stdout'"
+   echo "update baseline with 'mv $tf/junkstdout $ts/base.stdout'"
    exit 1
 fi
-diff junkstderr  base.stderr
+diff junkstderr  $ts/base.stderr
 if [ $?  -ne 0 ]
 then
    echo "fail dwgenc dwarfdump."
-   echo "update baseline with 'mv junkstderr  base.stderr' "
+   echo "update baseline with 'mv junkstderr  $tsbase.stderr' "
    exit 1
 fi
 rm -f junkstderr

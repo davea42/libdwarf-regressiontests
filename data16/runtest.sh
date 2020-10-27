@@ -1,14 +1,17 @@
 #!/bin/sh
-
+. ../BASEFILES
 # We name temp files junk<something> as that way
 # a normal 'make distclean' gets rid of them
 
 dd=../dwarfdump
 dg=../dwarfgen
+ts=$testsrc/data16
+tf=$bldtest/data16
+
 
 # First a basic test that we can add data16
 # to a trivial object file.
-cc -g -O0 -c test.c
+cc -g -O0 -c $ts/test.c
 if [ $? -ne 0 ]
 then
   echo fail data16 compile.

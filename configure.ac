@@ -3,6 +3,7 @@ dnl
 dnl configure can only work sensibly run like ./configure [options]
 dnl
 AC_INIT()
+AC_CONFIG_SRCDIR([configure.ac])
 AC_CONFIG_HEADER(config.h)
 
 AC_PROG_CC
@@ -13,18 +14,21 @@ AC_CHECK_TOOL(RANLIB, ranlib, :)
 AC_CHECK_TOOL(AR, ar)
 
 AC_CANONICAL_SYSTEM
-#echo build $build
-#echo host $host
-#echo target $target
 # i686-pc-linux-gnu
 
 # The path to libdwarf source we want is a path to
 # the directory containing the libdwarf, dwarfdump, 
 # dwarfgen, and dwarfexample source directories.
-
-
 here=`pwd`
-fullpath=$here/../code
+# The following for generating Makefile
+# not using datadir quite as autoconf expects.
+if test "$srcdir" = "."
+then
+  srcdir=$here
+fi
+codedir=$srcdir/../code
+datadir=$srcdir/../code
+
 
 AC_ARG_ENABLE(libdwarf,
   AC_HELP_STRING([--enable-libdwarf=sourcedirectory],
@@ -42,7 +46,8 @@ then
     echo "Error: The libdwarf source path $enableval does not start with /."
     exit 2
   fi
-  fullpath=$enableval
+  codedir=$enableval
+  datadir=$enableval
   rm -f junkckpath
 fi
 
@@ -92,25 +97,28 @@ fi
 # The Bourne Shell (sh) can do something horrible when
 # attempting to deal with an executable of a sort the kernel
 # cannot handle (as for 64bit on a 32bit kernel machine).
-# It can create a bogus file with @ in the name. An empty file.
+# It can create a bogus file with @ in the name. 
+# An empty file.
 # It is not clear why sh creates a file in that case.
 ddfound='n'
 dd2found='n'
 rm -f junkf1
 rm -f junkf2
-for i in *.O
+abs_builddir="$here"
+for i in $srcdir/*.O
 do
    rm -f junkf1
    rm -f junkf2
    echo $i > junkf1
    grep 'dwarfdump-' < junkf1 >/dev/null 2>/dev/null
    r=$?
-   if test $r = 0
+   if test $r -eq 0
    then
-     (./$i -i moshe/a.out.t |head -20) >junkf2    2>/dev/null
+     # was ./$i, but now full path so no .
+     ($i -i $srcdir/moshe/a.out.t |head -20) >junkf2    2>/dev/null
      # Remove file that should not be here, if it exists.
      rm -f *@*
-     cmp junkf2 findexecutable.base  >/dev/null 2>/dev/null
+     cmp junkf2 $srcdir/findexecutable.base  >/dev/null 2>/dev/null
      t=$?
      if test $t -eq 0
      then
@@ -134,11 +142,11 @@ fi
 
 for i in libdwarf dwarfdump dwarfgen dwarfexample
 do
-  if test -d $fullpath/$i 
+  if test -d $codedir/$i 
   then
     continue
   else
-    echo "We did not find the $i source at $fullpath"
+    echo "We did not find the $i source at $codedir"
     echo "Giving up."
     exit 2
   fi
@@ -146,16 +154,35 @@ done
 
 if test ! -f  BASEFILES
 then
-  cp BASEFILES.in BASEFILES
+  cp $srcdir/BASEFILES.in BASEFILES
+  if test $? -ne 0 
+  then
+     echo "FAIL configure cannot find $srcdir/BASEFILES.in"
+     exit 1
+  fi
 fi
-echo "libdw=$fullpath" >> BASEFILES
-
+echo "libdw=$codedir" >> BASEFILES
+echo "codedir=$codedir" >> BASEFILES
+if test "$srcdir" = "."
+then
+  echo "testsrc=$abs_builddir" >> BASEFILES
+else
+  echo "testsrc=$srcdir" >> BASEFILES
+fi
+echo "bldtest=$abs_builddir" >> BASEFILES
+libbld=$abs_builddir/libbld
+echo "libbld=$abs_builddir/libbld" >> BASEFILES
+cp  $srcdir/SHALIAS.sh SHALIAS.sh
+cp  $srcdir/exfail.py  exfail.py
 echo "Configuration Options Summary:"
 echo
 echo " have libelf............: ${dwarf_with_libelf}"
 echo " dwarfgen...............: ${enable_dwarfgen}"
-echo
+echo " testbuilddir...........: $abs_builddir"
+echo " libbuilddir............: $libbld"
+echo " regressiontests........: $srcdir"
+echo " code...................: $datadir"
 
-echo "Ready to test dwarfdump."
+echo "Ready to test."
 
 AC_OUTPUT(Makefile)

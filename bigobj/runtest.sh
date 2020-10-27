@@ -10,6 +10,7 @@
 # Then verifies dwarfdump works.
 
 dd=../dwarfdump
+. ../BASEFILES
 if [ $# -lt 1 ]
 then
   dd=../dwarfdump
@@ -18,13 +19,13 @@ else
 fi
 
 bn=junkbigobj.new
-bb=bigobj.base
+bb=$testsrc/bigobj.base
 bo=bigobject
 rm -f makebig
 rm -f bigobject
 rm -f $bn
 
-cc makebig.c -o makebig
+cc $testsrc/makebig.c -o makebig
 if [ $? -ne 0 ]
 then
   echo "fail bigobject compile of makebig.c"

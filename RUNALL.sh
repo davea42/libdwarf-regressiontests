@@ -6,7 +6,7 @@ echo "Running all regressiontests tests"
 
 # dwarfgen and libelf go together here.
 withlibelf="withlibelf"
-if [ $# -gt 0 ]
+if [ $# -eq 1 ]
 then
   withlibelf="withlibelf"
   if [ $1 = "nolibelf" ]
@@ -22,10 +22,15 @@ then
      echo "RUNALL.sh arg is withlibelf" 
   fi
 else
-  echo "RUNALL.sh arg defaults to withlibelf" 
+  echo "RUNALL.sh arg is withlibelf" 
 fi
 
-
+if [ ! -f BASEFILES ]
+then
+  echo "Run configure. BASEFILES missing"
+  exit 1
+fi
+. ./BASEFILES
 chkres() {
 if test $1 != 0
 then
@@ -55,15 +60,15 @@ chkfail () {
   rm -f junkck2
 }
 
-loc=`pwd`
+loc=$bldtest
 rm -f ALLdd 
 start=`date`
 echo "start regressiontests in $loc at: $start"
 stsecs=`date '+%s'`
 echo "Begin regressiontests    $loc/RUNALL.sh $withlibelf" 
 echo "Write regressiontests to $loc/ALLdd" 
-./DWARFTEST.sh $withlibelf 2>ALLdd 1>&2
-chkres $? "Failure in regressiontests DWARFTEST.sh."
+$testsrc/DWARFTEST.sh $withlibelf 2>ALLdd 1>&2
+chkres $? "Failure in $testsrc/DWARFTEST.sh."
 chkfail ALLdd "RUNALL.sh regressiontests"
 ndsecs=`date '+%s'`
 endt=`date`

@@ -119,13 +119,17 @@ int main(int argc,char *argv[] )
     unsigned char * readbuf = 0;
     unsigned bigendian = 0;
     CRCDATATYPE crc = 0;
+    int ai = 1;
 
-    if (argc > 1) {
-        if (!strcmp("--B",argv[1])) {
+    for ( ; ai < argc; ++ai) {
+        char *v = argv[ai];
+        if (!strcmp("--B",v)) {
            bigendian=1;
+           continue;
         }
+        path = v;
+        break;
     }
-
     readbuf = malloc(batchsize);
     if(!readbuf) {
         printf("Unable to malloc %lu bytes\n",

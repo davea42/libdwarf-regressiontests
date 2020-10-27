@@ -1,14 +1,21 @@
 #!/bin/sh
 #  This is really a test of the new dwarf_get_form_class function.
-l=$1
-top_builddir=$2
-top_srcdir=$3
-withlibelf=$4
-withlibz=$5
+
+. ../BASEFILES
+. $testsrc/BASEFUNCS
+ts=$testsrc/test-alex2
+tf=$bldtest/test-alex2
+l=$bldtest/libdwarf.a
+top_builddir=$bldtest
+top_srcdir=$testsrc
+withlibelf=$1
+withlibz=$2
+
 OPTS="-I$top_builddir -I$top_builddir/libdwarf -I$top_srcdir/libdwarf"
 if [ x$withlibz = "x" ]
 then
-  echo "fail test-alex2. missing withlibz arg 5. $withlibelf , $withlibz"
+  echo "fail test-alex2. missing withlibz"
+  echo " arg 2. We got: $withlibelf , $withlibz"
   exit 1
 fi
 libs=
@@ -21,9 +28,9 @@ then
   libs="$libs -lz"
 fi
 
+cc -DWORKING=1 $OPTS  $ts/test.c $l $libs -o test2
 
-cc -DWORKING=1 $OPTS  test.c $l $libs -o test2
-
+cpifmissing $ts/orig.a.out orig.a.out
 ./test2 orig.a.out >out1
 if [ $? != 0 ]
 then

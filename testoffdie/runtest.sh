@@ -3,11 +3,17 @@
 # we ignore $3 arg.  On non-linux it's not so
 # simple to test for zlib.h, the zlib.h test below does
 # not work on such systems.
-src=$1
-bld=$2
-withlibelf=$3
-withlibz=$4
-echo "entering testoffdie/runtest.sh $src $bld $withlibelf $withlibz"
+
+
+. ../BASEFILES
+ts=$testsrc/testoffdie
+tf=$bldtest/testoffdie
+
+src=$testsrc/testoffdie
+bld=$libbld
+withlibelf=$1
+withlibz=$2
+echo "entering testoffdie/runtest.sh  $withlibelf $withlibz"
 h="-I$src/libdwarf"
 l="-L$src/libdwarf"
 libs="$bld/libdwarf/.libs/libdwarf.a"
@@ -40,25 +46,26 @@ else
 fi
 
 opts="-I$bld -I$bld/libdwarf"
-cc $h $opts  testoffdie.c $nli $l -o junkoffdie $libs
+echo cc $h $opts  $ts/testoffdie.c $nli $l -o junkoffdie $libs
+cc $h $opts  $ts/testoffdie.c $nli $l -o junkoffdie $libs
 if [ $? -ne 0 ]
 then
    echo fail compile testoffdie/testoffdie.c 
    exit 1
 fi
 
-./junkoffdie >junkout
+./junkoffdie $testsrc/irixn32/dwarfdump > junkout
 r=$?
 if [ $r -ne 0 ]
 then
    echo fail run  testoffdie/junkoffdie 
    exit 1
 fi
-diff baseout junkout
+diff $ts/baseout junkout
 if [ $? -ne 0 ]
 then
   echo "fail mismatch expected from testoffdie/runtest.sh $1 $2"
-  echo " To update expected result: mv junkout baseout"
+  echo " To update expected result: mv $tf/junkout $ts/baseout"
   exit 1
 fi
 echo "PASS testoffdie/runtest.sh"

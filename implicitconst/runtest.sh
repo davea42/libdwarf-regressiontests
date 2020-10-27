@@ -11,6 +11,14 @@
 dd=../dwarfdump
 dg=../dwarfgen
 
+. ../BASEFILES
+ts=$testsrc/implicitconst
+tf=$bldtest/implicitconst
+
+. $testsrc/BASEFUNCS
+cpifmissing $ts/t1.o t1.o
+
+
 $dg  -c 0 --add-implicit-const --add-sun-func-offsets -s -v 5 -t obj -o junkimplcon.o t1.o 1>junkdg.new 2>&1
 if [ $? -ne 0 ]
 then
@@ -18,11 +26,11 @@ then
  exit 1
 fi
 
-diff dgout.base junkdg.new
+diff $ts/dgout.base junkdg.new
 if [ $? -ne 0 ]
 then
   echo "fail implicitconst diff dgout.base junkdg.new
-  echo "If junkdg.new is correct do: mv junkdg.new dgout.base
+  echo "If junkdg.new is correct do: mv $tf/junkdg.new $ts/dgout.base
   exit 1
 fi
 
@@ -30,15 +38,15 @@ fi
 $dd -i -M junkimplcon.o >junk.new
 if [ $? -ne 0 ]
 then
-  echo fail $dd build junk.new from junkimplcon.o
+  echo fail $dd build /junk.new from junkimplcon.o
   exit 1
 fi
 
-diff implicit.base junk.new  
+diff $ts/implicit.base junk.new  
 if [ $? -ne 0 ]
 then
   echo "fail implicitconst diff implicit.base junk.new
-  echo "If junk.new is correct do: mv junk.new implicit.base
+  echo "If junk.new is correct do: mv $tf/junk.new $ts/implicit.base
   exit 1
 fi
 echo PASS implicitconst/runtest.sh

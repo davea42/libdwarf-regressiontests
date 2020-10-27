@@ -3,6 +3,8 @@
 . ./SHALIAS.sh
 (cd dwgena ; make clean)
 (cd debugfission ; make clean)
+# The following is copied from the kaufmann dir. Drop it.
+rm debugfissionb/t.o
 # The /tmp/dwa* files are lock files to prevent running two regr.
 # tests at the same time as two-at-once will not work!
 rm -f /tmp/dwa.*
@@ -11,6 +13,7 @@ rm -f /tmp/dwb.*
 # Needed for --print-alloc-sums
 rm -f libdwallocs
 rm -f */libdwallocs
+rm -rf libbld
 rm -f dwarf_names.h
 rm -f dwarf_names_enum.h
 rm -f dwarf_names_new.h
@@ -23,6 +26,8 @@ rm -f tmp*
 rm -f testendian
 rm -f tmp*err*
 rm -f core
+rm -f dwba
+rm -f dwbb
 rm -f */core
 rm -f junk*
 rm -f ALL*

@@ -1,2 +1,2 @@
 Giving up, cannot do DWARF processing
-exit_status 1 ../simplereader ../kaufmann/t.o
+exit_status 1 ../simplereader t.o
