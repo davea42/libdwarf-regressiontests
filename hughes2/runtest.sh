@@ -5,6 +5,7 @@ then
    echo "fail  the arg required is an elf object full path "
    exit 1
 fi
+echo "Now run: hughes2/runtest.sh $1"
 r=../simplereader
 tobj=$1
 

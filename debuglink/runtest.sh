@@ -17,14 +17,23 @@ fi
 
 ts=$testsrc/debuglink
 tf=$bldtest/debuglink
+. $testsrc/BASEFUNCS
 
-# The suggested text emitted is /home on ubuntu
-# and /usr/home on freebsd. Lets change /usr/home
-# to plain home.  s390 ubuntu base is /home/ubuntu
-# so fix that one too.
+setpythondirs
+if [ $? -ne 0 ]
+then
+  echo "FAIL debuglink cannot identify python"
+  exit 1
+fi
+# sets mypycon (python2 or python3)  
+# and mypydir (often /usr/bin/python3)
+
+# Running this out-of-regressiontests and on
+# freebsd and S390  leads to name clashes.
+# So get rid of the part of path other than
+# regressiontests/debuglink/crc32.debug
 $dd --print-gnu-debuglink $ts/crc32 >junklink
-sed  'sx/usr/home/x/home/x' <junklink >junklinkx
-sed  'sx/home/ubuntu/x/home/davea/x' <junklinkx >junklinky
+$mypycom $testsrc/$mypydir/filterpathto.py regressiontests/debuglink/crc32.debug <junklink >junklinky
 diff $ts/baselink junklinky 
 if [ $? -ne 0 ]
 then

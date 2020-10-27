@@ -38,6 +38,8 @@ then
 fi
 . ./$b
 
+. $testsrc/BASEFUNCS
+
 stsecs=`date '+%s'`
 # dwarfgen and libelf go together here.
 withlibelf="withlibelf"
@@ -113,7 +115,6 @@ then
   echo "do configure  and make build before running the tests"
   exit 1
 fi
-. ./BASEFILES
 
 mklocal checkforlibz
   sh $testsrc/checkforlibz/runtest.sh
@@ -168,21 +169,16 @@ export endian
 echo "Host Endianness...........: $endian"
 
 # In FreeBSD python2 &3 in /usr/local/bin, not /usr/bin
-p3=`which python3`
-if [ $? -eq 0 ]
+# shell func from BASEFUNCS
+setpythondirs 
+if [ $? -ne 0 ]
 then
-  mypydir=python3
-  mypycom=$p3
-else
-  p2=`which python2`
-  if [ $? -eq 0 ]
-  then
-    mypydir=python2
-    mypycom=$p2
-  fi
+  echo "FAIL DWARFTEST.sh cannot find python? to use."
+  echo "Giving up."
+  exit 1
 fi
-echo "Host Endianness...........: $endian"
 echo "Python....................: $mypycom"
+echo "Python dir in tests.......: $mypydir"
 
 # Do the following two for address-sanitization.
 # Not all tests will be run in that case.
@@ -719,19 +715,18 @@ fi
 
 
 
-
-## .gnu_debuglink and .note.gnu.build-id  section tests.
-#if [ x$withlibelf = "xnolibelf" ]
-#then
-#  echo "=====SKIP  debuglink  runtest.sh nolibelf"
-#  skipcount=`expr $skipcount + 1`
-#else
+# .gnu_debuglink and .note.gnu.build-id  section tests.
+if [ x$endian = "xB" ]
+then
+  echo "=====SKIP debuglink runtest.sh as bigendian will fail"
+  skipcount=`expr $skipcount + 1`
+else
   echo "=====START  debuglink runtest.sh $withlibelf $withlibz"
   mklocal debuglink
     sh $testsrc/debuglink/runtest.sh $withlibelf $withlibz
     chkres $? "debuglink/runtest.sh"
   cd ..
-#fi
+fi
 
 #gcc using -gsplit-dwarf option
 # debuglink via DWARF4. frame one via DWARF5
