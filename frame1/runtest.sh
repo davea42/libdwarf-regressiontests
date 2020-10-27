@@ -3,6 +3,7 @@
 ts=$testsrc/frame1
 tf=$bldtest/frame1
 
+. $testsrc/BASEFUNCS
 libdw=$codedir
 bld=$bldtest
 dwlib=$bldtest/libdwarf.a
@@ -34,7 +35,7 @@ then
   libs="$libs -lz"
 fi
 iopts="-I$bld -I$bld/libdwarf -I$codedir/libdwarf -I$libbld/libdwarf"
-cpfmissing $libdw/dwarfexample/frame1.c framexlocal.c
+cpifmissing $libdw/dwarfexample/frame1.c framexlocal.c
 echo "cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1"
 cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1
 
