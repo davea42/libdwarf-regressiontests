@@ -2,5 +2,27 @@ October 27, 2020
 
 These fuzzed testcases are from 
 Casper Sun.  He reports each
-shows an uncaught error of
-some sort.
+shows an uncaught error.
+
+valgrind does not report any errors.
+
+He writes:
+
+Reproduce steps:
+1. Compile libdwarf with address sanitizer
+2. Run command "./dwarfdump -vv -a [poc file]”
+
+output example:
+=================================================================
+==86535==ERROR: AddressSanitizer: global-buffer-overflow on address 0x0000013a0e00 at pc 0x0000005affaf bp 0x7ffe3cfe3790 sp 0x7ffe3cfe3788
+WRITE of size 8 at 0x0000013a0e00 thread T0
+    #0 0x5affae in print_die_and_children_internal /home/casper/targets/struct/libdwarf/afl/BUILD/dwarfdump/print_die.c:1549:13
+
+
+globaloverflow	
+
+nullpointer  
+
+heapoverflow	
+
+
