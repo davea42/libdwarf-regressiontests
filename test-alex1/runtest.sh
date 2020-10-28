@@ -31,7 +31,7 @@ then
   libs="$libs -lz"
 fi
 
-OPTS="-I$top_bld -I$top_bld/libdwarf -I$libbld/libdwarf"
+OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/libdwarf -I$libbld/libdwarf"
 echo "cc -DWORKING=1 $opt $OPTS  $ts/test.c $bldtest/libdwarf.a $libs -o test1"
 cc -DWORKING=1 $opt $OPTS  $ts/test.c $bldtest/libdwarf.a $libs -o test1
 if [ $? -ne 0 ]

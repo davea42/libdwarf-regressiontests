@@ -4041,14 +4041,11 @@ do
   fi
 done
 
-if test ! -f  BASEFILES
+cp $srcdir/BASEFILES.in BASEFILES
+if test $? -ne 0
 then
-  cp $srcdir/BASEFILES.in BASEFILES
-  if test $? -ne 0
-  then
-     echo "FAIL configure cannot find $srcdir/BASEFILES.in"
-     exit 1
-  fi
+  echo "FAIL configure cannot create BASEFILES"
+  exit 1
 fi
 echo "libdw=$codedir" >> BASEFILES
 echo "codedir=$codedir" >> BASEFILES
