@@ -20,9 +20,22 @@ WRITE of size 8 at 0x0000013a0e00 thread T0
 
 
 globaloverflow	
+There is a circular DIE loop noted at stack index 2
+and at index 869 (at which point dwarfdump stops
+printing DIEs).  Normally the 869 stack
+index won't be seen as the normal DIE_STACK_SIZE
+(in dwarfdump/print_die.c) is a 
+fixed 800 entries. Instead an error about stack
+overflow will be printed.
+There are no loops in the 869 depth till one gets
+to the very end. Fascinating testcase.
+
+
+heapoverflowa (really has no new problem)	
 
 nullpointer  
-
-heapoverflow	
+In the line table header file table the DWARF5
+PATH form is bogus so previously a null passed to
+dwarfstring_append_printf_s from fe_fi_file_name.
 
 

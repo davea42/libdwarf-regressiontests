@@ -660,6 +660,11 @@ runtest $d1 $d2 c-sun/poc -vv -a
 # ensure we catch the corruption without -vv
 runtest $d1 $d2 c-sun/poc -a
 
+# See bug DW202010-002
+runtest $d1 $d2 c-sun2/globaloverflow -vv -a
+# See bug DW202010-003
+runtest $d1 $d2 c-sun2/nullpointer -vv -a
+
 # Doc used to be wrong about the spelling
 # of the long form
 runtest $d1 $d2 -i -vv -x groupnumber=3 \
