@@ -28,6 +28,7 @@ then
   then
     if [ ! -f *core* ]  
     then
+      ls -l *
       echo "fail hughes2/simplereader expected  corefile! "
       exit 1
     fi

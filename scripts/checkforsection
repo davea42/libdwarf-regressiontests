@@ -10,7 +10,7 @@ path=$1
 while read n
 do
   #echo "do $n"
-  readelfobj $n | grep '[.]debug_names' >/tmp/junk2
+  readelfobj $n | grep '[.]debug_mac' >/tmp/junk2
   if [ $? -eq 0 ]
   then
     echo -n  $n " " >/tmp/junk3

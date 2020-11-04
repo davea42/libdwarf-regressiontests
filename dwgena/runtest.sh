@@ -34,8 +34,8 @@ diff $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF2 -vvv 9
-    echo "update via  by : cp $tf/$j $b "
-    echo "  gzip $b ; mv $bz $tf/b"
+    echo "update via  by : cd $tf ; cp $j $b "
+    echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
 
@@ -51,8 +51,8 @@ diff $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF2 1
-    echo "update via: cp $tf/$j $b "
-    echo "  gzip $b ; mv $bz $tf/b"
+    echo "update via: cd $tf ;  cp $j $b "
+    echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
 
@@ -66,8 +66,8 @@ diff $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test 2
-    echo "update via: cp $tf/$j $b "
-    echo "  gzip $b ; mv $bz $tf/b"
+    echo "update via: cd $tf ; cp $j $b "
+    echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
 
@@ -83,8 +83,8 @@ diff $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test 3
-    echo "update via: cp $tf/$j $b "
-    echo "  gzip $b ; mv $bz $tf/b"
+    echo "update via: cd $tf ; cp $j $b "
+    echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
 
@@ -98,8 +98,8 @@ diff $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test 4
-    echo "update via: cp $tf/$j $b "
-    echo "  gzip $b ; mv $bz $tf/b"
+    echo "update via: cd $tf ; cp $j $b "
+    echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
 
@@ -116,8 +116,8 @@ diff $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test 5
-    echo "update via: cp $tf/$j $b "
-    echo "  gzip $b ; mv $bz $tf/b"
+    echo "update via: cd $tf ; cp $j $b "
+    echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
 
@@ -133,8 +133,8 @@ diff $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF3 8
-    echo "update via: cp $tf/$j $b "
-    echo "  gzip $b ; mv $bz $tf/b"
+    echo "update via: cd $tf ; cp $j $b "
+    echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
 
@@ -150,8 +150,8 @@ diff test7.base junk7.new
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF4 7
-    echo "update via: cp $tf/$j $b "
-    echo "  gzip $b ; mv $bz $tf/b"
+    echo "update via: cd $tf ; cp $j $b "
+    echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
 
@@ -167,8 +167,8 @@ diff $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF5 6
-    echo "update via: cp $tf/$j $b "
-    echo "  gzip $b ; mv $bz $tf/b"
+    echo "update via: cd $tf ; cp $j $b "
+    echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
 echo "PASS dwgena/runtest.sh"

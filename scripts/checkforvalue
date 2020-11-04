@@ -8,14 +8,22 @@ then
 fi
 path=$1
 
+rm junkversion2
+rm /tmp/junkversion3
 while read n
 do
   #echo "do $n"
-  /tmp/dwarfdump $n | egrep '(line table version|version_stamp)' >/tmp/junk2
+  /tmp/dwarfdump -vv -i -l $n | egrep '(line table version|version_stamp)' >/tmp/junkversion3
   if [ $? -eq 0 ]
   then
-    echo -n  $n " " >/tmp/junk3
-    cat /tmp/junk3 /tmp/junk2
+    x=`wc -l  </tmp/junkversion3`
+    if [ $x -gt 0 ]
+    then
+      echo  "========= $n"  >>junkversion2
+      cat /tmp/junkversion3 >>junkversion2
+    fi
   fi
+  echo "results in junkversion2"
+  wc -l junkversion2
 done  < $path
 
