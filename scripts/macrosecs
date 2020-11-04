@@ -1,0 +1,67 @@
+convey/foo.g3-O0-strictdwarf.o  [ 9] 0x00000186 0x0000205a .debug_macinfo
+convey/testesb.c.o  [35] 0x000009ec 0x0000011b .debug_macro
+cristi3/cristibadobj  [34] 0x00009b9b 0x0000e256 .debug_macinfo 
+diederen4/mips_dwarf_bad_interr_30368.elf  [23] 0x0000e6e2 0x0000001f .debug_macinfo 
+emre4/test19_64_dbg  [35] 0x000076a0 0x0000128a .debug_macro   
+emre4/test3_64_dbg  [34] 0x00006020 0x00001167 .debug_macro   
+emre5/test33_64_opt_fpo_split.dwp  [ 5] 0x00001eeb 0x000000c8 .debug_macro.dwo 
+enciso8/test-clang-dw5.o  [10] 0x00000155 0x00000001 .debug_macinfo 
+enciso8/test-clang-wpieb-dw5.o  [10] 0x0000016c 0x00000001 .debug_macinfo 
+enciso8/test-clang.o  [ 8] 0x00000140 0x00000001 .debug_macinfo 
+kaletta/test.armlink.elf  [ 7] 0x000009dc 0x00000010 .debug_macinfo 
+kaletta/test.o  [10] 0x0000032a 0x000002cc .debug_macinfo 
+[20] 0x0000088c 0x00000010 .debug_macinfo (SHF_GROUP)(SHT_PROGBITS)
+liu/NULLdereference0519.elf  [ 5] 0x00001eeb 0x000000c8 .debug_macro.dwo 
+liu/OOB0505_02.elf  [35] 0x000076a0 0x0000128a .debug_macro   
+liu/OOB0505_02_02.elf  [12] 0x00001bc4 0x00000568 .debug_macro   
+liu/OOB0517_02.elf  [ 5] 0x00001eeb 0x000000c8 .debug_macro.dwo 
+liu/OOB_read4.elf  [ 5] 0x00001eeb 0x000000c8 .debug_macro.dwo 
+liu/free_invalid_address.elf  [34] 0x00006020 0x00001167 .debug_macro   
+liu/heapoverflow01b.elf  [35] 0x000076a0 0x0000128a .debug_macro   
+liu/infinitloop.elf  [12] 0x00001bc4 0x00000568 .debug_macro   
+liu/null02.elf  [12] 0x00001bc4 0x00000568 .debug_macro  
+liu/outofbound01.elf  [34] 0x00006020 0x00001167 .debug_macro  
+macinfo/a.out3.4  [34] 0x00000ec6 0x0000321b .debug_macinfo 
+macinfo/a.out4.3  [35] 0x00000f51 0x00003797 .debug_macinfo
+macro5/dwarf_weaks-g3.o  [78] 0x0000207a 0x00000372 .debug_macro 
+macro5/dwarfdump-g3  [34] 0x001f11ca 0x00018501 .debug_macro  
+marinescu2/dwarfdump-invalid-read  [35] 0x00000db8 0x00000d44 .debug_macinfo 
+mustacchi/m32t.o  [ 8] 0x000000e1 0x00000001 .debug_macinfo
+mustacchi/m64t.o  [ 8] 0x000000f1 0x00000001 .debug_macinfo
+parodi/TestA2l.elf  [72] 0x000005df 0x0000004d .debug_macinfo
+puzzor/heap_buf_overflow.o  [12] 0x00000b2e 0x00000000 .debug_macinfo 
+sarubbo-11/testcase1.bin  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-11/testcase2.bin  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-11/testcase3.bin  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-11/testcase4.bin  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-2/00024-libdwarf-memalloc-do_decompress_zlib  [33] 0x000058bf 0x00000ddb .debug_macro  
+sarubbo-2/00025-libdwarf-heapoverflow-get_attr_value  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-2/00027-libdwarf-heapoverflow-_dwarf_skim_forms  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-2/00050-libdwarf-negate-itself  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-3/1.crashes.bin  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-5/1.crashes.bin  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-7/4.crashes.bin  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo-9/3.crashes.bin  [33] 0x000058bf 0x00000ddb .debug_macro 
+sarubbo/02.hangs  [33] 0x000058bf 0x00000ddb .debug_macro  
+sarubbo/03.hangs  [33] 0x000058bf 0x00000ddb .debug_macro 
+sarubbo/04.hangs  [33] 0x000058bf 0x00000ddb .debug_macro
+sarubbo/05.hangs  [33] 0x000058bf 0x00000ddb .debug_macro  
+sarubbo/06.hangs  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo/07.hangs  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo/10.hangs  [33] 0x000058d7 0x00000ddb .debug_macro   
+sarubbo/11.hangs  [33] 0x000058d7 0x00000ddb .debug_macro   
+sarubbo/1112.crashes  [33] 0x000058d7 0x00000ddb .debug_macro   
+sarubbo/13.hangs  [33] 0x000058d7 0x00000ddb .debug_macro   
+sarubbo/17.hangs  [33] 0x000058d7 0x00000ddb .debug_macro   
+sarubbo/test122.crashes  [33] 0x000058d7 0x00000ddb .debug_macro   
+sarubbo/test2.crashes  [33] 0x000058bf 0x00000ddb .debug_macro   
+sarubbo/test433.crashes  [33] 0x000058d7 0x00000ddb .debug_macro   
+shopov1/main.exe  [12] 0x00001bc4 0x00000568 .debug_macro   
+shopov2/clang-9.0.0-test-dwarf5.elf  [14] 0x00065d51 0x00000032 .debug_macinfo 
+shopov3/decltest-dw4.o  [11] 0x00000193 0x00000001 .debug_macinfo 
+shopov3/decltest-dw5.o  [13] 0x000001a5 0x00000001 .debug_macinfo 
+simonian/test-gcc-4.3.0  [35] 0x00000db8 0x00000d44 .debug_macinfo 
+simonian/test-gcc-4.5.1  [33] 0x00000c72 0x00002aee .debug_macinfo 
+vlasceanu/const.o  [ 8] 0x00005320 0x00000000 .debug_macinfo 
+wolff/POC1  [33] 0x000058bf 0x00000ddb .debug_macro   
+wynn/unoptimised.axf  [ 8] 0x00001052 0x0000000c .debug_macinfo 

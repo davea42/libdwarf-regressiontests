@@ -2,7 +2,7 @@
 f=junklinetables
 date >$f
 #for n in kaletta/test.armlink.elf kaletta2/minimal_fdebug_types_section.o klingler/dwarfgen-zdebug mustacchi/relgotpc.o shopov3/decltest-dw5.o emre4/test19_64_dbg enciso8/test-clang.o
-for n in   mustacchi/relgotpc.o shopov3/decltest-dw5.o emre4/test19_64_dbg enciso8/test-clang.o
+for n in   mustacchi/relgotpc.o shopov3/decltest-dw5.o emre4/test19_64_dbg enciso8/test-clang.o macho-kask/dwarfdump_G4 macho-kask/simplereaderx86_64
 do
   echo "============== /tmp/dwarfdump -vvv -i -l $n ">>$f
   /tmp/dwarfdump -vvv -i -l $n >>$f
