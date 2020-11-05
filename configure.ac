@@ -43,7 +43,7 @@ then
   if test $f != 1
   then
     rm -f junkckpath
-    echo "Error: The libdwarf source path $enableval does not start with /."
+    echo "Error: The libdwarf code source path $enableval does not start with /."
     exit 2
   fi
   codedir=$enableval
@@ -158,17 +158,22 @@ then
   echo "FAIL configure cannot create BASEFILES"
   exit 1
 fi
-echo "libdw=$codedir" >> BASEFILES
-echo "codedir=$codedir" >> BASEFILES
 if test "$srcdir" = "."
 then
-  echo "testsrc=$abs_builddir" >> BASEFILES
+  tsa=$abs_builddir
 else
-  echo "testsrc=$srcdir" >> BASEFILES
+  tsa=$srcdir
 fi
+pyloc="$tsa/scripts/canonicalpath.py"
+ts=`$pyloc $tsa`
+echo "testsrc=$ts" >> BASEFILES
+lw=`$pyloc $codedir`
+echo "libdw=$lw" >> BASEFILES
+cod=`$pyloc $codedir`
+echo "codedir=$cod" >> BASEFILES
 echo "bldtest=$abs_builddir" >> BASEFILES
 libbld=$abs_builddir/libbld
-echo "libbld=$abs_builddir/libbld" >> BASEFILES
+echo "libbld=$libbld" >> BASEFILES
 cp  $srcdir/SHALIAS.sh SHALIAS.sh
 cp  $srcdir/exfail.py  exfail.py
 echo "Configuration Options Summary:"
@@ -177,8 +182,8 @@ echo " have libelf............: ${dwarf_with_libelf}"
 echo " dwarfgen...............: ${enable_dwarfgen}"
 echo " testbuilddir...........: $abs_builddir"
 echo " libbuilddir............: $libbld"
-echo " regressiontests........: $srcdir"
-echo " code...................: $datadir"
+echo " regressiontests........: $ts"
+echo " code...................: $cod"
 
 echo "Ready to test."
 
