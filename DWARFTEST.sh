@@ -995,7 +995,7 @@ runtest $d1 $d2   emre6/class_64_opt_fpo_split -a
 
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START  hughes2 runtest.sh $testsource/corruptdwarf-a/simplereader.elf"
+  echo "=====START  hughes2 runtest.sh $testsrc/corruptdwarf-a/simplereader.elf"
   mklocal hughes2
     sh $testsrc/hughes2/runtest.sh $testsrc/corruptdwarf-a/simplereader.elf
     chkres $?  hughes2

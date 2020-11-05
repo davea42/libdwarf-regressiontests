@@ -26,6 +26,9 @@ if [ $expcore = 'y' ]
 then
   if [ x$NLIZE != 'xy' ]
   then
+    echo "sleep 1, sometimes core is slow to show up?"
+    sleep 1
+    echo "look for core: ls -l *core*: " `ls -l *core*` 
     if [ ! -f *core* ]  
     then
       ls -l *
