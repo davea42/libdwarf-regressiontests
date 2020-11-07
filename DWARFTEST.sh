@@ -519,7 +519,7 @@ runtest () {
     #echo "=====START $* $targ" 
     echo  "=====STATS Pct $pctstring ct: $totalct"
     rm -f core
-    rm -f tmp1 tmp2 tmp3
+    rm -f tmp1o tmp2n tmp3
     rm -f tmp1err tmp2err tmp3err 
     rm -f tmp1erra  tmp2erra
     rm -f tmp1errb tmp1errc
@@ -530,6 +530,7 @@ runtest () {
     rm -f OFo3 OFn3
 
     # Running an old one till baselines established.
+    #=======old
     echo "old start " `date "+%Y-%m-%d %H:%M:%S"`
     tmplist="$*"
     #echo "dadebug tmplist baseline line5 difference-fix ",$tmplist 
@@ -544,13 +545,14 @@ runtest () {
           $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
     fi
     echo "old done " `date "+%Y-%m-%d %H:%M:%S"`
-    unifyddname tmp1a tmp1
+    unifyddname tmp1a tmp1o
     unifyddnameb tmp1erra tmp1err
     if [ -f core ]
     then
            echo "corefile in  $olddw '(old dwarfdump)'"
            rm core
     fi
+    #=======old end
     # To deal with the -O file=path naming dwarfdump output.
     if [ -f testOfile ] 
     then
@@ -563,6 +565,7 @@ runtest () {
     fi
     # We will now build the other file=testOfile if such is involved
     rm -f testOfile
+    #=======new
     echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     echo "======" $tmplist $targ >> $ntimeout
     if [ x$wrtimen != "x" ]
@@ -573,7 +576,7 @@ runtest () {
     fi
     echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
     # No need to unify for new dd name.
-    unifyddname tmp2a tmp2
+    unifyddname tmp2a tmp2n
     unifyddnameb tmp2erra tmp2err
     #date "+%Y-%m-%d %H:%M:%S"
     if [ -f core ]
@@ -581,12 +584,13 @@ runtest () {
       echo corefile in  $newdw
       exit 1
     fi
-    cat tmp2  >tmp3
+    #=======new done
+    cat tmp2n  >tmp3
     if [ -f testOfile ]
     then
       # testing -O file=path
       unifyddname testOfile OFn1
-      grep -v Usage   OFn1 >OFn2
+      grep -v Usage OFn1 >OFn2
       # Delete date on first line
       sed '1d' OFn2 >OFn3
     fi
@@ -595,7 +599,7 @@ runtest () {
       echo "Test -O file=testOfile"
       # testing -O file=path
       touch OFn3 OFo3
-      filediff OFn3 OFo3  $*  $targ
+      filediff OFo3  Ofn3 $*  $targ
       if [ $? -ne 0 ]
       then
              allgood=n
@@ -603,7 +607,7 @@ runtest () {
       fi
     fi
 
-    filediff tmp1 tmp3  $* $targ
+    filediff tmp1o tmp3  $* $targ
     if [ $? -ne 0 ]
     then
       allgood=n
@@ -624,7 +628,7 @@ runtest () {
       failcount=`expr $failcount + 1`
     fi
     rm -f core
-    rm -f tmp1 tmp2 tmp3
+    rm -f tmp1o tmp2n tmp3
     rm -f tmp1err tmp2err tmp3err 
     rm -f tmp1errb tmp1errc
     rm -f tmp1berr tmp2berr

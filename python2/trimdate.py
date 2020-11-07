@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 #
 # Any line starting with a day number (as abbrev)
 # gets 'DATE' substitutied. Makes comparisons

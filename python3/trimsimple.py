@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # Intended to strip uninteresting differences out
 # of the output of a test run.
 # What is uninteresting changes all the time,

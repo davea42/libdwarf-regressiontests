@@ -1,3 +1,9 @@
+2020-11-05 David Anderson
+    * configure.ac: now uses python path function
+      to generate canonical file names in BASENAMES.
+    * scripts/canonicalpath.py: A python
+      one line calling os.path...
+    * configure: Regenerated.
 2020-10-26 David Anderson
     * All this enables running of a regression test
       outside of the test sources.

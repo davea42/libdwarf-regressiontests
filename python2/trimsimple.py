@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 # Intended to strip uninteresting differences out
 # of the output of a test run.
 # What is uninteresting changes all the time,

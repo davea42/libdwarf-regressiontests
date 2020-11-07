@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 #
 #  Split ALLdd into groups of lines
 #   with '====' at beginning of line, as head line.
