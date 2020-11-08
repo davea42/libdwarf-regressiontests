@@ -67,12 +67,14 @@
 #include <libdwarf.h>
 #include <dwarf.h>
 
+#if 0
 /* For freebsd 10.2, need defines for bfd.h */
 #define PACKAGE "dwarfextract-test"
 #define PACKAGE_VERSION "1.0"
 #define ATTRIBUTE_UNUSED
 #define ENUM_BITFIELD(z) enum z
 /* End required mess. */
+#endif
 
 #include <sys/time.h>
 
@@ -88,9 +90,11 @@
 /*#include <malloc.h>  */ /* stdlib.h has malloc now. */
 #include <string.h>
 #include <sys/time.h>
+#if 0
 /*  Freebsd bfd.h has this word after a function prototype. Drop it. */
 #define  ATTRIBUTE_PRINTF_1
 #include <bfd.h>
+#endif
 #include <assert.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -289,6 +293,7 @@ struct typenode **alias_typep, **alias_typep2,
 	 **tree_nametypep, **tree_reftypep;
 /* stuff from readelf   binutils-<rlse>/binutils    */
 /*	              binutils-<rlse>/include/elf */
+#define bfd_vma unsigned long
 typedef struct elf_internal_rela {
 	bfd_vma	r_offset;	/* Location at which to apply the action */
 	bfd_vma	r_info;		/* Index and Type of relocation */
