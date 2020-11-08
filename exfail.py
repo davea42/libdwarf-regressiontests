@@ -18,6 +18,7 @@ def printblock(b,failcount_in):
     if l.rfind("FAIL") != -1:
       failcount = int(failcount) +1
       suppress = "n"
+      failcount = int(failcount) +1
       break
   if suppress == "n":
     for l in b:
@@ -49,7 +50,7 @@ if __name__ == '__main__':
       print("Rec len 0, stop");
       break
     rec = reci.strip()
-    if rec.startswith("====") == 1:
+    if rec.startswith("=====START") == 1:
       failcount = printblock(block,failcount)
       count = int(count) +1
       block = []
