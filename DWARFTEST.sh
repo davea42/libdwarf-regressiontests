@@ -468,6 +468,23 @@ t2=$2
 shift ; shift  
 if [ "$suppressbigdiffs" = "y" ]
 then
+  if [ ! -f $t2 -a ! -f $t1 ]
+  then
+    echo "PASS no file $t1 , no file $t2"
+    return 0
+  fi
+  if [ ! -f $t2 -o ! -f $t1 ]
+  then
+    if [ ! -f $t1 ]
+    then
+      echo "FAIL filediff $t1 $t2 no file $t1"
+      cat $t2
+    else
+      echo "FAIL filediff $t1 $t2 no file $t2"
+      cat $t1
+    fi
+    return 1
+  fi
   $mypycom $testsrc/$mypydir/checksize.py $maxdiffile $t1  $t2
   if [ $?  -eq 0 ]
   then
@@ -561,7 +578,6 @@ runtest () {
       grep -v Usage   OFo1 >OFo2
       # Delete date on first line
       sed '1d' OFo2 >OFo3
-      cp testOfile 
     fi
     # We will now build the other file=testOfile if such is involved
     rm -f testOfile
@@ -589,6 +605,7 @@ runtest () {
     if [ -f testOfile ]
     then
       # testing -O file=path
+      echo "Test(new)  -O file=testOfile"
       unifyddname testOfile OFn1
       grep -v Usage OFn1 >OFn2
       # Delete date on first line
@@ -599,11 +616,11 @@ runtest () {
       echo "Test -O file=testOfile"
       # testing -O file=path
       touch OFn3 OFo3
-      filediff OFo3  Ofn3 $*  $targ
+      filediff OFo3  OFn3 $*  $targ
       if [ $? -ne 0 ]
       then
-             allgood=n
-             echo "FAIL -O file=testOfile"  $* $targ
+        allgood=n
+        echo "FAIL -O file=testOfile"  $* $targ
       fi
     fi
 
