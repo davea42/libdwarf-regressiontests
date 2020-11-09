@@ -5,11 +5,14 @@ certain packages are required.
 
 #pkg install gmake bash
 #pkg install python2 python3
+Nice to have:
+#pkg install rcs git
 
 elf.h, libelf, and libz seem to be present
 by default. The testscript will skip some tests
 if one or more of those are missing.
 
+======the rest is details, not important.
 Until 8 November 2020 the dwarfextract test
 required bfd.h for some type definitions
 but...now we just define bfd_vma as unsigned
@@ -27,6 +30,4 @@ your command line
 (bash will be /usr/local/bin/bash).
 Make it your shell with chsh.
 
-Nice to have:
-#pkg install rcs git
 
