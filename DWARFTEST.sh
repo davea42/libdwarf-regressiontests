@@ -681,6 +681,14 @@ runtest $d1 $d2 c-sun/poc -vv -a
 # ensure we catch the corruption without -vv
 runtest $d1 $d2 c-sun/poc -a
 
+# SHF_COMPRESSED testcases.
+runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
+runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv 
+runtest $d1 $d2 compressed-be/testprog-be-dw4 -ka 
+runtest $d1 $d2 compressed-le/testprog-le-dw4 -b -v
+runtest $d1 $d2 compressed-le/testprog-le-dw4 -a -vvvv
+runtest $d1 $d2 compressed-le/testprog-le-dw4 -ka
+
 # See bug DW202010-002
 runtest $d1 $d2 c-sun2/globaloverflow -vv -a
 # See bug DW202010-003
