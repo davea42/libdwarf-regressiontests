@@ -1,0 +1,9 @@
+November 11, 2020
+
+Generating a little-endian executable.
+
+The compile here is intended to be done just once, 
+as is the compression of the DWARF sections with
+objcopy.
+
+

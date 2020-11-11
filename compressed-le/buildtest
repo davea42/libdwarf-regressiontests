@@ -1,0 +1,7 @@
+#!/bin/sh
+exit 0
+#Do not regenerated without a good reason.
+cc -g -gdwarf-4 test.c -o testprogin
+objcopy --compress-debug-sections testprogin testprog-le-dw4
+readelfobj testprogin
+readelfobj testprog-le-dw4
