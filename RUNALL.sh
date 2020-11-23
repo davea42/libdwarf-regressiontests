@@ -68,8 +68,13 @@ stsecs=`date '+%s'`
 echo "Begin regressiontests    $loc/RUNALL.sh $withlibelf" 
 echo "Write regressiontests to $loc/ALLdd" 
 $testsrc/DWARFTEST.sh $withlibelf 2>ALLdd 1>&2
-chkres $? "Failure in $testsrc/DWARFTEST.sh."
+r=$?
+chkres $r "Failure in $testsrc/DWARFTEST.sh."
 chkfail ALLdd "RUNALL.sh regressiontests"
+if [ $r -eq 0 ]
+then
+  echo "Status return 0 says PASS"
+fi
 ndsecs=`date '+%s'`
 endt=`date`
 echo "start regressiontests $start "
