@@ -18,6 +18,9 @@ Summary of overall regressiontests options:
    ./configure [--disable-libelf]
    make
 
+The tests require (in some cases) that dwarfdump.conf
+reside in one's home directory.
+
 See code/README for the overall scripts/run-all-tests.sh
 script.
 

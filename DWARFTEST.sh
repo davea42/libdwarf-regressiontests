@@ -660,18 +660,18 @@ echo "=============BEGIN THE TESTS==============="
 
 echo  "=====BLOCK individual tests and runtest.sh tests"
 # Checking that we can print the .debug_sup section
-echo "=====START  supplementary  runtest.sh"
+echo "=====START  supplementary  $testsrc/supplementary/runtest.sh"
 mklocal supplementary
   sh $testsrc/supplementary/runtest.sh 
-  chkres $? "supplementary/runtest.sh"
+  chkres $? "$testsrc/supplementary/runtest.sh"
 cd ..
 
-echo "=====START  guilfanov  runtest.sh"
+echo "=====START  guilfanov  $testsrc/guilfanov/runtest.sh"
 mklocal guilfanov
   sh $testsrc/guilfanov/runtest.sh 
   # A fuzzed object which can crash libdwarf due to a bug.
   # hangs libdwarf/dwarfdump.
-  chkres $? "guilfanov/runtest.sh"
+  chkres $? "$testsrc/guilfanov/runtest.sh"
 cd ..
 
 #  A fuzzed object which hit a poorly written sanity
@@ -696,10 +696,10 @@ runtest $d1 $d2 c-sun2/nullpointer -vv -a
 
 # Doc used to be wrong about the spelling
 # of the long form
-runtest $d1 $d2 -i -vv -x groupnumber=3 \
-  kaletta2/minimal_fdebug_types_section.o
-runtest $d1 $d2 -i -vv --format-group-number=3 \
-  kaletta2/minimal_fdebug_types_section.o
+runtest $d1 $d2 kaletta2/minimal_fdebug_types_section.o \
+ -i -vv -x groupnumber=3
+runtest $d1 $d2 kaletta2/minimal_fdebug_types_section.o \
+ -i -vv --format-group-number=3
 
 # These files are Arm and the compiler
 # is generating section groups but without
@@ -739,10 +739,10 @@ then
   echo "=====SKIP  testoffdie  runtest.sh nolibelf $withlibz "
   skipcount=`expr $skipcount + 1`
 else
-  echo "=====START  testoffdie runtest.sh $withlibelf $withlibz"
+  echo "=====START  $testsrc/testoffdie runtest.sh $withlibelf $withlibz"
   mklocal testoffdie
     sh $testsrc/testoffdie/runtest.sh $withlibelf $withlibz
-    chkres $? "testoffdie/runtest.sh"
+    chkres $? "$testsrc/testoffdie/runtest.sh"
   cd ..
 fi
 
@@ -755,10 +755,10 @@ then
   echo "=====SKIP debuglink runtest.sh as bigendian will fail"
   skipcount=`expr $skipcount + 1`
 else
-  echo "=====START  debuglink runtest.sh $withlibelf $withlibz"
+  echo "=====START  $testsrc/debuglink runtest.sh $withlibelf $withlibz"
   mklocal debuglink
     sh $testsrc/debuglink/runtest.sh $withlibelf $withlibz
-    chkres $? "debuglink/runtest.sh"
+    chkres $? "$testsrc/debuglink/runtest.sh"
   cd ..
 fi
 
@@ -870,21 +870,21 @@ runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
 # As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
 if [ x$withlibelf = "xnolibelf" ]
 then
-  echo "=====START  mustacchi runtest.sh nolibelf"
+  echo "=====START  $testsrc/mustacchi runtest.sh nolibelf"
   mklocal mustacchi
     sh $testsrc/mustacchi/runtestnolibelf.sh 
-    chkres $? "mustacchi/runtestnolibelf.sh"
+    chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
   cd ..
 else
-  echo "=====START  mustacchi runtest.sh withlibelf" 
+  echo "=====START  $testsrc/mustacchi runtest.sh withlibelf" 
   mklocal mustacchi
     l=mustacchi
     cp $testsrc/$l/mt32.o  $bldtest/$l/mt32.o
     cp $testsrc/$l/mt64.o  $bldtest/$l/mt64.o
     sh $testsrc/mustacchi/runtest.sh
-    chkres $? "mustacchi/runtest.sh"
+    chkres $? "$testsrc/mustacchi/runtest.sh"
     sh $testsrc/mustacchi/runtestnolibelf.sh
-    chkres $? "mustacchi/runtestnolibelf.sh"
+    chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
   cd ..
 fi
 
@@ -1024,10 +1024,10 @@ runtest $d1 $d2   emre6/class_64_opt_fpo_split -a
 
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START  hughes2 runtest.sh $testsrc/corruptdwarf-a/simplereader.elf"
+  echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simplereader.elf"
   mklocal hughes2
     sh $testsrc/hughes2/runtest.sh $testsrc/corruptdwarf-a/simplereader.elf
-    chkres $?  hughes2
+    chkres $?  $testsrc/hughes2
   cd ..
 else
   echo "=====SKIP   hughes2 runtest.sh no libelf as coredump is a bit unix/linux specific"
@@ -1036,10 +1036,10 @@ fi
 
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START   implicitconst sh runtest.sh"
+  echo "=====START   $testsrc/implicitconst sh runtest.sh"
   mklocal implicitconst
     sh $testsrc/implicitconst/runtest.sh
-    chkres $?  implicitconst
+    chkres $?  $testsrc/implicitconst
   cd ..
 else
   echo "=====SKIP   implicitconst sh runtest.sh no libelf"
@@ -1047,10 +1047,10 @@ else
 fi
 
 
-echo "=====START  nolibelf runtest.sh "
+echo "=====START  $testsrc/nolibelf runtest.sh "
 mklocal nolibelf
   sh $testsrc/nolibelf/runtest.sh
-  chkres $?  nolibelf
+  chkres $?  $testsrc/nolibelf
 cd ..
 
 
@@ -1296,7 +1296,11 @@ runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
 runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
 runtest $d1 $d2  debugfissionb/ld-new -I
 runtest $d1 $d2  debugfissionb/ld-new -a  
+echo "Testing -i --format-expr-ops-joined . a -d for exprs"
+runtest $d1 $d2  debugfissionb/ld-new -i --format-expr-ops-joined
 runtest $d1 $d2  debugfissionb/ld-new -ka  
+#The following is also --format-expr-op-per-line!
+runtest $d1 $d2  emre4/test19_64_dbg --file-name=./testdwarfdump.conf  -i -v 
 
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
@@ -1309,63 +1313,63 @@ runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=emre5/test3
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=emre5/test33_64_opt_fpo_split 
 
 
-echo "=====START  baddie1/runtest.sh"
+echo "=====START  $testsrc/baddie1/runtest.sh"
 mklocal baddie1
   sh $testsrc/baddie1/runtest.sh ../$d2 
-  chkres $?  baddie1
+  chkres $?  $testsrc/baddie1
 cd ..
 
 if [ $withlibelf = "withlibelf" ]
 then
   # Also tests dwarfgen and libdwarf with DW_CFA_advance_loc
   # operations
-  echo "=====START  offsetfromlowpc/runtest.sh"
+  echo "=====START  $testsrc/offsetfromlowpc/runtest.sh"
   mklocal offsetfromlowpc
     sh $testsrc/offsetfromlowpc/runtest.sh 
-    chkres $?  offsetfromlowpc
+    chkres $?  $testsrc/offsetfromlowpc
   cd ..
 else
-  echo "=====SKIP  offsetfromlowpc sh runtest.sh no libelf"
+  echo "=====SKIP  $testsrc/offsetfromlowpc sh runtest.sh no libelf"
   skipcount=`expr $skipcount + 1`
 fi
 
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "=====START  strsize/runtest.sh"
+  echo "=====START  $testsrc/strsize/runtest.sh"
   mklocal strsize
     sh $testsrc/strsize/runtest.sh 
-    chkres $? strsize
+    chkres $? $testsrc/strsize
   cd ..
 else
-  echo "=====SKIP   strsize sh runtest.sh no libelf"
+  echo "=====SKIP   $testsrc/strsize sh runtest.sh no libelf"
   skipcount=`expr $skipcount + 1`
 fi
 
 # tests simple reader and more than one dwarf_init* interface
 # across all object types
 # here kaufmann/t.o is tested as input to simplereader.
-echo "=====START debugfissionb runtest.sh ../simplereader"
+echo "=====START $testsrc/debugfissionb runtest.sh ../simplereader"
 mklocal debugfissionb
   sh $testsrc/debugfissionb/runtest.sh  
-  chkres $?  debugfissionb-simplreader
+  chkres $?  $testsrc/debugfissionb-simplreader
 cd ..
 
-echo "=====START debugfission runtest.sh ../$d2"
+echo "=====START $testsrc/debugfission runtest.sh ../$d2"
 mklocal debugfission
   sh $testsrc/debugfission/runtest.sh  ../$d2 
-  chkres $?  debugfission
+  chkres $?  $testsrc/debugfission
 cd ..
 
-#echo "=====START data16 runtest.sh"
+#echo "=====START $testsrc/data16 runtest.sh"
 if [ $NLIZE = 'n' -a $withlibelf = "withlibelf" ]
 then
-echo "=====START  data16 runtest.sh ../$d2"
+echo "=====START  $testsrc/data16 runtest.sh ../$d2"
   mklocal data16
     sh $testsrc/data16/runtest.sh
-    chkres $?  "data16/runtest.sh"
+    chkres $?  "$testsrc/data16/runtest.sh"
   cd ..
 else
-  echo "=====SKIP  data16/runtest.sh with NLIZE or if no libelf"
+  echo "=====SKIP  $testsrc/data16/runtest.sh with NLIZE or if no libelf"
   skipcount=`expr $skipcount + 1`
 fi
 
@@ -1583,19 +1587,19 @@ runtest $d1 $d2  lloyd/arange.elf  -kr
 runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 
 if test $withlibelf = "withlibelf" ; then
-  echo "=====START  findcu runtest.sh $withlibelf $withlibz"
+  echo "=====START  $testsrc/findcu runtest.sh $withlibelf $withlibz"
   mklocal findcu 
     sh $testsrc/findcu/runtest.sh  $withlibelf $withlibz 
-    chkres $? 'findcu/cutest-of-a-libdwarf-interface'
+    chkres $? '$testsrc/findcu/cutest-of-a-libdwarf-interface'
   cd ..
 else
-  echo "=====SKIP  findcu runtest.sh  $withlibelf $withlibz"
+  echo "=====SKIP  $testsrc/findcu runtest.sh  $withlibelf $withlibz"
   skipcount=`expr $skipcount + 1`
 fi
 
 
 
-  echo "=====START  test_harmless"
+  echo "=====START  $testsrc/test_harmless"
   libopts=''
   if test $withlibelf = "withlibelf" 
   then
@@ -1612,11 +1616,11 @@ fi
   chkres $? 'check harmless-error execution failed'
 
 if test $withlibelf = "withlibelf" ; then
-  echo "=====START   dwgena/runtest.sh ../$d2"
+  echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
   mklocal dwgena
     sh $testsrc/dwgena/runtest.sh
     r=$?
-    chkresn $r 'dwgena/runtest.sh' 9
+    chkresn $r '$testsrc/dwgena/runtest.sh' 9
   cd ..
 else
   echo "====SKIP 1 dwgena/runtest.sh no libelf"
@@ -1624,23 +1628,23 @@ else
 fi
 
 if test $withlibelf = "withlibelf" ; then
-  echo "=====START   dwgenc/runtest.sh ../$d2"
+  echo "=====START   $testsrc/dwgenc/runtest.sh ../$d2"
   mklocal dwgenc
     sh $testsrc/dwgenc/runtest.sh ../$d2
     r=$?
-    chkresn $r 'dwgenc/runtest.sh' 1
+    chkresn $r "$testsrc/dwgenc/runtest.sh" 1
   cd ..
 else
-  echo "====SKIP 1 dwgenc/runtest.sh no libelf"
+  echo "====SKIP 1 $tstsrc/dwgenc/runtest.sh no libelf"
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   frame1/runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz"
+echo "=====START   $tstsrc/frame1/runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz"
 mklocal frame1 
   echo "sh runtest.sh  $withlibelf $withlibz"
   sh $testsrc/frame1/runtest.sh $withlibelf $withlibz
   r=$?
-  chkres $r frame1
+  chkres $r $tstsrc/frame1
 cd ..
 
 if [ $NLIZE = 'n' ]
@@ -1649,51 +1653,51 @@ then
   then
     if [ $withlibelf = "withlibelf" ]
     then
-      echo "=====START   dwarfextract/runtest.sh $withlibelf $withlibz"
+      echo "=====START   $tstsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
       # This has serious problems with leaks, so
       # do not do $NLIZE for now..
       mklocal dwarfextract
         rm -f dwarfextract
         sh $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz
-        chkres $?  dwarfextract
+        chkres $?  $tstsrc/dwarfextract
       cd ..
     else
-      echo "====SKIP 1 dwarfextract/runtest.sh $withlibelf $withlibz"
+      echo "====SKIP 1 $tstsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
       skipcount=`expr $skipcount + 1`
     fi
   else
-    echo "=====SKIP 1 dwarfextract/runtest.sh with big endian test host"
+    echo "=====SKIP 1 $tstsrc/dwarfextract/runtest.sh with big endian test host"
     skipcount=`expr $skipcount + 1`
   fi
 else
-  echo "=====SKIP 1 dwarfextract/runtest.sh with NLIZE"
+  echo "=====SKIP 1 $tstsrc/dwarfextract/runtest.sh with NLIZE"
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   sandnes2/runtest.sh"
+echo "=====START   $tstsrc/sandnes2/runtest.sh"
 mklocal sandnes2
   sh $testsrc/sandnes2/runtest.sh
   r=$?
-  chkres $r  sandnes2
+  chkres $r  $tstsrc/sandnes2
 cd ..
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START   legendre/runtest.sh $withlibelf $withlibz"
+  echo "=====START   $tstsrc/legendre/runtest.sh $withlibelf $withlibz"
   mklocal legendre
     sh $testsrc/legendre/runtest.sh $withlibelf $withlibz
     r=$?
-    chkres $r  legendre
+    chkres $r  $tstsrc/legendre
   cd ..
 else
-  echo "=====SKIP 1  legendre/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP 1  $tstsrc/legendre/runtest.sh NLIZE as it has leaks"
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   enciso4/runtest.sh "
+echo "=====START   $tstsrc/enciso4/runtest.sh "
 mklocal enciso4
   sh $testsrc/enciso4/runtest.sh
-  chkres $?  enciso4
+  chkres $?  $tstsrc/enciso4
 cd ..
 
 # -g: use old dwarf loclist code.
@@ -1751,25 +1755,25 @@ fi
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START test-alex1/runtest.sh $withlibelf $withlibz"
+  echo "=====START $tstsrc/test-alex1/runtest.sh $withlibelf $withlibz"
   mklocal test-alex1
     sh $testsrc/test-alex1/runtest.sh $withlibelf $withlibz
-    chkres $?  test-alex1
+    chkres $?  $tstsrc/test-alex1
   cd ..
 else
   skipcount=`expr $skipcount + 1`
-  echo "=====SKIP 1 test-alex1/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP 1 $tstsrc/test-alex1/runtest.sh NLIZE as it has leaks"
 fi
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START test-alex2/runtest.sh $withlibelf $withlibz"
+  echo "=====START $tstsrc/test-alex2/runtest.sh $withlibelf $withlibz"
   mklocal test-alex2
     sh $testsrc/test-alex2/runtest.sh $withlibelf $withlibz
-    chkres $?  test-alex2
+    chkres $?  $tstsrc/test-alex2
   cd ..
 else
-  echo "=====SKIP 1 test-alex2/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP 1 $tstsrc/test-alex2/runtest.sh NLIZE as it has leaks"
   skipcount=`expr $skipcount + 1`
 fi
 
@@ -1816,7 +1820,7 @@ runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple
 runtest $d1 $d2 irixn32/dwarfdump -f -n -x name=./dwarfdump.conf -x abi=mips-simple3  
 runtest $d1 $d2 ia32/mytry.ia32 -F -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 ia64/mytry.ia64 -F -x name=dwarfdump.conf -x abi=ia64 
-# The following is a misspelling of abi. Checks for error spelling so leave it in.
+echo "The following is a misspelling of abi. Checks for error spelling so leave it in."
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple 
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3 
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix
