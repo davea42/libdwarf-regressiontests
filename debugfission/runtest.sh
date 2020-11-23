@@ -39,7 +39,7 @@ if [  $?  -ne 0 ]
 then
     echo fail debugfission archivedwo 2
     echo "update in $tf via : mv $jt $b"
-    echo " gzip $b ; mv $bz  $testsrc/$bz"
+    echo " gzip $b ; mv $bz  $ts/$bz"
     exit 1
 fi
 
@@ -53,7 +53,7 @@ if [  $?  -ne 0 ]
 then
     echo fail debugfission targeto test 3
     echo "update via : $jt $b"
-    echo " gzip $b ; mv $bz  $testsrc/$bz"
+    echo " gzip $b ; mv $bz  $ts/$bz"
     exit 1
 fi
 
@@ -67,7 +67,7 @@ if [  $?  -ne 0 ]
 then
     echo fail debugfission targetdwo 4
     echo "update via : cp $jt $b"
-    echo " gzip $b ; mv $bz  $testsrc/$bz"
+    echo " gzip $b ; mv $bz  $ts/$bz"
     exit 1
 fi
 
@@ -81,7 +81,7 @@ if [  $?  -ne 0 ]
 then
     echo fail debugfission archivedwo-iMvvv 5
     echo "update via : cp $jt $b"
-    echo " gzip $b ; mv $bz  $testsrc/$bz"
+    echo " gzip $b ; mv $bz  $ts/$bz"
     exit 1
 fi
 echo "PASS debugfission/runtest.sh"

@@ -88,7 +88,8 @@ LOCAL_SYMBOLS:
                                       DW_AT_type                  <0x0000004c GOFF=0x00000109>
                                       DW_AT_low_pc                0x00000000
                                       DW_AT_high_pc               0x00000000
-                                      DW_AT_frame_base            0x7004 DW_OP_breg0+4
+                                      DW_AT_frame_base            0x7004 
+                                         DW_OP_breg0+4
                                       ERROR in DW_AT_sibling: DW_FORM_ref4 Sibling offset 0x000000c1 points before its own die GOFF=0x0000013c Major error
 DW_AT_sibling               <0x00000004 GOFF=0x000000c1>
 

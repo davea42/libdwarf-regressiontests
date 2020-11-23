@@ -133,7 +133,8 @@ diff $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF3 8
-    echo "update via: cd $tf ; cp $j $b "
+    echo "update via: cd $tf"  
+    echo "  cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
     exit 1
 fi
