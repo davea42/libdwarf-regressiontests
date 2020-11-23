@@ -4055,16 +4055,20 @@ else
 fi
 pyloc="$tsa/scripts/canonicalpath.py"
 ts=`$pyloc $tsa`
-echo "testsrc=$ts" >> BASEFILES
+echo "testsrc=$ts" >>      BASEFILES
 lw=`$pyloc $codedir`
-echo "libdw=$lw" >> BASEFILES
+echo "libdw=$lw" >>        BASEFILES
 cod=`$pyloc $codedir`
-echo "codedir=$cod" >> BASEFILES
+echo "codedir=$cod" >>     BASEFILES
 echo "bldtest=$abs_builddir" >> BASEFILES
 libbld=$abs_builddir/libbld
-echo "libbld=$libbld" >> BASEFILES
-cp  $srcdir/SHALIAS.sh SHALIAS.sh
-cp  $srcdir/exfail.py  exfail.py
+echo "libbld=$libbld" >>   BASEFILES
+cp  $srcdir/SHALIAS.sh     SHALIAS.sh
+set -x
+cp  $srcdir/exfail.py      exfail.py
+cp  $srcdir/dwarfdump.conf     dwarfdump.conf
+cp  $srcdir/testdwarfdump.conf testdwarfdump.conf
+set +x
 echo "Configuration Options Summary:"
 echo
 echo " have libelf............: ${dwarf_with_libelf}"
