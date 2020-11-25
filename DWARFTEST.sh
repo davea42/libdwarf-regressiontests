@@ -590,6 +590,13 @@ runtest () {
     else
       $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
     fi
+    tesb=tmp2aesb
+    grep ESBERR tmp2a >$tesb
+    if [ $? -eq 0 ]
+    then
+      #This will record any ESBERR instances.
+      cat $tesb >>tmp2a
+    fi
     echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
     # No need to unify for new dd name.
     unifyddname tmp2a tmp2n
