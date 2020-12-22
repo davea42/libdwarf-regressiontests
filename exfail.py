@@ -41,6 +41,10 @@ if __name__ == '__main__':
   while 1:
     try:
       reci = file.readline()
+    except UnicodeDecodeError:
+      print("At line ",rcount,"there is a non-UTF string")
+      print("Dropping the string and moving to next line")
+      continue
     except EOFError:
       print("Hit EOF ")
       break

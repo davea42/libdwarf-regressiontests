@@ -1096,6 +1096,7 @@ runtest $d1 $d2   sarubbo-11/testcase1.bin -a
 runtest $d1 $d2   sarubbo-11/testcase2.bin -a
 runtest $d1 $d2   sarubbo-11/testcase3.bin -a
 runtest $d1 $d2   sarubbo-11/testcase4.bin -a
+runtest $d1 $d2   sarubbo-11/testcase4.bin -ka
 runtest $d1 $d2   sarubbo-11/testcase5.bin -a
 
 # Object file die runs off end of die
@@ -1210,6 +1211,7 @@ runtest $d1 $d2  liu/OOB_read3.elf -a
 runtest $d1 $d2  liu/OOB_read4.elf -a
 runtest $d1 $d2  liu/OOB_READ0519.elf -a
 runtest $d1 $d2  liu/outofbound01.elf -a
+runtest $d1 $d2  liu/outofbound01.elf -ka
 runtest $d1 $d2  liu/outofboundread2.elf -a
 runtest $d1 $d2  liu/outofboundread.elf -a
 
@@ -1243,16 +1245,21 @@ runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=hughes/krb5
 # for two-level line tables 
 runtest $d1 $d2 emre4/test19_64_dbg -l
 runtest $d1 $d2 emre4/test19_64_dbg -a
+runtest $d1 $d2 emre4/test19_64_dbg -ka
 runtest $d1 $d2 emre4/test3_64_dbg -l
 runtest $d1 $d2 emre4/test3_64_dbg -a
+runtest $d1 $d2 emre4/test3_64_dbg -ka
 runtest $d1 $d2 emre4/test19_64_dbg -l -vvv
 runtest $d1 $d2 emre4/test19_64_dbg -a -vvv
+runtest $d1 $d2 emre4/test19_64_dbg -ka -vvv
 runtest $d1 $d2 emre4/test3_64_dbg -l -vvv
 runtest $d1 $d2 emre4/test3_64_dbg -a -vvv
 runtest $d1 $d2 emre4/test19_64_dbg -l -v
 runtest $d1 $d2 emre4/test19_64_dbg -a -v
+runtest $d1 $d2 emre4/test19_64_dbg -ka -v
 runtest $d1 $d2 emre4/test3_64_dbg -l -v
 runtest $d1 $d2 emre4/test3_64_dbg -a -v
+runtest $d1 $d2 emre4/test3_64_dbg -ka -v
 
 
 # This one has .debug_cu_index
@@ -1788,6 +1795,12 @@ fi
 runtest $d1 $d2 macro5/dwarfdump-g3  -m
 runtest $d1 $d2 macro5/dwarfdump-g3  -m -vvv
 runtest $d1 $d2 macro5/dwarfdump-g3  -m -v
+runtest $d1 $d2 macro5/dwarfdump-g3  --print-macinfo
+runtest $d1 $d2 macro5/dwarfdump-g3  --print-macinfo -v
+runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros 
+runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros  -G
+runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros  -G -M
+runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros -v
 #Here we ask for DIE printing.
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m -vvv
