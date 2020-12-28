@@ -1,3 +1,9 @@
+2020-12-28 David Anderson
+    * tsearchtests/testfail.base,tsearchtests/testpass.base:
+      These are the baseline results for the tests
+      of tsearch in the tsearch directory (which
+      is under the code top-level directory).
+      Some text output from the tests changed a little. 
 2020-11-05 David Anderson
     * configure.ac: now uses python path function
       to generate canonical file names in BASENAMES.
