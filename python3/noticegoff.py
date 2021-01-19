@@ -1,6 +1,9 @@
 #!/usr/bin/env  python3
-# A rarely used script to help connect far-flung
-# instances of dies/attributes/operators
+"""
+A rarely used script to help connect far-flung
+instances of dies/attributes/operators
+Not used in the testsuite.
+"""
 import os
 import sys
 

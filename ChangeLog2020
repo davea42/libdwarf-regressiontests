@@ -1,0 +1,130 @@
+2020-12-28 David Anderson
+    * tsearchtests/testfail.base,tsearchtests/testpass.base:
+      These are the baseline results for the tests
+      of tsearch in the tsearch directory (which
+      is under the code top-level directory).
+      Some text output from the tests changed a little. 
+2020-11-05 David Anderson
+    * configure.ac: now uses python path function
+      to generate canonical file names in BASENAMES.
+    * scripts/canonicalpath.py: A python
+      one line calling os.path...
+    * configure: Regenerated.
+2020-10-26 David Anderson
+    * All this enables running of a regression test
+      outside of the test sources.
+    * BASEFILES: This is created by configure and
+      has settings for all the important directories
+      used in testing.
+    * BASEFUNCS: Added a shell file with script functions
+      used by multiple runntest.sh scripts.
+    * CHECKIFRUNNING.sh: Removed use of ps, just use
+      simple test run directory file as lock file. 
+    * CLEANUP: the reorganization left a couple files
+      needing to be cleaned out after a test.
+    * DWARFTEST.sh: Removed use of ps -eaf, not needed
+      now.  New shell functions let us shorten the
+      script while doing more than before. 
+      running each 'runtest.sh' can now omit the
+      directory names. BASEFILES has them all and
+      each runtest.sh references it.
+    * Makefile.in: Adds creating Makefile using @srcdir@
+      and references test base dir rather than "."
+    * NEWS: A new file mentioning the new ability to run
+      a regression test in whatever empty directory
+      one wants to.
+    * PICKUPBIN: Uses BASEFILES to get the needed directories
+      so the build can put them into the testing directory.
+    * RUNALL.sh: Refers to the newly appropriate directories
+    * */runtest.sh: Every runtest.sh changed to use
+      BASEFILES to get directory information (no longer
+      passed on the runtest.sh invocation lines.
+      They all required significant change.
+2020-07-18 David Anderson
+    * dwarfdump-i386-freebsd.O,dwarfdump-x86_64-freebsd.O:
+      A disk drive crashed (many many errors) 
+      so built new VMs with FreeBSD 12.1 and tested. 
+      Looks good. The new VMs seem to run faster
+      than the old ones.
+2020-06-30 David Anderson
+    * RegressionTestsResults.ods: Latest results. Pass
+      with -fsanitize and suppressing de-alloc-tree.
+    * baddie1/incorrectnest.base: to match latest dwarfdump.
+    * baddie1/incorrectnest2.base: to match latest dwarfdump.
+    * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,
+    * dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
+      Now match latest dwarfdump.
+    * dwarfdump-s390.O: not fully up to date yet.
+2020-06-26 David Anderson
+    * DWARFTEST.sh: Using  diff option
+      --speed-large-files 
+      to hopefully speed up diffing the kind of difference we see.
+    * baseline updates
+      baddie1/*.base
+      debugfission/*.base.gz
+      dwarfextract/*.base
+      dwgena/test*.base.gz
+    * dwarfextract/runtest.sh: Now the test script
+      reveals, on FAIL, how to rerun the script.
+2020-06-17 David Anderson
+    * moya2/*: New testcase for DWARF5 support.
+2020-03-18 David Anderson
+    * RegressionTestsResults.ods: latest with
+      suppres-dealloc and -fsanitize. 
+    * DWARFTEST.sh: Now allows for optional suppress-dealloc-tree
+      via "export SUPPRESSDEALLOCTREE=y"
+      And did some cleanup of echo statements for a better
+      appearance.
+      To turn on -fsanitize etc, "export NLIZE=y"
+      Both can be turned on.
+    * RUNTIMEFILES: Clean up echo stmts for a better appearance. 
+2020-03-13 David Anderson
+    * RegressionTestsResults.ods: New. Keeping track
+      of regression test timings. 
+2020-03-13 David Anderson
+    *  dwarfdump-s390.O: IBM 390 baseline executable.
+2020-03-13 David Anderson
+    * CLEANUP: Added a remove of vglog, something created
+      by a special test script.
+    * DWARFTEST.sh: Now allows for optional suppress-dealloc-tree
+      testing.
+    * baddie1/linetaberr.base: New baseline as
+      we now emit the major error count (if > 0)
+      at the end of each dwarfdump run.
+    * dwarfdump-i386-freebsd.O,dwarfdump-i386-ubuntu.O,
+      dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O,:
+      New baseline executables. New baseline as
+      we now emit the major error count (if > 0)
+      at the end of each dwarfdump run.  And
+      there has been improvements in some error messages
+      and in leak prevention.
+
+2020-02-18 David Anderson
+    * DWARFTEST.sh:  Now allows a shorter test (not one that
+      should be routinely used, but handy once in a while)
+    * dwarfdump-i386-ubuntu.O,dwarfdump-x86_64-freebsd.O,
+      dwarfdump-x86_64-ubuntu.O: New baselines with improved
+      reporting of dwarf5 line table headers.
+2020-02-16 David Anderson
+    * DWARFTEST.sh: Added one-time messags about timing.
+      Revised the check for timeing functionality so all
+      tests here of that are consistently expressed
+      (The inconsistent one was wrong).
+    * RUNTIMEFILES: It has been failing to do what it should
+      (so we record user and system time of the tests)
+      for some time, but now is fixed and we emit a one-time
+      message saying how the check here went..
+    * python2/showpct.py,python3/showpct.py: These now get
+      a sensible percent-done and are more easily maintainable.
+2020-02-16 David Anderson
+    * DWARFTEST.sh: Ensuring the libelf-reading code is tested now
+      by adding -oi option to nearly all test sets. Now the
+      overall test-run count is about 51000.
+    * dwarfdump-i386-ubuntu.O,dwarfdump-x86_64-freebsd.O,
+      dwarfdump-x86_64-ubuntu.O: New baselines with .rela and .rel
+      issues fixed.
+
+    * python2/showpct.py,python3/showpct.py: Fix percent
+      denominator.
+    * showpct.py: Ensure this one not used by altering print()
+
