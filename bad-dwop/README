@@ -1,0 +1,7 @@
+Jan 24, 2021.
+
+Dwarfdump can now detect bad DW_OP_skip and
+DW_OP_bra[nch] expression operators.
+So we create a test case here with C
+and then modify that object using dwarfgen
+to have a test showing errors detected.
