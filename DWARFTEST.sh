@@ -688,6 +688,11 @@ runtest $d1 $d2 c-sun/poc -vv -a
 # ensure we catch the corruption without -vv
 runtest $d1 $d2 c-sun/poc -a
 
+#  Checking for correct printing of negative DW_OP_skip or branch.
+#  And that the checking catches the skip/br that give
+#  an invalid target offset.
+runtest $d1 $d2 bad-dwop/badskipbranch.o -i -v -M
+
 # SHF_COMPRESSED testcases.
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv 
