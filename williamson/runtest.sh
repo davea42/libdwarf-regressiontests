@@ -19,6 +19,7 @@ m() {
   if test  $?  -ne 0
   then
       echo "fail test williamson/...exe mismatch base $base vs $test "
+      echo "rerun: $ts/runtest.sh"
       exit 1
   fi
 }

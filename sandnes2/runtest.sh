@@ -12,6 +12,7 @@ r=$?
 if [ $r -ne 0 ]
 then
    echo "fail sandnes2 missing path concat"
+   echo "rerun: $ts/runtest.sh"
    exit 1
 fi
 ../dwarfdumpW -a $ts/cu_dir_added_to_complete_path.elf >junk.W
@@ -20,6 +21,7 @@ r=$?
 if [ $r -ne 0 ]
 then
    echo "fail sandnes2 Failed to transform name: $r"
+   echo "rerun: $ts/runtest.sh"
    exit 1
 fi
 echo PASS sandnes2/runtest.sh

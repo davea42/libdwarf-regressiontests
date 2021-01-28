@@ -54,7 +54,8 @@ diff $ts/$b $bt
 if [ $? -ne 0 ]
 then
     echo "fail hughes2/simplereader $e $opts $t" 
-    echo "update with mv $bt $b"
+    echo "update with mv $bt $ts/$b"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 

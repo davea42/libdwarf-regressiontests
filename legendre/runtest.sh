@@ -36,6 +36,7 @@ cc -I $libdw/libdwarf $opt $OPTS -DNEW $ts/frame_test.c ../libdwarf.a $libs -o f
 if [ $? -ne 0 ]
 then
   echo fail legendre cc frame_test.c frame CFA reg new
+  echo "rerun: $ts/runtest.sh $1 $2"
   exit 1
 fi
 
@@ -43,6 +44,7 @@ fi
 if [ $? -ne 0 ]
 then
   echo fail legendre frame CFA reg new
+  echo "rerun: $ts/runtest.sh $1 $2"
   exit 1
 fi
 
@@ -50,6 +52,7 @@ cc -I $libdw/libdwarf -DOLD $opt $OPTS $ts/frame_test.c ../libdwoldframecol.a $l
 if [ $? -ne 0 ]
 then
   echo fail legendre cc -DOLD frame_test.c frame CFA reg old
+  echo "rerun: $ts/runtest.sh $1 $2"
   exit 1
 fi
 
@@ -57,6 +60,7 @@ fi
 if [ $? -ne 0 ]
 then
   echo fail legendre frame CFA reg old
+  echo "rerun: $ts/runtest.sh $1 $2"
   exit 1
 fi
 rm -f ./frame_test1

@@ -23,6 +23,7 @@ $dg  -c 0 --add-implicit-const --add-sun-func-offsets -s -v 5 -t obj -o junkimpl
 if [ $? -ne 0 ]
 then
  echo fail implicitconst in dwarfgen exit code not zero
+ echo "rerun: $ts/runtest.sh"
  exit 1
 fi
 
@@ -31,6 +32,7 @@ if [ $? -ne 0 ]
 then
   echo "fail implicitconst diff dgout.base junkdg.new
   echo "If junkdg.new is correct do: mv $tf/junkdg.new $ts/dgout.base
+ echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -39,6 +41,7 @@ $dd -i -M junkimplcon.o >junk.new
 if [ $? -ne 0 ]
 then
   echo fail $dd build /junk.new from junkimplcon.o
+ echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -47,6 +50,7 @@ if [ $? -ne 0 ]
 then
   echo "fail implicitconst diff implicit.base junk.new
   echo "If junk.new is correct do: mv $tf/junk.new $ts/implicit.base
+ echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 echo PASS implicitconst/runtest.sh

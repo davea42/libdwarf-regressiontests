@@ -19,6 +19,7 @@ $gen -s -t obj  -c 0 -o $ta $ts/createirepformfrombinary.o > $t1 2> $t2
 if [ $? -ne 0 ]
 then
   echo "fail strsize/runtest.sh dwarfgen"
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 echo "PASS strsize/runtest.sh dwarfgen"

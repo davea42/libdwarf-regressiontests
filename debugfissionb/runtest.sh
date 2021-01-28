@@ -33,6 +33,7 @@ m() {
       echo "fail test $baseline vs $tmp"
       echo "to update, mv $tf/$tmp $baseline"
       isfail="y"
+      echo "rerun: $ts/runtest.sh"
   fi
 }
 
@@ -76,6 +77,7 @@ m2() {
       echo "fail test $baseline vs $tmp using $sr $opt $obj"
       echo "to update, mv $tf/$tmp $baseline"
       isfail="y"
+      echo "rerun: $ts/runtest.sh" 
       #exit 1
   fi
 }
@@ -105,6 +107,7 @@ m2 $sr nodwarfexit1.base t.o fd
 if [ $isfail = "y" ]
 then
   echo fail debugfissionb  simplereader interfaces test
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 echo "PASS debugfissionb/runtest.sh  simplereader interfaces test"

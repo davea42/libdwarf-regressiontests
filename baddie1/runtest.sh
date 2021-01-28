@@ -32,7 +32,8 @@ m() {
   if test  $?  -ne 0
   then
       echo "fail test baddie1/$obj, mismatch base $base vs $test "
-      echo "update by mv $tf/$test $base"
+      echo "Update via mv $tf/$test $base"
+      echo "rerun: $ts/runtest.sh"
       exit 1
   fi
 }
@@ -43,7 +44,7 @@ m $dd $ts/test_sibling_loop.o    testincorrecta            \
       $ts/incorrectdies.base         "-i -G"
 m $dd $ts/badsiblingatchild      testincorrectatchild      \
       $ts/incorrectatchild.base  "-i -G"
-m $dd $ts/badsiblingatitself     testincorrectatitself\
+m $dd $ts/badsiblingatitself     testincorrectatitself     \
       $ts/incorrectatitself.base     "-i -G"
 m $dd $ts/badsiblingbeforeitself testincorrectbeforeitself \
       $ts/incorrectbeforeitself.base "-i -G"

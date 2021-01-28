@@ -19,6 +19,7 @@ if [ x$withlibz = "x" ]
 then
   echo "Missing final withlibz arg in test-alex1/runtest.sh"
   echo "fail test-alex1 due to missing withlibz arg"
+  echo "rerun: $ts/runtest.sh $withlibelf $withlibz"
   exit 1
 fi
 libs=
@@ -49,19 +50,22 @@ cpifmissing $ts/orig.a.out orig.a.out
 if [ $? -ne 0 ]
 then
      echo fail test-alex1 run test1
+     echo "rerun: $ts/runtest.sh $withlibelf $withlibz"
      exit 1
 fi
 ./test2 orig.a.out >out2
 if [ $? -ne 0 ]
 then
      echo fail test-alex1 run test2
+     echo "rerun: $ts/runtest.sh $withlibelf $withlibz"
      exit 1
 fi
 diff out1 out2 >outdiffs
 if [ $? -ne  0 ]
 then
-	echo "fail alex-s test in test-alex1."
-	exit 1
+     echo "fail alex-s test in test-alex1."
+     echo "rerun: $ts/runtest.sh $withlibelf $withlibz"
+     exit 1
 fi
 echo "PASS test-alex1/runtest.sh"
 exit 0

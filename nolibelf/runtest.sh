@@ -21,6 +21,7 @@ if [ $? -ne 0 ]
 then
    echo "fail nolibelf test 1 diff test1.base junk1"
    echo "If junk1 is correct do: mv $tf/junk1 $ts/test1.base"
+   echo "rerun: $ts/runtest.sh"
    exit 1
 fi
 
@@ -36,6 +37,7 @@ if [ $? -ne 0 ]
 then
    echo "fail nolibelf test 2 diff test2.base junk2"
    echo "If junk2 is correct do: mv $tf/junk2 $ts/test2.base"
+   echo "rerun: $ts/runtest.sh"
    exit 1
 fi
 
@@ -51,6 +53,7 @@ if [ $? -ne 0 ]
 then
    echo "fail nolibelf test 3 diff test3.base junk3"
    echo "If junk3 is correct do: mv $tf/junk3 $ts/test3.base"
+   echo "rerun: $ts/runtest.sh"
    exit 1
 fi
 
@@ -66,6 +69,7 @@ if [ $? -ne 0 ]
 then
    echo "fail nolibelf test 4 diff test4.base junk4"
    echo "If junk4 is correct do: mv $tf/junk4 $ts/test4.base"
+   echo "rerun: $ts/runtest.sh"
    exit 1
 fi
 echo PASS nolibelf/runtest.sh

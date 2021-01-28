@@ -41,6 +41,7 @@ r=$?
 if [ $r -ne 0 ]
 then
    echo fail cutest, interface did not work.
+   echo "rerun: $ts/runtest.sh $1 $2" 
    exit 1
 fi
 echo "PASS findcu/runtest.sh"

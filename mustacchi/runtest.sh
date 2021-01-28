@@ -22,6 +22,7 @@ grep foo <junktest64o.x 1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]
 then
  echo "fail mustacchi $ts/m32t.o missing foo symbol"
+ echo "rerun: $ts/runtest.sh"
  exit 1
 fi
 
@@ -31,6 +32,7 @@ then
   echo "fail mustacchi m32t.o libelf output does not match."
   echo "If the new version is correct, update with:"
   echo "   mv $tf/junktestei.x $ts/m32outei.base"
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -41,6 +43,7 @@ then
   echo "fail mustacchi m64t.o libelf output does not match."
   echo "If the new version is correct, update with:"
   echo "   mv $tf/junktest64o.x $ts/m64outo.base"
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 

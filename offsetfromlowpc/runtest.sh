@@ -58,16 +58,19 @@ rm -f $tg2
 if [ ! -x $gen ]
 then
     echo "fail: Unable to find dwarfgen named $gen"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 if [ ! -x $dd ]
 then
     echo "fail: Unable to find dwarfdump named $dd"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 if [ ! -x $sim ]
 then
     echo "fail: Unable to find simplereader named $sim"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -89,6 +92,7 @@ $dd -i -M $ty  >$t1 2> /dev/null
 if [ $? -ne 0 ]
 then
   echo "fail C run $dd -i -M $ty "
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -104,6 +108,7 @@ $dd -i -M $tz |grep DW_FORM_str  >>$ta 2> /dev/null
 if [ $? -ne 0 ]
 then
   echo "fail E run $dd -i -M $tz | grep DW_FORM_str"
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -113,6 +118,7 @@ then
     echo fail diff basestrpiM $ta . Object gen is $tz
     echo fail offsetfromlowpc/runtest.sh Generating strp strings
     echo "to update baseline do: mv $tf/$ta $ts/basestrpiM"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -122,6 +128,7 @@ then
     echo fail diff basestrpgenout $t9. Object gen is $tz
     echo fail offsetfromlowpc/runtest.sh Generating strp strings
     echo "to update baseline do: mv $tf/$t9 $ts/basestrpgenout"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -136,6 +143,7 @@ then
     echo fail diff basehighpc1 $t5 object gen is $ty
     echo fail offsetfromlowpc/runtest.sh  incorrect list of high_pc data.
     echo "to update baseline do: mv $tf/$t5 $ts/basehighpc1"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -158,6 +166,7 @@ then
     echo fail diff basehighpc2 $t6
     echo "to update baseline do: mv $tf/$t6 $ts/$bas"
     echo fail offsetfromlowpc/runtest.sh  incorrect transformed high_pc offset
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -165,6 +174,7 @@ $sim --check $tx >$t3  2>/dev/null
 if [ $? -ne 0 ]
 then
   echo "fail G run $sim --check $tx "
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -174,6 +184,7 @@ if [ $? -ne 0 ]
 then
   echo "fail offsetfromlowpc/runtest.sh mismatch transformation to offset"
   echo "to update baseline do: mv $tf/$t3 $ts/$bas"
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -187,9 +198,10 @@ bas=basehighpc4
 diff $ts/$bas $t7
 if [ $? -ne 0 ]
 then
-    echo fail dwarfdump -vvv -f  junk.o offsetfromlowpc advloc err
-    echo "to update baseline do: mv $tf/$t7 $ts/$bas"
-    exit 1
+  echo fail dwarfdump -vvv -f  junk.o offsetfromlowpc advloc err
+  echo "to update baseline do: mv $tf/$t7 $ts/$bas"
+  echo "rerun: $ts/runtest.sh"
+  exit 1
 fi
 
 bas=baseadvlocf
@@ -197,9 +209,10 @@ $dd -f junk.o  > $tg2      2>/dev/null
 diff $ts/$bas $tg2
 if [ $? -ne 0 ]
 then
-    echo "fail dwarfdump -f junk.o  offsetfromlowpc advloc err"
-    echo "to update baseline do: mv $tf/$tg2 $ts/$bas"
-    exit 1
+  echo "fail dwarfdump -f junk.o  offsetfromlowpc advloc err"
+  echo "to update baseline do: mv $tf/$tg2 $ts/$bas"
+  echo "rerun: $ts/runtest.sh"
+  exit 1
 fi
 
 echo PASS offsetfromlowpc/runtest.sh

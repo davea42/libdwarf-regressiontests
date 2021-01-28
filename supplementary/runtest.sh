@@ -14,6 +14,7 @@ then
     echo "fail output of --print-debug-sup  dwarfstringsup.o"
     echo "To update baseline in supplementary/ directory"
     echo "  mv $tf/junkn $ts/sup1.base "
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 echo "PASS supplementary/runtest.sh of .debug_sup printing"

@@ -41,7 +41,8 @@ cc -g $opt $INCS $ts/dwarfextract.c -o dwarfextract $dwlib $libs
 if [ $? -ne 0 ] 
 then
     echo "fail dwarfextract compile "
-    echo "rerun: runtest.sh $1 $2"
+    echo "rerun: $ts/runtest.sh $1 $2"
+    
     exit 1
 fi
 # Use precompiled test1.c test2.c for test consistency.
@@ -51,7 +52,7 @@ cpifmissing $ts/test1 test1
 if [ $? -ne 0 ] 
 then
     echo "fail dwarfextract test0"
-    echo "rerun: runtest.sh $1 $2"
+    echo "rerun: $ts/runtest.sh $1 $2"
     exit 1
 fi
 diff $ts/basestdout.base basestdout
@@ -59,7 +60,7 @@ if [ $? -ne 0 ]
 then
     echo "fail dwarfextract dwex-1 "
     echo "Fix with: mv $tf/basestdout $ts/basestdout.base"
-    echo "rerun: runtest.sh $1 $2 $3 "
+    echo "rerun: $ts/runtest.sh $1 $2  "
     exit 1
 fi
 $dd -a test1out >test1.new
@@ -68,7 +69,7 @@ if [  $?  -ne 0 ]
 then
     echo "fail dwarfextract test1"
     echo "Fix with: mv $tf/test1.new $ts/test1.base"
-    echo "rerun: runtest.sh $1 $2 $3 "
+    echo "rerun: $ts/runtest.sh $1 $2 "
     exit 1
 fi
 
@@ -77,7 +78,7 @@ cc -g $opt -DPRODUCER_INIT_C=1 $INCS $ts/dwarfextract.c -o dwarfextractc -L .. -
 if [ $? -ne 0 ]
 then
     echo "fail dwarfextract looking for error"
-    echo "rerun: runtest.sh $1 $2 $3 "
+    echo "rerun: $ts/runtest.sh $1 $2  "
     exit 1
 fi
 diff basecstdout $ts/basecstdout.base
@@ -85,7 +86,7 @@ if [  $?  -ne 0 ]
 then
     echo fail dwarfextract dwexc-1 
     echo "Fix with: mv $tf/basecstdout $ts/basecstdout.base"
-    echo "rerun: runtest.sh $1 $2 $3 "
+    echo "rerun: $ts/runtest.sh $1 $2  "
     exit 1
 fi
 $dd -a testcout >testc.new
@@ -94,7 +95,7 @@ if [  $?  -ne 0 ]
 then
     echo fail dwarfextract testc 
     echo "Fix with: mv testc.new $ts/testc.base"
-    echo "rerun: runtest.sh $1 $2" 
+    echo "rerun: $ts/runtest.sh $1 $2" 
     exit 1
 fi
 echo "PASS dwarfextract"

@@ -29,6 +29,7 @@ cc $testsrc/makebig.c -o makebig
 if [ $? -ne 0 ]
 then
   echo "fail bigobject compile of makebig.c"
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -36,12 +37,14 @@ fi
 if [ $? -ne 0 ]
 then
   echo "fail bigobject creation"
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
 if [ ! -f ./bigobject ]
 then
   echo "fail the file bigobject does not exist"
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -50,6 +53,7 @@ if [ $? -ne 0 ]
 then
   echo "fail  dwarfdump of bigobject"
   rm -f bigobject
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
@@ -58,6 +62,7 @@ if [ $? -ne 0 ]
 then
   echo "fail bigobject diff $bb $bn"
   echo "to update: mv $bn $bb"
+  echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 rm -f bigobject

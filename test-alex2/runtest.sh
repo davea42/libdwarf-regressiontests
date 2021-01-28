@@ -33,12 +33,14 @@ cpifmissing $ts/orig.a.out orig.a.out
 if [ $? != 0 ]
 then
     echo fail dwarf_get_form_class, oops, in test-alex2
+    echo "rerun: $ts/runtest.sh $1 $2"
     exit 1
 fi
 grep "DW_FORM_CLASS_STRING" out1 >/dev/null
 if [ $? != 0 ]
 then
     echo fail dwarf_get_form_class in test-alex2
+    echo "rerun: $ts/runtest.sh $1 $2"
     exit 1
 fi
 echo "PASS test-alex2/runtest.sh"

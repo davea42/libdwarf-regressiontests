@@ -26,6 +26,7 @@ then
     echo fail debugfission archiveo test 1
     echo "update in $tf via : mv junk1.new $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -40,6 +41,7 @@ then
     echo fail debugfission archivedwo 2
     echo "update in $tf via : mv $jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -54,6 +56,7 @@ then
     echo fail debugfission targeto test 3
     echo "update via : $jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -68,6 +71,7 @@ then
     echo fail debugfission targetdwo 4
     echo "update via : cp $jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -82,6 +86,7 @@ then
     echo fail debugfission archivedwo-iMvvv 5
     echo "update via : cp $jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 echo "PASS debugfission/runtest.sh"

@@ -29,12 +29,14 @@ if [ x$withlibz = "x" ]
 then
   echo "Improper arg withlibz!"
   echo fail testoffdie withlibz not set
+  echo "rerun: $ts/runtest.sh $1 $2"
   exit 1
 fi
 if [ x$withlibelf = "x" ]
 then
   echo "Improper arg withlibelf!"
   echo fail testoffdie withlibelf not set
+  echo "rerun: $ts/runtest.sh $1 $2"
   exit 1
 fi
 
@@ -51,6 +53,7 @@ cc $h $opts  $ts/testoffdie.c $nli $l -o junkoffdie $libs
 if [ $? -ne 0 ]
 then
    echo fail compile testoffdie/testoffdie.c 
+  echo "rerun: $ts/runtest.sh $1 $2"
    exit 1
 fi
 
@@ -59,6 +62,7 @@ r=$?
 if [ $r -ne 0 ]
 then
    echo fail run  testoffdie/junkoffdie 
+  echo "rerun: $ts/runtest.sh $1 $2"
    exit 1
 fi
 diff $ts/baseout junkout
@@ -66,6 +70,7 @@ if [ $? -ne 0 ]
 then
   echo "fail mismatch expected from testoffdie/runtest.sh $1 $2"
   echo " To update expected result: mv $tf/junkout $ts/baseout"
+  echo "rerun: $ts/runtest.sh $1 $2"
   exit 1
 fi
 echo "PASS testoffdie/runtest.sh"

@@ -56,6 +56,7 @@ then
     echo "fail frame1 test.  got diffs in output."
     cat diffs
     echo "To update do: cp $tf/frame1.out $ts/frame1.base"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -63,6 +64,7 @@ fi
 if [ $? -ne 0 ]
 then
     echo fail running framexlocal.c selected regs
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 diff $ts/selregs2018.base  selregs2018.out >diffs
@@ -70,6 +72,7 @@ if [ $? -ne 0 ]
 then
     echo "fail selregs2018 test.  got diffs in output."
     echo "To update do: cp $tf/selregs2018.out $ts/selregs2018.base"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -78,6 +81,7 @@ fi
 if [ $? -ne 0 ]
 then
     echo fail running framexlocal.c frame2018
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 diff $ts/frame2018.base  frame2018.out >diffs
@@ -85,6 +89,7 @@ if [ $? -ne 0 ]
 then
     echo "fail frame2018 test.  got diffs in output."
     echo "To update do: cp $tf/frame2018.out $ts/frame2018.base"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 rm -f junk*

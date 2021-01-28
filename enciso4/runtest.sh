@@ -23,6 +23,7 @@ $ourzcat $ts/frame_problem.elf.gz > $j
 if [ $# -ne 0 ]
 then
     echo "enciso4/runtest.sh Wrong number of args, $#. Expect 0."
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 
@@ -32,6 +33,7 @@ $newdd -f  $commonopts $j  >junk.f.out
 if [ $? -ne 0 ] 
 then
     echo "fail error -f enciso4/runtest.sh junk.frame_problem.elf"
+    echo "rerun: $ts/runtest.sh"
     exit 1
 fi
 # The  -F  version runs over 20 minutes, so we skip that.

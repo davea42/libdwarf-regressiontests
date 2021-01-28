@@ -36,6 +36,7 @@ then
     echo fail dwgena test DWARF2 -vvv 9
     echo "update via  by : cd $tf ; cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
+    echo "rerun: $ts/runtest.sh "
     exit 1
 fi
 
@@ -53,6 +54,7 @@ then
     echo fail dwgena test DWARF2 1
     echo "update via: cd $tf ;  cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
+    echo "rerun: $ts/runtest.sh "
     exit 1
 fi
 
@@ -68,6 +70,7 @@ then
     echo fail dwgena test 2
     echo "update via: cd $tf ; cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
+    echo "rerun: $ts/runtest.sh "
     exit 1
 fi
 
@@ -85,6 +88,7 @@ then
     echo fail dwgena test 3
     echo "update via: cd $tf ; cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
+    echo "rerun: $ts/runtest.sh "
     exit 1
 fi
 
@@ -100,6 +104,7 @@ then
     echo fail dwgena test 4
     echo "update via: cd $tf ; cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
+    echo "rerun: $ts/runtest.sh "
     exit 1
 fi
 
@@ -118,6 +123,7 @@ then
     echo fail dwgena test 5
     echo "update via: cd $tf ; cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
+    echo "rerun: $ts/runtest.sh "
     exit 1
 fi
 
@@ -136,6 +142,7 @@ then
     echo "update via: cd $tf"  
     echo "  cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
+    echo "rerun: $ts/runtest.sh "
     exit 1
 fi
 
@@ -153,6 +160,7 @@ then
     echo fail dwgena test DWARF4 7
     echo "update via: cd $tf ; cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
+    echo "rerun: $ts/runtest.sh "
     exit 1
 fi
 
@@ -170,6 +178,7 @@ then
     echo fail dwgena test DWARF5 6
     echo "update via: cd $tf ; cp $j $b "
     echo "  gzip $b ; mv $bz $ts"
+    echo "rerun: $ts/runtest.sh "
     exit 1
 fi
 echo "PASS dwgena/runtest.sh"
