@@ -1051,7 +1051,7 @@ then
   echo "=====START   $testsrc/implicitconst sh runtest.sh"
   mklocal implicitconst
     sh $testsrc/implicitconst/runtest.sh
-    chkres $?  $testsrc/implicitconst
+    chkres $?  $testsrc/implicitconst/runtest.sh
   cd ..
 else
   echo "=====SKIP   implicitconst sh runtest.sh no libelf"
@@ -1062,7 +1062,7 @@ fi
 echo "=====START  $testsrc/nolibelf runtest.sh "
 mklocal nolibelf
   sh $testsrc/nolibelf/runtest.sh
-  chkres $?  $testsrc/nolibelf
+  chkres $?  $testsrc/nolibelf/runtest.sh
 cd ..
 
 
@@ -1345,7 +1345,7 @@ then
   echo "=====START  $testsrc/offsetfromlowpc/runtest.sh"
   mklocal offsetfromlowpc
     sh $testsrc/offsetfromlowpc/runtest.sh 
-    chkres $?  $testsrc/offsetfromlowpc
+    chkres $?  $testsrc/offsetfromlowpc/runtest.sh
   cd ..
 else
   echo "=====SKIP  $testsrc/offsetfromlowpc sh runtest.sh no libelf"
@@ -1376,7 +1376,7 @@ cd ..
 echo "=====START $testsrc/debugfission runtest.sh ../$d2"
 mklocal debugfission
   sh $testsrc/debugfission/runtest.sh  ../$d2 
-  chkres $?  $testsrc/debugfission
+  chkres $?  "$testsrc/debugfission/runtest.sh ../$d2"
 cd ..
 
 #echo "=====START $testsrc/data16 runtest.sh"
@@ -1647,9 +1647,9 @@ else
 fi
 
 if test $withlibelf = "withlibelf" ; then
-  echo "=====START   $testsrc/dwgenc/runtest.sh ../$d2"
+  echo "=====START   $testsrc/dwgenc/runtest.sh"
   mklocal dwgenc
-    sh $testsrc/dwgenc/runtest.sh ../$d2
+    sh $testsrc/dwgenc/runtest.sh 
     r=$?
     chkresn $r "$testsrc/dwgenc/runtest.sh" 1
   cd ..
@@ -1658,7 +1658,7 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   $tstsrc/frame1/runtest.sh $top_srcdir $top_builddir $dwlib $withlibelf $withlibz"
+echo "=====START   $tstsrc/frame1/runtest.sh $withlibelf $withlibz"
 mklocal frame1 
   echo "sh runtest.sh  $withlibelf $withlibz"
   sh $testsrc/frame1/runtest.sh $withlibelf $withlibz
@@ -1713,7 +1713,7 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   $tstsrc/enciso4/runtest.sh "
+echo "=====START   $tstsrc/enciso4/runtest.sh"
 mklocal enciso4
   sh $testsrc/enciso4/runtest.sh
   chkres $?  $tstsrc/enciso4

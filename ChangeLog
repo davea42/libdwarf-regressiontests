@@ -1,3 +1,29 @@
+2021-01-31 David Anderson
+    * DWARFTEST.sh cleaned up some FAIL messages
+      so they read more usefully.
+
+        Now matches libdwarf/dwarfdump git log id of today:
+        0c441c3351b2b3b276914609eb7eb0db9cd8c516
+
+    * dwarfdump-i386-freebsd.O,dwarfdump-s390.O,
+      dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
+      New baseline executables.
+
+        Fixed diff here so it compares in the right old vs new
+        way rather than the new vs old way.
+    * dwgenc/runtest.sh: Fixed diff here so it
+      compares in the right old vs new way rather than
+      the new vs old way.
+
+      Updated baselines of the following:
+    * debugfission/archivedwo-iMvvv.base.gz
+    * debugfission/archivedwo.base.gz
+    * debugfission/targetdwo.base.gz
+    * dwgenc/base.stdout
+    * guilfanov/crash.base
+    * implicitconst/implicit.base
+    * nolibelf/test1.base
+    * offsetfromlowpc/basehighpc2
 2021-01-19 David Anderson
     * python3/checksize.py,python3/exfail.py,
       python3/filterpathto.py,python3/noticegoff.py,

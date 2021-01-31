@@ -8,7 +8,7 @@ COMPILE_UNIT<header overall offset = 0x00000000>:
                     DW_AT_name                  test.c
                     DW_AT_comp_dir              /home/davea/dwarf/regressiontests/nolibelf
                     DW_AT_low_pc                0x00000000
-                    DW_AT_high_pc               <offset-from-lowpc>22
+                    DW_AT_high_pc               <offset-from-lowpc> 22 <highpc: 0x00000016>
                     DW_AT_stmt_list             0x00000000
 
 LOCAL_SYMBOLS:
@@ -20,7 +20,7 @@ LOCAL_SYMBOLS:
                       DW_AT_prototyped            yes(1)
                       DW_AT_type                  <0x00000069>
                       DW_AT_low_pc                0x00000000
-                      DW_AT_high_pc               <offset-from-lowpc>22
+                      DW_AT_high_pc               <offset-from-lowpc> 22 <highpc: 0x00000016>
                       DW_AT_frame_base            len 0x0001: 0x9c: 
                           DW_OP_call_frame_cfa
                       DW_AT_GNU_all_call_sites    yes(1)
@@ -76,7 +76,7 @@ COMPILE_UNIT<header overall offset = 0x00000000>:
                     DW_AT_name                  test.c
                     DW_AT_comp_dir              /home/davea/dwarf/regressiontests/nolibelf
                     DW_AT_low_pc                0x00000000
-                    DW_AT_high_pc               <offset-from-lowpc>22
+                    DW_AT_high_pc               <offset-from-lowpc> 22 <highpc: 0x00000016>
                     DW_AT_stmt_list             0x00000000
 
 

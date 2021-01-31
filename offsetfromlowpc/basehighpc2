@@ -1,29 +1,29 @@
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000003d <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000003d <form DW_FORM_udata> <highpc: 0x0000003d>
                         DW_AT_high_pc               0x0000002f <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000030 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000030 <form DW_FORM_udata> <highpc: 0x00000070>
                         DW_AT_high_pc               0x0000006c <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000030e <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000030e <form DW_FORM_udata> <highpc: 0x0000037e>
                         DW_AT_high_pc               0x0000009c <form DW_FORM_addr>
                         DW_AT_high_pc               0x000000a8 <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000057 <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x000000b3 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000057 <form DW_FORM_udata> <highpc: 0x000003d7>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x000000b3 <form DW_FORM_udata> <highpc: 0x00000493>
                         DW_AT_high_pc               0x000003fd <form DW_FORM_addr>
                         DW_AT_high_pc               0x0000041a <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000088 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000088 <form DW_FORM_udata> <highpc: 0x00000528>
                         DW_AT_high_pc               0x00000528 <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x000000f5 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x000000f5 <form DW_FORM_udata> <highpc: 0x00000625>
                             DW_AT_high_pc               0x000005cc <form DW_FORM_addr>
                             DW_AT_high_pc               0x000005e8 <form DW_FORM_addr>
                             DW_AT_high_pc               0x00000600 <form DW_FORM_addr>
                             DW_AT_high_pc               0x00000625 <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000164 <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000008b <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000006 <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000024d <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000164 <form DW_FORM_udata> <highpc: 0x00000794>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000008b <form DW_FORM_udata> <highpc: 0x0000082b>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000006 <form DW_FORM_udata> <highpc: 0x00000836>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000024d <form DW_FORM_udata> <highpc: 0x00000a8d>
                         DW_AT_high_pc               0x000008db <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000009a <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000009a <form DW_FORM_udata> <highpc: 0x00000b2a>
                         DW_AT_high_pc               0x00000b1e <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000189 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000189 <form DW_FORM_udata> <highpc: 0x00000cb9>
                         DW_AT_high_pc               0x00000bb0 <form DW_FORM_addr>
                           DW_AT_high_pc               0x00000b5d <form DW_FORM_addr>
                           DW_AT_high_pc               0x00000b6d <form DW_FORM_addr>
@@ -34,28 +34,28 @@
                           DW_AT_high_pc               0x00000c2e <form DW_FORM_addr>
                           DW_AT_high_pc               0x00000c68 <form DW_FORM_addr>
                           DW_AT_high_pc               0x00000c74 <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000012e <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000012e <form DW_FORM_udata> <highpc: 0x00000dee>
                         DW_AT_high_pc               0x00000d01 <form DW_FORM_addr>
                         DW_AT_high_pc               0x00000d3c <form DW_FORM_addr>
                         DW_AT_high_pc               0x00000d88 <form DW_FORM_addr>
                         DW_AT_high_pc               0x00000dc8 <form DW_FORM_addr>
                         DW_AT_high_pc               0x00000dee <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000044 <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000010e <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000017d <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000019c <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000044 <form DW_FORM_udata> <highpc: 0x00000e34>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000010e <form DW_FORM_udata> <highpc: 0x00000f4e>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000017d <form DW_FORM_udata> <highpc: 0x000010cd>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000019c <form DW_FORM_udata> <highpc: 0x0000126c>
                           DW_AT_high_pc               0x000011ba <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x000001b3 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x000001b3 <form DW_FORM_udata> <highpc: 0x00001423>
                           DW_AT_high_pc               0x00001365 <form DW_FORM_addr>
                             DW_AT_high_pc               0x00001361 <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000049 <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000003f <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000026 <form DW_FORM_udata>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000069 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000049 <form DW_FORM_udata> <highpc: 0x00001479>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000003f <form DW_FORM_udata> <highpc: 0x000014bf>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000026 <form DW_FORM_udata> <highpc: 0x000014e6>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000069 <form DW_FORM_udata> <highpc: 0x00001559>
                         DW_AT_high_pc               0x00001550 <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x000000e9 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x000000e9 <form DW_FORM_udata> <highpc: 0x00001649>
                         DW_AT_high_pc               0x00001649 <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000cdb <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000cdb <form DW_FORM_udata> <highpc: 0x0000232b>
                               DW_AT_high_pc               0x00001a9c <form DW_FORM_addr>
                               DW_AT_high_pc               0x00002126 <form DW_FORM_addr>
                               DW_AT_high_pc               0x00002193 <form DW_FORM_addr>
@@ -72,7 +72,7 @@
                         DW_AT_high_pc               0x000020b6 <form DW_FORM_addr>
                           DW_AT_high_pc               0x000020ff <form DW_FORM_addr>
                         DW_AT_high_pc               0x0000228a <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00001317 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00001317 <form DW_FORM_udata> <highpc: 0x00001317>
                             DW_AT_high_pc               0x000000e0 <form DW_FORM_addr>
                               DW_AT_high_pc               0x00000391 <form DW_FORM_addr>
                               DW_AT_high_pc               0x000003b6 <form DW_FORM_addr>
@@ -97,7 +97,7 @@
                         DW_AT_high_pc               0x00000b11 <form DW_FORM_addr>
                         DW_AT_high_pc               0x00000d38 <form DW_FORM_addr>
                         DW_AT_high_pc               0x0000130b <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x0000008c <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x0000008c <form DW_FORM_udata> <highpc: 0x000023bc>
                         DW_AT_high_pc               0x000023ac <form DW_FORM_addr>
-                      DW_AT_high_pc               <offset-from-lowpc>0x00000092 <form DW_FORM_udata>
+                      DW_AT_high_pc               <offset-from-lowpc> 0x00000092 <form DW_FORM_udata> <highpc: 0x00002452>
                         DW_AT_high_pc               0x00002452 <form DW_FORM_addr>

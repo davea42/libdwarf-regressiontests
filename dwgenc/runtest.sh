@@ -26,7 +26,7 @@ then
     exit 1
 fi
 
-diff junkstdout $ts/base.stdout
+diff $ts/base.stdout junkstdout
 if [ $?  -ne 0 ]
 then
    echo "fail dwgenc dwarfdump."
@@ -34,7 +34,7 @@ then
    echo "rerun: $ts/runtest.sh"
    exit 1
 fi
-diff junkstderr  $ts/base.stderr
+diff $ts/base.stderr junkstderr
 if [ $?  -ne 0 ]
 then
    echo "fail dwgenc dwarfdump."

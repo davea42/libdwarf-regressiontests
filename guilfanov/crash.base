@@ -83,7 +83,7 @@ COMPILE_UNIT<header overall offset = 0x00000000>:
                     DW_AT_name                  pe_map.c
                     DW_AT_comp_dir              /home/davea/misc/pe_test
                     DW_AT_low_pc                0x00000000
-                    DW_AT_high_pc               <offset-from-lowpc>329
+                    DW_AT_high_pc               <offset-from-lowpc> 329 <highpc: 0x00000149>
                     DW_AT_stmt_list             0x00000000
 
 
