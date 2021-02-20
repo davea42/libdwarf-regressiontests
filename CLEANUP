@@ -4,7 +4,7 @@
 (cd dwgena ; make clean)
 (cd debugfission ; make clean)
 # The following is copied from the kaufmann dir. Drop it.
-rm debugfissionb/t.o
+rm -f debugfissionb/t.o
 # The /tmp/dwa* files are lock files to prevent running two regr.
 # tests at the same time as two-at-once will not work!
 rm -f /tmp/dwa.*
@@ -38,6 +38,9 @@ rm -f test_harmless
 rm -f checkforlibz/a.out
 rm -f checkforlibz/junk*
 rm -f baddie1/testincorrect*
+rm -f bad-dwop/badskipbranchd3.o
+rm -f bad-dwop/badskipbranchd5.o
+
 rm -f test-alex1/test1
 rm -f        test-alex1/test2
 rm -f        test-alex1/outdiffs

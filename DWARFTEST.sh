@@ -260,7 +260,7 @@ else
   baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
 fi
 
-kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku -kuf"
+kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku"
 
 # These accumulate times so we can print actual dwarfdump
 # user, sys, clock times at the end (see usertime.py).
@@ -732,6 +732,21 @@ runtest $d1 $d2  --print-debug-gnu
 # string encodings.
 runtest $d1 $d2  moya3/ranges_base.dwo --no-sanitize-strings
 runtest $d1 $d2  moya3/ranges_base.dwo -x nosanitizestrings
+# This set of moya/hello is because -kuf and -C do not stand
+# alone. They are meaningful as modifiers only.
+# Suppresses summary tag-tree entries of zero.
+runtest $d1 $d2  moya/hello -ku
+#This next summarizes tag_tree entries including those with zero use.
+runtest $d1 $d2  moya/hello -ku -kuf
+# details and summary tag-tree
+runtest $d1 $d2  moya/hello -kr
+# details show extensions as error
+runtest $d1 $d2  moya/hello -kr -C
+#This next summary and error detail tag_tree entries including those with zero use.
+runtest $d1 $d2  moya/hello -kr -kuf
+#This next summary and error detail tag_tree entries including those with zero use.
+# here calling extension errors.
+runtest $d1 $d2  moya/hello -kr -kuf -C
 
 # printing .debug_gnu_pubnames and .debug_gnu_pubtypes
 runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
@@ -1279,7 +1294,7 @@ runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -i -O file=./testOfile
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kD
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kG
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -ku
-runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kuf
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -ku -kuf
 #
 # These are testing  some mangled objects for
 # sensible output. We do not want a core dump.
@@ -1532,6 +1547,8 @@ runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ku 
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ku -kuf
 # ka p, where we test a warning message is generated 
 # (p is printing option)
 # And should run like just -p (as of Jan 2015 erroneously 
