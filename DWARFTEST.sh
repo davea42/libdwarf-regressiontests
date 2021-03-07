@@ -1874,6 +1874,7 @@ runtest $d1 $d2 irixn32/dwarfdump -f -H 1 -n  -x name=./dwarfdump.conf -x abi=mi
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix2
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conferr1 -x abi=mips
+runtest $d1 $d2 irixn32/dwarfdump --show-dwarfdump-conf -f -x name=./dwarfdump.conferr1 -x abi=mips
 runtest $d1 $d2 val_expr/libpthread-2.5.so -f -v -v -x name=dwarfdump.conf -x abi=x86_64 
 runtest $d1 $d2 irixn32/dwarfdump -i -G 
 # restrict to a single CU
@@ -1885,6 +1886,7 @@ runtest $d1 $d2 irixn32/dwarfdump -i -G -d
 # Adding -D is useless since then the attributes don't print at all so
 # one cannot see the removal of offset from the loclist.
 runtest $d1 $d2 irixn32/libc.so -g  -v -x name=dwarfdump.conf  -x abi=mips-irix
+runtest $d1 $d2 --show-dwarfdump-conf ia32/mytry.ia32 -i -G  
 runtest $d1 $d2 ia32/mytry.ia32 -i -G  
 runtest $d1 $d2 ia32/mytry.ia32 -i -G -d  
 runtest $d1 $d2 ia32/mytry.ia32 -ka -G -d 
