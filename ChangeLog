@@ -1,3 +1,9 @@
+2021-05-13 David Anderson
+    * dwarfextract/dwarfextract.c: Now does "dwarf.h"
+      and "libdwarf.h" not the <> form, so we get
+      the versions under test, not older ones.
+    * dwarfextract/runtest.sh: Now adds -I to
+      get access to the libdwarf/dwarf.h
 2021-01-31 David Anderson
     * DWARFTEST.sh cleaned up some FAIL messages
       so they read more usefully.

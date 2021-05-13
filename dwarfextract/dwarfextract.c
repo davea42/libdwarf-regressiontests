@@ -64,8 +64,8 @@
 #include <libelf.h>
 #include <fcntl.h>
 #include <getopt.h>
-#include <libdwarf.h>
-#include <dwarf.h>
+#include "libdwarf.h"
+#include "dwarf.h"
 
 #if 0
 /* For freebsd 10.2, need defines for bfd.h */
