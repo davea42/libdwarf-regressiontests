@@ -1,4 +1,9 @@
 2021-05-18 David Anderson
+    * dwarfdump-i386-freebsd.O,dwarfdump-s390.O,
+      dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
+      New baseline executables.
+
+2021-05-18 David Anderson
     * dwarfdump.conf: Corrected some commentary.
     * dwgenc/testoutput.o: it's recreated on every run
       (by dwarfgen) so this is not a meaninful change.
