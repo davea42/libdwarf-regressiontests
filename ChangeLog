@@ -1,4 +1,9 @@
 2021-05-18 David Anderson
+    * dwarfdump.conf: Corrected some commentary.
+    * dwgenc/testoutput.o: it's recreated on every run
+      (by dwarfgen) so this is not a meaninful change.
+      But is ok.
+2021-05-18 David Anderson
     * diederen6/implicit_const_example.so: Example exposed
       libdwarf error reading DW_FORM_LINE_strp and dealing with
       DW_FORM_implicit const.
