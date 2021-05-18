@@ -1,0 +1,7 @@
+Arnaud Diederen reports the following
+object file uses DW_FORM_implicit_const
+and dwarfdump/libdwarf fail.
+He suggests two one- or two-line changes to fix
+the problems.
+
+18 May 2021.

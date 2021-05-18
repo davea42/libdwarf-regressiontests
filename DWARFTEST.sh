@@ -330,6 +330,7 @@ diederen5/id-000075-sig-06-src-000517-op-havoc-rep-16
 diederen5/id-000256-sig-06-src-001757-001290-op-splice-rep-16
 diederen5/id-000347-sig-06-src-001923-op-havoc-rep-2
 diederen5/id-000468-sig-06-src-002858-op-havoc-rep-16
+diederen6/implicit_const_example.so
 moya-loc/loclists
 moya-loc/loclists.dwo
 moya-loc/loclists2.dwo

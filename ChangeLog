@@ -1,3 +1,7 @@
+2021-05-18 David Anderson
+    * diederen6/implicit_const_example.so: Example exposed
+      libdwarf error reading DW_FORM_LINE_strp and dealing with
+      DW_FORM_implicit const.
 2021-05-13 David Anderson
     * dwarfextract/dwarfextract.c: Now does "dwarf.h"
       and "libdwarf.h" not the <> form, so we get
