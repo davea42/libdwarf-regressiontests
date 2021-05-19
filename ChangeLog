@@ -1,3 +1,11 @@
+2021-05-19 David Anderson
+    * exfail.py,showpct.py,trimsimple.py,usertime.py:
+      Reformatted with the 'black' formatter.
+    * python3/checksize.py,python3/exfail.py,
+      python3/filterpathto.py,python3/noticegoff.py,
+      python3/showpct.py,python3/showruntime.py,
+      python3/trimdate.py,python3/trimsimple.py,
+      python3/usertime.py: Reformatted with the 'black' formatter.
 2021-05-18 David Anderson
     * dwarfdump-i386-freebsd.O,dwarfdump-s390.O,
       dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:

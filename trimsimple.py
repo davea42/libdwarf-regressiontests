@@ -9,12 +9,12 @@ not a just-use-it thing.
 
 import sys
 
-#Thu Nov 26 14:01:10 PST 2015
-#175c175
-#< .debug_string
-#---
-#> .debug_str
-#FAIL -a -R -v -x line5=std sparc/tcombined.o
+# Thu Nov 26 14:01:10 PST 2015
+# 175c175
+# < .debug_string
+# ---
+# > .debug_str
+# FAIL -a -R -v -x line5=std sparc/tcombined.o
 
 
 # This gets two input files and produces
@@ -30,7 +30,8 @@ import sys
 # exists from the first file.
 import sys
 
-def tailmatches(tail,windowlen):
+
+def tailmatches(tail, windowlen):
     ct = len(tail)
     if len(tail) < int(windowlen):
         return "n"
@@ -49,9 +50,10 @@ def tailmatches(tail,windowlen):
         return "n"
     return "y"
 
-def splitwin(win,taillen):
+
+def splitwin(win, taillen):
     if len(win) < int(taillen):
-        return (win,[])
+        return (win, [])
     i = 0
     head = []
     tail = []
@@ -62,57 +64,59 @@ def splitwin(win,taillen):
         else:
             tail += [l]
         i = i + 1
-    return(head,tail)
+    return (head, tail)
+
 
 def readaline(file):
     try:
         l = file.readline().strip()
     except EOFError:
-        return ("y","")
+        return ("y", "")
     if len(l) < 1:
-        return ("y","")
-    return ("n",l)
+        return ("y", "")
+    return ("n", l)
 
-def fillwindow(file, win,windowlen):
+
+def fillwindow(file, win, windowlen):
     donehere = "n"
     while donehere == "n":
-        (donehere,l) = readaline(file)
+        (donehere, l) = readaline(file)
         if donehere == "y":
-            return(donehere,win)
+            return (donehere, win)
         if l.startswith("FAIL") == 1:
             win += [l]
-            break;
+            break
         win += [l]
     # At FAIL line, end of a sequence.
-    (head,tail) = splitwin(win,windowlen)
-    if tailmatches(tail,windowlen) == "y":
+    (head, tail) = splitwin(win, windowlen)
+    if tailmatches(tail, windowlen) == "y":
         for l in head:
             print(l)
     else:
         for l in head:
-            print (l)
+            print(l)
         for l in tail:
-            print (l)
-    return (donehere,[])
+            print(l)
+    return (donehere, [])
+
 
 def readinfile(fname):
     try:
-        file = open(fname,"r")
+        file = open(fname, "r")
     except IOError as message:
-        print("File could not be opened: ", fname,\
-            " ", message,file=sys.stderr)
+        print("File could not be opened: ", fname, " ", message, file=sys.stderr)
         sys.exit(1)
 
-    windowlen=4
+    windowlen = 4
     curwindow = []
     done = "n"
     while done == "n":
-        (done,curwindow) = fillwindow(file,\
-            curwindow,windowlen)
+        (done, curwindow) = fillwindow(file, curwindow, windowlen)
         for l in curwindow:
             print(l)
     # done
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     readinfile("testALLdd")
-    #readinfile("ALLdd")
+    # readinfile("ALLdd")

@@ -11,18 +11,20 @@ files.
 
 import sys
 
-def printblock(b,failcount_in):
+
+def printblock(b, failcount_in):
     suppress = "y"
     failcount = failcount_in
     for l in b:
         if l.rfind("FAIL") != -1:
-            failcount = int(failcount) +1
+            failcount = int(failcount) + 1
             suppress = "n"
             break
     if suppress == "n":
         for l in b:
             print(l)
     return failcount
+
 
 def isdateitem(rec):
     if rec.startswith("old start "):
@@ -49,17 +51,18 @@ def isdateitem(rec):
         return "y"
     return "n"
 
-if __name__ == '__main__':
-    fn="ALLdd"
-    if len(sys.argv) >1:
+
+if __name__ == "__main__":
+    fn = "ALLdd"
+    if len(sys.argv) > 1:
         fn = sys.argv[1]
-    count=0
+    count = 0
     failcount = 0
-    print("trimdate on file",fn)
+    print("trimdate on file", fn)
     try:
-        file = open(fn,"r")
+        file = open(fn, "r")
     except IOError as message:
-        print("FAIL open ",fn,"errormessage",message)
+        print("FAIL open ", fn, "errormessage", message)
         sys.exit(1)
     print("Start stripping dates")
     while 1:
