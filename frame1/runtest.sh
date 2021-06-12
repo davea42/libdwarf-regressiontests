@@ -1,10 +1,10 @@
 #!/bin/sh
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/frame1
 tf=$bldtest/frame1
 
-. $testsrc/BASEFUNCS
-libdw=$codedir
+. $testsrc/BASEFUNCS.sh
+libdw=$codedir/src/lib/libdwarf
 bld=$bldtest
 dwlib=$bldtest/libdwarf.a
 withlibelf=$1
@@ -34,8 +34,8 @@ if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
 fi
-iopts="-I$bld -I$bld/libdwarf -I$codedir/libdwarf -I$libbld/libdwarf"
-cpifmissing $libdw/dwarfexample/frame1.c framexlocal.c
+iopts="-I$bld -I$bld/src/liblibdwarf -I$libdw -I$libbld/src/liblibdwarf"
+cpifmissing $codedir/src/bin/dwarfexample/frame1.c framexlocal.c
 echo "cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1"
 cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1
 

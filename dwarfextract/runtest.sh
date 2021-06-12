@@ -6,8 +6,8 @@
 # code to adapt to reading on a big-endian machine.
 # 16 September 2019
 #
-. ../BASEFILES
-. $testsrc/BASEFUNCS
+. ../BASEFILES.sh
+. $testsrc/BASEFUNCS.sh
 withlibelf=$1
 withlibz=$2
 dd=../dwarfdump

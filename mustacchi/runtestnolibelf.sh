@@ -5,11 +5,11 @@
 
 dd=../dwarfdump
 
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/mustacchi
 tf=$bldtest/mustacchi
 
-. $testsrc/BASEFUNCS
+. $testsrc/BASEFUNCS.sh
 cpifmissing $ts/m64t.o m64t.o
 cpifmissing $ts/m32t.o m32t.o
 

@@ -1,2 +1,2 @@
-Giving up, cannot do DWARF processing
+Giving up, cannot do DWARF processing t.o
 exit_status 1 ../simplereader --use-init-fd t.o

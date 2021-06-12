@@ -1,10 +1,10 @@
 dd=../dwarfdumpnl
 
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/nolibelf
 tf=$bldtest/nolibelf
 
-. $testsrc/BASEFUNCS
+. $testsrc/BASEFUNCS.sh
 
 cpifmissing $ts/test.o test.o
 cpifmissing $ts/test.a test.a

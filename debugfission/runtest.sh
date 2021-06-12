@@ -5,7 +5,7 @@
 
 dd=../dwarfdump
 ourzcat=zcat
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/debugfission
 tf=$bldtest/debugfission
 

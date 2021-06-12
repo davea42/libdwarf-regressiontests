@@ -12,7 +12,7 @@
 gen=../dwarfgen
 dd=../dwarfdump
 sim=../simplereader
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/offsetfromlowpc
 tf=$bldtest/offsetfromlowpc
 

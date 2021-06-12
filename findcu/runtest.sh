@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ../BASEFILES
+. ../BASEFILES.sh
 
 ts=$testsrc/findcu
 tf=$bldtest/findcu
@@ -15,16 +15,16 @@ then
    echo "fail findcu runtest.sh missing arguments"
    exit 1
 fi
-h="-I$libdw/libdwarf -I$codedir/libdwarf"
+h="-I$libdw/libdwarf -I$codedir/src/lib/libdwarf"
 l="-L$libdw/libdwarf"
-libs="$bld/libdwarf/.libs/libdwarf.a"
+libs="$bld/src/lib/libdwarf/.libs/libdwarf.a"
 if [ x$NLIZE = 'xy' ]
 then
   nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
 else
   nli=
 fi
-opts="-I$bld -I$bld/libdwarf -I$codedir/libdwarf"
+opts="-I$bld -I$bld/libdwarf -I$codedir/src/lib/libdwarf"
 
 if [ $withlibelf = "withlibelf" ]
 then

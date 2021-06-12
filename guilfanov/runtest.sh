@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/guilfanov
 tf=$bldtest/guilfanov
 

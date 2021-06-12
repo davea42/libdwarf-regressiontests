@@ -1,15 +1,15 @@
 #!/bin/sh
 #  This is really a test of the new dwarf_get_form_class function.
 
-. ../BASEFILES
-. $testsrc/BASEFUNCS
+. ../BASEFILES.sh
+. $testsrc/BASEFUNCS.sh
 ts=$testsrc/test-alex2
 tf=$bldtest/test-alex2
 l=$bldtest/libdwarf.a
 withlibelf=$1
 withlibz=$2
 
-OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/libdwarf -I$libbld/libdwarf"
+OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf"
 if [ x$withlibz = "x" ]
 then
   echo "fail test-alex2. missing withlibz"

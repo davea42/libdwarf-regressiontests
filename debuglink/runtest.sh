@@ -13,11 +13,11 @@ else
 	beopt=
 fi
 
-. ../BASEFILES
+. ../BASEFILES.sh
 
 ts=$testsrc/debuglink
 tf=$bldtest/debuglink
-. $testsrc/BASEFUNCS
+. $testsrc/BASEFUNCS.sh
 
 setpythondirs
 if [ $? -ne 0 ]

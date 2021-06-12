@@ -1,5 +1,5 @@
 #!/bin/sh
-. ../BASEFILES
+. ../BASEFILES.sh
 # We name temp files junk<something> as that way
 # a normal 'make distclean' gets rid of them
 

@@ -140,7 +140,8 @@ then
 fi
 
 
-for i in libdwarf dwarfdump dwarfgen dwarfexample
+for i in src/lib/libdwarf src/bin/dwarfdump \
+  src/bin/dwarfgen  src/bin/dwarfexample
 do
   if test -d $codedir/$i 
   then
@@ -152,10 +153,10 @@ do
   fi
 done
 
-cp $srcdir/BASEFILES.in BASEFILES
+cp $srcdir/BASEFILES.sh.in BASEFILES.sh
 if test $? -ne 0 
 then
-  echo "FAIL configure cannot create BASEFILES"
+  echo "FAIL configure cannot create BASEFILES.sh"
   exit 1
 fi
 if test "$srcdir" = "."
@@ -166,18 +167,25 @@ else
 fi
 pyloc="$tsa/scripts/canonicalpath.py"
 ts=`$pyloc $tsa`
-echo "testsrc=$ts" >>      BASEFILES
+echo "testsrc=$ts" >>      BASEFILES.sh
 lw=`$pyloc $codedir`
-echo "libdw=$lw" >>        BASEFILES
+echo "libdw=$lw" >>        BASEFILES.sh
 cod=`$pyloc $codedir`
-echo "codedir=$cod" >>     BASEFILES
-echo "bldtest=$abs_builddir" >> BASEFILES
+echo "codedir=$cod" >>     BASEFILES.sh
+echo "bldtest=$abs_builddir" >> BASEFILES.sh
 libbld=$abs_builddir/libbld
-echo "libbld=$libbld" >>   BASEFILES
+echo "libbld=$libbld" >>   BASEFILES.sh
 cp  $srcdir/SHALIAS.sh     SHALIAS.sh
 cp  $srcdir/exfail.py      exfail.py
-cp  $srcdir/dwarfdump.conf     dwarfdump.conf
-cp  $srcdir/testdwarfdump.conf testdwarfdump.conf
+cp  $codedir/src/bin/dwarfdump/dwarfdump.conf     dwarfdump.conf
+for d in baddie1 bigobj data16 debugfissionb debugfission debuglink \
+  dwarfextract dwgena dwgenc emre2 enciso4 guilfanov \
+  implicitconst moore mustacchi nolibelf offsetfromlowpc \
+  sandnes2 strsize supplementary testoffdie williamson
+do
+  cp dwarfdump.conf $d/
+done
+cp  $codedir/src/bin/dwarfdump/testdwarfdump.conf testdwarfdump.conf
 echo "Configuration Options Summary:"
 echo
 echo " have libelf............: ${dwarf_with_libelf}"

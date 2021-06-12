@@ -5,7 +5,7 @@
 # not work on such systems.
 
 
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/testoffdie
 tf=$bldtest/testoffdie
 
@@ -14,9 +14,9 @@ bld=$libbld
 withlibelf=$1
 withlibz=$2
 echo "entering testoffdie/runtest.sh  $withlibelf $withlibz"
-h="-I$testsrc/libdwarf -I$codedir/libdwarf"
+h="-I$testsrc/libdwarf -I$codedir/src/lib/libdwarf"
 l="-L$src/libdwarf"
-libs="$bld/libdwarf/.libs/libdwarf.a"
+libs="$bld/src/lib/libdwarf/.libs/libdwarf.a"
 if [ x$withlibelf = "xwithlibelf" ]
 then
   libs="$libs -lelf"
@@ -47,7 +47,7 @@ else
   nli=
 fi
 
-opts="-I$bld -I$bld/libdwarf"
+opts="-I$bld -I$bld/src/lib/libdwarf"
 echo cc $h $opts  $ts/testoffdie.c $nli $l -o junkoffdie $libs
 cc $h $opts  $ts/testoffdie.c $nli $l -o junkoffdie $libs
 if [ $? -ne 0 ]

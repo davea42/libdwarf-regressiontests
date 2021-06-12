@@ -1,11 +1,11 @@
 #!/bin/sh
 
 dd=../dwarfdump
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/baddie1
 tf=$bldtest/baddie1
-. $testsrc/BASEFUNCS
-. $testsrc/RUNTIMEFILES
+. $testsrc/BASEFUNCS.sh
+. $testsrc/RUNTIMEFILES.sh
 # Avoid spurious differences because of the names of the
 # various dwarfdump versions being tested.
   echo "====== command:  $dwdumper $opts $obj"  >> $ntimeout

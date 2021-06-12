@@ -13,7 +13,7 @@ then
   # On MacOS gzcat does what zcat does on Linux.
   ourzcat=gzcat
 fi
-. ../BASEFILES
+. ../BASEFILES.sh
 
 fix='s/.*last time 0x0 .*/last time 0x0/'
 

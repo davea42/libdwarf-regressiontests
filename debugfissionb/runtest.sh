@@ -1,12 +1,12 @@
 #!/bin/sh
 
 sr=../simplereader
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/debugfissionb
 tf=$bldtest/debugfissionb
 isfail="n"
 
-. $testsrc/BASEFUNCS
+. $testsrc/BASEFUNCS.sh
 
 cpifmissing $testsrc/kaufmann/t.o t.o
 

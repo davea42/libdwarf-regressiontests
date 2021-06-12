@@ -29,7 +29,7 @@ then
 fi
 . ./$s
 
-b=BASEFILES
+b=BASEFILES.sh
 if [ ! -f ./$b ]
 then
   echo "./$b cannot be found in " `pwd`
@@ -38,7 +38,7 @@ then
 fi
 . ./$b
 
-. $testsrc/BASEFUNCS
+. $testsrc/BASEFUNCS.sh
 
 stsecs=`date '+%s'`
 # dwarfgen and libelf go together here.
@@ -169,7 +169,7 @@ export endian
 echo "Host Endianness...........: $endian"
 
 # In FreeBSD python2 &3 in /usr/local/bin, not /usr/bin
-# shell func from BASEFUNCS
+# shell func from BASEFUNCS.sh
 setpythondirs 
 if [ $? -ne 0 ]
 then
@@ -264,7 +264,7 @@ kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky 
 
 # These accumulate times so we can print actual dwarfdump
 # user, sys, clock times at the end (see usertime.py).
-. $testsrc/RUNTIMEFILES
+. $testsrc/RUNTIMEFILES.sh
 if [ x$wrtimeo != "x" ]
 then
   echo "/usr/bin/time timing......: yes"
@@ -427,8 +427,9 @@ then
      echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because nolibelf"
      skipcount=`expr $skipcount + 2`
 else
-     filepaths="sarubbo-6/1.crashes.bin $filepaths"'
-     filepaths="sarubbo-4/libresolv.a $filepaths"'
+     echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because archives not handled"
+     #filepaths="sarubbo-6/1.crashes.bin $filepaths"'
+     #filepaths="sarubbo-4/libresolv.a $filepaths"'
 fi
 
 # Was in the list, but does not exist!
@@ -828,7 +829,8 @@ if [ x$withlibelf = "xwithlibelf" ]
 then
   # the -oi forces dwarftump to use libelf for this test
   # of the .debug_cu_index section.
-  runtest $d1 $d2 moya8/index-out-of-bounds-test -oi -a -M -v 
+  #runtest $d1 $d2 moya8/index-out-of-bounds-test -oi -a -M -v 
+  skipcount=`expr $skipcount + 1`
 else
   echo "==== SKIP -oi -a -M -v  moya8/index-out-of-bounds-test"
   skipcount=`expr $skipcount + 1`
@@ -896,25 +898,25 @@ runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
 # See mustacchi/README. 
 # Clang generates a slightly unusual relocation set for -m32.
 # As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
-if [ x$withlibelf = "xnolibelf" ]
-then
+#if [ x$withlibelf = "xnolibelf" ]
+#then
   echo "=====START  $testsrc/mustacchi runtest.sh nolibelf"
   mklocal mustacchi
     sh $testsrc/mustacchi/runtestnolibelf.sh 
     chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
   cd ..
-else
-  echo "=====START  $testsrc/mustacchi runtest.sh withlibelf" 
-  mklocal mustacchi
-    l=mustacchi
-    cp $testsrc/$l/mt32.o  $bldtest/$l/mt32.o
-    cp $testsrc/$l/mt64.o  $bldtest/$l/mt64.o
-    sh $testsrc/mustacchi/runtest.sh
-    chkres $? "$testsrc/mustacchi/runtest.sh"
-    sh $testsrc/mustacchi/runtestnolibelf.sh
-    chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
-  cd ..
-fi
+#else
+#  echo "=====START  $testsrc/mustacchi runtest.sh withlibelf" 
+#  mklocal mustacchi
+#    l=mustacchi
+#    cp $testsrc/$l/mt32.o  $bldtest/$l/mt32.o
+#    cp $testsrc/$l/mt64.o  $bldtest/$l/mt64.o
+#    sh $testsrc/mustacchi/runtest.sh
+#    chkres $? "$testsrc/mustacchi/runtest.sh"
+#    sh $testsrc/mustacchi/runtestnolibelf.sh
+#    chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
+#  cd ..
+#fi
 
 runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
 
@@ -937,8 +939,10 @@ runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr --format-extensions
 if [ x$withlibelf = "xnolibelf" ]
 then
-  runtest $d1 $d2 encisoa/DW_AT_containing_type.o -o --check-tag-attr
-  runtest $d1 $d2 encisoa/DW_AT_containing_type.o -Ei --check-tag-attr --format-extensions
+  #runtest $d1 $d2 encisoa/DW_AT_containing_type.o -o --check-tag-attr
+  #runtest $d1 $d2 encisoa/DW_AT_containing_type.o -Ei --check-tag-attr --format-extensions
+  echo "=====SKIP  encisoa/DW_AT_containing_type.o"
+  skipcount=`expr $skipcount + 1`
 fi
 
 # PE basic tests.
@@ -998,8 +1002,10 @@ runtest $d1 $d2 enciso8/test-clang-dw5.o -s --print-str-offsets
 runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -s --print-str-offsets
 if [ $withlibelf = "withlibelf" ]
 then
-  runtest $d1 $d2 enciso8/test-clang-dw5.o -o -s --print-str-offsets
-  runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -o -s --print-str-offsets
+  #runtest $d1 $d2 enciso8/test-clang-dw5.o -o -s --print-str-offsets
+  #runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -o -s --print-str-offsets
+  echo "=====SKIP enciso8/test-clang-wpieb-dw5.o -o -s"
+  skipcount=`expr $skipcount + 2`
 fi
 
 
@@ -1040,10 +1046,10 @@ runtest $d1 $d2   marcel/crash7 -a
 # Got DW_DLE_RELOC_SECTION_RELOC_TARGET_SIZE_UNKNOWN due to
 # presence of unexpected R_X86_64_PC32
 runtest $d1 $d2   convey/foo.g3-O0-strictdwarf.o -F
-if [ $withlibelf = "withlibelf" ]
-then
-  runtest $d1 $d2   convey/foo.g3-O0-strictdwarf.o -oi -F
-fi
+#if [ $withlibelf = "withlibelf" ]
+#then
+#  runtest $d1 $d2   convey/foo.g3-O0-strictdwarf.o -oi -F
+#fi
 
 # Before 4 March 2017 would terminate early with error.
 runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a
@@ -1437,36 +1443,36 @@ runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug -a
 # Testing the wasted-space from not using LEB.
 runtest $d1 $d2 enciso5/sample_S_option.o  -kE
 
-if test $withlibelf = "withlibelf" ; then
-  # These print object header (elf) information.
-  runtest $d1 $d2 enciso5/sample_S_option.o  -E
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Ea
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Eh
-  runtest $d1 $d2 enciso5/sample_S_option.o  -El
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Ei
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Ep
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Er
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Er -g
-  runtest $d1 $d2 irixn32/dwarfdump  -Ef
-  # Following finds no debug_loc.
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Eo
-  # Following finds a debug_loc.
-  runtest $d1 $d2 mucci/main.gcc -Eo
-  #Following has no .debug_ranges
-  runtest $d1 $d2 enciso5/sample_S_option.o  -ER
-  #Following has .debug_ranges
-  runtest $d1 $d2 mucci/main.gcc  -ER
-  runtest $d1 $d2 mucci/main.gcc  -ER -g
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Es
-  # The Et does nothing, we do not seem to have 
-  # a .debug_pubtypes (IRIX specific) section anywhere.
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Et
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Ex
-  runtest $d1 $d2 enciso5/sample_S_option.o  -Ed
-else
+#if test $withlibelf = "withlibelf" ; then
+#  # These print object header (elf) information.
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -E
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ea
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Eh
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -El
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ei
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ep
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Er
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Er -g
+#  runtest $d1 $d2 irixn32/dwarfdump  -Ef
+#  # Following finds no debug_loc.
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Eo
+#  # Following finds a debug_loc.
+#  runtest $d1 $d2 mucci/main.gcc -Eo
+#  #Following has no .debug_ranges
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -ER
+#  #Following has .debug_ranges
+#  runtest $d1 $d2 mucci/main.gcc  -ER
+#  runtest $d1 $d2 mucci/main.gcc  -ER -g
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Es
+#  # The Et does nothing, we do not seem to have 
+#  # a .debug_pubtypes (IRIX specific) section anywhere.
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Et
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ex
+#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ed
+#else
   echo "=====SKIP 18 -E options, not usable with no libelf" 
   skipcount=`expr $skipcount + 18 `
-fi
+#fi
 
 # AARCH64 Arm 64bit.
 runtest $d1 $d2 juszkiewicz/t1.o -a
@@ -1647,7 +1653,7 @@ fi
     libopts="$libopts -lz"
   fi
   echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld  -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless $dwlib $libopts"
-  $CC -Wall -I$codedir/libdwarf -I$libbld -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless $dwlib $libopts
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless $dwlib $libopts
   chkres $? 'check harmless-error compiling test-harmless.c failed'
   ./test_harmless
   chkres $? 'check harmless-error execution failed'
@@ -1770,25 +1776,25 @@ runtest $d1 $d2 mucci/stream.o -i -e
 runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F 
 runtest $d1 $d2 legendre/libmpich.so.1.0 -ka 
 
-if test $withlibelf = "withlibelf" ; then
-  for i in cell/c_malloc.o moore/simplec.o \
-    enciso2/test_templates.o enciso3/test.o kartashev/combined.o \
-    linkonce/comdattest.o louzon/ppcobj.o  mucci/main.o \
-    mucci/main.o.gcc mucci/main.o.pathcc  \
-    mucci/stream.o  saurabh/augstring.o \
-    shihhuangti/t1.o shihhuangti/t2.o shihhuangti/tcombined.o \
-    sparc/tcombined.o  atefail/ig_server  cell/c_malloc.o
-  do
-    runtest $d1 $d2 $i -o
-    for o in -oi -ol -op -or -of -oo -oR
-    do
-      runtest $d1 $d2 $i $o
-    done
-  done
-else 
+#if test $withlibelf = "withlibelf" ; then
+#  for i in cell/c_malloc.o moore/simplec.o \
+#    enciso2/test_templates.o enciso3/test.o kartashev/combined.o \
+#    linkonce/comdattest.o louzon/ppcobj.o  mucci/main.o \
+#    mucci/main.o.gcc mucci/main.o.pathcc  \
+#    mucci/stream.o  saurabh/augstring.o \
+#    shihhuangti/t1.o shihhuangti/t2.o shihhuangti/tcombined.o \
+#    sparc/tcombined.o  atefail/ig_server  cell/c_malloc.o
+#  do
+#    runtest $d1 $d2 $i -o
+#    for o in -oi -ol -op -or -of -oo -oR
+#    do
+#      runtest $d1 $d2 $i $o
+#    done
+#  done
+#else 
   echo "=====SKIP 18*7 range of -o options and test objects, no libelf"
   skipcount=`expr $skipcount + 18 + 18 + 18 + 18 + 18 + 18 + 18`
-fi
+#fi
 
 if [ $NLIZE = 'n' ]
 then
@@ -1915,14 +1921,14 @@ do
      do
        for k in  $baseopts " -M" 
        do
-	      runtest $d1 $d2 $i $k $xtra
-          if [ x$withlibelf = "xwithlibelf" ]
-          then
-             # Force use of libelf
-             runtest $d1 $d2 $i $k $xtra " -oi"
-          else
-             skipcount=`expr $skipcount + 1`
-          fi
+	  runtest $d1 $d2 $i $k $xtra
+          #if [ x$withlibelf = "xwithlibelf" ]
+          #then
+          #   # Force use of libelf
+          #   runtest $d1 $d2 $i $k $xtra " -oi"
+          #else
+          #   skipcount=`expr $skipcount + 1`
+          #fi
        done
      done
 done

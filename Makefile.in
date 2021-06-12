@@ -12,7 +12,7 @@ all:  pretest build testonly
 test: pretest build testonly
 
 build: pretest
-	sh $(testsrc)/PICKUPBIN $(buildwithlibelf) 
+	sh $(testsrc)/PICKUPBIN.sh $(buildwithlibelf) 
 
 check: pretest testonly
 testonly:

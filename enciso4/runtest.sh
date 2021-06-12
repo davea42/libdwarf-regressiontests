@@ -14,7 +14,7 @@ then
   # On MacOS gzcat does what zcat does on Linux.
   ourzcat=gzcat
 fi
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/enciso4
 tf=$bldtest/enciso4
 

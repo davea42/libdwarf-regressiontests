@@ -25,12 +25,12 @@ else
   echo "RUNALL.sh arg is withlibelf" 
 fi
 
-if [ ! -f BASEFILES ]
+if [ ! -f BASEFILES.sh ]
 then
-  echo "Run configure. BASEFILES missing"
+  echo "Run configure. BASEFILES.sh missing"
   exit 1
 fi
-. ./BASEFILES
+. ./BASEFILES.sh
 chkres() {
 if test $1 != 0
 then

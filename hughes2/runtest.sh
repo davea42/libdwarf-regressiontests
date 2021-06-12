@@ -9,7 +9,7 @@ echo "Now run: hughes2/runtest.sh $1"
 r=../simplereader
 tobj=$1
 
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/hughes2
 tf=$bldtest/hughes2
 

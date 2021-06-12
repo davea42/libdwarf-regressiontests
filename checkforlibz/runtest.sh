@@ -1,5 +1,5 @@
 #!/bin/bash
-. ../BASEFILES
+. ../BASEFILES.sh
 # This does a trivial compile/link to see if zlib.h and -lz
 # exist for some test directories.
 cc $testsrc/checkforlibz/tzl.c -lz >junkstdout 2>junkstderr

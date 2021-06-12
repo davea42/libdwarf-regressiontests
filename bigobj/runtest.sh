@@ -10,7 +10,7 @@
 # Then verifies dwarfdump works.
 
 dd=../dwarfdump
-. ../BASEFILES
+. ../BASEFILES.sh
 if [ $# -lt 1 ]
 then
   dd=../dwarfdump

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/sandnes2
 tf=$bldtest/sandnes2
 
@@ -16,7 +16,7 @@ then
    exit 1
 fi
 ../dwarfdumpW -a $ts/cu_dir_added_to_complete_path.elf >junk.W
-grep 'c:/temp/' <junk.W >junk.noout
+grep 'c:\\temp\\' <junk.W >junk.noout
 r=$?
 if [ $r -ne 0 ]
 then

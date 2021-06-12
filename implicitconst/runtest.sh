@@ -11,11 +11,11 @@
 dd=../dwarfdump
 dg=../dwarfgen
 
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/implicitconst
 tf=$bldtest/implicitconst
 
-. $testsrc/BASEFUNCS
+. $testsrc/BASEFUNCS.sh
 cpifmissing $ts/t1.o t1.o
 
 

@@ -8,7 +8,7 @@ cpifmissing() {
     cp $s $t
     if [ $? -ne 0 ]
     then
-       echo "BASEFUNCS: cp $s $t failed. Give up on this test"
+       echo "BASEFUNCS.sh: cp $s $t failed. Give up on this test"
        exit 1
     fi
   fi

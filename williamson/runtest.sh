@@ -3,10 +3,10 @@
 # Hopeless bogus executable.
 
 dd=../dwarfdump
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/williamson
 tf=$bldtest/williamson
-. $testsrc/BASEFUNCS
+. $testsrc/BASEFUNCS.sh
 
 m() {
   dwdumper=$1

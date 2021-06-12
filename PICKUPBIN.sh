@@ -19,25 +19,25 @@ then
 if [ $1 = "nolibelf" ]
   then
     withlibelf="nolibelf"
-    echo "PICKUPBIN set to nolibelf."
+    echo "PICKUPBIN.sh set to nolibelf."
     libelfopt="--disable-libelf"
   else 
     if [ $1 != "withlibelf" ]
     then
-      echo "Improper argument to PICKUPBIN, use withlibelf or nolibelf"
+      echo "Improper argument to PICKUPBIN.sh, use withlibelf or nolibelf"
       exit 1
     fi
-    echo "PICKUPBIN set to withlibelf."
+    echo "PICKUPBIN.sh set to withlibelf."
   fi
 else
   echo "PICKUPBIN set to withlibelf."
 fi
-if [ ! -f BASEFILES ]
+if [ ! -f BASEFILES.sh ]
 then
-    echo "./BASEFILES missing. Run configure"
+    echo "./BASEFILES.sh missing. Run configure"
     exit 1
 fi
-. ./BASEFILES
+. ./BASEFILES.sh
 if [ "$testsrc" = "$codedir" ]
 then
   echo "testsrc and codedir are $testsrc, not allowed"
@@ -87,13 +87,13 @@ fi
 # directory.
 
 cd $top_build 
-echo "PICKUPBIN configure --disable-libelf for dwarfdumpnl"
+echo "PICKUPBIN.sh: configure --disable-libelf for dwarfdumpnl"
 set -x
 $libdw/configure $sanitize  --disable-libelf 
 make
 if [ $? -ne 0 ]
 then
-  echo "PICKUPBIN for dwarfdumpnl FAIL"
+  echo "PICKUPBIN.sh for dwarfdumpnl FAIL"
   exit 1
 fi
 set +x
@@ -106,7 +106,7 @@ $libdw/configure $sanitize $libelfopt  --enable-oldframecol
 make
 if [ $? -ne 0 ]
 then
-  echo "PICKUPBIN for oldframecol FAIL"
+  echo "PICKUPBIN.sh for oldframecol FAIL"
   exit 1
 fi
 set +x
@@ -118,13 +118,13 @@ then
 fi
 
 rm -rf $top_build/*
-echo "PICKUPBIN configure $libelfop for --enable-windowspath"
+echo "PICKUPBIN.sh: configure $libelfop for --enable-windowspath"
 set -x
 $libdw/configure $sanitize $libelfopt --enable-windowspath 
 make 
 if [ $? -ne 0 ]
 then
-  echo "PICKUPBIN for --enable-windowspath  FAIL"
+  echo "PICKUPBIN.sh for --enable-windowspath  FAIL"
   exit 1
 fi
 set +x
@@ -140,24 +140,24 @@ fi
 rm -rf $top_build/*
 if [ $withlibelf = "withlibelf" ]
 then
-  echo "PICKUPBIN configure --enable-dwarfgen --enable-dwarfexample"
+  echo "PICKUPBIN.sh configure --enable-dwarfgen --enable-dwarfexample"
   set -x
   $libdw/configure $sanitize --enable-dwarfgen --enable-dwarfexample 
   make 
   if [ $? -ne 0 ]
   then
-    echo "PICKUPBIN for withlibelf --enable-dwarfgen --enable-dwarfexample FAIL"
+    echo "PICKUPBIN.sh for withlibelf --enable-dwarfgen --enable-dwarfexample FAIL"
     exit 1;
   fi
   set +x
 else
-  echo "PICKUPBIN configure --diable-libelf --enable-dwarfexample"
+  echo "PICKUPBIN.sh: configure --diable-libelf --enable-dwarfexample"
   set -x
   $libdw/configure $sanitize --disable-libelf --enable-dwarfexample 
   make 
   if [ $? -ne 0 ]
   then
-    echo "PICKUPBIN for nolibelf --enable-dwarfgen --enable-dwarfexample FAIL"
+    echo "PICKUPBIN.sh for nolibelf --enable-dwarfgen --enable-dwarfexample FAIL"
     exit 1;
   fi
   set +x
@@ -188,7 +188,7 @@ then
 fi
 if [ $withlibelf = "withlibelf" ]
 then
-  cp dwarfgen/dwarfgen  $targetdir/dwarfgen
+  cp src/bin/dwarfgen/dwarfgen  $targetdir/dwarfgen
   if [ $? -ne 0 ]
   then
     echo "No dwarfgen to copy! giving up."

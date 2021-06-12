@@ -1,11 +1,11 @@
 #!/bin/sh
 
-. ../BASEFILES
+. ../BASEFILES.sh
 ts=$testsrc/test-alex1
 tf=$bldtest/test-alex1
 top_bld=$bldtest
 top_src=$testsrc
-. $testsrc/BASEFUNCS
+. $testsrc/BASEFUNCS.sh
 
 withlibelf=$1
 withlibz=$2
@@ -32,7 +32,7 @@ then
   libs="$libs -lz"
 fi
 
-OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/libdwarf -I$libbld/libdwarf"
+OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf"
 echo "cc -DWORKING=1 $opt $OPTS  $ts/test.c $bldtest/libdwarf.a $libs -o test1"
 cc -DWORKING=1 $opt $OPTS  $ts/test.c $bldtest/libdwarf.a $libs -o test1
 if [ $? -ne 0 ]

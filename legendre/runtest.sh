@@ -5,8 +5,8 @@ then
 else
   opt=
 fi
-. ../BASEFILES
-. $testsrc/BASEFUNCS
+. ../BASEFILES.sh
+. $testsrc/BASEFUNCS.sh
 ts=$testsrc/legendre
 tf=$bldtest/legendre
 libdw=$libdw
@@ -19,7 +19,7 @@ then
    exit 1
 fi
 
-OPTS="-I$bopt -I$bopt/libdwarf" 
+OPTS="-I$bopt -I$bopt/src/lib/libdwarf -I$libdw/src/lib/libdwarf -I$" 
 libs=
 if [ $withlibelf = "withlibelf" ]
 then

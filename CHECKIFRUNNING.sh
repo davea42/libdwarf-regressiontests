@@ -2,7 +2,7 @@
 echo 'precheck for already running'
 . ./SHALIAS.sh
 
-. ./BASEFILES
+. ./BASEFILES.sh
 dwbb=$bldtest/dwbb
 
 if [ -f $dwbb ]
