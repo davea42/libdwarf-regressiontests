@@ -4072,7 +4072,8 @@ for d in baddie1 bigobj data16 debugfissionb debugfission debuglink \
   implicitconst moore mustacchi nolibelf offsetfromlowpc \
   sandnes2 strsize supplementary testoffdie williamson
 do
-  cp dwarfdump.conf $d/
+  mkdir $abs_builddir/$d
+  cp dwarfdump.conf $abs_builddir/$d/dwarfdump.conf
 done
 cp  $codedir/src/bin/dwarfdump/testdwarfdump.conf testdwarfdump.conf
 echo "Configuration Options Summary:"
