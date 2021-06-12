@@ -40,7 +40,21 @@ rm -f checkforlibz/junk*
 rm -f baddie1/testincorrect*
 rm -f bad-dwop/badskipbranchd3.o
 rm -f bad-dwop/badskipbranchd5.o
-
+rm -f BASEFILES.sh
+rm -f baddie1/dwarfdump.conf
+rm -f bigobj/dwarfdump.conf
+rm -f data16/dwarfdump.conf
+rm -f debugfission/dwarfdump.conf
+rm -f debugfissionb/dwarfdump.conf
+rm -f debuglink/dwarfdump.conf
+rm -f dwarfextract/dwarfdump.conf
+rm -f dwgena/dwarfdump.conf
+rm -f dwgenc/dwarfdump.conf
+rm -f emre2/dwarfdump.conf
+rm -f enciso4/dwarfdump.conf
+rm -f fails
+rm -f guilfanov/dwarfdump.conf
+rm -f implicitconst/dwarfdump.conf
 rm -f test-alex1/test1
 rm -f        test-alex1/test2
 rm -f        test-alex1/outdiffs
@@ -101,3 +115,15 @@ rm -f bigobj/bigobject
 rm -f bigobj/makebig
 rm -f bigobj/a.out
 rm -f bigobj/junk*
+rm -f moore/dwarfdump.conf
+rm -f mustacchi/dwarfdump.conf
+rm -f nolibelf/dwarfdump.conf
+rm -f offsetfromlowpc/dwarfdump.conf
+rm -f runx
+rm -f sandnes2/dwarfdump.conf
+rm -f scripts/filelist
+rm -f strsize/dwarfdump.conf
+rm -f supplementary/dwarfdump.conf
+rm -f testoffdie/dwarfdump.conf
+rm -f williamson/dwarfdump.conf
+

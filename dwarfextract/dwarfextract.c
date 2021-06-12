@@ -529,11 +529,6 @@ main(int argc, char *argv[])
 		indentation_spaces[i]=' ';
 	}
 	indentation_spaces[99]='\0';
-	(void) elf_version(EV_NONE);
-	if (elf_version(EV_CURRENT) == EV_NONE) {
-		(void) fprintf(stderr, "dwarfextract: libelf.a out of date.\n");
-		exit(1);
-	}
 
 	get_options(argc, argv);
 

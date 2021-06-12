@@ -1696,14 +1696,16 @@ then
   then
     if [ $withlibelf = "withlibelf" ]
     then
-      echo "=====START   $tstsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
+      echo "====SKIP 1 $tstsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
+      skipcount=`expr $skipcount + 1`
+      #echo "=====START   $tstsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
       # This has serious problems with leaks, so
       # do not do $NLIZE for now..
-      mklocal dwarfextract
-        rm -f dwarfextract
-        sh $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz
-        chkres $?  $tstsrc/dwarfextract
-      cd ..
+      #mklocal dwarfextract
+      #  rm -f dwarfextract
+      #  sh $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz
+      #  chkres $?  $tstsrc/dwarfextract
+      #cd ..
     else
       echo "====SKIP 1 $tstsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
       skipcount=`expr $skipcount + 1`

@@ -31,7 +31,7 @@ else
 fi
 
 
-INCS="-I$libbld/libdwarf -I$libdw -I$libdw/libdwarf"
+INCS="-I$libbld/libdwarf -I$libdw -I$libdw/src/lib/libdwarf"
 libs="-lelf"
 if [ $withlibz ]
 then
