@@ -42,7 +42,8 @@ int main(int argc, char *argv[])
       perror("Could not open ./libmpich.so.1.0 for test");
       return -1;
    }
-   result = dwarf_init(fd, DW_DLC_READ, NULL, NULL, &dbg, &err);
+   result = dwarf_init_b(fd, DW_DLC_READ, 
+        DW_GROUPNUMBER_ANY,NULL, NULL, &dbg, &err);
    assert(result == DW_DLV_OK);
 
    result = dwarf_get_fde_list(dbg, &cie_data, &cie_count, &fde_data, &fde_count,
