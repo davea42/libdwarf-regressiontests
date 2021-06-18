@@ -1340,7 +1340,7 @@ runtest $d1 $d2  debugfissionb/ld-new -a
 echo "Testing -i --format-expr-ops-joined . a -d for exprs"
 runtest $d1 $d2  debugfissionb/ld-new -i --format-expr-ops-joined
 runtest $d1 $d2  debugfissionb/ld-new -ka  
-#The following is also --format-expr-op-per-line!
+#The following is also --format-expr-ops-joined
 runtest $d1 $d2  emre4/test19_64_dbg --file-name=./testdwarfdump.conf  -i -v 
 
 # A very short debug_types file. Used to result in error due to bug.

@@ -115,14 +115,16 @@ do
    if test $r -eq 0
    then
      # was ./$i, but now full path so no .
-     ($i -i $srcdir/moshe/a.out.t |head -20) >junkf2    2>/dev/null
+     #echo "Try $i -i $srcdir/moshe/a.out.t"
+     #$i -i --show-dwarfdump-conf $srcdir/moshe/a.out.t | head -n 15
+     ($i -i $srcdir/moshe/a.out.t |head -n 20) >junkf2    2>/dev/null
      # Remove file that should not be here, if it exists.
      rm -f *@*
      cmp junkf2 $srcdir/findexecutable.base  >/dev/null 2>/dev/null
      t=$?
      if test $t -eq 0
      then
-        echo "found usable dwarfdump  $i"
+        echo "Found usable dwarfdump  $i"
         ddfound='y'
         rm -f dwarfdump.O
         cp $i dwarfdump.O

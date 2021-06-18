@@ -85,9 +85,14 @@ fi
 # Fix the following line to match the desired 
 # libdwarf/dwarfdump source 
 # directory.
+if [ ! -f $codedir/Makefile.in ]
+then
+  echo "FAIL. $codedir/Makefile.in missing, run autogen.sh in $codedir."
+  exit 1
+fi
 
 cd $top_build 
-echo "PICKUPBIN.sh: configure --disable-libelf for dwarfdumpnl"
+echo "PICKUPBIN.sh: $libdw/configure --disable-libelf for dwarfdumpnl"
 set -x
 $libdw/configure $sanitize  --disable-libelf 
 make
