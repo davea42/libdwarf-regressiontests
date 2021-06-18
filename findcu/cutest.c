@@ -91,20 +91,29 @@ static void
 read_cu_list(Dwarf_Debug dbg)
 {
     Dwarf_Unsigned cu_header_length = 0;
-    Dwarf_Half version_stamp = 0;
-    Dwarf_Unsigned abbrev_offset = 0;
-    Dwarf_Half address_size = 0;
-    Dwarf_Unsigned next_cu_header = 0;
-    Dwarf_Error error;
-    int cu_number = 0;
+    Dwarf_Half version_stamp        = 0;
+    Dwarf_Unsigned abbrev_offset    = 0;
+    Dwarf_Half address_size         = 0;
+    Dwarf_Half length_size          = 0;
+    Dwarf_Half extension_size       = 0;
+    Dwarf_Sig8 type_signature;
+    Dwarf_Unsigned typeoffset       = 0;
+    Dwarf_Unsigned next_cu_header   = 0;
+    Dwarf_Half header_cu_type       = 0;
+    Dwarf_Error error               = 0;
+    int cu_number                   = 0;
+    Dwarf_Bool is_info = 1;
 
     for(;;++cu_number) {
         Dwarf_Die no_die = 0;
         Dwarf_Die cu_die = 0;
         int res = DW_DLV_ERROR;
-        res = dwarf_next_cu_header(dbg,&cu_header_length,
+        res = dwarf_next_cu_header_d(dbg,is_info,&cu_header_length,
             &version_stamp, &abbrev_offset, &address_size,
-            &next_cu_header, &error);
+            &length_size,&extension_size,
+            &type_signature,&typeoffset,
+            &next_cu_header,
+            &header_cu_type, &error);
         if(res == DW_DLV_ERROR) {
             printf("Error in dwarf_next_cu_header\n");
             exit(1);
@@ -114,14 +123,14 @@ read_cu_list(Dwarf_Debug dbg)
             return;
         }
         /* The CU will have a single sibling, a cu_die. */
-        res = dwarf_siblingof(dbg,no_die,&cu_die,&error);
+        res = dwarf_siblingof_b(dbg,no_die,is_info,&cu_die,&error);
         if(res == DW_DLV_ERROR) {
-            printf("Error in dwarf_siblingof on CU die \n");
+            printf("Error in dwarf_siblingof_b on CU die \n");
             exit(1);
         }
         if(res == DW_DLV_NO_ENTRY) {
             /* Impossible case. */
-            printf("no entry! in dwarf_siblingof on CU die \n");
+            printf("no entry! in dwarf_siblingof_b  on CU die \n");
             exit(1);
         }
         get_die_and_siblings(dbg,cu_die,0);
@@ -136,6 +145,7 @@ get_die_and_siblings(Dwarf_Debug dbg, Dwarf_Die in_die,int in_level)
     Dwarf_Die cur_die=in_die;
     Dwarf_Die child = 0;
     Dwarf_Error error;
+    Dwarf_Bool is_info = 1;
     {
      /* To be consistent with simplereader we only count dies
         with names.  Makes debugging easier. */
@@ -179,9 +189,9 @@ get_die_and_siblings(Dwarf_Debug dbg, Dwarf_Die in_die,int in_level)
             get_die_and_siblings(dbg,child,in_level+1);
         }
         /* res == DW_DLV_NO_ENTRY */
-        res = dwarf_siblingof(dbg,cur_die,&sib_die,&error);
+        res = dwarf_siblingof_b (dbg,cur_die,is_info,&sib_die,&error);
         if(res == DW_DLV_ERROR) {
-            printf("Error in dwarf_siblingof , level %d \n",in_level);
+            printf("Error in dwarf_siblingof_b  , level %d \n",in_level);
             exit(1);
         }
         if(res == DW_DLV_NO_ENTRY) {
