@@ -50,7 +50,7 @@ cpifmissing $ts/orig.a.out orig.a.out
 if [ $? -ne 0 ]
 then
      echo fail test-alex1 run test1
-     echo "rerun: $ts/runtest.sh $withlibelf $withlibz"
+     echo "rerun test-alex1: runtest.sh $withlibelf $withlibz"
      exit 1
 fi
 ./test2 orig.a.out >out2

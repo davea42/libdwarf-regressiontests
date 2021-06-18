@@ -1,4 +1,15 @@
-Latest update: 7 November 2019
+Latest update: 18 June 2021
+
+NEWS: June 2021:
+The tests reflect the reorganization of the libdwarf
+source tree.  For best results provide a dwarfdump.conf
+(from the  libdwarf code/src/bin/dwarfdump directory of
+the source) in a standard place such as $HOME/dwarfdump.conf
+or  $HOME/.dwarfdump.conf before running the tests.
+As always on linux/unix the command 'ulimit -c unlimited'
+is required else a test looking for a core file
+will fail.
+
 
 NEWS November 2019: 
 The regression tests have now been run in full with no errors
