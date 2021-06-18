@@ -1,122 +1,122 @@
-Res val init: 0 DW_DLV_OK  line 65
-Res val get globals: 0 DW_DLV_OK  line 75
-Res val offdie: 0 DW_DLV_OK  line 86
-Res val diename: 0 DW_DLV_OK  line 93
+Res val init: 0 DW_DLV_OK  line 66
+Res val get globals: 0 DW_DLV_OK  line 76
+Res val offdie: 0 DW_DLV_OK  line 87
+Res val diename: 0 DW_DLV_OK  line 94
 Function name: print_die_and_children
-Res val child: 0 DW_DLV_OK  line 104
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+Res val child: 0 DW_DLV_OK  line 105
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 5 DW_TAG_formal_parameter
-  Res val get arg die offset: 0 DW_DLV_OK  line 144
+  Res val get arg die offset: 0 DW_DLV_OK  line 145
   die offset of formal: 0x27141
-  Res val get child DW_AT_type: 0 DW_DLV_OK  line 159
-  Res val Form: 0 DW_DLV_OK  line 165
-  Res val Formname: 0 DW_DLV_OK  line 174
+  Res val get child DW_AT_type: 0 DW_DLV_OK  line 160
+  Res val Form: 0 DW_DLV_OK  line 166
+  Res val Formname: 0 DW_DLV_OK  line 175
   Form 19 DW_FORM_ref4
-  Res val global formref: 0 DW_DLV_OK  line 177
+  Res val global formref: 0 DW_DLV_OK  line 178
    Type die offset 0x26323
-   Res val offdie for type die: 0 DW_DLV_OK  line 188
-   Res val dwarf_tag of typedie: 0 DW_DLV_OK  line 197
-   Res val get  tag name: 0 DW_DLV_OK  line 206
+   Res val offdie for type die: 0 DW_DLV_OK  line 189
+   Res val dwarf_tag of typedie: 0 DW_DLV_OK  line 198
+   Res val get  tag name: 0 DW_DLV_OK  line 207
    type die 22 DW_TAG_typedef
-   Res val type-diename: 0 DW_DLV_OK  line 216
+   Res val type-diename: 0 DW_DLV_OK  line 217
    type diename Dwarf_Debug
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 5 DW_TAG_formal_parameter
-  Res val get arg die offset: 0 DW_DLV_OK  line 144
+  Res val get arg die offset: 0 DW_DLV_OK  line 145
   die offset of formal: 0x27156
-  Res val get child DW_AT_type: 0 DW_DLV_OK  line 159
-  Res val Form: 0 DW_DLV_OK  line 165
-  Res val Formname: 0 DW_DLV_OK  line 174
+  Res val get child DW_AT_type: 0 DW_DLV_OK  line 160
+  Res val Form: 0 DW_DLV_OK  line 166
+  Res val Formname: 0 DW_DLV_OK  line 175
   Form 19 DW_FORM_ref4
-  Res val global formref: 0 DW_DLV_OK  line 177
+  Res val global formref: 0 DW_DLV_OK  line 178
    Type die offset 0x26084
-   Res val offdie for type die: 0 DW_DLV_OK  line 188
-   Res val dwarf_tag of typedie: 0 DW_DLV_OK  line 197
-   Res val get  tag name: 0 DW_DLV_OK  line 206
+   Res val offdie for type die: 0 DW_DLV_OK  line 189
+   Res val dwarf_tag of typedie: 0 DW_DLV_OK  line 198
+   Res val get  tag name: 0 DW_DLV_OK  line 207
    type die 22 DW_TAG_typedef
-   Res val type-diename: 0 DW_DLV_OK  line 216
+   Res val type-diename: 0 DW_DLV_OK  line 217
    type diename Dwarf_Die
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 5 DW_TAG_formal_parameter
-  Res val get arg die offset: 0 DW_DLV_OK  line 144
+  Res val get arg die offset: 0 DW_DLV_OK  line 145
   die offset of formal: 0x27177
-  Res val get child DW_AT_type: 0 DW_DLV_OK  line 159
-  Res val Form: 0 DW_DLV_OK  line 165
-  Res val Formname: 0 DW_DLV_OK  line 174
+  Res val get child DW_AT_type: 0 DW_DLV_OK  line 160
+  Res val Form: 0 DW_DLV_OK  line 166
+  Res val Formname: 0 DW_DLV_OK  line 175
   Form 19 DW_FORM_ref4
-  Res val global formref: 0 DW_DLV_OK  line 177
+  Res val global formref: 0 DW_DLV_OK  line 178
    Type die offset 0x26344
-   Res val offdie for type die: 0 DW_DLV_OK  line 188
-   Res val dwarf_tag of typedie: 0 DW_DLV_OK  line 197
-   Res val get  tag name: 0 DW_DLV_OK  line 206
+   Res val offdie for type die: 0 DW_DLV_OK  line 189
+   Res val dwarf_tag of typedie: 0 DW_DLV_OK  line 198
+   Res val get  tag name: 0 DW_DLV_OK  line 207
    type die 15 DW_TAG_pointer_type
-   Res val type-diename: -1 DW_DLV_NO_ENTRY  line 216
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+   Res val type-diename: -1 DW_DLV_NO_ENTRY  line 217
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 5 DW_TAG_formal_parameter
-  Res val get arg die offset: 0 DW_DLV_OK  line 144
+  Res val get arg die offset: 0 DW_DLV_OK  line 145
   die offset of formal: 0x27197
-  Res val get child DW_AT_type: 0 DW_DLV_OK  line 159
-  Res val Form: 0 DW_DLV_OK  line 165
-  Res val Formname: 0 DW_DLV_OK  line 174
+  Res val get child DW_AT_type: 0 DW_DLV_OK  line 160
+  Res val Form: 0 DW_DLV_OK  line 166
+  Res val Formname: 0 DW_DLV_OK  line 175
   Form 19 DW_FORM_ref4
-  Res val global formref: 0 DW_DLV_OK  line 177
+  Res val global formref: 0 DW_DLV_OK  line 178
    Type die offset 0x26364
-   Res val offdie for type die: 0 DW_DLV_OK  line 188
-   Res val dwarf_tag of typedie: 0 DW_DLV_OK  line 197
-   Res val get  tag name: 0 DW_DLV_OK  line 206
+   Res val offdie for type die: 0 DW_DLV_OK  line 189
+   Res val dwarf_tag of typedie: 0 DW_DLV_OK  line 198
+   Res val get  tag name: 0 DW_DLV_OK  line 207
    type die 22 DW_TAG_typedef
-   Res val type-diename: 0 DW_DLV_OK  line 216
+   Res val type-diename: 0 DW_DLV_OK  line 217
    type diename Dwarf_Signed
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 52 DW_TAG_variable
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 52 DW_TAG_variable
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 52 DW_TAG_variable
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 52 DW_TAG_variable
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 52 DW_TAG_variable
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 52 DW_TAG_variable
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 11 DW_TAG_lexical_block
-  Now do siblingof call line 230
-  Res val child sibling: 0 DW_DLV_OK  line 232
-  Res val dwarf_tag: 0 DW_DLV_OK  line 117
-  Res val get tag name: 0 DW_DLV_OK  line 129
+  Now do siblingof call line 231
+  Res val child sibling: 0 DW_DLV_OK  line 233
+  Res val dwarf_tag: 0 DW_DLV_OK  line 118
+  Res val get tag name: 0 DW_DLV_OK  line 130
   tag 11 DW_TAG_lexical_block
-  Now do siblingof call line 230
-  Res val child sibling: -1 DW_DLV_NO_ENTRY  line 232
-Res val finish: 0 DW_DLV_OK  line 247
+  Now do siblingof call line 231
+  Res val child sibling: -1 DW_DLV_NO_ENTRY  line 233
+Res val finish: 0 DW_DLV_OK  line 248

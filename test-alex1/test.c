@@ -23,16 +23,18 @@ void print_type_name(Dwarf_Debug dbg, Dwarf_Off offset) {
 }
 
 int main() {
-  int fd;
-  Dwarf_Debug dbg;
-  Dwarf_Error err;
-  Dwarf_Die new_die;
-  Dwarf_Unsigned next_cu_hdr;
-  Dwarf_Unsigned cu_hdr_len;
-  Dwarf_Half version_stamp, address_size;
-  Dwarf_Off abbrev_offset;
-  int c_res;
-  Dwarf_Error dwarf_err;
+    int fd  = 0;
+    Dwarf_Debug dbg  = 0;
+    Dwarf_Error err  = 0;
+    Dwarf_Die new_die  = 0;
+    Dwarf_Unsigned cu_hdr_len = 0;
+    Dwarf_Half version_stamp        = 0;
+    Dwarf_Off abbrev_offset    = 0;
+    Dwarf_Half address_size         = 0;
+    Dwarf_Unsigned next_cu_header   = 0;
+    int cu_number                   = 0;
+    Dwarf_Bool is_info              = 1;
+    int c_res;
   
   fd = open("orig.a.out", O_RDONLY);
   if (dwarf_init(fd, DW_DLC_READ, NULL, NULL, &dbg, &err) != DW_DLV_OK) {
@@ -49,23 +51,36 @@ int main() {
   if (dwarf_offdie(dbg, 0x5e, &new_die, &err) != DW_DLV_OK) {
     printf("Failed\n");
   }
-  c_res = dwarf_next_cu_header(dbg, &cu_hdr_len, &version_stamp, &abbrev_offset,
-			       &address_size, &next_cu_hdr, &dwarf_err);
-  c_res = dwarf_next_cu_header(dbg, &cu_hdr_len, &version_stamp, &abbrev_offset,
-			       &address_size, &next_cu_hdr, &dwarf_err);
-  c_res = dwarf_next_cu_header(dbg, &cu_hdr_len, &version_stamp, &abbrev_offset,
-			       &address_size, &next_cu_hdr, &dwarf_err);
+  c_res = dwarf_next_cu_header_d(dbg,is_info,&cu_hdr_len, 
+    &version_stamp, &abbrev_offset,
+       &address_size, 
+       0,0,0,0,
+       &next_cu_header, 
+       0,
+       &err);
+  c_res = dwarf_next_cu_header_d(dbg,is_info, &cu_hdr_len,
+       &version_stamp, &abbrev_offset,
+       &address_size, 
+       0,0,0,0,
+       &next_cu_header, 
+       0,
+       &err);
+  c_res = dwarf_next_cu_header_d(dbg,is_info, &cu_hdr_len,
+       &version_stamp, &abbrev_offset,
+       &address_size, 
+       0,0,0,0,
+       &next_cu_header, 
+       0,
+       &err);
   if (dwarf_offdie(dbg, 0x219, &new_die, &err) != DW_DLV_OK) {
     printf("Failed\n");
   }
-
   print_type_name(dbg,0x5e);
   print_type_name(dbg,0xb5);
   print_type_name(dbg,0x14b);
   print_type_name(dbg,0x1b1);
   print_type_name(dbg,0x219);
 #endif
-
   return 0;
 }
 

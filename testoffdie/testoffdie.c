@@ -50,6 +50,7 @@ int main(int argc, char **argv)
     Dwarf_Half dietag = 0;
     const char *tagname = 0;
     Dwarf_Unsigned offarg = 0;
+    Dwarf_Bool is_info = 1;
 
     if (argc != 2) {
         printf("Requires one argument, path to test source.\n");
@@ -228,7 +229,7 @@ int main(int argc, char **argv)
             
         }
         printf("  Now do siblingof call line %d\n",__LINE__);
-        res = dwarf_siblingof(dbg,childdie,&diesib,&error);
+        res = dwarf_siblingof_b(dbg,childdie,is_info,&diesib,&error);
         printresval("  ","child sibling",res,__LINE__);
         if (res == DW_DLV_ERROR) {
             dwarf_dealloc(dbg,error,DW_DLA_ERROR);
