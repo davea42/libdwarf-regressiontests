@@ -146,7 +146,7 @@ get_die_and_siblings(Dwarf_Debug dbg, Dwarf_Die in_die,int in_level)
     Dwarf_Die cur_die=in_die;
     Dwarf_Die child = 0;
     Dwarf_Error error;
-    Dwarf_Bool is_info = 1;
+    Dwarf_Bool is_info = dwarf_get_die_infotypes_flag(in_die);
     {
      /* To be consistent with simplereader we only count dies
         with names.  Makes debugging easier. */
@@ -169,7 +169,7 @@ get_die_and_siblings(Dwarf_Debug dbg, Dwarf_Die in_die,int in_level)
           printf("FAIL: dwarf_CU_dieoffset_given_die did not work\n");
           exit(1);
        }
-       res = dwarf_offdie(dbg,cudieoff,&cudie,&error);
+       res = dwarf_offdie_b(dbg,cudieoff,is_info,&cudie,&error);
        if(res != DW_DLV_OK) {
           printf("FAIL: dwarf_offdie did not work\n");
           exit(1);

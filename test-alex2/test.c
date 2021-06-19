@@ -12,7 +12,8 @@
 #include "libdwarf.h"
 
 
-void print_type_name(Dwarf_Debug dbg, Dwarf_Off offset) {
+void print_type_name(Dwarf_Debug dbg, 
+  Dwarf_Bool is_info, Dwarf_Off offset) {
   Dwarf_Error err = 0;
   Dwarf_Die new_die = 0;
   Dwarf_Bool res = 0;
@@ -21,7 +22,8 @@ void print_type_name(Dwarf_Debug dbg, Dwarf_Off offset) {
   Dwarf_Half version = 2;
   Dwarf_Half offset_size = 4;
 
-  if (dwarf_offdie(dbg, offset, &new_die, &err) != DW_DLV_OK) {
+  if (dwarf_offdie_b(dbg, offset, is_info, &new_die, &err) !=
+    DW_DLV_OK) {
     printf("Failed\n");
     exit(1);
   }
@@ -52,6 +54,7 @@ int main() {
   Dwarf_Off abbrev_offset;
   int c_res;
   Dwarf_Error dwarf_err;
+  Dwarf_Bool is_info = 1;
   
   fd = open("orig.a.out", O_RDONLY);
   if (dwarf_init_b(fd, DW_DLC_READ,
@@ -59,11 +62,11 @@ int main() {
     printf("Error\n");
     return 1;
   }
-  print_type_name(dbg,0x72); 
-  print_type_name(dbg,0xb5);
-  print_type_name(dbg,0x14b);
-  print_type_name(dbg,0x1b1);
-  print_type_name(dbg,0x219);
+  print_type_name(dbg,is_info,0x72); 
+  print_type_name(dbg,is_info,0xb5);
+  print_type_name(dbg,is_info,0x14b);
+  print_type_name(dbg,is_info,0x1b1);
+  print_type_name(dbg,is_info,0x219);
 
 
   return 0;

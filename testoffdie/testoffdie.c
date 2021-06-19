@@ -83,7 +83,7 @@ int main(int argc, char **argv)
         }
         dwarf_globals_dealloc(dbg,glob,globcount);
     }
-    res = dwarf_offdie(dbg,dieoff,&funcdie,&error);
+    res = dwarf_offdie_b(dbg,dieoff,is_info,&funcdie,&error);
     printresval("","offdie",res,__LINE__);
     if (res == DW_DLV_ERROR) {
         dwarf_dealloc(dbg,error,DW_DLA_ERROR);
@@ -185,7 +185,8 @@ int main(int argc, char **argv)
             }
             printf("   Type die offset 0x%lu\n",
                 (unsigned long)typeoffset);
-            res = dwarf_offdie(dbg,typeoffset,&typedie,&error);
+            res = dwarf_offdie_b(dbg,typeoffset,is_info,
+                &typedie,&error);
             printresval("   ","offdie for type die",res,__LINE__);
             if (res == DW_DLV_ERROR) {
                 dwarf_dealloc(dbg,error,DW_DLA_ERROR);

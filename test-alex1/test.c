@@ -7,12 +7,13 @@
 
 /*#define WORKING 1 */
 
-void print_type_name(Dwarf_Debug dbg, Dwarf_Off offset) {
+void print_type_name(Dwarf_Debug dbg,Dwarf_Bool is_info, Dwarf_Off offset) {
   Dwarf_Error err;
   Dwarf_Die new_die;
   Dwarf_Bool res;
 
-  if (dwarf_offdie(dbg, offset, &new_die, &err) != DW_DLV_OK) {
+  if (dwarf_offdie_b(dbg, offset,
+     is_info,  &new_die, &err) != DW_DLV_OK) {
     printf("Failed\n");
   }
   if (dwarf_hasattr(new_die, DW_AT_name, &res, &err) == DW_DLV_OK && res) {
@@ -43,13 +44,13 @@ int main() {
     return 1;
   }
 #if WORKING
-  print_type_name(dbg,0x5e);
-  print_type_name(dbg,0xb5);
-  print_type_name(dbg,0x14b);
-  print_type_name(dbg,0x1b1);
-  print_type_name(dbg,0x219);
+  print_type_name(dbg,is_info,0x5e);
+  print_type_name(dbg,is_info,0xb5);
+  print_type_name(dbg,is_info,0x14b);
+  print_type_name(dbg,is_info,0x1b1);
+  print_type_name(dbg,is_info,0x219);
 #else
-  if (dwarf_offdie(dbg, 0x5e, &new_die, &err) != DW_DLV_OK) {
+  if (dwarf_offdie_b(dbg,0x5e,is_info, &new_die, &err) != DW_DLV_OK) {
     printf("Failed\n");
   }
   c_res = dwarf_next_cu_header_d(dbg,is_info,&cu_hdr_len, 
@@ -73,14 +74,15 @@ int main() {
        &next_cu_header, 
        0,
        &err);
-  if (dwarf_offdie(dbg, 0x219, &new_die, &err) != DW_DLV_OK) {
+  if (dwarf_offdie_b(dbg, 0x219,is_info,
+      &new_die, &err) != DW_DLV_OK) {
     printf("Failed\n");
   }
-  print_type_name(dbg,0x5e);
-  print_type_name(dbg,0xb5);
-  print_type_name(dbg,0x14b);
-  print_type_name(dbg,0x1b1);
-  print_type_name(dbg,0x219);
+  print_type_name(dbg,is_info,0x5e);
+  print_type_name(dbg,is_info,0xb5);
+  print_type_name(dbg,is_info,0x14b);
+  print_type_name(dbg,is_info,0x1b1);
+  print_type_name(dbg,is_info,0x219);
 #endif
   return 0;
 }
