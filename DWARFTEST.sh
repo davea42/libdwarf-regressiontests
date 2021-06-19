@@ -1253,7 +1253,7 @@ runtest $d1 $d2  x86/dwarfdumpv4.3 -a -R  -v -v -v -v -v -v $x
 runtest $d1 $d2 legendre/libmpich.so.1.0 -ka  $x
 runtest $d1 $d2 legendre/libmpich.so.1.0 -a  $x
 runtest $d1 $d2 legendre/libmpich.so.1.0 -l  $x
-runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix2 $x
+runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf   -x abi=mips $x
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v  $x
 runtest $d1 $d2  mucci/main.o -c -R -ka  -v -v -v -v -v -v $x
 done
@@ -1264,7 +1264,7 @@ runtest $d1 $d2 corruptdwarf-a/simplereader.elf -i
 runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a  
 runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a  -vvv
 
-runtest $d1 $d2 irixn32/dwarfdump -i -x name=./dwarfdump.conf -x abi=mips-irix2 -g
+runtest $d1 $d2 irixn32/dwarfdump -i -x name=./dwarfdump.conf -x abi=mips -g
 
 # Test support for DW_FORM_GNU_strp_alt
 runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=hughes/krb5-1.11.3-38.fc20.x86_64 
@@ -1746,14 +1746,14 @@ mklocal enciso4
 cd ..
 
 # -g: use old dwarf loclist code.
-runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf  -x abi=mips-irix
+runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf  -x abi=mips
 
 # -u lets you provide a cu-name so you can select a CU and 
 # skip others when printing DIEs
-runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips-irix
+runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips
 #The following is for URI style test completeness
-runtest $d1 $d2 irixn32/dwarfdump -u  dwconf%2ec -x name=dwarfdump%2econf  -x abi=mips-irix
-runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips-irix
+runtest $d1 $d2 irixn32/dwarfdump -u  dwconf%2ec -x name=dwarfdump%2econf  -x abi=mips
+runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips
 
 #Following tests -c and URI, the one restricted to GNU AS 
 # only checks and reports on errors found in CUs with producer GNU AS.
@@ -1874,13 +1874,12 @@ runtest $d1 $d2 ia64/mytry.ia64 -F -x name=dwarfdump.conf -x abi=ia64
 echo "The following is a misspelling of abi. Checks for error spelling so leave it in."
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple 
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3 
-runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix
+runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips
 # Restrict to a single fde report
-runtest $d1 $d2 irixn32/dwarfdump -f -H 1  -x name=./dwarfdump.conf -x abi=mips-irix
+runtest $d1 $d2 irixn32/dwarfdump -f -H 1  -x name=./dwarfdump.conf -x abi=mips
 # Restrict to a single fde report with no function names shown
-runtest $d1 $d2 irixn32/dwarfdump -f -H 1 -n  -x name=./dwarfdump.conf -x abi=mips-irix
-# mips-irix2 is the new name for what was mips-simple.
-runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-irix2
+runtest $d1 $d2 irixn32/dwarfdump -f -H 1 -n  -x name=./dwarfdump.conf -x abi=mips
+runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conferr1 -x abi=mips
 runtest $d1 $d2 irixn32/dwarfdump --show-dwarfdump-conf -f -x name=./dwarfdump.conferr1 -x abi=mips
@@ -1894,7 +1893,7 @@ runtest $d1 $d2 irixn32/dwarfdump -i -G -d
 # Using old loclist call. Without -v nothing prints, so use -v.
 # Adding -D is useless since then the attributes don't print at all so
 # one cannot see the removal of offset from the loclist.
-runtest $d1 $d2 irixn32/libc.so -g  -v -x name=dwarfdump.conf  -x abi=mips-irix
+runtest $d1 $d2 irixn32/libc.so -g  -v -x name=dwarfdump.conf  -x abi=mips
 runtest $d1 $d2 --show-dwarfdump-conf ia32/mytry.ia32 -i -G  
 runtest $d1 $d2 ia32/mytry.ia32 -i -G  
 runtest $d1 $d2 ia32/mytry.ia32 -i -G -d  
