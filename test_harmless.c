@@ -240,7 +240,7 @@ int main()
 
     res = dwarf_init_path(filepath,
         truepath,truepathsize,
-        DW_DLC_READ,DW_GROUPNUMBER_ANY,errhand,errarg, &dbg,"",0,0,
+        0,DW_GROUPNUMBER_ANY,errhand,errarg, &dbg,"",0,0,
         &error);
      
     if(res != DW_DLV_OK) {

@@ -38,7 +38,7 @@ int main() {
     int c_res;
   
   fd = open("orig.a.out", O_RDONLY);
-  if (dwarf_init_b(fd, DW_DLC_READ, 
+  if (dwarf_init_b(fd, 0, 
     DW_GROUPNUMBER_ANY,NULL, NULL, &dbg, &err) != DW_DLV_OK) {
     printf("Error\n");
     return 1;

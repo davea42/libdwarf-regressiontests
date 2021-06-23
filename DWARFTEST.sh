@@ -255,9 +255,9 @@ dwinc=$codedir/libdwarf
 #baseopts='-F'
 if [ x$withlibelf = "xwithlibelf" ]
 then
-  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
+  baseopts='-b -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
 else
-  baseopts='-b -c  -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
+  baseopts='-b -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
 fi
 
 kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku"
@@ -1019,7 +1019,7 @@ runtest $d1 $d2 emre5/test33_64_opt_fpo_split.dwp
 runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp 
 runtest $d1 $d2 emre6/class_64_opt_fpo_split --print-gnu-debuglink
 
-runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b -c 
+runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b
 
 # This is an object with both dwo and non-dwo sections.
 # It's not correct, but it at least has both groups
@@ -1029,7 +1029,7 @@ runtest $d1 $d2   camp/empty.o -a
 runtest $d1 $d2   camp/empty.o -a -x groupnumber=2
 
 # DW201712-001: Was failing to check augmentation length for fde.
-runtest $d1 $d2   sarubbo-10/1.crashes.bin -a -b -c -d -e -f -F -g -G -i -I \
+runtest $d1 $d2   sarubbo-10/1.crashes.bin -a -b -d -e -f -F -g -G -i -I \
  -m -M -N -p -P -R -r -s -ta -w -y
 
 
@@ -1255,7 +1255,7 @@ runtest $d1 $d2 legendre/libmpich.so.1.0 -a  $x
 runtest $d1 $d2 legendre/libmpich.so.1.0 -l  $x
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf   -x abi=mips $x
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v  $x
-runtest $d1 $d2  mucci/main.o -c -R -ka  -v -v -v -v -v -v $x
+runtest $d1 $d2  mucci/main.o -R -ka  -v -v -v -v -v -v $x
 done
 
 runtest $d1 $d2 augmentation/a.out -f 
@@ -1416,7 +1416,7 @@ fi
 
 if [ $NLIZE = 'n' ]
 then
-  runtest $d1 $d2   sarubbo-8/1.crashes.bin  -a -b -c -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
+  runtest $d1 $d2   sarubbo-8/1.crashes.bin  -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
 else
   skipcount=`expr $skipcount + 1`
   echo "=====SKIP  sarubbo-8 with NLIZE"
@@ -1424,7 +1424,7 @@ fi
 
 if [ $NLIZE = 'n' ]
 then
-  runtest  $d1 $d2   sarubbo-9/3.crashes.bin -a -b -c -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
+  runtest  $d1 $d2   sarubbo-9/3.crashes.bin -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
   chkres $?  sarubbo-8 
 else
   echo "=====SKIP  sarubbo-9 with NLIZE"
@@ -1755,11 +1755,15 @@ runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mi
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf%2ec -x name=dwarfdump%2econf  -x abi=mips
 runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips
 
-#Following tests -c and URI, the one restricted to GNU AS 
+#Following tests -c<str> and URI, the one restricted to GNU AS 
+# -cs means something different, not the same as -cg !
+# The unadorned -c means print old .debug_loc in an unreliable way.
+# which is really odd and confusing.
 # only checks and reports on errors found in CUs with producer GNU AS.
 runtest $d1 $d2 modula2/write-fixed -ka -cGNU%20AS  -M -R
 runtest $d1 $d2 modula2/write-fixed -ka -M -R
-runtest $d1 $d2  sparc/tcombined.o -a -R  -v -v -v -v -v -v
+# An unadorned -c here to provoke a message from dwarfdump options checking.
+runtest $d1 $d2  sparc/tcombined.o -c -a -R  -v -v -v -v -v -v
 runtest $d1 $d2  sparc/tcombined.o -ka -R  -v -v -v -v -v -v
 runtest $d1 $d2  kartashev2/combined.o -a -R  -v -v -v -v -v -v
 runtest $d1 $d2  kartashev2/combined.o -ka -R  -v -v -v -v -v -v
@@ -1767,12 +1771,12 @@ runtest $d1 $d2  x86/dwarfdumpv4.3 -a -R  -v -v -v -v -v -v
 runtest $d1 $d2  x86/dwarfdumpv4.3 -ka -R -v -v -v -v -v -v
 runtest $d1 $d2  mucci/stream.o -a -R   -v -v -v -v -v -v
 runtest $d1 $d2  mucci/stream.o -ka -R   -v -v -v -v -v -v
-runtest $d1 $d2  mucci/stream.o -c -R -ka  
-runtest $d1 $d2  mucci/stream.o -c -R -ka  -v -v -v -v -v -v
+runtest $d1 $d2  mucci/stream.o  -R -ka  
+runtest $d1 $d2  mucci/stream.o  -R -ka  -v -v -v -v -v -v
 runtest $d1 $d2  mucci/main.o -a -R   -v -v -v -v -v -v
 runtest $d1 $d2  mucci/main.o -ka -R   -v -v -v -v -v -v
-runtest $d1 $d2  mucci/main.o -c -R -ka  -v -v -v -v -v -v
-runtest $d1 $d2  mucci/main.o -c -R -ka  
+runtest $d1 $d2  mucci/main.o  -R -ka  -v -v -v -v -v -v
+runtest $d1 $d2  mucci/main.o  -R -ka  
 runtest $d1 $d2 mucci/stream.o -a -R -M
 runtest $d1 $d2 mucci/stream.o -i -e
 runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F 
@@ -1855,10 +1859,10 @@ runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a  -v -v -v -v -v -v
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -ka  -v -v -v -v -v -v 
 # This one works, return address reg 108 allowed.
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v 
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -c   -R -v -v -v -v -v -v 
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -i   -R -v -v -v -v -v -v 
 # This one works, return address reg 108 allowed.
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a -R -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc 
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -c -R -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc 
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -i -R -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc 
 
 runtest $d1 $d2  louzon/ppcobj.o -a  -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 runtest $d1 $d2  louzon/ppcobj.o -ka -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc

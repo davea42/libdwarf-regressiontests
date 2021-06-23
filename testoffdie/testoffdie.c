@@ -60,7 +60,7 @@ int main(int argc, char **argv)
 
     res = dwarf_init_path(filename,
         true_path, true_path_bufferlen,
-        DW_DLC_READ, DW_GROUPNUMBER_ANY,
+        0, DW_GROUPNUMBER_ANY,
         errhand,errarg,
         &dbg,0,0,0,&error);
     printresval("","init",res,__LINE__);

@@ -658,7 +658,7 @@ process_one_file(Elf * elf, int infd, int outfd)
         Dwarf_Ptr       errarg = 0;
 #endif
 
-	dres = dwarf_elf_init(elf, DW_DLC_READ, NULL, NULL, &dbg, &error);
+	dres = dwarf_elf_init(elf, 0, NULL, NULL, &dbg, &error);
 	if (dres == DW_DLV_NO_ENTRY) {
 		printf("No DWARF information present in %s\n", in_file_name);
 		return 0;
@@ -743,7 +743,7 @@ process_concat_file(Elf * elf, char *filename, int fd, int filenumber)
 	total_cus = total_dies = total_duplicates =
 	total_structs = total_unnamed_structs = duplicate_structs = 0;
 
-	dres = dwarf_elf_init(elf, DW_DLC_READ, NULL, NULL, &concat_dbg,
+	dres = dwarf_elf_init(elf, 0, NULL, NULL, &concat_dbg,
 					&error);
 	if (dres == DW_DLV_NO_ENTRY) {
 		printf("No DWARF information present in %s\n", filename);
@@ -4455,7 +4455,7 @@ trace_file(Elf * elf, int fd)
 	Dwarf_Die		cu_die = 0;
 	Dwarf_Unsigned		next_cu_offset = 0, dres;
 
-	dres = dwarf_elf_init(elf, DW_DLC_READ, NULL, NULL, &dbg, &error);
+	dres = dwarf_elf_init(elf, 0, NULL, NULL, &dbg, &error);
 	if (dres == DW_DLV_NO_ENTRY) {
 		printf("No DWARF information present in %s\n", in_file_name);
 		return;
@@ -5286,7 +5286,7 @@ concatenate (Elf *elf, int infd, int outfd)
 	Dwarf_Error	error; /* a structure */
 	Elf		*concat_elf;
 
-	dres = dwarf_elf_init(elf, DW_DLC_READ, NULL, NULL, &dbg, &error);
+	dres = dwarf_elf_init(elf, 0, NULL, NULL, &dbg, &error);
 	if (dres == DW_DLV_NO_ENTRY) {
 		printf("No DWARF information present in %s\n", in_file_name);
 		return;

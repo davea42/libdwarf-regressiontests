@@ -48,13 +48,13 @@ int main( int argc, char ** argv ) {
 		return 5;
 		}
 		
-	status = dwarf_elf_init( elfp, DW_DLC_READ, NULL, NULL, & dbg, & error );
+	status = dwarf_elf_init( elfp, 0, NULL, NULL, & dbg, & error );
 	if( status != DW_DLV_OK ) {
 		fprintf( stderr, "failed to dwarf_elf_init().\n" );
 		return 2;
 		}
 #else
-	status = dwarf_init( fid, DW_DLC_READ, NULL, NULL, & dbg, NULL );
+	status = dwarf_init( fid, 0, NULL, NULL, & dbg, NULL );
 	if( status != DW_DLV_OK ) {
 		fprintf( stderr, "failed to dwarf_init().\n" );
 		return 2;

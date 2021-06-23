@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
   if (fd < 0) {
     printf("Failure attempting to open \"%s\"\n", filepath);
   }
-  res = dwarf_init(fd, DW_DLC_READ, errhand, errarg, &dbg, &error);
+  res = dwarf_init(fd, 0, errhand, errarg, &dbg, &error);
   if (res != DW_DLV_OK) {
     printf("Giving up, cannot do DWARF processing\n");
     exit(1);

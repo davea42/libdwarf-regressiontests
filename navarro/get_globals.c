@@ -27,7 +27,7 @@ int main()
         printf("Failed open %s\n",name);
         exit(1);
     }
-    res = dwarf_init(fd,DW_DLC_READ, 0,0,&dbg,&error);
+    res = dwarf_init(fd,0,0,0,&dbg,&error);
     if (res == DW_DLV_OK) {
        printf("dwarf_init_b ok\n");
     } else {
