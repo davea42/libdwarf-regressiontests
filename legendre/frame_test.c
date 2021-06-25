@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
       perror("Could not open ./libmpich.so.1.0 for test");
       return -1;
    }
-   result = dwarf_init_b(fd, 0, 
+   result = dwarf_init_b(fd,
         DW_GROUPNUMBER_ANY,NULL, NULL, &dbg, &err);
    assert(result == DW_DLV_OK);
 

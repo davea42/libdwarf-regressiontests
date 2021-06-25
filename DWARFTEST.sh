@@ -1633,7 +1633,7 @@ if test $withlibelf = "withlibelf" ; then
   echo "=====START  $testsrc/findcu runtest.sh $withlibelf $withlibz"
   mklocal findcu 
     sh $testsrc/findcu/runtest.sh  $withlibelf $withlibz 
-    chkres $? '$testsrc/findcu/cutest-of-a-libdwarf-interface'
+    chkres $? "$testsrc/findcu/cutest-of-a-libdwarf-interface"
   cd ..
 else
   echo "=====SKIP  $testsrc/findcu runtest.sh  $withlibelf $withlibz"
@@ -1678,16 +1678,16 @@ if test $withlibelf = "withlibelf" ; then
     chkresn $r "$testsrc/dwgenc/runtest.sh" 1
   cd ..
 else
-  echo "====SKIP 1 $tstsrc/dwgenc/runtest.sh no libelf"
+  echo "====SKIP 1 $testsrc/dwgenc/runtest.sh no libelf"
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   $tstsrc/frame1/runtest.sh $withlibelf $withlibz"
+echo "=====START   $testsrc/frame1/runtest.sh $withlibelf $withlibz"
 mklocal frame1 
   echo "sh runtest.sh  $withlibelf $withlibz"
   sh $testsrc/frame1/runtest.sh $withlibelf $withlibz
   r=$?
-  chkres $r $tstsrc/frame1
+  chkres $r $testsrc/frame1
 cd ..
 
 if [ $NLIZE = 'n' ]
@@ -1696,53 +1696,53 @@ then
   then
     if [ $withlibelf = "withlibelf" ]
     then
-      echo "====SKIP 1 $tstsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
+      echo "====SKIP 1 $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
       skipcount=`expr $skipcount + 1`
-      #echo "=====START   $tstsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
+      #echo "=====START   $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
       # This has serious problems with leaks, so
       # do not do $NLIZE for now..
       #mklocal dwarfextract
       #  rm -f dwarfextract
       #  sh $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz
-      #  chkres $?  $tstsrc/dwarfextract
+      #  chkres $?  $testsrc/dwarfextract
       #cd ..
     else
-      echo "====SKIP 1 $tstsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
+      echo "====SKIP 1 $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
       skipcount=`expr $skipcount + 1`
     fi
   else
-    echo "=====SKIP 1 $tstsrc/dwarfextract/runtest.sh with big endian test host"
+    echo "=====SKIP 1 $testsrc/dwarfextract/runtest.sh with big endian test host"
     skipcount=`expr $skipcount + 1`
   fi
 else
-  echo "=====SKIP 1 $tstsrc/dwarfextract/runtest.sh with NLIZE"
+  echo "=====SKIP 1 $testsrc/dwarfextract/runtest.sh with NLIZE"
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   $tstsrc/sandnes2/runtest.sh"
+echo "=====START   $testsrc/sandnes2/runtest.sh"
 mklocal sandnes2
   sh $testsrc/sandnes2/runtest.sh
   r=$?
-  chkres $r  $tstsrc/sandnes2
+  chkres $r  $testsrc/sandnes2
 cd ..
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START   $tstsrc/legendre/runtest.sh $withlibelf $withlibz"
+  echo "=====START   $testsrc/legendre/runtest.sh $withlibelf $withlibz"
   mklocal legendre
     sh $testsrc/legendre/runtest.sh $withlibelf $withlibz
     r=$?
-    chkres $r  $tstsrc/legendre
+    chkres $r  $testsrc/legendre
   cd ..
 else
-  echo "=====SKIP 1  $tstsrc/legendre/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP 1  $testsrc/legendre/runtest.sh NLIZE as it has leaks"
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   $tstsrc/enciso4/runtest.sh"
+echo "=====START   $testsrc/enciso4/runtest.sh"
 mklocal enciso4
   sh $testsrc/enciso4/runtest.sh
-  chkres $?  $tstsrc/enciso4
+  chkres $?  $testsrc/enciso4
 cd ..
 
 # -g: use old dwarf loclist code.
@@ -1804,25 +1804,25 @@ runtest $d1 $d2 legendre/libmpich.so.1.0 -ka
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START $tstsrc/test-alex1/runtest.sh $withlibelf $withlibz"
+  echo "=====START $testsrc/test-alex1/runtest.sh $withlibelf $withlibz"
   mklocal test-alex1
     sh $testsrc/test-alex1/runtest.sh $withlibelf $withlibz
-    chkres $?  $tstsrc/test-alex1
+    chkres $?  $testsrc/test-alex1
   cd ..
 else
   skipcount=`expr $skipcount + 1`
-  echo "=====SKIP 1 $tstsrc/test-alex1/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP 1 $testsrc/test-alex1/runtest.sh NLIZE as it has leaks"
 fi
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START $tstsrc/test-alex2/runtest.sh $withlibelf $withlibz"
+  echo "=====START $testsrc/test-alex2/runtest.sh $withlibelf $withlibz"
   mklocal test-alex2
     sh $testsrc/test-alex2/runtest.sh $withlibelf $withlibz
-    chkres $?  $tstsrc/test-alex2
+    chkres $?  $testsrc/test-alex2
   cd ..
 else
-  echo "=====SKIP 1 $tstsrc/test-alex2/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP 1 $testsrc/test-alex2/runtest.sh NLIZE as it has leaks"
   skipcount=`expr $skipcount + 1`
 fi
 
