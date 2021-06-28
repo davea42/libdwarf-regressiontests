@@ -13,40 +13,40 @@ high_pc checking checking_this_compiler
 high_pc checking close_a_file 
 high_pc checking process_one_file 
 high_pc checking hasprefix 
-high_pc checking suppress_check_dwarf highpc   0x0000003d highpcb  0x0000003d lowpc    0x00000000 
-high_pc checking PRINT_CHECK_RESULT highpc   0x00000070 highpcb  0x00000070 lowpc    0x00000040 
-high_pc checking print_specific_checks_results highpc   0x0000037e highpcb  0x0000037e lowpc    0x00000070 
-high_pc checking qsort_compare_compiler highpc   0x000003d7 highpcb  0x000003d7 lowpc    0x00000380 
-high_pc checking reset_overall_CU_error_data highpc   0x00000493 highpcb  0x00000493 lowpc    0x000003e0 
-high_pc checking remove_quotes_pair highpc   0x00000528 highpcb  0x00000528 lowpc    0x000004a0 
-high_pc checking <no DW_AT_name attr> highpc   0x00000625 highpcb  0x00000625 lowpc    0x00000530 
-high_pc checking build_linkonce_info highpc   0x00000794 highpcb  0x00000794 lowpc    0x00000630 
-high_pc checking tag_specific_checks_setup highpc   0x0000082b highpcb  0x0000082b lowpc    0x000007a0 
-high_pc checking <no DW_AT_name attr> highpc   0x00000836 highpcb  0x00000836 lowpc    0x00000830 
+high_pc checking suppress_check_dwarf highpcb  0x0000003d lowpc    0x00000000 
+high_pc checking PRINT_CHECK_RESULT highpcb  0x00000070 lowpc    0x00000040 
+high_pc checking print_specific_checks_results highpcb  0x0000037e lowpc    0x00000070 
+high_pc checking qsort_compare_compiler highpcb  0x000003d7 lowpc    0x00000380 
+high_pc checking reset_overall_CU_error_data highpcb  0x00000493 lowpc    0x000003e0 
+high_pc checking remove_quotes_pair highpcb  0x00000528 lowpc    0x000004a0 
+high_pc checking <no DW_AT_name attr> highpcb  0x00000625 lowpc    0x00000530 
+high_pc checking build_linkonce_info highpcb  0x00000794 lowpc    0x00000630 
+high_pc checking tag_specific_checks_setup highpcb  0x0000082b lowpc    0x000007a0 
+high_pc checking <no DW_AT_name attr> highpcb  0x00000836 lowpc    0x00000830 
 high_pc checking reset_compiler_entry 
-high_pc checking update_compiler_target highpc   0x00000a8d highpcb  0x00000a8d lowpc    0x00000840 
-high_pc checking add_cu_name_compiler_target highpc   0x00000b2a highpcb  0x00000b2a lowpc    0x00000a90 
+high_pc checking update_compiler_target highpcb  0x00000a8d lowpc    0x00000840 
+high_pc checking add_cu_name_compiler_target highpcb  0x00000b2a lowpc    0x00000a90 
 high_pc checking cu_data_is_set 
-high_pc checking <no DW_AT_name attr> highpc   0x00000cb9 highpcb  0x00000cb9 lowpc    0x00000b30 
-high_pc checking print_error_and_continue highpc   0x00000dee highpcb  0x00000dee lowpc    0x00000cc0 
-high_pc checking print_error highpc   0x00000e34 highpcb  0x00000e34 lowpc    0x00000df0 
-high_pc checking get_producer_name highpc   0x00000f4e highpcb  0x00000f4e lowpc    0x00000e40 
-high_pc checking get_cu_name highpc   0x000010cd highpcb  0x000010cd lowpc    0x00000f50 
-high_pc checking old_get_cu_name highpc   0x0000126c highpcb  0x0000126c lowpc    0x000010d0 
-high_pc checking should_skip_this_cu highpc   0x00001423 highpcb  0x00001423 lowpc    0x00001270 
-high_pc checking DWARF_CHECK_COUNT highpc   0x00001479 highpcb  0x00001479 lowpc    0x00001430 
-high_pc checking DWARF_ERROR_COUNT highpc   0x000014bf highpcb  0x000014bf lowpc    0x00001480 
-high_pc checking DWARF_CHECK_ERROR_PRINT_CU highpc   0x000014e6 highpcb  0x000014e6 lowpc    0x000014c0 
-high_pc checking DWARF_CHECK_ERROR highpc   0x00001559 highpcb  0x00001559 lowpc    0x000014f0 
-high_pc checking print_any_harmless_errors highpc   0x00001649 highpcb  0x00001649 lowpc    0x00001560 
+high_pc checking <no DW_AT_name attr> highpcb  0x00000cb9 lowpc    0x00000b30 
+high_pc checking print_error_and_continue highpcb  0x00000dee lowpc    0x00000cc0 
+high_pc checking print_error highpcb  0x00000e34 lowpc    0x00000df0 
+high_pc checking get_producer_name highpcb  0x00000f4e lowpc    0x00000e40 
+high_pc checking get_cu_name highpcb  0x000010cd lowpc    0x00000f50 
+high_pc checking old_get_cu_name highpcb  0x0000126c lowpc    0x000010d0 
+high_pc checking should_skip_this_cu highpcb  0x00001423 lowpc    0x00001270 
+high_pc checking DWARF_CHECK_COUNT highpcb  0x00001479 lowpc    0x00001430 
+high_pc checking DWARF_ERROR_COUNT highpcb  0x000014bf lowpc    0x00001480 
+high_pc checking DWARF_CHECK_ERROR_PRINT_CU highpcb  0x000014e6 lowpc    0x000014c0 
+high_pc checking DWARF_CHECK_ERROR highpcb  0x00001559 lowpc    0x000014f0 
+high_pc checking print_any_harmless_errors highpcb  0x00001649 lowpc    0x00001560 
 high_pc checking print_search_results 
 high_pc checking print_checks_results 
-high_pc checking <no DW_AT_name attr> highpc   0x0000232b highpcb  0x0000232b lowpc    0x00001650 
+high_pc checking <no DW_AT_name attr> highpcb  0x0000232b lowpc    0x00001650 
 high_pc checking process_args 
 high_pc checking open_a_file 
-high_pc checking main highpc   0x00001317 highpcb  0x00001317 lowpc    0x00000000 
-high_pc checking DWARF_CHECK_ERROR2 highpc   0x000023bc highpcb  0x000023bc lowpc    0x00002330 
-high_pc checking DWARF_CHECK_ERROR3 highpc   0x00002452 highpcb  0x00002452 lowpc    0x000023c0 
+high_pc checking main highpcb  0x00001317 lowpc    0x00000000 
+high_pc checking DWARF_CHECK_ERROR2 highpcb  0x000023bc lowpc    0x00002330 
+high_pc checking DWARF_CHECK_ERROR3 highpcb  0x00002452 lowpc    0x000023c0 
 high_pc checking __builtin_puts 
 high_pc checking __printf_chk 
 high_pc checking fflush 
