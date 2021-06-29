@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
        &err);
    assert(result == DW_DLV_OK);
 
-
    result = dwarf_get_fde_at_pc(fde_data, ADDR, &fde, 
        NULL, NULL, &err);
    assert (result == DW_DLV_OK);
@@ -74,11 +73,7 @@ int main(int argc, char *argv[])
    printf("row_pc %ld (0x%lx)\n", (long int) row_pc,(long int)row_pc);
 */
    printf("Register num  %ld\n", (long int) register_num);
-#ifdef OLD
-   assert(register_num == DW_FRAME_CFA_COL);
-#else
    assert(register_num == DW_FRAME_CFA_COL3);
-#endif
    /* This just shows we really test something. */
    assert(DW_FRAME_CFA_COL3 != DW_FRAME_CFA_COL);
    return 0;
