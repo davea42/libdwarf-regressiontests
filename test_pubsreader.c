@@ -63,6 +63,79 @@
 #define FALSE 0
 #define PRINT_LIMIT 5
 
+
+/*  This always emits a singld newline
+    at the end. */
+static int
+die_findable_check(Dwarf_Debug dbg,
+    Dwarf_Off die_offset,
+    Dwarf_Off cudie_offset2,
+    const char *whichtype,
+    Dwarf_Error *error)
+{
+    int res = 0;
+    char *diename = 0;
+    char *diename2 = 0;
+    Dwarf_Bool is_info = TRUE;
+    Dwarf_Die die = 0;
+    Dwarf_Die cudie = 0;
+
+    /*  We do not really know if it references
+        .debug_info or .debug_types, but supposedly
+        it will always be .debug_info  */
+    res = dwarf_offdie_b(dbg,die_offset,is_info,
+        &die,error);
+    if (res == DW_DLV_NO_ENTRY){
+        printf(" dwarf_offdie_b NO ENTRY? in %s\n",whichtype);
+        return 1;
+    }   
+    if (res == DW_DLV_ERROR){
+        printf(" dwarf_offdie_b ERROR in %s: %s\n",
+            whichtype,
+            dwarf_errmsg(*error));
+        return 1;
+    }   
+    res = dwarf_diename(die,&diename,error);
+    if (res == DW_DLV_NO_ENTRY){
+        /* do nothing */
+    } else if (res == DW_DLV_ERROR){
+        printf(" dwarf_diename ERROR whichtype %s: %s\n",
+            whichtype,
+            dwarf_errmsg(*error));
+        return 1;
+    }else {
+        printf(" (die name %s)",diename);
+    }
+    res = dwarf_offdie_b(dbg,cudie_offset2,is_info,
+        &cudie,error);
+    if (res == DW_DLV_NO_ENTRY){
+        printf(" dwarf_offdie_b cu die on %s: NO ENTRY?\n",
+            whichtype);
+        return 1;
+    }  
+    if (res == DW_DLV_ERROR){
+        printf(" dwarf_offdie_b cu die ERROR in %s: %s\n",
+            whichtype,
+            dwarf_errmsg(*error));
+        return 1;
+    }  
+    res = dwarf_diename(cudie,&diename2,error);
+    if (res == DW_DLV_NO_ENTRY){
+        /* do nothing */
+    } else if (res == DW_DLV_ERROR){
+        printf(" dwarf_diename cu ERROR in %s: %s\n",
+            whichtype,
+            dwarf_errmsg(*error));
+        return 1;
+    }else {
+         printf(" (cu die name %s)",diename2);
+    }
+    printf("\n");
+    dwarf_dealloc_die(die);
+    dwarf_dealloc_die(cudie);
+    return 0;
+}
+
 static int
 try_type(Dwarf_Debug dbg)
 {
@@ -98,11 +171,6 @@ try_type(Dwarf_Debug dbg)
         Dwarf_Off die_offset2 = 0;
         Dwarf_Off cudie_offset2 = 0;
         Dwarf_Type t = typep[i];
-        Dwarf_Bool is_info = TRUE;
-        Dwarf_Die die = 0;
-        Dwarf_Die die2 = 0;
-        char * diename = 0;
-        char * diename2 = 0;
 
         printf("typename %2ld",(long)i);
         res = dwarf_typename(t,&retname,&error);
@@ -182,61 +250,12 @@ try_type(Dwarf_Debug dbg)
             ++errcount;
             continue;
         }
-        /*  We do not really know if it references
-            .debug_info or .debug_types, but supposedly
-            it will always be .debug_info  */
-        res = dwarf_offdie_b(dbg,die_offset,is_info,
-            &die,&error);
-        if (res == DW_DLV_NO_ENTRY){
-            printf(" dwarf_offdie_b NO ENTRY?\n");
-            ++errcount;
-            continue;
-        }   
-        if (res == DW_DLV_ERROR){
-            printf(" dwarf_offdie_b ERROR %s\n",
-                dwarf_errmsg(error));
-            ++errcount;
-            continue;
-        }   
-        res = dwarf_diename(die,&diename,&error);
-        if (res == DW_DLV_NO_ENTRY){
-            /* do nothing */
-        } else if (res == DW_DLV_ERROR){
-            printf(" dwarf_diename ERROR %s\n",
-                dwarf_errmsg(error));
-            ++errcount;
-            continue;
-        }else {
-             printf(" die name %s\n",diename);
-        }
-        res = dwarf_offdie_b(dbg,cudie_offset2,is_info,
-            &die2,&error);
-        if (res == DW_DLV_NO_ENTRY){
-            printf(" dwarf_offdie_b cu die NO ENTRY?\n");
-            ++errcount;
-            continue;
-        }  
-        if (res == DW_DLV_ERROR){
-            printf(" dwarf_offdie_b cu die ERROR %s\n",
-                dwarf_errmsg(error));
-            ++errcount;
-            continue;
-        }  
-        res = dwarf_diename(die2,&diename2,&error);
-        if (res == DW_DLV_NO_ENTRY){
-            /* do nothing */
-        } else if (res == DW_DLV_ERROR){
-            printf(" dwarf_diename cu ERROR %s\n",
-                dwarf_errmsg(error));
-            ++errcount;
-            continue;
-        }else {
-             printf(" die name cu %s\n",diename2);
-        }
-        dwarf_dealloc_die(die);
-        dwarf_dealloc_die(die2);
-        printf("      %s\n",retname);
+        printf("  \"%s\"",retname);
+        res= die_findable_check(dbg,die_offset,cudie_offset2,
+            "dwarf_types ",&error);
+        errcount += res;
     }
+
     dwarf_types_dealloc(dbg,typep,count);
     return errcount;
 }
@@ -277,11 +296,6 @@ try_pubtype(Dwarf_Debug dbg)
         Dwarf_Off die_offset2 = 0;
         Dwarf_Off cudie_offset2 = 0;
         Dwarf_Type t = typep[i];
-        Dwarf_Bool is_info = TRUE;
-        Dwarf_Die die = 0;
-        Dwarf_Die die2 = 0;
-        char *diename = 0;
-        char *diename2 = 0;
 
         printf("pubtypename %2ld",(long)i);
         res = dwarf_pubtypename(t,&retname,&error);
@@ -361,60 +375,10 @@ try_pubtype(Dwarf_Debug dbg)
             ++errcount;
             continue;
         }
-        /*  We do not really know if it references
-            .debug_info or .debug_types! */
-        res = dwarf_offdie_b(dbg,die_offset,is_info,
-            &die,&error);
-        if (res == DW_DLV_NO_ENTRY){
-            printf("dwarf_offdie_b NO ENTRY?\n");
-            ++errcount;
-            continue;
-        }   
-        if (res == DW_DLV_ERROR){
-            printf("dwarf_offdie_b ERROR %s\n",
-                dwarf_errmsg(error));
-            ++errcount;
-            continue;
-        }   
-        res = dwarf_diename(die,&diename,&error);
-        if (res == DW_DLV_NO_ENTRY){
-            /* do nothing */
-        } else if (res == DW_DLV_ERROR){
-            printf(" dwarf_diename ERROR %s\n",
-                dwarf_errmsg(error));
-            ++errcount;
-            continue;
-        }else {
-             printf(" die name %s\n",diename);
-        }
-        dwarf_dealloc_die(die);
-        res = dwarf_offdie_b(dbg,cudie_offset2,is_info,
-            &die2,&error);
-        if (res == DW_DLV_NO_ENTRY){
-            printf(" dwarf_offdie_b cu die2 NO ENTRY?\n");
-            ++errcount;
-            continue;
-        }
-        if (res == DW_DLV_ERROR){
-            printf(" dwarf_offdie_b cu die ERROR %s\n",
-                dwarf_errmsg(error));
-            ++errcount;
-            continue;
-        }
-        res = dwarf_diename(die2,&diename2,&error);
-        if (res == DW_DLV_NO_ENTRY){
-            /* do nothing */
-        } else if (res == DW_DLV_ERROR){
-            printf(" dwarf_diename cu ERROR %s\n",
-                dwarf_errmsg(error));
-            ++errcount;
-            continue;
-        }else {
-             printf(" die name cu %s\n",diename2);
-        }
-        dwarf_dealloc_die(die2);
-        dwarf_dealloc_die(die);
-        printf("      %s\n",retname);
+        printf("  \"%s\"\n",retname);
+        res= die_findable_check(dbg,die_offset,cudie_offset2,
+            "dwarf_pubtypes ",&error);
+        errcount += res;
     }
     dwarf_pubtypes_dealloc(dbg,typep,count);
     return errcount;
