@@ -1642,21 +1642,29 @@ fi
 
 
 
-  echo "=====START  $testsrc/test_harmless"
-  libopts=''
-  if test $withlibelf = "withlibelf" 
-  then
-    libopts='-lelf'
-  fi
-  if [ $withlibz = "withlibz" ]
-  then
+#libdwarf no longer uses libelf.
+libopts=''
+if test $withlibelf = "withlibelf" 
+then
+    libopts=''
+fi
+if [ $withlibz = "withlibz" ]
+then
     libopts="$libopts -lz"
-  fi
+fi
+echo "=====START  $testsrc/test_harmless"
   echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld  -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless $dwlib $libopts
-  chkres $? 'check harmless-error compiling test-harmless.c failed'
+  chkres $? 'check harmless-error compiling test_harmless.c failed'
   ./test_harmless
   chkres $? 'check harmless-error execution failed'
+
+echo "=====START  $testsrc/test_pubsreader"
+  echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld  -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c  -o test_pubsreader $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c  -o test_pubsreader $dwlib $libopts
+  chkres $? 'check pubsreader-error compiling test_pubsreader.c failed'
+  ./test_pubsreader >junk_pubsreaderout
+  chkres $? 'check pubsreader-error execution failed'
 
 if test $withlibelf = "withlibelf" ; then
   echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
