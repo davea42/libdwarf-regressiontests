@@ -137,6 +137,498 @@ die_findable_check(Dwarf_Debug dbg,
 }
 
 static int
+try_funcs(Dwarf_Debug dbg)
+{
+    Dwarf_Error error = 0;
+    int res = 0;
+    int errcount = 0;
+    Dwarf_Func* typep = 0;
+    Dwarf_Signed count = 0;
+    Dwarf_Signed printcount = 0;
+    Dwarf_Signed i = 0;
+
+    printf("Entry try_funcs()\n");
+    res = dwarf_get_funcs(dbg,&typep,&count,
+        &error); 
+    if (res == DW_DLV_NO_ENTRY) {
+        printf("No weaknames in file\n");
+        return 0;
+    }
+    if (res == DW_DLV_ERROR) {
+        printf("FAIL dwarf_get_funcs %s\n",
+            dwarf_errmsg(error));
+        return 1;
+    }
+    printcount = (count > PRINT_LIMIT)?
+        PRINT_LIMIT:count;
+    printf("types count: %ld max, printing %ld\n",
+        (long)count,(long)printcount);
+    for (i = 0; i < printcount; ++i) {
+        char * retname = 0;
+        char * name2 = 0;
+        Dwarf_Off die_offset = 0;
+        Dwarf_Off cuhdr_offset = 0;
+        Dwarf_Off die_offset2 = 0;
+        Dwarf_Off cudie_offset2 = 0;
+        Dwarf_Func t = typep[i];
+
+        printf("globals %2ld",(long)i);
+        res = dwarf_funcname(t,&retname,&error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_funcname %s\n",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        res = dwarf_func_die_offset(t,&die_offset,
+           &error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_func_die_offset %s\n",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_func_die_offset %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        res = dwarf_func_cu_offset(t,&cuhdr_offset,
+           &error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_func_cu_offset %s",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_func_cu_offset %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        res = dwarf_func_name_offsets(t,&name2,
+           &die_offset2,&cudie_offset2,&error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_func_name_offsets %s",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_func_name_offsets %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        if (retname != name2) {
+            printf(" name mismatch: %s vs %s\n",
+                retname,name2);
+            ++errcount;
+            continue;
+        }
+        if (die_offset != die_offset2) {
+            printf(" die offset mismatch: 0x%lx vs 0x%lx\n",
+                (unsigned long)die_offset,
+                (unsigned long)die_offset2);
+            ++errcount;
+            continue;
+        }
+        if (cuhdr_offset >= cudie_offset2) {
+            /* CU offset meaning CU header offset */
+            printf(" cu offset mismatch: 0x%lx vs 0x%lx\n",
+                (unsigned long)cuhdr_offset,
+                (unsigned long)cudie_offset2);
+            ++errcount;
+            continue;
+        }
+        if (cuhdr_offset >= die_offset) {
+            printf(" die vs cu offset mismatch: %ld vs %ld\n",
+                (unsigned long)die_offset,
+                (unsigned long)cudie_offset2);
+            ++errcount;
+            continue;
+        }
+        printf("  \"%s\"",retname);
+        res= die_findable_check(dbg,die_offset,cudie_offset2,
+            "dwarf_funcs ",&error);
+        errcount += res;
+    }
+    dwarf_funcs_dealloc(dbg,typep,count);
+    return errcount;
+}
+
+static int
+try_weaks(Dwarf_Debug dbg)
+{
+    Dwarf_Error error = 0;
+    int res = 0;
+    int errcount = 0;
+    Dwarf_Weak* typep = 0;
+    Dwarf_Signed count = 0;
+    Dwarf_Signed printcount = 0;
+    Dwarf_Signed i = 0;
+
+    printf("Entry try_weaks()\n");
+    res = dwarf_get_weaks(dbg,&typep,&count,
+        &error); 
+    if (res == DW_DLV_NO_ENTRY) {
+        printf("No weaknames in file\n");
+        return 0;
+    }
+    if (res == DW_DLV_ERROR) {
+        printf("FAIL dwarf_get_weaks %s\n",
+            dwarf_errmsg(error));
+        return 1;
+    }
+    printcount = (count > PRINT_LIMIT)?
+        PRINT_LIMIT:count;
+    printf("types count: %ld max, printing %ld\n",
+        (long)count,(long)printcount);
+    for (i = 0; i < printcount; ++i) {
+        char * retname = 0;
+        char * name2 = 0;
+        Dwarf_Off die_offset = 0;
+        Dwarf_Off cuhdr_offset = 0;
+        Dwarf_Off die_offset2 = 0;
+        Dwarf_Off cudie_offset2 = 0;
+        Dwarf_Weak t = typep[i];
+
+        printf("globals %2ld",(long)i);
+        res = dwarf_weakname(t,&retname,&error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_weakname %s\n",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        res = dwarf_weak_die_offset(t,&die_offset,
+           &error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_weak_die_offset %s\n",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_weak_die_offset %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        res = dwarf_weak_cu_offset(t,&cuhdr_offset,
+           &error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_weak_cu_offset %s",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_weak_cu_offset %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        res = dwarf_weak_name_offsets(t,&name2,
+           &die_offset2,&cudie_offset2,&error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_weak_name_offsets %s",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_weak_name_offsets %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        if (retname != name2) {
+            printf(" name mismatch: %s vs %s\n",
+                retname,name2);
+            ++errcount;
+            continue;
+        }
+        if (die_offset != die_offset2) {
+            printf(" die offset mismatch: 0x%lx vs 0x%lx\n",
+                (unsigned long)die_offset,
+                (unsigned long)die_offset2);
+            ++errcount;
+            continue;
+        }
+        if (cuhdr_offset >= cudie_offset2) {
+            /* CU offset meaning CU header offset */
+            printf(" cu offset mismatch: 0x%lx vs 0x%lx\n",
+                (unsigned long)cuhdr_offset,
+                (unsigned long)cudie_offset2);
+            ++errcount;
+            continue;
+        }
+        if (cuhdr_offset >= die_offset) {
+            printf(" die vs cu offset mismatch: %ld vs %ld\n",
+                (unsigned long)die_offset,
+                (unsigned long)cudie_offset2);
+            ++errcount;
+            continue;
+        }
+        printf("  \"%s\"",retname);
+        res= die_findable_check(dbg,die_offset,cudie_offset2,
+            "dwarf_weaks ",&error);
+        errcount += res;
+    }
+    dwarf_weaks_dealloc(dbg,typep,count);
+    return errcount;
+}
+
+static int
+try_vars(Dwarf_Debug dbg)
+{
+    Dwarf_Error error = 0;
+    int res = 0;
+    int errcount = 0;
+    Dwarf_Var* typep = 0;
+    Dwarf_Signed count = 0;
+    Dwarf_Signed printcount = 0;
+    Dwarf_Signed i = 0;
+
+    printf("Entry try_vars()\n");
+    res = dwarf_get_vars(dbg,&typep,&count,
+        &error); 
+    if (res == DW_DLV_NO_ENTRY) {
+        printf("No varnames in file\n");
+        return 0;
+    }
+    if (res == DW_DLV_ERROR) {
+        printf("FAIL dwarf_get_vars %s\n",
+            dwarf_errmsg(error));
+        return 1;
+    }
+    printcount = (count > PRINT_LIMIT)?
+        PRINT_LIMIT:count;
+    printf("types count: %ld max, printing %ld\n",
+        (long)count,(long)printcount);
+    for (i = 0; i < printcount; ++i) {
+        char * retname = 0;
+        char * name2 = 0;
+        Dwarf_Off die_offset = 0;
+        Dwarf_Off cuhdr_offset = 0;
+        Dwarf_Off die_offset2 = 0;
+        Dwarf_Off cudie_offset2 = 0;
+        Dwarf_Var t = typep[i];
+
+        printf("globals %2ld",(long)i);
+        res = dwarf_varname(t,&retname,&error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_varname %s\n",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        res = dwarf_var_die_offset(t,&die_offset,
+           &error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_var_die_offset %s\n",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_var_die_offset %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        res = dwarf_var_cu_offset(t,&cuhdr_offset,
+           &error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_var_cu_offset %s",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_var_cu_offset %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        res = dwarf_var_name_offsets(t,&name2,
+           &die_offset2,&cudie_offset2,&error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_var_name_offsets %s",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_var_name_offsets %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        if (retname != name2) {
+            printf(" name mismatch: %s vs %s\n",
+                retname,name2);
+            ++errcount;
+            continue;
+        }
+        if (die_offset != die_offset2) {
+            printf(" die offset mismatch: 0x%lx vs 0x%lx\n",
+                (unsigned long)die_offset,
+                (unsigned long)die_offset2);
+            ++errcount;
+            continue;
+        }
+        if (cuhdr_offset >= cudie_offset2) {
+            /* CU offset meaning CU header offset */
+            printf(" cu offset mismatch: 0x%lx vs 0x%lx\n",
+                (unsigned long)cuhdr_offset,
+                (unsigned long)cudie_offset2);
+            ++errcount;
+            continue;
+        }
+        if (cuhdr_offset >= die_offset) {
+            printf(" die vs cu offset mismatch: %ld vs %ld\n",
+                (unsigned long)die_offset,
+                (unsigned long)cudie_offset2);
+            ++errcount;
+            continue;
+        }
+        printf("  \"%s\"",retname);
+        res= die_findable_check(dbg,die_offset,cudie_offset2,
+            "dwarf_vars ",&error);
+        errcount += res;
+    }
+    dwarf_vars_dealloc(dbg,typep,count);
+    return errcount;
+}
+static int
+try_global(Dwarf_Debug dbg)
+{
+    Dwarf_Error error = 0;
+    int res = 0;
+    int errcount = 0;
+    Dwarf_Global* typep = 0;
+    Dwarf_Signed count = 0;
+    Dwarf_Signed printcount = 0;
+    Dwarf_Signed i = 0;
+
+    printf("Entry try_global()\n");
+    res = dwarf_get_globals(dbg,&typep,&count,
+        &error); 
+    if (res == DW_DLV_NO_ENTRY) {
+        printf("No globals in file\n");
+        return 0;
+    }
+    if (res == DW_DLV_ERROR) {
+        printf("FAIL dwarf_get_globals %s\n",
+            dwarf_errmsg(error));
+        return 1;
+    }
+    printcount = (count > PRINT_LIMIT)?
+        PRINT_LIMIT:count;
+    printf("types count: %ld max, printing %ld\n",
+        (long)count,(long)printcount);
+    for (i = 0; i < printcount; ++i) {
+        char * retname = 0;
+        char * name2 = 0;
+        Dwarf_Off die_offset = 0;
+        Dwarf_Off cuhdr_offset = 0;
+        Dwarf_Off die_offset2 = 0;
+        Dwarf_Off cudie_offset2 = 0;
+        Dwarf_Global t = typep[i];
+
+        printf("globals %2ld",(long)i);
+        res = dwarf_globname(t,&retname,&error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_typename %s\n",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        res = dwarf_global_die_offset(t,&die_offset,
+           &error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_global_type_die_offset %s\n",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_global_die_offset %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        res = dwarf_global_cu_offset(t,&cuhdr_offset,
+           &error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_global_cu_offset %s",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_global_cu_offset %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        res = dwarf_global_name_offsets(t,&name2,
+           &die_offset2,&cudie_offset2,&error);
+        if (res == DW_DLV_ERROR) {
+            printf("FAIL dwarf_type_name_offsets %s",
+                dwarf_errmsg(error));
+            errcount = 1;
+            break;
+        }
+        if (res == DW_DLV_NO_ENTRY) {
+            printf("FAIL dwarf_global_name_offsets %s\n",
+                "DW_DLV_NO_ENTRY");
+            errcount = 1;
+            break;
+        }
+        if (retname != name2) {
+            printf(" name mismatch: %s vs %s\n",
+                retname,name2);
+            ++errcount;
+            continue;
+        }
+        if (die_offset != die_offset2) {
+            printf(" die offset mismatch: 0x%lx vs 0x%lx\n",
+                (unsigned long)die_offset,
+                (unsigned long)die_offset2);
+            ++errcount;
+            continue;
+        }
+        if (cuhdr_offset >= cudie_offset2) {
+            /* CU offset meaning CU header offset */
+            printf(" cu offset mismatch: 0x%lx vs 0x%lx\n",
+                (unsigned long)cuhdr_offset,
+                (unsigned long)cudie_offset2);
+            ++errcount;
+            continue;
+        }
+        if (cuhdr_offset >= die_offset) {
+            printf(" die vs cu offset mismatch: %ld vs %ld\n",
+                (unsigned long)die_offset,
+                (unsigned long)cudie_offset2);
+            ++errcount;
+            continue;
+        }
+        printf("  \"%s\"",retname);
+        res= die_findable_check(dbg,die_offset,cudie_offset2,
+            "dwarf_global ",&error);
+        errcount += res;
+    }
+
+    dwarf_globals_dealloc(dbg,typep,count);
+    return errcount;
+}
+
+static int
 try_type(Dwarf_Debug dbg)
 {
     Dwarf_Error error = 0;
@@ -418,8 +910,12 @@ main(int argc, char **argv)
             printf("Init of %s No Entry\n",filepath);
             continue;
         }
+        failcount += try_global(dbg);
         failcount += try_pubtype(dbg);
         failcount += try_type(dbg);
+        failcount += try_vars(dbg);
+        failcount += try_weaks(dbg);
+        failcount += try_funcs(dbg);
         res2 = dwarf_finish(dbg,&error);
         if (res2 == DW_DLV_ERROR) {
             printf("dwarf_finish of %s FAILED %s\n",
