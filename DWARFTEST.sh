@@ -91,10 +91,16 @@ do
   nolibelf) echo "DWARFTESTS.sh arg is $i"
         withlibelf="nolibelf" 
         shift;;
-  # Makefile does not yet support this option
+  # Makefile does not support this option but
+  # export SUPPRESSDEALLOCTREE=y
+  # works so we set that here. It's fine to
+  # ignore this option and export SUPPRESSDEALLOCTREE=y
+  # before running this script.
   --suppress-de-alloc-tree) echo "DWARFTESTS.sh arg is $i"
         echo "Suppressing de_alloc_tree"
         suppresstree=$i 
+        SUPPRESSDEALLOCTREE=y
+        export SUPPRESSDEALLOCTREE
         shift;;
 
   withlibelf) echo "DWARFTESTS.sh arg is $i"
@@ -1663,8 +1669,10 @@ echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld  -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c  -o test_pubsreader $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c  -o test_pubsreader $dwlib $libopts
   chkres $? 'check pubsreader-error compiling test_pubsreader.c failed'
-  ./test_pubsreader >junk_pubsreaderout
-  chkres $? 'check pubsreader-error execution failed'
+  echo "./test_pubsreader $testsrc/mustacchi/m32t.o $testsrc/irixn32/dwarfdump"
+  echo "Results in junk_pubsreaderout"
+  ./test_pubsreader $testsrc/mustacchi/m32t.o $testsrc/irixn32/dwarfdump >junk_pubsreaderout
+  chkres $? 'check pubsreader-error execution failed look at junk_pubsreaderout'
 
 if test $withlibelf = "withlibelf" ; then
   echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
