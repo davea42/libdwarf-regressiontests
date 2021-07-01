@@ -153,6 +153,7 @@ die_findable_check(Dwarf_Debug dbg,
     if (!printed_hasform) {
         Dwarf_Bool hasform = 0;
         Dwarf_Attribute attr = 0;
+        Dwarf_Off atoff = 0;
 
         /*  Just here to test dwarf_hasform() */
         res = dwarf_attr(die,DW_AT_name,&attr,error);
@@ -169,8 +170,40 @@ die_findable_check(Dwarf_Debug dbg,
                     if (res == DW_DLV_OK) {
                         printf("DIE DW_AT_name has form DW_FORM_strp\n");
                         printed_hasform = TRUE;
+                    } else { 
+                        if (res == DW_DLV_ERROR) {
+                            printf("ERROR getting attr offset %s\n",
+                                dwarf_errmsg(*error));
+                            errcnt = 1;
+                         } else {
+                            printf("NO_ENTRY dwarf_hasform %s\n",
+                                dwarf_errmsg(*error));
+                            printf("Should be impossible\n");
+                         }
                     }
                 }
+            }
+            res = dwarf_attr_offset(die,attr,&atoff,error);
+            if (res != DW_DLV_OK) {
+                if (res == DW_DLV_ERROR) {
+                    printf("ERROR getting attr offset %s\n",
+                        dwarf_errmsg(*error));
+                    errcnt = 1;
+                } else {
+                    printf("NO_ENTRY getting attr offset %s\n",
+                        dwarf_errmsg(*error));
+                    printf("Should be impossible\n");
+                    errcnt = 1;
+                }
+            } else {
+                printf("Attr offset of AT_name : 0x%lu\n",
+                    (unsigned long)atoff);
+            }
+        } else {
+            if (res == DW_DLV_ERROR) {
+                printf("dwarf_attr call FAILED. bad. error: %s\n",
+                    dwarf_errmsg(*error));
+                errcnt = 1;
             }
         }
         if (attr) {
