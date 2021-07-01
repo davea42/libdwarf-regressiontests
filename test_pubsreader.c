@@ -64,6 +64,7 @@
 #define PRINT_LIMIT 5
 
 static int printed_secname = FALSE;
+static int printed_hasform = FALSE;
 
 /*  This always emits a singld newline
     at the end. */
@@ -143,9 +144,44 @@ die_findable_check(Dwarf_Debug dbg,
         } else if (res == DW_DLV_ERROR) {
             printf("ERROR getting line section name from die: %s\n",
                 dwarf_errmsg(*error));
+            dwarf_dealloc_error(dbg,*error);
             errcnt = 1;
         } else {
             printf("No line section\n");
+        }
+    }
+    if (!printed_hasform) {
+        Dwarf_Bool hasform = 0;
+        Dwarf_Attribute attr = 0;
+
+        /*  Just here to test dwarf_hasform() */
+        res = dwarf_attr(die,DW_AT_name,&attr,error);
+        if (res == DW_DLV_OK) {
+            res = dwarf_hasform(attr,DW_FORM_string,
+               &hasform,error);
+            if (res == DW_DLV_OK) {
+                if (hasform) {
+                    printf("DIE DW_AT_name has form DW_FORM_string\n");
+                    printed_hasform = TRUE;
+                } else {
+                    res = dwarf_hasform(attr,DW_FORM_strp,
+                        &hasform,error);
+                    if (res == DW_DLV_OK) {
+                        printf("DIE DW_AT_name has form DW_FORM_strp\n");
+                        printed_hasform = TRUE;
+                    }
+                }
+            }
+        }
+        if (attr) {
+            dwarf_dealloc_attribute(attr);
+            attr = 0;
+        }
+        if (res == DW_DLV_ERROR) {
+            printf("Error in testing hasform %s\n",
+                 dwarf_errmsg(*error));
+            dwarf_dealloc_error(dbg,*error);
+            errcnt = 1;
         }
     }
     dwarf_dealloc_die(die);

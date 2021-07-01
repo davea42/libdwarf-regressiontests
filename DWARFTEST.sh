@@ -1703,8 +1703,24 @@ echo "=====START  $testsrc/test_sectionnames"
   ./test_sectionnames ./test_sectionnames \
     $testsrc/dwarf4/dd2g4.5dwarf-4 $testsrc/convey/testesb.c.o \
     >junk_sectionnames
-  chkres $? 'check sectionnames-error execution failed look at \
-     junk_sectionnames'
+  chkres $? "check sectionnames-error execution failed look at \
+     junk_sectionnames"
+
+echo "=====START  $testsrc/test_arange"
+  echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \
+     -I$libbld/libdwarf  -gdwarf $nlizeopt \
+     $testsrc/test_arange.c \
+     -o test_arange $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
+      test_arange $dwlib $libopts
+  chkres $? 'check arange-error compiling test_arange.c\
+     failed'
+  echo "./test_arange irixn32/dwarfdump"
+  echo "Results in junk_arange"
+  ./test_arange  irixn32/dwarfdump >junk_arange
+  chkres $? "check arange-error execution failed look at \
+     junk_arange"
 
 if test $withlibelf = "withlibelf" ; then
   echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
