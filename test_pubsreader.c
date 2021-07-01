@@ -63,6 +63,7 @@
 #define FALSE 0
 #define PRINT_LIMIT 5
 
+static int printed_secname = FALSE;
 
 /*  This always emits a singld newline
     at the end. */
@@ -79,6 +80,7 @@ die_findable_check(Dwarf_Debug dbg,
     Dwarf_Bool is_info = TRUE;
     Dwarf_Die die = 0;
     Dwarf_Die cudie = 0;
+    int errcnt = 0;
 
     /*  We do not really know if it references
         .debug_info or .debug_types, but supposedly
@@ -131,9 +133,24 @@ die_findable_check(Dwarf_Debug dbg,
          printf(" (cu die name %s)",diename2);
     }
     printf("\n");
+    if (!printed_secname) {
+        const char *secname = 0;
+        res = dwarf_get_line_section_name_from_die(die,
+            &secname,error);
+        if (res == DW_DLV_OK) {
+            printed_secname = TRUE;
+            printf("Section Name of line section for die: %s\n",secname);
+        } else if (res == DW_DLV_ERROR) {
+            printf("ERROR getting line section name from die: %s\n",
+                dwarf_errmsg(*error));
+            errcnt = 1;
+        } else {
+            printf("No line section\n");
+        }
+    }
     dwarf_dealloc_die(die);
     dwarf_dealloc_die(cudie);
-    return 0;
+    return errcnt;
 }
 
 static int

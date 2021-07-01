@@ -1659,20 +1659,52 @@ then
     libopts="$libopts -lz"
 fi
 echo "=====START  $testsrc/test_harmless"
-  echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld  -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless $dwlib $libopts
+  echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld \
+     -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c \
+     -o test_harmless $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf  \
+    -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless\
+      $dwlib $libopts
   chkres $? 'check harmless-error compiling test_harmless.c failed'
   ./test_harmless
   chkres $? 'check harmless-error execution failed'
 
 echo "=====START  $testsrc/test_pubsreader"
-  echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld  -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c  -o test_pubsreader $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c  -o test_pubsreader $dwlib $libopts
+  echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
+    -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
+     -o test_pubsreader $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
+      -o test_pubsreader $dwlib $libopts
   chkres $? 'check pubsreader-error compiling test_pubsreader.c failed'
-  echo "./test_pubsreader $testsrc/mustacchi/m32t.o $testsrc/irixn32/dwarfdump"
+  echo "./test_pubsreader $testsrc/mustacchi/m32t.o \
+    $testsrc/irixn32/dwarfdump"
   echo "Results in junk_pubsreaderout"
-  ./test_pubsreader $testsrc/mustacchi/m32t.o $testsrc/irixn32/dwarfdump >junk_pubsreaderout
-  chkres $? 'check pubsreader-error execution failed look at junk_pubsreaderout'
+  ./test_pubsreader $testsrc/mustacchi/m32t.o \
+     $testsrc/irixn32/dwarfdump \
+     >junk_pubsreaderout
+  chkres $? 'check pubsreader-error execution failed look at \
+    junk_pubsreaderout'
+
+echo "=====START  $testsrc/test_sectionnames"
+  echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \
+     -I$libbld/libdwarf  -gdwarf $nlizeopt \
+     $testsrc/test_sectionnames.c \
+     -o test_sectionnames $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/test_sectionnames.c  -o \
+      test_sectionnames $dwlib $libopts
+  chkres $? 'check sectionnames-error compiling test_sectionnames.c\
+     failed'
+  echo "./test_sectionnames ./test_sectionnames \
+    $testsrc/dwarf4/dd2g4.5dwarf-4\
+    $testsrc/convey/testesb.c.o"
+  echo "Results in junk_sectionnames"
+  ./test_sectionnames ./test_sectionnames \
+    $testsrc/dwarf4/dd2g4.5dwarf-4 $testsrc/convey/testesb.c.o \
+    >junk_sectionnames
+  chkres $? 'check sectionnames-error execution failed look at \
+     junk_sectionnames'
 
 if test $withlibelf = "withlibelf" ; then
   echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
@@ -1712,9 +1744,11 @@ then
   then
     if [ $withlibelf = "withlibelf" ]
     then
-      echo "====SKIP 1 $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
+      echo "====SKIP 1 $testsrc/dwarfextract/runtest.sh\
+         $withlibelf $withlibz"
       skipcount=`expr $skipcount + 1`
-      #echo "=====START   $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
+      #echo "=====START   $testsrc/dwarfextract/runtest.sh \
+      # $withlibelf $withlibz"
       # This has serious problems with leaks, so
       # do not do $NLIZE for now..
       #mklocal dwarfextract
@@ -1723,11 +1757,13 @@ then
       #  chkres $?  $testsrc/dwarfextract
       #cd ..
     else
-      echo "====SKIP 1 $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz"
+      echo "====SKIP 1 $testsrc/dwarfextract/runtest.sh\
+         $withlibelf $withlibz"
       skipcount=`expr $skipcount + 1`
     fi
   else
-    echo "=====SKIP 1 $testsrc/dwarfextract/runtest.sh with big endian test host"
+    echo "=====SKIP 1 $testsrc/dwarfextract/runtest.sh with\
+      big endian test host"
     skipcount=`expr $skipcount + 1`
   fi
 else
@@ -1762,14 +1798,19 @@ mklocal enciso4
 cd ..
 
 # -g: use old dwarf loclist code.
-runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf  -x abi=mips
+runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
+     -x abi=mips
 
 # -u lets you provide a cu-name so you can select a CU and 
 # skip others when printing DIEs
-runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c -x name=dwarfdump.conf  -x abi=mips
+runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c\
+     -x name=dwarfdump.conf  -x abi=mips
 #The following is for URI style test completeness
-runtest $d1 $d2 irixn32/dwarfdump -u  dwconf%2ec -x name=dwarfdump%2econf  -x abi=mips
-runtest $d1 $d2 irixn32/dwarfdump -u  /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s  -x name=dwarfdump.conf -x abi=mips
+runtest $d1 $d2 irixn32/dwarfdump -u  dwconf%2ec\
+     -x name=dwarfdump%2econf  -x abi=mips
+runtest $d1 $d2 irixn32/dwarfdump -u  \
+    /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s \
+     -x name=dwarfdump.conf -x abi=mips
 
 #Following tests -c<str> and URI, the one restricted to GNU AS 
 # -cs means something different, not the same as -cg !
