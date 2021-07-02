@@ -1,0 +1,13 @@
+Copyright (C) 2021 David Anderson
+This test code and the comments hear are 
+hereby placed in the public domain so anyone
+can use them for any purpose without restriction.
+
+    Compiled twice for a good test of 
+    libdwarf function dwarf_bitoffset.
+    DWARF4 introduced DW_AT_data_bit_offset,
+    while DWARF2,3 had DW_AT_bit_offset.
+    cc -gdwarf-3 -c bitoffsetexample.c -o bitoffsetexampledw3.o
+    cc -gdwarf-5 -c bitoffsetexample.c -o bitoffsetexampledw5.o
+
+Created 2 July 2021
