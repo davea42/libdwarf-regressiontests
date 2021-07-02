@@ -199,7 +199,7 @@ main(int argc, char **argv)
         res = dwarf_init_path(filepath,
             0,0,
             DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
-            0,0,0,&error);
+            &error);
         if (res == DW_DLV_ERROR) {
             printf("Init of %s FAILED\n",
                 dwarf_errmsg(error));

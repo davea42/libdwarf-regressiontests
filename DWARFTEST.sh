@@ -1680,11 +1680,11 @@ echo "=====START  $testsrc/test_pubsreader"
   echo "./test_pubsreader $testsrc/mustacchi/m32t.o \
     $testsrc/irixn32/dwarfdump"
   echo "Results in junk_pubsreaderout"
-  ./test_pubsreader $testsrc/mustacchi/m32t.o \
-     $testsrc/irixn32/dwarfdump \
+  ./test_pubsreader $testsrc/irixn32/dwarfdump \
+     $testsrc/mustacchi/m32t.o \
      >junk_pubsreaderout
-  chkres $? 'check pubsreader-error execution failed look at \
-    junk_pubsreaderout'
+  chkres $? "check pubsreader-error execution failed look at \
+    junk_pubsreaderout"
 
 echo "=====START  $testsrc/test_sectionnames"
   echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \

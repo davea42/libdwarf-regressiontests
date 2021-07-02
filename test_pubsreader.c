@@ -65,6 +65,54 @@
 
 static int printed_secname = FALSE;
 static int printed_hasform = FALSE;
+static int first_cu_die_done = FALSE;
+
+/*  Prints the offsets of children DIEs
+    of the CU die at cudie_offset2 
+    For the object file irixn32/dwarfdump
+    the correct output as shown by dwarfdump -G irixn32/dwarfdump
+    is
+    0x82 0x9d 0xb8 0xd0
+    0xe0  
+    That is the first CU die test_pubsreader.c sees
+    as currently in DWARFTEST.sh */
+unsigned v[5] = {0x82,0x9d,0xb8,0xd0, 0xe0};
+
+static int
+print_offset_list(Dwarf_Off cudie_offset2,
+    Dwarf_Bool is_info,
+    Dwarf_Off * offbuf,
+    Dwarf_Unsigned offcount,
+    Dwarf_Unsigned cu_total_length)
+{
+    Dwarf_Unsigned u = 0;
+    int retv = 0;
+
+    printf("CU die offset 0x%lx  is_info %u\n",
+       (unsigned long)cudie_offset2,is_info);
+    printf("list entry count %lu  CU total length 0x%lx\n",
+       (unsigned long)offcount,
+       (unsigned long)cu_total_length);
+    printf("  ");
+    for (u = 0; u < offcount; ++u) {
+       if (u%4 == 0) {
+          printf("\n  ");
+       } 
+       printf(" 0x%lx",(unsigned long)offbuf[u]);
+    }
+    printf("\n");
+    for (u = 0; u < offcount; ++u) {
+        if (v[u] != offbuf[u]) {
+             printf("FAIL comparing children offsets %lu 0x%lx 0x%lx\n",
+                 (unsigned long)u,
+                 (unsigned long)offbuf[u],
+                 (unsigned long)v[u]);
+             ++retv;
+        }
+    }
+    return retv;
+}
+
 
 /*  This always emits a singld newline
     at the end. */
@@ -134,6 +182,38 @@ die_findable_check(Dwarf_Debug dbg,
          printf(" (cu die name %s)",diename2);
     }
     printf("\n");
+    if (!first_cu_die_done) {
+         Dwarf_Off *offbuf = 0;
+         Dwarf_Unsigned offcount = 0;
+         Dwarf_Bool is_info = 0;
+         Dwarf_Unsigned cu_total_length = 0;
+
+         res = dwarf_cu_header_basics(cudie,0,
+             &is_info,0,0,0,0,0,0,&cu_total_length,error);
+         if (res == DW_DLV_OK) {
+             res = dwarf_offset_list(dbg,
+                 cudie_offset2,
+                 is_info,&offbuf,&offcount,error);
+             if (res == DW_DLV_OK) {
+                 errcnt += print_offset_list(cudie_offset2,is_info,
+                     offbuf,offcount,cu_total_length);
+                 dwarf_dealloc(dbg, offbuf, DW_DLA_LIST);
+                 first_cu_die_done = TRUE;
+             } else if (res==DW_DLV_ERROR) {
+                 printf("dwarf_offset_list ERROR: %s \n",
+                     dwarf_errmsg(*error));
+                 return 1;
+             } else {
+                 printf("dwarf_offset_list NO ENTRY\n");
+             }
+         } else if(res==DW_DLV_ERROR) {
+             printf("dwarf_cu_header_basics ERROR: %s \n",
+                 dwarf_errmsg(*error));
+             return 1;
+         } else {
+             printf("dwarf_cu_header_basics NO ENTRY\n");
+         }
+    }
     if (!printed_secname) {
         const char *secname = 0;
         res = dwarf_get_line_section_name_from_die(die,
@@ -986,7 +1066,7 @@ main(int argc, char **argv)
         res = dwarf_init_path(filepath,
             0,0,
             DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
-            0,0,0,&error);
+            &error);
         if (res == DW_DLV_ERROR) {
             printf("Init of %s FAILED",
                 dwarf_errmsg(error));

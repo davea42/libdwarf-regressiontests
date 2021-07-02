@@ -62,7 +62,7 @@ int main(int argc, char **argv)
         true_path, true_path_bufferlen,
         DW_GROUPNUMBER_ANY,
         errhand,errarg,
-        &dbg,0,0,0,&error);
+        &dbg,&error);
     printresval("","init",res,__LINE__);
     if (res != DW_DLV_OK) {
         printf("FAIL bad status\n");
