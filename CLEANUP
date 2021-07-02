@@ -14,6 +14,9 @@ rm -f /tmp/dwb.*
 rm -f libdwallocs
 rm -f */libdwallocs
 rm -rf libbld
+rm -f test_arange
+rm -f test_pubsreader
+rm -f test_sectionnames
 rm -f dwarf_names.h
 rm -f dwarf_names_enum.h
 rm -f dwarf_names_new.h
