@@ -55,236 +55,130 @@
 #define FALSE 0
 #define PRINT_LIMIT 5
 
-
-static int
-print_offset_list(Dwarf_Off cudie_offset2,
-    Dwarf_Bool is_info,
-    Dwarf_Off * offbuf,
-    Dwarf_Unsigned offcount,
-    Dwarf_Unsigned cu_total_length)
+static void
+insistok(int res,Dwarf_Error error,const char *msg)
 {
-    Dwarf_Unsigned u = 0;
-    int retv = 0;
-
-    printf("CU die offset 0x%lx  is_info %u\n",
-       (unsigned long)cudie_offset2,is_info);
-    printf("list entry count %lu  CU total length 0x%lx\n",
-       (unsigned long)offcount,
-       (unsigned long)cu_total_length);
-    printf("  ");
-    for (u = 0; u < offcount; ++u) {
-       if (u%4 == 0) {
-          printf("\n  ");
-       } 
-       printf(" 0x%lx",(unsigned long)offbuf[u]);
+    if (res == DW_DLV_OK) {
+        return;
     }
-    printf("\n");
-    for (u = 0; u < offcount; ++u) {
-        if (v[u] != offbuf[u]) {
-             printf("FAIL comparing children offsets %lu 0x%lx 0x%lx\n",
-                 (unsigned long)u,
-                 (unsigned long)offbuf[u],
-                 (unsigned long)v[u]);
-             ++retv;
-        }
+    if (res == DW_DLV_ERROR) {
+         printf("ERROR FAIL: %s\n",dwarf_errmsg(error));
+         exit(1);
     }
-    return retv;
+    printf("NO_ENTRY FAIL: %s\n",dwarf_errmsg(error));
+    exit(1);
 }
 
+static void
+print_tag(Dwarf_Die d, Dwarf_Error *error)
+{
+    const char *tname = 0;
+    Dwarf_Half tag = 0;
+    dwarf_tag(d,&tag,error);
+    dwarf_get_TAG_name(tag,&tname);
+    printf("Tag %x  %s\n",tag,tname);
+}
 
-/*  This always emits a singld newline
-    at the end. */
+/*  This is only useful when we exactly know the content
+    of the object file being read!  Assumes a specific case.
+    We do not dealloc (clean up), libdwarf will do
+    that for us. 
+    The -gdwarf-3 output shows DW_AT_bit_offset
+    for the member b as 0x1c which is absurd.
+    The -gdwarf-5 output shows DW_AT_bit_offset
+    for member b as 1 which makes sense.
+*/
 static int
-die_findable_check(Dwarf_Debug dbg,
-    Dwarf_Off die_offset,
-    Dwarf_Off cudie_offset2,
-    const char *whichtype,
-    Dwarf_Error *error)
+try_bitoffset(Dwarf_Debug dbg)
 {
     int res = 0;
-    char *diename = 0;
-    char *diename2 = 0;
     Dwarf_Bool is_info = TRUE;
-    Dwarf_Die die = 0;
-    Dwarf_Die cudie = 0;
-    int errcnt = 0;
+    Dwarf_Unsigned cu_header_length = 0;
+    Dwarf_Half     version_stamp = 0;
+    Dwarf_Off      abbrev_offset = 0;
+    Dwarf_Half     address_size = 0;
+    Dwarf_Half     length_size = 0;
+    Dwarf_Half     extension_size = 0;
+    Dwarf_Sig8     signature;
+    Dwarf_Unsigned typeoffset = 0;
+    Dwarf_Unsigned next_cu_header_offset = 0;
+    Dwarf_Half     header_cu_type = 0;
+    Dwarf_Error    error = 0;
+    Dwarf_Die      cu_die = 0;
+    Dwarf_Die      struct_die = 0;
+    Dwarf_Off      struct_die_offset = 0;
+    Dwarf_Off      *memberoffsets = 0;
+    Dwarf_Unsigned membercount = 0;
+    Dwarf_Off      targetdieoffset = 0;
+    Dwarf_Die      memberdie = 0;
+    Dwarf_Unsigned bitoffset = 0;
+    char *         diename = 0;
+    Dwarf_Attribute attribute = 0;
+    char * attrname = 0;
+    unsigned expected_offset = 0;
+     
 
-    /*  We do not really know if it references
-        .debug_info or .debug_types, but supposedly
-        it will always be .debug_info  */
-    res = dwarf_offdie_b(dbg,die_offset,is_info,
-        &die,error);
-    if (res == DW_DLV_NO_ENTRY){
-        printf(" dwarf_offdie_b NO ENTRY? in %s\n",whichtype);
-        return 1;
-    }   
-    if (res == DW_DLV_ERROR){
-        printf(" dwarf_offdie_b ERROR in %s: %s\n",
-            whichtype,
-            dwarf_errmsg(*error));
-        return 1;
-    }   
-    res = dwarf_diename(die,&diename,error);
-    if (res == DW_DLV_NO_ENTRY){
-        /* do nothing */
-    } else if (res == DW_DLV_ERROR){
-        printf(" dwarf_diename ERROR whichtype %s: %s\n",
-            whichtype,
-            dwarf_errmsg(*error));
-        return 1;
-    }else {
-        printf(" (die name %s)",diename);
-    }
-    res = dwarf_offdie_b(dbg,cudie_offset2,is_info,
-        &cudie,error);
-    if (res == DW_DLV_NO_ENTRY){
-        printf(" dwarf_offdie_b cu die on %s: NO ENTRY?\n",
-            whichtype);
-        return 1;
-    }  
-    if (res == DW_DLV_ERROR){
-        printf(" dwarf_offdie_b cu die ERROR in %s: %s\n",
-            whichtype,
-            dwarf_errmsg(*error));
-        return 1;
-    }  
-    res = dwarf_diename(cudie,&diename2,error);
-    if (res == DW_DLV_NO_ENTRY){
-        /* do nothing */
-    } else if (res == DW_DLV_ERROR){
-        printf(" dwarf_diename cu ERROR in %s: %s\n",
-            whichtype,
-            dwarf_errmsg(*error));
-        return 1;
-    }else {
-         printf(" (cu die name %s)",diename2);
-    }
-    printf("\n");
-    if (!first_cu_die_done) {
-         Dwarf_Off *offbuf = 0;
-         Dwarf_Unsigned offcount = 0;
-         Dwarf_Bool is_info = 0;
-         Dwarf_Unsigned cu_total_length = 0;
+    res = dwarf_next_cu_header_d(dbg, is_info,
+        &cu_header_length,&version_stamp,&abbrev_offset,
+        &address_size,&length_size,&extension_size,
+        &signature,&typeoffset,&next_cu_header_offset,
+        &header_cu_type, &error);
 
-         res = dwarf_cu_header_basics(cudie,0,
-             &is_info,0,0,0,0,0,0,&cu_total_length,error);
-         if (res == DW_DLV_OK) {
-             res = dwarf_offset_list(dbg,
-                 cudie_offset2,
-                 is_info,&offbuf,&offcount,error);
-             if (res == DW_DLV_OK) {
-                 errcnt += print_offset_list(cudie_offset2,is_info,
-                     offbuf,offcount,cu_total_length);
-                 dwarf_dealloc(dbg, offbuf, DW_DLA_LIST);
-                 first_cu_die_done = TRUE;
-             } else if (res==DW_DLV_ERROR) {
-                 printf("dwarf_offset_list ERROR: %s \n",
-                     dwarf_errmsg(*error));
-                 return 1;
-             } else {
-                 printf("dwarf_offset_list NO ENTRY\n");
-             }
-         } else if(res==DW_DLV_ERROR) {
-             printf("dwarf_cu_header_basics ERROR: %s \n",
-                 dwarf_errmsg(*error));
-             return 1;
-         } else {
-             printf("dwarf_cu_header_basics NO ENTRY\n");
-         }
-    }
-    if (!printed_secname) {
-        const char *secname = 0;
-        res = dwarf_get_line_section_name_from_die(die,
-            &secname,error);
-        if (res == DW_DLV_OK) {
-            printed_secname = TRUE;
-            printf("Section Name of line section for die: %s\n",secname);
-        } else if (res == DW_DLV_ERROR) {
-            printf("ERROR getting line section name from die: %s\n",
-                dwarf_errmsg(*error));
-            dwarf_dealloc_error(dbg,*error);
-            errcnt = 1;
-        } else {
-            printf("No line section\n");
-        }
-    }
-    if (!printed_hasform) {
-        Dwarf_Bool hasform = 0;
-        Dwarf_Attribute attr = 0;
-        Dwarf_Off atoff = 0;
+    /*  Get the CU DIE */
+    res = dwarf_siblingof_b(dbg,NULL,is_info,&cu_die,&error);
+    insistok(res,error," dwarf_siblingof_b");
+    res = dwarf_attr(cu_die,DW_AT_producer,&attribute,&error);
+    insistok(res,error,"dwarf_attr");
+    res =dwarf_formstring(attribute,&attrname,&error);
+    insistok(res,error,"dwarf_formstring");
+    printf("Producer:: %s\n",attrname);
 
-        /*  Just here to test dwarf_hasform() */
-        res = dwarf_attr(die,DW_AT_name,&attr,error);
-        if (res == DW_DLV_OK) {
-            res = dwarf_hasform(attr,DW_FORM_string,
-               &hasform,error);
-            if (res == DW_DLV_OK) {
-                if (hasform) {
-                    printf("DIE DW_AT_name has form DW_FORM_string\n");
-                    printed_hasform = TRUE;
-                } else {
-                    res = dwarf_hasform(attr,DW_FORM_strp,
-                        &hasform,error);
-                    if (res == DW_DLV_OK) {
-                        printf("DIE DW_AT_name has form DW_FORM_strp\n");
-                        printed_hasform = TRUE;
-                    } else { 
-                        if (res == DW_DLV_ERROR) {
-                            printf("ERROR getting attr offset %s\n",
-                                dwarf_errmsg(*error));
-                            errcnt = 1;
-                         } else {
-                            printf("NO_ENTRY dwarf_hasform %s\n",
-                                dwarf_errmsg(*error));
-                            printf("Should be impossible\n");
-                         }
-                    }
-                }
-            }
-            res = dwarf_attr_offset(die,attr,&atoff,error);
-            if (res != DW_DLV_OK) {
-                if (res == DW_DLV_ERROR) {
-                    printf("ERROR getting attr offset %s\n",
-                        dwarf_errmsg(*error));
-                    errcnt = 1;
-                } else {
-                    printf("NO_ENTRY getting attr offset %s\n",
-                        dwarf_errmsg(*error));
-                    printf("Should be impossible\n");
-                    errcnt = 1;
-                }
-            } else {
-                printf("Attr offset of AT_name : 0x%lu\n",
-                    (unsigned long)atoff);
-            }
-        } else {
-            if (res == DW_DLV_ERROR) {
-                printf("dwarf_attr call FAILED. bad. error: %s\n",
-                    dwarf_errmsg(*error));
-                errcnt = 1;
-            }
-        }
-        if (attr) {
-            dwarf_dealloc_attribute(attr);
-            attr = 0;
-        }
-        if (res == DW_DLV_ERROR) {
-            printf("Error in testing hasform %s\n",
-                 dwarf_errmsg(*error));
-            dwarf_dealloc_error(dbg,*error);
-            errcnt = 1;
-        }
+    
+    /*  Get the DW_TAG_structure_type */
+    res = dwarf_child(cu_die,&struct_die,&error);
+    insistok(res,error," dwarf_child");
+    print_tag(struct_die,&error);
+
+    res = dwarf_dieoffset(struct_die,&struct_die_offset,&error);
+    insistok(res,error," dwarf_dieoffset");
+    printf("struct die offset 0x%lx\n",(unsigned long)struct_die_offset);
+    res = dwarf_offset_list(dbg,struct_die_offset,
+          is_info,
+          &memberoffsets,&membercount,&error);
+    insistok(res,error," dwarf_offset_list");
+
+    targetdieoffset = memberoffsets[1];
+    printf("target member offset 0x%lx\n",(unsigned long)targetdieoffset);
+
+    res = dwarf_offdie_b(dbg,targetdieoffset,is_info,
+         &memberdie,&error);
+    insistok(res,error," dwarf_offdie_b");
+
+    print_tag(memberdie,&error);
+    res = dwarf_diename(memberdie,&diename,&error);
+    insistok(res,error," dwarf_diename");
+
+    res = dwarf_bitoffset(memberdie,&bitoffset,&error);
+    insistok(res,error," dwarf_bitoffset");
+    printf("Member name %s bitoffset 0x%lx\n",
+        diename,(unsigned long)bitoffset);
+    if (version_stamp < 4) {
+        /*  DW_AT_bit_offset. Offset of high bit of value
+            from the high-bit of containing type */
+        expected_offset = 0x1c;
+    } else {
+        /*  DW_AT_data_bit_offset. Offset from beginning
+            of the containing value to the beginning of
+            the value. */
+        expected_offset = 1;
     }
-    dwarf_dealloc_die(die);
-    dwarf_dealloc_die(cudie);
-    return errcnt;
-}
-
-FIXME
-static int
-try_bitoffset(Dwarf_debug dbg)
-
-{
+    if (bitoffset != expected_offset) {
+        printf("FAIL expected bit offset 0x%x, not 0x%lx\n",
+            expected_offset,
+            (unsigned long)bitoffset);
+        return 1;
+    }
+    return 0; 
 }
 
 int
@@ -308,6 +202,7 @@ main(int argc, char **argv)
         Dwarf_Debug dbg = 0;
 
         filepath = argv[i];
+        printf("Opening file %s\n",filepath);
         res = dwarf_init_path(filepath,
             0,0,
             DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,

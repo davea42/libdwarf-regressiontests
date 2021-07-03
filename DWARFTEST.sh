@@ -672,8 +672,38 @@ runtest () {
 
 
 echo "=============BEGIN THE TESTS==============="
-
 echo  "=====BLOCK individual tests and runtest.sh tests"
+
+#libdwarf no longer uses libelf.
+libopts=''
+if test $withlibelf = "withlibelf"
+then
+    libopts=''
+fi
+if [ $withlibz = "withlibz" ]
+then
+    libopts="$libopts -lz"
+fi
+echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
+   echo "test_bitoffset: $CC -Wall -I$codedir/libdwarf -I$libbld \
+     -I$libbld/libdwarf  -gdwarf $nlizeopt \
+     $testsrc/bitoffset/test_bitoffset.c.c \
+     -o test_test_bitoffset $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/bitoffset/test_bitoffset.c  -o \
+      test_bitoffset $dwlib $libopts
+  chkres $? "check bitoffset-error compiling bitoffset/test_bitoffset.c\
+     failed"
+  echo "./test_bitoffset  \
+    $testsrc/bitoffset/bitoffsetexampledw3.o \
+    $testsrc/bitoffset/bitoffsetexampledw5.o "
+  ./test_bitoffset  \
+    $testsrc/bitoffset/bitoffsetexampledw3.o \
+    $testsrc/bitoffset/bitoffsetexampledw5.o  \
+    >junk_bitoffset
+  chkres $? "check bitoffset-error execution failed look at \
+     junk_bitoffset"
+
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  $testsrc/supplementary/runtest.sh"
 mklocal supplementary
@@ -1696,7 +1726,7 @@ echo "=====START  $testsrc/test_sectionnames"
       test_sectionnames $dwlib $libopts
   chkres $? 'check sectionnames-error compiling test_sectionnames.c\
      failed'
-  echo "./test_sectionnames ./test_sectionnames \
+  echo "./test_sectionnames  \
     $testsrc/dwarf4/dd2g4.5dwarf-4\
     $testsrc/convey/testesb.c.o"
   echo "Results in junk_sectionnames"

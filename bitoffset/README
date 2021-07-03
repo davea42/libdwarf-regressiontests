@@ -10,4 +10,54 @@ can use them for any purpose without restriction.
     cc -gdwarf-3 -c bitoffsetexample.c -o bitoffsetexampledw3.o
     cc -gdwarf-5 -c bitoffsetexample.c -o bitoffsetexampledw5.o
 
+Here is part of the dwarfdump for the DWARF3 case
+Member 0 has bit offset x1f, member 1 has bit offset x1c.
+We'll take the second one as the one to test on.
+
+The s
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000b>  DW_TAG_compile_unit
+                    DW_AT_producer              GNU C17 9.3.0 -mtune=gene
+ric -march=x86-64 -gdwarf-3 -fasynchronous-unwind-tables -fstack-protecto
+r-strong -fstack-clash-protection -fcf-protection
+                    DW_AT_language              DW_LANG_C99
+                    DW_AT_name                  bitoffsetexample.c
+                    DW_AT_comp_dir              /home/davea/dwarf/regress
+iontests
+                    DW_AT_low_pc                0x00000000
+                    DW_AT_high_pc               0x00000078
+                    DW_AT_stmt_list             0x00000000
+
+LOCAL_SYMBOLS:
+< 1><0x0000002d>    DW_TAG_structure_type
+                      DW_AT_name                  mystr
+                      DW_AT_byte_size             0x00000004
+                      DW_AT_decl_file             0x00000001 /home/davea/
+dwarf/regressiontests/bitoffsetexample.c
+                      DW_AT_decl_line             0x00000003
+                      DW_AT_decl_column           0x00000008
+                      DW_AT_sibling               <0x00000065>
+< 2><0x0000003a>      DW_TAG_member
+                        DW_AT_name                  a
+                        DW_AT_decl_file             0x00000001 /home/dave
+a/dwarf/regressiontests/bitoffsetexample.c
+                        DW_AT_decl_line             0x00000004
+                        DW_AT_decl_column           0x00000009
+                        DW_AT_type                  <0x00000065>
+                        DW_AT_byte_size             0x00000004
+                        DW_AT_bit_size              0x00000001
+                        DW_AT_bit_offset            0x0000001f
+                        DW_AT_data_member_location  0
+< 2><0x00000048>      DW_TAG_member
+                        DW_AT_name                  b
+                        DW_AT_decl_file             0x00000001 /home/dave
+a/dwarf/regressiontests/bitoffsetexample.c
+                        DW_AT_decl_line             0x00000005
+                        DW_AT_decl_column           0x00000009
+                        DW_AT_type                  <0x00000065>
+                        DW_AT_byte_size             0x00000004
+                        DW_AT_bit_size              0x00000003
+                        DW_AT_bit_offset            0x0000001c
+                        DW_AT_data_member_location  0
+
 Created 2 July 2021
