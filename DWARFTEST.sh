@@ -684,6 +684,22 @@ if [ $withlibz = "withlibz" ]
 then
     libopts="$libopts -lz"
 fi
+echo "=====START  $testsrc/test_pubsreader"
+  echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
+    -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
+     -o test_pubsreader $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
+      -o test_pubsreader $dwlib $libopts
+  chkres $? 'check pubsreader-error compiling test_pubsreader.c failed'
+  echo "./test_pubsreader $testsrc/mustacchi/m32t.o \
+    $testsrc/irixn32/dwarfdump"
+  echo "Results in junk_pubsreaderout"
+  ./test_pubsreader $testsrc/irixn32/dwarfdump \
+     $testsrc/mustacchi/m32t.o \
+     >junk_pubsreaderout
+  chkres $? "check pubsreader-error execution failed look at \
+    junk_pubsreaderout"
 echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
    echo "test_bitoffset: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt \
@@ -1698,23 +1714,6 @@ echo "=====START  $testsrc/test_harmless"
   chkres $? 'check harmless-error compiling test_harmless.c failed'
   ./test_harmless
   chkres $? 'check harmless-error execution failed'
-
-echo "=====START  $testsrc/test_pubsreader"
-  echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
-    -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
-     -o test_pubsreader $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
-      -o test_pubsreader $dwlib $libopts
-  chkres $? 'check pubsreader-error compiling test_pubsreader.c failed'
-  echo "./test_pubsreader $testsrc/mustacchi/m32t.o \
-    $testsrc/irixn32/dwarfdump"
-  echo "Results in junk_pubsreaderout"
-  ./test_pubsreader $testsrc/irixn32/dwarfdump \
-     $testsrc/mustacchi/m32t.o \
-     >junk_pubsreaderout
-  chkres $? "check pubsreader-error execution failed look at \
-    junk_pubsreaderout"
 
 echo "=====START  $testsrc/test_sectionnames"
   echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \

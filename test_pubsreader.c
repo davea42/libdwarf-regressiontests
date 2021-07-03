@@ -1050,12 +1050,64 @@ main(int argc, char **argv)
     Dwarf_Ptr errarg = 0;
     int i = 1;
     int failcount = 0;
+    int old1 = 0;
+    int old2 = 0;
+    int old3 = 0;
+    unsigned int uint1 = 0;
+    unsigned int uint2= 0;
+    unsigned int uint3= 0;
+    const unsigned char *intext = 
+        (const unsigned char *)"A few characters to work with";
 
     if (i >= argc) {
         printf("test_pubsreader not given file to open\n");
         printf("test_pubsreader exits\n");
         return 1;
     }
+
+    old1 = dwarf_set_stringcheck(1);
+    old2 = dwarf_set_stringcheck(0);
+    old3 = dwarf_set_stringcheck(0);
+    if (old1) {
+        printf("FAIL: dwarf_set_stringcheck default was wrong at %d\n",
+            old1);
+        failcount++;
+    }
+    if (!old2) {
+        printf("FAIL: dwarf_set_stringcheck set wrong at %d\n",
+            old2);
+        failcount++;
+    }
+    if (old3) {
+        printf("FAIL: dwarf_set_stringcheck set wrong at %d\n",
+            old3);
+        failcount++;
+    }
+    if (!failcount) {
+        printf("PASS dwarf_set_stringcheck() tests\n");
+    } else {
+        printf("FAIL dwarf_set_stringcheck() tests\n");
+    }
+    /*  zero is the init value always used. */
+    uint1 = dwarf_basic_crc32(intext,strlen( (const char *)intext),0);
+    printf("dwarf_basic_crc32() 1 returns 0x%x\n",uint1);
+
+    uint2 = dwarf_basic_crc32(intext,strlen( (const char *)intext),uint1);
+    printf("dwarf_basic_crc32() 2 returns 0x%x\n",uint2);
+
+    uint3 = dwarf_basic_crc32(intext,strlen( (const char *)intext),0);
+    printf("dwarf_basic_crc32() 3 returns 0x%x\n",uint3);
+    if (uint1 != uint3) {
+        printf("FAIL dwarf_basic_crc32() first and third not identical!\n");
+        /* Indicates not repeatable for some reason */
+        failcount++;
+    }
+    if (uint1 == uint2) {
+        printf("FAIL dwarf_basic_crc32() first second identical!\n");
+        /* Indicates the init value ignored!. That's wrong. */
+        failcount++;
+    }
+   
     for( ; i < argc; ++i) {
         const char *filepath = 0;
         int res2 = 0;
