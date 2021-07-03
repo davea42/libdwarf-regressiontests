@@ -47,23 +47,5 @@ then
   echo "rerun: $ts/runtest.sh $1 $2"
   exit 1
 fi
-
-# Used to be marked -DOLD but that is obsolete.
-cc -I $libdw/libdwarf  $opt $OPTS $ts/frame_test.c ../libdwoldframecol.a $libs -o frame_test2
-if [ $? -ne 0 ]
-then
-  echo fail legendre cc -DOLD frame_test.c frame CFA reg old
-  echo "rerun: $ts/runtest.sh $1 $2"
-  exit 1
-fi
-
-./frame_test2
-if [ $? -ne 0 ]
-then
-  echo fail legendre frame CFA reg old
-  echo "rerun: $ts/runtest.sh $1 $2"
-  exit 1
-fi
 rm -f ./frame_test1
-rm -f ./frame_test2
 echo "PASS legendre/runtest.sh frame test"

@@ -114,6 +114,7 @@ try_bitoffset(Dwarf_Debug dbg)
     Dwarf_Unsigned bitoffset = 0;
     char *         diename = 0;
     Dwarf_Attribute attribute = 0;
+    Dwarf_Half attrnum = 0;
     char * attrname = 0;
     unsigned expected_offset = 0;
      
@@ -158,16 +159,16 @@ try_bitoffset(Dwarf_Debug dbg)
     res = dwarf_diename(memberdie,&diename,&error);
     insistok(res,error," dwarf_diename");
 
-    res = dwarf_bitoffset(memberdie,&bitoffset,&error);
+    res = dwarf_bitoffset(memberdie,&attrnum,&bitoffset,&error);
     insistok(res,error," dwarf_bitoffset");
     printf("Member name %s bitoffset 0x%lx\n",
         diename,(unsigned long)bitoffset);
-    if (version_stamp < 4) {
-        /*  DW_AT_bit_offset. Offset of high bit of value
+    if (attrnum == DW_AT_bit_offset) {
+        /*  Offset of high bit of value
             from the high-bit of containing type */
         expected_offset = 0x1c;
     } else {
-        /*  DW_AT_data_bit_offset. Offset from beginning
+        /*  attrnum DW_AT_data_bit_offset. Offset from beginning
             of the containing value to the beginning of
             the value. */
         expected_offset = 1;

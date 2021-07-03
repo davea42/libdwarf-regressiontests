@@ -103,25 +103,7 @@ then
 fi
 set +x
 cp src/bin/dwarfdump/dwarfdump $targetdir/dwarfdumpnl
-
-rm -rf $top_build/*
-cd $top_build 
 set -x
-$libdw/configure $sanitize $libelfopt  --enable-oldframecol 
-make
-if [ $? -ne 0 ]
-then
-  echo "PICKUPBIN.sh for oldframecol FAIL"
-  exit 1
-fi
-set +x
-cp src/lib/libdwarf/.libs/libdwarf.a $targetdir/libdwoldframecol.a
-if [ $? -ne 0 ]
-then
-  echo "No libdwoldframecol.a copied! giving up."
-  exit 1;
-fi
-
 rm -rf $top_build/*
 echo "PICKUPBIN.sh: configure $libelfop for --enable-windowspath"
 set -x
@@ -133,7 +115,6 @@ then
   exit 1
 fi
 set +x
-
 cp src/bin/dwarfdump/dwarfdump   $targetdir/dwarfdumpW
 if [ $? -ne 0 ]
 then
