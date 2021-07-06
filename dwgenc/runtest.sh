@@ -9,7 +9,7 @@ tf=$bldtest/dwgenc
 # for one special case for testing) OP by OP, but just as a byte stream.
 # Hence adjusting address-size in dwarfgen is problematic.
 # January 28, 2021
-../dwarfgen -p 8 -c 0 --force-empty-dnames -v5 -t obj  -o testoutput.o $ts/testinput.o >junkdgstdout 2> junkdgstderr 
+../dwarfgen -p 8 -c 0 --default-form-strp --force-empty-dnames -v5 -t obj  -o testoutput.o $ts/testinput.o >junkdgstdout 2> junkdgstderr 
 if [ $? -ne 0 ] 
 then
     echo "fail dwgenc  dwarfgen on $ts/testinput.o"
@@ -17,8 +17,7 @@ then
     exit 1
 fi
 
-#../dwarfdump --print-debug-names testoutput.o 1>junkstdout 2>junkstderr
-../dwarfdump  -i -M --print-debug-names testoutput.o 1>junkstdout 2>junkstderr
+../dwarfdump  -i -M --print-debug-names testoutput.o 1>junkdebugnames 2>junkstderr
 if [ $? -ne 0 ] 
 then
     echo "fail dwgenc  dwarfdump on testinput.o"
@@ -26,11 +25,11 @@ then
     exit 1
 fi
 
-diff $ts/base.stdout junkstdout
+diff $ts/base.debugnames junkdebugnames
 if [ $?  -ne 0 ]
 then
    echo "fail dwgenc dwarfdump."
-   echo "update baseline with 'mv $tf/junkstdout $ts/base.stdout'"
+   echo "update baseline with 'mv $tf/junkdebugnames $ts/base.debugnames'"
    echo "rerun: $ts/runtest.sh"
    exit 1
 fi
@@ -43,7 +42,7 @@ then
    exit 1
 fi
 rm -f junkstderr
-rm -f junkstdout
+rm -f junkdebugnames
 rm -f junkdgstdout
 rm -f junkdgstderr
 echo "PASS dwgenc/runtest.sh"

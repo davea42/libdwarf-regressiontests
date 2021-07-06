@@ -7,7 +7,6 @@ It's trivial and provides a way to build an object
 (by dwarfgen) with a .debug_names present but empty
 so we see how dwarfdump copes.
 
-
 #Building 
 ../dwarfgen -c 0 --force-empty-dnames -v5 -t obj  -o testoutput.o testinput.o
 

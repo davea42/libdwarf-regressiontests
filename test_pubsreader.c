@@ -1097,6 +1097,29 @@ main(int argc, char **argv)
 
     uint3 = dwarf_basic_crc32(intext,strlen( (const char *)intext),0);
     printf("dwarf_basic_crc32() 3 returns 0x%x\n",uint3);
+    if (uint3 != 0x2535a0d3) {
+        /*  While the PRINT BY BYTE below is endian sensitive, the
+            value as integer is not. This should not fail, the
+            value shows the same bigendian or littleendian. */
+        printf("FAIL crc expected 0x2535a0d3 got 0x%x\n",uint3);
+        failcount++;
+    }
+    { /* PRINT BY BYTE */
+        char *s =0;
+        int ui  =0;
+        if (sizeof(uint3) != 4) {
+            printf("Size of integer type is %u bytes\n",
+                (unsigned int)sizeof(uint3));
+            printf("So we don't show in plain byte format as it won't"
+                " be right\n");
+        } else {
+            printf("crc32() 3 value as bytes so endian matters: 0x");
+            for (s=(char *)&uint3; ui < 4; ++ui,++s) {
+                printf("%02x ",(unsigned char)*s);
+            }
+            printf("\n");
+        }
+    }
     if (uint1 != uint3) {
         printf("FAIL dwarf_basic_crc32() first and third not identical!\n");
         /* Indicates not repeatable for some reason */

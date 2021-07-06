@@ -114,10 +114,12 @@ try_bitoffset(Dwarf_Debug dbg)
     Dwarf_Unsigned bitoffset = 0;
     char *         diename = 0;
     Dwarf_Attribute attribute = 0;
-    Dwarf_Half attrnum = 0;
-    char * attrname = 0;
-    unsigned expected_offset = 0;
-     
+    Dwarf_Half     attrnum = 0;
+    char *         attrname = 0;
+    Dwarf_Off      expected_offset = 0;
+    Dwarf_Off      typeoffsetd = 0;
+    Dwarf_Die      typedied = 0;
+    char *         typedienamed = 0;
 
     res = dwarf_next_cu_header_d(dbg, is_info,
         &cu_header_length,&version_stamp,&abbrev_offset,
@@ -174,11 +176,22 @@ try_bitoffset(Dwarf_Debug dbg)
         expected_offset = 1;
     }
     if (bitoffset != expected_offset) {
-        printf("FAIL expected bit offset 0x%x, not 0x%lx\n",
-            expected_offset,
+        printf("FAIL expected bit offset 0x%lx, not 0x%lx\n",
+            (unsigned long)expected_offset,
             (unsigned long)bitoffset);
         return 1;
     }
+
+    res = dwarf_dietype_offset(memberdie,&typeoffsetd,&error);
+    insistok(res,error," dwarf_dietype_offset");
+    res = dwarf_offdie_b(dbg,typeoffsetd,is_info,
+         &typedied,&error);
+    insistok(res,error," dwarf_offdie_b");
+    print_tag(typedied,&error);
+    res = dwarf_diename(typedied,&typedienamed,&error);
+    insistok(res,error," dwarf_diename");
+    printf("type die diename  %s\n",typedienamed);
+
     return 0; 
 }
 
