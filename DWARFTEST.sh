@@ -1108,29 +1108,17 @@ runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a
 # the fix had no effect on this, which works ok.
 runtest $d1 $d2   emre6/class_64_opt_fpo_split -a
 
-if [ $withlibelf = "withlibelf" ]
-then
-  echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simplereader.elf"
+echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simplereader.elf"
   mklocal hughes2
     sh $testsrc/hughes2/runtest.sh $testsrc/corruptdwarf-a/simplereader.elf
     chkres $?  $testsrc/hughes2
   cd ..
-else
-  echo "=====SKIP   hughes2 runtest.sh no libelf as coredump is a bit unix/linux specific"
-  skipcount=`expr $skipcount + 1`
-fi
 
-if [ $withlibelf = "withlibelf" ]
-then
-  echo "=====START   $testsrc/implicitconst sh runtest.sh"
+echo "=====START   $testsrc/implicitconst sh runtest.sh"
   mklocal implicitconst
     sh $testsrc/implicitconst/runtest.sh
     chkres $?  $testsrc/implicitconst/runtest.sh
   cd ..
-else
-  echo "=====SKIP   implicitconst sh runtest.sh no libelf"
-  skipcount=`expr $skipcount + 1`
-fi
 
 
 echo "=====START  $testsrc/nolibelf runtest.sh "

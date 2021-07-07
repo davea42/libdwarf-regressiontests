@@ -672,5 +672,6 @@
 <2> tag: 13 DW_TAG_member  name: "td_tied_object" FORM 0x8 "DW_FORM_string"
 <2> tag: 13 DW_TAG_member  name: "td_is_tied_object" FORM 0x8 "DW_FORM_string"
 <2> tag: 13 DW_TAG_member  name: "td_tied_search" FORM 0x8 "DW_FORM_string"
+Error in dwarf_siblingof_b , level 1 :Error siblingof_b 
 
-Now abort() in libdwarf. No error argument or handler available.
+libdwarf is unable to record error 321 No error argument or handler available

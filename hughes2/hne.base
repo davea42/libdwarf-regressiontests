@@ -674,5 +674,5 @@
 <2> tag: 13 DW_TAG_member  name: "td_tied_search" FORM 0x8 "DW_FORM_string"
 
 libdwarf error detected: 0x141 DW_DLE_UNKNOWN_FORM (321) Possibly corrupt DWARF data
-libdwarf errarg. Not really used here 1
+libdwarf errarg. 1
 Error in dwarf_siblingof_b , level 1 :Error siblingof_b 
