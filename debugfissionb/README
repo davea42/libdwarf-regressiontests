@@ -8,5 +8,4 @@ ld-new.dwp provides a test of reading a .dwp
 and the special libdwarf interfaces to reading a dwp
 object (DebugFission Package File).
 
-
 David Anderson July 2014

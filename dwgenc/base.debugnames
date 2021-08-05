@@ -54,3 +54,18 @@ LOCAL_SYMBOLS:
                       DW_AT_external              yes(1) <form DW_FORM_flag>
                       DW_AT_type                  <0x0000003b> <form DW_FORM_ref4>
 
+.debug_names
+
+Name table offset       : 0x00000000
+Next name table offset  : 0x00000039
+Section size            : 0x00000039
+Table version           : 5
+Comp unit count         : 1
+Type unit count         : 0
+Foreign Type unit count : 0
+Bucket count            : 0
+Name count              : 1
+Abbrev table length     : 6
+Entry pool size         : 3
+Augmentation string size: 0
+
