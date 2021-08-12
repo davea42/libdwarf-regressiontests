@@ -105,23 +105,6 @@ set +x
 cp src/bin/dwarfdump/dwarfdump $targetdir/dwarfdumpnl
 set -x
 rm -rf $top_build/*
-echo "PICKUPBIN.sh: configure $libelfop for --enable-windowspath"
-set -x
-$libdw/configure $sanitize $libelfopt --enable-windowspath 
-make 
-if [ $? -ne 0 ]
-then
-  echo "PICKUPBIN.sh for --enable-windowspath  FAIL"
-  exit 1
-fi
-set +x
-cp src/bin/dwarfdump/dwarfdump   $targetdir/dwarfdumpW
-if [ $? -ne 0 ]
-then
-  echo "No dwarfdumpW done! giving up."
-  exit 1;
-fi
-
 
 rm -rf $top_build/*
 if [ $withlibelf = "withlibelf" ]
