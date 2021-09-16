@@ -705,7 +705,7 @@ process_one_file(Elf * elf, int infd, int outfd)
 
 	do_reference_translations();
 
-	dres = dwarf_finish(dbg, &error);
+	dres = dwarf_finish(dbg);
 	if (dres != DW_DLV_OK) {
 		printf ("dwarf_finish failed\n");
 		exit(1);
@@ -774,7 +774,7 @@ process_concat_file(Elf * elf, char *filename, int fd, int filenumber)
 		/* leave the files open because we need the dbg
 		   in place for needarr_dbgp use; unless this file
 		   had none of them */
-		dres = dwarf_finish(concat_dbg, &error);
+		dres = dwarf_finish(concat_dbg);
 	}
 
 	if (!sflag) {
@@ -4535,7 +4535,7 @@ trace_file(Elf * elf, int fd)
 		printf ("end of all CUs\n");
 	}
 
-	dres = dwarf_finish(dbg, &error);
+	dres = dwarf_finish(dbg);
 	if (dres != DW_DLV_OK) {
 		printf ("dwarf_finish failed\n");
 		exit(1);
@@ -5333,7 +5333,7 @@ concatenate (Elf *elf, int infd, int outfd)
 
 	/* do not release this dbg,  we need the name for comparison
 		during reference translations!
-	dres = dwarf_finish(dbg, &error);	*/
+	dres = dwarf_finish(dbg); */
 	if (dres != DW_DLV_OK) {
 		printf ("dwarf_finish failed\n");
 		exit(1);

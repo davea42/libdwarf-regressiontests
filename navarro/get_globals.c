@@ -46,7 +46,7 @@ int main()
         printf("FAIL in dwarf_get_aranges: %llu %s\n", dwarf_errno(error), dwarf_errmsg(error));
        exit(1);
     }
-    res = dwarf_finish(dbg,&error);
+    res = dwarf_finish(dbg);
     if (res == DW_DLV_OK) {
        printf("done ok\n");
     } else {

@@ -245,7 +245,7 @@ int main(int argc, char **argv)
         dwarf_dealloc(dbg,childdie,DW_DLA_DIE);
         childdie = diesib;
     }
-    res = dwarf_finish(dbg,&error);
+    res = dwarf_finish(dbg);
     printresval("","finish",res,__LINE__);
     return 0;
 }

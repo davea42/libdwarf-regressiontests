@@ -80,7 +80,7 @@ main(int argc, char **argv)
     }
 
     read_cu_list(dbg);
-    res = dwarf_finish(dbg,&error);
+    res = dwarf_finish(dbg);
     if(res != DW_DLV_OK) {
         printf("dwarf_finish failed!\n");
     }

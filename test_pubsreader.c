@@ -1157,14 +1157,7 @@ main(int argc, char **argv)
         failcount += try_vars(dbg);
         failcount += try_weaks(dbg);
         failcount += try_funcs(dbg);
-        res2 = dwarf_finish(dbg,&error);
-        if (res2 == DW_DLV_ERROR) {
-            printf("dwarf_finish of %s FAILED %s\n",
-                filepath,
-                dwarf_errmsg(error));
-            ++failcount;
-            continue;
-        } 
+        res2 = dwarf_finish(dbg);
         if (res2 == DW_DLV_NO_ENTRY) {
             printf("dwarf_finish of %s DW_DLV_NO_ENTRY\n",
                 filepath);
