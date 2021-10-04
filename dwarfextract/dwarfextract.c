@@ -361,7 +361,7 @@ int	lookuptype(Dwarf_Debug, Dwarf_Die, struct avl_table *, int,
 int	get_debug_sectionhead(int, SECTION_HEADER **, SECTION_HEADER **,
 							int, int, int, int);
 int	file_is_relocatable(int);
-int	process_concat_file(Elf *, char *, int, int);
+int	process_concat_file(char *, int, int);
 int	child_count(Dwarf_Debug, Dwarf_Die);
 int	has_attr_group(Dwarf_Debug, Dwarf_Die, Dwarf_Die *);
 int	is_unnamed_pointer(Dwarf_Debug, Dwarf_Die, Dwarf_Half, char *);
@@ -734,7 +734,7 @@ process_one_file(Elf * elf, int infd, int outfd)
  * we've already added to newdbg.
  */
 int
-process_concat_file(Elf * elf, char *filename, int fd, int filenumber)
+process_concat_file(char *filename, int fd, int filenumber)
 {
 	int		dres;
 	Dwarf_Debug	concat_dbg;
@@ -743,14 +743,15 @@ process_concat_file(Elf * elf, char *filename, int fd, int filenumber)
 	total_cus = total_dies = total_duplicates =
 	total_structs = total_unnamed_structs = duplicate_structs = 0;
 
-	dres = dwarf_elf_init(elf, 0, NULL, NULL, &concat_dbg,
+	dres = dwarf_init_path((const char *)filename, 
+        0, 0, 0,DW_GROUP_ANY, 0,-,&concat_dbg,
 					&error);
 	if (dres == DW_DLV_NO_ENTRY) {
 		printf("No DWARF information present in %s\n", filename);
 		return 0;
 	}
 	if (dres != DW_DLV_OK) {
-		printf ("dwarf_elf_init failed\n");
+		printf ("dwarf_init failed\n");
 		exit(1);
 	}
 
@@ -1182,7 +1183,7 @@ add_to_proto_list(Dwarf_Off offset, Dwarf_Off offset2, char *namep)
  * process all DIE's in all compilation units
  */
 void
-walk_cus(Dwarf_Debug dbg, int fd)
+walk_cus(Dwarf_Debug dbg)
 {
 	int		nres = DW_DLV_OK;
 	Dwarf_Unsigned	cu_header_length = 0, abbrev_offset = 0;
@@ -5349,14 +5350,7 @@ concatenate (Elf *elf, int infd, int outfd)
 		current_file_number++; /* used to offset type references to
 						make them unique by file */
 		filename = cfilep[filenumber];
-		if ((concat_fd = open(filename, O_RDONLY)) < 0) {
-			printf ("cannot open %s\n", filename);
-			perror("Open failed");
-			exit(1);
-		}
-		concat_elf = open_as_elf(concat_fd, filename);
-		needs_old=0;
-		process_concat_file(concat_elf, filename, concat_fd, filenumber);
+		process_concat_file(filename, concat_fd, filenumber);
 		if (needs_old == 0) {
 			/* leave the files open because we need the dbg
 			   in place for needarr_dbgp use; unless this file

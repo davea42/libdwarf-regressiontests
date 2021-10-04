@@ -49,3 +49,4 @@ then
 fi
 rm -f ./frame_test1
 echo "PASS legendre/runtest.sh frame test"
+exit 0

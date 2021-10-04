@@ -16,12 +16,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 1
 Print fde 1
 function low pc 0x8048d2d  and length 0x228  and midpoint addr we choose 0x8048e41
@@ -38,16 +39,17 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 9
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  0.  0x02.    0.     110.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x0000000a. 
-[ 7]  2.  0x00.    6.       4.  0x0000000c. 
-[ 8]  2.  0x00.    7.       3.  0x0000000e. 
+
+Print 9 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc1 110
+[ 6]  10 DW_CFA_offset 18446744073709551604
+[ 7]  12 DW_CFA_offset 18446744073709551592
+[ 8]  14 DW_CFA_offset 18446744073709551588
 Print cie of fde 2
 Print fde 2
 function low pc 0x8048f55  and length 0xca  and midpoint addr we choose 0x8048fba
@@ -64,12 +66,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 3
 Print fde 3
 function low pc 0x804901f  and length 0x132  and midpoint addr we choose 0x80490b8
@@ -86,12 +89,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 4
 Print fde 4
 function low pc 0x8049151  and length 0x3b3  and midpoint addr we choose 0x804932a
@@ -108,16 +112,17 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 9
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  0.  0x02.    0.     239.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x0000000a. 
-[ 7]  2.  0x00.    6.       4.  0x0000000c. 
-[ 8]  2.  0x00.    7.       3.  0x0000000e. 
+
+Print 9 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc1 239
+[ 6]  10 DW_CFA_offset 18446744073709551604
+[ 7]  12 DW_CFA_offset 18446744073709551592
+[ 8]  14 DW_CFA_offset 18446744073709551588
 Print cie of fde 5
 Print fde 5
 function low pc 0x8049504  and length 0x78  and midpoint addr we choose 0x8049540
@@ -134,12 +139,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 6
 Print fde 6
 function low pc 0x804957c  and length 0x313  and midpoint addr we choose 0x8049705
@@ -156,12 +162,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 7
 Print fde 7
 function low pc 0x804988f  and length 0x100  and midpoint addr we choose 0x804990f
@@ -178,12 +185,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 8
 Print fde 8
 function low pc 0x8049990  and length 0x5c  and midpoint addr we choose 0x80499be
@@ -200,18 +208,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       4.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       7.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  2.  0x00.    6.       3.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 4
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 7
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 9
 Print fde 9
 function low pc 0x80499f0  and length 0x41  and midpoint addr we choose 0x8049a10
@@ -228,12 +237,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 10
 Print fde 10
 function low pc 0x8049a40  and length 0x2c  and midpoint addr we choose 0x8049a56
@@ -250,15 +260,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      11.  0x00000008. 
-[ 6]  2.  0x00.    7.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 11
+[ 6]  9 DW_CFA_offset 18446744073709551588
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 11
 Print fde 11
 function low pc 0x8049a70  and length 0x2d9  and midpoint addr we choose 0x8049bdc
@@ -275,17 +286,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.      23.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000c. 
-[ 9]  2.  0x00.    6.       4.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 23
+[ 8]  12 DW_CFA_offset 18446744073709551588
+[ 9]  14 DW_CFA_offset 18446744073709551592
 Print cie of fde 12
 Print fde 12
 function low pc 0x8049d50  and length 0x31  and midpoint addr we choose 0x8049d68
@@ -302,15 +314,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       3.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 3
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 13
 Print fde 13
 function low pc 0x8049d90  and length 0x29  and midpoint addr we choose 0x8049da4
@@ -327,15 +340,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       3.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 3
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 14
 Print fde 14
 function low pc 0x8049dc0  and length 0x262  and midpoint addr we choose 0x8049ef1
@@ -352,17 +366,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.      12.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000c. 
-[ 9]  2.  0x00.    6.       4.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 12
+[ 8]  12 DW_CFA_offset 18446744073709551588
+[ 9]  14 DW_CFA_offset 18446744073709551592
 Print cie of fde 15
 Print fde 15
 function low pc 0x804a030  and length 0x15d  and midpoint addr we choose 0x804a0de
@@ -379,17 +394,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 16
 Print fde 16
 function low pc 0x804a190  and length 0x111  and midpoint addr we choose 0x804a218
@@ -406,17 +422,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       7.  0x00000008. 
-[ 6]  2.  0x00.    6.       4.  0x00000009. 
-[ 7]  2.  0x00.    7.       3.  0x0000000b. 
-[ 8]  1.  0x00.    0.       7.  0x0000000d. 
-[ 9]  2.  0x00.    3.       5.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 7
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_offset 18446744073709551588
+[ 8]  13 DW_CFA_advance_loc 7
+[ 9]  14 DW_CFA_offset 18446744073709551604
 Print cie of fde 17
 Print fde 17
 function low pc 0x804a2b0  and length 0x2d  and midpoint addr we choose 0x804a2c6
@@ -433,15 +450,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      15.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 15
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 18
 Print fde 18
 function low pc 0x804a2e0  and length 0x2d  and midpoint addr we choose 0x804a2f6
@@ -458,15 +476,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      15.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 15
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 19
 Print fde 19
 function low pc 0x804a310  and length 0x1d  and midpoint addr we choose 0x804a31e
@@ -483,12 +502,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 20
 Print fde 20
 function low pc 0x804a330  and length 0x1d  and midpoint addr we choose 0x804a33e
@@ -505,12 +525,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 21
 Print fde 21
 function low pc 0x804a350  and length 0x19  and midpoint addr we choose 0x804a35c
@@ -527,12 +548,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 22
 Print fde 22
 function low pc 0x804a370  and length 0x19  and midpoint addr we choose 0x804a37c
@@ -549,12 +571,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 23
 Print fde 23
 function low pc 0x804a390  and length 0x19  and midpoint addr we choose 0x804a39c
@@ -571,12 +594,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 24
 Print fde 24
 function low pc 0x804a3b0  and length 0x19  and midpoint addr we choose 0x804a3bc
@@ -593,12 +617,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 25
 Print fde 25
 function low pc 0x804a3d0  and length 0x19  and midpoint addr we choose 0x804a3dc
@@ -615,12 +640,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 26
 Print fde 26
 function low pc 0x804a3f0  and length 0x19  and midpoint addr we choose 0x804a3fc
@@ -637,12 +663,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 27
 Print fde 27
 function low pc 0x804a410  and length 0x2d  and midpoint addr we choose 0x804a426
@@ -659,15 +686,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       7.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 7
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 28
 Print fde 28
 function low pc 0x804a440  and length 0x28  and midpoint addr we choose 0x804a454
@@ -684,15 +712,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       3.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 3
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 29
 Print fde 29
 function low pc 0x804a470  and length 0x5f  and midpoint addr we choose 0x804a49f
@@ -709,18 +738,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       3.  0x0000000c. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 30
 Print fde 30
 function low pc 0x804a4d0  and length 0x8f  and midpoint addr we choose 0x804a517
@@ -737,15 +767,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      14.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 14
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 31
 Print fde 31
 function low pc 0x804a560  and length 0x57  and midpoint addr we choose 0x804a58b
@@ -762,12 +793,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 32
 Print fde 32
 function low pc 0x804a5c0  and length 0x1ef  and midpoint addr we choose 0x804a6b7
@@ -784,17 +816,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 33
 Print fde 33
 function low pc 0x804a7b0  and length 0xe2  and midpoint addr we choose 0x804a821
@@ -811,21 +844,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.       6.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 6
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 34
 Print fde 34
 function low pc 0x804a8a0  and length 0x87  and midpoint addr we choose 0x804a8e3
@@ -842,15 +876,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      14.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 14
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 35
 Print fde 35
 function low pc 0x804a930  and length 0x78  and midpoint addr we choose 0x804a96c
@@ -867,18 +902,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       8.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       5.  0x0000000b. 
-[ 8]  2.  0x00.    6.       3.  0x0000000c. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 8
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 5
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 36
 Print fde 36
 function low pc 0x804a9b0  and length 0x112  and midpoint addr we choose 0x804aa39
@@ -895,17 +931,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 37
 Print fde 37
 function low pc 0x804aad0  and length 0x4a  and midpoint addr we choose 0x804aaf5
@@ -922,12 +959,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 38
 Print fde 38
 function low pc 0x804ab20  and length 0xff  and midpoint addr we choose 0x804ab9f
@@ -944,17 +982,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 39
 Print fde 39
 function low pc 0x804ac20  and length 0x42  and midpoint addr we choose 0x804ac41
@@ -971,12 +1010,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 40
 Print fde 40
 function low pc 0x804ac70  and length 0x42  and midpoint addr we choose 0x804ac91
@@ -993,12 +1033,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 41
 Print fde 41
 function low pc 0x804acc0  and length 0xa6  and midpoint addr we choose 0x804ad13
@@ -1015,18 +1056,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       3.  0x0000000c. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 42
 Print fde 42
 function low pc 0x804ad70  and length 0xa6  and midpoint addr we choose 0x804adc3
@@ -1043,18 +1085,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       3.  0x0000000c. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 43
 Print fde 43
 function low pc 0x804ae20  and length 0x49  and midpoint addr we choose 0x804ae44
@@ -1071,15 +1114,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      14.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 14
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 44
 Print fde 44
 function low pc 0x804ae70  and length 0x17b9  and midpoint addr we choose 0x804ba4c
@@ -1096,17 +1140,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 45
 Print fde 45
 function low pc 0x804c630  and length 0x14a  and midpoint addr we choose 0x804c6d5
@@ -1123,21 +1168,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    6.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000c. 
-[ 9]  1.  0x00.    0.      11.  0x0000000e. 
-[10]  2.  0x00.    3.       5.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551588
+[ 9]  14 DW_CFA_advance_loc 11
+[10]  15 DW_CFA_offset 18446744073709551604
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 46
 Print fde 46
 function low pc 0x804c780  and length 0x369  and midpoint addr we choose 0x804c934
@@ -1154,17 +1200,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       5.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 5
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 47
 Print fde 47
 function low pc 0x804caf0  and length 0x155  and midpoint addr we choose 0x804cb9a
@@ -1181,21 +1228,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    7.       3.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    3.       5.  0x0000000c. 
-[ 9]  1.  0x00.    0.       6.  0x0000000e. 
-[10]  2.  0x00.    6.       4.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551588
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551604
+[ 9]  14 DW_CFA_advance_loc 6
+[10]  15 DW_CFA_offset 18446744073709551592
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 48
 Print fde 48
 function low pc 0x804cc50  and length 0x1ce  and midpoint addr we choose 0x804cd37
@@ -1212,21 +1260,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      16.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.      15.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 16
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 15
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 49
 Print fde 49
 function low pc 0x804ce20  and length 0x220  and midpoint addr we choose 0x804cf30
@@ -1243,21 +1292,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    7.       3.  0x00000009. 
-[ 7]  1.  0x00.    0.      10.  0x0000000b. 
-[ 8]  2.  0x00.    3.       5.  0x0000000c. 
-[ 9]  1.  0x00.    0.       6.  0x0000000e. 
-[10]  2.  0x00.    6.       4.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551588
+[ 7]  11 DW_CFA_advance_loc 10
+[ 8]  12 DW_CFA_offset 18446744073709551604
+[ 9]  14 DW_CFA_advance_loc 6
+[10]  15 DW_CFA_offset 18446744073709551592
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 50
 Print fde 50
 function low pc 0x804d040  and length 0x1cf  and midpoint addr we choose 0x804d127
@@ -1274,17 +1324,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 51
 Print fde 51
 function low pc 0x804d210  and length 0x17e  and midpoint addr we choose 0x804d2cf
@@ -1301,17 +1352,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 52
 Print fde 52
 function low pc 0x804d390  and length 0x32f  and midpoint addr we choose 0x804d527
@@ -1328,17 +1380,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      15.  0x00000008. 
-[ 6]  2.  0x00.    6.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.      35.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000c. 
-[ 9]  2.  0x00.    3.       5.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 15
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_advance_loc 35
+[ 8]  12 DW_CFA_offset 18446744073709551588
+[ 9]  14 DW_CFA_offset 18446744073709551604
 Print cie of fde 53
 Print fde 53
 function low pc 0x804d6c0  and length 0x66  and midpoint addr we choose 0x804d6f3
@@ -1355,18 +1408,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      21.  0x00000008. 
-[ 6]  2.  0x00.    6.       3.  0x00000009. 
-[ 7]  2.  0x00.    3.       4.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 21
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_offset 18446744073709551604
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 54
 Print fde 54
 function low pc 0x804d730  and length 0x1a5  and midpoint addr we choose 0x804d802
@@ -1383,17 +1437,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      54.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 54
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 55
 Print fde 55
 function low pc 0x804d8e0  and length 0x95  and midpoint addr we choose 0x804d92a
@@ -1410,18 +1465,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       4.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  2.  0x00.    6.       3.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 4
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 56
 Print fde 56
 function low pc 0x804d980  and length 0x8b  and midpoint addr we choose 0x804d9c5
@@ -1438,17 +1494,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      26.  0x00000008. 
-[ 6]  2.  0x00.    7.       3.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    3.       5.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 26
+[ 6]  9 DW_CFA_offset 18446744073709551588
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551604
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 57
 Print fde 57
 function low pc 0x804da10  and length 0x25c  and midpoint addr we choose 0x804db3e
@@ -1465,17 +1522,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      15.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 15
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 58
 Print fde 58
 function low pc 0x804dc70  and length 0x2d0  and midpoint addr we choose 0x804ddd8
@@ -1492,21 +1550,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       5.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.       5.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 5
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 5
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 59
 Print fde 59
 function low pc 0x804df40  and length 0x3da  and midpoint addr we choose 0x804e12d
@@ -1523,17 +1582,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 60
 Print fde 60
 function low pc 0x804e320  and length 0x486  and midpoint addr we choose 0x804e563
@@ -1550,17 +1610,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      18.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 18
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 61
 Print fde 61
 function low pc 0x804e7b0  and length 0x7d3  and midpoint addr we choose 0x804eb99
@@ -1577,17 +1638,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      21.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 21
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 62
 Print fde 62
 function low pc 0x804ef90  and length 0x15  and midpoint addr we choose 0x804ef9a
@@ -1604,12 +1666,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       9.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 9
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 63
 Print fde 63
 function low pc 0x804efb0  and length 0x15  and midpoint addr we choose 0x804efba
@@ -1626,12 +1689,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       9.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 9
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 64
 Print fde 64
 function low pc 0x804efd0  and length 0xe8  and midpoint addr we choose 0x804f044
@@ -1648,15 +1712,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      19.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 19
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 65
 Print fde 65
 function low pc 0x804f0c0  and length 0xdd  and midpoint addr we choose 0x804f12e
@@ -1673,21 +1738,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       4.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.       9.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 4
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 9
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 66
 Print fde 66
 function low pc 0x804f1a0  and length 0xa5  and midpoint addr we choose 0x804f1f2
@@ -1704,17 +1770,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      10.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.      17.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000c. 
-[ 9]  2.  0x00.    6.       4.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 10
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 17
+[ 8]  12 DW_CFA_offset 18446744073709551588
+[ 9]  14 DW_CFA_offset 18446744073709551592
 Print cie of fde 67
 Print fde 67
 function low pc 0x804f250  and length 0x43  and midpoint addr we choose 0x804f271
@@ -1731,15 +1798,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       7.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 7
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 68
 Print fde 68
 function low pc 0x804f2a0  and length 0xf90  and midpoint addr we choose 0x804fa68
@@ -1756,17 +1824,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 69
 Print fde 69
 function low pc 0x8050230  and length 0x30  and midpoint addr we choose 0x8050248
@@ -1783,18 +1852,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       3.  0x0000000c. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 70
 Print fde 70
 function low pc 0x8050260  and length 0xd3  and midpoint addr we choose 0x80502c9
@@ -1811,15 +1881,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      13.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 13
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 71
 Print fde 71
 function low pc 0x8050340  and length 0x49  and midpoint addr we choose 0x8050364
@@ -1836,21 +1907,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.      12.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.       6.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 12
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 6
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 72
 Print fde 72
 function low pc 0x8050390  and length 0x14a  and midpoint addr we choose 0x8050435
@@ -1867,21 +1939,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      15.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.       6.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 15
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 6
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 73
 Print fde 73
 function low pc 0x80504e0  and length 0xb  and midpoint addr we choose 0x80504e5
@@ -1898,12 +1971,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 74
 Print fde 74
 function low pc 0x80504f0  and length 0xd4  and midpoint addr we choose 0x805055a
@@ -1920,15 +1994,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 75
 Print fde 75
 function low pc 0x80505d0  and length 0x9f  and midpoint addr we choose 0x805061f
@@ -1945,12 +2020,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 76
 Print fde 76
 function low pc 0x8050670  and length 0x8f  and midpoint addr we choose 0x80506b7
@@ -1967,12 +2043,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 77
 Print fde 77
 function low pc 0x8050700  and length 0xaf  and midpoint addr we choose 0x8050757
@@ -1989,15 +2066,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      17.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 17
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 78
 Print fde 78
 function low pc 0x80507b0  and length 0xa7  and midpoint addr we choose 0x8050803
@@ -2014,18 +2092,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      18.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  2.  0x00.    6.       3.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 18
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 79
 Print fde 79
 function low pc 0x8050860  and length 0x97  and midpoint addr we choose 0x80508ab
@@ -2042,12 +2121,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 80
 Print fde 80
 function low pc 0x8050900  and length 0x42  and midpoint addr we choose 0x8050921
@@ -2064,12 +2144,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 81
 Print fde 81
 function low pc 0x8050950  and length 0x146  and midpoint addr we choose 0x80509f3
@@ -2086,17 +2167,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      41.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 41
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 82
 Print fde 82
 function low pc 0x8050aa0  and length 0x1af  and midpoint addr we choose 0x8050b77
@@ -2113,21 +2195,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      10.  0x00000008. 
-[ 6]  2.  0x00.    6.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000c. 
-[ 9]  1.  0x00.    0.       9.  0x0000000e. 
-[10]  2.  0x00.    3.       5.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 10
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551588
+[ 9]  14 DW_CFA_advance_loc 9
+[10]  15 DW_CFA_offset 18446744073709551604
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 83
 Print fde 83
 function low pc 0x8050c50  and length 0x3f  and midpoint addr we choose 0x8050c6f
@@ -2144,15 +2227,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      30.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 30
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 84
 Print fde 84
 function low pc 0x8050c90  and length 0x3f  and midpoint addr we choose 0x8050caf
@@ -2169,15 +2253,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      30.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 30
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 85
 Print fde 85
 function low pc 0x8050cd0  and length 0x3f  and midpoint addr we choose 0x8050cef
@@ -2194,15 +2279,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      30.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 30
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 86
 Print fde 86
 function low pc 0x8050d10  and length 0x3f  and midpoint addr we choose 0x8050d2f
@@ -2219,15 +2305,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      30.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 30
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 87
 Print fde 87
 function low pc 0x8050d50  and length 0x3f  and midpoint addr we choose 0x8050d6f
@@ -2244,15 +2331,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      30.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 30
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 88
 Print fde 88
 function low pc 0x8050d90  and length 0x11b  and midpoint addr we choose 0x8050e1d
@@ -2269,18 +2357,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      11.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  2.  0x00.    6.       3.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 11
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 89
 Print fde 89
 function low pc 0x8050eb0  and length 0x11b  and midpoint addr we choose 0x8050f3d
@@ -2297,18 +2386,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      11.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  2.  0x00.    6.       3.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 11
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 90
 Print fde 90
 function low pc 0x8050fd0  and length 0x103  and midpoint addr we choose 0x8051051
@@ -2325,17 +2415,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.      13.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000c. 
-[ 9]  2.  0x00.    6.       4.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 13
+[ 8]  12 DW_CFA_offset 18446744073709551588
+[ 9]  14 DW_CFA_offset 18446744073709551592
 Print cie of fde 91
 Print fde 91
 function low pc 0x80510e0  and length 0x122  and midpoint addr we choose 0x8051171
@@ -2352,21 +2443,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000c. 
-[ 9]  1.  0x00.    0.      17.  0x0000000e. 
-[10]  2.  0x00.    6.       4.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551588
+[ 9]  14 DW_CFA_advance_loc 17
+[10]  15 DW_CFA_offset 18446744073709551592
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 92
 Print fde 92
 function low pc 0x8051210  and length 0x2e7  and midpoint addr we choose 0x8051383
@@ -2383,17 +2475,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 93
 Print fde 93
 function low pc 0x8051500  and length 0x1d5  and midpoint addr we choose 0x80515ea
@@ -2410,21 +2503,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.       6.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 6
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 94
 Print fde 94
 function low pc 0x80516e0  and length 0x34  and midpoint addr we choose 0x80516fa
@@ -2441,12 +2535,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 95
 Print fde 95
 function low pc 0x8051720  and length 0xcf  and midpoint addr we choose 0x8051787
@@ -2463,21 +2558,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    6.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    3.       5.  0x0000000c. 
-[ 9]  1.  0x00.    0.       6.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551604
+[ 9]  14 DW_CFA_advance_loc 6
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 96
 Print fde 96
 function low pc 0x80517f0  and length 0x12  and midpoint addr we choose 0x80517f9
@@ -2494,12 +2590,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       4.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 4
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 97
 Print fde 97
 function low pc 0x8051810  and length 0x21  and midpoint addr we choose 0x8051820
@@ -2516,12 +2613,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 98
 Print fde 98
 function low pc 0x8051840  and length 0x88  and midpoint addr we choose 0x8051884
@@ -2538,17 +2636,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 99
 Print fde 99
 function low pc 0x80518d0  and length 0x5a  and midpoint addr we choose 0x80518fd
@@ -2565,18 +2664,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       4.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       3.  0x0000000c. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 4
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 100
 Print fde 100
 function low pc 0x8051930  and length 0xcc  and midpoint addr we choose 0x8051996
@@ -2593,15 +2693,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      10.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 10
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 101
 Print fde 101
 function low pc 0x8051a00  and length 0x302  and midpoint addr we choose 0x8051b81
@@ -2618,17 +2719,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      15.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 15
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 102
 Print fde 102
 function low pc 0x8051d10  and length 0x271  and midpoint addr we choose 0x8051e48
@@ -2645,21 +2747,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      15.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       7.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.       9.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 15
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 7
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 9
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 103
 Print fde 103
 function low pc 0x8051f90  and length 0x166  and midpoint addr we choose 0x8052043
@@ -2676,21 +2779,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.      10.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 10
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 104
 Print fde 104
 function low pc 0x8052100  and length 0xdb  and midpoint addr we choose 0x805216d
@@ -2707,17 +2811,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 105
 Print fde 105
 function low pc 0x80521e0  and length 0xb  and midpoint addr we choose 0x80521e5
@@ -2734,12 +2839,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 106
 Print fde 106
 function low pc 0x80521f0  and length 0xe  and midpoint addr we choose 0x80521f7
@@ -2756,12 +2862,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 107
 Print fde 107
 function low pc 0x8052200  and length 0xc  and midpoint addr we choose 0x8052206
@@ -2778,12 +2885,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 108
 Print fde 108
 function low pc 0x8052210  and length 0xc  and midpoint addr we choose 0x8052216
@@ -2800,12 +2908,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 109
 Print fde 109
 function low pc 0x8052220  and length 0x4c  and midpoint addr we choose 0x8052246
@@ -2822,15 +2931,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      50.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 50
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 110
 Print fde 110
 function low pc 0x8052270  and length 0x7a  and midpoint addr we choose 0x80522ad
@@ -2847,15 +2957,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      25.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 25
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 111
 Print fde 111
 function low pc 0x80522f0  and length 0x67  and midpoint addr we choose 0x8052323
@@ -2872,12 +2983,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 112
 Print fde 112
 function low pc 0x8052360  and length 0x46  and midpoint addr we choose 0x8052383
@@ -2894,15 +3006,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       7.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 7
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 113
 Print fde 113
 function low pc 0x80523b0  and length 0x6e  and midpoint addr we choose 0x80523e7
@@ -2919,15 +3032,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      11.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 11
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 114
 Print fde 114
 function low pc 0x8052420  and length 0x10a  and midpoint addr we choose 0x80524a5
@@ -2944,21 +3058,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      13.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  1.  0x00.    0.       6.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 13
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_advance_loc 6
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 115
 Print fde 115
 function low pc 0x8052530  and length 0x620  and midpoint addr we choose 0x8052840
@@ -2975,17 +3090,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      22.  0x00000008. 
-[ 6]  2.  0x00.    6.       4.  0x00000009. 
-[ 7]  2.  0x00.    3.       5.  0x0000000b. 
-[ 8]  1.  0x00.    0.      12.  0x0000000d. 
-[ 9]  2.  0x00.    7.       3.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 22
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_offset 18446744073709551604
+[ 8]  13 DW_CFA_advance_loc 12
+[ 9]  14 DW_CFA_offset 18446744073709551588
 Print cie of fde 116
 Print fde 116
 function low pc 0x8052b50  and length 0x18b  and midpoint addr we choose 0x8052c15
@@ -3002,17 +3118,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 117
 Print fde 117
 function low pc 0x8052ce0  and length 0x17  and midpoint addr we choose 0x8052ceb
@@ -3029,12 +3146,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       4.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 4
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 118
 Print fde 118
 function low pc 0x8052d00  and length 0x27  and midpoint addr we choose 0x8052d13
@@ -3051,12 +3169,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       7.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 7
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 119
 Print fde 119
 function low pc 0x8052d30  and length 0xef  and midpoint addr we choose 0x8052da7
@@ -3073,21 +3192,22 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 14
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    6.       4.  0x00000009. 
-[ 7]  1.  0x00.    0.       6.  0x0000000b. 
-[ 8]  2.  0x00.    3.       5.  0x0000000c. 
-[ 9]  1.  0x00.    0.       6.  0x0000000e. 
-[10]  2.  0x00.    7.       3.  0x0000000f. 
-[11]  0.  0x00.    0.       0.  0x00000011. 
-[12]  0.  0x00.    0.       0.  0x00000012. 
-[13]  0.  0x00.    0.       0.  0x00000013. 
+
+Print 14 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_advance_loc 6
+[ 8]  12 DW_CFA_offset 18446744073709551604
+[ 9]  14 DW_CFA_advance_loc 6
+[10]  15 DW_CFA_offset 18446744073709551588
+[11]  17 DW_CFA_nop 
+[12]  18 DW_CFA_nop 
+[13]  19 DW_CFA_nop 
 Print cie of fde 120
 Print fde 120
 function low pc 0x8052e20  and length 0xb7  and midpoint addr we choose 0x8052e7b
@@ -3104,12 +3224,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 121
 Print fde 121
 function low pc 0x8052ee0  and length 0xe7  and midpoint addr we choose 0x8052f53
@@ -3126,12 +3247,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 122
 Print fde 122
 function low pc 0x8052fd0  and length 0x8f  and midpoint addr we choose 0x8053017
@@ -3148,12 +3270,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 123
 Print fde 123
 function low pc 0x8053060  and length 0x8f  and midpoint addr we choose 0x80530a7
@@ -3170,12 +3293,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 124
 Print fde 124
 function low pc 0x80530f0  and length 0x3a  and midpoint addr we choose 0x805310d
@@ -3192,18 +3316,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      15.  0x00000008. 
-[ 6]  2.  0x00.    6.       3.  0x00000009. 
-[ 7]  2.  0x00.    3.       4.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 15
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_offset 18446744073709551604
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 125
 Print fde 125
 function low pc 0x8053130  and length 0x97  and midpoint addr we choose 0x805317b
@@ -3220,15 +3345,16 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 8
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      10.  0x00000008. 
-[ 6]  2.  0x00.    3.       3.  0x00000009. 
-[ 7]  0.  0x00.    0.       0.  0x0000000b. 
+
+Print 8 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 10
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_nop 
 Print cie of fde 126
 Print fde 126
 function low pc 0x80531d0  and length 0x1fa  and midpoint addr we choose 0x80532cd
@@ -3245,17 +3371,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      12.  0x00000008. 
-[ 6]  2.  0x00.    7.       3.  0x00000009. 
-[ 7]  1.  0x00.    0.      14.  0x0000000b. 
-[ 8]  2.  0x00.    6.       4.  0x0000000c. 
-[ 9]  2.  0x00.    3.       5.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 12
+[ 6]  9 DW_CFA_offset 18446744073709551588
+[ 7]  11 DW_CFA_advance_loc 14
+[ 8]  12 DW_CFA_offset 18446744073709551592
+[ 9]  14 DW_CFA_offset 18446744073709551604
 Print cie of fde 127
 Print fde 127
 function low pc 0x80533d0  and length 0x192  and midpoint addr we choose 0x8053499
@@ -3272,18 +3399,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      11.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  2.  0x00.    6.       3.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 11
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 128
 Print fde 128
 function low pc 0x8053570  and length 0x1f2  and midpoint addr we choose 0x8053669
@@ -3300,17 +3428,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      23.  0x00000008. 
-[ 6]  2.  0x00.    7.       3.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    3.       5.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 23
+[ 6]  9 DW_CFA_offset 18446744073709551588
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551604
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 129
 Print fde 129
 function low pc 0x8053770  and length 0x1c5  and midpoint addr we choose 0x8053852
@@ -3327,17 +3456,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      23.  0x00000008. 
-[ 6]  2.  0x00.    7.       3.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    3.       5.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 23
+[ 6]  9 DW_CFA_offset 18446744073709551588
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551604
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 130
 Print fde 130
 function low pc 0x8053940  and length 0x25d  and midpoint addr we choose 0x8053a6e
@@ -3354,17 +3484,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
 Print cie of fde 131
 Print fde 131
 function low pc 0x8053ba0  and length 0x1da  and midpoint addr we choose 0x8053c8d
@@ -3381,18 +3512,19 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 11
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      11.  0x00000008. 
-[ 6]  2.  0x00.    3.       4.  0x00000009. 
-[ 7]  2.  0x00.    6.       3.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
-[10]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 11 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 11
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
+[10]  15 DW_CFA_nop 
 Print cie of fde 132
 Print fde 132
 function low pc 0x8053d80  and length 0x2a  and midpoint addr we choose 0x8053d95
@@ -3409,12 +3541,13 @@ reg 7 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 5
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
+
+Print 5 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
 Print cie of fde 133
 Print fde 133
 function low pc 0x8053db0  and length 0x210  and midpoint addr we choose 0x8053eb8
@@ -3431,17 +3564,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.       9.  0x00000008. 
-[ 6]  2.  0x00.    3.       5.  0x00000009. 
-[ 7]  2.  0x00.    6.       4.  0x0000000b. 
-[ 8]  2.  0x00.    7.       3.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000f. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 9
+[ 6]  9 DW_CFA_offset 18446744073709551604
+[ 7]  11 DW_CFA_offset 18446744073709551592
+[ 8]  13 DW_CFA_offset 18446744073709551588
+[ 9]  15 DW_CFA_nop 
  Print .eh_frame
 1 cies present. 2 fdes present. 
 Print cie of fde 0
@@ -3460,17 +3594,18 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      14.  0x00000008. 
-[ 6]  2.  0x00.    6.       4.  0x00000009. 
-[ 7]  2.  0x00.    7.       3.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 14
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_offset 18446744073709551588
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 
 Print cie of fde 1
 Print fde 1
 function low pc 0x80540f0  and length 0x138  and midpoint addr we choose 0x805418c
@@ -3487,14 +3622,15 @@ reg 7 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -12 address of 
 reg 8 type: 0 DW_EXPR_OFFSET  2002 (CFA)  offset_rel? 1  offset  -4 address of value is CFA plus signed offset
 reg 9 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 Frame op count: 10
-Base op. Ext op. Reg. Offset. Instr-offset.
-[ 0]  1.  0x00.    0.       1.  0x00000000. 
-[ 1]  0.  0x0e.    0.       8.  0x00000001. 
-[ 2]  1.  0x00.    0.       2.  0x00000003. 
-[ 3]  2.  0x00.    5.       2.  0x00000004. 
-[ 4]  0.  0x0d.    5.       0.  0x00000006. 
-[ 5]  1.  0x00.    0.      14.  0x00000008. 
-[ 6]  2.  0x00.    6.       4.  0x00000009. 
-[ 7]  2.  0x00.    7.       3.  0x0000000b. 
-[ 8]  0.  0x00.    0.       0.  0x0000000d. 
-[ 9]  0.  0x00.    0.       0.  0x0000000e. 
+
+Print 10 frame instructions
+[ 0]  0 DW_CFA_advance_loc 1
+[ 1]  1 DW_CFA_def_cfa_offset 8
+[ 2]  3 DW_CFA_advance_loc 2
+[ 3]  4 DW_CFA_offset 18446744073709551596
+[ 4]  6 DW_CFA_def_cfa_register r5
+[ 5]  8 DW_CFA_advance_loc 14
+[ 6]  9 DW_CFA_offset 18446744073709551592
+[ 7]  11 DW_CFA_offset 18446744073709551588
+[ 8]  13 DW_CFA_nop 
+[ 9]  14 DW_CFA_nop 

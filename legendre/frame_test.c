@@ -6,11 +6,25 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <string.h>
 #include <errno.h>
 
 #define FILENAME "./libmpich.so.1.0"
 #define ADDR 0x5c183
 #define REG 12
+
+static  const char *
+value_type_name(unsigned value_type)
+{
+    switch(value_type){
+    case DW_EXPR_OFFSET: return "DW_EXPR_OFFSET";
+    case DW_EXPR_VAL_OFFSET: return "DW_EXPR_VAL_OFFSET";
+    case DW_EXPR_EXPRESSION: return "DW_EXPR_EXPRESSION";
+    case DW_EXPR_VAL_EXPRESSION: return "DW_EXPR_VAL_EXPRESSION";
+    }
+    return "DW_EXPR unknown! ERROR!";
+}
+
 
 /**
  * With libdwarf-20090510 and latter this produces the output:
@@ -32,7 +46,8 @@ int main(int argc, char *argv[])
    Dwarf_Small value_type = 0;
    Dwarf_Signed offset_relevant=0; 
    Dwarf_Signed register_num = 0;
-   Dwarf_Signed offset_or_block_len =0;
+   Dwarf_Signed offset =0;
+   Dwarf_Block block;
    Dwarf_Ptr block_ptr = 0;
    Dwarf_Addr row_pc = 0;
    Dwarf_Bool has_more_rows = 0;
@@ -40,6 +55,7 @@ int main(int argc, char *argv[])
    int result;
    int fd;
 
+   memset(&block,0,sizeof(Dwarf_Block));
    fd = open("./libmpich.so.1.0", O_RDONLY);
    if (fd == -1) {
       perror("Could not open ./libmpich.so.1.0 for test");
@@ -61,18 +77,24 @@ int main(int argc, char *argv[])
    result = dwarf_get_fde_info_for_reg3_b(fde, REG, 
        ADDR, &value_type, 
        &offset_relevant, &register_num,
-       &offset_or_block_len,
-       &block_ptr, &row_pc, 
+       &offset,
+       &block, &row_pc, 
        &has_more_rows,&subsequent_pc,&err);
    assert(result == DW_DLV_OK);
-/*
-   printf("value type %ld\n", (long int) value_type);
+   printf("value type      %ld %s\n", (long int) value_type,
+       value_type_name(value_type));
+   printf("Register num    %ld\n", (long int) register_num);
    printf("offset relevant %ld\n", (long int) offset_relevant);
-   printf("offset or bl len %ld\n", (long int) offset_or_block_len);
-   printf("bl ptr %ld\n", (long int) block_ptr);
-   printf("row_pc %ld (0x%lx)\n", (long int) row_pc,(long int)row_pc);
-*/
-   printf("Register num  %ld\n", (long int) register_num);
+   printf("offset          %ld (0x%lx)\n", (long int) offset,
+       (unsigned long int)offset);
+   printf("bl ptr          %lu (0x%lx)\n", 
+       (unsigned long int) block.bl_data,
+       (unsigned long int) block.bl_data);
+   printf("bl len          %lu (0x%lx)\n", 
+       (unsigned long int) block.bl_len,
+       (unsigned long int) block.bl_len);
+   printf("row_pc          %ld (0x%lx)\n", (long int) row_pc,
+       (unsigned long int)row_pc);
    assert(register_num == DW_FRAME_CFA_COL3);
    /* This just shows we really test something. */
    assert(DW_FRAME_CFA_COL3 != DW_FRAME_CFA_COL);

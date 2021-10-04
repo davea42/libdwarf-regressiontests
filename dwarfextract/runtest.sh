@@ -17,6 +17,7 @@ tf=$bldtest/dwarfextract
 libdw=$codedir
 bld=$bldtest
 dwlib=$bldtest/libdwarf.a
+dwlibp=$bldtest/libdwarfp.a
 
 if [ x$withlibz = "x" ]
 then
@@ -31,7 +32,7 @@ else
 fi
 
 
-INCS="-I$libbld/libdwarf -I$libdw -I$libdw/src/lib/libdwarf"
+INCS="-I$libbld/libdwarf -I$libbld/libdwarfp -I$libdw -I$libdw/src/lib/libdwarf -I$libdw/src/lib/libdwarfp"
 libs="-lelf"
 if [ $withlibz ]
 then

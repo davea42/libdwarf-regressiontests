@@ -56,7 +56,7 @@ then
     echo "fail frame1 test.  got diffs in output."
     cat diffs
     echo "To update do: cp $tf/frame1.out $ts/frame1.base"
-    echo "rerun: $ts/runtest.sh"
+    echo "rerun: $ts/runtest.sh $withlibelf $withlibz"
     exit 1
 fi
 
