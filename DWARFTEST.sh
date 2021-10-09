@@ -1771,39 +1771,6 @@ mklocal frame1
   chkres $r $testsrc/frame1
 cd ..
 
-if [ $NLIZE = 'n' ]
-then
-  if [ $endian = 'L' ]
-  then
-    if [ $withlibelf = "withlibelf" ]
-    then
-      echo "====SKIP 1 $testsrc/dwarfextract/runtest.sh\
-         $withlibelf $withlibz"
-      skipcount=`expr $skipcount + 1`
-      #echo "=====START   $testsrc/dwarfextract/runtest.sh \
-      # $withlibelf $withlibz"
-      # This has serious problems with leaks, so
-      # do not do $NLIZE for now..
-      #mklocal dwarfextract
-      #  rm -f dwarfextract
-      #  sh $testsrc/dwarfextract/runtest.sh $withlibelf $withlibz
-      #  chkres $?  $testsrc/dwarfextract
-      #cd ..
-    else
-      echo "====SKIP 1 $testsrc/dwarfextract/runtest.sh\
-         $withlibelf $withlibz"
-      skipcount=`expr $skipcount + 1`
-    fi
-  else
-    echo "=====SKIP 1 $testsrc/dwarfextract/runtest.sh with\
-      big endian test host"
-    skipcount=`expr $skipcount + 1`
-  fi
-else
-  echo "=====SKIP 1 $testsrc/dwarfextract/runtest.sh with NLIZE"
-  skipcount=`expr $skipcount + 1`
-fi
-
 echo "=====START   $testsrc/sandnes2/runtest.sh"
 mklocal sandnes2
   sh $testsrc/sandnes2/runtest.sh
