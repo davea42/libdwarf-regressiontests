@@ -747,6 +747,11 @@ runtest $d1 $d2 c-sun/poc -a
 #  an invalid target offset.
 runtest $d1 $d2 bad-dwop/badskipbranch.o -i -v -M
 
+# a Mach-O object with bogus header length field
+runtest $d1 $d2 \
+  ossfuzz40663/clusterfuzz-testcase-minimized-fuzz_init_path-6122542432124928 \
+  -a -vv
+
 # SHF_COMPRESSED testcases.
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv 
