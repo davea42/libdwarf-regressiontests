@@ -1,0 +1,9 @@
+ClusterFuzz ossfuzz id 40663.
+
+libdwarf was not checking for garbage values
+of two numbers in the Mach-O object file
+header.
+
+If an error was reported it had nothing meaningful
+said.  If a segfault or out of memory 
+happened the application calling libdwarf could crash.
