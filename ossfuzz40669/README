@@ -1,0 +1,9 @@
+
+fuzzing error.
+oss-fuzz-40669
+
+Testcase.
+clusterfuzz-testcase-minimized-fuzz_init_path-5399726397194240
+
+Same problem with corrupt MachO headers
+as oss-fuzz-40663 

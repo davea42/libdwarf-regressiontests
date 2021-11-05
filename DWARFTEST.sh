@@ -751,6 +751,9 @@ runtest $d1 $d2 bad-dwop/badskipbranch.o -i -v -M
 runtest $d1 $d2 \
   ossfuzz40663/clusterfuzz-testcase-minimized-fuzz_init_path-6122542432124928 \
   -a -vv
+runtest $d1 $d2 \
+  ossfuzz40669/clusterfuzz-testcase-minimized-fuzz_init_path-5399726397194240
+  -a -vv
 
 # SHF_COMPRESSED testcases.
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
