@@ -754,16 +754,15 @@ runtest $d1 $d2 \
 
 runtest $d1 $d2 \
   ossfuzz40669/clusterfuzz-testcase-minimized-fuzz_init_path-5399726397194240
+
 runtest $d1 $d2 \
   ossfuzz40669/clusterfuzz-testcase-fuzz_init_path-5399726397194240
 
 runtest $d1 $d2 \
-  ssfuzz40671/clusterfuzz-testcase-fuzz_init_path-5455557297831936
+  ossfuzz40671/clusterfuzz-testcase-fuzz_init_path-5455557297831936
+
 runtest $d1 $d2 \
   ossfuzz40671/clusterfuzz-testcase-minimized-fuzz_init_path-5455557297831936
-
-echo "dadebug for debugging"
-exit 1
 
 # SHF_COMPRESSED testcases.
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
