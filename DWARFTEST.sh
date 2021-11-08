@@ -747,22 +747,43 @@ runtest $d1 $d2 c-sun/poc -a
 #  an invalid target offset.
 runtest $d1 $d2 bad-dwop/badskipbranch.o -i -v -M
 
-# a Mach-O object with bogus header length field
-#40663 just has one version. minimized == not-minimized
+#Corrupted objects from oss-fuzz
 runtest $d1 $d2 \
-  ossfuzz40663/clusterfuzz-testcase-minimized-fuzz_init_path-6122542432124928
+  ossfuzz40627/clusterfuzz-testcase-fuzz_init_path-5186858573758464
 
 runtest $d1 $d2 \
-  ossfuzz40669/clusterfuzz-testcase-minimized-fuzz_init_path-5399726397194240
+  ossfuzz40627/clusterfuzz-testcase-minimized-fuzz_init_path-5186858573758464
 
 runtest $d1 $d2 \
-  ossfuzz40669/clusterfuzz-testcase-fuzz_init_path-5399726397194240
+  ossfuzz40663/clusterfuzz-testcase-minimized-fuzz_init_path-6122542432124928 -a
 
 runtest $d1 $d2 \
-  ossfuzz40671/clusterfuzz-testcase-fuzz_init_path-5455557297831936
+  ossfuzz40669/clusterfuzz-testcase-minimized-fuzz_init_path-5399726397194240 -a
 
 runtest $d1 $d2 \
-  ossfuzz40671/clusterfuzz-testcase-minimized-fuzz_init_path-5455557297831936
+  ossfuzz40669/clusterfuzz-testcase-fuzz_init_path-5399726397194240 -a
+
+runtest $d1 $d2 \
+  ossfuzz40671/clusterfuzz-testcase-fuzz_init_path-5455557297831936 -a
+
+runtest $d1 $d2 \
+  ossfuzz40671/clusterfuzz-testcase-minimized-fuzz_init_path-5455557297831936 -a
+
+runtest $d1 $d2 \
+  ossfuzz40673/clusterfuzz-testcase-minimized-fuzz_init_path-6240961391362048.fuzz -a
+
+runtest $d1 $d2 \
+  ossfuzz40674/clusterfuzz-testcase-minimized-fuzz_init_path-6557751518560256 -a
+
+runtest $d1 $d2 \
+  ossfuzz40729/clusterfuzz-testcase-minimized-fuzz_init_binary-4791627277795328 -z
+
+runtest $d1 $d2 \
+  ossfuzz40731/clusterfuzz-testcase-fuzz_init_binary-5983147574034432
+
+runtest $d1 $d2 \
+  ossfuzz40731/clusterfuzz-testcase-minimized-fuzz_init_binary-5983147574034432
+
 
 # SHF_COMPRESSED testcases.
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
