@@ -776,14 +776,29 @@ runtest $d1 $d2 \
   ossfuzz40674/clusterfuzz-testcase-minimized-fuzz_init_path-6557751518560256 -a
 
 runtest $d1 $d2 \
-  ossfuzz40729/clusterfuzz-testcase-minimized-fuzz_init_binary-4791627277795328 -z
+  ossfuzz40729/clusterfuzz-testcase-minimized-fuzz_init_binary-4791627277795328 -a
 
 runtest $d1 $d2 \
-  ossfuzz40731/clusterfuzz-testcase-fuzz_init_binary-5983147574034432
+  ossfuzz40731/clusterfuzz-testcase-fuzz_init_binary-5983147574034432 -a
 
 runtest $d1 $d2 \
-  ossfuzz40731/clusterfuzz-testcase-minimized-fuzz_init_binary-5983147574034432
+  ossfuzz40731/clusterfuzz-testcase-minimized-fuzz_init_binary-5983147574034432 -a
 
+runtest $d1 $d2 \
+  ossfuzz40799/clusterfuzz-testcase-fuzz_init_path-5245778948390912 -a
+runtest $d1 $d2 \
+  ossfuzz40799/clusterfuzz-testcase-minimized-fuzz_init_path-5245778948390912 -a
+
+runtest $d1 $d2 \
+  ossfuzz40801/clusterfuzz-testcase-fuzz_init_path-5443517279764480 -a
+runtest $d1 $d2 \
+  ossfuzz40801/clusterfuzz-testcase-minimized-fuzz_init_path-5443517279764480 -a
+
+runtest $d1 $d2 \
+ ossfuzz802/clusterfuzz-testcase-fuzz_init_binary-5538015955517440.fuzz -a
+
+runtest $d1 $d2 \
+ ossfuzz802/clusterfuzz-testcase-minimized-fuzz_init_binary-5538015955517440.fuzz -a
 
 # SHF_COMPRESSED testcases.
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
