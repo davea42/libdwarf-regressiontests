@@ -797,10 +797,13 @@ runtest $d1 $d2 \
 runtest $d1 $d2 \
  ossfuzz802/clusterfuzz-testcase-fuzz_init_binary-5538015955517440.fuzz -a
 
-#This is was a libelf bug. Lets see how libdwarf elf reading
+#These two were a libelf bug. Lets see how libdwarf elf reading
 #deals with it.
 runtest $d1 $d2 \
- sarubbo-a/ossfuzz802/clusterfuzz-testcase-minimized-fuzz_init_binary-5538015955517440.fuzz -a
+  sarubbo-a/00031-elfutils-memalloc-__libelf_set_rawdata_wrlock 
+
+runtest $d1 $d2 \
+  sarubbo-b/00011-elfutils-memalloc-allocate_elf 
 
 runt
  00031-elfutils-memalloc-__libelf_set_rawdata_wrlock 
@@ -1300,6 +1303,8 @@ runtest $d1 $d2  xqx-b/awbug5.elf -ka
 runtest $d1 $d2  xqx-b/awbug5.elf -a 
 runtest $d1 $d2  xqx-b/awbug5.elf -f 
 runtest $d1 $d2  xqx-b/awbug5.elf -F 
+
+runtest $d1 $d2  xqx-c/awbug6.elf -a
 
 # Corrupted object files 
 runtest $d1 $d2  liu/divisionbyzero02.elf -a

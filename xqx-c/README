@@ -1,0 +1,11 @@
+
+This is the executable used to test
+
+DW201512-001
+cve: CVE-2015-8750
+
+  Libdwarf 20151114 and earlier allows remote
+  attackers to cause a denial of service (NULL pointer 
+  dereference and crash) via a debug_abbrev 
+  section marked NOBITS in an ELF file.
+
