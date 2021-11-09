@@ -1,0 +1,10 @@
+
+This is CVE-2016-10254.  A libelf issue,
+but let's test it with libdwarf.
+
+Reported by Agostino Sarubbo 2016-11-04
+
+← elfutils: memory allocation failure in __libelf_set_rawdata_wrlock (elf_getdata.c)
+jasper: use after free in jas_realloc (jas_malloc.c) →
+During the fuzz of libdwarf, I noticed a memory allocation failure which involves elfutils.
+Actually there is a proposed patch on the elfutils mailing list, but nobody commented.
