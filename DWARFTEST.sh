@@ -797,8 +797,13 @@ runtest $d1 $d2 \
 runtest $d1 $d2 \
  ossfuzz802/clusterfuzz-testcase-fuzz_init_binary-5538015955517440.fuzz -a
 
+#This is was a libelf bug. Lets see how libdwarf elf reading
+#deals with it.
 runtest $d1 $d2 \
- ossfuzz802/clusterfuzz-testcase-minimized-fuzz_init_binary-5538015955517440.fuzz -a
+ sarubbo-a/ossfuzz802/clusterfuzz-testcase-minimized-fuzz_init_binary-5538015955517440.fuzz -a
+
+runt
+ 00031-elfutils-memalloc-__libelf_set_rawdata_wrlock 
 
 # SHF_COMPRESSED testcases.
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
