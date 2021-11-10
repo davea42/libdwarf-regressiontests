@@ -805,9 +805,6 @@ runtest $d1 $d2 \
 runtest $d1 $d2 \
   sarubbo-b/00011-elfutils-memalloc-allocate_elf 
 
-runt
- 00031-elfutils-memalloc-__libelf_set_rawdata_wrlock 
-
 # SHF_COMPRESSED testcases.
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
 runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv 
