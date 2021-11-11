@@ -1,0 +1,8 @@
+
+New issue 40895 by ClusterFuzz-External: libdwarf:fuzz_init_binary: Out-of-memory in fuzz_init_binary
+https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=40895
+
+Detailed Report: https://oss-fuzz.com/testcase?key=4805508242997248
+
+10 November 2021
+

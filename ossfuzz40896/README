@@ -1,0 +1,8 @@
+
+New issue 40896 by ClusterFuzz-External: libdwarf:fuzz_init_path: Out-of-memory in fuzz_init_path
+https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=40896
+
+Detailed Report: https://oss-fuzz.com/testcase?key=5337872492789760
+
+
+10 November 2021

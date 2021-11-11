@@ -797,6 +797,16 @@ runtest $d1 $d2 \
 runtest $d1 $d2 \
  ossfuzz802/clusterfuzz-testcase-fuzz_init_binary-5538015955517440.fuzz -a
 
+runtest $d1 $d2 \
+  ossfuzz40895/clusterfuzz-testcase-fuzz_init_binary-4805508242997248 -a 
+runtest $d1 $d2 \
+  ossfuzz40895/clusterfuzz-testcase-minimized-fuzz_init_binary-4805508242997248
+
+runtest $d1 $d2 \
+  ossfuzz40896/clusterfuzz-testcase-fuzz_init_path-5337872492789760 -a 
+runtest $d1 $d2 \
+  ossfuzz40896/clusterfuzz-testcase-minimized-fuzz_init_path-5337872492789760 -a
+
 #These two were a libelf bug. Lets see how libdwarf elf reading
 #deals with it.
 runtest $d1 $d2 \
