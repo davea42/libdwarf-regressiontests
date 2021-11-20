@@ -200,7 +200,7 @@ then
 else
   ASAN_OPTIONS="allocator_may_return_null=1"
   export ASAN_OPTIONS
-  nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize=undefined -fno-omit-frame-pointer"
+  nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize-address-use-after-scope  -fsanitize=undefined -fno-omit-frame-pointer"
   echo "Using -fsanitize=leak.....: yes"
 fi
 if [ "x$suppresstree" = "x--suppress-de-alloc-tree" ]
@@ -748,11 +748,16 @@ runtest $d1 $d2 c-sun/poc -a
 runtest $d1 $d2 bad-dwop/badskipbranch.o -i -v -M
 
 #Corrupted objects from oss-fuzz
+#Anyone running actual oss-fuzzing would see some
+#messages from libdwarf. See
+#ossfuzz40802/test40802.c for an explanation.
+#The runtest examples of ossfuzz will never generate
+#those messages. The hughes2 testcase below does though.
 runtest $d1 $d2 \
   ossfuzz40627/clusterfuzz-testcase-fuzz_init_path-5186858573758464
 
 runtest $d1 $d2 \
-  ossfuzz40627/clusterfuzz-testcase-minimized-fuzz_init_path-5186858573758464
+  ossfuzz40627/clusterfuzz-testcase-minimized-fuzz_init_path-5186858573758464 -a
 
 runtest $d1 $d2 \
   ossfuzz40663/clusterfuzz-testcase-minimized-fuzz_init_path-6122542432124928 -a
@@ -795,12 +800,15 @@ runtest $d1 $d2 \
   ossfuzz40801/clusterfuzz-testcase-minimized-fuzz_init_path-5443517279764480 -a
 
 runtest $d1 $d2 \
- ossfuzz802/clusterfuzz-testcase-fuzz_init_binary-5538015955517440.fuzz -a
+ ossfuzz40802/clusterfuzz-testcase-fuzz_init_binary-5538015955517440.fuzz -a -F -f
+
+runtest $d1 $d2 \
+ ossfuzz40802/clusterfuzz-testcase-fuzz_init_binary-5538015955517440.fuzz -a -F -f
 
 runtest $d1 $d2 \
   ossfuzz40895/clusterfuzz-testcase-fuzz_init_binary-4805508242997248 -a 
 runtest $d1 $d2 \
-  ossfuzz40895/clusterfuzz-testcase-minimized-fuzz_init_binary-4805508242997248
+  ossfuzz40895/clusterfuzz-testcase-minimized-fuzz_init_binary-4805508242997248 -a
 
 runtest $d1 $d2 \
   ossfuzz40896/clusterfuzz-testcase-fuzz_init_path-5337872492789760 -a 
