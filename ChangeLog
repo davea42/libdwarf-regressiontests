@@ -1,3 +1,23 @@
+2021-11-21:  David Anderson
+    commit aeaad10748cc75f687ef5dae6f333a56edfd4c11
+
+    Now runs test on ossfuzz41240.
+            modified:   DWARFTEST.sh
+    New baselines
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+    The new testcase. Fuzzed PE objectfile
+            new file:   ossfuzz41240/README
+            new file:   ossfuzz41240/clusterfuzz-testcase-minimized-fuzz_init_path-5929343686148096
+
+2021-11-20:  David Anderson
+    commit 220dcb4c08306d5efdd3ea4baddf89a14c74b14d
+
+    Now up to date with git log.
+            modified:   ChangeLog
+
 2021-11-20:  David Anderson
     commit 3d5559a5adaac5dee7c865f6eb070955a078ff10
 
