@@ -1006,6 +1006,8 @@ runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug      --print-fission
 runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -vvv --print-fission
 runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug        --print-fission
 runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug   -vvv  --print-fission
+# the following has several expression loopcounts!
+runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug    -v -i
 runtest $d1 $d2 liu/OOB0505_02.elf                     --print-fission
 runtest $d1 $d2 liu/OOB0505_02.elf                 -vvv --print-fission
 runtest $d1 $d2 liu/heapoverflow01b.elf                 --print-fission
