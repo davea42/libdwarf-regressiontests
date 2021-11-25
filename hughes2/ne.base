@@ -674,4 +674,4 @@
 <2> tag: 13 DW_TAG_member  name: "td_tied_search" FORM 0x8 "DW_FORM_string"
 Error in dwarf_siblingof_b , level 1 :Error siblingof_b 
 
-libdwarf is unable to record error 321 No error argument or handler available
+libdwarf is unable to record error DW_DLE_UNKNOWN_FORM (321) Possibly corrupt DWARF data No error argument or handler available
