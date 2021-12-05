@@ -684,6 +684,30 @@ if [ $withlibz = "withlibz" ]
 then
     libopts="$libopts -lz"
 fi
+echo "=====START  $testsrc/filelist/ tests"
+  mklocal filelist
+  echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
+     -o localfuzz_init_path $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
+     -o localfuzz_init_path $dwlib $libopts
+  chkres $? 'check -error compiling localfuzz_init_path.c failed'
+  echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
+     -o localfuzz_init_binary $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
+     -o localfuzz_init_binary $dwlib $libopts
+  chkres $? 'check -error compiling localfuzz_init_binary.c failed'
+  sh $testsrc/filelist/runtest.sh
+  chkres $? 'filelist stderr checks failed'
+  cd ..
+
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
     -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
