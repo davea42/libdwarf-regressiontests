@@ -10,7 +10,13 @@ rm -f debugfissionb/t.o
 rm -f /tmp/dwa.*
 rm -f /tmp/dwb.*
 
-# Needed for --print-alloc-sums
+rm -f config.h.in~
+rm -f dwgenc/runx
+rm -f filelist/filelist
+rm -f filelist/filelista
+rm -f filelist/filelistb
+rm -f filelist/filelistc
+rm -f filelist/filelistd
 rm -f libdwallocs
 rm -f */libdwallocs
 rm -rf libbld
