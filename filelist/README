@@ -1,0 +1,35 @@
+New tests December 2021
+
+These tests compile and run
+localfuzz_init_binary.c   and localfuzz_init_path.c
+
+WARNING these are coded badly intentionally. 
+
+These test source behave badly by
+not checking the return value and acting
+accordingly.
+
+They also fail to provide any means
+to return error values to the
+calling code.
+
+We currently run these tests on corrupted
+object files so they do get errors
+printed (on standard error so library last-resort
+error messages might be noticed).
+
+The files checked are listed in 'fileliste'
+
+
+The tests are intended to find any change
+in the last-resort messages.
+
+libdwarf never does abort() or exit()
+as of version 0.3.0  and later.
+
+The script findfilelist.sh
+provides a way to find all test objects in
+regressiontests, but we do not use
+that long list. So do not run
+findfilelist.sh unless you mean to expand
+the tests dramatically.
