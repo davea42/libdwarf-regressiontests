@@ -1,3 +1,66 @@
+2021-12-06:  David Anderson
+    commit 3c4ff1d4dc7ac4b6d300c318feca5773bc2c542c
+
+    Describes what the set of tests here is doing.
+            new file:   filelist/README
+
+2021-12-05:  David Anderson
+    commit 2725b0ab0afc9ee2e410f6eebd03b2d40dca64cd
+
+    Cleaning up new files in the filelist directory
+    that do not need to be kept.
+            modified:   CLEANUP
+
+2021-12-05:  David Anderson
+    commit d2a49e53a6410e485ce25729456bd0df2fd2335b
+
+    Now running the filelist tests.
+    These focus on library-calling code
+    that is intentionally improper libdwarf
+    calls.
+            modified:   DWARFTEST.sh
+    The baseline results
+            new file:   filelist/baseresult
+    The list of object being tested
+            new file:   filelist/fileliste
+    The test programs
+            new file:   filelist/localfuzz_init_binary.c
+            new file:   filelist/localfuzz_init_path.c
+    The script running the test.
+            new file:   filelist/runtest.sh
+
+2021-12-05:  David Anderson
+    commit f15fab78287b640fa3f5621dd1fd4dd4e80bbf80
+
+    Adding a new sort of test.
+            new file:   filelist/findfilelist.sh
+
+2021-11-24:  David Anderson
+    commit 1a6de3b979049963ec98acc62eaa2534a1ba38b9
+
+    The baseline changed due to the improvement of
+    an error message.
+            modified:   hughes2/ne.base
+
+2021-11-24:  David Anderson
+    commit 246676faf1be8e0400ddab4c697473ceff19b036
+
+    Added a testcase -i -v with interesting DWARF expressions
+            modified:   DWARFTEST.sh
+
+    New baseline executables reflecting new reporting
+    of DWARF expressions with dwarfump -v -i
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2021-11-21:  David Anderson
+    commit 6252198409c26ca44a6726c9eea93b2c44026c9a
+
+    Now up to date. New baseline executables, new test  41240..
+            modified:   ChangeLog
+
 2021-11-21:  David Anderson
     commit aeaad10748cc75f687ef5dae6f333a56edfd4c11
 
