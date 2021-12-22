@@ -4077,7 +4077,6 @@ do
   mkdir $abs_builddir/$d
   cp dwarfdump.conf $abs_builddir/$d/dwarfdump.conf
 done
-cp  $codedir/src/bin/dwarfdump/testdwarfdump.conf testdwarfdump.conf
 echo "Configuration Options Summary:"
 echo
 echo " have libelf............: ${dwarf_with_libelf}"
