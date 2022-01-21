@@ -96,7 +96,5 @@ int main(int argc, char *argv[])
    printf("row_pc          %ld (0x%lx)\n", (long int) row_pc,
        (unsigned long int)row_pc);
    assert(register_num == DW_FRAME_CFA_COL3);
-   /* This just shows we really test something. */
-   assert(DW_FRAME_CFA_COL3 != DW_FRAME_CFA_COL);
    return 0;
 }
