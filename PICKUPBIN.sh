@@ -143,6 +143,18 @@ then
   exit 1;
 fi
 
+cp src/bin/dwarfexample/showsectiongroups  $targetdir/showsectiongroups
+if [ $? -ne 0 ]
+then
+  echo "No showsectiongroups copy! giving up."
+  exit 1;
+fi
+cp src/bin/dwarfexample/jitreader  $targetdir/jitreader
+if [ $? -ne 0 ]
+then
+  echo "No jitreader copy! giving up."
+  exit 1;
+fi
 cp src/bin/dwarfdump/dwarfdump  $targetdir/dwarfdump
 if [ $? -ne 0 ]
 then

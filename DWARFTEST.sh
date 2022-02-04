@@ -751,6 +751,12 @@ mklocal supplementary
   chkres $? "$testsrc/supplementary/runtest.sh"
 cd ..
 
+echo "=====START  showsectiongroups  $testsrc/showsecgroupsdir/runtest.sh"
+mklocal showsecgroupsdir
+  sh $testsrc/showsecgroupsdir/runtest.sh 
+  chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
+cd ..
+
 echo "=====START  guilfanov  $testsrc/guilfanov/runtest.sh"
 mklocal guilfanov
   sh $testsrc/guilfanov/runtest.sh 

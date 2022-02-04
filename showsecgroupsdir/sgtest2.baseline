@@ -1,0 +1,122 @@
+Selecting a non-existing group > 3 results in it being chosen!
+======== test ../showsectiongroups -group 4 /home/davea/dwarf/regressiontests/debugfission/archive.o ========
+Group Map data sizes
+  requested group :    4
+  section count   : 1821
+  group count     :    1
+  selected group  :    4
+  map entry count :   10
+  [index] group   section 
+  [    0]     1  1798 .debug_addr
+  [    1]     1  1800 .debug_info
+  [    2]     1  1802 .debug_abbrev
+  [    3]     1  1803 .debug_gnu_pubnames
+  [    4]     1  1805 .debug_gnu_pubtypes
+  [    5]     1  1807 .debug_aranges
+  [    6]     1  1809 .debug_ranges
+  [    7]     1  1811 .debug_line
+  [    8]     1  1813 .debug_str
+  [    9]     1  1816 .eh_frame
+=======done with archive.o, status DW_DLV_OK
+
+There is no group 2 in archive.o, init gets NO ENTRY
+======== test ../showsectiongroups -group 2 /home/davea/dwarf/regressiontests/debugfission/archive.o ========
+There is no such file as "archive.o"
+=======done with archive.o, status DW_DLV_NO_ENTRY
+
+======== test ../showsectiongroups -group 0 /home/davea/dwarf/regressiontests/comdatex/example.o ========
+Group Map data sizes
+  requested group :    0
+  section count   :   26
+  group count     :    3
+  selected group  :    1
+  map entry count :    8
+  [index] group   section 
+  [    0]     1    11 .debug_info
+  [    1]     1    13 .debug_abbrev
+  [    2]     1    14 .debug_aranges
+  [    3]     1    16 .debug_line
+  [    4]     1    18 .debug_str
+  [    5]     1    21 .eh_frame
+  [    6]     3     7 .debug_types
+  [    7]     4     9 .debug_types
+=======done with example.o, status DW_DLV_OK
+
+======== test ../showsectiongroups -group 1 /home/davea/dwarf/regressiontests/comdatex/example.o ========
+Group Map data sizes
+  requested group :    1
+  section count   :   26
+  group count     :    3
+  selected group  :    1
+  map entry count :    8
+  [index] group   section 
+  [    0]     1    11 .debug_info
+  [    1]     1    13 .debug_abbrev
+  [    2]     1    14 .debug_aranges
+  [    3]     1    16 .debug_line
+  [    4]     1    18 .debug_str
+  [    5]     1    21 .eh_frame
+  [    6]     3     7 .debug_types
+  [    7]     4     9 .debug_types
+=======done with example.o, status DW_DLV_OK
+
+There is no group 2 in example.o so it is NO ENTRY
+======== test ../showsectiongroups -group 2 /home/davea/dwarf/regressiontests/comdatex/example.o ========
+There is no such file as "example.o"
+=======done with example.o, status DW_DLV_NO_ENTRY
+
+======== test ../showsectiongroups -group 3 /home/davea/dwarf/regressiontests/comdatex/example.o ========
+Group Map data sizes
+  requested group :    3
+  section count   :   26
+  group count     :    3
+  selected group  :    3
+  map entry count :    8
+  [index] group   section 
+  [    0]     1    11 .debug_info
+  [    1]     1    13 .debug_abbrev
+  [    2]     1    14 .debug_aranges
+  [    3]     1    16 .debug_line
+  [    4]     1    18 .debug_str
+  [    5]     1    21 .eh_frame
+  [    6]     3     7 .debug_types
+  [    7]     4     9 .debug_types
+=======done with example.o, status DW_DLV_OK
+
+======== test ../showsectiongroups -group 4 /home/davea/dwarf/regressiontests/comdatex/example.o ========
+Group Map data sizes
+  requested group :    4
+  section count   :   26
+  group count     :    3
+  selected group  :    4
+  map entry count :    8
+  [index] group   section 
+  [    0]     1    11 .debug_info
+  [    1]     1    13 .debug_abbrev
+  [    2]     1    14 .debug_aranges
+  [    3]     1    16 .debug_line
+  [    4]     1    18 .debug_str
+  [    5]     1    21 .eh_frame
+  [    6]     3     7 .debug_types
+  [    7]     4     9 .debug_types
+=======done with example.o, status DW_DLV_OK
+
+There is no group 5 in example.o but it is chosen.
+======== test ../showsectiongroups -group 5 /home/davea/dwarf/regressiontests/comdatex/example.o ========
+Group Map data sizes
+  requested group :    5
+  section count   :   26
+  group count     :    3
+  selected group  :    5
+  map entry count :    8
+  [index] group   section 
+  [    0]     1    11 .debug_info
+  [    1]     1    13 .debug_abbrev
+  [    2]     1    14 .debug_aranges
+  [    3]     1    16 .debug_line
+  [    4]     1    18 .debug_str
+  [    5]     1    21 .eh_frame
+  [    6]     3     7 .debug_types
+  [    7]     4     9 .debug_types
+=======done with example.o, status DW_DLV_OK
+
