@@ -1,0 +1,12 @@
+David Anderson 17 February 2022
+# constructed via
+comp=/var/tmp/clang+llvm-13.0.0-x86_64-linux-gnu-ubuntu-20.04/bin/clang
+$comp -I../../lib/libdwarf -gdwarf-5 -gpubnames \
+jitreader.c -lz /tmp/libdwarf.a
+
+and with that compiler and options
+running a build of dwarfdump.
+
+dwarfdump --print-debug-names
+prints the section (incomplete output).
+
