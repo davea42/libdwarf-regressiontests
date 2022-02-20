@@ -11,9 +11,10 @@ rm -f junk.sgtestout
 rm -f junk.sgtest2out
 onetest() {
    g="$1"
-   f=$2
-   o=$3
-   echo "======== test $sg $g $f ========" >> "$o"
+   f="$2"
+   o="$3"
+   x=`basename "$f"`
+   echo "======== showsecgroups $g $x  ========" >> "$o"
    if [ "$g" = "n" ]
    then
      $sg $f  >> junk.sgtestout >> "$o"

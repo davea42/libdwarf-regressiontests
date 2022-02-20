@@ -1,4 +1,4 @@
-======== test ../showsectiongroups n /home/davea/dwarf/regressiontests/debugfission/archive.o ========
+======== showsecgroups n archive.o  ========
 Group Map data sizes
   requested group :    0
   section count   : 1821
@@ -18,7 +18,7 @@ Group Map data sizes
   [    9]     1  1816 .eh_frame
 =======done with archive.o, status DW_DLV_OK
 
-======== test ../showsectiongroups n /home/davea/dwarf/regressiontests/debugfission/archive.dwo ========
+======== showsecgroups n archive.dwo  ========
 Group Map data sizes
   requested group :    0
   section count   :    9
@@ -33,7 +33,7 @@ Group Map data sizes
   [    4]     2     5 .debug_str.dwo
 =======done with archive.dwo, status DW_DLV_OK
 
-======== test ../showsectiongroups n /home/davea/dwarf/regressiontests/debugfission/target.o ========
+======== showsecgroups n target.o  ========
 Group Map data sizes
   requested group :    0
   section count   :  482
@@ -53,7 +53,7 @@ Group Map data sizes
   [    9]     1   477 .eh_frame
 =======done with target.o, status DW_DLV_OK
 
-======== test ../showsectiongroups n /home/davea/dwarf/regressiontests/debugfission/target.dwo ========
+======== showsecgroups n target.dwo  ========
 Group Map data sizes
   requested group :    0
   section count   :    9
@@ -69,7 +69,7 @@ Group Map data sizes
 =======done with target.dwo, status DW_DLV_OK
 
 There is no group 1 in target.dwo so it gets NO ENTRY
-======== test ../showsectiongroups -group 1 /home/davea/dwarf/regressiontests/debugfission/target.dwo ========
+======== showsecgroups -group 1 target.dwo  ========
 There is no such file as "target.dwo"
 =======done with target.dwo, status DW_DLV_NO_ENTRY
 
