@@ -111,6 +111,7 @@ rm -f junkckpath
 # The following only really do anything if one
 # accidentally did a build configure under regressiontests.
 rm -f config.h.in~
+rm -f showsectiongroups
 rm -rf dwarfdump/
 rm -rf 	dwarfexample/
 rm -rf 	dwarfgen/
