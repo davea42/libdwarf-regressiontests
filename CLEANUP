@@ -12,6 +12,7 @@ rm -f /tmp/dwb.*
 
 rm -f config.h.in~
 rm -f dwgenc/runx
+rm -f dwgenc/testoutput.o
 rm -f filelist/filelist
 rm -f filelist/filelista
 rm -f filelist/filelistb
@@ -112,6 +113,7 @@ rm -f junkckpath
 # accidentally did a build configure under regressiontests.
 rm -f config.h.in~
 rm -f showsectiongroups
+rm -f jitreader
 rm -rf dwarfdump/
 rm -rf 	dwarfexample/
 rm -rf 	dwarfgen/
