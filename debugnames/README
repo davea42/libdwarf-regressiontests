@@ -1,12 +1,23 @@
-David Anderson 17 February 2022
+David Anderson 22 February 2022
 # constructed via
-comp=/var/tmp/clang+llvm-13.0.0-x86_64-linux-gnu-ubuntu-20.04/bin/clang
+comp=clang
 $comp -I../../lib/libdwarf -gdwarf-5 -gpubnames \
 jitreader.c -lz /tmp/libdwarf.a
 
-and with that compiler and options
-running a build of dwarfdump.
+Built with -gdwarf-5 -gpubnames
+    dwarfdump 
+Built in the same way.
+    jitreader
+
+So each has multiple debug names tables.
+
+Adding -flto results in merging multiple tables
+into one big table in .debug_names.
+An example of that is in:
+    dwarfdumpone
 
 dwarfdump --print-debug-names
 prints the section (incomplete output).
+
+
 

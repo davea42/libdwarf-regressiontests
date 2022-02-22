@@ -766,8 +766,9 @@ mklocal guilfanov
 cd ..
 
 # February 16, 2022, with clang-generated .debug_names
-runtest $d1 $d2 debugnames/jitreader -i --print-debug-names -v
-runtest $d1 $d2 debugnames/dwarfdump -i --print-debug-names -v
+runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -v
+runtest $d1 $d2 debugnames/dwarfdump    -i -G --print-debug-names -v
+runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -v
 
 #  A fuzzed object which hit a poorly written sanity
 #  offset test. Test received 10 october 2020.
