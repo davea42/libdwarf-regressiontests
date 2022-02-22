@@ -1,743 +1,82 @@
-2021-12-06:  David Anderson
-    commit 44c344e7164b765a5fb5d943187d3a1836584b19
+2022-02-21:  David Anderson
+    commit b0c1ca95b26b57e30fc94672f6fe9e13b4bc22c2
 
-    Updated from git log
-            modified:   ChangeLog
-
-2021-12-06:  David Anderson
-    commit 3c4ff1d4dc7ac4b6d300c318feca5773bc2c542c
-
-    Describes what the set of tests here is doing.
-            new file:   filelist/README
-
-2021-12-05:  David Anderson
-    commit 2725b0ab0afc9ee2e410f6eebd03b2d40dca64cd
-
-    Cleaning up new files in the filelist directory
-    that do not need to be kept.
+    Ensure some new temp files get cleaned up.
             modified:   CLEANUP
 
-2021-12-05:  David Anderson
-    commit d2a49e53a6410e485ce25729456bd0df2fd2335b
-
-    Now running the filelist tests.
-    These focus on library-calling code
-    that is intentionally improper libdwarf
-    calls.
-            modified:   DWARFTEST.sh
-    The baseline results
-            new file:   filelist/baseresult
-    The list of object being tested
-            new file:   filelist/fileliste
-    The test programs
-            new file:   filelist/localfuzz_init_binary.c
-            new file:   filelist/localfuzz_init_path.c
-    The script running the test.
-            new file:   filelist/runtest.sh
-
-2021-12-05:  David Anderson
-    commit f15fab78287b640fa3f5621dd1fd4dd4e80bbf80
-
-    Adding a new sort of test.
-            new file:   filelist/findfilelist.sh
-
-2021-11-24:  David Anderson
-    commit 1a6de3b979049963ec98acc62eaa2534a1ba38b9
-
-    The baseline changed due to the improvement of
-    an error message.
-            modified:   hughes2/ne.base
-
-2021-11-24:  David Anderson
-    commit 246676faf1be8e0400ddab4c697473ceff19b036
-
-    Added a testcase -i -v with interesting DWARF expressions
-            modified:   DWARFTEST.sh
-
-    New baseline executables reflecting new reporting
-    of DWARF expressions with dwarfump -v -i
+    Working versions for libdwarf 0.3.4
             modified:   dwarfdump-i386-freebsd.O
             modified:   dwarfdump-s390.O
             modified:   dwarfdump-x86_64-freebsd.O
             modified:   dwarfdump-x86_64-ubuntu.O
 
-2021-11-21:  David Anderson
-    commit 6252198409c26ca44a6726c9eea93b2c44026c9a
-
-    Now up to date. New baseline executables, new test  41240..
-            modified:   ChangeLog
-
-2021-11-21:  David Anderson
-    commit aeaad10748cc75f687ef5dae6f333a56edfd4c11
-
-    Now runs test on ossfuzz41240.
-            modified:   DWARFTEST.sh
-    New baselines
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-s390.O
-            modified:   dwarfdump-x86_64-freebsd.O
-            modified:   dwarfdump-x86_64-ubuntu.O
-    The new testcase. Fuzzed PE objectfile
-            new file:   ossfuzz41240/README
-            new file:   ossfuzz41240/clusterfuzz-testcase-minimized-fuzz_init_path-5929343686148096
-
-2021-11-20:  David Anderson
-    commit 220dcb4c08306d5efdd3ea4baddf89a14c74b14d
-
-    Now up to date with git log.
-            modified:   ChangeLog
-
-2021-11-20:  David Anderson
-    commit 3d5559a5adaac5dee7c865f6eb070955a078ff10
-
-    Fixing the (non-compilable) example
-    code for clarity.
-            modified:   ossfuzz40802/test80402.c
-
-2021-11-20:  David Anderson
-    commit d22d1b2d40b85084756adf4167840bbfbcb6a268
-
-    Now with the latest emergency error message text,
-    which is much more meaningful than before.
-    A text one is very unlikely to ever see.
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-    Now with a short explanation of the distinction between
-    runing these tests and running the oss-fuzz
-    tests themselves, and a mention of ossfuzz40802/test80402.c.
-            modified:   DWARFTEST.sh
-    Basically documentation, not compiled or executed
-            new file:   ossfuzz40802/test80402.c
-
-2021-11-18:  David Anderson
-    commit a71468645f7ef256169ebc64060f1229c9b78e9c
-
-    Direct from a local test run.
-            new file:   crash-3c238d58556b66f3e036a8a7a133b99470d539af
-
-2021-11-12:  David Anderson
-    commit 175baa2ab3c6f6f3a08a5ae169e40aa8404ad21e
-
-    These two baselines did not have latest corrupt elf tests.
-    oss-fuzz-40895 oss-fuzz-40896.
-    Updated now.
-            modified:   ../dwarfdump-i386-freebsd.O
-            modified:   ../dwarfdump-x86_64-ubuntu.O
-
-2021-11-11:  David Anderson
-    commit 3226d70e2c54ef32e4afc8f139578885dcee1fb5
-
-    Test cases for oss-fuzz 40895, 40896.
-    Corrupt object files.
-            modified:   DWARFTEST.sh
-            new file:   ossfuzz40895/README
-            new file:   ossfuzz40895/clusterfuzz-testcase-fuzz_init_binary-4805508242997248
-            new file:   ossfuzz40895/clusterfuzz-testcase-minimized-fuzz_init_binary-4805508242997248
-            new file:   ossfuzz40896/README
-            new file:   ossfuzz40896/clusterfuzz-testcase-fuzz_init_path-5337872492789760
-            new file:   ossfuzz40896/clusterfuzz-testcase-minimized-fuzz_init_path-5337872492789760
-
-2021-11-09:  David Anderson
-    commit 224c703aa4a7f05c3d58589093a3eebdd921507d
-
-    New tests ossfuzz and old CVE executables now
-    checked.
-            modified:   DWARFTEST.sh
-
-    7 changed outputs reflecting the improved (more
-    detailed) messages about MachO object-file
-    corruptions detected.
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-s390.O
-            modified:   dwarfdump-x86_64-freebsd.O
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-2021-11-09:  David Anderson
-    commit ef95a56fc5421c07476acfefc598d16c046033d0
-
-    Getting the new testcases into git.
-            new file:   ossfuzz40799/clusterfuzz-testcase-fuzz_init_path-5245778948390912
-            new file:   ossfuzz40799/clusterfuzz-testcase-minimized-fuzz_init_path-5245778948390912
-            new file:   ossfuzz40802/clusterfuzz-testcase-fuzz_init_binary-5538015955517440.fuzz
-            new file:   ossfuzz40802/clusterfuzz-testcase-minimized-fuzz_init_binary-5538015955517440.fuzz
-            new file:   sarubbo-b/00011-elfutils-memalloc-allocate_elf
-            new file:   sarubbo-b/README
-
-2021-11-09:  David Anderson
-    commit 12b5342ff79b1a9254aeb30a4ab2a040b3a5d413
-
-    New test case for CVE-2015-8750
-            modified:   DWARFTEST.sh
-            new file:   xqx-c/README
-            new file:   xqx-c/awbug6.elf
-
-2021-11-09:  David Anderson
-    commit ce1f74866cc3c9d3763a73263c53c1c1fa00ab8d
-
-            modified:   DWARFTEST.sh
-    New test, now run by DWARFTEST.sh CVE-2016-10255
-            new file:   sarubbo-a/00031-elfutils-memalloc-__libelf_set_rawdata_wrlock
-            new file:   sarubbo-a/README
-
-2021-11-08:  David Anderson
-    commit ca712dba1aee5e28cef63ee5377aac60a6f0fde7
-
-    New tests, and running all the ossfuzz tests now.
-            modified:   DWARFTEST.sh
-
-            new file:   ossfuzz40801/clusterfuzz-testcase-fuzz_init_path-5443517279764480
-            new file:   ossfuzz40801/clusterfuzz-testcase-minimized-fuzz_init_path-5443517279764480
-
-2021-11-08:  David Anderson
-    commit f9289bccade8cfe5e7ed9a089c39cf035fb2c85b
-
-    Now new testcases and they are now being run.
-            modified:   DWARFTEST.sh
-
-            new file:   ossfuzz40627/clusterfuzz-testcase-fuzz_init_path-5186858573758464
-            new file:   ossfuzz40627/clusterfuzz-testcase-minimized-fuzz_init_path-5186858573758464
-            new file:   ossfuzz40674/clusterfuzz-testcase-minimized-fuzz_init_path-6557751518560256
-
-2021-11-07:  David Anderson
-    commit ace472dc522b8d4fb91ec28582f6b2066fc7885e
-
-    New test case for ossfuzz40731
-            new file:   ossfuzz40731/clusterfuzz-testcase-fuzz_init_binary-5983147574034432
-            new file:   ossfuzz40731/clusterfuzz-testcase-minimized-fuzz_init_binary-5983147574034432
-
-2021-11-07:  David Anderson
-    commit 68fd1ff005966e995ba0c854e2b00b208fb252d0
-
-    New testcase
-            new file:   ossfuzz40729/clusterfuzz-testcase-minimized-fuzz_init_binary-4791627277795328
-
-2021-11-07:  David Anderson
-    commit b9efd0dd235ef4d5c618de43cde9506407548e77
-
-    New testcase.
-            new file:   ossfuzz40673/clusterfuzz-testcase-minimized-fuzz_init_path-6240961391362048.fuzz
-
-2021-11-06:  David Anderson
-    commit ac0b88eca4207eed1dd55fe1278bd7ba4333fba1
-
-    Removing an exit (which was only for a special test)
-            modified:   DWARFTEST.sh
-
-2021-11-05:  David Anderson
-    commit bf1119d051881623cb7fde6c0dcbc3c6da184275
-
-            modified:   DWARFTEST.sh
-            new file:   ossfuzz40669/clusterfuzz-testcase-fuzz_init_path-5399726397194240
-            new file:   ossfuzz40671/clusterfuzz-testcase-fuzz_init_path-5455557297831936
-            new file:   ossfuzz40671/clusterfuzz-testcase-minimized-fuzz_init_path-5455557297831936
-
-    Getting the test cases corretly set up.
-
-2021-11-04:  David Anderson
-    commit a85651eeeb752870db8a379ceb1e592e641d0c34
-
-    Now runs ossfuzz40669 test.
-            modified:   DWARFTEST.sh
-    New test case.
-            new file:   ossfuzz40669/README
-            new file:   ossfuzz40669/clusterfuzz-testcase-minimized-fuzz_init_path-5399726397194240
-
-2021-11-04:  David Anderson
-    commit 874556bbf2f37efc43935e5990c3da189fbfc822
-
-    Added ossfuzz40663 to the tests.
-            modified:   DWARFTEST.sh
-
-    The new baseline executables.
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-s390.O
-            modified:   dwarfdump-x86_64-freebsd.O
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-2021-11-04:  David Anderson
-    commit 30cabac48e7ce2ec6b50d3d4e8b49624ca6fabe9
-
-    New testcase.
-            new file:   ossfuzz40663/README
-            new file:   ossfuzz40663/clusterfuzz-testcase-minimized-fuzz_init_path-6122542432124928
-
-2021-10-22:  David Anderson
-    commit 0d23411dd487042f1eea03f18cba2b040f3df3b7
-
-    Updated to account for the new (empty range)
-    string added to range entries that have no content
-    (first documented in DWARF4).
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-s390.O
-            modified:   dwarfdump-x86_64-freebsd.O
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-2021-10-09:  David Anderson
-    commit 3453169b01e64058113b7fa32e77998d82c09e66
-
-    Deleting all references to dwarfextract, it
-    is rather messy and just uses dwarfgen
-    a bit. We have other tests for dwarfgen and libdwarfp.
-            modified:   DWARFTEST.sh
-            deleted:    dwarfextract/Makefile
-            deleted:    dwarfextract/basecstdout.base
-            deleted:    dwarfextract/basestdout.base
-            deleted:    dwarfextract/dwarfextract.c
-            deleted:    dwarfextract/runtest.sh
-            deleted:    dwarfextract/test1
-            deleted:    dwarfextract/test1.base
-            deleted:    dwarfextract/test1.c
-            deleted:    dwarfextract/test1.h
-            deleted:    dwarfextract/test2.c
-            deleted:    dwarfextract/testc.base
-
-2021-10-03:  David Anderson
-    commit 54b171d246811a3b25e6b56c948cfefadd77078f
-
-    Reflecting updates in print frame instructions.
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-s390.O
-            modified:   dwarfdump-x86_64-freebsd.O
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-    Reflecting changes in frame argument lists
-    and changing dwarf  dealloc calls to a standard
-    form of dwarf_dealloc*  (not all changed.
-    Do not indent to change more of those with
-    a different naming convention)
-            modified:   dwarfextract/dwarfextract.c
-            modified:   dwarfextract/runtest.sh
-            modified:   dwgena/test5.base.gz
-            modified:   frame1/frame1.base
-            modified:   frame1/frame2018.base
-            modified:   frame1/runtest.sh
-            modified:   legendre/frame_test.c
-            modified:   legendre/runtest.sh
-
-2021-09-19:  David Anderson
-    commit af928b5c4eef2130a7a2dc717a6902ee55b9d0da
-
-    New baselines due to correction in spelling
-    of a location list item name.
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-s390.O
-            modified:   dwarfdump-x86_64-freebsd.O
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-2021-09-16:  David Anderson
-    commit a261cb16047a53f8badf8711a45ae8ff9dfc7e05
-
-    Replaces dwarf_finish(dbg,error)
-    with     dwarf_finish(dbg).
-            modified:   bitoffset/test_bitoffset.c
-            modified:   dwarfextract/dwarfextract.c
-            modified:   findcu/cutest.c
-            modified:   navarro/get_globals.c
-            modified:   test_arange.c
-            modified:   test_harmless.c
-            modified:   test_pubsreader.c
-            modified:   test_sectionnames.c
-            modified:   testoffdie/testoffdie.c
-
-2021-09-03:  David Anderson
-    commit 4c4953d7b93ca88baffea5e067812a3ca2a7890e
-
-    New baseline executables.
-    the change needed as a dwarfdump -h
-    message about arguments changed.
-    dwarfdump now has its own Posix Basic
-    Regular Expression parsing so a small
-    change in the test about -Sregex
-    seemed appropriate.
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-s390.O
-            modified:   dwarfdump-x86_64-freebsd.O
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-2021-08-12:  David Anderson
-    commit 7c8f8943017fb9c2687567837723a62672c13b0c
-
-    We no longer build or test dwarfdumpW,
-    we do not need it. Plain dwarfdump does
-    what is needed....without any specific
-    encouragement.
-            modified:   PICKUPBIN.sh
-            modified:   sandnes2/runtest.sh
-
-2021-08-09:  David Anderson
-    commit 3c5b971e85e7a5e43e9727559a8d70214688d3eb
-
-    New baselines to match some error strings that
-    were shortened. The errors appear with
-    dwarfdump on corrupted object files.
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-s390.O
-            modified:   dwarfdump-x86_64-freebsd.O
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-2021-08-05:  David Anderson
-    commit 678dc4c9f3fef68590e39a9f3b53bea06f4efba7
-
-    New s390 baseline executable.
-            modified:   dwarfdump-s390.O
-
-2021-08-05:  David Anderson
-    commit 4ceec2910741f903790e018f66afb1bc7d384e6b
-
-    Update commentary.
-            modified:   debugfissionb/README
-
-    New baselines
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-x86_64-freebsd.O
-            modified:   dwarfdump-x86_64-ubuntu.O
+2022-02-20:  David Anderson
+    commit bb44bed9b8fe86e4c04340363bffa6c1d81efddb
+
+    The baseline had full paths which is not portable.
+    So now we just show the basename of each path
+    in the echoed output.
             modified:   dwgenc/base.debugnames
 
-    Deleting the data related to the original
-    frame API for MIPS/IRIX.  An abi
-    for MIPS is present, but for the currecnt API.
-            modified:   testdwarfdump.conf
+2022-02-20:  David Anderson
+    commit 909f3afa13b928ea1ac33357431719fce9af7abe
 
-    This is an output during the test.
-    No reason to keep it around.
-            deleted:    dwgenc/testoutput.o
+    New test script and baselines
+            modified:   showsecgroupsdir/runtest.sh
+            modified:   showsecgroupsdir/sgtest.baseline
+            modified:   showsecgroupsdir/sgtest2.baseline
 
-2021-07-07:  David Anderson
-    commit e1e7b480758364a4664b1fbfa79b8f5b54fab4f1
+2022-02-20:  David Anderson
+    commit 2eb2d8ca907e48c79e0e85227772f6aa2cffbd5d
 
-    Now that libdwarf never calls abort()
-    that enables a small improvement
-    to the tests as we do not need
-    to check for a core file.
-    Instead we have message strings
-    we test for.
-            modified:   DWARFTEST.sh
-            modified:   README.txt
-            modified:   hughes2/hne.base
-            modified:   hughes2/ne.base
-            modified:   hughes2/runtest.sh
-
-2021-07-06:  David Anderson
-    commit abcdc2e6af13e6e72b78ae2eab5503f8f68d1710
-
-    A change in options to dwarfgen changed
-    the output.
-            modified:   dwgenc/base.debugnames
-
-2021-07-06:  David Anderson
-    commit 37bde599dfb48e7552e8e23c7c739c05ed5abc5c
-
-            modified:   bitoffset/test_bitoffset.c
-    Added a test of dwarf_dietype_offset()
-
-            modified:   dwgenc/README
-    Deleted one of a a pair of blank lines.
-
-            renamed:    dwgenc/base.stdout -> dwgenc/base.debugnames
-    Just a better name for the content.
-
-            modified:   dwgenc/runtest.sh
-    Now reflects the new dwgenc/base.debugnames name.
-
-            modified:   test_pubsreader.c
-    The test output of dwarf_basic_crc32 has
-    better comments and a useful correctness
-    test.
-
-2021-07-03:  David Anderson
-    commit 1dda0ebe08d75159726509a50333c2a0b118630f
-
-    Added new tests into test_pubsreader.c,
-    things not related to dwarf sections.
-            modified:   DWARFTEST.sh
-            modified:   test_pubsreader.c
-
-2021-07-03:  David Anderson
-    commit e29413340fb29480bb6e44e845eabe79392f336f
-
-    Removed code that is now obsolete (about the old CFA
-    and old frame interfaces)
-            modified:   PICKUPBIN.sh
-
-    Uses the new dwarf_bitoffset and tests its correctness.
-            modified:   bitoffset/test_bitoffset.c
-
-    Remove lines running tests of the old (deleted) frame interfaces,
-    the test build was using an obsolete build option.
-            modified:   legendre/runtest.sh
-
-2021-07-03:  David Anderson
-    commit 0d8bac180e85e0acf4ffbdaf20b137f9dfb2976a
-
-    Now cleans up the generated test_bitoffset executable.
+    Cleanup leftover executable showsectiongroups
             modified:   CLEANUP
-
-    Now uses a new test to verify dwarf_bitoffset works.
+    With latest new tests
             modified:   DWARFTEST.sh
 
-    The testing code.
-            modified:   bitoffset/README
-            modified:   bitoffset/test_bitoffset.c
+2022-02-20:  David Anderson
+    commit 38828305a02cdc11af931ab29663f5e26a3ae1ce
 
-2021-07-02:  David Anderson
-    commit f68f4be4187ee447225eb803e6b772b9afc94613
+    New tests objects
+            new file:   filelist/localfuzz_init_binary
+            new file:   filelist/localfuzz_init_path
+            new file:   filelist/result
 
-    Just a note.
-            new file:   README
+2022-02-17:  David Anderson
+    commit 11e4ae687ecb19e4ba02f1fcd2094cfca9c86388
 
-2021-07-02:  David Anderson
-    commit 64c3b34aed79533c7b4b88e3b9e6afb940aff607
-
-    New testcases
-            new file:   bitoffsetexample.c
-            new file:   bitoffsetexampledw3.o
-            new file:   bitoffsetexampledw5.o
-            new file:   test_bitoffset.c
-
-2021-07-01:  David Anderson
-    commit 9d25ab6c0f1c2b8561fb4ef84c912acac8ea8f6b
-
-    Delete newly created test executables.
-            modified:   CLEANUP
-
-2021-07-01:  David Anderson
-    commit 6ae15b0ba3fcb9ee42c6dea61398eaf0b29d070d
-
-    Rearranged the path list for test_pubsreader
+    clang 13 emits the section, so now we
+    have data to test with.
             modified:   DWARFTEST.sh
+            new file:   debugnames/README
+            new file:   debugnames/dwarfdump
+            new file:   debugnames/jitreader
 
-    Now these use the new
-    dwarf_init_path()
-    and
-    dwarf_init_path_dl()
-    that omit the 3 extra unused arguments.
-            modified:   test_arange.c
-            modified:   test_harmless.c
-            modified:   test_pubsreader.c
-            modified:   test_sectionnames.c
-            modified:   testoffdie/testoffdie.c
+2022-02-04:  David Anderson
+    commit bd1f7cd541bb81d20a58a72f9442a2baf6aa321c
 
-2021-07-01:  David Anderson
-    commit 11c36bbde1882d229e26b25c4c26edd660a34f91
+    New tests and baselines for section groups and
+    src/bin/dwarfexample/showsectiongroups.c
+            new file:   showsecgroupsdir/runtest.sh
+            new file:   showsecgroupsdir/sgtest.baseline
+            new file:   showsecgroupsdir/sgtest2.baseline
 
-    Added  a test of dwarf_attr_offset()
-            modified:   test_pubsreader.c
+2022-01-21:  David Anderson
+    commit aa89c82f776303607a4511665471209c9b4506de
 
-2021-07-01:  David Anderson
-    commit b4f524e21214145230331b9a073d6a774f3e4f3b
-
-    test_arange.c is a new test.
-            modified:   DWARFTEST.sh
-            new file:   test_arange.c
-    Reduced line lengths.
-            modified:   test_pubsreader.c
-
-2021-07-01:  David Anderson
-    commit 48a30462014181bd68e98a7618f2183e6974953b
-
-    Now runs the new test_sectionnames.c test code.
-            modified:   DWARFTEST.sh
-    Added an extra check, using the function
-    dwarf_get_line_section_name_from_die().
-            modified:   test_pubsreader.c
-    New. Testing things that were not tested elsewhere.
-            new file:   test_sectionnames.c
-
-2021-06-30:  David Anderson
-    commit 00d06f4fa38e3686939afa39650102b329bc0ef8
-
-    Now runs the new test_pubsreader.c to check
-    that we now have tests of more functions in libdwarf.
-            modified:   DWARFTEST.sh
-
-2021-06-30:  David Anderson
-    commit d7a297e6338ae769501e3ca3486fa6020320aeab
-
-    Now we test all the sections that look
-    like globals/pubtypes etc.
-            modified:   test_pubsreader.c
-
-2021-06-30:  David Anderson
-    commit 28a2d9527345110a4871fb6c2d2bcda30b510f27
-
-    Refactored a bit. Format is better now.
-            modified:   test_pubsreader.c
-
-2021-06-30:  David Anderson
-    commit b7e02ca44beeba769883c0634e8f79910160f575
-
-    Now runs the new test.
-            modified:   DWARFTEST.sh
-    A new test, self testing.
-            modified:   test_pubsreader.c
-
-2021-06-30:  David Anderson
-    commit 913d5cfcf4db7f9952070b51d5ca78afc280b15c
-
-    New test. To be amplified shortly.
-            new file:   test_pubsreader.c
-
-2021-06-29:  David Anderson
-    commit 7e396891df61329d02a16efcf32007978ab6cb36
-
-    References to HAVE_OLD_FRAME_COL removed.
+    This had an assert about DW_FRAME_CFA_COL[3]
+    that is no longer appropriate.
+    removed the now-meaningless assert.
             modified:   legendre/frame_test.c
-            modified:   legendre/runtest.sh
 
-2021-06-28:  David Anderson
-    commit 0873fbf1aab744d332394a36bbcf5ea76c2f0946
+2022-12-21:  David Anderson
+    commit a7ba7e9bfad6b2996bcce2ba319ab7dde3031601
 
-    Removing dwarf_highpc() from libdwarf.h required a change
-    in the output of simplereader.c. So new baselines.
-            modified:   offsetfromlowpc/basehighpc3
-            modified:   offsetfromlowpc/basehighpc4
-
-2021-06-25:  David Anderson
-    commit 50e307bac5f5b808b16d376d2c1d8178e7a1f8b6
-
-    Bringing S390 up to date.
-            modified:   dwarfdump-s390.O
-
-2021-06-25:  David Anderson
-    commit ea424acc93ed24c2d0aca8b9e72af8b375c13d82
-
-    Typos in some echo lines fixed.
-            modified:   DWARFTEST.sh
-
-    New baseline executables
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-x86_64-freebsd.O
-
-    The latest dwarf_init*() functions now
-    have one less argument: the 'access'
-    argument has been unnecessary for many years.
-            modified:   findcu/cutest.c
-            modified:   legendre/frame_test.c
-            modified:   test-alex1/test.c
-            modified:   test-alex2/test.c
-            modified:   test_harmless.c
-            modified:   testoffdie/testoffdie.c
-
-2021-06-23:  David Anderson
-    commit a2c727803e6c5c46cfb2484236ef1ed257c87936
-
-    Stop using plain dwarfdump -c option as the code implementing it is gone.
-            modified:   DWARFTEST.sh
-
-    New baseline
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-    Now that DW_DLC_READ is deleted from libdwarf.h use 0 instead of that
-    in dwarf init calls to libdwarf.
-            modified:   dwarfextract/dwarfextract.c
-            modified:   findcu/cutest.c
-            modified:   klingler2/bugDemo.cpp
-            modified:   legendre/frame_test.c
-            modified:   navarro/get_globals.c
-            modified:   test-alex1/test.c
-            modified:   test-alex2/test.c
-            modified:   test-eh/test-eh.c
-            modified:   test_harmless.c
-            modified:   testoffdie/testoffdie.c
-
-2021-06-21:  David Anderson
-    commit fb6bb098933c9b84089e345eac92a45f96a3e813
-
-    New baseline executables.
-            modified:   dwarfdump-i386-freebsd.O
-            modified:   dwarfdump-s390.O
-            modified:   dwarfdump-x86_64-freebsd.O
-
-2021-06-19:  David Anderson
-    commit 28c0a51cc668bdf8d75d7556d82d48c1ff13ab93
-
-    New baseline that PASSes, even with -fsanitize....
-    on everything.
-            modified:   dwarfdump-x86_64-ubuntu.O
-
-2021-06-19:  David Anderson
-    commit 9d264426e2235cbe176c6640c7b3d634d874b373
-
-    Do not use mips-irix or mips-irix2
-    as an ABI in dwarfdump.conf as
-    these are gone, they were for testing
-    old libdwarf functions that have been
-    removed from the library.
-            modified:   DWARFTEST.sh
-    Removed  mips-irix or mips-irix2 ABI contents.
+    regenerated
+            modified:   configure
+    Removed copying testdwarfdump.conf,
+    the file is checked in here already.
+            modified:   configure.ac
+    Removed commented-out lines.
             modified:   dwarfdump.conf
-
-    Was using an obsolete libdwarf function. Now using
-    the long-existing current version.
-            modified:   legendre/frame_test.c
-
-2021-06-18 David Anderson
-    commit a43696189cfec530d1d8125eb76b375d306b8b84
-    * DWARFTEST.sh, PICKUPBIN.sh, configure.ac:
-      Changed to match up with the new source tree layout,
-    * findcu/cutest.c,test-alex1/test.c,testoffdie/testoffdie.c,
-      dwarfextract/dwarfextract.c: Updated calls to libdwarf
-      to stop using obsolete functions.
-2021-05-19 David Anderson
-    * exfail.py,showpct.py,trimsimple.py,usertime.py:
-      Reformatted with the 'black' formatter.
-    * python3/checksize.py,python3/exfail.py,
-      python3/filterpathto.py,python3/noticegoff.py,
-      python3/showpct.py,python3/showruntime.py,
-      python3/trimdate.py,python3/trimsimple.py,
-      python3/usertime.py: Reformatted with the 'black' formatter.
-2021-05-18 David Anderson
-    * dwarfdump-i386-freebsd.O,dwarfdump-s390.O,
-      dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
-      New baseline executables.
-
-2021-05-18 David Anderson
-    * dwarfdump.conf: Corrected some commentary.
-    * dwgenc/testoutput.o: it's recreated on every run
-      (by dwarfgen) so this is not a meaninful change.
-      But is ok.
-2021-05-18 David Anderson
-    * diederen6/implicit_const_example.so: Example exposed
-      libdwarf error reading DW_FORM_LINE_strp and dealing with
-      DW_FORM_implicit const.
-2021-05-13 David Anderson
-    * dwarfextract/dwarfextract.c: Now does "dwarf.h"
-      and "libdwarf.h" not the <> form, so we get
-      the versions under test, not older ones.
-    * dwarfextract/runtest.sh: Now adds -I to
-      get access to the libdwarf/dwarf.h
-2021-01-31 David Anderson
-    * DWARFTEST.sh cleaned up some FAIL messages
-      so they read more usefully.
-
-        Now matches libdwarf/dwarfdump git log id of today:
-        0c441c3351b2b3b276914609eb7eb0db9cd8c516
-
-    * dwarfdump-i386-freebsd.O,dwarfdump-s390.O,
-      dwarfdump-x86_64-freebsd.O,dwarfdump-x86_64-ubuntu.O:
-      New baseline executables.
-
-        Fixed diff here so it compares in the right old vs new
-        way rather than the new vs old way.
-    * dwgenc/runtest.sh: Fixed diff here so it
-      compares in the right old vs new way rather than
-      the new vs old way.
-
-      Updated baselines of the following:
-    * debugfission/archivedwo-iMvvv.base.gz
-    * debugfission/archivedwo.base.gz
-    * debugfission/targetdwo.base.gz
-    * dwgenc/base.stdout
-    * guilfanov/crash.base
-    * implicitconst/implicit.base
-    * nolibelf/test1.base
-    * offsetfromlowpc/basehighpc2
-2021-01-19 David Anderson
-    * python3/checksize.py,python3/exfail.py,
-      python3/filterpathto.py,python3/noticegoff.py,
-      python3/showpct.py,python3/showruntime.py,
-      python3/trimdate.py,python3/trimsimple.py,
-      python3/usertime.py,exfail.py,showpct.py,
-      trimsimple.py,usertime.py: All the Python 3
-      scripts are now in a more Pythonic style.
 
