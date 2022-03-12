@@ -69,6 +69,9 @@ Abbrev table length     : 6
 Entry pool size         : 3
 Augmentation string size: 0
   cu List. Entry count: 1
-  [   0] Offset   :  0x00000000
-  tu List. Entry count: 0 (local tu list 0,foreign tu list 0)
+  [   1] CU-offset:  0x00000000
+  tu List. Entry count: 0 (local tu count 0,foreign tu count 0)
+
+Names table, entry count 1
+  [   1] 
 

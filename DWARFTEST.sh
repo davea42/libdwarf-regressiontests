@@ -2151,8 +2151,18 @@ showminutes() {
    echo "Run time in minutes: $t"
 }
 showminutes $stsecs $ndsecs
-echo "Sanitize?              : " $NLIZE
-echo "Suppress de_alloc_tree?: " $SUPPRESSDEALLOCTREE
+if [ "x$NLIZE" = "xy" ]
+then
+  echo "Sanitize?              : y (yes)"
+else
+  echo "Sanitize?              : n (no)"
+fi
+if [ "x$SUPPRESSDEALLOCTREE" = "xy" ]
+then
+  echo "Suppress de_alloc_tree?: y (yes)"
+else
+  echo "Suppress de_alloc_tree?: n (no)"
+fi
 
 if [ $failcount -ne 0 ]
 then

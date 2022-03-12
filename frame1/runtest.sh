@@ -19,6 +19,7 @@ then
     echo "fail frame1 runtest.sh, does not have its two args: withlibelf missing"
     exit 1
 fi
+echo "where is libbld? : $libbld"
 if [ x$NLIZE = 'xy' ]
 then
   opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
@@ -34,7 +35,7 @@ if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
 fi
-iopts="-I$bld -I$bld/src/liblibdwarf -I$libdw -I$libbld/src/liblibdwarf"
+iopts="-I$libbld -I$bld -I$bld/src/liblibdwarf -I$libdw -I$libbld/src/liblibdwarf"
 cpifmissing $codedir/src/bin/dwarfexample/frame1.c framexlocal.c
 echo "cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1"
 cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1
