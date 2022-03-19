@@ -1,3 +1,58 @@
+2022-03-19:  David Anderson
+    commit bd6887df3ed4cbe9f7879d2fb0eb5b514ffd078b
+
+    Adding -v and -vv --print-debug-names tests.
+            modified:   DWARFTEST.sh
+    New baseline.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Removing dwarfgen trying to force a .debug_names
+    section, we have real such sections now.
+    The dwarfgen/libdwarfp code for the force
+    is not quite right and should be fixed and
+    reintroduced...just because.
+            modified:   dwgenc/base.debugnames
+            modified:   dwgenc/runtest.sh
+
+2022-03-12:  David Anderson
+    commit 8da19582b9cad8a9927f08e5733cd2842a21ec9e
+
+    Changed the echo statements related to NLIZE and
+    SUPPRESSDEALLOCTREE
+            modified:   DWARFTEST.sh
+
+    New baseline (but not final, debugnames output
+    is changing)
+            modified:   dwgenc/base.debugnames
+
+    Fix an ancient mistake in the -I list to
+    a compile. Put -I$libbld first.
+            modified:   frame1/runtest.sh
+
+2022-02-22:  David Anderson
+    commit 33da3fec360de47056965612908bf22f4c16ea85
+
+    Now runs the new test
+            modified:   DWARFTEST.sh
+    A short description of the three test cases
+            modified:   debugnames/README
+    The newest test case in this directory
+            new file:   debugnames/dwarfdumpone
+
+2022-02-21:  David Anderson
+    commit d3bbe8527c5efcdf6e7cf0f3ba202c071ffa7362
+
+    Now has just 2022
+            modified:   ChangeLog
+    Now has just 2021
+            new file:   ChangeLog2021
+
+2022-02-21:  David Anderson
+    commit 574cc6a05df6d2c02520322d31a96c41fb322097
+
+    Up through 2021 end
+            modified:   ChangeLog
+
 2022-02-21:  David Anderson
     commit b0c1ca95b26b57e30fc94672f6fe9e13b4bc22c2
 
@@ -69,7 +124,7 @@
     removed the now-meaningless assert.
             modified:   legendre/frame_test.c
 
-2022-12-21:  David Anderson
+2021-12-21:  David Anderson
     commit a7ba7e9bfad6b2996bcce2ba319ab7dde3031601
 
     regenerated
