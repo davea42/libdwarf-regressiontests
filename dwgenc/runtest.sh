@@ -8,8 +8,10 @@ tf=$bldtest/dwgenc
 # will lead to an error.  So far we are not emitting DW_OP stuff (except
 # for one special case for testing) OP by OP, but just as a byte stream.
 # Hence adjusting address-size in dwarfgen is problematic.
+# Skip forcing .debug_names March 18 2022, it is wrong and not needed
+# since llvm correctly generates such sections.
 # January 28, 2021
-../dwarfgen -p 8 -c 0 --default-form-strp --force-empty-dnames -v5 -t obj  -o testoutput.o $ts/testinput.o >junkdgstdout 2> junkdgstderr 
+../dwarfgen -p 8 -c 0 --default-form-strp -v5 -t obj  -o testoutput.o $ts/testinput.o >junkdgstdout 2> junkdgstderr 
 if [ $? -ne 0 ] 
 then
     echo "fail dwgenc  dwarfgen on $ts/testinput.o"
