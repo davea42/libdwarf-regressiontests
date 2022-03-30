@@ -26,16 +26,8 @@ opts=" -a -M macho-kask/simplereaderx86_64"
 kopts=" -ka macho-kask/simplereaderx86_64"
 opts="--suppress-de-alloc-tree -ka -x tied=emre5/test33_64_opt_fpo_split emre5/test33_64_opt_fpo_split.dwp"
 
+opts="moqigod/buffer-overflow-example-2022 "
 
-
-
-
-#/tmp/dwarfdumpo  $opts >junko
-#/tmp/dwarfdumpo  $kopts >junkok
-#/tmp/dwarfdump -vv $opts >junkvv
-#/tmp/dwarfdump $opts >junkn
-#/tmp/dwarfdump $kopts >junknk
-#exit 0
 
 #readelfobj ppc2/powerpc-750-linux-gnu-hello-static >junkro
 # -show_reachable shows things alloc before it could get control. 14KB.
@@ -51,7 +43,8 @@ vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=
 
 #dwarfdump  $opts >junko
 #/tmp/dwarfdump $opts
-valgrind $vgopts  /tmp/dwarfdump $opts >junkn
+
+valgrind $vgopts  ~/bin/dwarfdump $opts >junkn
 exit 0
 
 

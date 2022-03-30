@@ -765,6 +765,9 @@ mklocal guilfanov
   chkres $? "$testsrc/guilfanov/runtest.sh"
 cd ..
 
+# March 24, 2022, fuzzed object
+runtest $d1 $d2 moqigod/buffer-overflow-example-2022
+
 # February 16, 2022, with clang-generated .debug_names
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -v

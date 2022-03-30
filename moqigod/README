@@ -1,6 +1,9 @@
 Report and example received
 24 March 2022.
 
+the problem is the count of directories in
+a line table header is zero (very unusual,
+maybe impossible as compiler output) due to fuzzing of the object file.
 
 
 Execute the command：./dwarfdump example
