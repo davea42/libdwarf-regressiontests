@@ -1,4 +1,5 @@
 David Anderson 22 February 2022
+Updated 7 April 2022
 # constructed via
 comp=clang
 $comp -I../../lib/libdwarf -gdwarf-5 -gpubnames \
@@ -17,7 +18,6 @@ An example of that is in:
     dwarfdumpone
 
 dwarfdump --print-debug-names
-prints the section (incomplete output).
 
 
 
