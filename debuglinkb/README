@@ -1,0 +1,19 @@
+
+These tests are a response to two issues on github.
+Both issues filed  April 28,2022 by pedronavf.
+
+Issue #115 debuglink file not read if a buildid note is not present
+
+and
+
+Issue #113 Consider adding a flag to not check the crc32 of the debuglink file
+
+We corrected code in libdwarf (and refactored a little
+bit to aid understanding the code).
+
+We added a new libdwarf function dwarf_suppress_debuglink_crc()
+so one can suppress the crc.
+
+we added a new dwarfdump option --suppress-debuglink-crc.
+
+May 6, 2022.

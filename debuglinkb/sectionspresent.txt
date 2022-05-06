@@ -8,16 +8,3 @@ debuglink and debugid      debugid
 
 testnoid                   testnoid.debug
 debuglink                  none
-
-
-
-
-Overview
-
-_dwarf_debuglink_finder_newpath
-      calls dwarf_init_path
-      calls dwarf_gnu_debuglink()
-      calls dwarf_crc32 to calculate crc
-      calls match_buildid
-            which returns TRUE if the crc's match.
-   

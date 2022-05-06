@@ -1,7 +1,11 @@
 #!/bin/bash
+# This script is for running these tests independent
+# of the regressiontests scripts.
+# We normally use the pre-build four test executables
+# we do not rebuild them.
 echo "Run both ways"
-sh bldnoid 
-sh bldid 
+#sh bldnoid 
+#sh bldid 
 
 sh testany /tmp/dwarfdump  /tmp/dwdebuglink  "" testid   >taa
 sh testany /tmp/dwarfdump  /tmp/dwdebuglink  "" testnoid  >tab
