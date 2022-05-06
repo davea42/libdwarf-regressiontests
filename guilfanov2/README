@@ -1,0 +1,31 @@
+An instance of a double-free.
+
+Note that the software version is not current,
+the singly-linked chain list 
+does
+  if (head_chain == NULL) {
+            head_chain = prev_chain = curr_chain;
+        } else {
+            prev_chain->ch_next = curr_chain;
+            prev_chain = curr_chain;
+        }
+in the suggested fix, but current code does
+    curr_chain->ch_item = newcontext;
+    ++chainlength;
+    (*plast) = curr_chain;
+    plast = &(curr_chain->ch_next);
+    offset = nextoffset;
+(a more efficient list build as there is no if/else.)
+This was changed at least as of rel 0.3.0.
+
+
+We are adding the testcase though, it's always good
+to have a new one.
+
+davea42
+6 May 2022
+
+
+
+
+

@@ -1,0 +1,154 @@
+Title: IDA Pro 7.6 libdwarf.dll double free RCE Vuln
+
+Hello,
+
+There is an double-free vuln in libdwarf.dll, which is reproducable on IDA Pro Version 7.6.210427 Windows x64 (64-bit address size).
+
+Crash details for IDA Pro 7.6 on Windows:
+-------------------------------------------------------------------------------------------------
+===========================================================
+VERIFIER STOP 0000000000000007: pid 0x828: block already freed 
+
+	00000249BC941000 : Heap handle
+	00000249DFF63E38 : Heap block
+	0000000000000070 : Block size
+	0000000000000000 : 
+===========================================================
+This verifier stop is not continuable. Process will be terminated 
+when you use the `go' debugger command.
+===========================================================
+
+(828.20b4): Break instruction exception - code 80000003 (first chance)
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for C:\WINDOWS\System32\verifier.dll - 
+verifier!VerifierDisableFaultInjectionExclusionRange+0x43dc:
+00007ffd`a84e609c cc              int     3
+0:000> kn
+ # Child-SP          RetAddr           Call Site
+00 000000db`be9f8310 00007ffd`a84e638b verifier!VerifierDisableFaultInjectionExclusionRange+0x43dc
+01 000000db`be9f88d0 00007ffd`a84e4eb0 verifier!VerifierStopMessage+0x2ab
+02 000000db`be9f8980 00007ffd`a84e2582 verifier!VerifierDisableFaultInjectionExclusionRange+0x31f0
+03 000000db`be9f8a40 00007ffd`a84e2623 verifier!VerifierDisableFaultInjectionExclusionRange+0x8c2
+04 000000db`be9f8aa0 00007ffd`a84e27e9 verifier!VerifierDisableFaultInjectionExclusionRange+0x963
+05 000000db`be9f8ae0 00007ffd`a84e41bd verifier!VerifierDisableFaultInjectionExclusionRange+0xb29
+06 000000db`be9f8b10 00007ffd`d0973e38 verifier!VerifierDisableFaultInjectionExclusionRange+0x24fd
+07 000000db`be9f8b70 00007ffd`d0925344 ntdll!RtlpNtMakeTemporaryKey+0x4588
+08 000000db`be9f8bd0 00007ffd`d0896a79 ntdll!memset+0xe944
+09 000000db`be9f8e00 00007ffd`cdaad00b ntdll!RtlFreeHeap+0x409
+0a 000000db`be9f8eb0 00007ffd`b57e46a2 ucrtbase!free_base+0x1b
+0b 000000db`be9f8ee0 00007ffd`b57e4566 libdwarf!dwarf_ranges_dealloc+0x392
+0c 000000db`be9f8f90 00007ffd`b57e7f65 libdwarf!dwarf_ranges_dealloc+0x256
+0d 000000db`be9f8fc0 00007ffd`b57c37a0 libdwarf!dwarf_types_dealloc+0x1305
+0e 000000db`be9f8ff0 00007ffd`b57c4c23 libdwarf!dwarf_get_cu_die_offset+0x870
+0f 000000db`be9f9200 00000000`62a97b20 libdwarf!dwarf_next_cu_header_c+0x83
+10 000000db`be9f9290 00000000`62ab4e07 dwarf64+0x37b20
+11 000000db`be9f93c0 00000000`62a9caed dwarf64+0x54e07
+12 000000db`be9f9480 00000000`62a7d063 dwarf64+0x3caed
+13 000000db`be9f94e0 00000000`62ab0739 dwarf64+0x1d063
+14 000000db`be9fc030 00000000`6457709d dwarf64+0x50739
+15 000000db`be9fc8d0 00000000`62af80d5 ida64_643a0000!user2bin+0x69fd
+16 000000db`be9fc970 00000000`6457709d dbg64+0x80d5
+17 000000db`be9fcf40 00007ff7`f151dce0 ida64_643a0000!user2bin+0x69fd
+18 000000db`be9fcfe0 00007ff7`f14552e1 ida64+0x19dce0
+19 000000db`be9fd050 00007ff7`f13d693c ida64+0xd52e1
+1a 000000db`be9fd250 00007ff7`f13d40b5 ida64+0x5693c
+1b 000000db`be9fd6f0 00007ffd`b5caf4ec ida64+0x540b5
+1c 000000db`be9fd720 00007ffd`b5c99d0e elf64+0x2f4ec
+1d 000000db`be9fde20 00000000`644d60c4 elf64+0x19d0e
+...
+-------------------------------------------------------------------------------------------------
+
+Crash details for libdwarf on linux with asan build:
+=================================================================
+==4126745==ERROR: AddressSanitizer: attempting double-free on 0x60b000000bf0 in thread T0:
+    #0 0x7fed817b51c7 in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:123
+    #1 0x56549739cae4 in free_rnglists_chain /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_rnglists.c:83
+    #2 0x56549739cae4 in free_rnglists_chain /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_rnglists.c:72
+    #3 0x56549739cae4 in internal_load_rnglists_contexts /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_rnglists.c:353
+    #4 0x56549739cae4 in dwarf_load_rnglists /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_rnglists.c:437
+    #5 0x5654973be634 in _dwarf_load_debug_info /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_util.c:1175
+    #6 0x565497283fd8 in _dwarf_load_die_containing_section /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_die_deliv.c:1588
+    #7 0x56549728874f in _dwarf_next_cu_header_internal /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_die_deliv.c:1683
+    #8 0x56549728874f in dwarf_next_cu_header_d /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_die_deliv.c:1024
+    #9 0x5654971c7478 in print_one_die_section /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/bin/dwarfdump/print_die.c:1026
+    #10 0x56549711af1d in process_one_file /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/bin/dwarfdump/dwarfdump.c:1309
+    #11 0x56549711af1d in main /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/bin/dwarfdump/dwarfdump.c:726
+    #12 0x7fed81526cb1 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x28cb1)
+    #13 0x565497124e3d in _start (/home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/buildasan/src/bin/dwarfdump/dwarfdump+0x80e3d)
+
+0x60b000000bf0 is located 0 bytes inside of 112-byte region [0x60b000000bf0,0x60b000000c60)
+freed by thread T0 here:
+    #0 0x7fed817b51c7 in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:123
+    #1 0x56549739c9d7 in internal_load_rnglists_contexts /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_rnglists.c:352
+    #2 0x56549739c9d7 in dwarf_load_rnglists /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_rnglists.c:437
+
+previously allocated by thread T0 here:
+    #0 0x7fed817b56f7 in __interceptor_calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:154
+    #1 0x56549739c899 in internal_load_rnglists_contexts /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_rnglists.c:336
+    #2 0x56549739c899 in dwarf_load_rnglists /home/admin-pc/Desktop/libdwarf-code-aafe188d1b8a2d50c4bdd1d8890980f0f5c65f84/src/lib/libdwarf/dwarf_rnglists.c:437
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:123 in __interceptor_free
+
+Root Cause:
+-------------------------------------------------------------------------------------------------
+static int
+internal_load_rnglists_contexts(Dwarf_Debug dbg,
+    Dwarf_Rnglists_Context **cxt,
+    Dwarf_Unsigned *count,
+    Dwarf_Error *error)
+{
+...
+    for ( ; data < end_data ; ) {
+        Dwarf_Rnglists_Context newcontext = 0;
+
+        /* sizeof the context struct, not sizeof a pointer */
+        newcontext = malloc(sizeof(*newcontext));
+        if (!newcontext) {
+            free_rnglists_chain(dbg,head_chain);
+            _dwarf_error_string(dbg,error,
+                DW_DLE_ALLOC_FAIL,
+                "DW_DLE_ALLOC_FAIL: Allocation of "
+                "Rnglists_Context failed");
+            return DW_DLV_ERROR;
+        }
+        memset(newcontext,0,sizeof(*newcontext));
+        res = _dwarf_internal_read_rnglists_header(dbg,
+            chainlength,
+            section_size,
+            data,end_data,offset,
+            newcontext,&nextoffset,error);
+        if (res == DW_DLV_ERROR) {
+            free(newcontext); -----------------------------------------#1 newcontext is freed, but not set to NULL
+            free_rnglists_chain(dbg,head_chain);
+        }
+        curr_chain = (Dwarf_Chain)
+            _dwarf_get_alloc(dbg, DW_DLA_CHAIN, 1);
+        if (curr_chain == NULL) {
+            free_rnglists_chain(dbg,head_chain);
+            _dwarf_error_string(dbg, error, DW_DLE_ALLOC_FAIL,
+                "DW_DLE_ALLOC_FAIL: allocating Rnglists_Context"
+                " chain entry");
+            return DW_DLV_ERROR;
+        }
+        curr_chain->ch_item = newcontext;-----------------------------#2 newcontext is assigned to ch_item, which will be freed again later
+        ++chainlength;
+        if (head_chain == NULL) {
+            head_chain = prev_chain = curr_chain;
+        } else {
+            prev_chain->ch_next = curr_chain;
+            prev_chain = curr_chain;
+        }
+        data = startdata+nextoffset;
+        offset = nextoffset;
+    }
+	
+	...
+}
+-------------------------------------------------------------------------------------------------
+
+So I think the patch is very simpe, in #1, just add code "newcontext = NULL;" after "free(newcontext)", this vuln should be fixed.
+
+This vuln is discovered by  bee13oy of Cyber Kunlun Lab.
+
+Thanks and have a nice day,
+
+bee13oy
