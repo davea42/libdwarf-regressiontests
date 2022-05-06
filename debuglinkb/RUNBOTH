@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "Run both ways"
+sh bldnoid 
+sh bldid 
+
+sh testany /tmp/dwarfdump  /tmp/dwdebuglink  "" testid   >taa
+sh testany /tmp/dwarfdump  /tmp/dwdebuglink  "" testnoid  >tab
+
+sh testany /tmp/dwarfdump  /tmp/dwdebuglink  \
+    "--no-follow-debuglink" testid          >tba
+sh testany /tmp/dwarfdump  /tmp/dwdebuglink  \
+    "--no-follow-debuglink" testnoid        >tbb
+
+sh testany /tmp/dwarfdump  /tmp/dwdebuglink  \
+    "--suppress-debuglink-crc"  testid      >tca
+sh testany /tmp/dwarfdump  /tmp/dwdebuglink  \
+    "--suppress-debuglink-crc"     testnoid >tcb
+

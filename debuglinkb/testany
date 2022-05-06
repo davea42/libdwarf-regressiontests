@@ -1,0 +1,22 @@
+#!/bin/sh
+#  args:  dwarfdumpprefix dwdebuglinkprefix  dwarfdumparg  fileprefix
+#
+echo "======== START TEST $3 ========"
+dd="$1"
+dl="$2"
+opt="$3"
+prefix="$4"
+echo "dd        = $dd"
+echo "dl        = $dl"
+echo "opt       = $opt"
+echo "fileprefix= $prefix"
+$dd    $opt -P $prefix
+$dl    $prefix
+$dd    $opt -i $prefix
+echo "======== END TEST $3  ========"
+echo "======== START TEST $3.debug ========"
+#readelfobj $prefix.debug
+$dd    $opt -P $prefix.debug
+$dl    $prefix.debug
+$dd -i $opt $prefix.debug
+echo "======== END TEST $3.debug  ========"

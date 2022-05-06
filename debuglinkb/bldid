@@ -1,0 +1,10 @@
+#!/bin/sh
+set -x
+echo "Build testid"
+ls -ld *tid*
+dd=/tmp/dwarfdump
+dl=/tmp/dwdebuglink
+gcc -ggdb3 ./hello.c -o testid -Wl,--build-id=sha1  
+objcopy --only-keep-debug testid testid.debug  && strip -g testid && \
+  objcopy --add-gnu-debuglink=testid.debug testid
+echo "Done building testid"

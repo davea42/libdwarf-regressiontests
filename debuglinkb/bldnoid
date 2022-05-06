@@ -1,0 +1,10 @@
+#!/bin/sh
+set -x
+echo "Build testnoid"
+ls -ld *noid*
+gcc -ggdb3 ./hello.c -o testnoid  -Wl,--build-id=none
+objcopy --only-keep-debug testnoid testnoid.debug \
+   && strip -g testnoid && \
+  objcopy --add-gnu-debuglink=testnoid.debug testnoid
+echo "Done building testnoid"
+exit 0
