@@ -1,15 +1,15 @@
 #!/bin/sh
 
 . ../BASEFILES.sh
-ts=$testsrc/guilfanov
-tf=$bldtest/guilfanov
+ts=$testsrc/guilfanov2
+tf=$bldtest/guilfanov2
 
-../dwarfdump -a $ts/libdwarf_crash.elf >junkn
-diff $ts/crash.base junkn
+../dwarfdump -a $ts/double-free-poc >junkn
+diff $ts/double-free-poc.base junkn
 if [ $? -ne 0 ]
 then
-  echo "FAIL dwarfdump -a -v -M guilfanov/libdwarf_crash.elf"
-  echo "To update baseline: mv $tf/junkn $ts/crash.base"
+  echo "FAIL dwarfdump -a guilfanov2/double-free-poc"
+  echo "To update baseline: mv $tf/junkn $ts/double-free-poc.base"
   echo "rerun: $ts/runtest.sh"
   return 1
 fi

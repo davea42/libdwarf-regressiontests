@@ -764,6 +764,12 @@ mklocal guilfanov
   # hangs libdwarf/dwarfdump.
   chkres $? "$testsrc/guilfanov/runtest.sh"
 cd ..
+echo "=====START  guilfanov2  $testsrc/guilfanov/runtest.sh"
+mklocal guilfanov2
+  sh $testsrc/guilfanov2/runtest.sh 
+  # A fuzzed object which can encounter a double-free
+  chkres $? "$testsrc/guilfanov2/runtest.sh"
+cd ..
 
 # March 24, 2022, fuzzed object
 runtest $d1 $d2 moqigod/buffer-overflow-example-2022

@@ -94,7 +94,7 @@ fi
 cd $top_build 
 echo "PICKUPBIN.sh: $libdw/configure --disable-libelf for dwarfdumpnl"
 set -x
-$libdw/configure $sanitize  --disable-libelf 
+$libdw/configure --enable-wall $sanitize  --disable-libelf 
 make
 if [ $? -ne 0 ]
 then
@@ -111,7 +111,7 @@ if [ $withlibelf = "withlibelf" ]
 then
   echo "PICKUPBIN.sh configure --enable-dwarfgen --enable-dwarfexample"
   set -x
-  $libdw/configure $sanitize --enable-dwarfgen --enable-dwarfexample 
+  $libdw/configure $sanitize --enable-wall --enable-dwarfgen --enable-dwarfexample 
   make 
   if [ $? -ne 0 ]
   then
@@ -122,7 +122,7 @@ then
 else
   echo "PICKUPBIN.sh: configure --diable-libelf --enable-dwarfexample"
   set -x
-  $libdw/configure $sanitize --disable-libelf --enable-dwarfexample 
+  $libdw/configure $sanitize --enable-wall --disable-libelf --enable-dwarfexample 
   make 
   if [ $? -ne 0 ]
   then
