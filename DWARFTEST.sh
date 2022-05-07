@@ -764,15 +764,35 @@ mklocal guilfanov
   # hangs libdwarf/dwarfdump.
   chkres $? "$testsrc/guilfanov/runtest.sh"
 cd ..
-echo "=====START  guilfanov2  $testsrc/guilfanov/runtest.sh"
+echo "=====START  guilfanov2  $testsrc/guilfanov2/runtest.sh"
 mklocal guilfanov2
   sh $testsrc/guilfanov2/runtest.sh 
   # A fuzzed object which can encounter a double-free
+  # but most likely not in libdwarf 0.1.2 or later.
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
 # March 24, 2022, fuzzed object
 runtest $d1 $d2 moqigod/buffer-overflow-example-2022
+
+# May 6, 2022. debuglink tests exploring related options
+
+runtest $d1 $d2 debuglinkb/testid -P -i
+runtest $d1 $d2 debuglinkb/testid.debug -P -i
+runtest $d1 $d2 debuglinkb/testnoid -P -i
+runtest $d1 $d2 debuglinkb/testnoid.debug -P -i
+
+runtest $d1 $d2 debuglinkb/testid -P -i --no-follow-debuglink
+runtest $d1 $d2 debuglinkb/testid.debug -P -i --no-follow-debuglink
+runtest $d1 $d2 debuglinkb/testnoid -P -i --no-follow-debuglink
+runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --no-follow-debuglink
+
+runtest $d1 $d2 debuglinkb/testid -P -i --suppress-debuglink-crc
+runtest $d1 $d2 debuglinkb/testid.debug -P -i --suppress-debuglink-crc
+runtest $d1 $d2 debuglinkb/testnoid -P -i --suppress-debuglink-crc
+runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --suppress-debuglink-crc
+
+
 
 # February 16, 2022, with clang-generated .debug_names
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names
@@ -1136,6 +1156,8 @@ runtest $d1 $d2 pe1/libexamine-0.dll --print-strings
 
 runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --print-all 
 runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --print-info --format-attr-name -vvv 
+runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --no-follow-debuglink --print-all 
+runtest $d1 $d2 pe1/kask-dwarfdump_64.exe  --no-follow-debuglink --print-info --format-attr-name -vvv 
 
 # mach-o basic tests.
 runtest $d1 $d2 macho-kask/simplereaderi386   -a 
@@ -1157,7 +1179,11 @@ runtest $d1 $d2 macho-kask/dwarfdump_G4    -a  -vvv
 # the following have a DWARF section the last
 # section. _64 failed. Now fixed in libdwarf.
 runtest $d1 $d2  macho-kask/dwarfdump_32 -a
+#This finds no dwarf, as instructed
+runtest $d1 $d2  macho-kask/dwarfdump_32 -a --no-follow-debuglink
 runtest $d1 $d2  macho-kask/dwarfdump_64 -a
+#This finds no dwarf, as instructed
+runtest $d1 $d2  macho-kask/dwarfdump_64 -a --no-follow-debuglink
 
 # Vulnerability CVE-2017-9998 in libdwarf
 runtest $d1 $d2   wolff/POC1 -a
