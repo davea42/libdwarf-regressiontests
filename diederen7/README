@@ -1,0 +1,59 @@
+Bug report May 16, 2022, from Arnaud Diederen.
+
+----------------
+I would like to attract your attention to the following block:
+===
+    DW_TAG_lexical_block      <1175 (CU 0@0+1175)>
+    DW_AT_low_pc         (11;addr) 0x00002943
+    DW_AT_high_pc        (12;addr) 0x00002e26
+
+      DW_TAG_variable           <1184 (CU 0@0+1184)>
+      DW_AT_name           (03;strp) tmpbuf
+      DW_AT_decl_file      (3A;dat1) 0x00000001 /Users/arnaud/idasrc/tmp/aircrack-ng-1.1-patched/aircrack-ng-1.1/src/aircrack-ng.c
+      DW_AT_decl_line      (3B;dat2) 3762
+      DW_AT_type           (49;ref4) <10855 (CU 0@0+10855)>
+      DW_AT_location       (02;blk1) (DW_OP_fbreg -44)
+
+      DW_TAG_variable           <1199 (CU 0@0+1199)>
+      DW_AT_name           (03;strp) delta
+      DW_AT_decl_file      (3A;dat1) 0x00000001 /Users/arnaud/idasrc/tmp/aircrack-ng-1.1-patched/aircrack-ng-1.1/src/aircrack-ng.c
+      DW_AT_decl_line      (3B;dat2) 3760
+      DW_AT_type           (49;ref4) <394 (CU 0@0+394)>
+      DW_AT_location       (02;dat4)
+                        #0 : [0x00000dcb -> 0x00000e4c](DW_OP_reg22)
+                        #1 : [0x00000e4c -> 0x00000ea1](DW_OP_reg5)
+                        #2 : [0x00000ea1 -> 0x000011c6](DW_OP_reg22)
+===
+
+Please note how the lexical block is [2943…2e26), but that the
+location list is outside of those bounds.
+
+The parent compile unit is defined as follows:
+===
+DW_TAG_compile_unit       <11 (CU 0@0+11)>
+DW_AT_producer       (25;strp) 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.1.00)
+DW_AT_language       (13;dat1) DW_LANG_C89
+DW_AT_name           (03;strp) aircrack-ng.c
+DW_AT_entry_pc       (52;addr) 0x00001c60
+DW_AT_stmt_list      (10;dat4) 0x00000000
+DW_AT_comp_dir       (1B;strp) /Users/arnaud/idasrc/tmp/aircrack-ng-1.1-patched/aircrack-ng-1.1/src/
+DW_AT_APPLE_optimized (3FE1;flag) yes(1)
+===
+
+Notice the `DW_AT_entry_pc`. If you add it to the lochist entries'
+bounds, you'll notice they fall right within those of the lexical
+block.
+
+---
+
+Currently, we have the following in our plugin, to fix this:
+===
+    …
+    if ( cu->has_attribute(DW_AT_entry_pc) )
+      off = cu->get_entrypc();
+    start_ea += off;
+    end_ea += off;
+    …
+===
+…but I thought I'd let you know, since it _seems_ it should be applied
+automatically by libdwarf. 
