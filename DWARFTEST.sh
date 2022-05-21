@@ -772,6 +772,9 @@ mklocal guilfanov2
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
+#  May 19 2022 Accomodate Apple use of DW_AT_entry_pc as base address.
+runtest $d1 $d2 diederen7/pc_dwarf_aircrack_ng.macho -a -vv -M
+
 # March 24, 2022, fuzzed object
 runtest $d1 $d2 moqigod/buffer-overflow-example-2022
 
