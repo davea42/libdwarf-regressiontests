@@ -1,5 +1,10 @@
 There is a heap overflow in _dwarf_check_string_valid in dwarf_util.c. Depending on the usage of this library, this may cause code execution or deny of service.
 
+SUMMARY:  When reading pubnames/pubtypes the code never checked
+explicitly whether the leading length field of the section
+was possible given the object file section length.
+See _dwarf_internal_get_pubnames_like_data around line 390.
+
 reproduce steps:
 
     compile libdwarf with address sanitizer
