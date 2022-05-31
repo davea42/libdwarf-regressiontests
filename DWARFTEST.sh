@@ -311,6 +311,7 @@ chkresn () {
 #fi
 
 filepaths='$filepaths moshe/hello
+sleicasper/bufferoverflow
 jborg/simple
 gilmore/a.out
 navarro/compressed_aranges_test
