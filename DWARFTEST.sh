@@ -312,6 +312,7 @@ chkresn () {
 
 filepaths='$filepaths moshe/hello
 sleicasper/bufferoverflow
+sleicasper2/buffer-overflow-form-sig8
 jborg/simple
 gilmore/a.out
 navarro/compressed_aranges_test
