@@ -1,3 +1,37 @@
+2022-06-17:  David Anderson
+    commit 9a789ddde3010cac424d7d0bcd31b9b36de0ca35
+
+    New baseline executables to match
+    a new error message coming from
+    the fix to DW202206-001.
+            modified:   ../dwarfdump-i386-freebsd.O
+            modified:   ../dwarfdump-s390.O
+            modified:   ../dwarfdump-x86_64-freebsd.O
+            modified:   ../dwarfdump-x86_64-ubuntu.O
+
+2022-06-17:  David Anderson
+    commit ad28efa8e3e1f1608df55e2465b57078a6c490ce
+
+    Had to remove full paths from echo stmts
+    to remove file paths from the baseline
+    so it can pass on S390 linux tests.
+    testfindfuncbypc:
+            modified:   findfuncbypc.base
+            modified:   runall.sh
+
+2022-06-17:  David Anderson
+    commit a56a5db1b5b65260c0c9a5e154eb7c2be6951810
+
+    Accidentally left this important test objectfile
+    out of git.
+            new file:   ../sleicasper2/buffer-overflow-form-sig8
+
+2022-06-16:  David Anderson
+    commit 5ad522f6b2f1537b92e2647ceabe0ee671fe99df
+
+    Updated with git log data.
+            modified:   ChangeLog
+
 2022-06-16:  David Anderson
     commit 398e021bc905e5ece5a896e159e320e864539e8c
 
