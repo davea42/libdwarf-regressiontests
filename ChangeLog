@@ -1,3 +1,229 @@
+2022-06-16:  David Anderson
+    commit 398e021bc905e5ece5a896e159e320e864539e8c
+
+    Now we run the new  testfindfuncbypc test(s).
+            modified:   DWARFTEST.sh
+            modified:   PICKUPBIN.sh
+            modified:   testfindfuncbypc/findfuncbypc.base
+            modified:   testfindfuncbypc/runall.sh
+            modified:   testfindfuncbypc/runtest.sh
+
+    renamed
+            deleted:    sleicasper2/buffer-overlow-form-sig8
+
+2022-06-16:  David Anderson
+    commit baf44b8d0b27b6e1a462a8baa2415611e95081e8
+
+    New test of findfuncbypc
+            new file:   testfindfuncbypc/findfuncbypc.base
+            new file:   testfindfuncbypc/findfuncbypc.exe1
+            new file:   testfindfuncbypc/runall.sh
+            new file:   testfindfuncbypc/runtest.sh
+
+2022-06-15:  David Anderson
+    commit b9886982e9c9aac0f8d822e170c8659e29ffc2d2
+
+    Renaming the test to make it clearer what the
+    lack of vallidation was about.
+            modified:   ../DWARFTEST.sh
+            renamed:    buffer-overflow-dwarf-form -> buffer-overlow-form-sig8
+
+2022-06-15:  David Anderson
+    commit 5b6e7986727b9c9dd8146356e4ee357d4f8b4712
+
+    Mixing - and _ was not appealing. So rename.
+            renamed:    sleicasper2/buffer-overflow-dwarf_form -> sleicasper2/buffer-overflow-dwarf-form
+
+2022-06-15:  David Anderson
+    commit fd7472a518d80961082a92bc982930667cbd52c6
+
+    New buffer overflow
+    sleicasper2:
+            new file:   README
+            new file:   buffer-overflow-dwarf_form
+
+2022-05-31:  David Anderson
+    commit 7ac16eb3a736c069ae2257f2a144042bff466a7e
+
+    New baseline executables with the fix for
+    DW202205-001
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-05-30:  David Anderson
+    commit f6b7901f1639b3ab6a70dcf1910f94601ead7c90
+
+    Added test related to DW202205-001 vulnerability
+            modified:   DWARFTEST.sh
+
+2022-05-28:  David Anderson
+    commit 3c4f7f461dc2871b3311e47031bb8d288178ba8b
+
+    A new test of a particular corruption in a .debug_pubtypes
+    or .debug_pubnames section. Previously libdwarf would
+    try to access memory it should not have touched.
+            modified:   sleicasper/README
+            renamed:    sleicasper/poc -> sleicasper/bufferoverflow
+
+2022-05-27:  David Anderson
+    commit 2203f1bd03253b87f464ed3b5ad5190c4b1128cb
+
+    New test case heap buffer overflow
+            new file:   sleicasper/README
+            new file:   sleicasper/poc
+
+2022-05-23:  David Anderson
+    commit ef407469543f4cdd0544e2a365c3d3567f116514
+
+    Version test with test dideren7.
+    Good result.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-05-21:  David Anderson
+    commit c21efcbbf7448057c669c09d1783762f9d050614
+
+    Adds a new test dealing with any compiler choosing
+    to use DW_AT_entry_pc (from DWARF3) instead
+    of DW_AT_low_pc as a base address for .debug_loc
+    entries for a compilation unit.
+            modified:   DWARFTEST.sh
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-05-18:  David Anderson
+    commit 613f44a4a243b3d0c3da2087b8da17620f367f2a
+
+    A new test case related to DW_AT_entry_pc
+            new file:   README
+            new file:   pc_dwarf_aircrack_ng.macho
+            new file:   pc_dwarf_aircrack_ng.macho.dSYM/Contents/Resources/DWARF/pc_dwarf_aircrack_ng.macho
+            new file:   pc_dwarf_aircrack_ng.macho.efddump
+
+2022-05-06:  David Anderson
+    commit b5d338b477f504ec6a7a26033bdbfd8d389ac1cf
+
+    Adds tests of --suppress-debuglink-crc and --no-follow-debuglink
+    with objects designed for a thorough test.
+            modified:   DWARFTEST.sh
+
+2022-05-06:  David Anderson
+    commit 5d66bee624548615bf5e3eaf45695449c96499c1
+
+    And this is the renamed baseline.
+            new file:   guilfanov2/double-free-poc.base
+
+2022-05-06:  David Anderson
+    commit 410e3a0ab199bc8f50682d167360758a01b50bd4
+
+    Adding a new test, guilfanov2/
+
+            modified:   DWARFTEST.sh
+
+    Adding --enable-werror on all configure commands.
+            modified:   PICKUPBIN.sh
+
+    New baselines
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    latest updates.
+            modified:   guilfanov2/README
+            deleted:    guilfanov2/poc.base
+            modified:   guilfanov2/runtest.sh
+
+2022-05-06:  David Anderson
+    commit 1df82d66f759a31067db31144599d1fb5ffc5af9
+
+    in guilfanov2/
+    new file:   README
+    new file:   details.txt
+    new file:   double-free-poc
+    new file:   poc.base
+    new file:   runtest.sh
+
+2022-05-06:  David Anderson
+    commit fb29b2bae1e7a31690746a8584e20ccc40861d24
+
+    in debuglinkb/
+
+    Documented the history of the tests.
+            new file:   README
+
+    Modified so accidental rerunning the object file build
+    will not happen.
+        modified:   RUNBOTH
+            modified:   bldid
+            modified:   bldnoid
+
+    Removed irrelevant content.
+            modified:   sectionspresent.txt
+
+2022-05-06:  David Anderson
+    commit 093cb5b1c67f9f895432fdf0ed5c6c4e4c8a3e0e
+
+    New tests for debuglink.
+            new file:   RUNBOTH
+            new file:   bldid
+            new file:   bldnoid
+            new file:   hello.c
+            new file:   sectionspresent.txt
+            new file:   testany
+            new file:   testid
+            new file:   testid.debug
+            new file:   testnoid
+            new file:   testnoid.debug
+
+2022-04-12:  David Anderson
+    commit 5b99ccec82d75beffd637bc414ba1aa9ccf07682
+
+    reflects current
+            modified:   debugnames/README
+
+2022-04-06:  David Anderson
+    commit c668023e863b82cc253a8d78ea7c155507978a5a
+
+    New baselines for .debug_names output.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-03-29:  David Anderson
+    commit 92c9c1e012cbf072d2e7100dbc3a76a3c25f7164
+
+    Added the moqigod test
+            modified:   DWARFTEST.sh
+            modified:   moqigod/README
+
+    For local tests. not important.
+            modified:   RUNVAL
+
+    New baseline executable
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-03-24:  David Anderson
+    commit 41150fa27d656295c22af79cac022ba9e0802a48
+
+    in moqigod/
+    New buffer overflow example
+            new file:   README
+            new file:   buffer-overflow-example-2022
+
+2022-03-19:  David Anderson
+    commit d9d7f5e28d8b9550c44801cce1ac602ee6ef9fa8
+
+    Fixed a typo in the oldest date
+    in this 2022 changelog.
+            modified:   ChangeLog
+
 2022-03-19:  David Anderson
     commit bd6887df3ed4cbe9f7879d2fb0eb5b514ffd078b
 
