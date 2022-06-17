@@ -149,6 +149,12 @@ then
   echo "No showsectiongroups copy! giving up."
   exit 1;
 fi
+cp src/bin/dwarfexample/findfuncbypc  $targetdir/findfuncbypc
+if [ $? -ne 0 ]
+then
+  echo "No findfuncbypc copy! giving up."
+  exit 1;
+fi
 cp src/bin/dwarfexample/jitreader  $targetdir/jitreader
 if [ $? -ne 0 ]
 then

@@ -312,7 +312,6 @@ chkresn () {
 
 filepaths='$filepaths moshe/hello
 sleicasper/bufferoverflow
-sleicasper2/buffer-overflow-form-sig8
 jborg/simple
 gilmore/a.out
 navarro/compressed_aranges_test
@@ -686,6 +685,11 @@ if [ $withlibz = "withlibz" ]
 then
     libopts="$libopts -lz"
 fi
+echo "=====START  $testsrc/testfindfuncbypc/ tests"
+  mklocal testfindfuncbypc
+  sh $testsrc/testfindfuncbypc/runtest.sh
+  chkres $? 'check  of testfindfuncbypc failed'
+  cd ..
 echo "=====START  $testsrc/filelist/ tests"
   mklocal filelist
   echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
@@ -773,6 +777,9 @@ mklocal guilfanov2
   # but most likely not in libdwarf 0.1.2 or later.
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
+
+#15 June 2022 DW202206-001
+runtest $d1 $d2 sleicasper2/buffer-overflow-form-sig8 -a -v
 
 #  May 19 2022 Accomodate Apple use of DW_AT_entry_pc as base address.
 runtest $d1 $d2 diederen7/pc_dwarf_aircrack_ng.macho -a -vv -M

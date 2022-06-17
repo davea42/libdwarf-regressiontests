@@ -1,19 +1,20 @@
 
 . ../BASEFILES.sh
-ts=$testsrc/findfuncbypc
-tf=$bldtest/findfuncbypc
+ts=$testsrc/testfindfuncbypc
+tf=$bldtest/testfindfuncbypc
 
-sh $ts/runall.sh >& junkbypcresults
+sh $ts/runall.sh > junkbypcresults 2>&1
+base=$ts/findfuncbypc.base
 
-cmp $ts/junkbypc.base junkbypcresults
+cmp $base junkbypcresults
 if [ $? -eq 0 ]
 then
-  echo "PASS findfuncbypc"
+  echo "PASS testfindfuncbypc"
   exit 0
 fi
-echo "diff findfuncbypc"
-cmp $ts/junkbypc.base junkbypcresults
-echo "FAIL findfuncbypc"
-echo "To update, mv $tf/junkbypcresults $ts/junkbypc.base"
+echo "diff $base $tfjunkbypcresults"
+diff $base junkbypcresults
+echo "FAIL testfindfuncbypc"
+echo "To update, mv $tf/junkbypcresults $base"
 exit 1
 
