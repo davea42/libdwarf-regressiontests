@@ -1,0 +1,11 @@
+
+Issue reported by ckdev 12 July 2020.
+
+This kernel module  for AARCH64
+uses the relocation
+
+R_AARCH64_NONE 
+(meaning no relocation needed).
+
+which was not previously supported
+in libdwarf. Fixing lindwarf now (14 July)..

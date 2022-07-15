@@ -311,6 +311,7 @@ chkresn () {
 #fi
 
 filepaths='$filepaths moshe/hello
+ckdev/modulewithdwarf.ko
 sleicasper/bufferoverflow
 jborg/simple
 gilmore/a.out
