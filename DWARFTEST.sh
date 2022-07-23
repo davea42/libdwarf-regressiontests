@@ -779,6 +779,9 @@ mklocal guilfanov2
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
+#1 May 2022 ossfuzz 47150  DW202207-001
+runtest $d1 $d2 ossfuzz47150/clusterfuzz-testcase-minimized-fuzz_init_path-6727387238236160.fuzz
+
 #15 June 2022 DW202206-001
 runtest $d1 $d2 sleicasper2/buffer-overflow-form-sig8 -a -v
 
