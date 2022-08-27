@@ -1,0 +1,45 @@
+Received 27 August 2022
+Thanks to Han Zheng for reporting this.
+
+
+Hello, I was testing my fuzzer and found a double free in dwarfdump, _dwarf_exec_frame_instr bug. A double free will be triggered when parsing a crafted file, when running ./dwarfdump -vv -a $POC, as shown in the attachment
+Environment
+
+Ubuntu 22.04
+gcc 11.2.0
+libdwarf latest commit 271cc04
+step to reproduce
+
+export CC="gcc -fsanitize=address -g"
+./autogen.sh && ./configure --disable-shared && make -j8
+./src/bin/dwarfdump/dwarfdump -vv -a $POC
+
+ASan Output
+
+=================================================================
+==4097834==ERROR: AddressSanitizer: attempting double-free on 0x60c000000a00 in thread T0:
+    #0 0x7fe56d032517 in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:127
+    #1 0x55c03cd25761 in _dwarf_exec_frame_instr /validate/libdwarf-code/src/lib/libdwarf/dwarf_frame.c:1501
+    #2 0x55c03cd2c801 in dwarf_expand_frame_instructions /validate/libdwarf-code/src/lib/libdwarf/dwarf_frame.c:2547
+    #3 0x55c03ccd8db4 in print_one_fde /validate/libdwarf-code/src/bin/dwarfdump/print_frames.c:1356
+    #4 0x55c03ccd8db4 in print_all_fdes /validate/libdwarf-code/src/bin/dwarfdump/print_frames.c:2147
+    #5 0x55c03ccd8db4 in print_frames /validate/libdwarf-code/src/bin/dwarfdump/print_frames.c:2367
+    #6 0x55c03cc8db9a in process_one_file /validate/libdwarf-code/src/bin/dwarfdump/dwarfdump.c:1176
+    #7 0x55c03cc782a4 in main /validate/libdwarf-code/src/bin/dwarfdump/dwarfdump.c:503
+    #8 0x7fe56cd63d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #9 0x7fe56cd63e3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #10 0x55c03cc798c4 in _start (/validate/libdwarf-code/src/bin/dwarfdump/dwarfdump+0x618c4)
+
+0x60c000000a00 is located 0 bytes inside of 128-byte region [0x60c000000a00,0x60c000000a80)
+freed by thread T0 here:
+    #0 0x7fe56d032517 in __interceptor_free ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:127
+    #1 0x55c03cd257b3 in _dwarf_free_dfi_list /validate/libdwarf-code/src/lib/libdwarf/dwarf_frame.c:225
+    #2 0x55c03cd257b3 in _dwarf_exec_frame_instr /validate/libdwarf-code/src/lib/libdwarf/dwarf_frame.c:1501
+
+previously allocated by thread T0 here:
+    #0 0x7fe56d032a37 in __interceptor_calloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:154
+    #1 0x55c03cd21dc2 in _dwarf_exec_frame_instr /validate/libdwarf-code/src/lib/libdwarf/dwarf_frame.c:447
+
+SUMMARY: AddressSanitizer: double-free ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:127 in __interceptor_free
+==4097834==ABORTING
+
