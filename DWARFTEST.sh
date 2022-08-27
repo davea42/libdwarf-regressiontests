@@ -686,6 +686,8 @@ if [ $withlibz = "withlibz" ]
 then
     libopts="$libopts -lz"
 fi
+
+
 echo "=====START  $testsrc/testfindfuncbypc/ tests"
   mklocal testfindfuncbypc
   sh $testsrc/testfindfuncbypc/runtest.sh
@@ -778,6 +780,9 @@ mklocal guilfanov2
   # but most likely not in libdwarf 0.1.2 or later.
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
+
+#27 August 2022  DW202208-001
+runtest $d1 $d2 hanzheng/fuzzedobject -vv -a
 
 #1 May 2022 ossfuzz 47150  DW202207-001
 runtest $d1 $d2 ossfuzz47150/clusterfuzz-testcase-minimized-fuzz_init_path-6727387238236160.fuzz
