@@ -5,8 +5,10 @@ echo "Env vars that affect the tests:"
 echo "  If you wish do one or more of these before running the tests."
 echo "  Add sanity..............: export NLIZE=y"
 echo "  Suppress de_alloc_tree..: export SUPPRESSDEALLOCTREE=y"
+echo "  Use valgrind............: export VALGRIND=y"
 echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE"
 echo "  Revert to normal test...: unset NLIZE"
+echo "  Revert to normal test...: unset VALGRIND"
 # On certain VMs if too much change, we get
 # stuck at 1% done forever (and after 10 hours
 # far from done with the tests).
@@ -238,6 +240,14 @@ then
 else 
   echo "speed up big diffs........: yes"
 fi
+
+if [ "x$VALGRIND" = "xy" ]
+then
+  echo "valgrind?.................: $VALGRIND"         
+else
+  echo "valgrind?.................: (no)"
+fi
+
 rm $bldtest/junkadwtests $bldtest/junkbdwtests
 
 myhost=`hostname`
@@ -245,6 +255,7 @@ echo   "hostname..................: $myhost"
 goodcount=0
 failcount=0
 skipcount=0
+valgrindcount=0
 
 top_builddir=$bldtest
 echo   "test code source..........: $testsrc"
@@ -594,11 +605,18 @@ runtest () {
     #=======new
     echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     echo "======" $tmplist $targ >> $ntimeout
-    if [ x$wrtimen != "x" ]
+    if [ x$VALGRIND = "xy" ]
     then
-      $wrtimen $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+        echo "valgrind -q --leak-check=full $newdw $suppresstree $* $targ"
+        valgrind -q --leak-check=full $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+        valgrindcount=`expr $valgrindcount + 1`
     else
-      $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+      if [ "x$wrtimen" != "x" ]
+      then
+        $wrtimen $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+      else
+        $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+      fi
     fi
     tesb=tmp2aesb
     grep ESBERR tmp2a >$tesb
@@ -619,6 +637,8 @@ runtest () {
     fi
     #=======new done
     cat tmp2n  >tmp3
+    echo "counts in tmp3"
+    wc tmp3
     if [ -f testOfile ]
     then
       # testing -O file=path
@@ -641,6 +661,8 @@ runtest () {
       fi
     fi
 
+    echo "counts in tmp1o tmp3"
+    wc tmp1o tmp3
     filediff tmp1o tmp3  $* $targ
     if [ $? -ne 0 ]
     then
@@ -649,6 +671,8 @@ runtest () {
     grep -v Usage   tmp1err >tmp1berr
     grep -v Usage   tmp2err >tmp2berr
 
+    echo "counts in tmp1berr tmp2berr"
+    wc  tmp1berr tmp2berr tmp2berrfinal
     filediff tmp1berr tmp2berr  $* $targ
     if [ $? -ne 0 ]
     then
@@ -660,6 +684,7 @@ runtest () {
     else
       echo "FAIL  $* $targ"
       failcount=`expr $failcount + 1`
+      exit 1
     fi
     rm -f core
     rm -f tmp1o tmp2n tmp3
@@ -2199,11 +2224,12 @@ then
 else
   echo "No /usr/bin/time data available to report"
 fi
-echo "PASS $goodcount"
-echo "FAIL $failcount"
-echo "SKIP $skipcount"
+echo "PASS     count: $goodcount"
+echo "FAIL     count: $failcount"
+echo "SKIP     count: $skipcount"
+echo "VALGRIND count: $valgrindcount"
 totalcount=`expr $goodcount + $failcount + $skipcount`
-echo "TOTAL $totalcount"
+echo "TOTAL         : $totalcount"
 echo 'Ending regressiontests: DWARFTEST.sh' `date`
 ndsecs=`date '+%s'`
 showminutes() {
@@ -2222,6 +2248,10 @@ then
   echo "Suppress de_alloc_tree?: y (yes)"
 else
   echo "Suppress de_alloc_tree?: n (no)"
+fi
+if [ "x$VALGRIND" = "xy" ]
+then
+  echo "valgrind?              : $VALGRIND"         
 fi
 
 if [ $failcount -ne 0 ]

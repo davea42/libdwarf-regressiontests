@@ -6,7 +6,7 @@ ntimeout=$bdir/junktimeoutn
 wrtimeo="/usr/bin/time -o $otimeout -a -p "
 wrtimen="/usr/bin/time -o $ntimeout -a -p "
 /usr/bin/time -o /tmp/timeout echo x >/dev/null 2>/dev/null
-if [ $? -ne 0 ]
+if [ $? -ne 0  -o "x$VALGRIND" = "xy" ]
 then
   # Without the -o -a options we give up on this timing info
   wrtimeo=
