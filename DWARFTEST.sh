@@ -637,8 +637,8 @@ runtest () {
     fi
     #=======new done
     cat tmp2n  >tmp3
-    echo "counts in tmp3"
-    wc tmp3
+    #echo "counts in tmp3"
+    #wc tmp3
     if [ -f testOfile ]
     then
       # testing -O file=path
@@ -661,8 +661,8 @@ runtest () {
       fi
     fi
 
-    echo "counts in tmp1o tmp3"
-    wc tmp1o tmp3
+    #echo "counts in tmp1o tmp3"
+    #wc tmp1o tmp3
     filediff tmp1o tmp3  $* $targ
     if [ $? -ne 0 ]
     then
@@ -671,8 +671,8 @@ runtest () {
     grep -v Usage   tmp1err >tmp1berr
     grep -v Usage   tmp2err >tmp2berr
 
-    echo "counts in tmp1berr tmp2berr"
-    wc  tmp1berr tmp2berr tmp2berrfinal
+    #echo "counts in tmp1berr tmp2berr"
+    #wc  tmp1berr tmp2berr tmp2berrfinal
     filediff tmp1berr tmp2berr  $* $targ
     if [ $? -ne 0 ]
     then
