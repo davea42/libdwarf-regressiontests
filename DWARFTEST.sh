@@ -256,6 +256,7 @@ goodcount=0
 failcount=0
 skipcount=0
 valgrindcount=0
+valgrinderrcount=0
 
 top_builddir=$bldtest
 echo   "test code source..........: $testsrc"
@@ -294,7 +295,6 @@ chkres () {
   if [ $1 -eq 0 ]
   then
     goodcount=`expr $goodcount + 1`
-    return 0
   else
     echo "FAIL $2"
     failcount=`expr $failcount + 1`
@@ -304,7 +304,6 @@ chkresn () {
   if [ $1 -eq 0 ]
   then
     goodcount=`expr $goodcount + $3`
-    return 0
   else
     echo "FAIL  $2"
     failcount=`expr $failcount + $3`
@@ -321,7 +320,7 @@ chkresn () {
 #    filepaths="sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a $filepaths"'
 #fi
 
-filepaths='$filepaths moshe/hello
+filepaths='moshe/hello
 ckdev/modulewithdwarf.ko
 sleicasper/bufferoverflow
 jborg/simple
@@ -548,6 +547,9 @@ runtest () {
 	shift
 	shift
 	shift
+    echo "newdw         : $newdw"
+    echo "targ          : $targ"
+    echo "remaining args: $*"
 	allgood="y"
     #  Add 1 to show our number. We have not yet
     #  counted it as a good or a fail.
@@ -607,9 +609,15 @@ runtest () {
     echo "======" $tmplist $targ >> $ntimeout
     if [ x$VALGRIND = "xy" ]
     then
-        echo "valgrind -q --leak-check=full $newdw $suppresstree $* $targ"
-        valgrind -q --leak-check=full $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+        #echo "valgrind -q --leak-check=full $newdw $suppresstree $* $targ"
+        valgrind -q --leak-check=full --show-leak-kinds=all --error-exitcode=1 $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+        if [ $? -ne 0 ]
+        then
+          echo "valgrind exit code nonzero, valgrinderrcount:$valgrinderrcount"
+          valgrinderrcount=`expr $valgrinderrcount + 1`
+        fi
         valgrindcount=`expr $valgrindcount + 1`
+          
     else
       if [ "x$wrtimen" != "x" ]
       then
@@ -666,13 +674,12 @@ runtest () {
     filediff tmp1o tmp3  $* $targ
     if [ $? -ne 0 ]
     then
+      #echo FAIL filediff tmp1o tmp2
       allgood=n
     fi
     grep -v Usage   tmp1err >tmp1berr
     grep -v Usage   tmp2err >tmp2berr
 
-    #echo "counts in tmp1berr tmp2berr"
-    #wc  tmp1berr tmp2berr tmp2berrfinal
     filediff tmp1berr tmp2berr  $* $targ
     if [ $? -ne 0 ]
     then
@@ -684,7 +691,6 @@ runtest () {
     else
       echo "FAIL  $* $targ"
       failcount=`expr $failcount + 1`
-      exit 1
     fi
     rm -f core
     rm -f tmp1o tmp2n tmp3
@@ -958,7 +964,7 @@ runtest $d1 $d2 c-sun2/nullpointer -vv -a
 # Doc used to be wrong about the spelling
 # of the long form
 runtest $d1 $d2 kaletta2/minimal_fdebug_types_section.o \
- -i -vv -x groupnumber=3
+ "-i -vv -x groupnumber=3"
 runtest $d1 $d2 kaletta2/minimal_fdebug_types_section.o \
  -i -vv --format-group-number=3
 
@@ -967,13 +973,13 @@ runtest $d1 $d2 kaletta2/minimal_fdebug_types_section.o \
 # any use of the Elf GROUP flag.
 # No documentation I can find explains how it
 # is supposed to work with these people's linker.
-runtest $d1 $d2 -i -vv  kaletta/test.armlink.elf
-runtest $d1 $d2 -i -vv  kaletta/test.o
+runtest $d1 $d2  kaletta/test.armlink.elf -i -vv 
+runtest $d1 $d2  kaletta/test.o  -i -vv
 
 # example of command mistakes. Too many object names
 # or no object names. Neither reads any object file.
 runtest $d1 $d2 moya/simple.o moya3/ranges_base.dwo
-runtest $d1 $d2  --print-debug-gnu
+runtest $d1 $d2 "" --print-debug-gnu
 
 # Examples of turning off sanitized() calls.
 # Unsafe for your terminal/window to use these
@@ -981,21 +987,22 @@ runtest $d1 $d2  --print-debug-gnu
 # string encodings.
 runtest $d1 $d2  moya3/ranges_base.dwo --no-sanitize-strings
 runtest $d1 $d2  moya3/ranges_base.dwo -x nosanitizestrings
-# This set of moya/hello is because -kuf and -C do not stand
+
+# This set of moya4/hello is because -kuf and -C do not stand
 # alone. They are meaningful as modifiers only.
 # Suppresses summary tag-tree entries of zero.
-runtest $d1 $d2  moya/hello -ku
+runtest $d1 $d2  moya4/hello -ku
 #This next summarizes tag_tree entries including those with zero use.
-runtest $d1 $d2  moya/hello -ku -kuf
+runtest $d1 $d2  moya4/hello -ku -kuf
 # details and summary tag-tree
-runtest $d1 $d2  moya/hello -kr
+runtest $d1 $d2  moya4/hello -kr
 # details show extensions as error
-runtest $d1 $d2  moya/hello -kr -C
+runtest $d1 $d2  moya4/hello -kr -C
 #This next summary and error detail tag_tree entries including those with zero use.
-runtest $d1 $d2  moya/hello -kr -kuf
+runtest $d1 $d2  moya4/hello -kr -kuf
 #This next summary and error detail tag_tree entries including those with zero use.
 # here calling extension errors.
-runtest $d1 $d2  moya/hello -kr -kuf -C
+runtest $d1 $d2  moya4/hello -kr -kuf -C
 
 # printing .debug_gnu_pubnames and .debug_gnu_pubtypes
 runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
@@ -1040,16 +1047,16 @@ fi
 
 #gcc using -gsplit-dwarf option
 # debuglink via DWARF4. frame one via DWARF5
-runtest $d1 $d2 gsplitdwarf/getdebuglink                  --print_fission -a 
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --print_fission -a
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=gsplitdwarf/getdebuglink --print_fission -a
+runtest $d1 $d2 gsplitdwarf/getdebuglink     --print-fission -a 
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --print-fission -a
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=gsplitdwarf/getdebuglink --print-fission -a
 runtest $d1 $d2 gsplitdwarf/frame1-frame1.dwo             -a --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=gsplitdwarf/frame1 -a --print-fission 
 runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission
 # Same but now with -vv
-runtest $d1 $d2 gsplitdwarf/getdebuglink -a -vv --print_fission 
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo -a -vv --print_fission
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=gsplitdwarf/getdebuglink -a -vv --print_fission
+runtest $d1 $d2 gsplitdwarf/getdebuglink -a -vv --print-fission 
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo -a -vv --print-fission
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=gsplitdwarf/getdebuglink -a -vv --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1.dwo -a -vv --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=gsplitdwarf/frame1 -a -vv --print-fission 
 runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission -vv
@@ -1794,7 +1801,7 @@ runtest $d1 $d2  moshe/a.out.t -a -vvv -R -M
 runtest $d1 $d2  moshe/a.out.t -ka -vvv -R -M
 
 # Some of these are the same tests done based on $filelist
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4-gdb-index --print_fission
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4-gdb-index --print-fission
 runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
@@ -2228,6 +2235,7 @@ echo "PASS     count: $goodcount"
 echo "FAIL     count: $failcount"
 echo "SKIP     count: $skipcount"
 echo "VALGRIND count: $valgrindcount"
+echo "VALGRIND  errs: $valgrinderrcount"
 totalcount=`expr $goodcount + $failcount + $skipcount`
 echo "TOTAL         : $totalcount"
 echo 'Ending regressiontests: DWARFTEST.sh' `date`
