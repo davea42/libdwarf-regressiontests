@@ -1,0 +1,30 @@
+
+Sept 9, 2022
+
+Type: Bug
+
+New issue 51183 by ClusterFuzz-External: libdwarf:fuzz_init_path: Direct-leak in do_decompress_zlib
+https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=51183
+
+Detailed Report: https://oss-fuzz.com/testcase?key=6011554641870848
+
+Project: libdwarf
+Fuzzing Engine: libFuzzer
+Fuzz Target: fuzz_init_path
+Job Type: libfuzzer_asan_libdwarf
+Platform Id: linux
+
+Crash Type: Direct-leak
+Crash Address: 
+Crash State:
+  do_decompress_zlib
+  _dwarf_load_section
+  dwarf_gnu_debuglink
+  
+Sanitizer: address (ASAN)
+
+Regressed: https://oss-fuzz.com/revisions?job=libfuzzer_asan_libdwarf&range=202209050611:202209090604
+
+Reproducer Testcase: https://oss-fuzz.com/download?testcase_id=6011554641870848
+
+Issue filed automatically.
