@@ -812,6 +812,9 @@ mklocal guilfanov2
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
+# September 2022.  ossfuzz detected memory leak.
+runtest $d1 $d2 ossfuzz51183/clusterfuzz-51183-6011554641870848 -a
+
 #27 August 2022  DW202208-001
 runtest $d1 $d2 hanzheng/fuzzedobject -vv -a
 
