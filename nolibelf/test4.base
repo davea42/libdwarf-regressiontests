@@ -1,1 +1,2 @@
-Can't process test.a: archives and printing elf headers not supported in this dwarfdump --disable-libelf build.
+ERROR Can't process test.a: archives and printing elf headers not supported in this dwarfdump --disable-libelf build.
+There was 1 DWARF error reported: see ERROR above.

@@ -547,9 +547,9 @@ runtest () {
 	shift
 	shift
 	shift
-    echo "newdw         : $newdw"
-    echo "targ          : $targ"
-    echo "remaining args: $*"
+    #echo "newdw         : $newdw"
+    #echo "targ          : $targ"
+    #echo "remaining args: $*"
 	allgood="y"
     #  Add 1 to show our number. We have not yet
     #  counted it as a good or a fail.
@@ -614,6 +614,7 @@ runtest () {
         if [ $? -ne 0 ]
         then
           echo "valgrind exit code nonzero, valgrinderrcount:$valgrinderrcount"
+          echo "Doing valgrind $* $targ"
           valgrinderrcount=`expr $valgrinderrcount + 1`
         fi
         valgrindcount=`expr $valgrindcount + 1`
