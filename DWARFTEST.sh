@@ -610,10 +610,10 @@ runtest () {
     if [ x$VALGRIND = "xy" ]
     then
         #echo "valgrind -q --leak-check=full $newdw $suppresstree $* $targ"
-        valgrind -q --leak-check=full --show-leak-kinds=all --error-exitcode=1 $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
-        if [ $? -ne 0 ]
+        valgrind -q --leak-check=full --show-leak-kinds=all --error-exitcode=7 $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+        if [ $? -eq 7 ]
         then
-          echo "valgrind exit code nonzero, valgrinderrcount:$valgrinderrcount"
+          echo "valgrind exit code 7, valgrinderrcount:$valgrinderrcount"
           echo "Doing valgrind $* $targ"
           valgrinderrcount=`expr $valgrinderrcount + 1`
         fi
@@ -989,7 +989,7 @@ runtest $d1 $d2 "" --print-debug-gnu
 # Unsafe for your terminal/window to use these
 # on corrupted object files or objects with unusual
 # string encodings.
-runtest $d1 $d2  moya3/ranges_base.dwo --no-sanitize-strings
+runtest $d1 $d2  moya3/ranges_base.dwo --format-suppress-sanitize
 runtest $d1 $d2  moya3/ranges_base.dwo -x nosanitizestrings
 
 # This set of moya4/hello is because -kuf and -C do not stand
@@ -1017,7 +1017,7 @@ runtest $d1 $d2 moya/simple.o          --print-debug-gnu
 runtest $d1 $d2 moya/with-types.o      --print-debug-gnu
 runtest $d1 $d2 moya3/ranges_base.o    -a -G -M -v
 runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v
-runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=moya3/ranges_base.o
+runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=$testsrc/moya3/ranges_base.o
 
 
 # New September 11, 2019.
@@ -1053,16 +1053,16 @@ fi
 # debuglink via DWARF4. frame one via DWARF5
 runtest $d1 $d2 gsplitdwarf/getdebuglink     --print-fission -a 
 runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --print-fission -a
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=gsplitdwarf/getdebuglink --print-fission -a
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=$testsrc/gsplitdwarf/getdebuglink --print-fission -a
 runtest $d1 $d2 gsplitdwarf/frame1-frame1.dwo             -a --print-fission
-runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=gsplitdwarf/frame1 -a --print-fission 
+runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=$testsrc/gsplitdwarf/frame1 -a --print-fission 
 runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission
 # Same but now with -vv
 runtest $d1 $d2 gsplitdwarf/getdebuglink -a -vv --print-fission 
 runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo -a -vv --print-fission
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=gsplitdwarf/getdebuglink -a -vv --print-fission
+runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=$testsrc/gsplitdwarf/getdebuglink -a -vv --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1.dwo -a -vv --print-fission
-runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=gsplitdwarf/frame1 -a -vv --print-fission 
+runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=$testsrc/gsplitdwarf/frame1 -a -vv --print-fission 
 runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission -vv
 
 # tiny and severly damaged 'object' file.
@@ -1075,13 +1075,13 @@ runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print_raw_rngl
 runtest $d1 $d2 moya2/filecheck.dwo -ka --print_raw_rnglists
 # Checking .debug_str_offsets used properly
 runtest $d1 $d2 moya5/hello.dwo -a -M -v --print-str-offsets 
-runtest $d1 $d2 moya5/hello.dwo --file-tied=moya5/hello -a -M -v --print-str-offsets --print-strings
+runtest $d1 $d2 moya5/hello.dwo --file-tied=$testsrc/moya5/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya5/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya6/hello.dwp -a -M -v --print-str-offsets --print-strings
-runtest $d1 $d2 moya6/hello.dwp --file-tied = moya6/hello -a -M -v --print-str-offsets --print-strings
+runtest $d1 $d2 moya6/hello.dwp --file-tied=$testsrc/moya6/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya7/read-line-table-program-leak-test -a -M -v 
-runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=moya-loc/loclists -a -M -v 
-runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=moya-loc/loclists -ka
+runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=$testsrc/moya-loc/loclists -a -M -v 
+runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=$testsrc/moya-loc/loclists -ka
 
 if [ x$withlibelf = "xwithlibelf" ]
 then
@@ -1095,7 +1095,7 @@ else
 fi
 runtest $d1 $d2 moya8/index-out-of-bounds-test  -a -M -v 
 runtest $d1 $d2 moya9/oob-repro -a -M -v --print-str-offsets --print-strings 
-runtest $d1 $d2 moya-rb/ranges3.dwp -a -M -v -a -v --file-tied=moya-rb/ranges3 
+runtest $d1 $d2 moya-rb/ranges3.dwp -a -M -v -a -v --file-tied=$testsrc/moya-rb/ranges3 
 runtest $d1 $d2 moya-rb/ranges3 -a -M -v 
 
 
@@ -1523,7 +1523,7 @@ runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a  -vvv
 runtest $d1 $d2 irixn32/dwarfdump -i -x name=./dwarfdump.conf -x abi=mips -g
 
 # Test support for DW_FORM_GNU_strp_alt
-runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=hughes/krb5-1.11.3-38.fc20.x86_64 
+runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=$testsrc/hughes/krb5-1.11.3-38.fc20.x86_64 
 
 # for two-level line tables 
 runtest $d1 $d2 emre4/test19_64_dbg -l
@@ -1589,8 +1589,8 @@ runtest $d1 $d2  klingler2/compresseddebug.amd64 -F
   # A big object.
 runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
 runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
-runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
-runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
+runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=$testsrc/debugfissionb/ld-new
+runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=$testsrc/debugfissionb/ld-new
 runtest $d1 $d2  debugfissionb/ld-new -I
 runtest $d1 $d2  debugfissionb/ld-new -a  
 echo "Testing -i --format-expr-ops-joined . a -d for exprs"
@@ -1606,8 +1606,8 @@ runtest $d1 $d2 emre/input.o -a
 runtest $d1 $d2 emre2/emre.ex -I
 runtest $d1 $d2 emre2/emre.ex --print-gnu-debuglink
 
-runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=emre5/test33_64_opt_fpo_split 
-runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=emre5/test33_64_opt_fpo_split 
+runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=$testsrc/emre5/test33_64_opt_fpo_split 
+runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=$testsrc/emre5/test33_64_opt_fpo_split 
 
 
 echo "=====START  $testsrc/baddie1/runtest.sh"
