@@ -1,3 +1,167 @@
+2022-09-12:  David Anderson
+    commit 69726a469aa0e25f1678d810411fe9c2a1ef5f59
+
+    Some test runs were improperly coded:
+    A couple cases of mistyped dwarfdump --no-sanitize-strings
+    are now fixed.
+    Every case where a tied file was named was wrong in that it
+    was only correct when running this script in its source directory
+    (which we just do not do any longer).  Now each
+    has the source file prefix of $testsrc/ here.
+            modified:   DWARFTEST.sh
+
+2022-09-11:  David Anderson
+    commit 82bd2add5e3dc1bae60eaf0813bd621908d89a51
+
+    New test, using a test case via oss-fuzz.
+            modified:   DWARFTEST.sh
+
+    New baseline executables per the error message changes
+    in dwarfdump/dd_getopt.c
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Added comments.
+            modified:   dwarfdump.conf
+
+    Updated compiler changed these a bit.
+    runing tests in the test-source dir rebuilds these.
+            modified:   filelist/localfuzz_init_binary
+            modified:   filelist/localfuzz_init_path
+
+    New baselines reflecting a small number of error messages
+    from getopt being revised to make it easier to
+    keep a universal baseline.
+            modified:   nolibelf/test2.base
+            modified:   nolibelf/test3.base
+            modified:   nolibelf/test4.base
+            modified:   offsetfromlowpc/baseadvlocf
+
+2022-09-10:  David Anderson
+    commit b7ad5e8c6720a7c463f8878c0fe6f7ce3e834d29
+
+    Now reflects the move of some errors from stderr to stdout
+            modified:   dwarfdump-s390.O
+
+2022-09-10:  David Anderson
+    commit 490e1a5c8e9f09b6fdfb8f9b231a377858f79d11
+
+    Added new test, ossfuzz found decompressed
+    debuglink section data not freed.
+            modified:   DWARFTEST.sh
+
+    New baseline with all-stdout errors.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-09-09:  David Anderson
+    commit df6691b5e2582338bdeb09527e3d75f240735b80
+
+    New leak.
+            new file:   README
+            new file:   clusterfuzz-51183-6011554641870848
+
+2022-09-09:  David Anderson
+    commit 6c328ae8442dfad1f3dcb1847b6ca168ee91e0bc
+
+    All now reflect the move of various errors
+    from stderr to stdout.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-09-08:  David Anderson
+    commit c9c6663080aaf0b796393c60631476b52793d1a1
+
+    the dwarfdump option --print-fission was misspelled
+    --print_fission in several places. The
+    filepaths list of names had a bogus first entry
+    of $filepaths.
+            modified:   DWARFTEST.sh
+
+2022-09-03:  David Anderson
+    commit 932e8067b5bfc5a4f441192f47f203914e9ba6e2
+
+    Comment out echo stmts not normally needed.
+            modified:   DWARFTEST.sh
+
+2022-09-03:  David Anderson
+    commit c24bd9eb1654dbef801912c200f20dff67c07bd3
+
+    Now the VALGRIND env var can be set,
+    causing all the 'runtest' runs to
+    use valgrind.
+            modified:   DWARFTEST.sh
+            modified:   RUNTIMEFILES.sh
+
+2022-09-01:  David Anderson
+    commit 8a93b2977784bf6ab9d1ec091403c2137ec6ee37
+
+    These are new baselines. dwarfdump -h had a missing
+    line for a rarely used option. --suppress-de-alloc-tree
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Accidentally left out of git
+            new file:   ossfuzz47150/clusterfuzz-testcase-minimized-fuzz_init_path-6727387238236160.fuzz
+
+2022-08-27:  David Anderson
+    commit c7bf2066892fc0438150421c876381b331abf9e6
+
+    Now tests hanzheng testcase.
+            modified:   DWARFTEST.sh
+
+2022-08-27:  David Anderson
+    commit b132d076f906f3876a76916d077620b6b73bd8bc
+
+    Explains the symptom.
+            new file:   hanzheng/README
+
+2022-08-27:  David Anderson
+    commit 242c3256544d39f90907d2692c2bed30e9c81138
+
+    A new problem with a fuzzed object.
+            new file:   hanzheng/fuzzedobject
+
+2022-08-05:  David Anderson
+    commit 389c509cc9f0aae23069a3ef5d85b54e510f1f1e
+
+    Baselines reflecting bug fixes and improvements.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-07-23:  David Anderson
+    commit 52e3d4a1a9fa60758147cd8fa72542b2e159a44b
+
+    Added the test for ossfuzz 47150
+            modified:   DWARFTEST.sh
+
+    Handy for debugging: ignore this test script
+            modified:   RUNVAL
+
+2022-07-15:  David Anderson
+    commit 8f80b20894a9f3f026e60aa072ee8e2f9022188b
+
+    New test, relocation type R_AARCH64_NONE.
+            modified:   DWARFTEST.sh
+            new file:   ckdev/README
+            new file:   ckdev/modulewithdwarf.ko
+
+    Updated for the relocation type NONE.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-06-17:  David Anderson
+    commit abe53348a6808c2207c2462f3caffe2b6065be8f
+
+    Now has latest changes.
+            modified:   ChangeLog
+
 2022-06-17:  David Anderson
     commit 9a789ddde3010cac424d7d0bcd31b9b36de0ca35
 
