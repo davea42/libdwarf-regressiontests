@@ -13,6 +13,8 @@
 withlibelf="withlibelf"
 libelfopt="--enable-libelf"
 
+# configure deals with -lz and -lzstd and their headers.
+
 withlibelf="withlibelf"
 if [ $# -eq 1 ]
 then
@@ -120,7 +122,7 @@ then
   fi
   set +x
 else
-  echo "PICKUPBIN.sh: configure --diable-libelf --enable-dwarfexample"
+  echo "PICKUPBIN.sh: configure --disable-libelf --enable-dwarfexample"
   set -x
   $libdw/configure $sanitize --enable-wall --disable-libelf --enable-dwarfexample 
   make 
