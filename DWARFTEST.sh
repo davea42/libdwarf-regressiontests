@@ -43,7 +43,7 @@ fi
 . $testsrc/BASEFUNCS.sh
 
 stsecs=`date '+%s'`
-# dwarfgen and libelf go together here.
+# dwarfgen dwarfgen needs libelf.
 withlibelf="withlibelf"
 if [ $# -eq 0 ]
 then
@@ -125,12 +125,21 @@ then
 fi
 
 mklocal checkforlibz
-  sh $testsrc/checkforlibz/runtest.sh
+  sh $testsrc/checkforlibz/runtest.sh $testsrc
   if [ $? -ne 0 ]
   then
     withlibz="nolibz"
   else
     withlibz="withlibz"
+  fi
+cd ..
+mklocal checkforlibzstd
+  sh $testsrc/checkforlibzstd/runtest.sh $testsrc
+  if [ $? -ne 0 ]
+  then
+    withlibzstd="nozstd"
+  else
+    withlibzstd="yezstd"
   fi
 cd ..
 
@@ -143,8 +152,27 @@ then
   exit 1
 fi
 
-echo "build with libelf.........: $withlibelf"
-echo "build with libz...........: $withlibz"
+wl="no"
+if [ $withlibelf = "withlibelf" ]
+then
+  wl="yes"
+fi
+echo "build with libelf.........: $wl"
+
+wl="no"
+if [ $withlibz = "withlibz" ]
+then
+  wl="yes"
+fi
+echo "build with libz...........: $wl"
+
+wl="no"
+if [ $withlibzstd = "yezstd" ]
+then
+  wl="yes"
+fi
+echo "build with libzstd........: $wl"
+
 echo "test source...............: $testsrc"
 echo "library source............: $codedir"
 echo "test build................: $bldtest"
@@ -267,9 +295,6 @@ echo   "new is....................: $d2"
 dwlib=$bldtest/libdwarf.a
 dwinc=$codedir/libdwarf
 
-
-#  oi and  Ei are to ensure that things
-# work properly when using libelf. Including relocations.
 #baseopts='-F'
 if [ x$withlibelf = "xwithlibelf" ]
 then
@@ -710,13 +735,17 @@ echo  "=====BLOCK individual tests and runtest.sh tests"
 
 #libdwarf no longer uses libelf.
 libopts=''
-if test $withlibelf = "withlibelf"
-then
-    libopts=''
-fi
+#if test $withlibelf = "withlibelf"
+#then
+#    libopts=''
+#fi
 if [ $withlibz = "withlibz" ]
 then
-    libopts="$libopts -lz"
+  libopts="$libopts -lz"
+fi
+if [ $withlibzstd = "yezstd" ]
+then
+  libopts="$libopts -lzstd"
 fi
 
 
@@ -1023,12 +1052,12 @@ runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=$testsrc/moya3/ra
 # New September 11, 2019.
 if [ x$withlibelf = "xnolibelf" ]
 then
-  echo "=====SKIP  testoffdie  runtest.sh nolibelf $withlibz "
+  echo "=====SKIP  testoffdie  runtest.sh nolibelf $withlibz $withlibzstd "
   skipcount=`expr $skipcount + 1`
 else
-  echo "=====START  $testsrc/testoffdie runtest.sh $withlibelf $withlibz"
+  echo "=====START  $testsrc/testoffdie runtest.sh $withlibelf $withlibz $withlibzstd"
   mklocal testoffdie
-    sh $testsrc/testoffdie/runtest.sh $withlibelf $withlibz
+    sh $testsrc/testoffdie/runtest.sh $withlibelf $withlibz $withlibzstd
     chkres $? "$testsrc/testoffdie/runtest.sh"
   cd ..
 fi
@@ -1042,9 +1071,9 @@ then
   echo "=====SKIP debuglink runtest.sh as bigendian will fail"
   skipcount=`expr $skipcount + 1`
 else
-  echo "=====START  $testsrc/debuglink runtest.sh $withlibelf $withlibz"
+  echo "=====START  $testsrc/debuglink runtest.sh"
   mklocal debuglink
-    sh $testsrc/debuglink/runtest.sh $withlibelf $withlibz
+    sh $testsrc/debuglink/runtest.sh
     chkres $? "$testsrc/debuglink/runtest.sh"
   cd ..
 fi
@@ -1335,7 +1364,7 @@ echo "=====START   $testsrc/implicitconst sh runtest.sh"
   cd ..
 
 
-echo "=====START  $testsrc/nolibelf runtest.sh "
+echo "=====START  $testsrc/nolibelf/runtest.sh "
 mklocal nolibelf
   sh $testsrc/nolibelf/runtest.sh
   chkres $?  $testsrc/nolibelf/runtest.sh
@@ -1886,13 +1915,13 @@ runtest $d1 $d2  lloyd/arange.elf  -kr
 runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 
 if test $withlibelf = "withlibelf" ; then
-  echo "=====START  $testsrc/findcu runtest.sh $withlibelf $withlibz"
+  echo "=====START  $testsrc/findcu/runtest.sh $withlibelf $withlibz $withlibzstd"
   mklocal findcu 
-    sh $testsrc/findcu/runtest.sh  $withlibelf $withlibz 
+    sh $testsrc/findcu/runtest.sh  $withlibelf $withlibz $withlibzstd 
     chkres $? "$testsrc/findcu/cutest-of-a-libdwarf-interface"
   cd ..
 else
-  echo "=====SKIP  $testsrc/findcu runtest.sh  $withlibelf $withlibz"
+  echo "=====SKIP  $testsrc/findcu runtest.sh  $withlibelf $withlibz $withlibzstd"
   skipcount=`expr $skipcount + 1`
 fi
 
@@ -1908,7 +1937,11 @@ if [ $withlibz = "withlibz" ]
 then
     libopts="$libopts -lz"
 fi
-echo "=====START  $testsrc/test_harmless"
+if [ $withlibzstd = "yezstd" ]
+then
+    libopts="$libopts -lzstd"
+fi
+echo "=====START  $testsrc/test_harmless.c"
   echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c \
      -o test_harmless $dwlib $libopts"
@@ -1979,10 +2012,10 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   $testsrc/frame1/runtest.sh $withlibelf $withlibz"
+echo "=====START   $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd"
 mklocal frame1 
-  echo "sh runtest.sh  $withlibelf $withlibz"
-  sh $testsrc/frame1/runtest.sh $withlibelf $withlibz
+  echo "sh runtest.sh  $withlibelf $withlibz $withlibzstd"
+  sh $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd
   r=$?
   chkres $r $testsrc/frame1
 cd ..
@@ -1996,9 +2029,9 @@ cd ..
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START   $testsrc/legendre/runtest.sh $withlibelf $withlibz"
+  echo "=====START $testsrc/legendre/runtest.sh $withlibelf $withlibz $withlibzstd"
   mklocal legendre
-    sh $testsrc/legendre/runtest.sh $withlibelf $withlibz
+    sh $testsrc/legendre/runtest.sh $withlibelf $withlibz $withlibzstd
     r=$?
     chkres $r  $testsrc/legendre
   cd ..
@@ -2077,9 +2110,9 @@ runtest $d1 $d2 legendre/libmpich.so.1.0 -ka
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START $testsrc/test-alex1/runtest.sh $withlibelf $withlibz"
+  echo "=====START $testsrc/test-alex1/runtest.sh $withlibelf $withlibz $withlibzstd"
   mklocal test-alex1
-    sh $testsrc/test-alex1/runtest.sh $withlibelf $withlibz
+    sh $testsrc/test-alex1/runtest.sh $withlibelf $withlibz $withlibzstd
     chkres $?  $testsrc/test-alex1
   cd ..
 else
@@ -2089,9 +2122,9 @@ fi
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START $testsrc/test-alex2/runtest.sh $withlibelf $withlibz"
+  echo "=====START $testsrc/test-alex2/runtest.sh $withlibz $withlibzstd"
   mklocal test-alex2
-    sh $testsrc/test-alex2/runtest.sh $withlibelf $withlibz
+    sh $testsrc/test-alex2/runtest.sh $withlibz $withlibzstd
     chkres $?  $testsrc/test-alex2
   cd ..
 else

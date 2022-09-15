@@ -16,21 +16,22 @@ libelfopt="--enable-libelf"
 # configure deals with -lz and -lzstd and their headers.
 
 withlibelf="withlibelf"
+# IF nest here is pretty useless as of 2022
 if [ $# -eq 1 ]
 then
-if [ $1 = "nolibelf" ]
-  then
-    withlibelf="nolibelf"
-    echo "PICKUPBIN.sh set to nolibelf."
-    libelfopt="--disable-libelf"
-  else 
-    if [ $1 != "withlibelf" ]
+  if [ $1 = "nolibelf" ]
     then
-      echo "Improper argument to PICKUPBIN.sh, use withlibelf or nolibelf"
-      exit 1
+      withlibelf="nolibelf"
+      echo "PICKUPBIN.sh set to nolibelf."
+      libelfopt="--disable-libelf"
+    else 
+      if [ $1 != "withlibelf" ]
+      then
+        echo "Improper argument to PICKUPBIN.sh, use withlibelf or nolibelf"
+        exit 1
+      fi
+      echo "PICKUPBIN.sh set to withlibelf."
     fi
-    echo "PICKUPBIN.sh set to withlibelf."
-  fi
 else
   echo "PICKUPBIN set to withlibelf."
 fi
@@ -92,28 +93,21 @@ then
   echo "FAIL. $codedir/Makefile.in missing, run autogen.sh in $codedir."
   exit 1
 fi
-
 cd $top_build 
-echo "PICKUPBIN.sh: $libdw/configure --disable-libelf for dwarfdumpnl"
-set -x
-$libdw/configure --enable-wall $sanitize  --disable-libelf 
-make
 if [ $? -ne 0 ]
 then
-  echo "PICKUPBIN.sh for dwarfdumpnl FAIL"
-  exit 1
+   echo "FAIL cd %op_build failed"
+   exit 1
 fi
-set +x
-cp src/bin/dwarfdump/dwarfdump $targetdir/dwarfdumpnl
 set -x
-rm -rf $top_build/*
-
-rm -rf $top_build/*
 if [ $withlibelf = "withlibelf" ]
 then
   echo "PICKUPBIN.sh configure --enable-dwarfgen --enable-dwarfexample"
   set -x
   $libdw/configure $sanitize --enable-wall --enable-dwarfgen --enable-dwarfexample 
+  echo "===== config.h with libelf======="
+  grep ZLIB config.h
+  grep ZSTD config.h
   make 
   if [ $? -ne 0 ]
   then
@@ -125,10 +119,13 @@ else
   echo "PICKUPBIN.sh: configure --disable-libelf --enable-dwarfexample"
   set -x
   $libdw/configure $sanitize --enable-wall --disable-libelf --enable-dwarfexample 
+  echo "===== config.h disable libelf (with dwarfexample) ======="
+  grep ZLIB config.h
+  grep ZSTD config.h
   make 
   if [ $? -ne 0 ]
   then
-    echo "PICKUPBIN.sh for nolibelf --enable-dwarfgen --enable-dwarfexample FAIL"
+    echo "PICKUPBIN.sh for nolibelf --enable-dwarfexample --enable-dwarfexample FAIL"
     exit 1;
   fi
   set +x
