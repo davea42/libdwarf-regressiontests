@@ -9,12 +9,10 @@ fz=localfuzz_init_path
 fzb=localfuzz_init_binary
 
 chkres () {
-  if [ $1 -eq 0 ]
+  if [ $1 -ne 0 ]
   then
-    goodcount=`expr $goodcount + 1`
-  else
     echo "FAIL $2"
-    failcount=`expr $failcount + 1`
+    exit 1
   fi
 }
 
@@ -25,14 +23,15 @@ while read fname
 do
   #echo "=====localfuzz_init_path $fname" 2>> result
   $ts/$fz $testsrc/$fname  2>>result
-  chkres $? "localfuzz_init_path on $testsrc/$fname"
+  chkres $? "filelist/localfuzz_init_path on $testsrc/$fname"
+  chkres $? "Running $ts/$fz $testsrc/$fname "
 done < $ts/fileliste
 
 while read fname
 do
   echo "=====localfuzz_init_binary $fname" 2>> result
   $ts/$fzb $testsrc/$fname 2>> result
-  chkres $? "localfuzz_init_binary on $testsrc/$fname"
+  chkres $? "Running $ts/$fzb $testsrc/$fname "
 done < $ts/fileliste
 
 diff ./result $ts/baseresult

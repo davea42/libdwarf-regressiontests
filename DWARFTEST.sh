@@ -754,7 +754,11 @@ echo "=====START  $testsrc/testfindfuncbypc/ tests"
   sh $testsrc/testfindfuncbypc/runtest.sh
   chkres $? 'check  of testfindfuncbypc failed'
   cd ..
+# the special (badly written) testcases here
+# return 0 even if there is a DWARF ERROR reported
+# (but if the required arg omitted, return 1).
 echo "=====START  $testsrc/filelist/ tests"
+  
   mklocal filelist
   echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
@@ -764,7 +768,7 @@ echo "=====START  $testsrc/filelist/ tests"
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
      -o localfuzz_init_path $dwlib $libopts
-  chkres $? 'check -error compiling localfuzz_init_path.c failed'
+  chkres $? "check -error compiling $testsrc/filelist/localfuzz_init_path.c failed"
   echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
@@ -773,7 +777,7 @@ echo "=====START  $testsrc/filelist/ tests"
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
      -o localfuzz_init_binary $dwlib $libopts
-  chkres $? 'check -error compiling localfuzz_init_binary.c failed'
+  chkres $? "check -error compiling $testsrc/filelist/localfuzz_init_binary.c failed"
   sh $testsrc/filelist/runtest.sh
   chkres $? 'filelist stderr checks failed'
   cd ..
