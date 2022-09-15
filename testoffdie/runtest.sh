@@ -13,6 +13,7 @@ src=$testsrc/testoffdie
 bld=$libbld
 withlibelf=$1
 withlibz=$2
+withlibzstd=$3
 echo "entering testoffdie/runtest.sh  $withlibelf $withlibz"
 h="-I$testsrc/libdwarf -I$codedir/src/lib/libdwarf"
 l="-L$src/libdwarf"
@@ -24,6 +25,10 @@ fi
 if [ x$withlibz = "xwithlibz" ]
 then
   libs="$libs -lz"
+fi
+if [ x$withlibzstd = "xyezstd" ]
+then
+  libs="$libs -lzstd"
 fi
 if [ x$withlibz = "x" ]
 then

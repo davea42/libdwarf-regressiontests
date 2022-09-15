@@ -9,6 +9,7 @@ top_src=$testsrc
 
 withlibelf=$1
 withlibz=$2
+withlibzstd=$3
 if [ x$NLIZE = 'xy' ]
 then
   opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
@@ -31,6 +32,10 @@ if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
 fi
+if [ $withlibzstd = "yezstd" ]
+then
+  libs="$libs -lzstd"
+fi
 
 OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf"
 echo "cc -DWORKING=1 $opt $OPTS  $ts/test.c $bldtest/libdwarf.a $libs -o test1"
@@ -50,21 +55,21 @@ cpifmissing $ts/orig.a.out orig.a.out
 if [ $? -ne 0 ]
 then
      echo fail test-alex1 run test1
-     echo "rerun test-alex1: runtest.sh $withlibelf $withlibz"
+     echo "rerun test-alex1: runtest.sh $withlibelf $withlibz $withlibzstd"
      exit 1
 fi
 ./test2 orig.a.out >out2
 if [ $? -ne 0 ]
 then
      echo fail test-alex1 run test2
-     echo "rerun: $ts/runtest.sh $withlibelf $withlibz"
+     echo "rerun: $ts/runtest.sh $withlibelf $withlibz $withlibzstd"
      exit 1
 fi
 diff out1 out2 >outdiffs
 if [ $? -ne  0 ]
 then
      echo "fail alex-s test in test-alex1."
-     echo "rerun: $ts/runtest.sh $withlibelf $withlibz"
+     echo "rerun: $ts/runtest.sh $withlibelf $withlibz $withlibzstd"
      exit 1
 fi
 echo "PASS test-alex1/runtest.sh"

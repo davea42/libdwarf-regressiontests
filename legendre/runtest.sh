@@ -13,6 +13,7 @@ libdw=$libdw
 bopt=$libbld
 withlibelf=$1
 withlibz=$2
+withlibzstd=$3
 if [ "x$withlibz" = x ]
 then
    echo "fail legendre runtest.sh missing arguments"
@@ -28,6 +29,10 @@ fi
 if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
+fi
+if [ $withlibzstd = "yezstd" ]
+then
+  libs="$libs -lzstd"
 fi
 
 cpifmissing $ts/libmpich.so.1.0 libmpich.so.1.0

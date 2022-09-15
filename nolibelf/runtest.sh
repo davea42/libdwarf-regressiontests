@@ -1,4 +1,4 @@
-dd=../dwarfdumpnl
+dd=../dwarfdump
 
 . ../BASEFILES.sh
 ts=$testsrc/nolibelf

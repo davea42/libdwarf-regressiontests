@@ -16,6 +16,6 @@ int main()
     size_t destlen = 0;
     size_t srclen = 0;
 
-    res = ZSTD_decompress(dest,&destlen,src,srclen);
+    res = ZSTD_decompress(dest,destlen,src,srclen);
     return 0;
 }

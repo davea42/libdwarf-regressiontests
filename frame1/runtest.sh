@@ -9,6 +9,7 @@ bld=$bldtest
 dwlib=$bldtest/libdwarf.a
 withlibelf=$1
 withlibz=$2
+withlibzstd=$3
 if [ x$withlibz = "x" ]
 then
    echo "fail frame1 runtest.sh does not have its args: withlibz missing"
@@ -35,6 +36,10 @@ if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
 fi
+if [ "x$withlibzstd" = "xyezstd" ]
+then
+  libs="$libs -lzstd"
+fi
 iopts="-I$libbld -I$bld -I$bld/src/liblibdwarf -I$libdw -I$libbld/src/liblibdwarf"
 cpifmissing $codedir/src/bin/dwarfexample/frame1.c framexlocal.c
 echo "cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1"
@@ -57,7 +62,7 @@ then
     echo "fail frame1 test.  got diffs in output."
     cat diffs
     echo "To update do: cp $tf/frame1.out $ts/frame1.base"
-    echo "rerun: $ts/runtest.sh $withlibelf $withlibz"
+    echo "rerun: $ts/runtest.sh $withlibelf $withlibz $withlibzstd"
     exit 1
 fi
 

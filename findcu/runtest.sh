@@ -10,6 +10,7 @@ bld=$libbld
 
 withlibelf=$1
 withlibz=$2
+withlibzstd=$3
 if [ x$withlibz = "x" ]
 then
    echo "fail findcu runtest.sh missing arguments"
@@ -34,13 +35,17 @@ if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
 fi
+if [ $withlibzstd = "yezstd" ]
+then
+  libs="$libs -lzstd"
+fi
 
 cc $h $opts  $ts/cutest.c $nli $l -o cutest $libs
 ./cutest $ts/cutestobj.save
 r=$?
 if [ $r -ne 0 ]
 then
-   echo fail cutest, interface did not work.
+   echo FAIL cutest.c, interface did not work.
    echo "rerun: $ts/runtest.sh $1 $2" 
    exit 1
 fi

@@ -6,8 +6,8 @@
 ts=$testsrc/test-alex2
 tf=$bldtest/test-alex2
 l=$bldtest/libdwarf.a
-withlibelf=$1
-withlibz=$2
+withlibz=$1
+withlibzstd=$2
 
 OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf"
 if [ x$withlibz = "x" ]
@@ -17,13 +17,17 @@ then
   exit 1
 fi
 libs=
-if [ $withlibelf = "withlibelf" ]
-then
-  libs="$libs -lelf"
-fi
+#if [ $withlibelf = "withlibelf" ]
+#then
+#  libs="$libs -lelf"
+#fi
 if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
+fi
+if [ $withlibzstd = "yezstd" ]
+then
+  libs="$libs -lzstd"
 fi
 
 cc -DWORKING=1 $OPTS  $ts/test.c $l $libs -o test2
