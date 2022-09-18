@@ -350,13 +350,11 @@ ckdev/modulewithdwarf.ko
 sleicasper/bufferoverflow
 jborg/simple
 gilmore/a.out
-navarro/compressed_aranges_test
 enciso8/test-clang-dw5.o
 enciso8/test-clang-wpieb-dw5.o
 sarubbo-7/4.crashes.bin
 sarubbo-5/1.crashes.bin
 jacobs/test.o
-klingler/test-with-zdebug
 diederen/hello
 diederen2/pc_dwarf_bad_attributes.elf
 diederen2/pc_dwarf_bad_sibling2.elf
@@ -443,7 +441,6 @@ liu/infinitloop.elf
 liu/null01.elf
 liu/null02.elf
 liu/NULLdereference0519.elf
-liu/NULLderefer0505_01.elf
 liu/NULLdereference0522.elf
 liu/OOB0505_01.elf
 liu/OOB0505_02_02.elf
@@ -461,10 +458,21 @@ irix64/libc.so
 irixn32/libc.so 
 irixn32/dwarfdump
 dwgenb/dwarfgen
-klingler/dwarfgen-zdebug
 dwarf4/dd2g4.5dwarf-4
 dwarf4/ddg4.5dwarf-4
 ' 
+
+echo "Checklibz: $withlibz"
+if [ x$withlibz = "xnolibz" ]
+then
+     echo "=====SKIP klingler navarro liu libz tests, no libz available"
+     skipcount=`expr $skipcount +  252 `
+else
+     echo "=====DO klinkler navarro liu libz tests"
+     filepaths="klingler/dwarfgen-zdebug klingler/test-with-zdebug $filepaths"
+     filepaths="navarro/compressed_aranges_test $filepaths"
+     filepaths="liu/NULLderefer0505_01.elf $filepaths"
+fi
 if [ x$withlibelf = "xnolibelf" ]
 then
      echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because nolibelf"
@@ -986,12 +994,18 @@ runtest $d1 $d2 \
   sarubbo-b/00011-elfutils-memalloc-allocate_elf 
 
 # SHF_COMPRESSED testcases.
-runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
-runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv 
-runtest $d1 $d2 compressed-be/testprog-be-dw4 -ka 
-runtest $d1 $d2 compressed-le/testprog-le-dw4 -b -v
-runtest $d1 $d2 compressed-le/testprog-le-dw4 -a -vvvv
-runtest $d1 $d2 compressed-le/testprog-le-dw4 -ka
+if [ x$withlibz = "xnolibz" ]
+then
+  echo "=====SKIP COMPRESSED tests, no libz available"
+  skipcount=`expr $skipcount +  6 `
+else
+  runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
+  runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv 
+  runtest $d1 $d2 compressed-be/testprog-be-dw4 -ka 
+  runtest $d1 $d2 compressed-le/testprog-le-dw4 -b -v
+  runtest $d1 $d2 compressed-le/testprog-le-dw4 -a -vvvv
+  runtest $d1 $d2 compressed-le/testprog-le-dw4 -ka
+fi
 
 # See bug DW202010-002
 runtest $d1 $d2 c-sun2/globaloverflow -vv -a
@@ -1191,25 +1205,11 @@ runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
 # See mustacchi/README. 
 # Clang generates a slightly unusual relocation set for -m32.
 # As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
-#if [ x$withlibelf = "xnolibelf" ]
-#then
-  echo "=====START  $testsrc/mustacchi runtest.sh nolibelf"
+echo "=====START  $testsrc/mustacchi runtest.sh nolibelf"
   mklocal mustacchi
     sh $testsrc/mustacchi/runtestnolibelf.sh 
     chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
   cd ..
-#else
-#  echo "=====START  $testsrc/mustacchi runtest.sh withlibelf" 
-#  mklocal mustacchi
-#    l=mustacchi
-#    cp $testsrc/$l/mt32.o  $bldtest/$l/mt32.o
-#    cp $testsrc/$l/mt64.o  $bldtest/$l/mt64.o
-#    sh $testsrc/mustacchi/runtest.sh
-#    chkres $? "$testsrc/mustacchi/runtest.sh"
-#    sh $testsrc/mustacchi/runtestnolibelf.sh
-#    chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
-#  cd ..
-#fi
 
 runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
 
@@ -1223,9 +1223,15 @@ fi
 
 # Test ensuring R_386_GOTPC relocation understood. June 202
 runtest $d1 $d2 mustacchi/relgotpc.o -a -M
-# DWARF5 test, new 17 June 2020.
-runtest $d1 $d2 moya2/filecheck.dwo -a -M
-runtest $d1 $d2 moya2/filecheck.dwo -a -vvv -M
+if [ x$withlibz = "xnolibz" ]
+then
+  echo "=====SKIP COMPRESSED test, no libz available"
+  skipcount=`expr $skipcount +  2 `
+else
+  # DWARF5 test, new 17 June 2020.
+  runtest $d1 $d2 moya2/filecheck.dwo -a -M
+  runtest $d1 $d2 moya2/filecheck.dwo -a -vvv -M
+fi
 # sample object with DW_AT_containing type in a use
 # which is standard
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr
@@ -1417,7 +1423,13 @@ runtest $d1 $d2   sarubbo-11/testcase5.bin -a
 runtest $d1 $d2   puzzor/heap_buf_overflow.o -a
 
 # Fuzzed objects, each of which resulted in a specific out of bounds memory access.
-runtest $d1 $d2 sarubbo-2/00024-libdwarf-memalloc-do_decompress_zlib -a
+if [ x$withlibz = "xnolibz" ]
+then
+  echo "=====SKIP sarubbno-2 COMPRESSED test, no libz available"
+  skipcount=`expr $skipcount +  1 `
+else
+  runtest $d1 $d2 sarubbo-2/00024-libdwarf-memalloc-do_decompress_zlib -a
+fi
 runtest $d1 $d2 sarubbo-2/00025-libdwarf-heapoverflow-get_attr_value -a
 runtest $d1 $d2 sarubbo-2/00026-libdwarf-heapoverflow-dwarf_get_aranges_list -a
 runtest $d1 $d2 sarubbo-2/00027-libdwarf-heapoverflow-_dwarf_skim_forms -a
@@ -1503,7 +1515,13 @@ runtest $d1 $d2  liu/infinitloop.elf -a
 runtest $d1 $d2  liu/null01.elf -a
 runtest $d1 $d2  liu/null02.elf -a
 runtest $d1 $d2  liu/NULLdereference0519.elf -a
-runtest $d1 $d2  liu/NULLderefer0505_01.elf -a
+if [ x$withlibz = "xnolibz" ]
+then
+  echo "=====SKIP COMPRESSED liu/NULLderefer0505_01.elf no libz available"
+  skipcount=`expr $skipcount +  2 `
+else
+  runtest $d1 $d2  liu/NULLderefer0505_01.elf -a
+fi
 runtest $d1 $d2  liu/NULLdereference0522.elf -a
 runtest $d1 $d2  liu/NULLdeference0522c.elf -a 
 runtest $d1 $d2  liu/OOB0505_01.elf -a
@@ -1613,11 +1631,17 @@ runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
+if [ x$withlibz = "xnolibz" ]
+then
+  echo "=====SKIP klingler2/compresseddebug tests, no libz available"
+  skipcount=`expr $skipcount +  3 `
+else
   # Testing SHF_COMPRESSED .debug* section reading.
-runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
-runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
+  runtest $d1 $d2  klingler2/compresseddebug.amd64 -i
+  runtest $d1 $d2  klingler2/compresseddebug.amd64 -a
   # .eh_frame is not actually compressed...
-runtest $d1 $d2  klingler2/compresseddebug.amd64 -F
+  runtest $d1 $d2  klingler2/compresseddebug.amd64 -F
+fi
 
   # A big object.
 runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
