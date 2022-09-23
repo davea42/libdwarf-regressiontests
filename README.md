@@ -21,7 +21,7 @@ not in parallel with the regressiontests source tree.
     --enable-shared --disable-libelf --disable-static
 
 Use when generating and testing shared-library
-libdwarf-0.so instead of the default archive library libdwarf.a.
+libdwarf.so.0 instead of the default archive library libdwarf.a.
 
 ## Running the 18000 tests
 
