@@ -1,6 +1,6 @@
 # This is libdwarf-regressiontests README.md
 
-Updated 20 September 2022
+Updated 23 September 2022
 
 ## Historical note
 
@@ -91,9 +91,8 @@ Any problems found are reported as FAIL.
 Usually takes twice as long to run as a
 standard test run. 
 
-   NLIZE=y
-   export NLIZE
-
+    NLIZE=y
+    export NLIZE
 
 ### SUPPRESSDEALLOCTREE
 
