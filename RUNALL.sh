@@ -4,32 +4,6 @@
 echo "Running all regressiontests tests"
 . ./SHALIAS.sh
 
-# dwarfgen and libelf go together here.
-withlibelf="withlibelf"
-if [ $# -eq 1 ]
-then
-  withlibelf="withlibelf"
-  if [ $1 = "nolibelf" ]
-  then
-     echo "RUNALL.sh arg is nolibelf" 
-     withlibelf="nolibelf"
-  else
-     if [ $1 != "withlibelf" ]
-     then
-       echo "Improper argument to RUNALL.sh, use withlibelf or nolibelf"
-       exit 1
-     fi
-     echo "RUNALL.sh arg is withlibelf" 
-  fi
-else
-  echo "RUNALL.sh arg is withlibelf" 
-fi
-
-if [ ! -f BASEFILES.sh ]
-then
-  echo "Run configure. BASEFILES.sh missing"
-  exit 1
-fi
 . ./BASEFILES.sh
 chkres() {
 if test $1 != 0
@@ -67,7 +41,7 @@ echo "start regressiontests in $loc at: $start"
 stsecs=`date '+%s'`
 echo "Begin regressiontests    $loc/RUNALL.sh $withlibelf" 
 echo "Write regressiontests to $loc/ALLdd" 
-$testsrc/DWARFTEST.sh $withlibelf 2>ALLdd 1>&2
+$testsrc/DWARFTEST.sh 2>ALLdd 1>&2
 r=$?
 chkres $r "Failure in $testsrc/DWARFTEST.sh."
 chkfail ALLdd "RUNALL.sh regressiontests"

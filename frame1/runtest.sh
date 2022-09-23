@@ -6,7 +6,7 @@ tf=$bldtest/frame1
 . $testsrc/BASEFUNCS.sh
 libdw=$codedir/src/lib/libdwarf
 bld=$bldtest
-dwlib=$bldtest/libdwarf.a
+dwlib=../$filelibname
 withlibelf=$1
 withlibz=$2
 withlibzstd=$3

@@ -4,6 +4,7 @@ then
   echo "FAIL cannot find testsrc in checkforlibz/runtest.sh"
   exit 1
 fi
+. ../BASEFILES.sh
 tsrc=$1
 # This does a trivial compile/link to see if zlib.h and -lz
 # exist for some test directories.

@@ -17,7 +17,7 @@ withlibzstd=$3
 echo "entering testoffdie/runtest.sh  $withlibelf $withlibz"
 h="-I$testsrc/libdwarf -I$codedir/src/lib/libdwarf"
 l="-L$src/libdwarf"
-libs="$bld/src/lib/libdwarf/.libs/libdwarf.a"
+libs="../$filelibname"
 if [ x$withlibelf = "xwithlibelf" ]
 then
   libs="$libs -lelf"

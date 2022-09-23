@@ -73,11 +73,11 @@ fi
 # ALLow user to specify the code source dir
 AC_ARG_ENABLE(shared,
   AS_HELP_STRING([--enable-shared],
-    [Enable shared libdwarf, not static (default is static)
+    [Enable shared libdwarf (default is static)
     @<:@default=no@:>@]]),
    [ AS_IF(
         [test "x${enableval}" = "xyes"],
-        [enableshared=yes])
+        [enableshared=sharedlib])
    ],
    [enableshared=no])
 
@@ -121,19 +121,31 @@ else
   AC_SUBST(withlibelf,"nolibelf")
 fi
 
-AC_ARG_ENABLE([shared],
-   [AS_HELP_STRING([--enable-shared],
-     [enable test using shared libdwarf (default is static) @<:@default=no@:>@])],
+AC_ARG_ENABLE([static],
+   [AS_HELP_STRING([--enable-static],
+     [build test using static libdwarf @<:@default=yes@:>@])],
    [ AS_IF(
         [test "x${enableval}" = "xyes"],
-        [sharedlib="sharedlib"])
+        [staticlib="static"])
    ],
-   [sharedlib="n"])
+   [staticlib="nonshared"])
 
-if test $sharedlib = "sharedlib" ; then
+# shared build later finds actual lib and executable under .libs
+# in the libdwarf/dwarfdump build tree.
+if test x$enableshared = "xsharedlib" ; then
   AC_SUBST(sharedlib,"sharedlib")
+  sharedlib=sharedlib
+  filelibname="libdwarf.so.0"
+  fileplibname="libdwarfp.so.0"
+  buildlibsubdir=".libs/"
+  buildbinsubdir=".libs/"
 else
   AC_SUBST(sharedlib,"n")
+  sharedlib=n
+  filelibname="libdwarf.a"
+  fileplibname="libdwarfp.a"
+  buildlibsubdir=".libs/"
+  buildbinsubdir=
 fi
 
 
@@ -187,7 +199,6 @@ then
   exit 2
 fi
 
-
 for i in src/lib/libdwarf src/bin/dwarfdump \
   src/bin/dwarfgen  src/bin/dwarfexample
 do
@@ -238,6 +249,10 @@ libbld=$abs_builddir/libbld
 echo "libbld=$libbld" >>        BASEFILES.sh
 echo "sharedlib=$sharedlib"  >> BASEFILES.sh
 echo "dwarf_with_libelf=$dwarf_with_libelf"  >> BASEFILES.sh
+echo "filelibname=$filelibname" >> BASEFILES.sh
+echo "fileplibname=$fileplibname" >> BASEFILES.sh
+echo "buildlibsubdir=$buildlibsubdir" >> BASEFILES.sh
+echo "buildbinsubdir=$buildbinsubdir" >> BASEFILES.sh
 
 for d in baddie1 bigobj data16 debugfissionb debugfission debuglink \
   dwarfextract dwgena dwgenc emre2 enciso4 guilfanov \

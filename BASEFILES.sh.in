@@ -3,5 +3,4 @@
 
 # Main configure options:
 # ./configure --enable-libdwarf=/path/to/code --enable-shared
-# Less useful:
-# --disable-libelf 
+#             --disable-libelf 

@@ -18,7 +18,7 @@ then
 fi
 h="-I$libdw/libdwarf -I$codedir/src/lib/libdwarf"
 l="-L$libdw/libdwarf"
-libs="$bld/src/lib/libdwarf/.libs/libdwarf.a"
+libs="../$filelibname"
 if [ x$NLIZE = 'xy' ]
 then
   nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"

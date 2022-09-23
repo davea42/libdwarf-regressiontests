@@ -5,7 +5,7 @@
 . $testsrc/BASEFUNCS.sh
 ts=$testsrc/test-alex2
 tf=$bldtest/test-alex2
-l=$bldtest/libdwarf.a
+l=../$filelibname
 withlibz=$1
 withlibzstd=$2
 

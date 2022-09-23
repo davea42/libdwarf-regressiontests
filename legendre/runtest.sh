@@ -37,7 +37,7 @@ fi
 
 cpifmissing $ts/libmpich.so.1.0 libmpich.so.1.0
 
-cc -I $libdw/libdwarf $opt $OPTS -DNEW $ts/frame_test.c ../libdwarf.a $libs -o frame_test1
+cc -I $libdw/libdwarf $opt $OPTS -DNEW $ts/frame_test.c ../$filelibname $libs -o frame_test1
 if [ $? -ne 0 ]
 then
   echo fail legendre cc frame_test.c frame CFA reg new

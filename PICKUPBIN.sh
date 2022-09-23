@@ -1,40 +1,27 @@
-#!/bin/sh
-# Pick up newly built dwarfdump in two flavors.
-# Pick up libdwarf in two flavors.
+!/bin/sh
 . ./SHALIAS.sh
 # The -fsanitize=address tells gcc to use extra run-time
 # code to look for code writing where it should not.
-# It should be sufficiently efficient to do by default, but
-# we will see.
-#  The gcc option is -fsanitize=address and the like
 
 # dwarfgen and libelf go together here, only
 # dwarfgen uses libelf as of June 2021, release 0.1.0.
-withlibelf="withlibelf"
-libelfopt="--enable-libelf"
-
 # configure deals with -lz and -lzstd and their headers.
 
-withlibelf="withlibelf"
-# IF nest here is pretty useless as of 2022
-if [ $# -eq 1 ]
-then
-  if [ $1 = "nolibelf" ]
-    then
-      withlibelf="nolibelf"
-      echo "PICKUPBIN.sh set to nolibelf."
-      libelfopt="--disable-libelf"
-    else 
-      if [ $1 != "withlibelf" ]
-      then
-        echo "Improper argument to PICKUPBIN.sh, use withlibelf or nolibelf"
-        exit 1
-      fi
-      echo "PICKUPBIN.sh set to withlibelf."
-    fi
-else
-  echo "PICKUPBIN set to withlibelf."
-fi
+sharedlib=
+sharedlibsudir=
+configsharedlibopt=
+configsharedlibpopt=
+withlibelf=
+configlibname=
+configlibpname=
+configwall="--enable-wall"
+configstaticlib=
+configdwarfgen=
+configsharedlib=
+configdwarfex="--enable-dwarfexample"
+configsanitize=
+configlibelf=
+# BASEFILES has the basic data we need to build.
 if [ ! -f BASEFILES.sh ]
 then
     echo "./BASEFILES.sh missing. Run configure"
@@ -47,6 +34,60 @@ then
   echo "Giving up"
   exit 1
 fi
+if [ $dwarf_with_libelf = "withlibelf" ]
+then
+  configlibelf="--enable-libelf"
+  configdwarfgen="--enable-dwarfgen"
+else
+  configlibelf="--disable-libelf"
+  configdwarfgen="--disable-dwarfgen"
+fi
+configlibname=$filelibname
+configlibpname=$fileplibname
+if [ $sharedlib = "sharedlib" ]
+then
+  configsharedlib="--enable-shared"
+  configstaticlib="--disable-static"
+else
+  configsharedlib="--disable-shared"
+  configstaticlib="--enable-static"
+fi
+# Checking env var.
+if [ x$NLIZE = 'xy' ]
+then
+  configsanitize="--enable-sanitize"
+fi
+
+for i in $*
+do
+  case $i in
+  --nolibelf) withlibelf="nolibelf"
+    configlibelf="--disable-libelf --disable-dwarfgen"
+    configdwarfgen="--disable-dwarfgen"
+    echo "PICKUPBIN.sh set to nolibelf."
+    shift;;
+  --sanitize) configsanitize="--enable-sanitize"
+    echo "PICKUPBIN.sh set to use -fsanitize."
+    shift;;
+  --withlibelf) withlibelf="withlibelf"
+    echo "PICKUPBIN.sh set to withlibelf (the default)."
+    configlibelf="--enable-libelf"
+    configdwarfgen="--enable-dwarfgen"
+    shift;;
+  --sharedlib) 
+    sharedlib="sharedlib"
+    configlibname=$configsharedlibopt
+    buildlibsubdir=".libs/"
+    buildbinsubdir=".libs/"
+    configsharedlib="--enable-shared"
+    configstaticlib="--disable-static"
+    shift;;
+  *)
+    echo "Improper argument $i to PICKUPBIN.sh"
+    exit 1 ;;
+  esac
+done
+
 if [ "$bldtest" = "$codedir" ]
 then
   echo "buildtest and codedir are $codedir, dangerous"
@@ -54,15 +95,11 @@ then
   exit 1
 fi
 
-if [ x$NLIZE = 'xy' ]
-then
-  sanitize="--enable-sanitize"
-else
-  sanitize=
-fi
 
+# libbld is  the build directory for libdwarf/dwarfdump etc.
 top_build="$libbld"
 targetdir="$bldtest"
+sharedlibrpath="-Wl,-rpath=$bldtest"
 
 if [ ! -d $libbld ]
 then
@@ -96,71 +133,69 @@ fi
 cd $top_build 
 if [ $? -ne 0 ]
 then
-   echo "FAIL cd %op_build failed"
+   echo "FAIL cd $libbld failed"
    exit 1
 fi
 set -x
-if [ $withlibelf = "withlibelf" ]
-then
-  echo "PICKUPBIN.sh configure --enable-dwarfgen --enable-dwarfexample"
-  set -x
-  $libdw/configure $sanitize --enable-wall --enable-dwarfgen --enable-dwarfexample 
-  echo "===== config.h with libelf======="
-  grep ZLIB config.h
-  grep ZSTD config.h
-  make 
-  if [ $? -ne 0 ]
-  then
-    echo "PICKUPBIN.sh for withlibelf --enable-dwarfgen --enable-dwarfexample FAIL"
-    exit 1;
-  fi
-  set +x
-else
-  echo "PICKUPBIN.sh: configure --disable-libelf --enable-dwarfexample"
-  set -x
-  $libdw/configure $sanitize --enable-wall --disable-libelf --enable-dwarfexample 
-  echo "===== config.h disable libelf (with dwarfexample) ======="
-  grep ZLIB config.h
-  grep ZSTD config.h
-  make 
-  if [ $? -ne 0 ]
-  then
-    echo "PICKUPBIN.sh for nolibelf --enable-dwarfexample --enable-dwarfexample FAIL"
-    exit 1;
-  fi
-  set +x
-fi
+###  CONFIGURE now
+echo "CONFIGURE now"
+$libdw/configure $configwall $configstaticlib \
+  $configsharedlib $configdwarfgen $configdwarfex \
+  $configsanitize $configlibelf
 if [ $? -ne 0 ]
 then
-  echo "No libdwarf.a built! giving up."
+  echo "configure failed. giving up."
   exit 1;
 fi
-cp src/lib/libdwarf/.libs/libdwarf.a $targetdir/libdwarf.a
+make
+
+set +x
+#  Now copy the items built into $targetdir.
+cp src/lib/libdwarf/${buildlibsubdir}$configlibname $targetdir/$configlibname
 if [ $? -ne 0 ]
 then
-  echo "No libdwarf.a to copy! giving up."
+  echo "No  ${buildlibsubdir}$configlibname , $configlibname to copy! giving up."
   exit 1;
 fi
 
-cp src/bin/dwarfexample/showsectiongroups  $targetdir/showsectiongroups
+# if shared, no dwarfgen or libdwarfp
+if [ ! $sharedlib = "sharedlib" ]
+then
+  cp src/lib/libdwarfp/${buildlibsubdir}$configlibpname $targetdir/$configlibpname
+  if [ $? -ne 0 ]
+  then
+    echo "No  ${buildlibsubdir}$configplibname , $configplibname to copy! giving up."
+    exit 1;
+  fi
+  cp src/bin/dwarfgen/${buildbinsubdir}dwarfgen  $targetdir/dwarfgen
+  if [ $? -ne 0 ]
+  then
+    echo "No dwarfgen to copy from bin/dwarfgen/${buildbinsubdir}dwarfgen! giving up."
+    exit 1;
+  fi
+fi
+
+cp src/bin/dwarfexample/${buildbinsubdir}showsectiongroups \
+  $targetdir/showsectiongroups
 if [ $? -ne 0 ]
 then
+  echo "src/bin/dwarfexample/${buildbinsubdir}showsectiongroups $targetdir/showsectiongroups"
   echo "No showsectiongroups copy! giving up."
   exit 1;
 fi
-cp src/bin/dwarfexample/findfuncbypc  $targetdir/findfuncbypc
+cp src/bin/dwarfexample/${buildbinsubdir}findfuncbypc  $targetdir/findfuncbypc
 if [ $? -ne 0 ]
 then
   echo "No findfuncbypc copy! giving up."
   exit 1;
 fi
-cp src/bin/dwarfexample/jitreader  $targetdir/jitreader
+cp src/bin/dwarfexample/${buildbinsubdir}jitreader  $targetdir/jitreader
 if [ $? -ne 0 ]
 then
   echo "No jitreader copy! giving up."
   exit 1;
 fi
-cp src/bin/dwarfdump/dwarfdump  $targetdir/dwarfdump
+cp src/bin/dwarfdump/${buildbinsubdir}dwarfdump  $targetdir/dwarfdump
 if [ $? -ne 0 ]
 then
   echo "No dwarfdump to copy! giving up."
@@ -172,16 +207,7 @@ then
   echo "No dwarfdump.conf to copy! giving up."
   exit 1;
 fi
-if [ $withlibelf = "withlibelf" ]
-then
-  cp src/bin/dwarfgen/dwarfgen  $targetdir/dwarfgen
-  if [ $? -ne 0 ]
-  then
-    echo "No dwarfgen to copy! giving up."
-    exit 1;
-  fi
-fi
-cp src/bin/dwarfexample/simplereader  $targetdir/simplereader
+cp src/bin/dwarfexample/${buildbinsubdir}simplereader  $targetdir/simplereader
 if [ $? -ne 0 ]
 then
   echo "No simplereader to copy! giving up."

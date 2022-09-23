@@ -1,69 +1,70 @@
+/* config.h.  Generated from config.h.in by configure.  */
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
 /* Define if building universal (internal helper macro) */
-#undef AC_APPLE_UNIVERSAL_BUILD
+/* #undef AC_APPLE_UNIVERSAL_BUILD */
 
 /* Set to 1 as we are building with libelf */
-#undef DWARF_WITH_LIBELF
+#define DWARF_WITH_LIBELF 1
 
 /* Set to 1 as we are building dwarfgen */
-#undef HAVE_DWARFGEN
+#define HAVE_DWARFGEN 1
 
 /* Define to 1 if you have the <inttypes.h> header file. */
-#undef HAVE_INTTYPES_H
+#define HAVE_INTTYPES_H 1
 
 /* Define to 1 if you have the <libelf.h> header file. */
-#undef HAVE_LIBELF_H
+#define HAVE_LIBELF_H 1
 
 /* Define to 1 if you have the <libelf/libelf.h> header file. */
-#undef HAVE_LIBELF_LIBELF_H
+/* #undef HAVE_LIBELF_LIBELF_H */
 
 /* Define to 1 if you have the <stdint.h> header file. */
-#undef HAVE_STDINT_H
+#define HAVE_STDINT_H 1
 
 /* Define to 1 if you have the <stdio.h> header file. */
-#undef HAVE_STDIO_H
+#define HAVE_STDIO_H 1
 
 /* Define to 1 if you have the <stdlib.h> header file. */
-#undef HAVE_STDLIB_H
+#define HAVE_STDLIB_H 1
 
 /* Define to 1 if you have the <strings.h> header file. */
-#undef HAVE_STRINGS_H
+#define HAVE_STRINGS_H 1
 
 /* Define to 1 if you have the <string.h> header file. */
-#undef HAVE_STRING_H
+#define HAVE_STRING_H 1
 
 /* Define to 1 if you have the <sys/stat.h> header file. */
-#undef HAVE_SYS_STAT_H
+#define HAVE_SYS_STAT_H 1
 
 /* Define to 1 if you have the <sys/types.h> header file. */
-#undef HAVE_SYS_TYPES_H
+#define HAVE_SYS_TYPES_H 1
 
 /* Define to 1 if you have the <unistd.h> header file. */
-#undef HAVE_UNISTD_H
+#define HAVE_UNISTD_H 1
 
 /* Define to the address where bug reports for this package should be sent. */
-#undef PACKAGE_BUGREPORT
+#define PACKAGE_BUGREPORT ""
 
 /* Define to the full name of this package. */
-#undef PACKAGE_NAME
+#define PACKAGE_NAME ""
 
 /* Define to the full name and version of this package. */
-#undef PACKAGE_STRING
+#define PACKAGE_STRING ""
 
 /* Define to the one symbol short name of this package. */
-#undef PACKAGE_TARNAME
+#define PACKAGE_TARNAME ""
 
 /* Define to the home page for this package. */
-#undef PACKAGE_URL
+#define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#undef PACKAGE_VERSION
+#define PACKAGE_VERSION ""
 
 /* Define to 1 if all of the C90 standard headers exist (not just the ones
    required in a freestanding environment). This macro is provided for
    backward compatibility; new code need not use it. */
-#undef STDC_HEADERS
+#define STDC_HEADERS 1
 
 /* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
    significant byte first (like Motorola and SPARC, unlike Intel). */
@@ -73,6 +74,6 @@
 # endif
 #else
 # ifndef WORDS_BIGENDIAN
-#  undef WORDS_BIGENDIAN
+/* #  undef WORDS_BIGENDIAN */
 # endif
 #endif

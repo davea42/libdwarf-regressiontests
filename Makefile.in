@@ -12,18 +12,18 @@ all:  pretest build testonly
 test: pretest build testonly
 
 build: pretest
-	sh $(testsrc)/PICKUPBIN.sh $(buildwithlibelf) 
+	sh $(testsrc)/PICKUPBIN.sh
 
 check: pretest testonly
 testonly:
-	sh $(testsrc)/RUNALL.sh $(buildwithlibelf)
+	sh $(testsrc)/RUNALL.sh
 pretest:
 	sh $(testsrc)/CHECKIFRUNNING.sh
 # RUNALL.sh does this
 dd:
-	$(testsrc)/DWARFTEST.sh $(buildwithlibelf)  2>ALLdd 1>&2
+	$(testsrc)/DWARFTEST.sh   2>ALLdd 1>&2
 clean:
-	sh $(testsrc)/CLEANUP 
+	sh $(testsrc)/CLEANUP.sh 
 distclean: clean
 	rm -f Makefile
 	rm -f config.h

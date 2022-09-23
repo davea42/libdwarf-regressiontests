@@ -26,16 +26,17 @@ s=SHALIAS.sh
 if [ ! -f ./$s ]
 then
   echo "./$s cannot be found in " `pwd`
-  echo "do configure  and make build before running the tests"
+  echo "do configure before running the tests"
   exit 1
 fi
 . ./$s
 
+# BASEFILES.sh created by configure.
 b=BASEFILES.sh
 if [ ! -f ./$b ]
 then
   echo "./$b cannot be found in " `pwd`
-  echo "do configure  and make build before running the tests"
+  echo "do configure before running the tests"
   exit 1
 fi
 . ./$b
@@ -44,13 +45,7 @@ fi
 
 stsecs=`date '+%s'`
 # dwarfgen dwarfgen needs libelf.
-withlibelf="withlibelf"
-if [ $# -eq 0 ]
-then
-  echo "DWARFTESTS.sh no withlibelf/nolibelf argument"
-  echo "Defaults to  withlibelf"
-  withlibelf=withlibelf
-fi
+withlibelf=$dwarf_with_libelf
 dwbb=$bldtest/dwbb
 
 suppresstree=
@@ -218,7 +213,8 @@ echo "Python dir in tests.......: $mypydir"
 
 # Do the following two for address-sanitization.
 # Not all tests will be run in that case.
-
+# Some of the tests involve compilation and linking,
+# so we need this here.
 if [ x$NLIZE != 'xy' ]
 then
   NLIZE='n'
@@ -239,6 +235,13 @@ then
 else
   echo "Suppress de_alloc_tree....: no"
   suppresstree=
+fi
+if [ $sharedlib = "sharedlib" ]
+then
+  # Ensure we get the test libdwarf.so.0 .
+  set -x
+  export LD_LIBRARY_PATH="$bldtest:$LD_LIBRARY_PATH"
+  set +x
 fi
 # Only suppress anything if we find the diffs are so
 # big that some machines or VMs will not complete 
@@ -292,7 +295,12 @@ d1=./dwarfdump.O
 d2=./dwarfdump
 echo   "old is....................: $d1"
 echo   "new is....................: $d2"
-dwlib=$bldtest/libdwarf.a
+if [ x$sharedlib = "xsharedlib" ]
+then
+  dwlib=$bldtest/libdwarf.so.0
+else
+  dwlib=$bldtest/libdwarf.a
+fi
 dwinc=$codedir/libdwarf
 
 #baseopts='-F'
@@ -1368,11 +1376,16 @@ echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simpleread
   cd ..
 
 echo "=====START   $testsrc/implicitconst sh runtest.sh"
+if [ $withlibelf = "withlibelf" ]
+then
   mklocal implicitconst
     sh $testsrc/implicitconst/runtest.sh
     chkres $?  $testsrc/implicitconst/runtest.sh
   cd ..
-
+else
+  echo "=====SKIP implicitconst/runtest.sh, no libelf available"
+  skipcount=`expr $skipcount +  1 `
+fi
 
 echo "=====START  $testsrc/nolibelf/runtest.sh "
 mklocal nolibelf
