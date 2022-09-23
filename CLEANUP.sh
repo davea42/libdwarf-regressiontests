@@ -103,8 +103,6 @@ rm -f  legendre/frame_test1
 rm -f  legendre/frame_test2
 rm -f OF* testOfile
 rm -f dwarfdump
-rm -f dwarfdumpW
-rm -f dwarfdumpnl
 #rm -f gennames
 rm -f dwarfgen
 rm -f simplereader
@@ -139,4 +137,9 @@ rm -f strsize/dwarfdump.conf
 rm -f supplementary/dwarfdump.conf
 rm -f testoffdie/dwarfdump.conf
 rm -f williamson/dwarfdump.conf
+rm -f base
+rm -f checkforlibzstd/a.out
+rm -f dwarfdump.O
+rm -f findfuncbypc
+
 
