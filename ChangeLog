@@ -1,3 +1,191 @@
+2022-09-23:  David Anderson
+    commit 40d36599a892dd8678f43c1b7be1ad422117ad65
+
+    Clarification of one sentence
+    on shared-library naming.
+            modified:   README.md
+
+2022-09-23:  David Anderson
+    commit 8ecc10a37f2334f60af8a3482e41211fb9765f09
+
+    Tweaking typos. Updated date.
+            modified:   README.md
+
+2022-09-23:  David Anderson
+    commit 4d51727d5b3175917bc4a7941c8c9e0127ae15fa
+
+    Clean up some formatting.
+    Added a cautionary comment.
+            modified:   CLEANUP.sh
+
+    Clarified formatting and wording.
+            modified:   README.md
+
+2022-09-23:  David Anderson
+    commit 89db099b37a6309f0eb62e6bd2f5631f69d0f34f
+
+    Added content useful in running
+    the tests.
+            modified:   README.md
+
+2022-09-22:  David Anderson
+    commit 80f4e20e8a8e606577255b51173aa530235be570
+
+    Added rm for a couple leftovers.
+    Deleted a couple lines related to ancient stuff
+    that cannot appear now.
+            modified:   CLEANUP.sh
+
+    These did not belong in git.
+            deleted:    config.h
+            deleted:    config.log
+            deleted:    config.status
+
+2022-09-22:  David Anderson
+    commit 5288bf34fe4cfc6424e3ffe646f073609ec416b5
+
+    Fixed runtest to work with the updated BASEFILES.sh
+    created by configue.
+
+    All the .sh now use BASEFILES.sh properly and
+    do not need arguments.
+
+    Now possible to build shared-lib libdwarf
+    and test it. If shared-lib build some
+    additional SKIPs  as dwarfgen not
+    supported here yet.
+            modified:   BASEFILES.sh.in
+            modified:   DWARFTEST.sh
+            modified:   Makefile.in
+            modified:   PICKUPBIN.sh
+            modified:   README.md
+            modified:   RUNALL.sh
+            modified:   checkforlibz/runtest.sh
+            modified:   checkforlibzstd/runtest.sh
+            modified:   config.guess
+            new file:   config.h
+            modified:   config.h.in
+            new file:   config.log
+            new file:   config.status
+            modified:   config.sub
+            modified:   configure
+            modified:   configure.ac
+            modified:   findcu/runtest.sh
+            modified:   frame1/runtest.sh
+            modified:   legendre/runtest.sh
+            modified:   test-alex1/runtest.sh
+            modified:   test-alex2/runtest.sh
+            modified:   testoffdie/runtest.sh
+
+2022-09-22:  David Anderson
+    commit 6aa47244fe6e78cea07d73807a4c9f91d8b23615
+
+    So all the scripts are .sh
+    LOOKFOR is just to help find things,
+    not for testing.
+            renamed:    CLEANUP -> CLEANUP.sh
+            renamed:    LOOKFOR -> LOOKFOR.sh
+
+2022-09-21:  David Anderson
+    commit 9740a3898a96d66411780fc9bab6a86c16e47897
+
+    no longer useful.
+            deleted:    BLDTAR.sh
+
+    New news.
+            modified:   NEWS
+    Rewritten as markdown.
+            new file:   README.md
+
+    renamed README.md
+            deleted:    README.txt
+
+2022-09-21:  David Anderson
+    commit e1ff1a90efe3ff91230a82b47344bef2bd5e27af
+
+    Comments simplified.
+            modified:   BASEFILES.sh.in
+    Now with --disable-libelf
+    and --enable-shared
+    and --enable-libdwarf=/path/to/code
+            modified:   configure.ac
+
+2022-09-18:  David Anderson
+    commit 26b70171aa171762b7a7b2381f9e99d356e7bd5c
+
+    Now, if libz missing, compressed-section tests
+    are skipped.
+            modified:   DWARFTEST.sh
+
+2022-09-15:  David Anderson
+    commit 1653aef8dacf4db8cf4f643d8b20a622ded3e133
+
+    Now all 4 baseline executables
+    are up to date with latest (improved) error
+    messages about corrupt compression.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-09-15:  David Anderson
+    commit 7af5f894dfa0e793092cb5ee1fc1ac5c2446833d
+
+    Tweaks to get all these to work and report
+    more details  on error.
+            modified:   DWARFTEST.sh
+    Tweaks to get it to work and report correctly
+    with details in case of fail.
+            modified:   filelist/runtest.sh
+
+2022-09-15:  David Anderson
+    commit 9a9833abbf2d81971ee7b9fbf7f1e6101186b027
+
+    Latest version, zstd built in
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Corrected silly typos. so this works.
+            modified:   checkforlibzstd/tzlstd.c
+
+    These all now handle libzstd  too
+            modified:   filelist/runtest.sh
+            modified:   findcu/runtest.sh
+            modified:   frame1/runtest.sh
+            modified:   legendre/runtest.sh
+            modified:   nolibelf/runtest.sh
+            modified:   test-alex1/runtest.sh
+            modified:   test-alex2/runtest.sh
+            modified:   testoffdie/runtest.sh
+
+2022-09-15:  David Anderson
+    commit 79040c4dd68399c6eb9e41519f9692020c2bfb93
+
+    Now handling libzstd zstd.h
+    when they are present.
+            modified:   DWARFTEST.sh
+            modified:   PICKUPBIN.sh
+            modified:   checkforlibz/runtest.sh
+            modified:   checkforlibzstd/runtest.sh
+
+2022-09-15:  David Anderson
+    commit 15d1fcf3f4f1db63c7ca35079a06069000a790d5
+
+    These let the tests know if zstd.h libsztd
+    are present and usable.
+            new file:   checkforlibzstd/runtest.sh
+            new file:   checkforlibzstd/tzlstd.c
+
+2022-09-14:  David Anderson
+    commit fbdb0aef06ecb834124e7181c30ec954ac1bdc2e
+
+    Correct misspelling in echo line
+            modified:   PICKUPBIN.sh
+
+2022-09-12:  David Anderson
+    commit eea1c4f83e5aeb70cea08a38184c59899f486a3e
+
+    Brings ChangeLog up to date with git log.
+            modified:   ChangeLog
+
 2022-09-12:  David Anderson
     commit 69726a469aa0e25f1678d810411fe9c2a1ef5f59
 
