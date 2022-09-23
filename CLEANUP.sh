@@ -1,5 +1,7 @@
 #!/bin/sh
 # Clean up the temp files left behind by a test.
+# Unwise to run this except in a regressiontest
+# source or test directory.
 . ./SHALIAS.sh
 (cd dwgena ; make clean)
 (cd debugfission ; make clean)
@@ -67,16 +69,16 @@ rm -f fails
 rm -f guilfanov/dwarfdump.conf
 rm -f implicitconst/dwarfdump.conf
 rm -f test-alex1/test1
-rm -f        test-alex1/test2
-rm -f        test-alex1/outdiffs
-rm -f        test-alex1/out1
-rm -f        test-alex1/out2
-rm -f        test-alex2/test2
-rm -f        test-alex2/out1
-rm -f        dwarfextract/test1.new
-rm -f        dwarfextract/test1out
-rm -f        dwarfextract/dwarfextractc
-rm -f   dwarfextract/test2out
+rm -f test-alex1/test2
+rm -f test-alex1/outdiffs
+rm -f test-alex1/out1
+rm -f test-alex1/out2
+rm -f test-alex2/test2
+rm -f test-alex2/out1
+rm -f dwarfextract/test1.new
+rm -f dwarfextract/test1out
+rm -f dwarfextract/dwarfextractc
+rm -f dwarfextract/test2out
 rm -f dwarfextract/testc.new
 rm -f williamson/newout
 rm -f williamson/newunminout
@@ -87,23 +89,22 @@ rm -f hughes2/*core*
 rm -f dwarfextract/testcout
 rm -f dwarfextract/basecstdout
 rm -f dwarfextract/basestdout
-rm -f        dwarfextract/dwarfextract
-rm -f        findcu/testoutput
-rm -f        findcu/cutest
-rm -f        kartashev/kart2.tar
-rm -f        tn
-rm -f        to
+rm -f dwarfextract/dwarfextract
+rm -f findcu/testoutput
+rm -f findcu/cutest
+rm -f kartashev/kart2.tar
+rm -f tn
+rm -f to
 rm -f */junk*
-rm -f  a.out
-rm -f  dwarfnames-s.c
-rm -f  dwarfnames-s
-rm -f  dwarfnames-t.c
-rm -f  dwarfnames-t
-rm -f  legendre/frame_test1
-rm -f  legendre/frame_test2
+rm -f a.out
+rm -f dwarfnames-s.c
+rm -f dwarfnames-s
+rm -f dwarfnames-t.c
+rm -f dwarfnames-t
+rm -f legendre/frame_test1
+rm -f legendre/frame_test2
 rm -f OF* testOfile
 rm -f dwarfdump
-#rm -f gennames
 rm -f dwarfgen
 rm -f simplereader
 rm -f junkckpath
@@ -113,11 +114,11 @@ rm -f config.h.in~
 rm -f showsectiongroups
 rm -f jitreader
 rm -rf dwarfdump/
-rm -rf 	dwarfexample/
-rm -rf 	dwarfgen/
-rm -rf 	libdwarf/
-rm -f 	libtool
-rm -f 	stamp-h1
+rm -rf dwarfexample/
+rm -rf dwarfgen/
+rm -rf libdwarf/
+rm -f libtool
+rm -f stamp-h1
 rm -f Makefile
 rm -f config.h
 rm -f config.log

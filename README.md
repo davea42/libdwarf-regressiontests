@@ -9,17 +9,19 @@ was in a directory named 'code'. Since the move to
 github the libdwarf source is in a directory
 named libdwarf-code. 
 
+## Testing command options
+
 Configure options:
---disable-libelf
-  (libelf is for dwarfgen build and dwarfgen tests)
 
---enable-libdwarf=/path/to/libdwarf-code
-  (instead of defaulting to whichever of code or libdwarf-code
-  exists in parallel with the regressiontests source)
+    --enable-libdwarf=/path/to/libdwarf-code
 
---enable-shared
-  (using libdwarf-0.so, not libdwarf.a)
+Use --enable-libdwarf  when the libdwarf/dwarfdump source tree is
+not in parallel with the regressiontests source tree.
 
+    --enable-shared --disable-libelf --disable-static
+
+Use when generating and testing shared-library
+libdwarf-0.so instead of the default archive library libdwarf.a.
 
 ## Running the 18000 tests
 
@@ -51,18 +53,18 @@ add:
 
 to the configure command.
 
-Note that any libdwarf from the date-versioned
+Note that any existing date-versioned
 libdwarf will be named libdwarf.so.1
 and no semantic-version libdwarf will ever be
-named with .1 (we will skip from .0 to .2
+named with libdwarf.so.1 (we will skip from 
+libdwarf.so.0 to libdwarf.so.2
 at some point in the future).
-
 
 When doing a shared library build/test, 
 one must set LD_LIBRARY_PATH so running the
 generated dwarfdump  will find the right libdwarf
 DWARFTEST.sh does that for you, but to run
-the build dwarfdump by hand without installing one could do
+the test-built dwarfdump by hand without installing one could do
 
     export LD_LIBRARY_PATH="/tmp/emptydirectory:$LD_LIBRARY_PATH
     /tmp/emptydirectory/dwarfdump
