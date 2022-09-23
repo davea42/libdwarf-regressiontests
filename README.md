@@ -14,8 +14,8 @@ Configure options:
   (libelf is for dwarfgen build and dwarfgen tests)
 
 --enable-libdwarf=/path/to/libdwarf-code
-  (instead of defaulting to whichever of../code ../libdwarf-code
-  exists)
+  (instead of defaulting to whichever of code or libdwarf-code
+  exists in parallel with the regressiontests source)
 
 --enable-shared
   (using libdwarf-0.so, not libdwarf.a)
@@ -24,7 +24,7 @@ Configure options:
 ## Running the 18000 tests
 
 We recommend running the tests outside
-of the regression test or libdwarf source trees.
+of the regression test and libdwarf source trees.
 
 Lets assume  /path/to/regressiontests is the libdwarf test source
 and /path/to has a 'code' or 'libdwarf-code'
@@ -34,6 +34,9 @@ directory with the libdwarf/dwarfdump source.
     /path/to/regressiontests/configure
     make
 
+The dwarfdump/libdwarf build will be in
+/my/emptydirectory/libbld in this example.
+
 If the code directory is /some/thing/libdwarf-code
 
     cd /tmp/emptydirectory/
@@ -41,11 +44,19 @@ If the code directory is /some/thing/libdwarf-code
         --enable-libdwarf=/some/thing/libdwarf-code
     make
 
-To build and test-with a shared library libdwarf-0.so:
+To build and test-with a shared library libdwarf.so.0
+add:
 
-add 
-    --enable-shared
+    --enable-shared --disable-static --disable-libelf
+
 to the configure command.
+
+Note that any libdwarf from the date-versioned
+libdwarf will be named libdwarf.so.1
+and no semantic-version libdwarf will ever be
+named with .1 (we will skip from .0 to .2
+at some point in the future).
+
 
 When doing a shared library build/test, 
 one must set LD_LIBRARY_PATH so running the
@@ -55,6 +66,65 @@ the build dwarfdump by hand without installing one could do
 
     export LD_LIBRARY_PATH="/tmp/emptydirectory:$LD_LIBRARY_PATH
     /tmp/emptydirectory/dwarfdump
+
+## Environment Variables
+
+when running a test, ensure to do the following to
+make a standard test run.
+With all unset on an example 3GHz machine a test run
+takes about 22 minutes.
+
+    unset NLIZE
+    unset SUPPRESSDEALLOCTREE
+    unset LCOV
+    unset VALGRIND
+
+
+### NLIZE
+
+This adds -fsanitize to all compiles under
+libdwarf and in the tests.
+Any problems found are reported as FAIL.
+
+Usually takes twice as long to run as a
+standard test run. 
+
+   NLIZE=y
+   export NLIZE
+
+
+### SUPPRESSDEALLOCTREE
+
+This tells dwarfdump to suppress it's normal
+tracking of allocations and automatic dealloc (free)
+of its allocations.
+Used to verify dwarfdump does every appropriate 
+dealloc.
+
+This speeds up the test run a few percent.
+
+Can be combined with NLIZE.
+
+    SUPPRESSDEALLOCTREE=y
+    export SUPPRESSDEALLOCTREE
+
+### VALGRIND
+
+This runs dwarfdump under valgrind(1) 
+and any problems found by valgrind are reported
+as FAIL.
+
+This takes roughly twenty times as long to run
+as a standard run.
+   
+    VALGRIND=y
+    export VALGRIND
+
+### LCOV
+   
+Currently not supported, LCOV may eventually be used to
+tell the build to generate code coverage statistics.
+
    
 ## Important Build Files
 
@@ -63,8 +133,11 @@ this is the main test script, which runs the tests.
 
 ### BASEFILES.sh.in
 
-Used to help generate BASEFILES.sh, which is in turn
-used extensively in running DWARFTEST.sh
+Used to help generate BASEFILES.sh. 
+The generation is done by the configure command.
+BASEFILES.sh is
+sourced (with the dot (.) shell command) in all *.sh scripts
+involved in the testing.
 
 ### BASEFUNCS.sh
 
@@ -72,21 +145,29 @@ Contains shell functions for DWARFTEST.sh
 
 ### CHECKIFRUNNING.sh
 
-Used to try to avoid accidentaly running the tests
+Used to try to avoid accidentally running the tests
 twice simultaneously in a test directory.
 
-### CLEANUP
+### PICKUPBIN.sh
 
-Removes unneeded files.
-If you are running tests in a clean diretory
+Used to compile the libdwarf/dwarfdump source tree
+in the directory libbld in the testing directory.
+
+### CLEANUP.sh
+
+Removes generated files in the directory where 
+it is run.
+Safe to run in the regressiontests source directory.
+If you are running tests in a clean directory
 this shell script is unnecessary, just clean
 out any files you see in the clean directory
 before rerunning.
-The test scripts never create files with
+Testing never creates files with
 a leading period (.).
 
 ## If updating regression tests configure.ac
 
-On changing configure.ac, run
+On changing configure.ac, run autoconf with no options
+to create a new configure script.
 
     autoconf
