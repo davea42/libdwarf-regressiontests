@@ -54,9 +54,10 @@ add:
 to the configure command.
 
 Note that any existing date-versioned
-libdwarf will be named libdwarf.so.1
-and no semantic-version libdwarf will ever be
-named with libdwarf.so.1 (we will skip from 
+shared-library libdwarf is named libdwarf.so.1
+and no semantic-version shared-library
+libdwarf will ever be
+named libdwarf.so.1 (we will skip from 
 libdwarf.so.0 to libdwarf.so.2
 at some point in the future).
 
