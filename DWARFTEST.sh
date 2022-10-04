@@ -862,6 +862,9 @@ mklocal guilfanov2
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
+# October 4, 2022. .debug_pubnames with two CUs.
+runtest $d1 $d2  pubnames/tests.exe --print-pubnames --print-type
+
 # September 2022.  ossfuzz detected memory leak.
 runtest $d1 $d2 ossfuzz51183/clusterfuzz-51183-6011554641870848 -a
 
@@ -901,10 +904,12 @@ runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --suppress-debuglink-crc
 
 # February 16, 2022, with clang-generated .debug_names
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names
+runtest $d1 $d2 debugnames/jitreader    --print-pubnames
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -v
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -vv
 runtest $d1 $d2 debugnames/dwarfdump    -i -G --print-debug-names -vv
 runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names 
+runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-pubnames 
 runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -v
 runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -vv
 
@@ -1934,6 +1939,7 @@ runtest $d1 $d2  enciso2/template.elf -ka -kxe -R -M
 runtest $d1 $d2  enciso2/template.elf -kxe -R -M
 runtest $d1 $d2  enciso2/test_templates.o  -a -R -M
 runtest $d1 $d2  enciso2/test_templates.o  -a -R 
+runtest $d1 $d2  enciso2/test_templates.o  --print-pubnames
 runtest $d1 $d2  x86/dwarfdumpv4.3 -S match=main 
 runtest $d1 $d2  x86/dwarfdumpv4.3 -S any=leb 
 runtest $d1 $d2  x86/dwarfdumpv4.3 -S 'regex=u.*leb' 
