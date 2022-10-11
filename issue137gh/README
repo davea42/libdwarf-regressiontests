@@ -10,12 +10,12 @@ incorrectness of line table data.
 It shows that in gcc 11.2.0 the compiler is defaulting
 to a line table file number of 1.
 
+(Do not redo the builds)
 Build with gcc -g main.cc -o main
+Build with clang -g main.cc -o mainclang14
 
 dwarfdump -l
 dwarfdump -l -v
 dwarfdump -l -vv
 (do 3 runs) show this clearly, demonatrating what
 the .debug_line section contains.
-
-
