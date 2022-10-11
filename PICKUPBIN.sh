@@ -139,6 +139,10 @@ fi
 set -x
 ###  CONFIGURE now
 echo "CONFIGURE now"
+#CFLAGS="-O0 -gdwarf-5  --no-omit-frame-pointer" 
+echo "$libdw/configure $configwall $configstaticlib"
+echo "    $configsharedlib $configdwarfgen $configdwarfex"
+echo "    $configsanitize $configlibelf"
 $libdw/configure $configwall $configstaticlib \
   $configsharedlib $configdwarfgen $configdwarfex \
   $configsanitize $configlibelf

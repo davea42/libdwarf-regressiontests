@@ -814,6 +814,7 @@ echo "=====START  $testsrc/test_pubsreader"
      >junk_pubsreaderout
   chkres $? "check pubsreader-error execution failed look at \
     junk_pubsreaderout"
+
 echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
    echo "test_bitoffset: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt \
@@ -861,6 +862,14 @@ mklocal guilfanov2
   # but most likely not in libdwarf 0.1.2 or later.
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
+
+# October 11, 2022. Problem, DW5 default file number and gcc 11.2.0
+runtest $d1 $d2  issue137gh/main -l
+runtest $d1 $d2  issue137gh/main -l -v
+runtest $d1 $d2  issue137gh/main -l -vv
+runtest $d1 $d2  issue137gh/mainclang14 -l
+runtest $d1 $d2  issue137gh/mainclang14 -l -v
+runtest $d1 $d2  issue137gh/mainclang14 -l -vv
 
 # October 4, 2022. .debug_pubnames with two CUs.
 runtest $d1 $d2  pubnames/tests.exe --print-pubnames --print-type
