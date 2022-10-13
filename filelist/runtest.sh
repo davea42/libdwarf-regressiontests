@@ -24,7 +24,6 @@ do
   echo "=====localfuzz_init_path $fname" 
   $fz $testsrc/$fname  2>>result
   r=$?
-  chkres $r "filelist/localfuzz_init_path on $testsrc/$fname"
   chkres $r "Running $ts/$fz $testsrc/$fname "
 done < $ts/fileliste
 
