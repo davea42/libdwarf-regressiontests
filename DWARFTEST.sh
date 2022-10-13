@@ -505,6 +505,7 @@ stripx() {
 # Running sed on all the files took 50 minutes
 # so getting rid of the sed is very worthwhile.
 unifyddname () {
+  touch $1
   mv $1 $2
   #nstart=$1
   #nend=$2
@@ -514,6 +515,7 @@ unifyddname () {
 unifyddnameb () {
   nstart=$1
   nend=$2
+  touch $nstart
   sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart > $nend
 }
 
@@ -793,9 +795,10 @@ echo "=====START  $testsrc/filelist/ tests"
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
      -o localfuzz_init_binary $dwlib $libopts
-  chkres $? "check -error compiling $testsrc/filelist/localfuzz_init_binary.c failed"
+  chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   sh $testsrc/filelist/runtest.sh
-  chkres $? 'filelist stderr checks failed'
+  r=$?
+  chkres $r 'filelist stderr checks failed on filelist/fuzz_init....'
   cd ..
 
 echo "=====START  $testsrc/test_pubsreader"
