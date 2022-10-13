@@ -1,3 +1,7 @@
+
+test-clang-dw5.o is built using clang 7.
+The line tables are not correct DWARF5.
+
 April 14, 2018
 
 dwarfdump --print-str-offsets test-clang-dw5.o
