@@ -20,6 +20,9 @@ rm -f filelist/filelista
 rm -f filelist/filelistb
 rm -f filelist/filelistc
 rm -f filelist/filelistd
+rm -f filelist/result
+rm -f filelist/localfuzz_init_path
+rm -f filelist/localfuzz_init_binary
 rm -f libdwallocs
 rm -f */libdwallocs
 rm -rf libbld
