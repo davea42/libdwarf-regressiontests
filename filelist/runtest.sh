@@ -5,8 +5,8 @@
 ts=$testsrc/filelist
 here=`pwd`
 
-fz=localfuzz_init_path
-fzb=localfuzz_init_binary
+fz=./localfuzz_init_path
+fzb=./localfuzz_init_binary
 
 chkres () {
   if [ $1 -ne 0 ]
@@ -21,16 +21,17 @@ rm -f result
 touch result
 while read fname
 do
-  #echo "=====localfuzz_init_path $fname" 2>> result
-  $ts/$fz $testsrc/$fname  2>>result
-  chkres $? "filelist/localfuzz_init_path on $testsrc/$fname"
-  chkres $? "Running $ts/$fz $testsrc/$fname "
+  echo "=====localfuzz_init_path $fname" 
+  $fz $testsrc/$fname  2>>result
+  r=$?
+  chkres $r "filelist/localfuzz_init_path on $testsrc/$fname"
+  chkres $r "Running $ts/$fz $testsrc/$fname "
 done < $ts/fileliste
 
 while read fname
 do
-  echo "=====localfuzz_init_binary $fname" 2>> result
-  $ts/$fzb $testsrc/$fname 2>> result
+  echo "=====localfuzz_init_binary $fname" 
+  $fzb $testsrc/$fname 2>> result
   chkres $? "Running $ts/$fzb $testsrc/$fname "
 done < $ts/fileliste
 
@@ -41,4 +42,5 @@ then
    echo "To update, mv $here/result $ts/baseresult"
    exit 1
 fi
+echo "PASS filelist test"
 exit 0
