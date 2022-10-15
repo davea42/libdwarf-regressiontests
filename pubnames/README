@@ -12,4 +12,7 @@ and shows the appropriate names for C++
 such as
    'std::__exception_ptr'
 
+Another test case:
+g++ -gdwarf-5 -gpubnames -c pubname.cc
+
 David Anderson
