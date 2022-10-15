@@ -5,4 +5,11 @@ See BUILD, but do not run it!
 
 Testing DWARF2,3,4 .debug_pubnames with two distinct CUs.
 
+dwarfgen-createirepfrombinary.o was created by
+   gcc -gdwarf-4 -gpubnames
+(gcc 11.2.0)
+and shows the appropriate names for C++ 
+such as
+   'std::__exception_ptr'
+
 David Anderson
