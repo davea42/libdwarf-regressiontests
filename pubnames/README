@@ -15,4 +15,7 @@ such as
 Another test case:
 g++ -gdwarf-5 -gpubnames -c pubname.cc
 
+pubname.cc was compiled with a .debug_name
+section for us as: dw5_names.o
+
 David Anderson
