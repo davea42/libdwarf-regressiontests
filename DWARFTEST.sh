@@ -866,6 +866,15 @@ mklocal guilfanov2
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
+# November 4, 2022. Realized we could not print .debug_addr
+# on its own. Implemented new libdwarf functions and
+# added --print-debug-addr to dwarfdump.
+
+runtest $d1 $d2 debugaddr/blaik.so                  -i -M --print-debug-addr
+runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -i -M --print-debug-addr
+runtest $d1 $d2 pubnames/bothpubs.exe               -i -M --print-debug-addr
+runtest $d1 $d2 pubnames/dw5_names.o                -i -M --print-debug-addr
+
 # October 11, 2022. Problem, DW5 default file number and gcc 11.2.0
 runtest $d1 $d2  issue137gh/main -l
 runtest $d1 $d2  issue137gh/main -l -v
