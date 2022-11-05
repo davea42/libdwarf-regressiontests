@@ -5,6 +5,11 @@ with serious object and/or DWARF errors.
 Each provokes, in libdwarf, a segmentation violation,
 a leak, or both.
 
+id-000347-sig-06-src-001923-op-havoc-rep-2 is interesting as
+in .debug_aranges it has a segment_selector_size of 1.
+Segment selectors are not really defined in sufficient
+detail to use.
+
 Thanks to Arnaud Diederen and Ilfak Guilfanov
 for providing these testcases.
 
