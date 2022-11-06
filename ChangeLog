@@ -1,3 +1,275 @@
+2022-11-05:  David Anderson
+    commit 311799720250017b9a93a3459ab5a6808dd39fc6
+
+    Updated: latest timing information.
+            modified:   RegressionTestsResults.ods
+
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-11-05:  David Anderson
+    commit 9b650e3738fb635b76f3772e03c6aadba9bbfc83
+
+    New baseline for .debug_addr print from dwarfdump.
+            modified:   dwarfdump-s390.O
+
+2022-11-05:  David Anderson
+    commit fb2009d8f286ff96e6196d088327b48fbd257add
+
+    Latest timings info
+            modified:   RegressionTestsResults.ods
+    Corrected new baseline, previous had two
+    lines printed by dwarfdump reversed
+    (coverity scan noticed the argument swap).
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-11-05:  David Anderson
+    commit 956d802531c6d865c821b0b783feb18172f6c99b
+
+    Now with tests including the new --print-debug-addr dwarfdump option.
+            modified:   RegressionTestsResults.ods
+
+    New baseline executable.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-11-05:  David Anderson
+    commit 03486ce93f7811e275609e8d962da52ef944db9a
+
+    Add 4 tests using the new dwarfdump --print-debug-addr option.
+            modified:   DWARFTEST.sh
+
+2022-11-05:  David Anderson
+    commit ed38ba1a30f7bf55a6c3ebcc4ef57d2d47452f57
+
+    Added comment: one test has a non-zero segment_size
+    field
+    as a result of fuzzing. Now that is noticed and an
+    error results.
+            modified:   diederen5/README
+
+2022-11-05:  David Anderson
+    commit 57f744a4858dc77e7da9412338a0e760e572d495
+
+    New test case with a very useful .debug_addr section
+    with two .debug_addr tables in that section.
+            new file:   BUILD
+            new file:   blaik.cc
+            new file:   blaik.so
+            new file:   t2.cc
+
+2022-11-01:  David Anderson
+    commit 8882702e3a86eaed2bcf8924bb18b46b2c94a825
+
+    With latest test results.
+            modified:   RegressionTestsResults.ods
+
+    New baseline executables, so now up to date.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-10-28:  David Anderson
+    commit 8b6abe959fb2a3f9d99a115e2d6b891e902a01dd
+
+    Updated with statistics for a couple test runs.
+            modified:   RegressionTestsResults.ods
+
+    Updated baselines. Still need to do FreeBSD
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Reflects the fixed code in dd_sanitized.c (dwarfdump)
+            modified:   guilfanov2/double-free-poc.base
+
+2022-10-17:  David Anderson
+    commit a2718e02361e84b7b845c623336e8544efa90d6f
+
+    Mentions how dw5_names.o created.
+            modified:   README
+
+    Compiled differently, so a new testcase.
+            new file:   dw5_names.o
+
+2022-10-15:  David Anderson
+    commit 6df3f59b0600fb42c6f575fe0577100e8f4a58a1
+
+    Should never have been in git.
+            deleted:    ../filelist/result
+
+2022-10-15:  David Anderson
+    commit da8a2959a6baab912197dbe4cc2c653737dfca34
+
+    Tidying up. the new C++ example is 1/6 the size.
+            new file:   dw5tests.exe
+            deleted:    dwarfgen-createirepfrombinary.o
+            new file:   pubname.o
+
+2022-10-15:  David Anderson
+    commit a44dbab09757bc9cb58b7015a8acf138ccf0092b
+
+    Another testcase for pubnames,
+            modified:   README
+            new file:   pubname.cc
+
+2022-10-15:  David Anderson
+    commit 3f460d41b8c1654017d8ec137962ce1c81366d27
+
+    New pubnames testcase with g++ std:: pubnames prefixes.
+            modified:   README
+            new file:   dwarfgen-createirepfrombinary.o
+
+2022-10-13:  David Anderson
+    commit 828a839d7a6fca05395c63bf3d8ee1ae5b2776ee
+
+    New baselines reflecting library and dwarfdump
+    corrections.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-10-13:  David Anderson
+    commit 4d5ffbbcaa765ffa380f612764f98bd47cbadd7f
+
+    Removing a duplicative chkres,
+    adding to unifyddname[b]
+    to guarantte the input file exists with 'touch'
+            modified:   DWARFTEST.sh
+
+2022-10-13:  David Anderson
+    commit 76df16af5a44e8cc92c2bcd3d3357a48a68a0282
+
+    Minor tidy of the script.
+            modified:   filelist/runtest.sh
+
+2022-10-13:  David Anderson
+    commit 4010ccc447563d92b4ca5b5df574b343c771249c
+
+    Now removes three additional files in the filelist directory
+    following a test run.
+            modified:   CLEANUP.sh
+
+2022-10-13:  David Anderson
+    commit db975bfde042f7bf7342719dcd7fda86fbf2eb98
+
+    Just removed an accidental blank line.
+            modified:   filelist/README
+
+2022-10-13:  David Anderson
+    commit a5c7c005fddedcc31daee3b58816cdcd113c3a85
+
+    Now mentions the version of clang used to
+    build the testcases: clang7
+            modified:   enciso8/README
+
+2022-10-13:  David Anderson
+    commit 058b80e04e96c955369cca39ad29c66e83a0edfe
+
+    Now properly coded to run the executables we
+    want to run, and be clearer when it PASSes.
+            modified:   filelist/runtest.sh
+
+2022-10-12:  David Anderson
+    commit 43ca1099d0c7e8eb5895f077d46d1aaa940e3532
+
+    We cannot have pre-built binaries from LSB linux
+    run on MSB Linux or anywhere else.
+    The test compiles these.
+            deleted:    localfuzz_init_binary
+            deleted:    localfuzz_init_path
+
+2022-10-11:  David Anderson
+    commit d63651d75768d01163b5ea1846834f1254781d85
+
+    Added details
+            modified:   issue137gh/README
+    This is just used for speicific single tests,
+    not used in standard testing..
+            modified:   pubnames/BUILD
+
+2022-10-11:  David Anderson
+    commit 3ff04ff7746ef65f748c74efab96e19f1fc60e77
+
+    Added tests of line table examples in issue137gh
+            modified:   DWARFTEST.sh
+    Added detailed report, during build of the configure command used.
+            modified:   PICKUPBIN.sh
+
+2022-10-11:  David Anderson
+    commit 2b3c05ffa24d39a1bcd302550dcdaa2f7040be21
+
+    Same test, different compiler
+    issue137gh:
+            new file:   mainclang14
+
+2022-10-11:  David Anderson
+    commit 6b5a09600f278bcc5e53837b6709c0bf6a18976b
+
+    New test case
+            new file:   README
+            new file:   main
+            new file:   main.cc
+            new file:   test.h
+
+2022-10-07:  David Anderson
+    commit 03349308408a8d84180db8361344b54dde9bc0c3
+
+    Updated baseline executables, matching v0.5.0
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-10-05:  David Anderson
+    commit a40daf24572a7a71c1650519ad64b4001ab39487
+
+    Baseline executables now up to date with dwarfdump changes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-10-05:  David Anderson
+    commit 9df466b1903eb3488b33f77d4967baeb3bd6ac33
+
+    New test case, with both .debug_names and .debug_pubnames sections.
+            new file:   pubnames/bothpubs.exe
+
+2022-10-05:  David Anderson
+    commit c22d102b66dd6610f8710a921b67056e7f36e76f
+
+    The last version used shared lib, which is not good
+    as a base executable, we want base and latest
+    to coexist with, usually, different library content!.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Now with the improved dwarfdump output.
+            modified:   dwgena/test5.base.gz
+
+2022-10-04:  David Anderson
+    commit 47787cbf8a847e910318653c5266d1fdcb6ee20b
+
+    New test on tests.exe. pubnames and pubtypes printing.
+            modified:   DWARFTEST.sh
+            new file:   pubnames/BUILD
+            new file:   pubnames/README
+            new file:   pubnames/testm.c
+            new file:   pubnames/tests.c
+            new file:   pubnames/tests.exe
+            new file:   pubnames/tests.h
+
+2022-09-23:  David Anderson
+    commit 024ae737d62b0bb5ad6fa0de55b975b50672beac
+
+    One instance naming shared libdwarf had a typo in
+    the name. Gnu configure generates libdwarf.so.0
+            modified:   README.md
+
+2022-09-23:  David Anderson
+    commit 5f0b9a972cf70882cff9d032efb13875b5e71e85
+
+    Now with latest git log data.
+            modified:   ChangeLog
+
 2022-09-23:  David Anderson
     commit 40d36599a892dd8678f43c1b7be1ad422117ad65
 
