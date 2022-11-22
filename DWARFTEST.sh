@@ -818,6 +818,7 @@ echo "=====START  $testsrc/test_pubsreader"
   chkres $? "check pubsreader-error execution failed look at \
     junk_pubsreaderout"
 
+
 echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
    echo "test_bitoffset: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt \

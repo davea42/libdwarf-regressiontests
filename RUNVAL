@@ -1,9 +1,19 @@
 #This is solely for tracking down bugs.
 #time /tmp/dwarfdump $opts >junkx
 #
+/tmp/dwarfdump /home/davea/dwarf/regressiontests/emre6/class_64_opt_fpo_split.dwp
+exit 0
+#echo "b _dwarf_error_string" >script
+#echo "r /home/davea/dwarf/regressiontests/emre6/class_64_opt_fpo_split.dwp"  >>script
+#gdb -x script /tmp/dwarfdump 
+#exit 0
+
+#/tmp/dwarfdump  -i -M --print-debug-addr /home/davea/dwarf/regressiontests/pubnames/dw5_names.o
 vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=all"
 
-opts="ossfuzz47150/clusterfuzz-testcase-minimized-fuzz_init_path-6727387238236160.fuzz"
+#opts="ossfuzz47150/clusterfuzz-testcase-minimized-fuzz_init_path-6727387238236160.fuzz"
+#opts="--suppress-de-alloc-tree -i -v -v -v /home/davea/dwarf/regressiontests/debugfissionb/ld-new.dwp"
+opts="/home/davea/dwarf/regressiontests/emre6/class_64_opt_fpo_split.dwp"
 
 valgrind $vgopts  /tmp/dwarfdump $opts >junkn
 exit 0
