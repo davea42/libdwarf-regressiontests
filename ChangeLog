@@ -1,3 +1,33 @@
+2022-11-22:  David Anderson
+    commit c397bfc55c0fff143182211ba211cd100c395941
+
+    Now up to date for v0.5.0 release.
+            modified:   DWARFTEST.sh
+    Now with latest statistics/times.
+            modified:   RegressionTestsResults.ods
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    baseline reflects small change in findfuncbypc.c
+            modified:   testfindfuncbypc/findfuncbypc.base
+    Just random testing, not important.
+            modified:   RUNVAL
+
+2022-11-06:  David Anderson
+    commit 43667f66558abe1e220b6e55bd0b38102db48b28
+
+    Removed unneeded comments.
+            modified:   debugaddr/BUILD
+
+2022-11-05:  David Anderson
+    commit 0923cfaec64c7b0e13b70bca8ab83e64aa187938
+
+    Up to date with changeLog
+            modified:   ChangeLog
+
 2022-11-05:  David Anderson
     commit 311799720250017b9a93a3459ab5a6808dd39fc6
 
