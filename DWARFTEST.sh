@@ -303,14 +303,7 @@ else
 fi
 dwinc=$codedir/libdwarf
 
-#baseopts='-F'
-if [ x$withlibelf = "xwithlibelf" ]
-then
-  baseopts='-b -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
-else
-  baseopts='-b -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
-fi
-
+baseopts='-b -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
 kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku"
 
 # These accumulate times so we can print actual dwarfdump
@@ -2296,33 +2289,25 @@ runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 
 for i in $filepaths
 do
-     echo  "=====BLOCK $i all options"
-     for xtra in "-v" "-vv" "-vvv" "-D" "-H 2" 
-     do
-       for k in  $baseopts " -M" 
-       do
+  echo  "=====BLOCK $i all options"
+  for xtra in "-v" "-vv" "-vvv" "-D" "-H 2" "--trace=0 --trace=1 --trace=2 --trace=3 --trace=4 --trace=5" 
+  do
+    for k in  $baseopts " -M" 
+    do
 	  runtest $d1 $d2 $i $k $xtra
-          #if [ x$withlibelf = "xwithlibelf" ]
-          #then
-          #   # Force use of libelf
-          #   runtest $d1 $d2 $i $k $xtra " -oi"
-          #else
-          #   skipcount=`expr $skipcount + 1`
-          #fi
-       done
-     done
+    done
+  done
 done
 for i in $filepaths
 do
-     echo "=====BLOCK $i all checking options"
-     # -kd ensures we report the test statistics
-     for xtra in "" "-kd"  "-ki" 
-     do
-       for k in  $kopts
-       do
-         runtest $d1 $d2 $i $k $xtra
-       done
-     done
+  echo "=====BLOCK $i all checking options"
+  for xtra in "" "-kd"  "-ki" 
+  do
+    for k in  $kopts
+    do
+      runtest $d1 $d2 $i $k $xtra
+    done
+  done
 done
 rm -f $dwba
 rm -f $dwbb
