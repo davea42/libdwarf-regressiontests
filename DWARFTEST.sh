@@ -303,8 +303,8 @@ else
 fi
 dwinc=$codedir/libdwarf
 
-baseopts='-b -f -F -i -l -m  -p -r -s -ta -tf -tv -y -w  -N '
-kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku"
+baseopts='-b -f -F -i -l -ls -m  -p -r -s -ta -tf -tv -y -w  -N '
+kopts="-ka -kb -kc -ke -kf -kF -kg  -kl -km -kM -kn -kr -kR -ks -kS -kt -kx -ky -kxe -kD -kG -ku -kw "
 
 # These accumulate times so we can print actual dwarfdump
 # user, sys, clock times at the end (see usertime.py).
@@ -860,11 +860,13 @@ mklocal guilfanov2
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
+# So lcov sees this option used.
+runtest $d1 $d2 supplementary/dwarfstringsup.o --print-debug-sup 
+
 # November 4, 2022. Realized we could not print .debug_addr
 # on its own. Implemented new libdwarf functions and
 # added --print-debug-addr to dwarfdump.
 
-runtest $d1 $d2 debugaddr/blaik.so                  -i -M --print-debug-addr
 runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -i -M --print-debug-addr
 runtest $d1 $d2 pubnames/bothpubs.exe               -i -M --print-debug-addr
 runtest $d1 $d2 pubnames/dw5_names.o                -i -M --print-debug-addr
@@ -1146,8 +1148,8 @@ runtest $d1 $d2 kapus/bad.obj -a
 #DWARF5 with .debug_rnglists and .debug_loclists
 runtest $d1 $d2 moya4/hello -ka -v
 runtest $d1 $d2 moya4/hello -a -v -M 
-runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print_raw_rnglists
-runtest $d1 $d2 moya2/filecheck.dwo -ka --print_raw_rnglists
+runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print-raw-rnglists
+runtest $d1 $d2 moya2/filecheck.dwo -ka 
 # Checking .debug_str_offsets used properly
 runtest $d1 $d2 moya5/hello.dwo -a -M -v --print-str-offsets 
 runtest $d1 $d2 moya5/hello.dwo --file-tied=$testsrc/moya5/hello -a -M -v --print-str-offsets --print-strings
@@ -1174,14 +1176,14 @@ runtest $d1 $d2 moya-rb/ranges3.dwp -a -M -v -a -v --file-tied=$testsrc/moya-rb/
 runtest $d1 $d2 moya-rb/ranges3 -a -M -v 
 
 
-runtest $d1 $d2 rnglists/readelfobj -vv  --print-raw-rnglists
+runtest $d1 $d2 rnglists/readelfobj -vv  --print-raw-loclists --print-raw-rnglists
 runtest $d1 $d2 rnglists/readelfobj -ka
-runtest $d1 $d2 rnglists/linelen.o  -v --print-raw-rnglists
+runtest $d1 $d2 rnglists/linelen.o  -v --print-raw-loclists --print-raw-rnglists
 runtest $d1 $d2 rnglists/linelen.o  -ka 
-runtest $d1 $d2 rnglists/extractdba.o -v  --print-raw-rnglists
+runtest $d1 $d2 rnglists/extractdba.o -v --print-raw-loclists --print-raw-rnglists
 runtest $d1 $d2 rnglists/extractdba.o -v  -ka
-runtest $d1 $d2 rnglists/pe_map.o -v --print-raw-rnglists
-runtest $d1 $d2 rnglists/pe_map.o  --print-raw-rnglists
+runtest $d1 $d2 rnglists/pe_map.o -v --print-raw-loclists --print-raw-rnglists
+runtest $d1 $d2 rnglists/pe_map.o  --print-raw-loclists --print-raw-rnglists
 
 runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -a
 runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -ka
@@ -2196,6 +2198,8 @@ runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros -v
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m -vvv
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m -v
+runtest $d1 $d2 macro5/basetest5     --print-macinfo
+runtest $d1 $d2 macro5/basetest5     --check-macros
 
 #Following 2 show some DW_AT_MIPS_fde difference. So -C works.
 runtest $d1 $d2  irix64/libc.so -ka   -x name=dwarfdump.conf -x abi=mips-simple3
