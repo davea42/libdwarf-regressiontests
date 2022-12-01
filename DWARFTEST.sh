@@ -2276,6 +2276,12 @@ runtest $d1 $d2 cristi3/cristibadobj -m
 runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj --trace=0
 
+# The following have KIND_RANGES_INFO and KIND_RANGES_INFO
+# ... at least a little of it.
+runtest $d1 $d2 ckdev/modulewithdwarf.ko -ka --trace=1 --trace=2 --trace=3
+runtest $d1 $d2 debugnames/dwarfdump -ka --trace=1 --trace=2 --trace=3
+runtest $d1 $d2 dwarf4/ddg4.5dwarf-4 -ka --trace=1 --trace=2 --trace=3  
+
 for i in $filepaths
 do
   echo  "=====BLOCK $i all options"
@@ -2290,7 +2296,7 @@ done
 for i in $filepaths
 do
   echo "=====BLOCK $i all checking options"
-  for xtra in "" "-kd"  "-ki" "--trace=1 --trace=2 --trace=3"
+  for xtra in "" "-kd"  "-ki" 
   do
     for k in  $kopts
     do
