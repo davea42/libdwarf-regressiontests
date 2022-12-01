@@ -1,7 +1,40 @@
 #!/bin/bash
 # Run from the main regressiontests directory
+
+checkdetails() {
+  f=$1
+  /tmp/dwarfdump -ka --trace=1 --trace=2 --trace=3  $f >junk
+  grep KIND_RANGES_INFO <junk >junka
+  grep KIND_LINKONCE_INFO <junk >junkb
+  grep KIND_VISITED_INFO <junk >junkc
+  t=0
+  n1=`wc -l < junka`
+  t=`expr $t + $n1`
+  n2=`wc -l < junkb`
+  t=`expr $t + $n2`
+  n3=`wc -l < junkc`
+  t=`expr $t + $n3`
+  if [ $t -gt 0 ]
+  then
+      echo "=== $f"
+      echo "counts $n1 $n2 $n3"
+      cat junka | cut --fields=1,2 |uniq 
+      cat junkb | cut --fields=1,2 |uniq 
+      cat junkc | cut --fields=1,2 |uniq 
+  fi
+  return
+
+  #readelfobj >junk
+  grep KIND_ junk
+  if [ $? -eq 0 ]
+  then
+    echo "$f has LINK_"
+  fi
+}
+
 for f in * */*
 do
+  isobj=n
   file $f >/tmp/findobjb.tmp 2>/dev/null
   if [ $? -ne 0 ]
   then
@@ -10,19 +43,24 @@ do
   grep 'ELF.*relocatable' /tmp/findobjb.tmp >/dev/null 
   if [ $? -eq 0 ]
   then
-    echo $f
+    isobj=y
   else
   grep 'ELF.*executable' /tmp/findobjb.tmp  >/dev/null
   if [ $? -eq 0 ]
   then
-    echo $f
+    isobj=y
   else
   grep 'ELF.*shared object' /tmp/findobjb.tmp  >/dev/null
   if [ $? -eq 0 ]
   then
+    isobj=y
+  fi
+  fi
+  fi
+  if [ $isobj = "y" ]
+  then
     echo $f
-  fi
-  fi
+    checkdetails $f
   fi
 done
 
