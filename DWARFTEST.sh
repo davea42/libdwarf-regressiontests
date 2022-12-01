@@ -1314,14 +1314,8 @@ runtest $d1 $d2   wolff/POC1 -a
 runtest $d1 $d2   wolff/POC1 -b
 
 #Show the usage options list
-if [ $withlibelf = "withlibelf" ]
-then
-  runtest $d1 $d2 foo.o -h
-  runtest $d1 $d2 foo.o --help
-else
-  echo "=====SKIP foo.o -h --help"
-  skipcount=`expr $skipcount + 2`
-fi
+runtest $d1 $d2 foo.o -h
+runtest $d1 $d2 foo.o --help
 # Some errors in options list use, which
 # should not show the options list
 runtest $d1 $d2 foo.o  -j
@@ -1881,13 +1875,7 @@ runtest $d1 $d2 moshe%2fhello  --format-suppress-uri -i
 runtest $d1 $d2 moshe%2fhello  -q -i
 
 # The -h option exists now
-if [ $withlibelf = "withlibelf" ]
-then
-  runtest $d1 $d2  moshe/hello -h 
-else
-  echo "====SKIP 1 runtest $d1 $d2  moshe/hello -h nolibelf"
-  skipcount=`expr $skipcount + 1`
-fi
+runtest $d1 $d2  moshe/hello -h 
 runtest $d1 $d2  moshe/hello -a -vvv -R -M
 runtest $d1 $d2  moshe/hello -a -vvv -R -M -g
 runtest $d1 $d2  moshe/hello -ka -vvv -R -M
@@ -2286,11 +2274,12 @@ runtest $d1 $d2 cristi2/libpthread-2.4.so -R -F  -v -v -v
 runtest $d1 $d2 cristi2/libpthread-2.4.so -R -ka  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj -m 
 runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
+runtest $d1 $d2 cristi3/cristibadobj --trace=0
 
 for i in $filepaths
 do
   echo  "=====BLOCK $i all options"
-  for xtra in "-v" "-vv" "-vvv" "-D" "-H 2" "--trace=0 --trace=1 --trace=2 --trace=3 --trace=4 --trace=5" 
+  for xtra in "-v" "-vv" "-vvv" "-D" "-H 2"
   do
     for k in  $baseopts " -M" 
     do
@@ -2301,7 +2290,7 @@ done
 for i in $filepaths
 do
   echo "=====BLOCK $i all checking options"
-  for xtra in "" "-kd"  "-ki" 
+  for xtra in "" "-kd"  "-ki" "--trace=1 --trace=2 --trace=3"
   do
     for k in  $kopts
     do
