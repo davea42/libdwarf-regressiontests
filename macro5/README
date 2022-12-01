@@ -8,4 +8,7 @@ DWARF4).
 The dwarf_weaks-g3.o has COMDAT .debug_macro
 section so it cannot yet be usefully read by libdwarf.
 
+basetest is dd_esb.c with extra macro def/undef
+to be a better test of libdwarf.
+
 David Anderson Nov 29, 2015
