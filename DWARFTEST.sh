@@ -862,6 +862,8 @@ cd ..
 
 # So lcov sees this option used.
 runtest $d1 $d2 supplementary/dwarfstringsup.o --print-debug-sup 
+runtest $d1 $d2 supplementary/dwarfstringsup.o -i -cs
+runtest $d1 $d2 supplementary/dwarfstringsup.o -i -cg
 
 # November 4, 2022. Realized we could not print .debug_addr
 # on its own. Implemented new libdwarf functions and
@@ -1160,16 +1162,16 @@ runtest $d1 $d2 moya7/read-line-table-program-leak-test -a -M -v
 runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=$testsrc/moya-loc/loclists -a -M -v 
 runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=$testsrc/moya-loc/loclists -ka
 
-if [ x$withlibelf = "xwithlibelf" ]
-then
-  # the -oi forces dwarftump to use libelf for this test
-  # of the .debug_cu_index section.
-  #runtest $d1 $d2 moya8/index-out-of-bounds-test -oi -a -M -v 
-  skipcount=`expr $skipcount + 1`
-else
-  echo "==== SKIP -oi -a -M -v  moya8/index-out-of-bounds-test"
-  skipcount=`expr $skipcount + 1`
-fi
+#if [ x$withlibelf = "xwithlibelf" ]
+#then
+#  # the -oi forces dwarftump to use libelf for this test
+#  # of the .debug_cu_index section.
+#  #runtest $d1 $d2 moya8/index-out-of-bounds-test -oi -a -M -v 
+#  skipcount=`expr $skipcount + 1`
+#else
+#  echo "==== SKIP -oi -a -M -v  moya8/index-out-of-bounds-test"
+#  skipcount=`expr $skipcount + 1`
+#fi
 runtest $d1 $d2 moya8/index-out-of-bounds-test  -a -M -v 
 runtest $d1 $d2 moya9/oob-repro -a -M -v --print-str-offsets --print-strings 
 runtest $d1 $d2 moya-rb/ranges3.dwp -a -M -v -a -v --file-tied=$testsrc/moya-rb/ranges3 
@@ -1266,13 +1268,13 @@ fi
 # which is standard
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr --format-extensions
-if [ x$withlibelf = "xnolibelf" ]
-then
-  #runtest $d1 $d2 encisoa/DW_AT_containing_type.o -o --check-tag-attr
-  #runtest $d1 $d2 encisoa/DW_AT_containing_type.o -Ei --check-tag-attr --format-extensions
-  echo "=====SKIP  encisoa/DW_AT_containing_type.o"
-  skipcount=`expr $skipcount + 1`
-fi
+#if [ x$withlibelf = "xnolibelf" ]
+#then
+#  #runtest $d1 $d2 encisoa/DW_AT_containing_type.o -o --check-tag-attr
+#  #runtest $d1 $d2 encisoa/DW_AT_containing_type.o -Ei --check-tag-attr --format-extensions
+#  echo "=====SKIP  encisoa/DW_AT_containing_type.o"
+#  skipcount=`expr $skipcount + 1`
+#fi
 
 # PE basic tests.
 runtest $d1 $d2 pe1/libexamine-0.dll --print-all 
@@ -1329,13 +1331,13 @@ runtest $d1 $d2 -M  -M
 runtest $d1 $d2 enciso8/test-clang-dw5.o -s --print-str-offsets
 # This has a correct table (new clang, soon will be available).
 runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -s --print-str-offsets
-if [ $withlibelf = "withlibelf" ]
-then
-  #runtest $d1 $d2 enciso8/test-clang-dw5.o -o -s --print-str-offsets
-  #runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -o -s --print-str-offsets
-  echo "=====SKIP enciso8/test-clang-wpieb-dw5.o -o -s"
-  skipcount=`expr $skipcount + 2`
-fi
+#if [ $withlibelf = "withlibelf" ]
+#then
+#  #runtest $d1 $d2 enciso8/test-clang-dw5.o -o -s --print-str-offsets
+#  #runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -o -s --print-str-offsets
+#  echo "=====SKIP enciso8/test-clang-wpieb-dw5.o -o -s"
+#  skipcount=`expr $skipcount + 2`
+#fi
 
 
 # These have .debug_str_offsets sections, but they are empty
