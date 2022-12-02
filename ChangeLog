@@ -1,3 +1,79 @@
+2022-12-01:  David Anderson
+    commit 08928128ab9378c1cbc39d9f1b10c453aefacc90
+
+    Removed tests mentioning -o, those options no longer
+    supported (as of 0.1.0 or so).
+            modified:   DWARFTEST.sh
+
+2022-12-01:  David Anderson
+    commit a781e33c6be7e2ba2bd902fb928500f7c422538d
+
+    Added -kw and -ls (which creates many more tests)
+    and added singular tests for better lcov
+    results.
+            modified:   DWARFTEST.sh
+
+2022-12-01:  David Anderson
+    commit 53eec1c027ec080179879b65c429b67dfa8605c0
+
+    Now mentions basetest
+            modified:   macro5/README
+    Fixed a typo so we now correctly test the 
+    --print-raw-rnglists and --print-raw-loclists
+    options of dwarfdump.
+    New testcase with specific combinations
+    of #define #undef for better code coverage
+    in reading .debug_macro.
+            new file:   macro5/basetest
+
+2022-12-01:  David Anderson
+    commit acd6a4637089704316d0fc3bc47d35ceab88f129
+
+    Now with a few specific tests
+    using dwarfdump --trace (used for debugging
+    dwarfdump).
+            modified:   DWARFTEST.sh
+
+2022-12-01:  David Anderson
+    commit 5912d8538383ebc286dcb67b4901c9d53be0cd0e
+
+    Just testing scripts. Ignore.
+            modified:   RUNVAL
+            modified:   scripts/findobjects
+
+2022-11-30:  David Anderson
+    commit 3858be6efe06229f07c015c71d5fafb9f0a47004
+
+    Simplified as we do not need to test for withlibelf
+    here now.
+    Add --trace options now that we have remove the printing
+    of pointers from the output (These not intended
+    for normal use, --trace=0  for example which
+    also only do anything with -k (checking) options).
+            modified:   DWARFTEST.sh
+
+2022-11-29:  David Anderson
+    commit abe6ac4af48cf1b17b935f5b20997d90e52a2653
+
+    Removed obsolete code related
+    to the running of the many options.
+    Made it easier to read.
+            modified:   DWARFTEST.sh
+
+2022-11-29:  David Anderson
+    commit fd16a9fc694b370fdd909c2628478b9a12376066
+
+    The dwarfdump -E and -o related options
+    have not been supported since 2021 so removing
+    the test of these.
+            modified:   nolibelf/runtest.sh
+
+2022-11-22:  David Anderson
+    commit 4cf15830f194809b91e33e07a59560a74d0403a1
+
+    Updated from git log
+            modified:   ChangeLog
+
 2022-11-22:  David Anderson
     commit c397bfc55c0fff143182211ba211cd100c395941
 
