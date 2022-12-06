@@ -810,8 +810,17 @@ echo "=====START  $testsrc/test_pubsreader"
      >junk_pubsreaderout
   chkres $? "check pubsreader-error execution failed look at \
     junk_pubsreaderout"
+  diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout
+  r=$?
+  chkres $r "fail comparison pubsreader.base vs junk_pubsreaderout"
+  if [ $r -ne 0 ] 
+  then
+    echo "FAIL diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout" 
+    echo "To update mv $bldtest/junk_pubsreaderout $testsrc/pubsreader.base"
+  fi
 
 
+exit 0
 echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
    echo "test_bitoffset: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt \
