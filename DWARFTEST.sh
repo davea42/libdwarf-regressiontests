@@ -2206,6 +2206,11 @@ runtest $d1 $d2 macro5/basetest5     --check-macros
 #Following 2 show some DW_AT_MIPS_fde difference. So -C works.
 runtest $d1 $d2  irix64/libc.so -ka   -x name=dwarfdump.conf -x abi=mips-simple3
 runtest $d1 $d2  irix64/libc.so -i    -x name=dwarfdump.conf -x abi=mips-simple3
+
+FIXME
+runtest $d1 $d2  irix64/libc.so --print-pubnames --print-weakname --print-type --print-static-var --print-static-func
+runtest $d1 $d2  irixn32/libc.so --print-pubnames --print-static-var --print-weakname --print-type --print-static-var --print-static-func
+
 #Following shows -C differences, see ia64/README. So -C works.
 runtest $d1 $d2  ia64/mytry.ia64 -i
 runtest $d1 $d2  ia64/mytry.ia64 -ka 
@@ -2231,10 +2236,12 @@ runtest $d1 $d2  louzon/ppcobj.o -ka -v -v -v -v -v -v -x name=./dwarfdump.conf 
 runtest $d1 $d2  linkonce/comdattest.o -ka -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 runtest $d1 $d2  linkonce/comdattest.o -a -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 runtest $d1 $d2 atefail/ig_server -kt 
+
 # Testing old interface to libdwarf with -g. IRIX only.
 runtest $d1 $d2 irixn32/dwarfdump -f -g 
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3  
-runtest $d1 $d2 irixn32/dwarfdump -f -n -x name=./dwarfdump.conf -x abi=mips-simple3  
+runtest $d1 $d2 irixn32/dwarfdump --print-pubnames --print-static-var --print-weakname --print-type --print-static-var --print-static-func
+
 runtest $d1 $d2 ia32/mytry.ia32 -F -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 ia64/mytry.ia64 -F -x name=dwarfdump.conf -x abi=ia64 
 echo "The following is a misspelling of abi. Checks for error spelling so leave it in."

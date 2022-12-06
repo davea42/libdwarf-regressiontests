@@ -3,6 +3,13 @@
 
 checkdetails() {
   f=$1
+  readelfobj $f  >junk 
+  grep .debug_var <junk  >junk2
+  if [ $? -eq 0 ]
+  then
+    echo "$f has .debug_var"
+  fi
+  return
   /tmp/dwarfdump -ka --trace=1 --trace=2 --trace=3  $f >junk
   grep KIND_RANGES_INFO <junk >junka
   grep KIND_LINKONCE_INFO <junk >junkb
@@ -24,11 +31,11 @@ checkdetails() {
   fi
   return
 
-  #readelfobj >junk
-  grep KIND_ junk
+  readelfobj >junk
+  grep .debug_loc >junk2
   if [ $? -eq 0 ]
   then
-    echo "$f has LINK_"
+    echo "$f has .debug_loc"
   fi
 }
 
@@ -59,7 +66,7 @@ do
   fi
   if [ $isobj = "y" ]
   then
-    echo $f
+    #echo $f
     checkdetails $f
   fi
 done
