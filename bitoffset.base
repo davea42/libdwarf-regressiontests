@@ -1,4 +1,5 @@
-Opening file /home/davea/dwarf/regressiontests/bitoffset/bitoffsetexampledw3.o
+Opening file <name suppressed for full path compatiblity
+
 Producer:: GNU C17 9.3.0 -mtune=generic -march=x86-64 -gdwarf-3 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
 Tag 13  DW_TAG_structure_type
 struct die offset 0x2d
@@ -7,7 +8,8 @@ Tag d  DW_TAG_member
 Member name b bitoffset 0x1c
 Tag 24  DW_TAG_base_type
 type die diename  int
-Opening file /home/davea/dwarf/regressiontests/bitoffset/bitoffsetexampledw5.o
+Opening file <name suppressed for full path compatiblity
+
 Producer:: GNU C17 9.3.0 -mtune=generic -march=x86-64 -gdwarf-5 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
 Tag 13  DW_TAG_structure_type
 struct die offset 0x2e

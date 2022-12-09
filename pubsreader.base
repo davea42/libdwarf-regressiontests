@@ -2,7 +2,7 @@ PASS dwarf_set_stringcheck() tests
 dwarf_basic_crc32() 1 returns 0x2535a0d3
 dwarf_basic_crc32() 2 returns 0xde6b25e0
 dwarf_basic_crc32() 3 returns 0x2535a0d3
-crc32() 3 value as bytes so endian matters: 0xd3 a0 35 25 
+crc32() 3 value as bytes so endian matters: 0x<suppressed for BE/LE compatibility>
 Entry try_global()
 globals count: 307 max, printing 5
 globals  0  "__start" (die name __start) (cu die name /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s)

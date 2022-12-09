@@ -1107,19 +1107,22 @@ main(int argc, char **argv)
         failcount++;
     }
     { /* PRINT BY BYTE */
-        char *s =0;
-        int ui  =0;
         if (sizeof(uint3) != 4) {
             printf("Size of integer type is %u bytes\n",
                 (unsigned int)sizeof(uint3));
             printf("So we don't show in plain byte format as it won't"
                 " be right\n");
         } else {
-            printf("crc32() 3 value as bytes so endian matters: 0x");
+            printf("crc32() 3 value as bytes so endian matters: "
+                "0x<suppressed for BE/LE compatibility>\n");
+#if 0
+Printing the bytes means endianness matters.
+Lets not do that.
             for (s=(char *)&uint3; ui < 4; ++ui,++s) {
                 printf("%02x ",(unsigned char)*s);
             }
             printf("\n");
+#endif
         }
     }
     if (uint1 != uint3) {

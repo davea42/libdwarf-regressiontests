@@ -216,7 +216,8 @@ main(int argc, char **argv)
         Dwarf_Debug dbg = 0;
 
         filepath = argv[i];
-        printf("Opening file %s\n",filepath);
+        printf("Opening file %s\n","<name suppressed for full"
+            " path compatiblity\n");
         res = dwarf_init_path(filepath,
             0,0,
             DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
