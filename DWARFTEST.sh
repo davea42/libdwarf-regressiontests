@@ -819,8 +819,6 @@ echo "=====START  $testsrc/test_pubsreader"
     echo "To update mv $bldtest/junk_pubsreaderout $testsrc/pubsreader.base"
   fi
 
-
-exit 0
 echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
    echo "test_bitoffset: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt \
@@ -840,6 +838,14 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
     >junk_bitoffset
   chkres $? "check bitoffset-error execution failed look at \
      junk_bitoffset"
+  diff $testsrc/bitoffset.base junk_bitoffset
+  r=$?
+  chkres $r "FAIL comparison bitoffset.base vs junk_bitoffset"
+  if [ $r -ne 0 ] 
+  then
+    echo "FAIL diff $testsrc/bitoffset.base $bldtest/junk_bitoffset" 
+    echo "To update mv $bldtest/junk_bitoffset $testsrc/bitoffset.base"
+  fi
 
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  $testsrc/supplementary/runtest.sh"

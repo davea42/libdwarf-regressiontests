@@ -2,8 +2,19 @@
 #
 # debugfissionb/ld-new.dwp has a DW_TAG_dwarf_procedure
 # but the object is too big to work with.
+
+t="-vv -a /home/davea/dwarf/regressiontests/hanzheng/fuzzedobject"
+t="-vv -a /home/davea/dwarf/regressiontests/c-sun2/nullpointer"
+t="-a /home/davea/dwarf/regressiontests/liu/heapoverflow01.elf"
+t="-a /home/davea/dwarf/regressiontests/liu/HeapOverflow0513.elf"
+t="-a -vvv -R -M /home/davea/dwarf/regressiontests/dwarf4/ddg4.5dwarf-4"
+dwarfdump  $t >junko
+/tmp/dwarfdump $t  >junkn
+exit 0
+
+
 #/tmp/dwarfdump -ku --trace=1 --trace=2 --trace=3  dwarf4/ddg4.5dwarf-4
-/tmp/dwarfdump -ku --trace=1 --trace=2 --trace=3  emre6/class_64_opt_fpo_split.dwp
+#/tmp/dwarfdump -ku --trace=1 --trace=2 --trace=3  emre6/class_64_opt_fpo_split.dwp
 exit 0
 /tmp/dwarfdump -i -M -v -v dwarfdump-i386-ubuntu.O
 #readelf --debug-dump=info dwarfdump-i386-ubuntu.O
