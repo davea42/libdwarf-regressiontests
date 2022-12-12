@@ -13,16 +13,17 @@ then
 fi
 }
 
-# We expect there to be 1 fail line saying "FAIL 0".
+# We expect there to be 1 fail line saying "FAIL     count: 0"
 chkfail () {
   f=$1
-  grep '^FAIL 0$' $f >junkck2 
+  grep '^FAIL     count: 0$' $f >junkck2 
   c=`wc -l <junkck2`
   if test $c -ne 1
   then
     rm -f junkck2
     echo "Failure $2"
-    echo "We expected one line saying FAIL 0 so something is wrong."
+    echo "We expected one line saying FAIL     count: 0"
+    echo "so something is wrong."
     echo "Here are the first few lines with FAIL:"
     grep FAIL $f |head -n 5
     echo "Here are the last few lines of the test output:"
