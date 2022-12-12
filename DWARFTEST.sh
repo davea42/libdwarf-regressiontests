@@ -1607,6 +1607,8 @@ runtest $d1 $d2 legendre/libmpich.so.1.0 -ka  $x
 runtest $d1 $d2 legendre/libmpich.so.1.0 -a  $x
 runtest $d1 $d2 legendre/libmpich.so.1.0 -l  $x
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf   -x abi=mips $x
+# This for code coverage of reading dwarfdump.conf
+runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf   -x abi=fakeabi $x
 runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v  $x
 runtest $d1 $d2  mucci/main.o -R -ka  -v -v -v -v -v -v $x
 done
