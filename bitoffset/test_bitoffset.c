@@ -182,7 +182,11 @@ try_bitoffset(Dwarf_Debug dbg)
         return 1;
     }
 
-    res = dwarf_dietype_offset(memberdie,&typeoffsetd,&error);
+    /*  In DWARF4 a DW_FORM_ref_sig8 can switch us from
+        .debug_into to .debug_types, so we need
+        it to tell us where the typeoffsetd is: */
+    res = dwarf_dietype_offset(memberdie,&typeoffsetd,
+        &is_info,&error);
     insistok(res,error," dwarf_dietype_offset");
     res = dwarf_offdie_b(dbg,typeoffsetd,is_info,
          &typedied,&error);
