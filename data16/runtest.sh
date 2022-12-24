@@ -27,17 +27,19 @@ then
  exit 1
 fi
 
-$dg --adddata16 -t obj -c 0 -o junk.bin  ./junktest.o 1>junk1.out 2>junkstderr.out 
+bf=junk.data16.bin
+
+$dg --adddata16 -t obj -c 0 -o $bf  ./junktest.o 1>junk1.out 2>junkstderr.out 
 if [ $? -ne 0 ]
 then
-  echo fail data16 build junk.bin from dwarfgen
+  echo fail data16 build $bf from dwarfgen
   echo "rerun: $ts/runtest.sh"
   exit 1
 fi
-$dd -i -M junk.bin  >junkdata16.new 2>/dev/null
+$dd -i -M $bf  >junkdata16.new 2>/dev/null
 if [ $? -ne 0 ]
 then
-  echo fail data16 dwarfdump junk.bin from dwarfgen
+  echo fail data16 dwarfdump $bf from dwarfgen
   echo "rerun: $ts/runtest.sh"
   exit 1
 fi
@@ -48,6 +50,12 @@ then
   echo "rerun: $ts/runtest.sh"
   exit 1
 fi
-
+# We do not redo the copy, it was only
+# important for the initial creation of an object
+# with a DW_FORM_data16 present. December 2022
+if [ ! -f $ts/data16.bin ]
+then
+  cp $bf $ts/data16.bin
+fi
 echo PASS data16
 exit 0
