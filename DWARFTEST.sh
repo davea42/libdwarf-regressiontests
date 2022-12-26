@@ -886,6 +886,7 @@ runtest $d1 $d2 supplementary/dwarfstringsup.o -i -cg
 # on its own. Implemented new libdwarf functions and
 # added --print-debug-addr to dwarfdump.
 
+runtest $d1 $d2 pubnames/bothpubs.exe               -i --check-functions
 runtest $d1 $d2 shopov2/clang-9.0.0-test-dwarf5.elf -i -M --print-debug-addr
 runtest $d1 $d2 pubnames/bothpubs.exe               -i -M --print-debug-addr
 runtest $d1 $d2 pubnames/dw5_names.o                -i -M --print-debug-addr
