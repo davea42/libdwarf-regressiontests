@@ -215,13 +215,25 @@ if __name__ == "__main__":
                 pass
             else:
                 pass
-    print("old len", len(oldduration))
-    print("new len", len(newduration))
+    nsum = 0
+    osum = 0
+    for n in newduration:
+      wds = n.split()
+      osum += int(wds[0])
+    print("old len", len(oldduration), "old time summed:",osum)
+    for n in oldduration:
+      wds = n.split()
+      nsum += int(wds[0])
+    print("new len", len(newduration), "new time summed:",nsum)
     newduration.sort()
     newduration.reverse()
     print("New list")
     for n in newduration:
       print(n)
+    oldduration.sort()
+    oldduration.reverse()
     print("Old list")
     for n in oldduration:
+      wds = n.split()
+      osum += int(wds[0])
       print(n)
