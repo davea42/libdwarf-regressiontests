@@ -875,7 +875,11 @@ mklocal guilfanov2
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
-runtest $d1 $d2 data16/data16.bin -i -M
+runtest $d1 $d2 data16/data16.bin               -a -M
+runtest $d1 $d2 implicitconst/implicitconst.bin -a -M
+runtest $d1 $d2 offsetfromlowpc/offsetfromlowpc.bin -a -M
+runtest $d1 $d2 dwgenc/dwgenc.bin -a -M
+
 
 # So lcov sees this option used.
 runtest $d1 $d2 supplementary/dwarfstringsup.o --print-debug-sup 

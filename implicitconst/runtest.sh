@@ -26,6 +26,11 @@ then
  echo "rerun: $ts/runtest.sh"
  exit 1
 fi
+if [ ! -f $ts/implicitconst.bin ]
+then
+    # For runtest testing without dwarfgen
+    cp junkimplcon.o $ts/implicitconst.bin
+fi
 
 diff $ts/dgout.base junkdg.new
 if [ $? -ne 0 ]

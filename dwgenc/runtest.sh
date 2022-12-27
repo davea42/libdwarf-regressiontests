@@ -18,6 +18,11 @@ then
     echo "rerun: $ts/runtest.sh"
     exit 1
 fi
+if [ ! -f $ts/dwgenc.bin ]
+then
+  #creating file just once. Will be in git.
+  cp testoutput.o $ts/dwgenc.bin
+fi
 
 ../dwarfdump  -i -M --print-debug-names testoutput.o 1>junkdebugnames 2>junkstderr
 if [ $? -ne 0 ] 

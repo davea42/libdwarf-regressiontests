@@ -103,6 +103,11 @@ $gen --show-reloc-details  --default-form-strp  -t obj -c 0 -o $tz $objf |grep '
 #  echo "fail D run dwarfgen $gen -r  -s  -t obj -c 0 -o $tz $objf"
 #  exit 1
 #fi
+if [ ! -f $ts/offsetfromlowpc.bin ]
+then
+  # For testing with runtest
+  cp $tz $ts/offsetfromlowpc.bin
+fi
 echo Now show FORM_str and more for $tz >$ta
 $dd -i -M $tz |grep DW_FORM_str  >>$ta 2> /dev/null
 if [ $? -ne 0 ]
