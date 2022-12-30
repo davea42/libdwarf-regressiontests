@@ -576,6 +576,56 @@ fi
 return 0
 }
 
+versiontest () {
+    dw=$1
+    shift
+    arg=$*
+    rm -f junk.versiontest
+    totalct=`expr $goodcount + $failcount + $skipcount + 1`
+    pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
+    echo  "=====START Pct $pctstring $arg" 
+    echo  "=====STATS Pct $pctstring ct: $totalct"
+    $dw $arg >junk.versiontest
+    l=`wc -l < junk.versiontest`
+    if [ $l -ne 1 ]
+    then
+      echo "FAIL output version test should be one line: $dw $* "
+      failcount=`expr $failcount + 1`
+      return
+    else
+      grep libdwarf junk.versiontest
+      if [ $? -ne 0 ]
+      then
+        echo "FAIL output version test content "
+        failcount=`expr $failcount + 1`
+        return
+      fi
+      grep dwarfdump junk.versiontest >/dev/null
+      if [ $? -ne 0 ]
+      then
+        echo "FAIL output version test content "
+        failcount=`expr $failcount + 1`
+        return
+      fi
+      grep '\[' junk.versiontest >/dev/null
+      if [ $? -ne 0 ]
+      then
+        echo "FAIL output version test content "
+        failcount=`expr $failcount + 1`
+        return
+      fi
+      grep '\]' junk.versiontest >/dev/null
+      if [ $? -ne 0 ]
+      then
+        echo "FAIL output version test content "
+        failcount=`expr $failcount + 1`
+        return
+      fi
+    fi
+    echo "PASS output version test content "
+    goodcount=`expr $goodcount + 1`
+}
+
 runtest () {
 	olddw=$1
 	newdw=$2
@@ -583,16 +633,12 @@ runtest () {
 	shift
 	shift
 	shift
-    #echo "newdw         : $newdw"
-    #echo "targ          : $targ"
-    #echo "remaining args: $*"
 	allgood="y"
-    #  Add 1 to show our number. We have not yet
+    #  Add 1 to show our summary number. We have not yet
     #  counted it as a good or a fail.
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
     pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
     echo  "=====START Pct $pctstring $* $targ" 
-    #echo "=====START $* $targ" 
     echo  "=====STATS Pct $pctstring ct: $totalct"
     rm -f core
     rm -f tmp1o tmp2n tmp3
@@ -609,10 +655,6 @@ runtest () {
     #=======old
     echo "old start " `date "+%Y-%m-%d %H:%M:%S"`
     tmplist="$*"
-    #echo "dadebug tmplist baseline line5 difference-fix ",$tmplist 
-    # dadebug temp strip -x
-    #tmplist2=`stripx "$*"`
-    # echo "dadebug tmplist2 ",$tmplist2 
     echo "======" $tmplist $targ >> $otimeout
     if [ x$wrtimeo != "x" ]
     then
@@ -654,7 +696,6 @@ runtest () {
           valgrinderrcount=`expr $valgrinderrcount + 1`
         fi
         valgrindcount=`expr $valgrindcount + 1`
-          
     else
       if [ "x$wrtimen" != "x" ]
       then
@@ -708,7 +749,6 @@ runtest () {
 
     #echo "counts in tmp1o tmp3"
     #wc tmp1o tmp3
-    filediff tmp1o tmp3  $* $targ
     if [ $? -ne 0 ]
     then
       #echo FAIL filediff tmp1o tmp2
@@ -859,6 +899,8 @@ mklocal showsecgroupsdir
   sh $testsrc/showsecgroupsdir/runtest.sh 
   chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
 cd ..
+
+versiontest $d2 -V
 
 echo "=====START  guilfanov  $testsrc/guilfanov/runtest.sh"
 mklocal guilfanov
