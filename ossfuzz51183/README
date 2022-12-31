@@ -28,3 +28,18 @@ Regressed: https://oss-fuzz.com/revisions?job=libfuzzer_asan_libdwarf&range=2022
 Reproducer Testcase: https://oss-fuzz.com/download?testcase_id=6011554641870848
 
 Issue filed automatically.
+
+
+December 31, 2022
+ossfuzz54358-emptyfile
+
+This one is actually an empty file.
+In the ossfuzz of this issue it fails
+the test code sometimes but not other times.
+
+The problem ossfuzz has with this is a mystery to me.
+Just added   print of the integer error number
+(as a string) after a failed call to
+dwarf_object_detector_path_b().
+It returns error of
+DW_DLE_FILE_TOO_SMALL(423) File is too small to be an object file.
