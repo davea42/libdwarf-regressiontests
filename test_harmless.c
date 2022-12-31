@@ -10,12 +10,18 @@
 */
 
 #include <stdio.h>
-#include <dwarf.h>
-#include <libdwarf.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/types.h> /* For open */
+#include <sys/stat.h>  /* For open */
+#include <fcntl.h>     /* For open */
+#include <dwarf.h>
+#include <libdwarf.h>
+
+#define TRUE  1
+#define FALSE 0
 
 typedef int (*tfunc)(unsigned int, const char **out);
 static char *harmless[] = {
@@ -227,7 +233,7 @@ run_test4()
 }
 
 
-int main()
+int main(int argc, char **argv)
 {
     int errcount = 0;
     int res = DW_DLV_ERROR;
@@ -235,14 +241,25 @@ int main()
     Dwarf_Ptr errarg = 0;
     Dwarf_Error error = 0;
     const char *filepath= "./test_harmless";
-    char truepath[3000];
-    unsigned truepathsize = sizeof(truepath);
+    int fd = 0;
+    int i = 1;
 
-    res = dwarf_init_path(filepath,
-        truepath,truepathsize,
-        DW_GROUPNUMBER_ANY,errhand,errarg, &dbg,
+    if (i >= argc) {
+       /* OK */
+    } else {
+        if (!strcmp(argv[2],"--suppress-dealloc-tree")) {
+            dwarf_set_de_alloc_flag(FALSE);
+            ++i;
+        }
+    }
+
+    fd = open(filepath,O_RDONLY);
+    if (fd == -1) {
+        printf("test_harmless cannot do DWARF processing "
+            "open failed.\n");
+    }
+    res = dwarf_init_b(fd,DW_GROUPNUMBER_ANY,errhand,errarg, &dbg,
         &error);
-     
     if(res != DW_DLV_OK) {
         printf("test_harmless cannot do DWARF processing "
             "dwarf_init failed.\n");

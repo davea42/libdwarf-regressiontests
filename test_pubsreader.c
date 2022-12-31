@@ -1066,6 +1066,15 @@ main(int argc, char **argv)
         printf("test_pubsreader exits\n");
         return 1;
     }
+    if (!strcmp(argv[2],"--suppress-dealloc-tree")) {
+        dwarf_set_de_alloc_flag(FALSE);
+        ++i;
+    }
+    if (i >= argc) {
+        printf("test_pubsreader not given file to open\n");
+        printf("test_pubsreader exits\n");
+        return 1;
+    }
 
     old1 = dwarf_set_stringcheck(1);
     old2 = dwarf_set_stringcheck(0);
@@ -1141,12 +1150,25 @@ Lets not do that.
         int res2 = 0;
         int res = DW_DLV_ERROR;
         Dwarf_Debug dbg = 0;
+        char          true_path_buf[2000];
+        unsigned int  true_path_buflen = 2000;
+        char          *str1 = "dummy1";
+        char          *str2 = "dummy1";
+        char          *dl_path_array[2];
+        unsigned int   dl_path_array_size = 2;
+        unsigned char  dl_path_source;
 
+        dl_path_array[0] = str1;
+        dl_path_array[1] = str2;
         filepath = argv[i];
-        res = dwarf_init_path(filepath,
-            0,0,
+        res = dwarf_init_path_dl(filepath,
+            true_path_buf,true_path_buflen,
             DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
+            dl_path_array,
+            dl_path_array_size,
+            &dl_path_source,
             &error);
+        (void)dl_path_source; /* avoid warning */
         if (res == DW_DLV_ERROR) {
             printf("Init of %s FAILED",
                 dwarf_errmsg(error));

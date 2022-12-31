@@ -189,6 +189,16 @@ main(int argc, char **argv)
         printf("test_sectionnames exits\n");
         return 1;
     }
+    if (!strcmp(argv[i],"--suppress-dealloc-tree")) {
+        dwarf_set_de_alloc_flag(FALSE);
+        ++i;
+    }
+    if (i >= argc) {
+        printf("test_sectionnames not given file to open\n");
+        printf("test_sectionnames exits\n");
+        return 1;
+    }
+
     for( ; i < argc; ++i) {
         const char *filepath = 0;
         int res2 = 0;
