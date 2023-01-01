@@ -189,13 +189,13 @@ main(int argc, char **argv)
         printf("test_sectionnames exits\n");
         return 1;
     }
-    if (!strcmp(argv[i],"--suppress-dealloc-tree")) {
+    if (!strcmp(argv[i],"--suppress-de-alloc-tree")) {
         dwarf_set_de_alloc_flag(FALSE);
         ++i;
     }
     if (i >= argc) {
-        printf("test_sectionnames not given file to open\n");
-        printf("test_sectionnames exits\n");
+        printf("test_sectionnames not given file to open.\n");
+        printf("test_sectionnames exits.\n");
         return 1;
     }
 

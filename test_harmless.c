@@ -247,7 +247,7 @@ int main(int argc, char **argv)
     if (i >= argc) {
        /* OK */
     } else {
-        if (!strcmp(argv[2],"--suppress-dealloc-tree")) {
+        if (!strcmp(argv[i],"--suppress-de-alloc-tree")) {
             dwarf_set_de_alloc_flag(FALSE);
             ++i;
         }

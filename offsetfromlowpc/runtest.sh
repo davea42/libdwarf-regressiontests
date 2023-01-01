@@ -203,18 +203,18 @@ bas=basehighpc4
 diff $ts/$bas $t7
 if [ $? -ne 0 ]
 then
-  echo fail dwarfdump -vvv -f  junk.o offsetfromlowpc advloc err
+  echo "fail offsetfromlowpc:  simplereader --check $ty "
   echo "to update baseline do: mv $tf/$t7 $ts/$bas"
   echo "rerun: $ts/runtest.sh"
   exit 1
 fi
 
 bas=baseadvlocf
-$dd -f junk.o  > $tg2      2>/dev/null
+$dd -f -l -vvv $tz  > $tg2      2>/dev/null
 diff $ts/$bas $tg2
 if [ $? -ne 0 ]
 then
-  echo "fail dwarfdump -f junk.o  offsetfromlowpc advloc err"
+  echo "fail dwarfdump -f $tz  offsetfromlowpc advloc err"
   echo "to update baseline do: mv $tf/$tg2 $ts/$bas"
   echo "rerun: $ts/runtest.sh"
   exit 1

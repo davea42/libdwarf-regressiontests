@@ -337,14 +337,6 @@ chkresn () {
 }
 
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
-#filepaths=""
-#if [ x$withlibelf = "xnolibelf" ]
-#then
-#    echo "=====SKIP sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a because nolibelf"
-#     skipcount=`expr $skipcount + 1`
-#else
-#    filepaths="sarubbo-6/1.crashes.bin sarubbo-4/libresolv.a $filepaths"'
-#fi
 
 filepaths='moshe/hello
 ckdev/modulewithdwarf.ko
@@ -474,15 +466,8 @@ else
      filepaths="navarro/compressed_aranges_test $filepaths"
      filepaths="liu/NULLderefer0505_01.elf $filepaths"
 fi
-if [ x$withlibelf = "xnolibelf" ]
-then
-     echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because nolibelf"
-     skipcount=`expr $skipcount + 2`
-else
-     echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because archives not handled"
-     #filepaths="sarubbo-6/1.crashes.bin $filepaths"'
-     #filepaths="sarubbo-4/libresolv.a $filepaths"'
-fi
+
+#echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because archives not handled"
 
 # Was in the list, but does not exist!
 #x86-64/x86_64testcase.o 
@@ -574,6 +559,49 @@ else
   fi
 fi
 return 0
+}
+
+runsingle () {
+  base=$1
+  exe=$2
+  shift
+  shift
+  args=$*
+  echo "entering single base= $base"
+  echo "entering single exe= $exe"
+  echo "entering single args= $args"
+  echo dadebug runsingle test_harmless `pwd`
+  ls -l ./test_harmless
+  ls -l $exe
+  if [ "x$VALGRIND" = "xy" ]
+  then
+    echo "valgrind .vgopts. $exe $args"
+    valgrind -q --leak-check=full --show-leak-kinds=all --error-exitcode=7 $exe $args 1>junk.$base 2>tmp2erra
+    cat tmp2erra >>junk.$base
+    if [ $? -eq 7 ]
+    then
+      echo "valgrind exit code 7, valgrinderrcount:$valgrinderrcount"
+      echo "Doing valgrind $* $targ"
+    fi
+    valgrindcount=`expr $valgrindcount + 1`
+  else
+    echo "run $exe $args"
+    $exe $args 1>junk.$base 2>tmp2erra
+    cat tmp2erra >>junk.$base
+  fi
+  if [ ! -f $testsrc/$base ]
+  then
+     # first time setup.
+     echo junk > $testsrc/$base
+  fi
+  diff $testsrc/$base junk.$base
+  r=$?
+  chkres $r 'compare runsingle failed'
+  if [ $r -ne 0 ]
+  then
+    echo "FAIL diff $base junk.$base" 
+    echo "To update mv $bldtest/junk.$base $testsrc/$base"
+  fi
 }
 
 versiontest () {
@@ -838,17 +866,20 @@ echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
     -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
      -o test_pubsreader $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
       -o test_pubsreader $dwlib $libopts
-  chkres $? 'check pubsreader-error compiling test_pubsreader.c failed'
-  echo "./test_pubsreader $testsrc/mustacchi/m32t.o \
+  r=$?
+  chkres $r 'check pubsreader-error compile test_pubsreader.c failed'
+  echo "./test_pubsreader $suppresstree $testsrc/mustacchi/m32t.o \
     $testsrc/irixn32/dwarfdump"
   echo "Results in junk_pubsreaderout"
   ./test_pubsreader $testsrc/irixn32/dwarfdump \
      $testsrc/mustacchi/m32t.o \
      >junk_pubsreaderout
-  chkres $? "check pubsreader-error execution failed look at \
+  r=$?
+  chkres $r "check pubsreader-error execution failed look at \
     junk_pubsreaderout"
   diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout
   r=$?
@@ -916,6 +947,9 @@ mklocal guilfanov2
   # but most likely not in libdwarf 0.1.2 or later.
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
+
+# The testcase is empty file. Ensure it behaves ok.
+runtest $d1 $d2 ossfuzz51183/ossfuzz54358-emptyfile -i
 
 runtest $d1 $d2 data16/data16.bin               -a -M
 runtest $d1 $d2 implicitconst/implicitconst.bin -a -M
@@ -1226,16 +1260,6 @@ runtest $d1 $d2 moya7/read-line-table-program-leak-test -a -M -v
 runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=$testsrc/moya-loc/loclists -a -M -v 
 runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=$testsrc/moya-loc/loclists -ka
 
-#if [ x$withlibelf = "xwithlibelf" ]
-#then
-#  # the -oi forces dwarftump to use libelf for this test
-#  # of the .debug_cu_index section.
-#  #runtest $d1 $d2 moya8/index-out-of-bounds-test -oi -a -M -v 
-#  skipcount=`expr $skipcount + 1`
-#else
-#  echo "==== SKIP -oi -a -M -v  moya8/index-out-of-bounds-test"
-#  skipcount=`expr $skipcount + 1`
-#fi
 runtest $d1 $d2 moya8/index-out-of-bounds-test  -a -M -v 
 runtest $d1 $d2 moya9/oob-repro -a -M -v --print-str-offsets --print-strings 
 runtest $d1 $d2 moya-rb/ranges3.dwp -a -M -v -a -v --file-tied=$testsrc/moya-rb/ranges3 
@@ -2065,12 +2089,15 @@ echo "=====START  $testsrc/test_harmless.c"
   echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c \
      -o test_harmless $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf  \
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+    -I$libbld/libdwarf  \
     -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless\
       $dwlib $libopts
   chkres $? 'check harmless-error compiling test_harmless.c failed'
   ./test_harmless
   chkres $? 'check harmless-error execution failed'
+  echo dadebug build test_harmless `pwd`
+  ls -l ./test_harmless
 
 echo "=====START  $testsrc/test_sectionnames"
   echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \
@@ -2093,7 +2120,7 @@ echo "=====START  $testsrc/test_sectionnames"
      junk_sectionnames"
 
 echo "=====START  $testsrc/test_arange"
-  echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \
+  echo "test_arange: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt \
      $testsrc/test_arange.c \
      -o test_arange $dwlib $libopts"
@@ -2102,9 +2129,9 @@ echo "=====START  $testsrc/test_arange"
       test_arange $dwlib $libopts
   chkres $? 'check arange-error compiling test_arange.c\
      failed'
-  echo "./test_arange irixn32/dwarfdump"
+  echo "./test_arange $testsrc/irixn32/dwarfdump"
   echo "Results in junk_arange"
-  ./test_arange  irixn32/dwarfdump >junk_arange
+  ./test_arange  $testsrc/irixn32/dwarfdump >junk_arange
   chkres $? "check arange-error execution failed look at \
      junk_arange"
 
@@ -2132,6 +2159,8 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
+echo dadebug check test_harmless before frame1 `pwd`
+ls -l ./test_harmless
 echo "=====START   $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd"
 mklocal frame1 
   echo "sh runtest.sh  $withlibelf $withlibz $withlibzstd"
@@ -2140,6 +2169,8 @@ mklocal frame1
   chkres $r $testsrc/frame1
 cd ..
 
+echo dadebug check test_harmless before sandnes2 `pwd`
+ls -l ./test_harmless
 echo "=====START   $testsrc/sandnes2/runtest.sh"
 mklocal sandnes2
   sh $testsrc/sandnes2/runtest.sh
@@ -2147,6 +2178,8 @@ mklocal sandnes2
   chkres $r  $testsrc/sandnes2
 cd ..
 
+echo dadebug check test_harmless before legendre `pwd`
+ls -l ./test_harmless
 if [ $NLIZE = 'n' ]
 then
   echo "=====START $testsrc/legendre/runtest.sh $withlibelf $withlibz $withlibzstd"
@@ -2160,15 +2193,29 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
+echo dadebug check test_harmless before enciso4 `pwd`
+ls -l ./test_harmless
 echo "=====START   $testsrc/enciso4/runtest.sh"
 mklocal enciso4
   sh $testsrc/enciso4/runtest.sh
   chkres $?  $testsrc/enciso4
 cd ..
 
+echo dadebug check test_harmless before old dwarf loclist `pwd`
+ls -l ./test_harmless
 # -g: use old dwarf loclist code.
 runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
+
+echo "dadebug now runsingle" `pwd`
+ls -l ./test_harmless
+runsingle test_harmlessb.base ./test_harmless  $suppresstree 
+runsingle test_sectionnamesb.base ./test_sectionnames \
+  $suppresstree ./test_sectionnames $testsrc/convey/testesb.c.o 
+runsingle test_arangeb.base ./test_arange  \
+  $suppresstree  $testsrc/irixn32/dwarfdump
+runsingle test_pubsreaderb.base ./test_pubsreader  \
+  $suppresstree $testsrc/irixn32/dwarfdump $testsrc/mustacchi/m32t.o
 
 # -u lets you provide a cu-name so you can select a CU and 
 # skip others when printing DIEs
