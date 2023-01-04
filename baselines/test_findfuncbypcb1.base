@@ -1,0 +1,11 @@
+Usage example: ./findfuncbypc --pc=0x10000 ./findfuncbypc
+ options list:
+ --help or -h prints this usage message and stops.
+ --pc=(hex or decimal pc address)
+ --printdetails  
+   prints some details of the discovery process
+ --allinstances
+   reports but does does not stop processing
+   on finding pc address
+ The argument following valid -- arguments must
+   be a valid object file path

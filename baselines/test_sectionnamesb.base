@@ -1,0 +1,20 @@
+Opened objectfile ./test_sectionnames
+No .debug_ranges section
+The .debug_aranges section name is .debug_aranges
+The .debug_line section name is .debug_line
+The .debug_str section name is .debug_str
+The .debug_info section name is .debug_info
+No .debug_types section
+No .debug_frame section
+The .eh_frame section name is .eh_frame
+No .debug_macro section
+Opened objectfile /home/davea/dwarf/regressiontests/convey/testesb.c.o
+No .debug_ranges section
+The .debug_aranges section name is .debug_aranges
+The .debug_line section name is .debug_line
+The .debug_str section name is .debug_str
+The .debug_info section name is .debug_info
+No .debug_types section
+No .debug_frame section
+The .eh_frame section name is .eh_frame
+The .debug_macro section name is .debug_macro

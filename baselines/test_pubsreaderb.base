@@ -1,0 +1,65 @@
+PASS dwarf_set_stringcheck() tests
+dwarf_basic_crc32() 1 returns 0x2535a0d3
+dwarf_basic_crc32() 2 returns 0xde6b25e0
+dwarf_basic_crc32() 3 returns 0x2535a0d3
+crc32() 3 value as bytes so endian matters: 0x<suppressed for BE/LE compatibility>
+Entry try_global()
+globals count: 307 max, printing 5
+globals  0  "__start" (die name __start) (cu die name /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s)
+CU die offset 0xb  is_info 1
+list entry count 5  CU total length 0xf2
+  
+   0x82 0x9d 0xb8 0xd0
+   0xe0
+Section Name of line section for die: .debug_line
+DIE DW_AT_name has form DW_FORM_string
+Attr offset of AT_name : 0x131
+globals  1  "_mcount" (die name _mcount) (cu die name /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s)
+globals  2  "__rld_obj_head" (die name __rld_obj_head) (cu die name /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s)
+globals  3  "__Argv" (die name __Argv) (cu die name /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s)
+globals  4  "__Argc" (die name __Argc) (cu die name /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s)
+Entry try_pubtype()
+pubtypes count: 0 max, printing 0
+Entry try_type()
+types count: 2269 max, printing 5
+typename  0  "__file_s" (die name __file_s) (cu die name ../../dwarfdump/dwarfdump.c)
+typename  1  "FILE" (die name FILE) (cu die name ../../dwarfdump/dwarfdump.c)
+typename  2  "Dwarf_Die_s" (die name Dwarf_Die_s) (cu die name ../../dwarfdump/dwarfdump.c)
+typename  3  "Dwarf_Die" (die name Dwarf_Die) (cu die name ../../dwarfdump/dwarfdump.c)
+typename  4  "string" (die name string) (cu die name ../../dwarfdump/dwarfdump.c)
+Entry try_vars()
+types count: 400 max, printing 5
+globals  0  "program_name" (die name program_name) (cu die name ../../dwarfdump/dwarfdump.c)
+globals  1  "line_flag" (die name line_flag) (cu die name ../../dwarfdump/dwarfdump.c)
+globals  2  "abbrev_flag" (die name abbrev_flag) (cu die name ../../dwarfdump/dwarfdump.c)
+globals  3  "frame_flag" (die name frame_flag) (cu die name ../../dwarfdump/dwarfdump.c)
+globals  4  "eh_frame_flag" (die name eh_frame_flag) (cu die name ../../dwarfdump/dwarfdump.c)
+Entry try_weaks()
+types count: 21 max, printing 5
+globals  0  "elf_strptr_xtnd" (die name _elf_strptr_xtnd) (cu die name ../../libelf/common/strptr.c)
+globals  1  "elf64_getehdr_xtnd" (die name _elf64_getehdr_xtnd) (cu die name ../../libelf/common/getehdr.c)
+globals  2  "elf32_getehdr_xtnd" (die name _elf32_getehdr_xtnd) (cu die name ../../libelf/common/getehdr.c)
+globals  3  "elf_nextscn_xtnd" (die name _elf_nextscn_xtnd) (cu die name ../../libelf/common/nextscn.c)
+globals  4  "elf_begin_xtnd" (die name _elf_begin_xtnd) (cu die name ../../libelf/common/begin.c)
+Entry try_funcs()
+types count: 209 max, printing 5
+globals  0  "open_a_file" (die name open_a_file) (cu die name ../../dwarfdump/dwarfdump.c)
+globals  1  "process_one_file" (die name process_one_file) (cu die name ../../dwarfdump/dwarfdump.c)
+globals  2  "process_args" (die name process_args) (cu die name ../../dwarfdump/dwarfdump.c)
+globals  3  "print_usage_message" (die name print_usage_message) (cu die name ../../dwarfdump/dwarfdump.c)
+globals  4  "print_infos" (die name print_infos) (cu die name ../../dwarfdump/dwarfdump.c)
+Entry try_global()
+globals count: 1 max, printing 1
+globals  0  "foo" (die name foo) (cu die name t.c)
+Entry try_pubtype()
+pubtypes count: 1 max, printing 1
+pubtypename  0  "int"
+ (die name int) (cu die name t.c)
+Entry try_type()
+types count: 0 max, printing 0
+Entry try_vars()
+types count: 0 max, printing 0
+Entry try_weaks()
+types count: 0 max, printing 0
+Entry try_funcs()
+types count: 0 max, printing 0

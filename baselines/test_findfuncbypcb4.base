@@ -1,0 +1,31 @@
+ Srclines: linetable version 3 table count 1
+  Filenames base index 1 file count 13 endindex 14
+  [1]  directory index 1 file: findfuncbypc.c 
+  [2]  directory index 2 file: stdio2.h 
+  [3]  directory index 2 file: string_fortified.h 
+  [4]  directory index 3 file: stddef.h 
+  [5]  directory index 2 file: types.h 
+  [6]  directory index 4 file: struct_FILE.h 
+  [7]  directory index 4 file: FILE.h 
+  [8]  directory index 5 file: stdio.h 
+  [9]  directory index 2 file: sys_errlist.h 
+  [10]  directory index 6 file: libdwarf.h 
+  [11]  directory index 5 file: stdlib.h 
+  [12]  directory index 0 file: <built-in> 
+  [13]  directory index 5 file: string.h 
+  Directories count: 6
+  [1] directory:  /home/davea/dwarf/code/src/bin/dwarfexample 
+  [2] directory:  /usr/include/x86_64-linux-gnu/bits 
+  [3] directory:  /usr/lib/gcc/x86_64-linux-gnu/9/include 
+  [4] directory:  /usr/include/x86_64-linux-gnu/bits/types 
+  [5] directory:  /usr/include 
+  [6] directory:  /home/davea/dwarf/code/src/lib/libdwarf 
+  [0]  address 0x3430 filenum 0 lineno 232 /home/davea/dwarf/code/src/bin/dwarfexample/findfuncbypc.c 
+FOUND function "main", requested pc 0x2710
+      function lowpc 0x23f0 highpc 0x3340
+      file name index 0x1
+      in:
+      CU 0  /home/davea/dwarf/code/src/bin/dwarfexample/findfuncbypc.c
+      comp-dir  /var/tmp/bld/src/bin/dwarfexample
+      Src line address 0x0 lineno 0 (null)
+

@@ -1,0 +1,17 @@
+Group Map data sizes
+  requested group :    4
+  section count   :   26
+  group count     :    3
+  selected group  :    4
+  map entry count :    8
+  [index] group   section 
+  [    0]     1    11 .debug_info
+  [    1]     1    13 .debug_abbrev
+  [    2]     1    14 .debug_aranges
+  [    3]     1    16 .debug_line
+  [    4]     1    18 .debug_str
+  [    5]     1    21 .eh_frame
+  [    6]     3     7 .debug_types
+  [    7]     4     9 .debug_types
+=======done with example.o, status DW_DLV_OK
+

@@ -1,0 +1,22 @@
+Group Map data sizes
+  requested group :    4
+  section count   : 1821
+  group count     :    1
+  selected group  :    4
+  map entry count :   10
+  [index] group   section 
+  [    0]     1  1798 .debug_addr
+  [    1]     1  1800 .debug_info
+  [    2]     1  1802 .debug_abbrev
+  [    3]     1  1803 .debug_gnu_pubnames
+  [    4]     1  1805 .debug_gnu_pubtypes
+  [    5]     1  1807 .debug_aranges
+  [    6]     1  1809 .debug_ranges
+  [    7]     1  1811 .debug_line
+  [    8]     1  1813 .debug_str
+  [    9]     1  1816 .eh_frame
+=======done with archive.o, status DW_DLV_OK
+
+There is no such file as "archive.o" or the selected group 2 (DW_GROUPNUMBER_DWO) does not appear in the file
+=======done with archive.o, status DW_DLV_NO_ENTRY
+

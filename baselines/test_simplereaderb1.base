@@ -1,0 +1,107 @@
+<  0> source file           : "simplereader.c"
+<  0> compilation directory : "/home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample"
+<  1> subprogram            : "char_to_uns4bit"
+high_pc checking char_to_uns4bit highpcb  0x004011fa highoff  0x0000007d lowpc    0x0040117d 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 137
+<  1> low_pc : 0x40117d
+<  1> subprogram            : "xfrm_to_sig8"
+high_pc checking xfrm_to_sig8 highpcb  0x00401396 highoff  0x0000019c lowpc    0x004011fa 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 156
+<  1> low_pc : 0x4011fa
+<  1> subprogram            : "startswithextractnum"
+high_pc checking startswithextractnum highpcb  0x00401416 highoff  0x00000080 lowpc    0x00401396 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 201
+<  1> low_pc : 0x401396
+<  1> subprogram            : "startswithextractstring"
+high_pc checking startswithextractstring highpcb  0x0040148d highoff  0x00000077 lowpc    0x00401416 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 218
+<  1> low_pc : 0x401416
+<  1> subprogram            : "format_sig8_string"
+high_pc checking format_sig8_string highpcb  0x00401520 highoff  0x00000093 lowpc    0x0040148d 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 232
+<  1> low_pc : 0x40148d
+<  1> subprogram            : "print_debug_fission_header"
+high_pc checking print_debug_fission_header highpcb  0x004016d5 highoff  0x000001b5 lowpc    0x00401520 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 252
+<  1> low_pc : 0x401520
+<  1> subprogram            : "main"
+high_pc checking main highpcb  0x00401f53 highoff  0x0000087e lowpc    0x004016d5 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 294
+<  1> low_pc : 0x4016d5
+<  1> subprogram            : "read_cu_list"
+high_pc checking read_cu_list highpcb  0x004021bc highoff  0x00000269 lowpc    0x00401f53 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 450
+<  1> low_pc : 0x401f53
+<  1> subprogram            : "get_die_and_siblings"
+high_pc checking get_die_and_siblings highpcb  0x00402325 highoff  0x00000169 lowpc    0x004021bc 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 511
+<  1> low_pc : 0x4021bc
+<  1> subprogram            : "get_addr"
+high_pc checking get_addr highpcb  0x00402375 highoff  0x00000050 lowpc    0x00402325 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 553
+<  1> low_pc : 0x402325
+<  1> subprogram            : "get_number"
+high_pc checking get_number highpcb  0x004023fd highoff  0x00000088 lowpc    0x00402375 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 566
+<  1> low_pc : 0x402375
+<  1> subprogram            : "print_subprog"
+high_pc checking print_subprog highpcb  0x00402890 highoff  0x00000493 lowpc    0x004023fd 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 585
+<  1> low_pc : 0x4023fd
+<  1> subprogram            : "print_comp_dir"
+high_pc checking print_comp_dir highpcb  0x004029f8 highoff  0x00000168 lowpc    0x00402890 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 716
+<  1> low_pc : 0x402890
+<  1> subprogram            : "resetsrcfiles"
+high_pc checking resetsrcfiles highpcb  0x00402a95 highoff  0x0000009d lowpc    0x004029f8 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 752
+<  1> low_pc : 0x4029f8
+<  1> subprogram            : "print_die_data_i"
+high_pc checking print_die_data_i highpcb  0x00402cca highoff  0x00000235 lowpc    0x00402a95 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 767
+<  1> low_pc : 0x402a95
+<  1> subprogram            : "print_die_data"
+high_pc checking print_die_data highpcb  0x00402e78 highoff  0x000001ae lowpc    0x00402cca 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 821
+<  1> low_pc : 0x402cca
+<  1> subprogram            : "open_a_file"
+high_pc checking open_a_file highpcb  0x00402ea9 highoff  0x00000031 lowpc    0x00402e78 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 856
+<  1> low_pc : 0x402e78
+<  1> subprogram            : "close_a_file"
+high_pc checking close_a_file highpcb  0x00402ec0 highoff  0x00000017 lowpc    0x00402ea9 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/dwarfexample/simplereader.c  line 877
+<  1> low_pc : 0x402ea9
+<  0> source file           : "dwarf_alloc.c"
+<  0> compilation directory : "/home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/libdwarf/"
+<  1> subprogram            : "simple_value_hashfunc"
+high_pc checking simple_value_hashfunc highpcb  0x00402ee6 lowpc    0x00402ec0 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/libdwarf/dwarf_alloc.c  line 267
+<  1> low_pc : 0x402ec0
+<  1> high_pc: 0x402ee6
+<  1> subprogram            : "tdestroy_free_node"
+high_pc checking tdestroy_free_node highpcb  0x00402faa lowpc    0x00402ef0 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/libdwarf/dwarf_alloc.c  line 278
+<  1> low_pc : 0x402ef0
+<  1> high_pc: 0x402faa
+<  1> subprogram            : "simple_compare_function"
+high_pc checking simple_compare_function highpcb  0x0040300a lowpc    0x00402fb0 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/libdwarf/dwarf_alloc.c  line 306
+<  1> low_pc : 0x402fb0
+<  1> high_pc: 0x40300a
+<  1> subprogram            : "_dwarf_get_alloc"
+high_pc checking _dwarf_get_alloc highpcb  0x00403257 lowpc    0x00403010 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/libdwarf/dwarf_alloc.c  line 337
+<  1> low_pc : 0x403010
+<  1> high_pc: 0x403257
+<  1> subprogram            : "string_is_in_debug_section"
+high_pc checking string_is_in_debug_section highpcb  0x004032cf lowpc    0x00403260 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/libdwarf/dwarf_alloc.c  line 405
+<  1> low_pc : 0x403260
+<  1> high_pc: 0x4032cf
+<  1> subprogram            : "dwarf_dealloc"
+high_pc checking dwarf_dealloc highpcb  0x00403435 lowpc    0x004032d0 
+<  1> file: 1 /home/xqx/test/libdwarf-test/llvm-codes/dwarf-20151114/libdwarf/dwarf_alloc.c  line 459
+<  1> low_pc : 0x4032d0
+<  1> high_pc: 0x403435
+Error in dwarf_siblingof_b , level 1 :DW_DLE_UNKNOWN_FORM: Abbrev form 0x7f DW_DLE_UNKNOWN_FORM(really unknown attr): Abbrev form 0x7f with attribute 0x0 so abbreviations unusable.  

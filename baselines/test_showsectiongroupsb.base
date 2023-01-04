@@ -1,0 +1,66 @@
+Group Map data sizes
+  requested group :    0
+  section count   : 1821
+  group count     :    1
+  selected group  :    1
+  map entry count :   10
+  [index] group   section 
+  [    0]     1  1798 .debug_addr
+  [    1]     1  1800 .debug_info
+  [    2]     1  1802 .debug_abbrev
+  [    3]     1  1803 .debug_gnu_pubnames
+  [    4]     1  1805 .debug_gnu_pubtypes
+  [    5]     1  1807 .debug_aranges
+  [    6]     1  1809 .debug_ranges
+  [    7]     1  1811 .debug_line
+  [    8]     1  1813 .debug_str
+  [    9]     1  1816 .eh_frame
+=======done with archive.o, status DW_DLV_OK
+
+Group Map data sizes
+  requested group :    0
+  section count   :    9
+  group count     :    1
+  selected group  :    2
+  map entry count :    5
+  [index] group   section 
+  [    0]     2     1 .debug_info.dwo
+  [    1]     2     2 .debug_abbrev.dwo
+  [    2]     2     3 .debug_line.dwo
+  [    3]     2     4 .debug_str_offsets.dwo
+  [    4]     2     5 .debug_str.dwo
+=======done with archive.dwo, status DW_DLV_OK
+
+Group Map data sizes
+  requested group :    0
+  section count   :  482
+  group count     :    1
+  selected group  :    1
+  map entry count :   10
+  [index] group   section 
+  [    0]     1   459 .debug_addr
+  [    1]     1   461 .debug_info
+  [    2]     1   463 .debug_abbrev
+  [    3]     1   464 .debug_gnu_pubnames
+  [    4]     1   466 .debug_gnu_pubtypes
+  [    5]     1   468 .debug_aranges
+  [    6]     1   470 .debug_ranges
+  [    7]     1   472 .debug_line
+  [    8]     1   474 .debug_str
+  [    9]     1   477 .eh_frame
+=======done with target.o, status DW_DLV_OK
+
+Group Map data sizes
+  requested group :    0
+  section count   :    9
+  group count     :    1
+  selected group  :    2
+  map entry count :    5
+  [index] group   section 
+  [    0]     2     1 .debug_info.dwo
+  [    1]     2     2 .debug_abbrev.dwo
+  [    2]     2     3 .debug_line.dwo
+  [    3]     2     4 .debug_str_offsets.dwo
+  [    4]     2     5 .debug_str.dwo
+=======done with target.dwo, status DW_DLV_OK
+
