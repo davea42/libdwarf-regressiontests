@@ -1,0 +1,19 @@
+
+December 31, 2022.
+
+This testcase has many serious errors:
+
+It has too few section to be real, at least 3
+needed.  One for section strings, one the
+initial empty section, and one with useful content..
+
+Section 0, instead of being the required empty
+section has section strings.
+
+The header says section strings are in section 0.
+
+If one thinks section [1] is .gnu.debuglink
+one will find the description size is huge
+(but so is the section itself!) and
+that is unreasonable.
+
