@@ -21,7 +21,7 @@ Group Map data sizes
 
 There is no group 2 in archive.o, init gets NO ENTRY
 ======== showsecgroups -group 2 archive.o  ========
-There is no such file as "archive.o"
+There is no such file as "archive.o" or the selected group 2 (DW_GROUPNUMBER_DWO) does not appear in the file
 =======done with archive.o, status DW_DLV_NO_ENTRY
 
 ======== showsecgroups -group 0 example.o  ========
@@ -62,7 +62,7 @@ Group Map data sizes
 
 There is no group 2 in example.o so it is NO ENTRY
 ======== showsecgroups -group 2 example.o  ========
-There is no such file as "example.o"
+There is no such file as "example.o" or the selected group 2 (DW_GROUPNUMBER_DWO) does not appear in the file
 =======done with example.o, status DW_DLV_NO_ENTRY
 
 ======== showsecgroups -group 3 example.o  ========

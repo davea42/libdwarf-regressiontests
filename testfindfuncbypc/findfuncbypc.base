@@ -13,10 +13,10 @@ Usage example: ./findfuncbypc --pc=0x10000 ./findfuncbypc
    be a valid object file path
 ====pc not found, no output
 ====../findfuncbypc --printdetails --pc=1 findfuncbypc.ex1
-look for target failed!
+Look for target PC failed!
 ====pc not found, no output
 ====../findfuncbypc --printdetails findfuncbypc.ex1
-look for target failed!
+Look for target PC failed!
 ====pc not found, no output
 ====../findfuncbypc --printdetails --pc=10000 findfuncbypc.ex1
  Srclines: linetable version 3 table count 1
@@ -50,7 +50,6 @@ FOUND function "main", requested pc 0x2710
       comp-dir  /var/tmp/bld/src/bin/dwarfexample
       Src line address 0x0 lineno 0 (null)
 
-look for target failed!
 ====Following tests using ranges properly
 ====../findfuncbypc --printdetails --pc=0x36a4 findfuncbypc.ex1
  Srclines: linetable version 3 table count 1
@@ -251,4 +250,3 @@ FOUND function "examine_die_data", requested pc 0x36a4
       comp-dir  /var/tmp/bld/src/bin/dwarfexample
       Src line address 0x36a0 lineno 1231 /home/davea/dwarf/code/src/bin/dwarfexample/findfuncbypc.c
 
-look for target failed!

@@ -1,4 +1,4 @@
-#!/bin/sh
+in!/bin/sh
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
 echo "Env vars that affect the tests:" 
@@ -20,7 +20,9 @@ echo "  Revert to normal test...: unset VALGRIND"
 # 28 August 2020. Completely revamped the way
 # tests are counted and the way $suppressbigdiffs is implemented. 
 
-echo 'Starting regressiontests: DWARFTEST.sh'  `date "+%Y-%m-%d %H:%M:%S"`
+#set -x
+echo 'Starting regressiontests: DWARFTEST.sh' \
+   `date "+%Y-%m-%d %H:%M:%S"`
 
 s=SHALIAS.sh
 if [ ! -f ./$s ]
@@ -503,6 +505,7 @@ unifyddnameb () {
 # At least on the freebsd VMs where I test.
 # With the native host OS it is usually not necessary to 
 # set suppressbigdiffs=y  .
+
 filediff() {
 t1=$1
 t2=$2
@@ -533,8 +536,10 @@ then
     diff $diffopt $t1 $t2
     if [ $? -eq 0 ]
     then
+      #echo "pass cmp Identical "  $* 
       return 0
     else
+      #echo "fail cmp Differ "  $*
       return 1
     fi
   else
@@ -553,31 +558,29 @@ else
   diff $diffopt $t1 $t2
   if [ $? -eq 0 ]
   then
-        return 0
+    echo "pass cmp Identical "  $* 
+    return 0
   else
-        return 1
+    echo "fail cmp Differ "  $*
+    return 1
   fi
 fi
 return 0
 }
 
+# $suppresstree value added here .
 runsingle () {
   base=$1
   exe=$2
   shift
   shift
   args=$*
-  echo "entering single base= $base"
-  echo "entering single exe= $exe"
-  echo "entering single args= $args"
-  echo dadebug runsingle test_harmless `pwd`
-  ls -l ./test_harmless
-  ls -l $exe
+  based=baselines
   if [ "x$VALGRIND" = "xy" ]
   then
-    echo "valgrind .vgopts. $exe $args"
-    valgrind -q --leak-check=full --show-leak-kinds=all --error-exitcode=7 $exe $args 1>junk.$base 2>tmp2erra
-    cat tmp2erra >>junk.$base
+    echo "valgrind .vgopts. $exe $suppresstree $args"
+    valgrind -q --leak-check=full --show-leak-kinds=all --error-exitcode=7 $exe $suppresstree $args 1>junk.$base 2>tmp2erra
+    cat tmp2erra >> junk.$base
     if [ $? -eq 7 ]
     then
       echo "valgrind exit code 7, valgrinderrcount:$valgrinderrcount"
@@ -585,26 +588,26 @@ runsingle () {
     fi
     valgrindcount=`expr $valgrindcount + 1`
   else
-    echo "run $exe $args"
-    $exe $args 1>junk.$base 2>tmp2erra
-    cat tmp2erra >>junk.$base
+    echo "run $exe $suppresstree $args"
+    $exe $suppresstree $args 1> junk.$base 2>tmp2erra
+    cat tmp2erra >> junk.$base
   fi
-  if [ ! -f $testsrc/$base ]
+  if [ ! -f $testsrc/baselines/$base ]
   then
      # first time setup.
-     echo junk > $testsrc/$base
+     echo junk > $testsrc/baselines/$base
   fi
-  diff $testsrc/$base junk.$base
+  diff $testsrc/baselines/$base junk.$base
   r=$?
   chkres $r 'compare runsingle failed'
   if [ $r -ne 0 ]
   then
-    echo "FAIL diff $base junk.$base" 
-    echo "To update mv $bldtest/junk.$base $testsrc/$base"
+    echo "FAIL diff $base junk.$based" 
+    echo "To update mv $bldtest/junk.$base $testsrc/baselines/$base"
   fi
 }
 
-versiontest () {
+runversiontest () {
     dw=$1
     shift
     arg=$*
@@ -777,6 +780,7 @@ runtest () {
 
     #echo "counts in tmp1o tmp3"
     #wc tmp1o tmp3
+    filediff tmp1o tmp3 $* $targ
     if [ $? -ne 0 ]
     then
       #echo FAIL filediff tmp1o tmp2
@@ -797,14 +801,14 @@ runtest () {
       echo "FAIL  $* $targ"
       failcount=`expr $failcount + 1`
     fi
-    rm -f core
-    rm -f tmp1o tmp2n tmp3
-    rm -f tmp1err tmp2err tmp3err 
-    rm -f tmp1errb tmp1errc
-    rm -f tmp1berr tmp2berr
-    rm -f testOfile OFn  OFo1 OFn1 
-    rm -f OFo2 OFn2
-    rm -f OFo3 OFn3
+#    rm -f core
+#    rm -f tmp1o tmp2n tmp3
+#    rm -f tmp1err tmp2err tmp3err 
+#    rm -f tmp1errb tmp1errc
+#    rm -f tmp1berr tmp2berr
+#    rm -f testOfile OFn  OFo1 OFn1 
+#    rm -f OFo2 OFn2
+#    rm -f OFo3 OFn3
 }
 # end 'runtest'
 
@@ -837,7 +841,6 @@ echo "=====START  $testsrc/testfindfuncbypc/ tests"
 # return 0 even if there is a DWARF ERROR reported
 # (but if the required arg omitted, return 1).
 echo "=====START  $testsrc/filelist/ tests"
-  
   mklocal filelist
   echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
@@ -854,7 +857,7 @@ echo "=====START  $testsrc/filelist/ tests"
      -o localfuzz_init_binary $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
+     -gdwarf  $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
      -o localfuzz_init_binary $dwlib $libopts
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   sh $testsrc/filelist/runtest.sh
@@ -909,13 +912,15 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
     >junk_bitoffset
   chkres $? "check bitoffset-error execution failed look at \
      junk_bitoffset"
-  diff $testsrc/bitoffset.base junk_bitoffset
+  diff $testsrc/bitoffset/bitoffset.base junk_bitoffset
   r=$?
-  chkres $r "FAIL comparison bitoffset.base vs junk_bitoffset"
-  if [ $r -ne 0 ] 
+  chkres $r "FAIL comparison $testsrc/bitoffset/bitoffset.base vs junk_bitoffset"
+  if [ $r -ne 0 ]
   then
-    echo "FAIL diff $testsrc/bitoffset.base $bldtest/junk_bitoffset" 
-    echo "To update mv $bldtest/junk_bitoffset $testsrc/bitoffset.base"
+    echo "FAIL diff $testsrc/bitoffset.base \
+      $bldtest/junk_bitoffset" 
+    echo "To update mv $bldtest/junk_bitoffset \
+      $testsrc/bitoffset.base"
   fi
 
 # Checking that we can print the .debug_sup section
@@ -925,13 +930,14 @@ mklocal supplementary
   chkres $? "$testsrc/supplementary/runtest.sh"
 cd ..
 
-echo "=====START  showsectiongroups  $testsrc/showsecgroupsdir/runtest.sh"
-mklocal showsecgroupsdir
-  sh $testsrc/showsecgroupsdir/runtest.sh 
-  chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
-cd ..
+# For these, see runsingle. This subdir is no longer relevant.
+#echo "=====START  showsectiongroups  $testsrc/showsecgroupsdir/runtest.sh"
+#mklocal showsecgroupsdir
+#  sh $testsrc/showsecgroupsdir/runtest.sh 
+#  chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
+#cd ..
 
-versiontest $d2 -V
+runversiontest $d2 -V
 
 echo "=====START  guilfanov  $testsrc/guilfanov/runtest.sh"
 mklocal guilfanov
@@ -947,6 +953,9 @@ mklocal guilfanov2
   # but most likely not in libdwarf 0.1.2 or later.
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
+
+# Early test of -h.
+runtest $d1 $d2 foo.o -h
 
 # The testcase is empty file. Ensure it behaves ok.
 runtest $d1 $d2 ossfuzz51183/ossfuzz54358-emptyfile -i
@@ -2210,12 +2219,81 @@ runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
 echo "dadebug now runsingle" `pwd`
 ls -l ./test_harmless
 runsingle test_harmlessb.base ./test_harmless  $suppresstree 
+
 runsingle test_sectionnamesb.base ./test_sectionnames \
-  $suppresstree ./test_sectionnames $testsrc/convey/testesb.c.o 
+  ./test_sectionnames $testsrc/convey/testesb.c.o 
+
 runsingle test_arangeb.base ./test_arange  \
-  $suppresstree  $testsrc/irixn32/dwarfdump
+  $testsrc/irixn32/dwarfdump
+
 runsingle test_pubsreaderb.base ./test_pubsreader  \
-  $suppresstree $testsrc/irixn32/dwarfdump $testsrc/mustacchi/m32t.o
+  $testsrc/irixn32/dwarfdump $testsrc/mustacchi/m32t.o
+
+runsingle test_jitreaderb.base ./jitreader
+
+# Missing path
+runsingle test_findfuncbypcb1.base ./findfuncbypc \
+  --printdetails --pc=1
+# pc not found
+runsingle test_findfuncbypcb2.base ./findfuncbypc  \
+  --printdetails --pc=1 $testsrc/testfindfuncbypc/findfuncbypc.exe1
+# no output?
+runsingle test_findfuncbypcb3.base ./findfuncbypc  \
+  --printdetails $testsrc/testfindfuncbypc/findfuncbypc.exe1
+# pc not found
+runsingle test_findfuncbypcb4.base ./findfuncbypc  \
+  --printdetails --pc=10000 $testsrc/testfindfuncbypc/findfuncbypc.exe1
+# should work
+runsingle test_findfuncbypcb5.base ./findfuncbypc  \
+  --printdetails --pc=0x36a4 $testsrc/testfindfuncbypc/findfuncbypc.exe1
+
+
+runsingle test_simplereaderb.base ./simplereader \
+  $testsrc/corruptdwarf-a/simplereader.elf
+runsingle test_simplereaderb1.base ./simplereader \
+  --names --check $testsrc/corruptdwarf-a/simplereader.elf
+runsingle test_simplereaderb2.base ./simplereader \
+  --passnullerror $testsrc/corruptdwarf-a/simplereader.elf
+runsingle test_simplereaderb3.base ./simplereader \
+  --use_init_fd $testsrc/corruptdwarf-a/simplereader.elf
+#There is no output from the following as there is no
+# .debug_types section to report on.
+runsingle test_simplereaderb4.base ./simplereader \
+  --isinfo=0 --use_init_fd $testsrc/corruptdwarf-a/simplereader.elf
+# This has .debug_type
+runsingle test_simplereaderb4b.base ./simplereader \
+  --isinfo=0 --use_init_fd $testsrc/dwarf4/dd2g4.5dwarf-4
+
+runsingle test_showsectiongroupsb.base  \
+  ./showsectiongroups \
+  $testsrc/debugfission/archive.o \
+  $testsrc/debugfission/archive.dwo  \
+  $testsrc/debugfission/target.o \
+  $testsrc/debugfission/target.dwo 
+runsingle test_showsectiongroupsb1.base \
+   ./showsectiongroups \
+   "-group 1" $testsrc/debugfission/target.dwo
+runsingle test_showsectiongroupsb4.base ./showsectiongroups \
+  "-group 4" $testsrc/debugfission/archive.o \
+  "-group 2" $testsrc/debugfission/archive.o
+
+runsingle test_showsectiongroupsb0.base ./showsectiongroups \
+  "-group 0" $testsrc/comdatex/example.o
+
+runsingle test_showsectiongroupsc1.base ./showsectiongroups \
+  "-group 1" $testsrc/comdatex/example.o
+
+runsingle test_showsectiongroupsc2.base ./showsectiongroups \
+  "-group 2" $testsrc/comdatex/example.o
+
+runsingle test_showsectiongroupsc3.base  ./showsectiongroups \
+  "-group 3" $testsrc/comdatex/example.o
+
+runsingle test_showsectiongroupsc4.base  ./showsectiongroups \
+  "-group 4" $testsrc/comdatex/example.o
+
+runsingle test_showsectiongroupsc5.base  ./showsectiongroups \
+  "-group 5" $testsrc/comdatex/example.o
 
 # -u lets you provide a cu-name so you can select a CU and 
 # skip others when printing DIEs

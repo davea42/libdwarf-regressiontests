@@ -12,8 +12,8 @@ section has section strings.
 
 The header says section strings are in section 0.
 
-If one thinks section [1] is .gnu.debuglink
-one will find the description size is huge
+It thinks section [1] is .gnu.debuglink
+and one finds the description size is huge
 (but so is the section itself!) and
-that is unreasonable.
+that size is unreasonable.
 

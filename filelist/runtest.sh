@@ -16,22 +16,23 @@ chkres () {
   fi
 }
 
-
 rm -f result
 touch result
 while read fname
 do
-  echo "=====localfuzz_init_path $fname" 
+  echo "=====localfuzz_init_path $fz $testsrc/$fname" 
   $fz $testsrc/$fname  2>>result
+  tail -10 result
   r=$?
-  chkres $r "Running $ts/$fz $testsrc/$fname "
+  chkres $r "Running $fz $testsrc/$fname "
 done < $ts/fileliste
 
 while read fname
 do
-  echo "=====localfuzz_init_binary $fname" 
+  echo "=====localfuzz_init_binary $fzb $testsrc/$fname" 
   $fzb $testsrc/$fname 2>> result
-  chkres $? "Running $ts/$fzb $testsrc/$fname "
+  tail -10 result
+  chkres $? "Running $fzb $testsrc/$fname "
 done < $ts/fileliste
 
 diff ./result $ts/baseresult

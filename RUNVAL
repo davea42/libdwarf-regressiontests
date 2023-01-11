@@ -2,15 +2,20 @@
 #
 # debugfissionb/ld-new.dwp has a DW_TAG_dwarf_procedure
 # but the object is too big to work with.
+rm -f ./vglog
+vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=all"
+opts="--suppress-de-alloc-tree  -a /home/davea/dwarf/regressiontests/sarubbo/test433.crashes"
+valgrind $vgopts  /tmp/dwarfdump $opts >junkn
+exit 0
 
 t="-vv -a /home/davea/dwarf/regressiontests/hanzheng/fuzzedobject"
 t="-vv -a /home/davea/dwarf/regressiontests/c-sun2/nullpointer"
 t="-a /home/davea/dwarf/regressiontests/liu/heapoverflow01.elf"
 t="-a /home/davea/dwarf/regressiontests/liu/HeapOverflow0513.elf"
 t="-a -vvv -R -M /home/davea/dwarf/regressiontests/dwarf4/ddg4.5dwarf-4"
-dwarfdump  $t >junko
-/tmp/dwarfdump $t  >junkn
-exit 0
+#dwarfdump  $t >junko
+#/tmp/dwarfdump $t  >junkn
+#exit 0
 
 
 #/tmp/dwarfdump -ku --trace=1 --trace=2 --trace=3  dwarf4/ddg4.5dwarf-4
@@ -25,7 +30,6 @@ exit 0
 #exit 0
 
 #/tmp/dwarfdump  -i -M --print-debug-addr /home/davea/dwarf/regressiontests/pubnames/dw5_names.o
-vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=all"
 
 #opts="ossfuzz47150/clusterfuzz-testcase-minimized-fuzz_init_path-6727387238236160.fuzz"
 #opts="--suppress-de-alloc-tree -i -v -v -v /home/davea/dwarf/regressiontests/debugfissionb/ld-new.dwp"
