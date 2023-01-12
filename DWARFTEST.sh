@@ -536,21 +536,22 @@ then
     diff $diffopt $t1 $t2
     if [ $? -eq 0 ]
     then
-      #echo "pass cmp Identical "  $* 
+      #echo "pass diff Identical "  $* 
       return 0
     else
-      #echo "fail cmp Differ "  $*
+      #echo "fail diff Differ "  $*
       return 1
     fi
   else
     # too big to diff
+    echo "TOOBIGDIFF. do cmp"
     cmp $t1 $t2
     if [ $? -eq 0 ]
     then
-      echo "pass cmp Identical "  $* 
+      #echo "pass cmp Identical "  $* 
       return 0
     else
-      echo "fail cmp Differ "  $*
+      #echo "fail cmp Differ "  $*
       return 1
     fi
   fi
@@ -558,10 +559,10 @@ else
   diff $diffopt $t1 $t2
   if [ $? -eq 0 ]
   then
-    echo "pass cmp Identical "  $* 
+    echo "pass diff Identical "  $* 
     return 0
   else
-    echo "fail cmp Differ "  $*
+    echo "fail diff Differ "  $*
     return 1
   fi
 fi
@@ -575,7 +576,13 @@ runsingle () {
   shift
   shift
   args=$*
+  allgood=y
   based=baselines
+  totalct=`expr $goodcount + $failcount + $skipcount + 1`
+  pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
+  echo  "=====STARTsingle Pct $pctstring $* $targ"
+  echo  "=====STATSsingle Pct $pctstring ct: $totalct"
+
   if [ "x$VALGRIND" = "xy" ]
   then
     echo "valgrind .vgopts. $exe $suppresstree $args"
@@ -603,7 +610,15 @@ runsingle () {
   if [ $r -ne 0 ]
   then
     echo "FAIL diff $base junk.$based" 
+    allgood=n
     echo "To update mv $bldtest/junk.$base $testsrc/baselines/$base"
+  fi
+  if [ $allgood = "y" ]
+  then
+    goodcount=`expr $goodcount + 1`
+  else
+    echo "FAIL  $* $targ"
+    failcount=`expr $failcount + 1`
   fi
 }
 
@@ -2391,14 +2406,14 @@ runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros -v
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m -vvv
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m -v
-runtest $d1 $d2 macro5/basetest5     --print-macinfo
-runtest $d1 $d2 macro5/basetest5     --check-macros
+runtest $d1 $d2 macro5/basetest     --print-macinfo
+runtest $d1 $d2 macro5/basetest     --check-macros
 
 #Following 2 show some DW_AT_MIPS_fde difference. So -C works.
 runtest $d1 $d2  irix64/libc.so -ka   -x name=dwarfdump.conf -x abi=mips-simple3
 runtest $d1 $d2  irix64/libc.so -i    -x name=dwarfdump.conf -x abi=mips-simple3
 
-FIXME
+#FIXME
 runtest $d1 $d2  irix64/libc.so --print-pubnames --print-weakname --print-type --print-static-var --print-static-func
 runtest $d1 $d2  irixn32/libc.so --print-pubnames --print-static-var --print-weakname --print-type --print-static-var --print-static-func
 
