@@ -1,4 +1,4 @@
-in!/bin/sh
+#!/bin/sh
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
 echo "Env vars that affect the tests:" 
@@ -559,10 +559,10 @@ else
   diff $diffopt $t1 $t2
   if [ $? -eq 0 ]
   then
-    echo "pass diff Identical "  $* 
+    #echo "pass diff Identical "  $* 
     return 0
   else
-    echo "fail diff Differ "  $*
+    #echo "fail diff Differ "  $*
     return 1
   fi
 fi
@@ -576,12 +576,13 @@ runsingle () {
   shift
   shift
   args=$*
-  allgood=y
   based=baselines
+  rm tmp2erra
   totalct=`expr $goodcount + $failcount + $skipcount + 1`
   pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
   echo  "=====STARTsingle Pct $pctstring $* $targ"
   echo  "=====STATSsingle Pct $pctstring ct: $totalct"
+  echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
 
   if [ "x$VALGRIND" = "xy" ]
   then
@@ -596,7 +597,12 @@ runsingle () {
     valgrindcount=`expr $valgrindcount + 1`
   else
     echo "run $exe $suppresstree $args"
-    $exe $suppresstree $args 1> junk.$base 2>tmp2erra
+    if [ x$wrtimeo != "x" ]
+    then
+      $wrtimeo $exe $suppresstree $args 1> junk.$base 2>tmp2erra
+    else
+      $exe $suppresstree $args 1> junk.$base 2>tmp2erra
+    fi
     cat tmp2erra >> junk.$base
   fi
   if [ ! -f $testsrc/baselines/$base ]
@@ -604,7 +610,8 @@ runsingle () {
      # first time setup.
      echo junk > $testsrc/baselines/$base
   fi
-  diff $testsrc/baselines/$base junk.$base
+  allgood=y
+  filediff $testsrc/baselines/$base junk.$base $exe $args
   r=$?
   chkres $r 'compare runsingle failed'
   if [ $r -ne 0 ]
@@ -620,6 +627,7 @@ runsingle () {
     echo "FAIL  $* $targ"
     failcount=`expr $failcount + 1`
   fi
+  echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
 }
 
 runversiontest () {
@@ -631,12 +639,14 @@ runversiontest () {
     pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
     echo  "=====START Pct $pctstring $arg" 
     echo  "=====STATS Pct $pctstring ct: $totalct"
+    echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     $dw $arg >junk.versiontest
     l=`wc -l < junk.versiontest`
     if [ $l -ne 1 ]
     then
       echo "FAIL output version test should be one line: $dw $* "
       failcount=`expr $failcount + 1`
+      echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
       return
     else
       grep libdwarf junk.versiontest
@@ -644,13 +654,15 @@ runversiontest () {
       then
         echo "FAIL output version test content "
         failcount=`expr $failcount + 1`
+        echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
         return
       fi
-      grep dwarfdump junk.versiontest >/dev/null
+      grep dwarfdump < junk.versiontest >/dev/null
       if [ $? -ne 0 ]
       then
         echo "FAIL output version test content "
         failcount=`expr $failcount + 1`
+        echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
         return
       fi
       grep '\[' junk.versiontest >/dev/null
@@ -658,6 +670,7 @@ runversiontest () {
       then
         echo "FAIL output version test content "
         failcount=`expr $failcount + 1`
+        echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
         return
       fi
       grep '\]' junk.versiontest >/dev/null
@@ -665,9 +678,11 @@ runversiontest () {
       then
         echo "FAIL output version test content "
         failcount=`expr $failcount + 1`
+        echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
         return
       fi
     fi
+    echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
     echo "PASS output version test content "
     goodcount=`expr $goodcount + 1`
 }
@@ -708,7 +723,6 @@ runtest () {
     else
           $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
     fi
-    echo "old done " `date "+%Y-%m-%d %H:%M:%S"`
     unifyddname tmp1a tmp1o
     unifyddnameb tmp1erra tmp1err
     if [ -f core ]
@@ -728,6 +742,7 @@ runtest () {
     fi
     # We will now build the other file=testOfile if such is involved
     rm -f testOfile
+    echo "old done " `date "+%Y-%m-%d %H:%M:%S"`
     #=======new
     echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     echo "======" $tmplist $targ >> $ntimeout
@@ -757,7 +772,7 @@ runtest () {
       #This will record any ESBERR instances.
       cat $tesb >>tmp2a
     fi
-    echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
+    #echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
     # No need to unify for new dd name.
     unifyddname tmp2a tmp2n
     unifyddnameb tmp2erra tmp2err
@@ -816,14 +831,15 @@ runtest () {
       echo "FAIL  $* $targ"
       failcount=`expr $failcount + 1`
     fi
-#    rm -f core
-#    rm -f tmp1o tmp2n tmp3
-#    rm -f tmp1err tmp2err tmp3err 
-#    rm -f tmp1errb tmp1errc
-#    rm -f tmp1berr tmp2berr
-#    rm -f testOfile OFn  OFo1 OFn1 
-#    rm -f OFo2 OFn2
-#    rm -f OFo3 OFn3
+    echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
+    rm -f core
+    rm -f tmp1o tmp2n tmp3
+    rm -f tmp1err tmp2err tmp3err 
+    rm -f tmp1errb tmp1errc
+    rm -f tmp1berr tmp2berr
+    rm -f testOfile OFn  OFo1 OFn1 
+    rm -f OFo2 OFn2
+    rm -f OFo3 OFn3
 }
 # end 'runtest'
 
