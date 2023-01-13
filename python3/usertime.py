@@ -114,9 +114,9 @@ def processfile(path):
 
 def printtop(recs, max):
     for i, r in enumerate(recs):
-        r.uprint("")
         if i >= max:
             return
+        r.uprint("")
 
 
 if __name__ == "__main__":
@@ -128,7 +128,7 @@ if __name__ == "__main__":
     counts, recs = processfile(tfilename)
     recs.sort(key=lambda x: float(x.wsecs))
     recs.reverse()
-    printtop(recs, 10)
+    printtop(recs,1)
     print(
         region,
         "Count %5d  Seconds: usr %6.2f " % (counts.timereccount, counts.usecs),

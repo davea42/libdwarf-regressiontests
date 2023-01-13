@@ -133,7 +133,6 @@ def printtop(recs,max):
     i = int(i) +1
     if i >= max:
         return
-    
 
 if __name__ == '__main__':
   if len(sys.argv) != 3:
@@ -147,7 +146,7 @@ if __name__ == '__main__':
   
   recs = sort_class(reclist)
   recs.reverse()
-  printtop(recs,10)
+  printtop(recs,1)
 
   print region,"Count %5d  Seconds: usr %6.2f sys %6.2f wallclock %6.2f " %( tcount,usecs,ssecs,wsecs) 
   print region,"Count Non zero status %d maxu %6.2f maxw %6.2f " % (nzcount,maxu,maxw) 
