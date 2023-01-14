@@ -1,11 +1,11 @@
 /*
-  Copyright (c) 2021 David Anderson.  All rights reserved.
-  This example is hereby placed in the public domain
-  for anyone to use without restriction.  */
-/*  test_arange.c 
-    To use 
+    Copyright (c) 2021 David Anderson.  All rights reserved.
+    This example is hereby placed in the public domain
+    for anyone to use without restriction.  */
+/*  test_arange.c
+    To use
         make
-        ./test_arange 
+        ./test_arange
 */
 #include "config.h"
 /* Windows specific header files */
@@ -136,7 +136,8 @@ try_arange(Dwarf_Debug dbg,Dwarf_Error *error)
             &start, &length, &cu_die_offset,error);
         if (res != DW_DLV_OK) {
             if (res == DW_DLV_ERROR) {
-                printf("ERROR X calling dwarf_get_arange_info_b! %s\n",
+                printf("ERROR X calling dwarf_get_arange_info_b!"
+                    " %s\n",
                     dwarf_errmsg(*error));
                 return 1;
             }
@@ -182,8 +183,7 @@ basename(const char *path)
     int lastslash = -1;
     int i = 0;
 
-
-    for( ; *cp ; ++cp,++i) {
+    for ( ; *cp ; ++cp,++i) {
         if (*cp == '/') {
             lastslash = i;
         }
@@ -193,7 +193,7 @@ basename(const char *path)
     }
     if (!*cp && (lastslash+1) == i) {
         if (i >1) {
-           return path+lastslash-1;
+            return path+lastslash-1;
         }
         return path+lastslash;
     }
@@ -224,7 +224,7 @@ main(int argc, char **argv)
         return 1;
     }
 
-    for( ; i < argc; ++i) {
+    for ( ; i < argc; ++i) {
         const char *filepath = 0;
         const char *base= 0;
         int res2 = 0;
@@ -257,7 +257,7 @@ main(int argc, char **argv)
         }
     }
     if (failcount) {
-         return 1;
+        return 1;
     }
     return 0;
 }

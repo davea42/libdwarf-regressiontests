@@ -4,7 +4,6 @@
 /*  Test code to verify table and switch code work
     in libdwarf. */
 
-
 #include <stdio.h>
 #include <dwarf.h>
 #include <libdwarf.h>
@@ -18,7 +17,7 @@ run_test(tfunc callme, const char *name)
     for ( i = 0; i < 50; ++i) {
         const char *out = 0;
         int res = callme(i,&out);
-        if(res == DW_DLV_OK) {
+        if (res == DW_DLV_OK) {
             printf(" %s %d %s\n",name,i,out);
         } else {
             printf(" %s %d not valid code \n",name,i);

@@ -1,9 +1,9 @@
 /*
-  Copyright (c) 2021 David Anderson.  All rights reserved.
-  This example is hereby placed in the public domain
-  for anyone to use without restriction.  */
-/*  test_testsectionnames.c 
-    To use 
+    Copyright (c) 2021 David Anderson.  All rights reserved.
+    This example is hereby placed in the public domain
+    for anyone to use without restriction.  */
+/*  test_testsectionnames.c
+    To use
         make
         ./test_sectionnames irixn32/dwarfdump
 */
@@ -62,14 +62,14 @@ try_section_names(Dwarf_Debug dbg,Dwarf_Error *error)
 {
     int errcount = 0;
     const char *secname = 0;
-    int res = 0; 
+    int res = 0;
     char *sn = ".debug_ranges";
 
     res = dwarf_get_ranges_section_name(dbg,&secname,error);
     if (res == DW_DLV_NO_ENTRY) {
         printf("No %s section\n",sn);
     } else if (res == DW_DLV_ERROR) {
-        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error)); 
+        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error));
         ++errcount;
     } else {
         printf("The %s section name is %s\n",sn,secname);
@@ -81,7 +81,7 @@ try_section_names(Dwarf_Debug dbg,Dwarf_Error *error)
     if (res == DW_DLV_NO_ENTRY) {
         printf("No %s section\n",sn);
     } else if (res == DW_DLV_ERROR) {
-        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error)); 
+        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error));
         ++errcount;
     } else {
         printf("The %s section name is %s\n",sn,secname);
@@ -93,7 +93,7 @@ try_section_names(Dwarf_Debug dbg,Dwarf_Error *error)
     if (res == DW_DLV_NO_ENTRY) {
         printf("No %s section\n",sn);
     } else if (res == DW_DLV_ERROR) {
-        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error)); 
+        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error));
         ++errcount;
     } else {
         printf("The %s section name is %s\n",sn,secname);
@@ -105,7 +105,7 @@ try_section_names(Dwarf_Debug dbg,Dwarf_Error *error)
     if (res == DW_DLV_NO_ENTRY) {
         printf("No %s section\n",sn);
     } else if (res == DW_DLV_ERROR) {
-        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error)); 
+        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error));
         ++errcount;
     } else {
         printf("The %s section name is %s\n",sn,secname);
@@ -117,7 +117,7 @@ try_section_names(Dwarf_Debug dbg,Dwarf_Error *error)
     if (res == DW_DLV_NO_ENTRY) {
         printf("No %s section\n",sn);
     } else if (res == DW_DLV_ERROR) {
-        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error)); 
+        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error));
         ++errcount;
     } else {
         printf("The %s section name is %s\n",sn,secname);
@@ -128,7 +128,7 @@ try_section_names(Dwarf_Debug dbg,Dwarf_Error *error)
     if (res == DW_DLV_NO_ENTRY) {
         printf("No %s section\n",sn);
     } else if (res == DW_DLV_ERROR) {
-        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error)); 
+        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error));
         ++errcount;
     } else {
         printf("The %s section name is %s\n",sn,secname);
@@ -140,7 +140,7 @@ try_section_names(Dwarf_Debug dbg,Dwarf_Error *error)
     if (res == DW_DLV_NO_ENTRY) {
         printf("No %s section\n",sn);
     } else if (res == DW_DLV_ERROR) {
-        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error)); 
+        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error));
         ++errcount;
     } else {
         printf("The %s section name is %s\n",sn,secname);
@@ -152,25 +152,25 @@ try_section_names(Dwarf_Debug dbg,Dwarf_Error *error)
     if (res == DW_DLV_NO_ENTRY) {
         printf("No %s section\n",sn);
     } else if (res == DW_DLV_ERROR) {
-        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error)); 
+        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error));
         ++errcount;
     } else {
         printf("The %s section name is %s\n",sn,secname);
     }
     secname = 0;
-  
+
     sn = ".debug_macro";
     res = dwarf_get_macro_section_name(dbg,&secname,error);
     if (res == DW_DLV_NO_ENTRY) {
         printf("No %s section\n",sn);
     } else if (res == DW_DLV_ERROR) {
-        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error)); 
+        printf("Error in %s. Error is %s\n",sn,dwarf_errmsg(*error));
         ++errcount;
     } else {
         printf("The %s section name is %s\n",sn,secname);
     }
     secname = 0;
-  
+
     return errcount;
 }
 
@@ -181,8 +181,7 @@ basename(const char *path)
     int lastslash = -1;
     int i = 0;
 
-
-    for( ; *cp ; ++cp,++i) {
+    for ( ; *cp ; ++cp,++i) {
         if (*cp == '/') {
             lastslash = i;
         }
@@ -192,7 +191,7 @@ basename(const char *path)
     }
     if (!*cp && (lastslash+1) == i) {
         if (i >1) {
-           return path+lastslash-1;
+            return path+lastslash-1;
         }
         return path+lastslash;
     }
@@ -223,25 +222,26 @@ main(int argc, char **argv)
         return 1;
     }
 
-    for( ; i < argc; ++i) {
+    for ( ; i < argc; ++i) {
         const char *filepath = 0;
         int res2 = 0;
         int res = DW_DLV_ERROR;
         Dwarf_Debug dbg = 0;
+        const char *base = 0;
 
         filepath = argv[i];
-        const char *base = basename(filepath);
+        base = basename(filepath);
         res = dwarf_init_path(filepath,
             0,0,
             DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
             &error);
         if (res == DW_DLV_ERROR) {
-            printf("Init of %s FAILED\n",
-                dwarf_errmsg(error));
+            printf("Init of %s FAILED: %s\n",
+                base,dwarf_errmsg(error));
             ++failcount;
             continue;
         } else if (res == DW_DLV_NO_ENTRY) {
-            printf("Init of %s No Entry\n",filepath);
+            printf("Init of %s No Entry\n",base);
             continue;
         }
         printf("Opened objectfile %s\n",base);
@@ -253,7 +253,7 @@ main(int argc, char **argv)
                 dwarf_errmsg(error));
             ++failcount;
             continue;
-        } 
+        }
         if (res2 == DW_DLV_NO_ENTRY) {
             printf("dwarf_finish of %s DW_DLV_NO_ENTRY\n",
                 base);
@@ -262,7 +262,7 @@ main(int argc, char **argv)
         }
     }
     if (failcount) {
-         return 1;
+        return 1;
     }
     return 0;
 }

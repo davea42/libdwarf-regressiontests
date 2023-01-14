@@ -11,9 +11,6 @@
     of byte-swapping by 2 byte pairs.
 */
 
-
-
-
 #include <stdio.h>  /* For printf */
 #include <string.h> /* For memcpy */
 
