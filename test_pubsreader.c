@@ -1044,6 +1044,31 @@ try_pubtype(Dwarf_Debug dbg)
     return errcount;
 }
 
+static const char *
+basename(const char *path)
+{
+    const char *cp = path;
+    int lastslash = -1;
+    int i = 0;
+
+
+    for( ; *cp ; ++cp,++i) {
+        if (*cp == '/') {
+            lastslash = i;
+        }
+    }
+    if (lastslash == -1) {
+        return path;
+    }
+    if (!*cp && (lastslash+1) == i) {
+        if (i >1) {
+           return path+lastslash-1;
+        }
+        return path+lastslash;
+    }
+    return path+lastslash+1;
+}
+
 int
 main(int argc, char **argv)
 {
@@ -1147,6 +1172,7 @@ Lets not do that.
    
     for( ; i < argc; ++i) {
         const char *filepath = 0;
+        const char *base = 0;
         int res2 = 0;
         int res = DW_DLV_ERROR;
         Dwarf_Debug dbg = 0;
@@ -1161,6 +1187,7 @@ Lets not do that.
         dl_path_array[0] = str1;
         dl_path_array[1] = str2;
         filepath = argv[i];
+        base = basename(filepath);
         res = dwarf_init_path_dl(filepath,
             true_path_buf,true_path_buflen,
             DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
@@ -1175,7 +1202,7 @@ Lets not do that.
             ++failcount;
             continue;
         } else if (res == DW_DLV_NO_ENTRY) {
-            printf("Init of %s No Entry\n",filepath);
+            printf("Init of %s No Entry\n",base);
             continue;
         }
         failcount += try_global(dbg);
@@ -1187,7 +1214,7 @@ Lets not do that.
         res2 = dwarf_finish(dbg);
         if (res2 == DW_DLV_NO_ENTRY) {
             printf("dwarf_finish of %s DW_DLV_NO_ENTRY\n",
-                filepath);
+                base);
             ++failcount;
             continue;
         }

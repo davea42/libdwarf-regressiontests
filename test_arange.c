@@ -175,6 +175,31 @@ try_arange(Dwarf_Debug dbg,Dwarf_Error *error)
     return errcount;
 }
 
+static const char *
+basename(const char *path)
+{
+    const char *cp = path;
+    int lastslash = -1;
+    int i = 0;
+
+
+    for( ; *cp ; ++cp,++i) {
+        if (*cp == '/') {
+            lastslash = i;
+        }
+    }
+    if (lastslash == -1) {
+        return path;
+    }
+    if (!*cp && (lastslash+1) == i) {
+        if (i >1) {
+           return path+lastslash-1;
+        }
+        return path+lastslash;
+    }
+    return path+lastslash+1;
+}
+
 int
 main(int argc, char **argv)
 {
@@ -201,11 +226,13 @@ main(int argc, char **argv)
 
     for( ; i < argc; ++i) {
         const char *filepath = 0;
+        const char *base= 0;
         int res2 = 0;
         int res = DW_DLV_ERROR;
         Dwarf_Debug dbg = 0;
 
         filepath = argv[i];
+        base = basename(filepath);
         res = dwarf_init_path(filepath,
             0,0,
             DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
@@ -216,15 +243,15 @@ main(int argc, char **argv)
             ++failcount;
             continue;
         } else if (res == DW_DLV_NO_ENTRY) {
-            printf("Init of %s No Entry\n",filepath);
+            printf("Init of %s No Entry\n",base);
             continue;
         }
-        printf("Opened objectfile %s\n",filepath);
+        printf("Opened objectfile %s\n",base);
         failcount += try_arange(dbg,&error);
         res2 = dwarf_finish(dbg);
         if (res2 == DW_DLV_NO_ENTRY) {
             printf("dwarf_finish of %s DW_DLV_NO_ENTRY\n",
-                filepath);
+                base);
             ++failcount;
             continue;
         }
