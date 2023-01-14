@@ -370,7 +370,7 @@ diederen6/implicit_const_example.so
 moya-loc/loclists
 moya-loc/loclists.dwo
 moya-loc/loclists2.dwo
-moya-loc/loclists2.dwp
+moya-loc/loclists.dwp
 moya-loc/main.dwo
 emre3/a.out.dwp
 emre3/foo.dwo
@@ -1200,7 +1200,6 @@ runtest $d1 $d2  kaletta/test.o  -i -vv
 # example of command mistakes. Too many object names
 # or no object names. Neither reads any object file.
 runtest $d1 $d2 moya/simple.o moya3/ranges_base.dwo
-runtest $d1 $d2 "" --print-debug-gnu
 
 # Examples of turning off sanitized() calls.
 # Unsafe for your terminal/window to use these
