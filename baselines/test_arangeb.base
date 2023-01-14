@@ -1,4 +1,4 @@
-Opened objectfile /home/davea/dwarf/regressiontests/irixn32/dwarfdump
+Opened objectfile dwarfdump
 arange 0 addr 0x10005900 
 arange 1 addr 0x0 
 arange 2 addr 0x10051850 

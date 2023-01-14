@@ -1,4 +1,4 @@
-Opened objectfile ./test_sectionnames
+Opened objectfile test_sectionnames
 No .debug_ranges section
 The .debug_aranges section name is .debug_aranges
 The .debug_line section name is .debug_line
@@ -8,7 +8,7 @@ No .debug_types section
 No .debug_frame section
 The .eh_frame section name is .eh_frame
 No .debug_macro section
-Opened objectfile /home/davea/dwarf/regressiontests/convey/testesb.c.o
+Opened objectfile testesb.c.o
 No .debug_ranges section
 The .debug_aranges section name is .debug_aranges
 The .debug_line section name is .debug_line
