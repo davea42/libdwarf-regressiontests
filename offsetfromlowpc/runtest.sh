@@ -37,6 +37,7 @@ t9=junkstrp.genout
 t9e=junkstrp.genoutstderr
 tg1=junkadvlocgen
 tg2=junkadvlocf
+tg3=junkadvlocf3
 rm -f $tx
 rm -f $ty
 rm -f $tz
@@ -54,6 +55,7 @@ rm -f $t9
 rm -f $t9e
 rm -f $tg1
 rm -f $tg2
+rm -f $tg3
 
 if [ ! -x $gen ]
 then
@@ -211,11 +213,14 @@ fi
 
 bas=baseadvlocf
 $dd -f -l -vvv $tz  > $tg2      2>/dev/null
-diff $ts/$bas $tg2
+# Not every system agrees what day/mo/yr is shown for zero
+# or other times. TZ issues. 
+grep -v 'last time 0x' <$tg2 >$tg3
+diff $ts/$bas $tg3
 if [ $? -ne 0 ]
 then
   echo "fail dwarfdump -f $tz  offsetfromlowpc advloc err"
-  echo "to update baseline do: mv $tf/$tg2 $ts/$bas"
+  echo "to update baseline do: mv $tf/$tg3 $ts/$bas"
   echo "rerun: $ts/runtest.sh"
   exit 1
 fi

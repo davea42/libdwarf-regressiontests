@@ -46,23 +46,18 @@ total line info length 4404 bytes, line offset 0x00000000 0
   file names count      5
   file[0]  /home/davea/dwarf/code/dwarfdump/dwarfdump.c (file-number: 1)
     dir index 0
-    last time 0x0 Wed Dec 31 16:00:00 1969
     file length 0 0x0
   file[1]  /usr/include/i386-linux-gnu/bits/stdio2.h (file-number: 2)
     dir index 0
-    last time 0x0 Wed Dec 31 16:00:00 1969
     file length 0 0x0
   file[2]  /usr/include/i386-linux-gnu/bits/string3.h (file-number: 3)
     dir index 0
-    last time 0x0 Wed Dec 31 16:00:00 1969
     file length 0 0x0
   file[3]  /usr/include/i386-linux-gnu/bits/fcntl2.h (file-number: 4)
     dir index 0
-    last time 0x0 Wed Dec 31 16:00:00 1969
     file length 0 0x0
   file[4]  /usr/include/stdlib.h (file-number: 5)
     dir index 0
-    last time 0x0 Wed Dec 31 16:00:00 1969
     file length 0 0x0
   statement prog offset in section: 0x000000ee (238)
                                                          s b e p e i d
