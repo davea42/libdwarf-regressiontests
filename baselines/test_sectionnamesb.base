@@ -1,5 +1,5 @@
-Opened objectfile test_sectionnames
-No .debug_ranges section
+Opened objectfile findfuncbypc.exe1
+The .debug_ranges section name is .debug_ranges
 The .debug_aranges section name is .debug_aranges
 The .debug_line section name is .debug_line
 The .debug_str section name is .debug_str
