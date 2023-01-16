@@ -1,3 +1,399 @@
+2023-01-15:  David Anderson
+    commit 9fa6f25c9f230489d73484f0af4728fcc6eabaa8
+
+    Now with added tests
+            modified:   DWARFTEST.sh
+
+    Latest baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-01-14:  David Anderson
+    commit 14527ab496bd0cc90d2c5d71c64ba8c813202eba
+
+    Now the baseline depends on fixed object files,
+    not on what we compile in the tests.
+            modified:   baselines/test_sectionnamesb.base
+
+2023-01-14:  David Anderson
+    commit 17a2144337b4375c3359576f99a0d8b2275a14ec
+
+    Modify to match libdwarf codingstyle,
+    removing trailing whitespace, following
+    libdwarf rules for indent etc..
+            modified:   test_arange.c
+            modified:   test_dwarfnames.c
+            modified:   test_harmless.c
+            modified:   test_pubsreader.c
+            modified:   test_sectionnames.c
+            modified:   testendian.c
+
+2023-01-14:  David Anderson
+    commit f639822721368082423dfea012c1a6938f78b4bc
+
+    Correct two very old mistakes
+    in test commands (fixing one, deleting one).
+            modified:   DWARFTEST.sh
+
+2023-01-14:  David Anderson
+    commit e8df3587750e5729edc3f7976a6789395e283708
+
+    Now just printing the basename for the input paths
+            modified:   baselines/test_arangeb.base
+            modified:   baselines/test_sectionnamesb.base
+
+2023-01-14:  David Anderson
+    commit f0497ef23b9cbce8dc7662bc28f31a8a8e10f182
+
+    Emit the 'basename' for paths passed in
+    so regression tests across various
+    systems can work nicely.
+            modified:   test_arange.c
+            modified:   test_pubsreader.c
+            modified:   test_sectionnames.c
+
+2023-01-14:  David Anderson
+    commit 68c4c0ebe9b4919495566ba672906aa393fb1bf3
+
+    Since ctime may not emit time 0 as a consistent
+    time/date across systems we eliminate things
+    like
+          last time 0x0 Wed Dec 31 16:00:00 1969
+    from the baseline in this one case.
+            modified:   offsetfromlowpc/baseadvlocf
+            modified:   offsetfromlowpc/runtest.sh
+
+2023-01-13:  David Anderson
+    commit f02a2305da9912a4d09f3c935f0c968e22bd84fe
+
+    Now with new single tests, running dwarfexample programs
+    and some make check functions.
+            modified:   DWARFTEST.sh
+
+2023-01-13:  David Anderson
+    commit 73f53f23d35cff955c80692689c112ba1d197fc2
+
+    This just used for occasional analysis,
+    not normally run.
+    Modified to be more useful right now.
+            modified:   python3/showruntime.py
+
+2023-01-13:  David Anderson
+    commit ca8fb9daf6e8f4b7cc048c2cc902fb4bb247e961
+
+    Corrected the number of tests for percent
+    calcs. Need not be exact, but best if
+    it is reasonably close.
+            modified:   python3/showpct.py
+
+    Now just shows the highest single runtime (user,sys time)
+    plus the aggragate.
+            modified:   python2/usertime.py
+            modified:   python3/usertime.py
+
+2023-01-11:  David Anderson
+    commit ee44f5e365ae1af5d615fbba08ccf24f748eb1e4
+
+    Simple corrections, still
+    running longer than it should.
+            modified:   DWARFTEST.sh
+
+    Failed to add this one before.
+            new file:   bitoffset/bitoffset.base
+
+2023-01-11:  David Anderson
+    commit 2aa1ae6efe54e90f637a6686b28af58d648de1b1
+
+    Corrected accidental lost of a filediff shell function call
+            modified:   DWARFTEST.sh
+
+    Just debugging lines added.
+            modified:   RUNVAL
+
+    Some baselines added
+    Some changed  due
+    to improved Elf file checking.
+            modified:   baselines/test_simplereaderb4.base
+            new file:   baselines/test_simplereaderb4b.base
+            deleted:    bitoffset.base
+            modified:   dwarfdump-x86_64-ubuntu.O
+            modified:   filelist/baseresult
+            modified:   filelist/runtest.sh
+            modified:   ossfuzz54724/README
+            modified:   showsecgroupsdir/runtest.sh
+            modified:   showsecgroupsdir/sgtest.baseline
+            modified:   showsecgroupsdir/sgtest2.baseline
+
+    Moved these to baselines/
+            deleted:    test_arangeb.base
+            deleted:    test_harmlessb.base
+            deleted:    test_pubsreaderb.base
+            deleted:    test_sectionnamesb.base
+
+    Changed  due
+    to improved Elf file checking.
+            modified:   testfindfuncbypc/findfuncbypc.base
+
+2023-01-04:  David Anderson
+    commit 315a176239b21e743583120e2cd8db24a4806f3c
+
+    Most are old test baselines now using the 'runsingle' shell
+    function in DWARFTEST.sh
+    Some are new.
+            new file:   baselines/test_arangeb.base
+            new file:   baselines/test_findfuncbypcb1.base
+            new file:   baselines/test_findfuncbypcb2.base
+            new file:   baselines/test_findfuncbypcb3.base
+            new file:   baselines/test_findfuncbypcb4.base
+            new file:   baselines/test_findfuncbypcb5.base
+            new file:   baselines/test_harmlessb.base
+            new file:   baselines/test_jitreaderb.base
+            new file:   baselines/test_pubsreaderb.base
+            new file:   baselines/test_sectionnamesb.base
+            new file:   baselines/test_showsectiongroupsb.base
+            new file:   baselines/test_showsectiongroupsb0.base
+            new file:   baselines/test_showsectiongroupsb1.base
+            new file:   baselines/test_showsectiongroupsb4.base
+            new file:   baselines/test_showsectiongroupsc1.base
+            new file:   baselines/test_showsectiongroupsc2.base
+            new file:   baselines/test_showsectiongroupsc3.base
+            new file:   baselines/test_showsectiongroupsc4.base
+            new file:   baselines/test_showsectiongroupsc5.base
+            new file:   baselines/test_simplereaderb.base
+            new file:   baselines/test_simplereaderb1.base
+            new file:   baselines/test_simplereaderb2.base
+            new file:   baselines/test_simplereaderb3.base
+            new file:   baselines/test_simplereaderb4.base
+
+2023-01-04:  David Anderson
+    commit 5e102834cf8ba0fef048a5afc82f968a5c13b198
+
+    New testcase. See bug DW202212-001
+            new file:   ossfuzz54724/README
+            new file:   ossfuzz54724/clusterfuzz-54724-poc
+
+2022-12-31:  David Anderson
+    commit 77471edbfc3a2487eaafcab4ad5d08eba1f55d46
+
+    Added additional tests an ensured
+    more libdwarf init calls are actually used.
+            modified:   DWARFTEST.sh
+            modified:   offsetfromlowpc/baseadvlocf
+            modified:   offsetfromlowpc/runtest.sh
+            modified:   test_arange.c
+            modified:   test_harmless.c
+            modified:   test_pubsreader.c
+            modified:   test_sectionnames.c
+
+2022-12-31:  David Anderson
+    commit 28baac360d18459021cb893d7fd8e384cbe45a59
+
+    Removed some silly blank lines.
+            modified:   sandnes2/runtest.sh
+
+2022-12-31:  David Anderson
+    commit 1d5ebb91a17970b40fb105c355a5630ed166be6f
+
+    Described the new test 'object', an empty file.
+            modified:   ossfuzz51183/README
+
+2022-12-31:  David Anderson
+    commit bbef4077a2f6c8da59f40589dde89b26480c5054
+
+    These now allow an argument of --suppress-dealloc-tree
+    and thus allow suppress dealloc tree generation
+    for testing when that is desired.
+            modified:   test_arange.c
+            modified:   test_harmless.c
+            modified:   test_pubsreader.c
+            modified:   test_sectionnames.c
+
+2022-12-31:  David Anderson
+    commit 139e07de8d566444ea288a76d0b8093a5c98a510
+
+    New testfile. 0 bytes long.
+            new file:   ossfuzz51183/ossfuzz54358-emptyfile
+
+    Baselines for 'runsingle' in DWARFTEST.sh
+
+            new file:   test_arangeb.base
+            new file:   test_harmlessb.base
+            new file:   test_pubsreaderb.base
+            new file:   test_sectionnamesb.base
+
+2022-12-29:  David Anderson
+    commit f3e345c2571cb926fddb408594ac6e8d5fb1901a
+
+    Added a new test, introducing the versiontest
+    shell function to enable the new test.
+            modified:   DWARFTEST.sh
+
+2022-12-27:  David Anderson
+    commit 37a73603897e86d180beddf0a35f7f3a1be702ae
+
+    Improvements in checking times from ALLdd
+            modified:   scripts/timereport.py
+
+2022-12-27:  David Anderson
+    commit 27034d7e87fd009103b038ddc4059a7805005cb1
+
+    Now somewhat useful.
+            modified:   timereport.py
+
+2022-12-27:  David Anderson
+    commit 2941d591eb02220e9aae1672edeeeb3ca08fe28e
+
+    Now with new tests
+            modified:   DWARFTEST.sh
+    The last of the three new test objects.
+            new file:   dwgenc/dwgenc.bin
+
+    Arrange to copy to test source (a .bin)
+    if not already there. Helps with
+    lcov.
+            modified:   dwgenc/runtest.sh
+            modified:   implicitconst/runtest.sh
+            modified:   offsetfromlowpc/runtest.sh
+
+2022-12-27:  David Anderson
+    commit bf2c1bc29a64395341102028b48ff128c7bf30e8
+
+    New test objects with modifications by dwarfgen
+            new file:   implicitconst/implicitconst.bin
+            new file:   offsetfromlowpc/offsetfromlowpc.bin
+
+2022-12-26:  David Anderson
+    commit c6da22e122956f32bcf7b807cf33917e10b45de1
+
+    Added specific test of --check-functions option.
+            modified:   DWARFTEST.sh
+
+2022-12-24:  David Anderson
+    commit 75b32f5cc9cf1a9118cf393e9877b603e81afee5
+
+    Now a test object with DW_FORM_data16 that shows up
+    in coverage runs.
+            modified:   DWARFTEST.sh
+            new file:   data16/data16.bin
+            modified:   data16/runtest.sh
+
+2022-12-20:  David Anderson
+    commit 919609d8a4fc15430a6911b870ebc9bc981f9905
+
+    Now with the 0.6.0 version of dwarf_dietype_offset
+    which deals properly with DWARF4 DW_FORM_ref_sig8
+    references from .debug_info to .debug_types.
+            modified:   bitoffset/test_bitoffset.c
+
+2022-12-12:  David Anderson
+    commit ac7580eae0afda9da3f0d206c22c029a91b8f2fa
+
+    Additional test -xabi=
+            modified:   DWARFTEST.sh
+
+2022-12-12:  David Anderson
+    commit ff70e6860291bf33202db03f5bc01f1adde6ebef
+
+    Now each has a 'fakeabi' which
+    has bogus adress_size: to get better
+    coverage of libdwarf
+    dwarf_set_default_address_size()
+
+            modified:   dwarfdump.conf
+            modified:   testdwarfdump.conf
+
+2022-12-12:  David Anderson
+    commit 4b8200233b8d0045e617ff6c6becc365237c603b
+
+    Now checks correctly for FAIL count of zero,
+    we had changed the format but not this script.
+            modified:   RUNALL.sh
+
+2022-12-09:  David Anderson
+    commit 6b98418dcfc3d6f50d01bc746bb99eb9020f0b2a
+
+    All environs tested now.
+            modified:   RegressionTestsResults.ods
+
+2022-12-09:  David Anderson
+    commit 1147a17e4c0da85e9f22a8a4e87eb2fe70de7bf1
+
+    Fuller tests in a couple cases.
+            modified:   DWARFTEST.sh
+
+    New 0.6.0 baselines
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    debugging only. Ignore.
+            modified:   RUNVAL
+
+2022-12-09:  David Anderson
+    commit 446e832738479b7b801f7856324503d525d2dfc3
+
+    Now we have baselines for these tests
+    and we verify output too.
+    We arrange to simplify one printf in each
+    source that would unavoidably differ across
+    endianness and full paths.
+            modified:   bitoffset.base
+            modified:   bitoffset/test_bitoffset.c
+            modified:   pubsreader.base
+            modified:   test_pubsreader.c
+
+2022-12-06:  David Anderson
+    commit d06f63c363a901028618279f2f93711749e081d1
+
+    New baseline. Should have done this
+    long ago.
+            new file:   bitoffset.base
+
+2022-12-06:  David Anderson
+    commit ab597cc27012e2b43d74a3dcd0ae195d9756a3c2
+
+    Now tests wi basereader.base
+            modified:   DWARFTEST.sh
+    Updates per changes to pubtypes etc changes.
+            modified:   test_pubsreader.c
+
+2022-12-06:  David Anderson
+    commit 209cc92c36740c751e0a5b568be998454ecfdaa2
+
+    New baseline. Should have done this years ago.
+            new file:   pubsreader.base
+
+2022-12-06:  David Anderson
+    commit dda14019cbe4aa6a7623b1c28ec11686f4999e88
+
+    Added dwarfdump options to some tests for more complete testing.
+            modified:   DWARFTEST.sh
+
+    Minor improvement in this script (ignore it).
+            modified:   scripts/findobjects
+
+2022-12-02:  David Anderson
+    commit ae031cfb5aaa4c7a7d495dbabdfcfbfc5bf91fcc
+
+    Latest timings.
+            modified:   RegressionTestsResults.ods
+
+    baseline executables:
+    Now match current 0.5.1 source.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-12-02:  David Anderson
+    commit 8bce2e8ecef09cc650a89ec932ca2e1b750b0001
+
+    With latest from git log
+            modified:   ChangeLog
+
 2022-12-01:  David Anderson
     commit 08928128ab9378c1cbc39d9f1b10c453aefacc90
 
