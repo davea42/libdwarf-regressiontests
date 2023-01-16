@@ -1270,7 +1270,7 @@ fi
 runtest $d1 $d2 gsplitdwarf/getdebuglink     --print-fission -a 
 runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --print-fission -a
 runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=$testsrc/gsplitdwarf/getdebuglink --print-fission -a
-runtest $d1 $d2 gsplitdwarf/frame1-frame1.dwo             -a --print-fission
+runtest $d1 $d2 gsplitdwarf/frame1.dwo       -a --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=$testsrc/gsplitdwarf/frame1 -a --print-fission 
 runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission
 # Same but now with -vv
@@ -1452,7 +1452,7 @@ runtest $d1 $d2 foo.o --help
 runtest $d1 $d2 foo.o  -j
 runtest $d1 $d2 foo.o -x unknown
 runtest $d1 $d2 foo.o --unknown-longopt
-runtest $d1 $d2 -M  -M
+runtest $d1 $d2 foo.o -M  -M
 
 # This has right idea in .debug_str_offsets, but wrong table length.
 runtest $d1 $d2 enciso8/test-clang-dw5.o -s --print-str-offsets
@@ -2152,7 +2152,7 @@ echo "=====START  $testsrc/test_sectionnames"
     $testsrc/dwarf4/dd2g4.5dwarf-4\
     $testsrc/convey/testesb.c.o"
   echo "Results in junk_sectionnames"
-  ./test_sectionnames ./test_sectionnames \
+  ./test_sectionnames \
     $testsrc/dwarf4/dd2g4.5dwarf-4 $testsrc/convey/testesb.c.o \
     >junk_sectionnames
   chkres $? "check sectionnames-error execution failed look at \
@@ -2251,7 +2251,8 @@ ls -l ./test_harmless
 runsingle test_harmlessb.base ./test_harmless  $suppresstree 
 
 runsingle test_sectionnamesb.base ./test_sectionnames \
-  ./test_sectionnames $testsrc/convey/testesb.c.o 
+  $testsrc/testfindfuncbypc/findfuncbypc.exe1 \
+  $testsrc/convey/testesb.c.o 
 
 runsingle test_arangeb.base ./test_arange  \
   $testsrc/irixn32/dwarfdump
@@ -2425,8 +2426,8 @@ runtest $d1 $d2 macro5/basetest     --print-macinfo
 runtest $d1 $d2 macro5/basetest     --check-macros
 
 #Following 2 show some DW_AT_MIPS_fde difference. So -C works.
-runtest $d1 $d2  irix64/libc.so -ka   -x name=dwarfdump.conf -x abi=mips-simple3
-runtest $d1 $d2  irix64/libc.so -i    -x name=dwarfdump.conf -x abi=mips-simple3
+runtest $d1 $d2  irix64/libc.so -ka -x name=dwarfdump.conf -x abi=mips-simple3
+runtest $d1 $d2  irix64/libc.so -i -x name=dwarfdump.conf -x abi=mips-simple3
 
 #FIXME
 runtest $d1 $d2  irix64/libc.so --print-pubnames --print-weakname --print-type --print-static-var --print-static-func
