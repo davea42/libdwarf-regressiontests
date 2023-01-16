@@ -9,6 +9,9 @@ echo "  Use valgrind............: export VALGRIND=y"
 echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE"
 echo "  Revert to normal test...: unset NLIZE"
 echo "  Revert to normal test...: unset VALGRIND"
+echo "  Revert to normal test...: unset COMPILEONLY"
+echo "  Stop after building test_bitoffset etc"
+echo "              ............: export COMPILEONLY=y"
 # On certain VMs if too much change, we get
 # stuck at 1% done forever (and after 10 hours
 # far from done with the tests).
@@ -23,6 +26,12 @@ echo "  Revert to normal test...: unset VALGRIND"
 #set -x
 echo 'Starting regressiontests: DWARFTEST.sh' \
    `date "+%Y-%m-%d %H:%M:%S"`
+
+compileonly=n
+if [ x$COMPILEONLY = "xy" ]
+then
+  compileonly=y
+fi
 
 s=SHALIAS.sh
 if [ ! -f ./$s ]
@@ -953,6 +962,60 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
     echo "To update mv $bldtest/junk_bitoffset \
       $testsrc/bitoffset.base"
   fi
+echo "=====START  $testsrc/test_arange"
+  echo "test_arange: $CC -Wall -I$codedir/libdwarf -I$libbld \
+     -I$libbld/libdwarf  -gdwarf $nlizeopt \
+     $testsrc/test_arange.c \
+     -o test_arange $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
+      test_arange $dwlib $libopts
+  chkres $? 'check arange-error compiling test_arange.c\
+     failed' 
+  echo "./test_arange $testsrc/irixn32/dwarfdump"
+  echo "Results in junk_arange"
+  ./test_arange  $testsrc/irixn32/dwarfdump >junk_arange
+  chkres $? "check arange-error execution failed look at \
+     junk_arange"
+echo "=====START  $testsrc/test_harmless.c"
+  echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld \
+     -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c \
+     -o test_harmless $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+    -I$libbld/libdwarf  \
+    -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless\
+      $dwlib $libopts
+  chkres $? 'check harmless-error compiling test_harmless.c failed'
+  ./test_harmless
+  chkres $? 'check harmless-error execution failed'
+  echo dadebug build test_harmless `pwd`
+  ls -l ./test_harmless
+echo "=====START  $testsrc/test_sectionnames"
+  echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \
+     -I$libbld/libdwarf  -gdwarf $nlizeopt \
+     $testsrc/test_sectionnames.c \
+     -o test_sectionnames $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/test_sectionnames.c  -o \
+      test_sectionnames $dwlib $libopts
+  chkres $? 'check sectionnames-error compiling test_sectionnames.c\
+     failed'
+  echo "./test_sectionnames  \
+    $testsrc/dwarf4/dd2g4.5dwarf-4\
+    $testsrc/convey/testesb.c.o"
+  echo "Results in junk_sectionnames"
+  ./test_sectionnames \
+    $testsrc/dwarf4/dd2g4.5dwarf-4 $testsrc/convey/testesb.c.o \
+    >junk_sectionnames
+  chkres $? "check sectionnames-error execution failed look at \
+     junk_sectionnames"
+
+
+if [ $compileonly=y ]
+then
+   echo "STOP after building test executables"
+   exit 1
+fi
 
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  $testsrc/supplementary/runtest.sh"
@@ -2124,55 +2187,6 @@ if [ $withlibzstd = "yezstd" ]
 then
     libopts="$libopts -lzstd"
 fi
-echo "=====START  $testsrc/test_harmless.c"
-  echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld \
-     -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c \
-     -o test_harmless $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-    -I$libbld/libdwarf  \
-    -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless\
-      $dwlib $libopts
-  chkres $? 'check harmless-error compiling test_harmless.c failed'
-  ./test_harmless
-  chkres $? 'check harmless-error execution failed'
-  echo dadebug build test_harmless `pwd`
-  ls -l ./test_harmless
-
-echo "=====START  $testsrc/test_sectionnames"
-  echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \
-     -I$libbld/libdwarf  -gdwarf $nlizeopt \
-     $testsrc/test_sectionnames.c \
-     -o test_sectionnames $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/test_sectionnames.c  -o \
-      test_sectionnames $dwlib $libopts
-  chkres $? 'check sectionnames-error compiling test_sectionnames.c\
-     failed'
-  echo "./test_sectionnames  \
-    $testsrc/dwarf4/dd2g4.5dwarf-4\
-    $testsrc/convey/testesb.c.o"
-  echo "Results in junk_sectionnames"
-  ./test_sectionnames \
-    $testsrc/dwarf4/dd2g4.5dwarf-4 $testsrc/convey/testesb.c.o \
-    >junk_sectionnames
-  chkres $? "check sectionnames-error execution failed look at \
-     junk_sectionnames"
-
-echo "=====START  $testsrc/test_arange"
-  echo "test_arange: $CC -Wall -I$codedir/libdwarf -I$libbld \
-     -I$libbld/libdwarf  -gdwarf $nlizeopt \
-     $testsrc/test_arange.c \
-     -o test_arange $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
-      test_arange $dwlib $libopts
-  chkres $? 'check arange-error compiling test_arange.c\
-     failed'
-  echo "./test_arange $testsrc/irixn32/dwarfdump"
-  echo "Results in junk_arange"
-  ./test_arange  $testsrc/irixn32/dwarfdump >junk_arange
-  chkres $? "check arange-error execution failed look at \
-     junk_arange"
 
 if test $withlibelf = "withlibelf" ; then
   echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
@@ -2245,8 +2259,12 @@ ls -l ./test_harmless
 # -g: use old dwarf loclist code.
 runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
-
 echo "dadebug now runsingle" `pwd`
+
+runsingle test_bitoffseta.base ./test_bitoffset  \
+    $testsrc/bitoffset/bitoffsetexampledw3.o \
+    $testsrc/bitoffset/bitoffsetexampledw5.o  \
+
 ls -l ./test_harmless
 runsingle test_harmlessb.base ./test_harmless  $suppresstree 
 
