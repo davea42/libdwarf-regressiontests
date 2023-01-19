@@ -6,20 +6,20 @@
 
    Using options does exactly one of 3 things: 
 
-   (A)
+   (A) --print-found
    Print simple list of the DW_TAG_etc entries from dwarf.h
    for a human reader.  Just for debugging.
 
-   (B)
+   (B) --generate-func-array
    Generate an array of function pointers to the dwarf_get*_name
    functions (one per DW_AT etc prefix).
-   (C code). This output to be placed in this source file.
+   (C code). The output to be placed in this source file.
 
-   (C)
+   (C) --generate-self-test
    Generate an array with all instances for self-test calls.
-   (C code). This is to be placed in this source file.
+   (C code). The output is to be placed in this source file.
 
-   (D)
+   (D) --run-self-test
    Run a self-test of all the dwarf_get_*name() functions
    using the arrays created by earlier runs.
    For this part the self-test code here will be calling libdwarf.
@@ -40,7 +40,10 @@
 #include <errno.h>  /* errno */
 #include <stdio.h>  /* fgets() fprintf() printf() sscanf() */
 #include <stdlib.h> /* exit() qsort() strtoul() */
-#include <string.h> /* strchr() strcmp() strcpy() strlen() strncmp() */
+#include <string.h> /* strchr() strcmp() strcpy() strlen()
+    strncmp() */
+#include "dwarf.h"
+#include "libdwarf.h"
 
 
 /*  test_dwnames.c
@@ -51,7 +54,7 @@
 
 */
 
-static void GenerateOneSet(void);
+static void GenerateOneSet(int tf_value);
 #ifdef TRACE_ARRAY
 static void PrintArray(void);
 #endif /* TRACE_ARRAY */
@@ -95,24 +98,19 @@ static FILE *f_dwarf_in;
 /* Size unchecked, but large enough. */
 static char prefix[200] = "";
 
-int generate_c_array = FALSE;
-int print_found_content = TRUE;
-int run_self_test = FALSE;
-
 static const char *usage[] = {
     "Usage: gennames <options>",
     "    -i  <path/src/lib/libdwarf",
     "    --print-found",
-    "    --generate-array",
+    "    --generate-func_array",
+    "    --generate-self-test",
     "    --run-self-test",
     "",
 };
 
 void
-safe_strcpy(char *out,
-    size_t outlen,
-    const char *in_s,
-    size_t inlen)
+safe_strcpy(char *out, size_t outlen,
+    const char *in_s, size_t inlen)
 {
     size_t      full_inlen = inlen+1;
     char       *cpo = 0;
@@ -153,6 +151,21 @@ print_usage_message(const char *options[])
     }
 }
 
+int print_found_content = TRUE;
+int generate_func_array = FALSE;
+int generate_self_test = FALSE;
+int run_self_test = FALSE;
+
+static void
+set_all_false(void)
+{
+    print_found_content = FALSE;
+    generate_func_array = FALSE;
+    generate_self_test = FALSE;
+    run_self_test = FALSE;
+}
+
+
 /* process arguments */
 static void
 process_args(int argc, char *argv[])
@@ -164,6 +177,18 @@ process_args(int argc, char *argv[])
             ++i;
             input_dir = argv[i];
             continue;
+        } else if (!strcmp(argv[i],"--print-found")) {
+            set_all_false();
+            print_found_content = TRUE;
+        } else if (!strcmp(argv[i],"--generate-func-array")) {
+            set_all_false();
+            generate_func_array = TRUE;
+        } else if (!strcmp(argv[i],"--generate-self-test")) {
+            set_all_false();
+            generate_self_test = TRUE;
+        } else if (!strcmp(argv[i],"--run-self-test")) {
+            set_all_false();
+            run_self_test = TRUE;
         } else {
             print_usage_message(usage);
             exit(EXIT_FAILURE);
@@ -173,12 +198,59 @@ process_args(int argc, char *argv[])
         printf("FAIL. directory of dwarf.h not specified.");
         exit(EXIT_FAILURE);
     }
-
     if (i != argc) {
         print_usage_message(usage);
         exit(EXIT_FAILURE);
     }
 }
+
+/*  Ends in 0,0 entry */
+typedef int( *getfunc)(unsigned int, const char **);
+struct funcpointerarray {
+   const char *fp_prefix;
+   getfunc     fp_funcpointer;
+} funcpointer[] =
+{
+{ "DW_TAG",dwarf_get_TAG_name},
+{ "DW_children",dwarf_get_children_name},
+{ "DW_FORM",dwarf_get_FORM_name},
+{ "DW_AT",dwarf_get_AT_name},
+{ "DW_OP",dwarf_get_OP_name},
+{ "DW_ATE",dwarf_get_ATE_name},
+{ "DW_DEFAULTED",dwarf_get_DEFAULTED_name},
+{ "DW_IDX",dwarf_get_IDX_name},
+{ "DW_LLEX",dwarf_get_LLEX_name},
+{ "DW_LLE",dwarf_get_LLE_name},
+{ "DW_RLE",dwarf_get_RLE_name},
+{ "DW_GNUIVIS",dwarf_get_GNUIVIS_name},
+{ "DW_GNUIKIND",dwarf_get_GNUIKIND_name},
+{ "DW_UT",dwarf_get_UT_name},
+{ "DW_SECT",dwarf_get_SECT_name},
+{ "DW_DS",dwarf_get_DS_name},
+{ "DW_END",dwarf_get_END_name},
+{ "DW_ATCF",dwarf_get_ATCF_name},
+{ "DW_ACCESS",dwarf_get_ACCESS_name},
+{ "DW_VIS",dwarf_get_VIS_name},
+{ "DW_VIRTUALITY",dwarf_get_VIRTUALITY_name},
+{ "DW_LANG",dwarf_get_LANG_name},
+{ "DW_ID",dwarf_get_ID_name},
+{ "DW_CC",dwarf_get_CC_name},
+{ "DW_INL",dwarf_get_INL_name},
+{ "DW_ORD",dwarf_get_ORD_name},
+{ "DW_DSC",dwarf_get_DSC_name},
+{ "DW_LNCT",dwarf_get_LNCT_name},
+{ "DW_LNS",dwarf_get_LNS_name},
+{ "DW_LNE",dwarf_get_LNE_name},
+{ "DW_ISA",dwarf_get_ISA_name},
+{ "DW_MACRO",dwarf_get_MACRO_name},
+{ "DW_MACINFO",dwarf_get_MACINFO_name},
+{ "DW_CFA",dwarf_get_CFA_name},
+{ "DW_EH",dwarf_get_EH_name},
+{ "DW_FRAME",dwarf_get_FRAME_name},
+{ "DW_CHILDREN",dwarf_get_CHILDREN_name},
+{ "DW_ADDR",dwarf_get_ADDR_name},
+{0,0}
+};
 
 static FILE *
 open_path(const char *dir, const char *base, const char *direction)
@@ -341,7 +413,7 @@ SaveNameDeclaration(char *prefix_id)
 
 /* Write the table and code for a common set of names */
 static void
-GenerateOneSet(void)
+GenerateOneSet(int is_final)
 {
     unsigned u;
     unsigned prev_value = 0;
@@ -377,11 +449,23 @@ GenerateOneSet(void)
             continue;
         }
         prev_value = group_array[u].ad_value;
-
-      
-        if (generate_c_array) {
-            printf("{ \"%s\",\"funcpointer\"},\n",
-                group_array[u].ad_prefixname);
+        if (generate_func_array) {
+            char funcname [200];
+            
+            /*  Unsafe coding, but we know what to expect
+                in dwarf.h */
+            funcname[0] = 0;
+            strcpy(funcname,"dwarf_get_");
+            strcat(funcname,group_array[u].ad_prefixname+3);
+            strcat(funcname,"_name");
+          
+            printf("{ \"%s\",%s},\n",
+                group_array[u].ad_prefixname,funcname);
+            /* no need to look at other in the group */
+            if (is_final) {
+                printf("{0,0}\n");
+            }
+            break;
         }
         if (print_found_content) {
             printf("[%u] \"%s_",u,
@@ -389,6 +473,8 @@ GenerateOneSet(void)
             printf("%s\" value: 0x%x \n",
                 group_array[u].ad_name,
                 group_array[u].ad_value);
+        }
+        if (generate_self_test) {
         }
         if (run_self_test) {
 #if 0
@@ -464,7 +550,7 @@ ParseDefinitionsAndWriteOutput(void)
         if (strcmp(prefix,new_prefix)) {
             if (pending) {
                 /* Generate current prefix set */
-                GenerateOneSet();
+                GenerateOneSet(FALSE);
             }
             pending = TRUE;
             safe_strcpy(prefix,sizeof(prefix),
@@ -507,6 +593,6 @@ ParseDefinitionsAndWriteOutput(void)
     }
     if (pending) {
         /* Generate final prefix set */
-        GenerateOneSet();
+        GenerateOneSet(TRUE);
     }
 }
