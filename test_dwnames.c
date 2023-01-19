@@ -1,9 +1,33 @@
 /*
     Copyright 2023 David Anderson. All rights reserved.
 
-
 */
-/*   Used by regession tests: DWARFTESTS.sh
+/*  Used by regession tests: DWARFTESTS.sh
+
+   Using options does exactly one of 3 things: 
+
+   (A)
+   Print simple list of the DW_TAG_etc entries from dwarf.h
+   for a human reader.  Just for debugging.
+
+   (B)
+   Generate an array of function pointers to the dwarf_get*_name
+   functions (one per DW_AT etc prefix).
+   (C code). This output to be placed in this source file.
+
+   (C)
+   Generate an array with all instances for self-test calls.
+   (C code). This is to be placed in this source file.
+
+   (D)
+   Run a self-test of all the dwarf_get_*name() functions
+   using the arrays created by earlier runs.
+   For this part the self-test code here will be calling libdwarf.
+
+   Parts A, B, and C are not run during testing,
+   just part D is the self-test proper.
+
+   
 */
 
 
@@ -18,9 +42,6 @@
 #include <stdlib.h> /* exit() qsort() strtoul() */
 #include <string.h> /* strchr() strcmp() strcpy() strlen() strncmp() */
 
-#include "dwarf_safe_strcpy.h"
-#include "dd_minimal.h"
-
 
 /*  test_dwnames.c
     Reads libdwarf.h and for each DW_AT_* (for all such
@@ -31,7 +52,6 @@
 */
 
 static void GenerateOneSet(void);
-static void WriteNameDeclarations(void);
 #ifdef TRACE_ARRAY
 static void PrintArray(void);
 #endif /* TRACE_ARRAY */
@@ -43,15 +63,18 @@ static void ParseDefinitionsAndWriteOutput(void);
 /*  We don't need a variable array size,
     it just has to be big enough. */
 #define ARRAY_SIZE 350
+#define FALSE 0
+#define TRUE  1
 
 #define MAX_NAME_LEN 64
 
 /* To store entries from dwarf.h */
 typedef struct {
-    char     name[MAX_NAME_LEN];  /* short name */
-    unsigned value; /* value */
+    char     ad_name[MAX_NAME_LEN];       /* short name */
+    char     ad_prefixname[MAX_NAME_LEN]; /* DW_AT or the like */
+    unsigned ad_value; /* value */
     /* Original spot in array.   Lets us guarantee a stable sort. */
-    unsigned original_position;
+    unsigned ad_original_position;
 } array_data;
 
 /*  A group_array is a grouping from dwarf.h.
@@ -66,45 +89,60 @@ static int Compare(array_data *,array_data *);
 static const char *prefix_root = "DW_";
 static const unsigned prefix_root_len = 3;
 
-/* f_dwarf_in is the input dwarf.h. The others are output files. */
+/* f_dwarf_in is the input dwarf.h. */
 static FILE *f_dwarf_in;
-static FILE *f_results_out;
 
 /* Size unchecked, but large enough. */
 static char prefix[200] = "";
 
+int generate_c_array = FALSE;
+int print_found_content = TRUE;
+int run_self_test = FALSE;
+
 static const char *usage[] = {
     "Usage: gennames <options>",
     "    -i  <path/src/lib/libdwarf",
-    "    -o output-table-path",
+    "    --print-found",
+    "    --generate-array",
+    "    --run-self-test",
     "",
 };
 
-static void
-print_args(int argc, char *argv[])
+void
+safe_strcpy(char *out,
+    size_t outlen,
+    const char *in_s,
+    size_t inlen)
 {
-    int index;
-    printf("Arguments: ");
-    for (index = 1; index < argc; ++index) {
-        printf("%s ",argv[index]);
+    size_t      full_inlen = inlen+1;
+    char       *cpo = 0;
+    const char *cpi= 0;
+    const char *cpiend = 0;
+
+    if (full_inlen >= outlen) {
+        if (!outlen) {
+            return;
+        }
+        cpo = out;
+        cpi= in_s;
+        cpiend = in_s +(outlen-1);
+    } else {
+        /*  If outlen is very large
+            strncpy is very wasteful. */
+        cpo = out;
+        cpi= in_s;
+        cpiend = in_s +inlen;
     }
-    printf("\n");
+    for ( ; *cpi && cpi < cpiend ; ++cpo, ++cpi) {
+        *cpo = *cpi;
+    }
+    *cpo = 0;
 }
 
-static char *input_dir = 0;
-static char *output_file = 0;
 
-static void
-print_version(const char * name)
-{
-#ifdef _DEBUG
-    const char *acType = "Debug";
-#else
-    const char *acType = "Release";
-#endif /* _DEBUG */
 
-    printf("%s [%s %s]\n",name,PACKAGE_VERSION,acType);
-}
+/*   A default dir, useful for initial testing */
+static char *input_dir = "/home/davea/dwarf/code/src/lib/libdwarf";
 
 static void
 print_usage_message(const char *options[])
@@ -119,24 +157,21 @@ print_usage_message(const char *options[])
 static void
 process_args(int argc, char *argv[])
 {
-    int c = 0;
-    int usage_error = FALSE;
+    int i = 0;
 
     for(i = 1; i < argc;++i) {
-        if (!strcmp(argv[i],"-i") {
+        if (!strcmp(argv[i],"-i")) {
             ++i;
             input_dir = argv[i];
-            continue
-        }
-        if (!strcmp(argv[i],"-o") {
-            ++i;
-            output_file = argv[i];
-            continue
-        default:
-            usage_error = TRUE;
+            continue;
+        } else {
             print_usage_message(usage);
             exit(EXIT_FAILURE);
         }
+    }
+    if (!input_dir) {
+        printf("FAIL. directory of dwarf.h not specified.");
+        exit(EXIT_FAILURE);
     }
 
     if (i != argc) {
@@ -145,16 +180,49 @@ process_args(int argc, char *argv[])
     }
 }
 
+static FILE *
+open_path(const char *dir, const char *base, const char *direction)
+{
+    FILE *f = 0;
+    /*  POSIX PATH_MAX  would suffice, normally stdio
+        BUFSIZ is larger than PATH_MAX */
+    static char path_name[BUFSIZ];
+
+    /* 2 == space for / and NUL */
+    size_t dirlen = strlen(dir) +1;
+    size_t baselen = strlen(base) +1;
+    size_t netlen = dirlen + baselen;
+
+    if (netlen >= BUFSIZ) {
+        printf("Error opening '%s/%s', name too long\n",dir,base);
+        exit(EXIT_FAILURE);
+    }
+    if (dirlen > 2) {
+        safe_strcpy(path_name,BUFSIZ,
+            dir,dirlen-1);
+        safe_strcpy(path_name+dirlen-1,BUFSIZ -dirlen,
+            "/",1);
+        safe_strcpy(path_name+dirlen,BUFSIZ -dirlen -1,
+            base,baselen-1);
+    } else {
+        safe_strcpy(path_name,BUFSIZ,base,baselen);
+    }
+    f = fopen(path_name,direction);
+    if (!f) {
+        printf("Error opening '%s'\n",path_name);
+        exit(EXIT_FAILURE);
+    }
+    return f;
+}
+
+
 int
 main(int argc,char **argv)
 {
     process_args(argc,argv);
-    f_dwarf_in = open_path(input_dir,"dwarf.h,"r");
-    f_results_out = open_path("",output_file,"w");
+    f_dwarf_in = open_path(input_dir,"dwarf.h","r");
     ParseDefinitionsAndWriteOutput();
-    WriteNameDeclarations();
     fclose(f_dwarf_in);
-    fclose(f_results_out);
     return 0;
 }
 
@@ -166,9 +234,10 @@ PrintArray(void)
     int i;
     for (i = 0; i < array_count; ++i) {
         printf("%d: Name %s_%s, Value 0x%04x\n",
-            i,prefix,
-            array[i].name,
-            array[i].value);
+            i,
+            group_array[i].ad_prefixname,
+            group_array[i].ad_name,
+            group_array[i].ad_value);
     }
 }
 #endif /* TRACE_ARRAY */
@@ -177,67 +246,19 @@ PrintArray(void)
 static int
 Compare(array_data *elem1,array_data *elem2)
 {
-    if (elem1->value < elem2->value) {
+    if (elem1->ad_value < elem2->ad_value) {
         return -1;
     }
-    if (elem1->value > elem2->value) {
+    if (elem1->ad_value > elem2->ad_value) {
         return 1;
     }
-    if (elem1->original_position < elem2->original_position) {
+    if (elem1->ad_original_position < elem2->ad_original_position) {
         return -1;
     }
-    if (elem1->original_position > elem2->original_position) {
+    if (elem1->ad_original_position > elem2->ad_original_position) {
         return 1;
     }
     return 0;
-}
-
-static FILE *
-open_path(const char *base, const char *file, const char *direction)
-{
-    FILE *f = 0;
-    /*  POSIX PATH_MAX  would suffice, normally stdio
-        BUFSIZ is larger than PATH_MAX */
-    static char path_name[BUFSIZ];
-
-    /* 2 == space for / and NUL */
-    size_t baselen = strlen(base) +1;
-    size_t filelen = strlen(file) +1;
-    size_t netlen = baselen + filelen;
-
-    if (netlen >= BUFSIZ) {
-        printf("Error opening '%s/%s', name too long\n",base,file);
-        exit(EXIT_FAILURE);
-    }
-    if (!strlen(base)) {
-        _dwarf_safe_strcpy(path_name,BUFSIZ,
-            base,baselen-1);
-        _dwarf_safe_strcpy(path_name+baselen-1,BUFSIZ -baselen,
-        "/",1);
-        _dwarf_safe_strcpy(path_name+baselen,BUFSIZ -baselen -1,
-            file,filelen-1);
-    } else {
-        _dwarf_safe_strcpy(path_name,BUFSIZ,file,filelen);
-    }
-    f = fopen(path_name,direction);
-    if (!f) {
-        printf("Error opening '%s'\n",path_name);
-        exit(EXIT_FAILURE);
-    }
-    return f;
-}
-
-
-    f_dwarf_in = open_path(input_name,dwarf_h,"r");
-    f_dwarf_in = open_path(input_name,dwarf_h,"r");
-
-
-/* Close files and write basic trailers */
-static void
-WriteFileTrailers(void)
-{
-    /* Generate entries for 'dwarf_names.c' */
-    fprintf(f_names_c,"\n/* END FILE */\n");
 }
 
 struct NameEntry {
@@ -245,10 +266,13 @@ struct NameEntry {
 };
 
 /*  Sort these by name, then write */
+#if 0
 #define MAX_NAMES 200
 static struct NameEntry nameentries[MAX_NAMES];
 static int  curnameentry;
+#endif
 
+#if 0
 /*  We compare as capitals for sorting purposes.
     This does not do right by UTF8, but the strings
     are from in dwarf.h and are plain ASCII.  */
@@ -290,23 +314,9 @@ CompareName(struct NameEntry *elem1,struct NameEntry *elem2)
     }
     return 0; /* should NEVER happen */
 }
+#endif
 
-/*  Sort into name order for readability of the declarations,
-    then print the declarations. */
-static void
-WriteNameDeclarations(void)
-{
-    int i = 0;
-
-    qsort((void *)&nameentries,curnameentry,
-        sizeof(struct NameEntry),(compfn)CompareName);
-    /* Generate entries for 'dwarf_names.h' and libdwarf.h */
-    for ( ; i < curnameentry;++i) {
-        fprintf(f_names_h,"DW_API int dwarf_get_%s_name"
-            "(unsigned int /*val_in*/,\n",nameentries[i].ne_name);
-        fprintf(f_names_h,"    const char ** /*s_out */);\n");
-    }
-}
+#if 0
 static void
 SaveNameDeclaration(char *prefix_id)
 {
@@ -327,6 +337,7 @@ SaveNameDeclaration(char *prefix_id)
     strcpy(nameentries[curnameentry].ne_name,prefix_id);
     ++curnameentry;
 }
+#endif
 
 /* Write the table and code for a common set of names */
 static void
@@ -334,7 +345,9 @@ GenerateOneSet(void)
 {
     unsigned u;
     unsigned prev_value = 0;
+#if 0
     char *prefix_id = prefix + prefix_root_len;
+#endif
     unsigned actual_array_count = 0;
 
 #ifdef TRACE_ARRAY
@@ -342,57 +355,51 @@ GenerateOneSet(void)
     PrintArray();
 #endif /* TRACE_ARRAY */
 
-    /*  Sort the array, because the values in 'libdwarf.h' are not in
-        ascending order; if we use '-t' we must be sure the values are
-        sorted, for the binary search to work properly.
-        We want a stable sort, hence mergesort.  */
+#if 1
     qsort((void *)&group_array,array_count,
         sizeof(array_data),(compfn)Compare);
+#endif
 
 #ifdef TRACE_ARRAY
     printf("\nList after sorting:\n");
     PrintArray();
 #endif /* TRACE_ARRAY */
 
+#if 0
     SaveNameDeclaration(prefix_id);
-    /* Generate code for 'dwarf_names.c' */
-    fprintf(f_names_c,"/* ARGSUSED */\n");
-    fprintf(f_names_c,"int\n");
-    fprintf(f_names_c,"dwarf_get_%s_name (unsigned int val,\n",
-        prefix_id);
-    fprintf(f_names_c,"    const char ** s_out)\n");
-    fprintf(f_names_c,"{\n");
-    fprintf(f_names_c,"    switch (val) {\n");
+#endif
 
     for (u = 0; u < array_count; ++u) {
         /* Check if value already dumped */
-        if (u > 0 && group_array[u].value == prev_value) {
-            fprintf(f_names_c,
-                "    /*  Skipping alternate spelling of value\n");
-            fprintf(f_names_c,
-                "        0x%x. %s_%s */\n",
-                (unsigned)prev_value,
-                prefix,
-                group_array[u].name);
+        if (u > 0 && group_array[u].ad_value == prev_value) {
+            printf("/*  Skipping alternate spelling of value 0x%x\n",
+                u);
             continue;
         }
-        prev_value = group_array[u].value;
+        prev_value = group_array[u].ad_value;
 
-        /* Generate entries for 'dwarf_names.c' */
-        fprintf(f_names_c,"    case %s_%s:\n",
-            prefix,group_array[u].name);
-        fprintf(f_names_c,"        *s_out = \"%s_%s\";\n",
-            prefix,group_array[u].name);
-        fprintf(f_names_c,"        return DW_DLV_OK;\n");
+      
+        if (generate_c_array) {
+            printf("{ \"%s\",\"funcpointer\"},\n",
+                group_array[u].ad_prefixname);
+        }
+        if (print_found_content) {
+            printf("[%u] \"%s_",u,
+                group_array[u].ad_prefixname);
+            printf("%s\" value: 0x%x \n",
+                group_array[u].ad_name,
+                group_array[u].ad_value);
+        }
+        if (run_self_test) {
+#if 0
+            int res = selftest(group_array[u].prefixname,
+                group_array[u].ad_name,
+                group_array[u].ad_value);
+#endif
+           
+        }
         ++actual_array_count;
     }
-
-    /* Closing entries for 'dwarf_names.h' */
-    fprintf(f_names_c,"    default: break;\n");
-    fprintf(f_names_c,"    }\n");
-    fprintf(f_names_c,"    return DW_DLV_NO_ENTRY;\n");
-    fprintf(f_names_c,"}\n");
-    /* Mark the group_array as empty */
     array_count = 0;
 }
 
@@ -408,7 +415,8 @@ is_skippable_line(char *pLine)
     return empty;
 }
 
-/* Parse the 'dwarf.h' file and generate the tables */
+/*  Parse the 'dwarf.h' file and generate the
+    requested information. */
 static void
 ParseDefinitionsAndWriteOutput(void)
 {
@@ -449,7 +457,7 @@ ParseDefinitionsAndWriteOutput(void)
 
         second_underscore = strchr(name + prefix_root_len,'_');
         prefix_len = (int)(second_underscore - name);
-        _dwarf_safe_strcpy(new_prefix,sizeof(new_prefix),
+        safe_strcpy(new_prefix,sizeof(new_prefix),
             name,prefix_len);
 
         /* Check for new prefix set */
@@ -459,7 +467,7 @@ ParseDefinitionsAndWriteOutput(void)
                 GenerateOneSet();
             }
             pending = TRUE;
-            _dwarf_safe_strcpy(prefix,sizeof(prefix),
+            safe_strcpy(prefix,sizeof(prefix),
                 new_prefix,strlen(new_prefix));
         }
 
@@ -480,7 +488,6 @@ ParseDefinitionsAndWriteOutput(void)
         {
             unsigned long v = strtoul(value,NULL,16);
             /*  Some values are duplicated, that is ok.
-                After the sort we will weed out the duplicate values,
                 see GenerateOneSet(). */
             /*  Record current entry */
             if (strlen(second_underscore) >= MAX_NAME_LEN) {
@@ -488,11 +495,13 @@ ParseDefinitionsAndWriteOutput(void)
                     second_underscore,MAX_NAME_LEN);
                 exit(EXIT_FAILURE);
             }
-            _dwarf_safe_strcpy(group_array[array_count].name,
+            safe_strcpy(group_array[array_count].ad_prefixname,
+                MAX_NAME_LEN,prefix,strlen(prefix));
+            safe_strcpy(group_array[array_count].ad_name,
                 MAX_NAME_LEN,second_underscore,
                 strlen(second_underscore));
-            group_array[array_count].value = v;
-            group_array[array_count].original_position = array_count;
+            group_array[array_count].ad_value = v;
+            group_array[array_count].ad_original_position = array_count;
             ++array_count;
         }
     }
