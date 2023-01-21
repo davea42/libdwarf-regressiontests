@@ -1,3 +1,57 @@
+2023-01-21:  David Anderson
+    commit 1825e06c8cacbdc4ba7ef8950f2e252025440a56
+
+    Adding runsingle test_dwnames
+            modified:   DWARFTEST.sh
+    Baseline for the test
+            new file:   baselines/test_dwnames.base
+    The source running the test. Calls every
+    valid dwarf_get_TAG_name and FORM and ... so on,
+    currently 1157 calls.
+            modified:   test_dwnames.c
+
+2023-01-19:  David Anderson
+    commit a64708fa5627b44488eb3a121747ddd327e7d33c
+
+    Now with func pointer array.
+    Still incomplete.
+            modified:   test_dwnames.c
+
+2023-01-19:  David Anderson
+    commit e64c8d8bf32281ee7542b5ba270a868ac263b00b
+
+    Not ready to use, but a step closer.
+            modified:   test_dwnames.c
+
+2023-01-18:  David Anderson
+    commit 59b97c84283527ae8f4f3a6b2a5269acbbfd8b8d
+
+    Just started new test .
+            new file:   test_dwnames.c
+
+2023-01-17:  David Anderson
+    commit 71bf4624446e8c5f580684c3f29c458f82e48eb9
+
+    Correcting handling of lcov issues.
+            modified:   DWARFTEST.sh
+    Updated with latest
+            modified:   RegressionTestsResults.ods
+    New baseline .
+            new file:   baselines/test_bitoffseta.base
+
+2023-01-16:  David Anderson
+    commit 7afa71dc19d8391e415056b53b4069fc2645d7c1
+
+    Moved some local test compilations earier
+    here. Working toward better test coverage.
+            modified:   DWARFTEST.sh
+
+2023-01-15:  David Anderson
+    commit 790b829c52101cb003988b7dc9c1ebb8a2173f23
+
+    With latest from git log
+            modified:   ChangeLog
+
 2023-01-15:  David Anderson
     commit 9fa6f25c9f230489d73484f0af4728fcc6eabaa8
 
