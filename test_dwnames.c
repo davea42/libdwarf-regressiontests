@@ -15,18 +15,13 @@
    functions (one per DW_AT etc prefix).
    (C code). The output to be placed in this source file.
 
-   (C) --generate-self-test
-   Generate an array with all instances for self-test calls.
-   (C code). The output is to be placed in this source file.
-
-   (D) --run-self-test
+   (C) --run-self-test
    Run a self-test of all the dwarf_get_*name() functions
    using the arrays created by earlier runs.
    For this part the self-test code here will be calling libdwarf.
 
-   Parts A, B, and C are not run during testing,
-   just part D is the self-test proper.
-
+   Parts A and B, are not run during testing,
+   just part C is the self-test proper.
    
 */
 
@@ -41,7 +36,7 @@
 #include <stdio.h>  /* fgets() fprintf() printf() sscanf() */
 #include <stdlib.h> /* exit() qsort() strtoul() */
 #include <string.h> /* strchr() strcmp() strcpy() strlen()
-    strncmp() */
+    strncmp() size_t */
 #include "dwarf.h"
 #include "libdwarf.h"
 
@@ -54,20 +49,20 @@
 
 */
 
-static void GenerateOneSet(int tf_value);
+static int GenerateOneSet(int tf_value);
 #ifdef TRACE_ARRAY
 static void PrintArray(void);
 #endif /* TRACE_ARRAY */
 static int is_skippable_line(char *pLine);
-static void ParseDefinitionsAndWriteOutput(void);
+static int ParseDefinitionsAndWriteOutput(void);
 
 /* We don't need really long lines: the input file is simple. */
 #define MAX_LINE_SIZE 1000
 /*  We don't need a variable array size,
     it just has to be big enough. */
-#define ARRAY_SIZE 350
-#define FALSE 0
-#define TRUE  1
+#define GROUP_ARRAY_SIZE 350
+#define FALSE     0
+#define TRUE      1
 
 #define MAX_NAME_LEN 64
 
@@ -83,8 +78,8 @@ typedef struct {
 /*  A group_array is a grouping from dwarf.h.
     All the TAGs are one group, all the
     FORMs are another group, and so on. */
-static array_data group_array[ARRAY_SIZE];
-static unsigned array_count = 0;
+static array_data group_array[GROUP_ARRAY_SIZE];
+static unsigned group_array_count = 0;
 
 typedef int (*compfn)(const void *,const void *);
 static int Compare(array_data *,array_data *);
@@ -100,13 +95,20 @@ static char prefix[200] = "";
 
 static const char *usage[] = {
     "Usage: gennames <options>",
-    "    -i  <path/src/lib/libdwarf",
+    "    -i  <path/src/lib/libdwarf>",
     "    --print-found",
     "    --generate-func_array",
     "    --generate-self-test",
     "    --run-self-test",
     "",
 };
+
+static void
+reset_group_array(void)
+{
+     group_array_count = 0;
+     memset(group_array,0,sizeof(array_data)*GROUP_ARRAY_SIZE);
+}
 
 void
 safe_strcpy(char *out, size_t outlen,
@@ -153,7 +155,6 @@ print_usage_message(const char *options[])
 
 int print_found_content = TRUE;
 int generate_func_array = FALSE;
-int generate_self_test = FALSE;
 int run_self_test = FALSE;
 
 static void
@@ -161,7 +162,6 @@ set_all_false(void)
 {
     print_found_content = FALSE;
     generate_func_array = FALSE;
-    generate_self_test = FALSE;
     run_self_test = FALSE;
 }
 
@@ -183,12 +183,12 @@ process_args(int argc, char *argv[])
         } else if (!strcmp(argv[i],"--generate-func-array")) {
             set_all_false();
             generate_func_array = TRUE;
-        } else if (!strcmp(argv[i],"--generate-self-test")) {
-            set_all_false();
-            generate_self_test = TRUE;
         } else if (!strcmp(argv[i],"--run-self-test")) {
             set_all_false();
             run_self_test = TRUE;
+        } else if (!strcmp(argv[i],"--suppress-de-alloc-tree")) {
+            /*  Do nothing, this is irrelevant to the test
+                but it is allowed */
         } else {
             print_usage_message(usage);
             exit(EXIT_FAILURE);
@@ -205,11 +205,12 @@ process_args(int argc, char *argv[])
 }
 
 /*  Ends in 0,0 entry */
-typedef int( *getfunc)(unsigned int, const char **);
-struct funcpointerarray {
+typedef int( *getnamefuncptr)(unsigned int, const char **);
+
+struct funcpointerarray_s {
    const char *fp_prefix;
-   getfunc     fp_funcpointer;
-} funcpointer[] =
+   getnamefuncptr     fp_funcpointer;
+} funcpointerarray[] =
 {
 { "DW_TAG",dwarf_get_TAG_name},
 { "DW_children",dwarf_get_children_name},
@@ -291,10 +292,17 @@ open_path(const char *dir, const char *base, const char *direction)
 int
 main(int argc,char **argv)
 {
+    int failcount = 0;
+
     process_args(argc,argv);
     f_dwarf_in = open_path(input_dir,"dwarf.h","r");
-    ParseDefinitionsAndWriteOutput();
+    failcount = ParseDefinitionsAndWriteOutput();
     fclose(f_dwarf_in);
+    if (failcount) {
+        printf("FAIL test_dwnames: count %d\n",failcount);
+        return EXIT_FAILURE;
+    }
+    printf("PASS test_dwnames\n");
     return 0;
 }
 
@@ -304,8 +312,8 @@ static void
 PrintArray(void)
 {
     int i;
-    for (i = 0; i < array_count; ++i) {
-        printf("%d: Name %s_%s, Value 0x%04x\n",
+    for (i = 0; i < group_array_count; ++i) {
+        printf("[%3d] Name %s_%s, Value %04u\n",
             i,
             group_array[i].ad_prefixname,
             group_array[i].ad_name,
@@ -337,156 +345,191 @@ struct NameEntry {
     char ne_name[MAX_NAME_LEN];
 };
 
-/*  Sort these by name, then write */
-#if 0
-#define MAX_NAMES 200
-static struct NameEntry nameentries[MAX_NAMES];
-static int  curnameentry;
-#endif
+/*  We are not particularly concerned about efficiency
+    in this test code. */
+static getnamefuncptr
+find_function_pointer(const char *prefix)
+{
+    int i = 0;
 
-#if 0
-/*  We compare as capitals for sorting purposes.
-    This does not do right by UTF8, but the strings
-    are from in dwarf.h and are plain ASCII.  */
+    for ( ; funcpointerarray[i].fp_prefix ; i++) {
+        const char *cp = funcpointerarray[i].fp_prefix;
+        if (!strcmp(cp,prefix)) {
+             getnamefuncptr f = funcpointerarray[i].fp_funcpointer;
+             return f;
+        }
+    }
+    return NULL;
+}
+
+/*  PRECONDITION: prefix and name must be non-null
+    pointers to valid strings.
+    Returns DW_DLV_OK or DW_DLV_NO_ENTRY */
 static int
-CompareName(struct NameEntry *elem1,struct NameEntry *elem2)
+do_single_selftest(const char *prefix,
+    const char *name_in,
+    unsigned int value)
 {
-    char *cpl = elem1->ne_name;
-    char *cpr = elem2->ne_name;
-    for ( ; *cpl && *cpr; ++cpl,++cpr) {
-        unsigned char l = *cpl;
-        unsigned char r = *cpr;
-        unsigned char l1 = 0;
-        unsigned char r1 = 0;
+    static getnamefuncptr funcptr = 0;
+    static char           lastprefix[20];
+    static char           fullname[200];
 
-        if (l == r) {
-            continue;
-        }
-        if (l <= 'z' && l >= 'a') {
-            l1 = l - 'a' + 'A';
-            l = l1;
-        }
-        if (r <= 'z' && r >= 'a') {
-            r1 = r -'a'+ 'A';
-            r = r1;
-        }
-        if (l < r) {
-            return -1;
-        }
-        if (l > r) {
-            return 1;
-        }
-        continue;
-    }
-    if (*cpl < *cpr) {
-        return -1;
-    }
-    if (*cpl > *cpr) {
-        return 1;
-    }
-    return 0; /* should NEVER happen */
-}
-#endif
+    int          res = 0; 
+    unsigned int prefixlen = 0;
+    unsigned int name_in_len = 0;
+    const char  *ret_name = 0;
 
-#if 0
-static void
-SaveNameDeclaration(char *prefix_id)
-{
-    unsigned long length = 0;
-
-    if (curnameentry >= MAX_NAMES) {
-        printf("FAIL gennames. Exceeded limit of declarations %d "
-            "when given %s\n",curnameentry,prefix_id);
+    prefixlen = strlen(prefix);
+    name_in_len = strlen(name_in);
+    if (prefixlen > (sizeof(lastprefix)-2)) {
+        printf("FAIL improper prefix len %u\n",prefixlen);
         exit(EXIT_FAILURE);
     }
-    length = strlen(prefix_id);
-    if (length >= MAX_NAME_LEN) {
-        printf("FAIL gennames. Exceeded limit of declaration "
-            "name length at %ul "
-            "when given %s\n",curnameentry,prefix_id);
+    if ((prefixlen + name_in_len +2) >= sizeof(fullname)) {
+        printf("FAIL improper prefix/name len %u_%u\n",
+            prefixlen,name_in_len);
         exit(EXIT_FAILURE);
     }
-    strcpy(nameentries[curnameentry].ne_name,prefix_id);
-    ++curnameentry;
+    if (!funcptr) {
+        /*  First Time */
+        funcptr = find_function_pointer(prefix);
+    }
+    if (strcmp(prefix,lastprefix)) {
+        /* Changing to new prefix */
+        safe_strcpy(lastprefix,sizeof(lastprefix),prefix,prefixlen);
+        funcptr = find_function_pointer(prefix);
+        if (!funcptr) {
+            printf("Error: No function pointer for prefix %s!\n",
+                prefix);
+            return DW_DLV_NO_ENTRY;
+        }
+    }
+    if (!funcptr) {
+        printf("Error: No function pointer for prefix %s!\n",
+            prefix);
+        return DW_DLV_NO_ENTRY;
+    }
+    res = funcptr(value,&ret_name);
+    if (res == DW_DLV_OK) {
+         /* Found */
+         if (!strcmp(name_in,ret_name)) {
+             /*  PASS. Found expected name */
+             return DW_DLV_OK;
+         }
+    }
+    printf("Error: for prefix %s ",lastprefix);
+    printf("returns %d. ",res);
+    if (res == DW_DLV_NO_ENTRY) {
+        printf("Error: For value %u (0x%x) ",value,value);
+        printf("we get %s but expected %s\n",
+        ret_name,name_in);
+        return DW_DLV_NO_ENTRY;
+    }
+    printf("Error: No entry for value %u (0x%x)\n",
+        value,value);
+    return DW_DLV_NO_ENTRY;
 }
-#endif
 
 /* Write the table and code for a common set of names */
-static void
+static int
 GenerateOneSet(int is_final)
 {
     unsigned u;
     unsigned prev_value = 0;
-#if 0
-    char *prefix_id = prefix + prefix_root_len;
-#endif
-    unsigned actual_array_count = 0;
+    int failcount = 0;
 
 #ifdef TRACE_ARRAY
     printf("List before sorting:\n");
     PrintArray();
 #endif /* TRACE_ARRAY */
 
-#if 1
-    qsort((void *)&group_array,array_count,
+    qsort((void *)&group_array,group_array_count,
         sizeof(array_data),(compfn)Compare);
-#endif
 
 #ifdef TRACE_ARRAY
     printf("\nList after sorting:\n");
     PrintArray();
 #endif /* TRACE_ARRAY */
 
-#if 0
-    SaveNameDeclaration(prefix_id);
-#endif
-
-    for (u = 0; u < array_count; ++u) {
+    for (u = 0; u < group_array_count; ++u) {
         /* Check if value already dumped */
         if (u > 0 && group_array[u].ad_value == prev_value) {
-            printf("/*  Skipping alternate spelling of value 0x%x\n",
+            printf("/*  Skipping alternate spelling of value %u\n",
                 u);
             continue;
         }
         prev_value = group_array[u].ad_value;
         if (generate_func_array) {
             char funcname [200];
+            const char *pref = group_array[u].ad_prefixname;
+            size_t prefixlen =strlen(pref);
+            size_t remaining = sizeof(funcname);
+            size_t nextc = 0;
             
-            /*  Unsafe coding, but we know what to expect
-                in dwarf.h */
             funcname[0] = 0;
-            strcpy(funcname,"dwarf_get_");
-            strcat(funcname,group_array[u].ad_prefixname+3);
-            strcat(funcname,"_name");
-          
+            safe_strcpy(funcname,remaining,
+                "dwarf_get_",10);
+            remaining -= 10;
+            nextc += 10;
+            safe_strcpy(funcname+nextc,remaining,
+                pref+3,prefixlen-3);
+            remaining -= (prefixlen-3);
+            nextc += (prefixlen-3);
+            safe_strcpy(funcname+nextc,remaining,
+                "_name",5);
             printf("{ \"%s\",%s},\n",
                 group_array[u].ad_prefixname,funcname);
-            /* no need to look at other in the group */
+            /* no need to look at others in the group */
             if (is_final) {
+                /*  This the end of the group */
                 printf("{0,0}\n");
             }
             break;
         }
         if (print_found_content) {
-            printf("[%u] \"%s_",u,
+            printf("[%u] (%s) \"%s_",u,
+                group_array[u].ad_prefixname,
                 group_array[u].ad_prefixname);
-            printf("%s\" value: 0x%x \n",
+            printf("%s\" value: %u (0x%x)\n",
                 group_array[u].ad_name,
+                group_array[u].ad_value,
                 group_array[u].ad_value);
-        }
-        if (generate_self_test) {
         }
         if (run_self_test) {
-#if 0
-            int res = selftest(group_array[u].prefixname,
-                group_array[u].ad_name,
+            int res =  0;
+            size_t fullnamelen = 0;
+            char fullname[200];
+
+            fullname[0] = 0;
+            fullnamelen = strlen(group_array[u].ad_prefixname)
+                + strlen(group_array[u].ad_name) +2;
+
+            if (fullnamelen >= sizeof(fullname)) {
+                 /*  Impossible, really. */
+                 printf("Name too long to be real! %lu\n",
+                     (unsigned long)fullnamelen);
+                 return 1;
+            }
+            strcpy(fullname,group_array[u].ad_prefixname);
+            strcat(fullname,"_");
+            strcat(fullname,group_array[u].ad_name);
+            res = do_single_selftest(
+                group_array[u].ad_prefixname,
+                fullname,
                 group_array[u].ad_value);
-#endif
-           
+            if (res != DW_DLV_OK) {
+                /*  Error printed already */
+                ++failcount;
+                continue;
+            }
+            printf("Correct name %s for value %u (0x%x)\n",
+                fullname, group_array[u].ad_value,
+                group_array[u].ad_value);
         }
-        ++actual_array_count;
     }
-    array_count = 0;
+    reset_group_array();
+    group_array_count = 0;
+    return failcount;
 }
 
 /*  Detect empty lines (and other lines we do not want to read) */
@@ -503,7 +546,7 @@ is_skippable_line(char *pLine)
 
 /*  Parse the 'dwarf.h' file and generate the
     requested information. */
-static void
+static int
 ParseDefinitionsAndWriteOutput(void)
 {
     char new_prefix[64];
@@ -515,6 +558,7 @@ ParseDefinitionsAndWriteOutput(void)
     char line_in[MAX_LINE_SIZE];
     int pending = FALSE;
     int prefix_len = 0;
+    int failcount = 0;
 
     /* Process each line from 'dwarf.h' */
     while (!feof(f_dwarf_in)) {
@@ -528,9 +572,9 @@ ParseDefinitionsAndWriteOutput(void)
                 break;
             }
             /*  Is error. errno must be set. */
-            fprintf(stderr,"Error reading dwarf.h!. Errno %d\n",
+            printf("Error reading dwarf.h!. Errno %d\n",
                 errno);
-            exit(EXIT_FAILURE);
+            return 1;
         }
         if (is_skippable_line(line_in)) {
             continue;
@@ -538,6 +582,10 @@ ParseDefinitionsAndWriteOutput(void)
         sscanf(line_in,"%s %s %s %s",type,name,value,extra);
         if (strcmp(type,"#define") ||
             strncmp(name,prefix_root,prefix_root_len)) {
+            continue;
+        }
+        if ( !isdigit(value[0])) {
+            /* Skip if not  digits or 0xdigits */
             continue;
         }
 
@@ -550,7 +598,7 @@ ParseDefinitionsAndWriteOutput(void)
         if (strcmp(prefix,new_prefix)) {
             if (pending) {
                 /* Generate current prefix set */
-                GenerateOneSet(FALSE);
+                failcount += GenerateOneSet(FALSE);
             }
             pending = TRUE;
             safe_strcpy(prefix,sizeof(prefix),
@@ -558,10 +606,10 @@ ParseDefinitionsAndWriteOutput(void)
         }
 
         /* Be sure we have a valid entry */
-        if (array_count >= ARRAY_SIZE) {
-            printf("Too many entries for current "
-                "group_array size of %d",ARRAY_SIZE);
-            exit(EXIT_FAILURE);
+        if (group_array_count >= GROUP_ARRAY_SIZE) {
+            printf("Error: Too many entries for current "
+                "group_array size of %d",GROUP_ARRAY_SIZE);
+            return 1;
         }
         if (!second_underscore) {
             printf("Line has no underscore %s\n",line_in);
@@ -572,27 +620,37 @@ ParseDefinitionsAndWriteOutput(void)
         ++second_underscore;
 
         {
-            unsigned long v = strtoul(value,NULL,16);
+            char *endptr = 0;
+            unsigned long v = strtoul(value,&endptr,0);
+
+            if (endptr == value) {
+                /* Not a number */
+                continue;
+            }
+            
             /*  Some values are duplicated, that is ok.
                 see GenerateOneSet(). */
             /*  Record current entry */
             if (strlen(second_underscore) >= MAX_NAME_LEN) {
+                /* Something is corrupted in dwarf.h. */
                 printf("Too long a name %s for max len %d\n",
                     second_underscore,MAX_NAME_LEN);
                 exit(EXIT_FAILURE);
             }
-            safe_strcpy(group_array[array_count].ad_prefixname,
+            safe_strcpy(group_array[group_array_count].ad_prefixname,
                 MAX_NAME_LEN,prefix,strlen(prefix));
-            safe_strcpy(group_array[array_count].ad_name,
+            safe_strcpy(group_array[group_array_count].ad_name,
                 MAX_NAME_LEN,second_underscore,
                 strlen(second_underscore));
-            group_array[array_count].ad_value = v;
-            group_array[array_count].ad_original_position = array_count;
-            ++array_count;
+            group_array[group_array_count].ad_value = v;
+            group_array[group_array_count].ad_original_position =
+                group_array_count;
+            ++group_array_count;
         }
     }
     if (pending) {
         /* Generate final prefix set */
-        GenerateOneSet(TRUE);
+        failcount += GenerateOneSet(TRUE);
     }
+    return failcount;
 }

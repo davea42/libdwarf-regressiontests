@@ -884,6 +884,18 @@ then
 fi
 
 
+echo "=====START  $testsrc/test_dwnames/ build"
+  echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/test_dwnames.c
+     -o test_dwnames $dwlib $libopts"
+  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/test_dwnames.c \
+     -o test_dwnames $dwlib $libopts
+  r=$?
+  chkres $r 'check test_dwnames-error compile test_dwnames.c failed'
+
 echo "=====START  $testsrc/testfindfuncbypc/ tests"
   mklocal testfindfuncbypc
   sh $testsrc/testfindfuncbypc/runtest.sh
@@ -1000,7 +1012,7 @@ echo "=====START  $testsrc/test_harmless.c"
   chkres $? 'check harmless-error compiling test_harmless.c failed'
   ./test_harmless
   chkres $? 'check harmless-error execution failed'
-  echo dadebug build test_harmless `pwd`
+  echo build test_harmless `pwd`
   ls -l ./test_harmless
 echo "=====START  $testsrc/test_sectionnames"
   echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \
@@ -2224,7 +2236,7 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-echo dadebug check test_harmless before frame1 `pwd`
+echo check test_harmless before frame1 `pwd`
 ls -l ./test_harmless
 echo "=====START   $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd"
 mklocal frame1 
@@ -2234,7 +2246,7 @@ mklocal frame1
   chkres $r $testsrc/frame1
 cd ..
 
-echo dadebug check test_harmless before sandnes2 `pwd`
+echo check test_harmless before sandnes2 `pwd`
 ls -l ./test_harmless
 echo "=====START   $testsrc/sandnes2/runtest.sh"
 mklocal sandnes2
@@ -2243,7 +2255,7 @@ mklocal sandnes2
   chkres $r  $testsrc/sandnes2
 cd ..
 
-echo dadebug check test_harmless before legendre `pwd`
+echo check test_harmless before legendre `pwd`
 ls -l ./test_harmless
 if [ $NLIZE = 'n' ]
 then
@@ -2258,7 +2270,7 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-echo dadebug check test_harmless before enciso4 `pwd`
+echo check test_harmless before enciso4 `pwd`
 ls -l ./test_harmless
 echo "=====START   $testsrc/enciso4/runtest.sh"
 mklocal enciso4
@@ -2266,12 +2278,14 @@ mklocal enciso4
   chkres $?  $testsrc/enciso4
 cd ..
 
-echo dadebug check test_harmless before old dwarf loclist `pwd`
+echo check test_harmless before old dwarf loclist `pwd`
 ls -l ./test_harmless
 # -g: use old dwarf loclist code.
 runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
-echo "dadebug now runsingle" `pwd`
+
+runsingle test_dwnames.base ./test_dwnames \
+  -i $codedir/src/lib/libdwarf --run-self-test
 
 runsingle test_bitoffseta.base ./test_bitoffset  \
     $testsrc/bitoffset/bitoffsetexampledw3.o \
