@@ -218,8 +218,11 @@ main(int argc, char **argv)
         int res2 = 0;
         int res = DW_DLV_ERROR;
         Dwarf_Debug dbg = 0;
-
         filepath = argv[i];
+        if (!strcmp(filepath,"--suppress-de-alloc-tree")) {
+            /* Ignore this option */
+            continue;
+        }
         printf("Opening file %s\n","<name suppressed for full"
             " path compatiblity\n");
         res = dwarf_init_path(filepath,

@@ -1078,6 +1078,11 @@ runtest $d1 $d2 foo.o -h
 # The testcase is empty file. Ensure it behaves ok.
 runtest $d1 $d2 ossfuzz51183/ossfuzz54358-emptyfile -i
 
+# Testcase uses DW_FORM_strx3.
+# Similar problem exists with DW_FORM_addrx3.
+# Neither handled properly until 24 January 2023 v0.6.0
+runtest $d1 $d2 kaufmann2/ct-bad.o -a -M -vv 
+
 runtest $d1 $d2 data16/data16.bin               -a -M
 runtest $d1 $d2 implicitconst/implicitconst.bin -a -M
 runtest $d1 $d2 offsetfromlowpc/offsetfromlowpc.bin -a -M
