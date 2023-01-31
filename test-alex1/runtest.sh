@@ -34,17 +34,21 @@ then
 fi
 if [ $withlibzstd = "yezstd" ]
 then
+  if  [ ! "x$libzstdlibdir" = "x" ]
+  then
+      libs="$libs $libzstdlibdir"
+  fi
   libs="$libs -lzstd"
 fi
 
 OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf"
-echo "cc -DWORKING=1 $opt $OPTS  $ts/test.c ../$filelibname $libs -o test1"
+echo "cc -DWORKING=1 $opt $OPTS $libzstdhdrdir  $ts/test.c ../$filelibname $libs -o test1"
 cc -DWORKING=1 $opt $OPTS  $ts/test.c ../$filelibname $libs -o test1
 if [ $? -ne 0 ]
 then
      exit 1
 fi
-cc  $opt $OPTS  $ts/test.c ../$filelibname  $libs -o test2
+cc  $opt $OPTS $libzstdhdrdir  $ts/test.c ../$filelibname  $libs -o test2
 if [ $? -ne 0 ]
 then
      echo fail test-alex1 cc 2

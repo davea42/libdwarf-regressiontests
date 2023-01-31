@@ -11,9 +11,10 @@ tf=$bldtest/testoffdie
 
 src=$testsrc/testoffdie
 bld=$libbld
-withlibelf=$1
-withlibz=$2
+withlibelf="$1"
+withlibz="$2"
 withlibzstd=$3
+# libzstdhdrdir and libzstdlibdir are in BASEFILES.sh.
 echo "entering testoffdie/runtest.sh  $withlibelf $withlibz"
 h="-I$testsrc/libdwarf -I$codedir/src/lib/libdwarf"
 l="-L$src/libdwarf"
@@ -28,6 +29,10 @@ then
 fi
 if [ x$withlibzstd = "xyezstd" ]
 then
+  if  [ ! "x$libzstdlibdir" = "x" ]
+  then
+      libs="$libs $libzstdlibdir"
+  fi
   libs="$libs -lzstd"
 fi
 if [ x$withlibz = "x" ]
@@ -53,8 +58,9 @@ else
 fi
 
 opts="-I$bld -I$bld/src/lib/libdwarf"
-echo cc $h $opts  $ts/testoffdie.c $nli $l -o junkoffdie $libs
-cc $h $opts  $ts/testoffdie.c $nli $l -o junkoffdie $libs
+echo cc $h $opts $libzstdhdrdir  $ts/testoffdie.c  \
+  $nli $l -o junkoffdie $libs
+cc $h $opts  $libzstdhdrdir  $ts/testoffdie.c $nli $l -o junkoffdie $libs
 if [ $? -ne 0 ]
 then
    echo fail compile testoffdie/testoffdie.c 

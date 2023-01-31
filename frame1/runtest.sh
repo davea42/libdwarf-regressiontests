@@ -38,12 +38,16 @@ then
 fi
 if [ "x$withlibzstd" = "xyezstd" ]
 then
+  if  [ ! "x$libzstdlibdir" = "x" ]
+  then
+      libs="$libs $libzstdlibdir"
+  fi
   libs="$libs -lzstd"
 fi
 iopts="-I$libbld -I$bld -I$bld/src/liblibdwarf -I$libdw -I$libbld/src/liblibdwarf"
 cpifmissing $codedir/src/bin/dwarfexample/frame1.c framexlocal.c
-echo "cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1"
-cc -g $opt $iopts framexlocal.c $dwlib $libs -o frame1
+echo "cc -g $opt $iopts $libzstdhdrdir framexlocal.c $dwlib $libs -o frame1"
+cc -g $opt $iopts $libzstdhdrdir framexlocal.c $dwlib $libs -o frame1
 
 if [ $? -ne 0 ]
 then

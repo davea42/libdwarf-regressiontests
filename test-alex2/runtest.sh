@@ -27,10 +27,15 @@ then
 fi
 if [ $withlibzstd = "yezstd" ]
 then
+  if  [ ! "x$libzstdlibdir" = "x" ]
+  then
+      libs="$libs $libzstdlibdir"
+  fi
+
   libs="$libs -lzstd"
 fi
 
-cc -DWORKING=1 $OPTS  $ts/test.c $l $libs -o test2
+cc -DWORKING=1 $OPTS  $libzstdhdrdir $ts/test.c $l $libs -o test2
 
 cpifmissing $ts/orig.a.out orig.a.out
 ./test2 orig.a.out >out1

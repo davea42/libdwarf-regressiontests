@@ -37,10 +37,14 @@ then
 fi
 if [ $withlibzstd = "yezstd" ]
 then
+  if  [ ! "x$libzstdlibdir" = "x" ]
+  then
+      libs="$libs $libzstdlibdir"
+  fi
   libs="$libs -lzstd"
 fi
 
-cc $h $opts  $ts/cutest.c $nli $l -o cutest $libs
+cc $h $opts  $libzstdhdrdir $ts/cutest.c $nli $l -o cutest $libs
 ./cutest $ts/cutestobj.save
 r=$?
 if [ $r -ne 0 ]

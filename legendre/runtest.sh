@@ -32,12 +32,17 @@ then
 fi
 if [ $withlibzstd = "yezstd" ]
 then
+  if  [ ! "x$libzstdlibdir" = "x" ]
+  then
+      libs="$libs $libzstdlibdir"
+  fi
   libs="$libs -lzstd"
 fi
 
 cpifmissing $ts/libmpich.so.1.0 libmpich.so.1.0
 
-cc -I $libdw/libdwarf $opt $OPTS -DNEW $ts/frame_test.c ../$filelibname $libs -o frame_test1
+cc -I $libdw/libdwarf $opt $OPTS -DNEW $libzstdhdrdir \
+  $ts/frame_test.c ../$filelibname $libs -o frame_test1
 if [ $? -ne 0 ]
 then
   echo fail legendre cc frame_test.c frame CFA reg new

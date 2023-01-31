@@ -140,15 +140,30 @@ mklocal checkforlibz
     withlibz="withlibz"
   fi
 cd ..
+libzstdhdrdir=""
+libzstdlibdir=""
 mklocal checkforlibzstd
   sh $testsrc/checkforlibzstd/runtest.sh $testsrc
-  if [ $? -ne 0 ]
-  then
-    withlibzstd="nozstd"
-  else
-    withlibzstd="yezstd"
-  fi
+  r=$?
+  # Return to outer level.
 cd ..
+#  Update these vars and BASEFILES.sh in outer level.
+if [ $r -eq 1 ]
+then
+  withlibzstd="nozstd"
+else 
+  if [ $r = 0 ]
+  then
+      withlibzstd="yezstd"
+  else
+      # assuming $r = 2
+      withlibzstd="yezstd"
+      libzstdhdrdir="-I/usr/local/include"
+      libzstdlibdir="-L/usr/local/lib"
+      echo 'libzstdhdrdir="-I/usr/local/include"' >> $b
+      echo 'libzstdlibdir="-L/usr/local/lib"' >> $b
+  fi
+fi
 
 echo "Lock file.................: $dwbb"
 if [ -f $dwbb ]
@@ -184,6 +199,11 @@ echo "test source...............: $testsrc"
 echo "library source............: $codedir"
 echo "test build................: $bldtest"
 echo "library build.............: $libbld"
+if [ ! "x"  = "x$libzstdhdrdir" ]
+then
+echo "special libz.h in ........: $libzstdhdrdir"
+echo "special libzstd...........: $libzstdlibdir"
+fi
 echo "DWARFTEST lock set at.....: " `date "+%Y-%m-%d %H:%M:%S"` >$dwbb
 echo "Lock file content follows.:"
 cat $dwbb
@@ -880,13 +900,14 @@ then
 fi
 if [ $withlibzstd = "yezstd" ]
 then
+  libopts="$libopts $libzstdlibdir" 
   libopts="$libopts -lzstd"
 fi
 
 
 echo "=====START  $testsrc/test_dwnames/ build"
   echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
+     -I$libbld/libdwarf  -\
      -gdwarf $nlizeopt $testsrc/test_dwnames.c
      -o test_dwnames $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
@@ -907,20 +928,20 @@ echo "=====START  $testsrc/testfindfuncbypc/ tests"
 echo "=====START  $testsrc/filelist/ tests"
   mklocal filelist
   echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
+     -I$libbld/libdwarf $libzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
      -o localfuzz_init_path $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
+     -I$libbld/libdwarf $libzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
      -o localfuzz_init_path $dwlib $libopts
   chkres $? "check -error compiling $testsrc/filelist/localfuzz_init_path.c failed"
   echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
+     -I$libbld/libdwarf $lihbzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
      -o localfuzz_init_binary $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
+     -I$libbld/libdwarf $lihbzstdhdrdir \
      -gdwarf  $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
      -o localfuzz_init_binary $dwlib $libopts
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
@@ -931,9 +952,11 @@ echo "=====START  $testsrc/filelist/ tests"
 
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
+    $libzstdhdrdir \
     -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
      -o test_pubsreader $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     $libzstdhdrdir \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
       -o test_pubsreader $dwlib $libopts
@@ -960,9 +983,11 @@ echo "=====START  $testsrc/test_pubsreader"
 echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
    echo "test_bitoffset: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt \
+     $libzstdhdrdir \
      $testsrc/bitoffset/test_bitoffset.c.c \
      -o test_test_bitoffset $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     $libzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/bitoffset/test_bitoffset.c  -o \
       test_bitoffset $dwlib $libopts
   chkres $? "check bitoffset-error compiling bitoffset/test_bitoffset.c\
@@ -989,9 +1014,11 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
 echo "=====START  $testsrc/test_arange"
   echo "test_arange: $CC -Wall -I$codedir/libdwarf -I$libbld \
      -I$libbld/libdwarf  -gdwarf $nlizeopt \
+     $libzstdhdrdir \
      $testsrc/test_arange.c \
      -o test_arange $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     $libzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
       test_arange $dwlib $libopts
   chkres $? 'check arange-error compiling test_arange.c\
@@ -1003,9 +1030,11 @@ echo "=====START  $testsrc/test_arange"
      junk_arange"
 echo "=====START  $testsrc/test_harmless.c"
   echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld \
+     $libzstdhdrdir \
      -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c \
      -o test_harmless $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     $libzstdhdrdir \
     -I$libbld/libdwarf  \
     -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless\
       $dwlib $libopts
@@ -1016,10 +1045,12 @@ echo "=====START  $testsrc/test_harmless.c"
   ls -l ./test_harmless
 echo "=====START  $testsrc/test_sectionnames"
   echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \
+     $libzstdhdrdir \
      -I$libbld/libdwarf  -gdwarf $nlizeopt \
      $testsrc/test_sectionnames.c \
      -o test_sectionnames $dwlib $libopts"
   $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     $libzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/test_sectionnames.c  -o \
       test_sectionnames $dwlib $libopts
   chkres $? 'check sectionnames-error compiling test_sectionnames.c\
