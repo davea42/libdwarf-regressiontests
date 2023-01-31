@@ -197,7 +197,7 @@ die_findable_check(Dwarf_Debug dbg,
             if (res == DW_DLV_OK) {
                 errcnt += print_offset_list(cudie_offset2,is_info,
                     offbuf,offcount,cu_total_length);
-                dwarf_dealloc(dbg, offbuf, DW_DLA_LIST);
+                dwarf_dealloc(dbg, offbuf, DW_DLA_UARRAY);
                 first_cu_die_done = TRUE;
             } else if (res==DW_DLV_ERROR) {
                 printf("dwarf_offset_list ERROR: %s \n",
