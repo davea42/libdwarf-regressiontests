@@ -44,3 +44,23 @@ setpythondirs() {
     fi
   fi
 }
+
+checkargs () {
+  nli=
+  echo "void t(void) {int  x = 3; }" >sancheck.c
+  for a in $*
+  do
+    if [ "x$CC" = "x" ]
+    then
+      CC=cc
+    fi
+    $CC $a -c sancheck.c 2>/dev/null
+    if [ $? -eq 0 ]
+    then
+      nli="$nli $a"
+    fi
+  done
+  rm -f sancheck.c
+  echo $nli
+}
+

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . ../BASEFILES.sh
+. $testsrc/BASEFUNCS.sh
 
 ts=$testsrc/findcu
 tf=$bldtest/findcu
@@ -21,7 +22,8 @@ l="-L$libdw/libdwarf"
 libs="../$filelibname"
 if [ x$NLIZE = 'xy' ]
 then
-  nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
+  nli=`checkargs -fsanitize=address -fsanitize=leak \
+    -fsanitize=undefined`
 else
   nli=
 fi

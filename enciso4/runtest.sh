@@ -4,6 +4,7 @@
 # zcat (gzcat on MacOS) is the same as gunzip -c  
 olddd=../dwarfdump.O
 newdd=../dwarfdump
+
 # The problem here is that it is dwarf2 and elf64 yet 32bit address
 # so things go wrong. We need to specify address size is 4.
 # So we need a dwarfdump.conf flag here.

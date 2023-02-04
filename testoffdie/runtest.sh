@@ -3,11 +3,10 @@
 # we ignore $3 arg.  On non-linux it's not so
 # simple to test for zlib.h, the zlib.h test below does
 # not work on such systems.
-
-
 . ../BASEFILES.sh
 ts=$testsrc/testoffdie
 tf=$bldtest/testoffdie
+. $testsrc/BASEFUNCS.sh
 
 src=$testsrc/testoffdie
 bld=$libbld
@@ -52,7 +51,8 @@ fi
 
 if [ x$NLIZE = 'xy' ]
 then
-  nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
+  nli=`checkargs -fsanitize=address -fsanitize=leak \
+    -fsanitize=undefined`
 else
   nli=
 fi

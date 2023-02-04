@@ -269,8 +269,11 @@ then
 else
   ASAN_OPTIONS="allocator_may_return_null=1"
   export ASAN_OPTIONS
-  nlizeopt="-fsanitize=address -fsanitize=leak -fsanitize-address-use-after-scope  -fsanitize=undefined -fno-omit-frame-pointer"
-  echo "Using -fsanitize=leak.....: yes"
+  # Ensure we can use the opts.
+  nlizeopt=`checkargs -fsanitize=address -fsanitize=leak  \
+    -fsanitize-address-use-after-scope   \
+    -fsanitize=undefined -fno-omit-frame-pointer`
+  echo "Using -fsanitize..........: $nlizeopt"
 fi
 if [ "x$suppresstree" = "x--suppress-de-alloc-tree" ]
 then
@@ -1068,8 +1071,13 @@ echo "=====START  $testsrc/test_sectionnames"
 
 if [ $compileonly = "y" ]
 then
-   echo "STOP after building test executables"
-   exit 1
+  if [ $failcount -ne 0 ]
+  then
+    echo "FAIL: STOP after failed building dwtests executables"
+    exit 1
+  fi
+  echo "STOP after successfully building dwtests executables"
+  exit 0
 fi
 
 # Checking that we can print the .debug_sup section

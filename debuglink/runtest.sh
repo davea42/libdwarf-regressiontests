@@ -1,8 +1,10 @@
 #!/bin/sh
 dd=../dwarfdump
+
 if [ x$NLIZE = 'xy' ]
 then
-  nli="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
+  nli=`checkargs -fsanitize=address -fsanitize=leak \
+    -fsanitize=undefined`
 else
   nli=
 fi
@@ -18,6 +20,7 @@ fi
 ts=$testsrc/debuglink
 tf=$bldtest/debuglink
 . $testsrc/BASEFUNCS.sh
+
 
 setpythondirs
 if [ $? -ne 0 ]

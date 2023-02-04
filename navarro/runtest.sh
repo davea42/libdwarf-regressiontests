@@ -4,7 +4,6 @@
 ts=$testsrc/navarro
 tf=$bldtest/navarro
 
-
 echo $libdw/libdwarf
 dw=$libdw/libdwarf
 echo $dw/libdwarf

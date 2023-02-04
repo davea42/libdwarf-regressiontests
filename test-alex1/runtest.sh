@@ -6,13 +6,13 @@ tf=$bldtest/test-alex1
 top_bld=$bldtest
 top_src=$testsrc
 . $testsrc/BASEFUNCS.sh
-
 withlibelf=$1
 withlibz=$2
 withlibzstd=$3
 if [ x$NLIZE = 'xy' ]
 then
-  opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
+  opt=`checkargs -fsanitize=address -fsanitize=leak \
+    -fsanitize=undefined`
 else
   opt=
 fi

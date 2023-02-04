@@ -8,7 +8,6 @@ ts=$testsrc/showsecgroupsdir
 tf=$bldtest/showsecgroupsdir
 . $testsrc/BASEFUNCS.sh
 
-
 set -x
 rm -f junk.sgtestout
 rm -f junk.sgtest2out

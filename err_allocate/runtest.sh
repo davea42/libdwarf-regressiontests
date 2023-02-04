@@ -4,13 +4,14 @@
 
 ts=$testsrc/err_allocate
 tf=$bldtest/err_allocate
-
+. $testsrc/BASEFUNCS.sh
 libdw=$1
 withlibelf=$2
 withlibz=$3
 if [ x$NLIZE = 'xy' ]
 then 
-  opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
+  opt=`checkargs -fsanitize=address -fsanitize=leak \
+    -fsanitize=undefined`
 else
   opt=
 fi

@@ -2,8 +2,8 @@
 . ../BASEFILES.sh
 ts=$testsrc/frame1
 tf=$bldtest/frame1
-
 . $testsrc/BASEFUNCS.sh
+
 libdw=$codedir/src/lib/libdwarf
 bld=$bldtest
 dwlib=../$filelibname
@@ -23,7 +23,8 @@ fi
 echo "where is libbld? : $libbld"
 if [ x$NLIZE = 'xy' ]
 then
-  opt="-fsanitize=address -fsanitize=leak -fsanitize=undefined"
+  opt=`checkargs -fsanitize=address -fsanitize=leak \
+    -fsanitize=undefined`
 else
   opt=
 fi
