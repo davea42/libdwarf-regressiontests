@@ -250,12 +250,15 @@ int main(int argc, char **argv)
     int fd = 0;
     int i = 1;
 
-    if (i >= argc) {
-        /* OK */
-    } else {
+    for( ; i < (argc-1); ++i) {
+        if (!strcmp(argv[i],"-f")) {
+            ++i;
+            filepath=argv[i];
+            continue;
+        }
         if (!strcmp(argv[i],"--suppress-de-alloc-tree")) {
             dwarf_set_de_alloc_flag(FALSE);
-            ++i;
+            continue;
         }
     }
 

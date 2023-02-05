@@ -2328,6 +2328,7 @@ ls -l ./test_harmless
 runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
 
+
 runsingle test_dwnames.base ./test_dwnames \
   -i $codedir/src/lib/libdwarf --run-self-test
 
@@ -2336,7 +2337,10 @@ runsingle test_bitoffseta.base ./test_bitoffset  \
     $testsrc/bitoffset/bitoffsetexampledw5.o  \
 
 ls -l ./test_harmless
-runsingle test_harmlessb.base ./test_harmless  $suppresstree 
+runsingle test_harmlessb.base ./test_harmless $suppresstree 
+
+runsingle test_harmlessc.base ./test_harmless $suppresstree  -f \
+  $testsrc/testfindfuncbypc/findfuncbypc.exe1
 
 runsingle test_sectionnamesb.base ./test_sectionnames \
   $testsrc/testfindfuncbypc/findfuncbypc.exe1 \
