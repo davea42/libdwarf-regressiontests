@@ -11,8 +11,6 @@ echo "  Revert to normal test...: unset NLIZE"
 echo "  Revert to normal test...: unset VALGRIND"
 echo "  Revert to normal test...: unset COMPILEONLY"
 echo "  Stop after building test_bitoffset etc"
-echo "              ............: export LCOV=y"
-echo "              ............: export COMPILEONLY=y"
 # On certain VMs if too much change, we get
 # stuck at 1% done forever (and after 10 hours
 # far from done with the tests).
@@ -247,25 +245,14 @@ echo "Python dir in tests.......: $mypydir"
 # Not all tests will be run in that case.
 # Some of the tests involve compilation and linking,
 # so we need this here.
-if [ x$LCOV = 'xy' ]
-then
-  echo "Using -fprofile-arcs .......: yes"
-  nlizeopt="-g -O0 -fprofile-arcs -ftest-coverage"
-fi
 if [ x$NLIZE != 'xy' ]
 then
-  if [ x$LCOV = 'xy' ]
-  then
-    echo "Using -fprofile-arcs .......: yes"
-    nlizeopt="-g -O0 -fprofile-arcs -ftest-coverage"
-  else
-    NLIZE='n'
-    export NLIZE
-    ASAN_OPTIONS=
-    export ASAN_OPTIONS
-    nlizeopt=
-    echo "Using -fsanitize .........: no"
-  fi
+  NLIZE='n'
+  export NLIZE
+  ASAN_OPTIONS=
+  export ASAN_OPTIONS
+  nlizeopt=
+  echo "Using -fsanitize .........: no"
 else
   ASAN_OPTIONS="allocator_may_return_null=1"
   export ASAN_OPTIONS
