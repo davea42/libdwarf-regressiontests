@@ -3,3 +3,12 @@
 ./ossfuzz40802/crash-3c238d58556b66f3e036a8a7a133b99470d539af
 ./ossfuzz40802/clusterfuzz-testcase-minimized-fuzz_init_binary-5538015955517440.fuzz
 ./ossfuzz40674/clusterfuzz-testcase-minimized-fuzz_init_path-6557751518560256
+./google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
+./google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
+./c-sun/poc
+./DW201609-004/poc
+./DW201609-001/DW201609-001-poc  
+./guilfanov2/double-free-poc
+./DW201609-002/DW201609-002-poc
+./DW201609-003/poc           
+./ossfuzz54724/clusterfuzz-54724-poc

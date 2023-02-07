@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     Dwarf_Debug dbg = 0;
     Dwarf_Error *errp = NULL;
     char macho_real_path[2000];
-    const char *filename = "<fake>";
+    consts char *filename = "<fake>";
     int i = 1;
 
     for ( ; i < 2; ++i) {

@@ -372,6 +372,8 @@ chkresn () {
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 
 filepaths='moshe/hello
+google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
+google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
 ckdev/modulewithdwarf.ko
 sleicasper/bufferoverflow
 jborg/simple
@@ -915,7 +917,7 @@ echo "=====START  $testsrc/testfindfuncbypc/ tests"
 # the special (badly written) testcases here
 # return 0 even if there is a DWARF ERROR reported
 # (but if the required arg omitted, return 1).
-echo "=====START  $testsrc/filelist/ tests"
+echo "=====START  $testsrc/filelist/ builds"
   mklocal filelist
   echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf $libzstdhdrdir \
@@ -935,9 +937,10 @@ echo "=====START  $testsrc/filelist/ tests"
      -gdwarf  $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
      -o localfuzz_init_binary $dwlib $libopts
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
-  sh $testsrc/filelist/runtest.sh
-  r=$?
-  chkres $r 'filelist stderr checks failed on filelist/fuzz_init....'
+  # As of Feb 6, 2023 these checks are handled by runsingle().
+  #sh $testsrc/filelist/runtest.sh
+  #r=$?
+  #chkres $r 'filelist stderr checks failed on filelist/fuzz_init....'
   cd ..
 
 echo "=====START  $testsrc/test_pubsreader"
@@ -2318,6 +2321,60 @@ runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
 
 runsingle test_dwnames.base ./test_dwnames \
   -i $codedir/src/lib/libdwarf --run-self-test
+
+runsingle fuzzmoy.base ./filelist/localfuzz_init_binary  \
+   ./moya9/oob-repro
+runsingle fuzzkal.base ./filelist/localfuzz_init_binary  \
+   ./kaletta/test.o
+runsingle fuzz40802.base ./filelist/localfuzz_init_binary  \
+   ./ossfuzz40802/crash-3c238d58556b66f3e036a8a7a133b99470d539a
+runsingle fuzz40802b.base ./filelist/localfuzz_init_binary  \
+   ./ossfuzz40802/clusterfuzz-testcase-minimized-fuzz_init_binary-5538015955517440.fuzz
+runsingle fuzz40624.base ./filelist/localfuzz_init_binary  \
+   ./ossfuzz40674/clusterfuzz-testcase-minimized-fuzz_init_path-6557751518560256
+runsingle fuzzgoogle1.base ./filelist/localfuzz_init_binary  \
+   ./google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
+runsingle fuzzgoogle1b.base ./filelist/localfuzz_init_binary  \
+   ./google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
+runsingle fuzzc-sun.base ./filelist/localfuzz_init_binary  \
+   ./c-sun/poc
+runsingle fuzz201609.base ./filelist/localfuzz_init_binary  \
+   ./DW201609-004/poc
+runsingle fuzzguil.base ./filelist/localfuzz_init_binary  \
+   ./guilfanov2/double-free-poc
+runsingle fuzz201609b.base ./filelist/localfuzz_init_binary  \
+  ./DW201609-002/DW201609-002-poc
+runsingle fuzz201690c.base ./filelist/localfuzz_init_binary  \
+  ./DW201609-003/poc
+runsingle fuzz54724.base ./filelist/localfuzz_init_binary  \
+  ./ossfuzz54724/clusterfuzz-54724-poc
+
+runsingle fuzzpathmoy.base ./filelist/localfuzz_init_path  \
+   ./moya9/oob-repro
+runsingle fuzzpathkal.base ./filelist/localfuzz_init_path  \
+   ./kaletta/test.o
+runsingle fuzzpath40802.base ./filelist/localfuzz_init_path  \
+   ./ossfuzz40802/crash-3c238d58556b66f3e036a8a7a133b99470d539a
+runsingle fuzzpath40802b.base ./filelist/localfuzz_init_path  \
+   ./ossfuzz40802/clusterfuzz-testcase-minimized-fuzz_init_binary-5538015955517440.fuzz
+runsingle fuzzpath40624.base ./filelist/localfuzz_init_path  \
+   ./ossfuzz40674/clusterfuzz-testcase-minimized-fuzz_init_path-6557751518560256
+runsingle fuzzpathgoogle1.base ./filelist/localfuzz_init_path  \
+   ./google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
+runsingle fuzzpathgoogle1b.base ./filelist/localfuzz_init_path  \
+   ./google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
+runsingle fuzzpathc-sun.base ./filelist/localfuzz_init_path  \
+   ./c-sun/poc
+runsingle fuzzpath201609.base ./filelist/localfuzz_init_path  \
+   ./DW201609-004/poc
+runsingle fuzzpathguil.base ./filelist/localfuzz_init_path  \
+   ./guilfanov2/double-free-poc
+runsingle fuzzpath201609b.base ./filelist/localfuzz_init_path  \
+  ./DW201609-002/DW201609-002-poc
+runsingle fuzzpath201690c.base ./filelist/localfuzz_init_path  \
+  ./DW201609-003/poc
+runsingle fuzzpath54724.base ./filelist/localfuzz_init_path  \
+  ./ossfuzz54724/clusterfuzz-54724-poc
 
 runsingle test_bitoffseta.base ./test_bitoffset  \
     $testsrc/bitoffset/bitoffsetexampledw3.o \

@@ -28,26 +28,34 @@ limitations under the License.
  * A fuzzer that simulates a small part of the simplereader.c example.
  * This fuzzer targets dwarf_init_b.
  */
-int
-main (int argc, const char **argv)
+int main(int argc,char **argv)
 {
-  int my_init_fd = 0;
-  Dwarf_Ptr errarg = 0;
-  Dwarf_Handler errhand = 0;
-  Dwarf_Error *errp = NULL;
-  Dwarf_Debug dbg = 0;
-  const char *filename = 0;
+    int my_init_fd = 0;
+    Dwarf_Ptr errarg = 0;
+    Dwarf_Handler errhand = 0;
+    Dwarf_Error *errp = NULL;
+    Dwarf_Debug dbg = 0;
+    int i = 1;
+    const char *filename = "<fake>";
+  
+    for ( ; i < 2; ++i) {
+        const char *v = 0;
 
-  if (argc < 2) {
-      printf("FAIL, argument required, a pathname\n");
-      exit(1);
-  }
-  filename = argv[1];
-  my_init_fd = open(filename, O_RDONLY);
-  if (my_init_fd != -1) {
-    dwarf_init_b(my_init_fd,DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,errp);
-    dwarf_finish(dbg);
-    close(my_init_fd);
-  }
-  return 0;
+        v = argv[i];
+        if (!strcmp(v,"--suppress-de-alloc-tree")) {
+            /* Skip this */
+            continue;
+        }
+        filename = v;
+        break;
+    }
+    filename = argv[1];
+    my_init_fd = open(filename, O_RDONLY);
+    if (my_init_fd != -1) {
+      dwarf_init_b(my_init_fd,DW_GROUPNUMBER_ANY,
+          errhand,errarg,&dbg,errp);
+      dwarf_finish(dbg);
+      close(my_init_fd);
+    }
+    return 0;
 }

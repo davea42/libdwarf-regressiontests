@@ -1,4 +1,3 @@
-
 /* Copyright 2021 Google LLC
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,6 +14,8 @@ limitations under the License.
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <unistd.h>
 
 /*
@@ -25,18 +26,18 @@ limitations under the License.
 
 /*
  * A fuzzer that simulates a small part of the simplereader.c example.
+ * This fuzzer targets dwarf_init_b.
  */
-#define MACHO_PATH_LEN 2000
-int main(int argc, char **argv)
+int main(int argv,char **argv)
 {
+    int my_init_fd = 0;
     Dwarf_Ptr errarg = 0;
     Dwarf_Handler errhand = 0;
-    Dwarf_Debug dbg = 0;
     Dwarf_Error *errp = NULL;
-    char macho_real_path[2000];
-    const char *filename = "<fake>";
+    Dwarf_Debug dbg = 0;
     int i = 1;
-
+    consts char *filename = "<fake>";
+  
     for ( ; i < 2; ++i) {
         const char *v = 0;
 
@@ -49,8 +50,12 @@ int main(int argc, char **argv)
         break;
     }
     filename = argv[1];
-    dwarf_init_path(filename, macho_real_path, MACHO_PATH_LEN,
-                  DW_GROUPNUMBER_ANY, errhand, errarg, &dbg, errp);
-    dwarf_finish(dbg);
+    my_init_fd = open(filename, O_RDONLY);
+    if (my_init_fd != -1) {
+      dwarf_init_b(my_init_fd,DW_GROUPNUMBER_ANY,
+          errhand,errarg,&dbg,errp);
+      dwarf_finish(dbg);
+      close(my_init_fd);
+    }
     return 0;
 }

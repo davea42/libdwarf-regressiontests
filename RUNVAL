@@ -4,7 +4,9 @@
 # but the object is too big to work with.
 rm -f ./vglog
 vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=all"
-opts="--suppress-de-alloc-tree  -a /home/davea/dwarf/regressiontests/sarubbo/test433.crashes"
+opts="--suppress-de-alloc-tree"
+opts=" -a /home/davea/dwarf/regressiontests/google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd"
+opts=" -a /home/davea/dwarf/regressiontests/google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d"
 valgrind $vgopts  /tmp/dwarfdump $opts >junkn
 exit 0
 
