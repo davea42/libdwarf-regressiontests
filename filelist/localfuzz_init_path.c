@@ -36,6 +36,7 @@ int main(int argc, char **argv)
     char macho_real_path[2000];
     const char *filename = "<fake>";
     int i = 1;
+    int res = 0;
 
     for ( ; i < 2; ++i) {
         const char *v = 0;
@@ -49,8 +50,18 @@ int main(int argc, char **argv)
         break;
     }
     filename = argv[1];
-    dwarf_init_path(filename, macho_real_path, MACHO_PATH_LEN,
+    res = dwarf_init_path(filename, macho_real_path, MACHO_PATH_LEN,
                   DW_GROUPNUMBER_ANY, errhand, errarg, &dbg, errp);
     dwarf_finish(dbg);
+    if (res == DW_DLV_OK) {
+        printf("localfuzz_init_path returns DW_DLV_OK\n");
+    } else if (res == DW_DLV_NO_ENTRY) {
+        printf("localfuzz_init_path returns DW_DLV_NO_ENTRY\n");
+    } else if (res == DW_DLV_ERROR) {
+        printf("localfuzz_init_path returns DW_DLV_ERROR\n");
+    } else {
+        printf("localfuzz_init_path returns impossible %d\n",
+            res);
+    }
     return 0;
 }

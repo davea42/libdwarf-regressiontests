@@ -1,0 +1,3 @@
+localfuzz_init_path returns DW_DLV_ERROR
+
+libdwarf is unable to record error DW_DLE_SECTION_SIZE_ERROR(435) Corrupt Elf. Section size: > file size or not a multiple of entry size No error argument or handler available

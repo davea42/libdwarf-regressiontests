@@ -37,6 +37,7 @@ int main(int argc,char **argv)
     Dwarf_Debug dbg = 0;
     int i = 1;
     const char *filename = "<fake>";
+    int res = 0;
   
     for ( ; i < 2; ++i) {
         const char *v = 0;
@@ -51,11 +52,23 @@ int main(int argc,char **argv)
     }
     filename = argv[1];
     my_init_fd = open(filename, O_RDONLY);
-    if (my_init_fd != -1) {
-      dwarf_init_b(my_init_fd,DW_GROUPNUMBER_ANY,
-          errhand,errarg,&dbg,errp);
-      dwarf_finish(dbg);
-      close(my_init_fd);
+    if (my_init_fd == -1) {
+        printf("fails to open target file\n");
+        return 0;
     }
+    res = dwarf_init_b(my_init_fd,DW_GROUPNUMBER_ANY,
+        errhand,errarg,&dbg,errp);
+    dwarf_finish(dbg);
+    if (res == DW_DLV_OK) {
+        printf("localfuzz_init_binary returns DW_DLV_OK\n");
+    } else if (res == DW_DLV_NO_ENTRY) {
+        printf("localfuzz_init_binary returns DW_DLV_NO_ENTRY\n");
+    } else if (res == DW_DLV_ERROR) {
+        printf("localfuzz_init_binary returns DW_DLV_ERROR\n");
+    } else {
+        printf("localfuzz_init_binary returns impossible %d\n",
+            res);
+    }
+    close(my_init_fd);
     return 0;
 }

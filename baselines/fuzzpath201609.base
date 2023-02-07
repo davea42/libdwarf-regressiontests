@@ -1,0 +1,3 @@
+localfuzz_init_path returns DW_DLV_ERROR
+
+libdwarf is unable to record error DW_DLE_SECTION_SIZE_OR_OFFSET_LARGE(470) corrupt section header. No error argument or handler available
