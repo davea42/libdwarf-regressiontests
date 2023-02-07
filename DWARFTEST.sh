@@ -2324,7 +2324,11 @@ runsingle test_dwnames.base ./test_dwnames \
 
 runsingle fuzzmoy.base ./filelist/localfuzz_init_binary  \
    ./moya9/oob-repro
+runsingle fuzzpathmoy.base ./filelist/localfuzz_init_path  \
+   ./moya9/oob-repro
 runsingle fuzzkal.base ./filelist/localfuzz_init_binary  \
+   ./kaletta/test.o
+runsingle fuzzpathkal.base ./filelist/localfuzz_init_path  \
    ./kaletta/test.o
 runsingle fuzz40802.base ./filelist/localfuzz_init_binary  \
    ./ossfuzz40802/crash-3c238d58556b66f3e036a8a7a133b99470d539a
@@ -2349,10 +2353,6 @@ runsingle fuzz201690c.base ./filelist/localfuzz_init_binary  \
 runsingle fuzz54724.base ./filelist/localfuzz_init_binary  \
   ./ossfuzz54724/clusterfuzz-54724-poc
 
-runsingle fuzzpathmoy.base ./filelist/localfuzz_init_path  \
-   ./moya9/oob-repro
-runsingle fuzzpathkal.base ./filelist/localfuzz_init_path  \
-   ./kaletta/test.o
 runsingle fuzzpath40802.base ./filelist/localfuzz_init_path  \
    ./ossfuzz40802/crash-3c238d58556b66f3e036a8a7a133b99470d539a
 runsingle fuzzpath40802b.base ./filelist/localfuzz_init_path  \

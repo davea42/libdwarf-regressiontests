@@ -13,6 +13,8 @@ rm -f /tmp/dwa.*
 rm -f /tmp/dwb.*
 
 rm -f config.h.in~
+rm -f vglog
+rm -f sancheck.o
 rm -f dwgenc/runx
 rm -f dwgenc/testoutput.o
 rm -f filelist/filelist
