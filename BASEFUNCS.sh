@@ -54,13 +54,15 @@ checkargs () {
     then
       CC=cc
     fi
-    $CC $a -c sancheck.c 2>/dev/null
+    $CC $a -c sancheck.c -o junksancheck.o 2>/dev/null
     if [ $? -eq 0 ]
     then
       nli="$nli $a"
     fi
+    rm -f junksancheck.o
   done
   rm -f sancheck.c
+  rm -f junksancheck.o
   echo $nli
 }
 
