@@ -49,7 +49,11 @@ int main(int argc, char **argv)
         filename = v;
         break;
     }
-    filename = argv[1];
+    if (i >= argc) {
+        printf("No file name passed in\n");
+        return 0;
+    }
+    filename = argv[i];
     res = dwarf_init_path(filename, macho_real_path, MACHO_PATH_LEN,
                   DW_GROUPNUMBER_ANY, errhand, errarg, &dbg, errp);
     dwarf_finish(dbg);

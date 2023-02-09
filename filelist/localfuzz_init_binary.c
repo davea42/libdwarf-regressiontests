@@ -50,7 +50,11 @@ int main(int argc,char **argv)
         filename = v;
         break;
     }
-    filename = argv[1];
+    if (i >= argc) {
+        printf("No filename presented on command line\n");
+        return 0;
+    }
+    filename = argv[i];
     my_init_fd = open(filename, O_RDONLY);
     if (my_init_fd == -1) {
         printf("fails to open target file\n");
