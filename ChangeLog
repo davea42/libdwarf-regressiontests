@@ -1,3 +1,250 @@
+2023-02-09:  David Anderson
+    commit 5adf6465c182fae7a7d06f2d543066eb0cf0fbbf
+
+    Doing better cleanup in checkargs() function
+            modified:   BASEFUNCS.sh
+
+2023-02-09:  David Anderson
+    commit cf42df2bbb00c1583b5a7398ac64f246ad1ec5a6
+
+    Corrected the argument handling of these.
+    Was incorrectly changed to accomodate
+    --suppress-de-alloc-tree (that is, to ignore
+    that option when found).
+            modified:   filelist/localfuzz_init_binary.c
+            modified:   filelist/localfuzz_init_path.c
+
+2023-02-07:  David Anderson
+    commit 2126570d9916ee6ce44e55db4126165a5d9a7bd5
+
+    Now with the correct full path to test objects (fuzz stuff).
+            modified:   DWARFTEST.sh
+
+    Changes to .c below mean new baseline values.
+            modified:   baselines/fuzz201609.base
+            modified:   baselines/fuzz201609b.base
+            modified:   baselines/fuzz201690c.base
+            modified:   baselines/fuzz40624.base
+            modified:   baselines/fuzz40802.base
+            modified:   baselines/fuzz40802b.base
+            modified:   baselines/fuzz54724.base
+            modified:   baselines/fuzzc-sun.base
+            modified:   baselines/fuzzgoogle1.base
+            modified:   baselines/fuzzgoogle1b.base
+            modified:   baselines/fuzzguil.base
+            modified:   baselines/fuzzkal.base
+            modified:   baselines/fuzzmoy.base
+            modified:   baselines/fuzzpath201609.base
+            modified:   baselines/fuzzpath201609b.base
+            modified:   baselines/fuzzpath201690c.base
+            modified:   baselines/fuzzpath40624.base
+            modified:   baselines/fuzzpath40802.base
+            modified:   baselines/fuzzpath40802b.base
+            modified:   baselines/fuzzpath54724.base
+            modified:   baselines/fuzzpathc-sun.base
+            modified:   baselines/fuzzpathgoogle1.base
+            modified:   baselines/fuzzpathgoogle1b.base
+            modified:   baselines/fuzzpathguil.base
+            modified:   baselines/fuzzpathkal.base
+            modified:   baselines/fuzzpathmoy.base
+
+    Now with relevant short output as to what happened.
+            modified:   filelist/localfuzz_init_binary.c
+            modified:   filelist/localfuzz_init_path.c
+
+2023-02-06:  David Anderson
+    commit 6777721362df8fc92237a24ddcbacec35e88e731
+
+    Extra cleanup added.
+            modified:   CLEANUP.sh
+    Moved runsingle tests a little.
+            modified:   DWARFTEST.sh
+    Correct baselines now.
+            modified:   baselines/fuzzkal.base
+            modified:   baselines/fuzzmoy.base
+            modified:   baselines/fuzzpathkal.base
+
+2023-02-06:  David Anderson
+    commit 8afd144dc7537a80af21df26b69de8d79581d399
+
+    the source is in filelist/
+    though we no longer use filelist/runtest.c
+            deleted:    fuzz_init_binary.c
+            deleted:    fuzz_init_path.c
+
+2023-02-06:  David Anderson
+    commit 2389704117e24304efddec4c64bab58df0862264
+
+            modified:   ../DWARFTEST.sh
+            modified:   ../RUNVAL
+            new file:   fuzz201609.base
+            new file:   fuzz201609b.base
+            new file:   fuzz201690c.base
+            new file:   fuzz40624.base
+            new file:   fuzz40802.base
+            new file:   fuzz40802b.base
+            new file:   fuzz54724.base
+            new file:   fuzzc-sun.base
+            new file:   fuzzgoogle1.base
+            new file:   fuzzgoogle1b.base
+            new file:   fuzzguil.base
+            new file:   fuzzkal.base
+            new file:   fuzzmoy.base
+            new file:   fuzzpath201609.base
+            new file:   fuzzpath201609b.base
+            new file:   fuzzpath201690c.base
+            new file:   fuzzpath40624.base
+            new file:   fuzzpath40802.base
+            new file:   fuzzpath40802b.base
+            new file:   fuzzpath54724.base
+            new file:   fuzzpathc-sun.base
+            new file:   fuzzpathgoogle1.base
+            new file:   fuzzpathgoogle1b.base
+            new file:   fuzzpathguil.base
+            new file:   fuzzpathkal.base
+            new file:   fuzzpathmoy.base
+            modified:   ../filelist/fileliste
+            modified:   ../filelist/localfuzz_init_binary.c
+            modified:   ../filelist/localfuzz_init_path.c
+            new file:   ../fuzz_init_binary.c
+            new file:   ../fuzz_init_path.c
+
+2023-02-06:  David Anderson
+    commit 89abc1a949cf1abaa73335091df4eadb2b35fc4d
+
+    Removing all mention of lcov, such is
+    not the way to help with lcov/gcov,
+    a special build/test is required.
+            modified:   DWARFTEST.sh
+
+2023-02-06:  David Anderson
+    commit 00cefdabb07be719a23441d5d1945a9597662a13
+
+    New testcases.
+            new file:   google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
+            new file:   google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
+
+2023-02-04:  David Anderson
+    commit 034f6f0899d12385e5a3cdad255832502aa1d743
+
+    A new baseline and a small change to
+    test_harmless.c lets us use the test
+    in other places (lcov) easily.
+            modified:   DWARFTEST.sh
+            new file:   baselines/test_harmlessc.base
+            modified:   test_harmless.c
+
+2023-02-04:  David Anderson
+    commit eef8c7e2771d6bb070038791c6f8d06b1daad477
+
+    Restored accidental delete of leading # character.
+            modified:   PICKUPBIN.sh
+
+2023-02-04:  David Anderson
+    commit 1d04d2f136750c3e5d432b5e96dc1c80e65470f4
+
+    Now has the checkargs() function, used in several
+    places (the runtest.sh mentioned here) so that
+    we can tailor the options presented to the compiler
+    to what it will accept.  Doing it ourselves,
+    as configure is not applicable these are test-runtime
+    options choices like -fsanitize=leak.
+            modified:   BASEFUNCS.sh
+
+    The following now use checkargs() where
+    appropriate.
+            modified:   DWARFTEST.sh
+            modified:   debuglink/runtest.sh
+            modified:   enciso4/runtest.sh
+            modified:   err_allocate/runtest.sh
+            modified:   findcu/runtest.sh
+            modified:   frame1/runtest.sh
+            modified:   implicitconst/runtest.sh
+            modified:   legendre/runtest.sh
+            modified:   navarro/runtest.sh
+            modified:   showsecgroupsdir/runtest.sh
+            modified:   test-alex1/runtest.sh
+            modified:   testoffdie/runtest.sh
+
+2023-02-04:  David Anderson
+    commit d9733d951f0e8bb3fcfbb53e9b4c43c7d77073ef
+
+    This not used. Its final name, test_dwnames.c,
+    is used.
+            deleted:    test_dwarfnames.c
+
+2023-01-31:  David Anderson
+    commit 15f42c8ac9ad63a3aceb30c44fcddf7af4502fea
+
+    Now does the proper
+      dwarf_dealloc(dbg, offbuf, DW_DLA_UARRAY);
+    after dwarf_offset_list()
+            modified:   test_pubsreader.c
+
+2023-01-31:  David Anderson
+    commit e0a27de835a493f2d57ea2c5485d4709dc6fd04e
+
+    The changes let this all access libzstd
+    in /usr/local/lib (as seen on freebsd).
+    Normal builds took care of this for us,
+    but in the special compiles here
+    we had to make an extra effort to
+    compile and find libzstd (on freebsd).
+
+            modified:   DWARFTEST.sh
+            modified:   checkforlibz/runtest.sh
+            modified:   checkforlibzstd/runtest.sh
+            modified:   findcu/runtest.sh
+            modified:   frame1/runtest.sh
+            modified:   legendre/runtest.sh
+            modified:   test-alex1/runtest.sh
+            modified:   test-alex2/runtest.sh
+            modified:   testoffdie/runtest.sh
+
+2023-01-31:  David Anderson
+    commit 87f8ea128913c577e92ab8135850f271272ab608
+
+    New baseline executables.
+    the i386 one has the fix to dwarf_offset_list().
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2023-01-28:  David Anderson
+    commit b714ab0d396fbe801d5fbde0a6dbbc2665bfb965
+
+    Latest results.
+            modified:   ../RegressionTestsResults.ods
+
+    These updated to match latest libdwarf/dwarfdump.
+            modified:   ../dwarfdump-s390.O
+            modified:   ../dwarfdump-x86_64-ubuntu.O
+    Updates to the FreeBSD baselines will be later.
+
+2023-01-24:  David Anderson
+    commit 3009ca977a89e75f5e45aca36257b1973d998979
+
+    Now runs the test mentioned below.
+            modified:   DWARFTEST.sh
+
+    Now ignores the --dwarf-suppress-de-alloc-tree
+    option if such is passed in, we have no reason
+    to bother with that in this test source.
+            modified:   bitoffset/test_bitoffset.c
+
+    A new baseline required by the new test case.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    A new test: the object file uses DW_FORM_strx3.
+            new file:   kaufmann2/ct-bad.c
+            new file:   kaufmann2/ct-bad.dw
+            new file:   kaufmann2/ct-bad.o
+
+2023-01-21:  David Anderson
+    commit 5f1daf289790cf6a5fdc79c9bd6f9ffce16d52f5
+
+    Up to date with git log now.
+            modified:   ChangeLog
+
 2023-01-21:  David Anderson
     commit 1825e06c8cacbdc4ba7ef8950f2e252025440a56
 
