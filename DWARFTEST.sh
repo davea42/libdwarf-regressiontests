@@ -603,6 +603,8 @@ return 0
 }
 
 # $suppresstree value added here .
+# We will need to add a filter so irrelevant
+# path differences do not cause fails.
 runsingle () {
   base=$1
   exe=$2
@@ -896,18 +898,50 @@ then
   libopts="$libopts -lzstd"
 fi
 
-
-echo "=====START  $testsrc/test_dwnames/ build"
-  echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf  -\
-     -gdwarf $nlizeopt $testsrc/test_dwnames.c
-     -o test_dwnames $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+echo "=====BUILD  $testsrc/test_dwnames/ "
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/test_dwnames.c \
-     -o test_dwnames $dwlib $libopts
+     -o test_dwnames $dwlib $libopts"
+  echo "%x"
+  $x
   r=$?
   chkres $r 'check test_dwnames-error compile test_dwnames.c failed'
+
+
+# frame1 is a directory name, hence the build -o frame1/frame1
+echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
+  mklocal frame1 
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+    -I$libbld/libdwarf  \
+    -gdwarf $nlizeopt \
+    $codedir/src/bin/dwarfexample/frame1.c \
+    -o frame1 $dwlib $libopts"
+  echo "$x"
+  $x
+  r=$?
+  chkres $r 'check frame1-error compile dwarfexample/frame1.c failed'
+  cd ..
+
+echo "=====BUILD  dwarfexample/jitreader.c "
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf  \
+     -gdwarf $nlizeopt $codedir/src/bin/dwarfexample/jitreader.c \
+     -o jitreader $dwlib $libopts"
+  echo "$x"
+  $x
+  r=$?
+  chkres $r 'check jitreader compile dwarfexample/jitreader.c failed'
+
+echo "=====BUILD  dwarfexample/dwdebuglink.c "
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf  \
+     -gdwarf $nlizeopt $codedir/src/bin/dwarfexample/dwdebuglink.c \
+     -o dwdebuglink $dwlib $libopts"
+  echo "$x"
+  $x
+  r=$?
+  chkres $r 'check dwdebuglink compile dwarfexample/dwdebuglink.c failed'
 
 echo "=====START  $testsrc/testfindfuncbypc/ tests"
   mklocal testfindfuncbypc
@@ -917,30 +951,25 @@ echo "=====START  $testsrc/testfindfuncbypc/ tests"
 # the special (badly written) testcases here
 # return 0 even if there is a DWARF ERROR reported
 # (but if the required arg omitted, return 1).
-echo "=====START  $testsrc/filelist/ builds"
+echo "=====BUILD  $testsrc/filelist/localfuzz_init_path"
   mklocal filelist
-  echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf $libzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
-     -o localfuzz_init_path $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf $libzstdhdrdir \
-     -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
-     -o localfuzz_init_path $dwlib $libopts
+     -o localfuzz_init_path $dwlib $libopts "
+  echo "$x"
+  $x
   chkres $? "check -error compiling $testsrc/filelist/localfuzz_init_path.c failed"
-  echo "$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf $lihbzstdhdrdir \
-     -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
-     -o localfuzz_init_binary $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf $lihbzstdhdrdir \
      -gdwarf  $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
-     -o localfuzz_init_binary $dwlib $libopts
+     -o localfuzz_init_binary $dwlib $libopts"
+  echo "$x"
+  $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   # As of Feb 6, 2023 these checks are handled by runsingle().
   #sh $testsrc/filelist/runtest.sh
-  #r=$?
-  #chkres $r 'filelist stderr checks failed on filelist/fuzz_init....'
   cd ..
 
 echo "=====START  $testsrc/test_pubsreader"
@@ -1177,8 +1206,6 @@ runtest $d1 $d2 debuglinkb/testid -P -i --suppress-debuglink-crc
 runtest $d1 $d2 debuglinkb/testid.debug -P -i --suppress-debuglink-crc
 runtest $d1 $d2 debuglinkb/testnoid -P -i --suppress-debuglink-crc
 runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --suppress-debuglink-crc
-
-
 
 # February 16, 2022, with clang-generated .debug_names
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names
@@ -2270,15 +2297,17 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-echo check test_harmless before frame1 `pwd`
-ls -l ./test_harmless
-echo "=====START   $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd"
-mklocal frame1 
-  echo "sh runtest.sh  $withlibelf $withlibz $withlibzstd"
-  sh $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd
-  r=$?
-  chkres $r $testsrc/frame1
-cd ..
+#Now the build is done above, see BUILD
+#echo check test_harmless before frame1 `pwd`
+#ls -l ./test_harmless
+#echo "=====BUILD frame1/frame $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd"
+#mklocal frame1 
+#  @this just builds frame1
+#  echo "sh runtest.sh  $withlibelf $withlibz $withlibzstd"
+#  sh $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd
+#  r=$?
+#  chkres $r $testsrc/frame1
+#cd ..
 
 echo check test_harmless before sandnes2 `pwd`
 ls -l ./test_harmless
@@ -2318,6 +2347,20 @@ ls -l ./test_harmless
 runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
 
+runsingle frame1-orig.base ./frame1/frame1  \
+  $testsrc/frame1/frame1.orig
+runsingle frame1-2018.base ./frame1/frame1 \
+   $testsrc/frame1/frame1.exe.2018-05-11
+runsingle frame1-2018s.base ./frame1/frame1  \
+  --just-print-selected-regs \
+  $testsrc/frame1/frame1.exe.2018-05-11
+
+runsingle dwdebuglink-a.base ./dwdebuglink \
+  "--add-debuglink-path=/exam/ple" \
+  "--add-debuglink-path=/tmp/phony" $codedir/test/dummyexecutable
+runsingle dwdebuglink-b.base ./dwdebuglink \
+  --no-follow-debuglink --add-debuglink-path=/exam/ple \
+  --add-debuglink-path=/tmp/phony $codedir/test/dummyexecutable
 
 runsingle test_dwnames.base ./test_dwnames \
   -i $codedir/src/lib/libdwarf --run-self-test
