@@ -14,18 +14,18 @@
   [12]  directory index 0 file: <built-in> 
   [13]  directory index 5 file: string.h 
   Directories count: 6
-  [1] directory:  /home/davea/dwarf/code/src/bin/dwarfexample 
+  [1] directory:  ..std../src/bin/dwarfexample 
   [2] directory:  /usr/include/x86_64-linux-gnu/bits 
   [3] directory:  /usr/lib/gcc/x86_64-linux-gnu/9/include 
   [4] directory:  /usr/include/x86_64-linux-gnu/bits/types 
   [5] directory:  /usr/include 
-  [6] directory:  /home/davea/dwarf/code/src/lib/libdwarf 
-  [0]  address 0x3430 filenum 0 lineno 232 /home/davea/dwarf/code/src/bin/dwarfexample/findfuncbypc.c 
+  [6] directory:  ..std../src/lib/libdwarf 
+  [0]  address 0x3430 filenum 0 lineno 232 ..std../src/bin/dwarfexample/findfuncbypc.c 
 FOUND function "main", requested pc 0x2710
       function lowpc 0x23f0 highpc 0x3340
       file name index 0x1
       in:
-      CU 0  /home/davea/dwarf/code/src/bin/dwarfexample/findfuncbypc.c
+      CU 0  ..std../src/bin/dwarfexample/findfuncbypc.c
       comp-dir  /var/tmp/bld/src/bin/dwarfexample
       Src line address 0x0 lineno 0 (null)
 

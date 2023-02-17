@@ -640,6 +640,9 @@ runsingle () {
     fi
     cat tmp2erra >> junk.$base
   fi
+  # Fix up names to eliminate owner in path.
+  sed -e "sx${codedir}x..std..x"  <junk.$base >junk2.$base
+  mv junk2.$base junk.$base
   if [ ! -f $testsrc/baselines/$base ]
   then
      # first time setup.
