@@ -603,8 +603,13 @@ return 0
 }
 
 # $suppresstree value added here .
-# We will need to add a filter so irrelevant
-# path differences do not cause fails.
+# Added a sed command transforming source path
+# to ..std.. so
+# path differences do not cause irrelevant fails.
+# If the letter : (see the sed command)
+# Also do sed to remove /home/davea/dwarf/code built in
+# to DWARF data
+# is in the path the sed will fail utterly.
 runsingle () {
   base=$1
   exe=$2
@@ -641,8 +646,12 @@ runsingle () {
     cat tmp2erra >> junk.$base
   fi
   # Fix up names to eliminate owner in path.
-  sed -e "sx${codedir}x..std..x"  <junk.$base >junk2.$base
+  sed -e "s:${codedir}:..std..:"  <junk.$base >junk2.$base
   mv junk2.$base junk.$base
+  chkres $r 'mv runsingle  sed out a FAIL'
+  sed -e "s:/home/davea/dwarf/code:..std..:"  <junk.$base >junk2.$base
+  mv junk2.$base junk.$base
+  chkres $r 'mv runsingle  sed out b FAIL'
   if [ ! -f $testsrc/baselines/$base ]
   then
      # first time setup.
