@@ -646,12 +646,13 @@ runsingle () {
     cat tmp2erra >> junk.$base
   fi
   # Fix up names to eliminate owner in path.
-  sed -e "s:${codedir}:..std..:"  <junk.$base >junk2.$base
+  # Checking return code from sed is not productive.
+  sed -e "s:${codedir}:..std..:"  < junk.$base > junk2.$base
   mv junk2.$base junk.$base
-  chkres $r 'mv runsingle  sed out a FAIL'
+  chkres $r "mv runsingle sed out a FAIL ($codedir)"
   sed -e "s:/home/davea/dwarf/code:..std..:"  <junk.$base >junk2.$base
   mv junk2.$base junk.$base
-  chkres $r 'mv runsingle  sed out b FAIL'
+  chkres $r 'mv runsingle sed out b FAIL (compiled in dwarf/code)'
   if [ ! -f $testsrc/baselines/$base ]
   then
      # first time setup.
@@ -919,6 +920,16 @@ echo "=====BUILD  $testsrc/test_dwnames/ "
   $x
   r=$?
   chkres $r 'check test_dwnames-error compile test_dwnames.c failed'
+
+echo "=====BUILD  $testsrc/dwnames_checks/dwnames_all "
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/dwnames_checks/dwnames_all.c \
+     -o dwnames_all $dwlib $libopts"
+  echo "%x"
+  $x
+  r=$?
+  chkres $r 'check dwnames_all-error compile dwnames_all.c failed'
 
 
 # frame1 is a directory name, hence the build -o frame1/frame1
@@ -2358,6 +2369,8 @@ ls -l ./test_harmless
 # -g: use old dwarf loclist code.
 runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
+
+runsingle dwnames_all.base ./dwnames_all
 
 runsingle frame1-orig.base ./frame1/frame1  \
   $testsrc/frame1/frame1.orig
