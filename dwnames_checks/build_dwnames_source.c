@@ -66,6 +66,74 @@ static int ParseDefinitionsAndWriteOutput(void);
 
 #define MAX_NAME_LEN 64
 
+static const char *part1[] = {
+"/*  Copyright (c) 2023 David Anderson",
+"    ",
+"    This test code is hereby placed in the PUBLIC DOMAIN",
+"    for anyone to copy/alter/use in any way.",
+"",
+"*/",
+"",
+"#include <config.h>",
+"#include <string.h> /* for strcmp */",
+"#include <stdlib.h> /* for exit() */",
+"#include <stdio.h> /* for printf() */",
+"#include <dwarf.h>",
+"#include <libdwarf.h>",
+"   ",
+"static long checkcount = 0; ",
+"   ",
+"static void",
+"check_valid(int res,",
+"    const char *funname,",
+"    const char *expectedname,",
+"    int         value,",
+"    const char *returnedname)",
+"{",
+"    ++checkcount; ",
+"    if (res != DW_DLV_OK) {",
+"        printf(\"FAIL call %s res %d (%s %d %s)\\n\",",
+"            funname,res,expectedname,value,returnedname);",
+"        exit(EXIT_FAILURE);",
+"    }",
+"    if (strcmp(expectedname,returnedname)) {",
+"        printf(\"FAIL call \\\"%s\\\"  expected \\\"%s\\\" \"",
+"            \"for %d but got \\\"%s\\\"\\n\",",
+"            funname,expectedname,value,returnedname);",
+"        exit(EXIT_FAILURE);",
+"    }",
+"}",
+" ",
+"static void",
+"run_tests(void) {",
+"    int res = 0;",
+"    const char *ret_name = 0;",
+0
+};
+
+static const char *part3[] = {
+"}",
+"",
+"int main(void) {",
+"    run_tests();",
+"    printf(\"PASS dwnames_all, %ld checks\\\n\",checkcount);",
+"    return 0;",
+"}",
+0
+};
+
+static void
+printpartlines(const char *part[])
+{
+    const char **partline =  part;
+
+    for ( ; *partline ; partline++) {
+        printf("%s\n",*partline);
+    }
+}
+
+
+
 /* To store entries from dwarf.h */
 typedef struct {
     char     ad_name[MAX_NAME_LEN];       /* short name */
@@ -405,10 +473,15 @@ write_single_selftest(const char *prefix,
             prefix);
         exit(EXIT_FAILURE);
     }
-    printf("    res = %s(%d,&ret_name);\n",funcptr,value);
-    printf("    check_valid(res,\"%s\",\\\n",funcptr);
-    printf("        \"%s\",\\\n",name_in);
-    printf("        %d,ret_name);\n",value);
+    {
+        char buf[2000];
+        buf[0] = 0;
+
+        printf("    res = %s(%d,&ret_name);\n",funcptr,value);
+        sprintf(buf,"check_valid(res,\"%s\", \"%s\", %d, ret_name);\n",
+            funcptr,name_in,value);
+        printf("    %s\n",buf);
+    }
 }
 
 /* Write the table and code for a common set of names */
@@ -533,6 +606,7 @@ ParseDefinitionsAndWriteOutput(void)
     int prefix_len = 0;
     int failcount = 0;
 
+    printpartlines(part1);
     /* Process each line from 'dwarf.h' */
     while (!feof(f_dwarf_in)) {
         /*  errno is cleared here so printing errno after
@@ -625,5 +699,6 @@ ParseDefinitionsAndWriteOutput(void)
         /* Generate final prefix set */
         failcount += GenerateOneSet(TRUE);
     }
+    printpartlines(part3);
     return failcount;
 }

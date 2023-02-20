@@ -12,7 +12,7 @@ cc -I $codesrc/src/lib/libdwarf \
   $testsrc/dwnames_checks/build_dwnames_source.c 
 
 ./build_dwnames_source -i $codesrc/src/lib/libdwarf \
-   --generate-self-test > $testsrc/dwnames_checks/dwnames_all.h
+   --generate-self-test > $testsrc/dwnames_checks/dwnames_all.c
 
 cc -I  $codesrc/src/lib/libdwarf \
   -I . \
