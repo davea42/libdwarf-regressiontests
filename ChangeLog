@@ -1,3 +1,89 @@
+2023-02-20:  David Anderson
+    The date is the 0.6.0  libdwarf release date.
+
+2023-02-19:  David Anderson
+    commit fb5aaca009f464949add8e269a6abfd6fe8f8fa8
+
+    This way (.c no .h) works better with lcov gcov
+            modified:   dwnames_checks/build_dwnames.sh
+            modified:   dwnames_checks/build_dwnames_source.c
+            modified:   dwnames_checks/dwnames_all.c
+            deleted:    dwnames_checks/dwnames_all.h
+
+2023-02-19:  David Anderson
+    commit 36c4b9b55a7718b55ad382dff9b71b13e7efcfcd
+
+    test and doc and baseline for the
+    dwnames_all testcase.
+            modified:   DWARFTEST.sh
+            new file:   baselines/dwnames_all.base
+            modified:   dwnames_checks/README
+
+2023-02-19:  David Anderson
+    commit b4f156062a51a6a767a7924c6a9f04e86ade7eec
+
+            new file:   dwnames_checks/README
+            new file:   dwnames_checks/build_dwnames.sh
+    This generates test C source.
+            new file:   dwnames_checks/build_dwnames_source.c
+
+    These actually test dwarf_get_*_name with
+    in-line code so lcov/gcov recognize the calls.
+            new file:   dwnames_checks/dwnames_all.c
+            new file:   dwnames_checks/dwnames_all.h
+
+2023-02-17:  David Anderson
+    commit 79f12c86edaca3b2cc8e15cbb95d7c4a8bbb0777
+
+    For the dwdebuglink tests had to add
+    extra sed commands so unwanted
+    local path names are all replaced
+    by ..std.. so pass in, hopefully all,
+    places.
+            modified:   DWARFTEST.sh
+
+2023-02-17:  David Anderson
+    commit 28e5480cee223c7b79b82d8146d019f6eab30a86
+
+    Now the runsingle() test function ensures
+    that any instance of the test-environment
+    matches the test machine code-source-path
+    those characters are replaced by ..std..
+    so tests can pass on hopefully any machine.
+            modified:   DWARFTEST.sh
+            modified:   baselines/dwdebuglink-a.base
+            modified:   baselines/dwdebuglink-b.base
+            modified:   baselines/test_findfuncbypcb4.base
+            modified:   baselines/test_findfuncbypcb5.base
+
+2023-02-17:  David Anderson
+    commit 8522850ace6fb03970095fb18320a639186d1a9d
+
+    Now we have the runsingle tests set up
+    and working for more complete coverage.
+            modified:   DWARFTEST.sh
+    Now this just does a compile, no running tests,
+    runsingle does that.
+            modified:   frame1/runtest.sh
+
+2023-02-17:  David Anderson
+    commit 46ab1525e49254fa25dbf187d4c557f851fbef15
+
+    New baselines
+    in
+      baselines/
+            new file:   dwdebuglink-a.base
+            new file:   dwdebuglink-b.base
+            new file:   frame1-2018.base
+            new file:   frame1-2018s.base
+            new file:   frame1-orig.base
+
+2023-02-09:  David Anderson
+    commit 3161e1cccd05c877e3c0cf9b31e20a55ce71a102
+
+    Up to date with ChangeLog
+            modified:   ChangeLog
+
 2023-02-09:  David Anderson
     commit 5adf6465c182fae7a7d06f2d543066eb0cf0fbbf
 
