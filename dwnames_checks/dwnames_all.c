@@ -3432,7 +3432,6 @@ run_tests(void) {
 
 int main(void) {
     run_tests();
-    printf("PASS dwnames_all, %ld checks\
-",checkcount);
+    printf("PASS dwnames_all, %ld checks\n",checkcount);
     return 0;
 }

@@ -116,7 +116,7 @@ static const char *part3[] = {
 "",
 "int main(void) {",
 "    run_tests();",
-"    printf(\"PASS dwnames_all, %ld checks\\\n\",checkcount);",
+"    printf(\"PASS dwnames_all, %ld checks\\n\",checkcount);",
 "    return 0;",
 "}",
 0
