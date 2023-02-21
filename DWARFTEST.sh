@@ -618,17 +618,19 @@ runsingle () {
   args=$*
   based=baselines
   rm tmp2erra
+  rm -f junksingle.$base junksingle2.$base junksingle3.$base
   totalct=`expr $goodcount + $failcount + $skipcount + 1`
   pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
   echo  "=====STARTsingle Pct $pctstring $* $targ"
   echo  "=====STATSsingle Pct $pctstring ct: $totalct"
   echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
-
   if [ "x$VALGRIND" = "xy" ]
   then
     echo "valgrind .vgopts. $exe $suppresstree $args"
-    valgrind -q --leak-check=full --show-leak-kinds=all --error-exitcode=7 $exe $suppresstree $args 1>junk.$base 2>tmp2erra
-    cat tmp2erra >> junk.$base
+    valgrind -q --leak-check=full --show-leak-kinds=all\
+       --error-exitcode=7 $exe $suppresstree \
+       $args 1>junksingle.$base 2>tmp2erra
+    cat tmp2erra >> junksingle.$base
     if [ $? -eq 7 ]
     then
       echo "valgrind exit code 7, valgrinderrcount:$valgrinderrcount"
@@ -639,34 +641,31 @@ runsingle () {
     echo "run $exe $suppresstree $args"
     if [ x$wrtimeo != "x" ]
     then
-      $wrtimeo $exe $suppresstree $args 1> junk.$base 2>tmp2erra
+      $wrtimeo $exe $suppresstree $args 1> junksingle.$base 2>tmp2erra
     else
-      $exe $suppresstree $args 1> junk.$base 2>tmp2erra
+      $exe $suppresstree $args 1> junksingle.$base 2>tmp2erra
     fi
-    cat tmp2erra >> junk.$base
+    cat tmp2erra >> junksingle.$base
   fi
   # Fix up names to eliminate owner in path.
   # Checking return code from sed is not productive.
-  sed -e "s:${codedir}:..std..:"  < junk.$base > junk2.$base
-  mv junk2.$base junk.$base
-  chkres $r "mv runsingle sed out a FAIL ($codedir)"
-  sed -e "s:/home/davea/dwarf/code:..std..:"  <junk.$base >junk2.$base
-  mv junk2.$base junk.$base
-  chkres $r 'mv runsingle sed out b FAIL (compiled in dwarf/code)'
+  sed -e "s:${codedir}:..std..:"  < junksingle.$base > junksingle2.$base
+  sed -e "s:/home/davea/dwarf/code:..std..:" <junksingle2.$base >junksingle3.$base
+  wc junksingle.$base junksingle2.$base junksingle3.$base
   if [ ! -f $testsrc/baselines/$base ]
   then
      # first time setup.
      echo junk > $testsrc/baselines/$base
   fi
   allgood=y
-  filediff $testsrc/baselines/$base junk.$base $exe $args
+  filediff $testsrc/baselines/$base junksingle3.$base $exe $args
   r=$?
   chkres $r 'compare runsingle failed'
   if [ $r -ne 0 ]
   then
-    echo "FAIL diff $base junk.$based" 
+    echo "FAIL diff $base junksingle3.$base" 
     allgood=n
-    echo "To update mv $bldtest/junk.$base $testsrc/baselines/$base"
+    echo "To update mv $bldtest/junksingle3.$base $testsrc/baselines/$base"
   fi
   if [ $allgood = "y" ]
   then
@@ -1056,60 +1055,35 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
     echo "To update mv $bldtest/junk_bitoffset \
       $testsrc/bitoffset.base"
   fi
-echo "=====START  $testsrc/test_arange"
-  echo "test_arange: $CC -Wall -I$codedir/libdwarf -I$libbld \
-     -I$libbld/libdwarf  -gdwarf $nlizeopt \
-     $libzstdhdrdir \
-     $testsrc/test_arange.c \
-     -o test_arange $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+echo "=====BUILD  $testsrc/test_arange"
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
      $libzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
-      test_arange $dwlib $libopts
+      test_arange $dwlib $libopts "
+  echo "$x"
+  $x
   chkres $? 'check arange-error compiling test_arange.c\
      failed' 
-  echo "./test_arange $testsrc/irixn32/dwarfdump"
-  echo "Results in junk_arange"
-  ./test_arange  $testsrc/irixn32/dwarfdump >junk_arange
-  chkres $? "check arange-error execution failed look at \
-     junk_arange"
-echo "=====START  $testsrc/test_harmless.c"
-  echo "test_harmless: $CC -Wall -I$codedir/libdwarf -I$libbld \
-     $libzstdhdrdir \
-     -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_harmless.c \
-     -o test_harmless $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+
+echo "=====BUILD  $testsrc/test_harmless.c"
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      $libzstdhdrdir \
     -I$libbld/libdwarf  \
     -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless\
-      $dwlib $libopts
+      $dwlib $libopts"
+  echo "test_harmless: $x"
+  $x
   chkres $? 'check harmless-error compiling test_harmless.c failed'
-  ./test_harmless
-  chkres $? 'check harmless-error execution failed'
-  echo build test_harmless `pwd`
   ls -l ./test_harmless
-echo "=====START  $testsrc/test_sectionnames"
-  echo "test_sectionnames: $CC -Wall -I$codedir/libdwarf -I$libbld \
-     $libzstdhdrdir \
-     -I$libbld/libdwarf  -gdwarf $nlizeopt \
-     $testsrc/test_sectionnames.c \
-     -o test_sectionnames $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+echo "=====BUILD  $testsrc/test_sectionnames"
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
      $libzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/test_sectionnames.c  -o \
-      test_sectionnames $dwlib $libopts
+      test_sectionnames $dwlib $libopts"
+  echo $x
+  $x
   chkres $? 'check sectionnames-error compiling test_sectionnames.c\
      failed'
-  echo "./test_sectionnames  \
-    $testsrc/dwarf4/dd2g4.5dwarf-4\
-    $testsrc/convey/testesb.c.o"
-  echo "Results in junk_sectionnames"
-  ./test_sectionnames \
-    $testsrc/dwarf4/dd2g4.5dwarf-4 $testsrc/convey/testesb.c.o \
-    >junk_sectionnames
-  chkres $? "check sectionnames-error execution failed look at \
-     junk_sectionnames"
-
 
 if [ $compileonly = "y" ]
 then
@@ -2453,6 +2427,9 @@ runsingle test_harmlessb.base ./test_harmless $suppresstree
 
 runsingle test_harmlessc.base ./test_harmless $suppresstree  -f \
   $testsrc/testfindfuncbypc/findfuncbypc.exe1
+
+runsingle test_sectionnames.base  ./test_sectionnames  \
+    $testsrc/dwarf4/dd2g4.5dwarf-4
 
 runsingle test_sectionnamesb.base ./test_sectionnames \
   $testsrc/testfindfuncbypc/findfuncbypc.exe1 \

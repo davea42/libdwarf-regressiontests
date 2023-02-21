@@ -2,6 +2,7 @@
     Copyright (c) 2021 David Anderson.  All rights reserved.
     This example is hereby placed in the public domain
     for anyone to use without restriction.  */
+
 /*  test_pubsreader.c
     This is an example of code reading dwarf .debug_typenames
     and .debug_gnu_typenames to ensure the libdwarf functions

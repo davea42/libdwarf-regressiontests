@@ -2,6 +2,7 @@
     Copyright (c) 2021 David Anderson.  All rights reserved.
     This example is hereby placed in the public domain
     for anyone to use without restriction.  */
+
 /*  test_testsectionnames.c
     To use
         make

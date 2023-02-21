@@ -1,5 +1,7 @@
 /*
     Copyright 2023 David Anderson. All rights reserved.
+    This program is PUBLIC DOMAIN. Anyone can
+    use it for any purpose without restriction.
 
 */
 /*  Used by regession tests: DWARFTESTS.sh
