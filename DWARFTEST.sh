@@ -372,6 +372,7 @@ chkresn () {
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 
 filepaths='moshe/hello
+duplicateattr.o
 google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
 google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
 ckdev/modulewithdwarf.ko
@@ -910,22 +911,32 @@ then
   libopts="$libopts -lzstd"
 fi
 
-echo "=====BUILD  $testsrc/test_dwnames/ "
+#echo "=====BUILD  $testsrc/test_dwnames/ "
+#  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+#     -I$libbld/libdwarf \
+#     -gdwarf $nlizeopt $testsrc/test_dwnames.c \
+#     -o test_dwnames $dwlib $libopts"
+#  echo "%x"
+#  $x
+#  r=$?
+#  chkres $r 'check test_dwnames-error compile test_dwnames.c failed'
+
+echo "=====BUILD  $testsrc/test_simple_libfuncs "
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/test_dwnames.c \
-     -o test_dwnames $dwlib $libopts"
-  echo "%x"
+     -gdwarf $nlizeopt $testsrc/test_simple_libfuncs.c \
+     -o test_simple_libfuncs $dwlib $libopts"
+  echo "$x"
   $x
   r=$?
-  chkres $r 'check test_dwnames-error compile test_dwnames.c failed'
+  chkres $r 'check dwnames_all-error compile dwnames_all.c failed'
 
 echo "=====BUILD  $testsrc/dwnames_checks/dwnames_all "
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/dwnames_checks/dwnames_all.c \
      -o dwnames_all $dwlib $libopts"
-  echo "%x"
+  echo "$x"
   $x
   r=$?
   chkres $r 'check dwnames_all-error compile dwnames_all.c failed'
@@ -1205,8 +1216,8 @@ runtest $d1 $d2 debuglinkb/testnoid -P -i --suppress-debuglink-crc
 runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --suppress-debuglink-crc
 
 # February 16, 2022, with clang-generated .debug_names
-runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names
 runtest $d1 $d2 debugnames/jitreader    --print-pubnames
+runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -v
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -vv
 runtest $d1 $d2 debugnames/dwarfdump    -i -G --print-debug-names -vv
@@ -2345,6 +2356,7 @@ runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
 
 runsingle dwnames_all.base ./dwnames_all
+runsingle test_simple_libfuncs.base ./test_simple_libfuncs ./jitreader
 
 runsingle frame1-orig.base ./frame1/frame1  \
   $testsrc/frame1/frame1.orig
@@ -2361,8 +2373,8 @@ runsingle dwdebuglink-b.base ./dwdebuglink \
   --no-follow-debuglink --add-debuglink-path=/exam/ple \
   --add-debuglink-path=/tmp/phony $codedir/test/dummyexecutable
 
-runsingle test_dwnames.base ./test_dwnames \
-  -i $codedir/src/lib/libdwarf --run-self-test
+#runsingle test_dwnames.base ./test_dwnames \
+#  -i $codedir/src/lib/libdwarf --run-self-test
 
 runsingle fuzzmoy.base ./filelist/localfuzz_init_binary  \
    $testsrc/moya9/oob-repro

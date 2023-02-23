@@ -2,6 +2,20 @@
 #
 # debugfissionb/ld-new.dwp has a DW_TAG_dwarf_procedure
 # but the object is too big to work with.
+
+# run from /var/tmp/dwtest
+cc -I. -I /home/davea/dwarf/code/src/lib/libdwarf /home/davea/dwarf/regressiontests/test_simple_libfuncs.c ./libdwarf.a -lz -lzstd 
+./a.out /tmp/jitreader 
+exit 0
+dwarfdump --print-debug-names /tmp/jitreader >/tmp/codesdd
+
+
+cc -I. -I /home/davea/dwarf/code/src/lib/libdwarf /home/davea/dwarf/regressiontests/test_dnames_codes.c ./libdwarf.a -lz -lzstd 
+./a.out /tmp/jitreader >/tmp/codes
+dwarfdump --print-debug-names /tmp/jitreader >/tmp/codesdd
+exit 0
+
+
 rm -f ./vglog
 vgopts="--log-file=./vglog --num-callers=30 --leak-check=full --show-leak-kinds=all"
 opts="--suppress-de-alloc-tree"

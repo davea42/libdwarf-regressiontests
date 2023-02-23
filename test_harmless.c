@@ -250,7 +250,7 @@ int main(int argc, char **argv)
     int fd = 0;
     int i = 1;
 
-    for( ; i < (argc-1); ++i) {
+    for ( ; i < (argc-1); ++i) {
         if (!strcmp(argv[i],"-f")) {
             ++i;
             filepath=argv[i];

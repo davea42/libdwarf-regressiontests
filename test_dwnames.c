@@ -6,7 +6,7 @@
 */
 /*  Used by regession tests: DWARFTESTS.sh
 
-   Using options does exactly one of 3 things: 
+   Using options does exactly one of 3 things:
 
    (A) --print-found
    Print simple list of the DW_TAG_etc entries from dwarf.h
@@ -24,9 +24,8 @@
 
    Parts A and B, are not run during testing,
    just part C is the self-test proper.
-   
-*/
 
+*/
 
 #ifdef _WIN32
 #define _CRT_SECURE_NO_WARNINGS
@@ -41,7 +40,6 @@
     strncmp() size_t */
 #include "dwarf.h"
 #include "libdwarf.h"
-
 
 /*  test_dwnames.c
     Reads libdwarf.h and for each DW_AT_* (for all such
@@ -108,8 +106,8 @@ static const char *usage[] = {
 static void
 reset_group_array(void)
 {
-     group_array_count = 0;
-     memset(group_array,0,sizeof(array_data)*GROUP_ARRAY_SIZE);
+    group_array_count = 0;
+    memset(group_array,0,sizeof(array_data)*GROUP_ARRAY_SIZE);
 }
 
 void
@@ -141,8 +139,6 @@ safe_strcpy(char *out, size_t outlen,
     *cpo = 0;
 }
 
-
-
 /*   A default dir, useful for initial testing */
 static char *input_dir = "/home/davea/dwarf/code/src/lib/libdwarf";
 
@@ -167,14 +163,13 @@ set_all_false(void)
     run_self_test = FALSE;
 }
 
-
 /* process arguments */
 static void
 process_args(int argc, char *argv[])
 {
     int i = 0;
 
-    for(i = 1; i < argc;++i) {
+    for (i = 1; i < argc;++i) {
         if (!strcmp(argv[i],"-i")) {
             ++i;
             input_dir = argv[i];
@@ -210,8 +205,8 @@ process_args(int argc, char *argv[])
 typedef int( *getnamefuncptr)(unsigned int, const char **);
 
 struct funcpointerarray_s {
-   const char *fp_prefix;
-   getnamefuncptr     fp_funcpointer;
+    const char *fp_prefix;
+    getnamefuncptr     fp_funcpointer;
 } funcpointerarray[] =
 {
 { "DW_TAG",dwarf_get_TAG_name},
@@ -290,7 +285,6 @@ open_path(const char *dir, const char *base, const char *direction)
     return f;
 }
 
-
 int
 main(int argc,char **argv)
 {
@@ -357,8 +351,8 @@ find_function_pointer(const char *prefix)
     for ( ; funcpointerarray[i].fp_prefix ; i++) {
         const char *cp = funcpointerarray[i].fp_prefix;
         if (!strcmp(cp,prefix)) {
-             getnamefuncptr f = funcpointerarray[i].fp_funcpointer;
-             return f;
+            getnamefuncptr f = funcpointerarray[i].fp_funcpointer;
+            return f;
         }
     }
     return NULL;
@@ -376,7 +370,7 @@ do_single_selftest(const char *prefix,
     static char           lastprefix[20];
     static char           fullname[200];
 
-    int          res = 0; 
+    int          res = 0;
     unsigned int prefixlen = 0;
     unsigned int name_in_len = 0;
     const char  *ret_name = 0;
@@ -413,11 +407,11 @@ do_single_selftest(const char *prefix,
     }
     res = funcptr(value,&ret_name);
     if (res == DW_DLV_OK) {
-         /* Found */
-         if (!strcmp(name_in,ret_name)) {
-             /*  PASS. Found expected name */
-             return DW_DLV_OK;
-         }
+        /* Found */
+        if (!strcmp(name_in,ret_name)) {
+            /*  PASS. Found expected name */
+            return DW_DLV_OK;
+        }
     }
     printf("Error: for prefix %s ",lastprefix);
     printf("returns %d. ",res);
@@ -467,7 +461,7 @@ GenerateOneSet(int is_final)
             size_t prefixlen =strlen(pref);
             size_t remaining = sizeof(funcname);
             size_t nextc = 0;
-            
+
             funcname[0] = 0;
             safe_strcpy(funcname,remaining,
                 "dwarf_get_",10);
@@ -507,10 +501,10 @@ GenerateOneSet(int is_final)
                 + strlen(group_array[u].ad_name) +2;
 
             if (fullnamelen >= sizeof(fullname)) {
-                 /*  Impossible, really. */
-                 printf("Name too long to be real! %lu\n",
-                     (unsigned long)fullnamelen);
-                 return 1;
+                /*  Impossible, really. */
+                printf("Name too long to be real! %lu\n",
+                    (unsigned long)fullnamelen);
+                return 1;
             }
             strcpy(fullname,group_array[u].ad_prefixname);
             strcat(fullname,"_");
@@ -629,7 +623,7 @@ ParseDefinitionsAndWriteOutput(void)
                 /* Not a number */
                 continue;
             }
-            
+
             /*  Some values are duplicated, that is ok.
                 see GenerateOneSet(). */
             /*  Record current entry */
