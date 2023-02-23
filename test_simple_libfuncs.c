@@ -17,6 +17,9 @@
 #include "dwarf.h"
 #include "libdwarf.h"
 
+#define FALSE 0
+#define TRUE 1
+
 static const char *
 basename(const char *path)
 {
@@ -51,7 +54,6 @@ main(int argc, char **argv)
     int failcount = 0;
     const char *filepath = 0;
     const char *base= 0;
-    int res2 = 0;
     int res = DW_DLV_ERROR;
     Dwarf_Debug dbg = 0;
 
@@ -72,23 +74,25 @@ main(int argc, char **argv)
     filepath = argv[i];
     base = basename(filepath);
     res = dwarf_init_path(filepath,
-            0,0,
-            DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
-            &error);
+        0,0,
+        DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
+        &error);
     if (res == DW_DLV_ERROR) {
-            printf("Init of %s FAILED\n",
-                dwarf_errmsg(error));
-            ++failcount;
+        printf("Init of %s FAILED\n",
+            dwarf_errmsg(error));
+        ++failcount;
     } else if (res == DW_DLV_NO_ENTRY) {
-            printf("Init of %s No Entry\n",base);
-            ++failcount;
+        printf("Init of %s No Entry\n",base);
+        ++failcount;
     }
     if (!failcount) {
         int oldapply = 0;
         int oldapplyb = 0;
         Dwarf_Small origasize = 0;
         Dwarf_Small origasizeb = 0;
-        void *funcp = 0;
+        void       *funcp = 0;
+        Dwarf_Half  offset_size = 0;
+        int         ires = 0;
 
         printf("Opened objectfile %s\n",base);
         /*  The default for the flag is 1. */
@@ -113,10 +117,27 @@ main(int argc, char **argv)
                 "is not working");
             ++failcount;
         }
+
+        /*  getting the object file version of offset size,
+            not DWARF offset size. */
+        ires = dwarf_get_offset_size(dbg,&offset_size,0);
+        if (ires != DW_DLV_OK) {
+            printf("ERROR: dwarf_get_offset_size()"
+                "return value %d, not DW_DLV_OK",ires);
+            ++failcount;
+        } else {
+            if (offset_size != 4 && offset_size != 8) {
+                printf("ERROR: dwarf_get_offset_size()"
+                    "return offset size %d, not 4 or 8\n",
+                    offset_size); 
+                ++failcount;
+            }
+        }
+        
     }
     if (failcount) {
         return 1;
     }
-    printf("PASS test_simple_libfuncs\n"); 
+    printf("PASS test_simple_libfuncs\n");
     return 0;
 }
