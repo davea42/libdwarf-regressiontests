@@ -648,10 +648,28 @@ runsingle () {
     fi
     cat tmp2erra >> junksingle.$base
   fi
+  modpath=n
   # Fix up names to eliminate owner in path.
   # Checking return code from sed is not productive.
-  sed -e "s:${codedir}:..std..:"  < junksingle.$base > junksingle2.$base
-  sed -e "s:/home/davea/dwarf/code:..std..:" <junksingle2.$base >junksingle3.$base
+  if [ "x$exe" = "x./dwdebuglink" ] 
+  then
+     modpath=y
+  fi
+  if [ "x$exe" = "x./findfuncbypc" ] 
+  then
+     modpath=y
+  fi
+  if [ $modpath = "y" ]
+  then
+    # Only dwdebuglink introduces local directory paths.
+    sed -e "s:${codedir}:..std..:"  < junksingle.$base \
+       > junksingle2.$base
+    sed -e "s:/home/davea/dwarf/code:..std..:" \
+      <junksingle2.$base >junksingle3.$base
+   else
+     echo junk >junksingle2.$base
+     cp junksingle.$base junksingle3.$base
+  fi
   wc junksingle.$base junksingle2.$base junksingle3.$base
   if [ ! -f $testsrc/baselines/$base ]
   then
@@ -2605,12 +2623,33 @@ fi
 runtest $d1 $d2 macro5/dwarfdump-g3  -m
 runtest $d1 $d2 macro5/dwarfdump-g3  -m -vvv
 runtest $d1 $d2 macro5/dwarfdump-g3  -m -v
+
+runtest $d1 $d2 convey/testesb.c.o -v  --print-macinfo
+runtest $d1 $d2 debuglinkb/testid.debug -v  --print-macinfo
+runtest $d1 $d2 debuglinkb/testnoid.debug -v  --print-macinfo
+runtest $d1 $d2 emre4/test19_64_dbg -v  --print-macinfo
+runtest $d1 $d2 emre4/test3_64_dbg -v  --print-macinfo
+runtest $d1 $d2 emre5/test33_64_opt_fpo_split.dwp -v  --print-macinfo
+runtest $d1 $d2 shopof1/main.exe -v  --print-macinfo
+
+runtest $d1 $d2 convey/foo.g3-O0-strictdwarf.o -v  --print-macinfo
+runtest $d1 $d2 enciso8/test-clang-dw5.o  -v  --print-macinfo
+runtest $d1 $d2 enciso8/test-clang.o  -v  --print-macinfo
+runtest $d1 $d2 kaletta/test.armlink.elf  -v  --print-macinfo
+runtest $d1 $d2 kaletta/test.o  -v  --print-macinfo
+runtest $d1 $d2 macinfo/a.out3.4  -v  --print-macinfo
+runtest $d1 $d2 macinfo/a.out4.3  -v  --print-macinfo
+runtest $d1 $d2 mustacchi/m32t.o  -v  --print-macinfo
+runtest $d1 $d2 vlasceanu/const.o  -v  --print-macinfo
+runtest $d1 $d2 wynn/unoptimised.axf  -v  --print-macinfo
+
 runtest $d1 $d2 macro5/dwarfdump-g3  --print-macinfo
 runtest $d1 $d2 macro5/dwarfdump-g3  --print-macinfo -v
 runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros 
 runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros  -G
 runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros  -G -M
 runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros -v
+
 #Here we ask for DIE printing.
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m
 runtest $d1 $d2 macro5/dwarfdump-g3 -i -m -vvv
