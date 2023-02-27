@@ -133,6 +133,7 @@ main(int argc, char **argv)
                 ++failcount;
             }
         }
+        dwarf_finish(dbg);
         
     }
     if (failcount) {
