@@ -3,37 +3,63 @@
 
 COMPILE_UNIT<header overall offset = 0x00000000>:
 < 0><0x0000000b GOFF=0x0000000b>  DW_TAG_compile_unit
-                                    DW_AT_name                  test.cpp
-                                    DW_AT_comp_dir              D:/Perforce/Test/_Work/Test
-                                    DW_AT_producer              SN Systems ps3ppusnc - 'ps3ppucf.exe' 999.9.11873.1 (dev,unified @180914 checking) WIN32
-                                    DW_AT_language              DW_LANG_C_plus_plus
-                                    DW_AT_stmt_list             0x00000000
-                                    DW_AT_low_pc                0x00000000
-                                    DW_AT_high_pc               0x00000048
+                                    NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_name                  test.cpp
+                                    NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_comp_dir              D:/Perforce/Test/_Work/Test
+                                    NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_producer              SN Systems ps3ppusnc - 'ps3ppucf.exe' 999.9.11873.1 (dev,unified @180914 checking) WIN32
+                                    NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_language              DW_LANG_C_plus_plus
+                                    NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_stmt_list             0x00000000
+                                    NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_low_pc                0x00000000
+                                    NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_high_pc               0x00000048
 
 LOCAL_SYMBOLS:
 < 1><0x00000025 GOFF=0x00000025>    DW_TAG_base_type
-                                      DW_AT_name                  int
-                                      DW_AT_byte_size             0x00000004
-                                      DW_AT_encoding              DW_ATE_signed
+                                      NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_name                  int
+                                      NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_byte_size             0x00000004
+                                      NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_encoding              DW_ATE_signed
 < 1><0x0000002c GOFF=0x0000002c>    DW_TAG_structure_type
-                                      DW_AT_sibling               <0x000000ac GOFF=0x000000ac>
-                                      DW_AT_decl_file             0x00000001
-                                      DW_AT_decl_line             0x00000001
-                                      DW_AT_decl_column           0x00000031
-                                      DW_AT_name                  bar
-                                      DW_AT_byte_size             0x00000001
+                                      NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_sibling               <0x000000ac GOFF=0x000000ac>
+                                      NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_decl_file             0x00000001
+                                      NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_decl_line             0x00000001
+                                      NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_decl_column           0x00000031
+                                      NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_name                  bar
+                                      NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_byte_size             0x00000001
 < 2><0x00000039 GOFF=0x00000039>      DW_TAG_subprogram
-                                        DW_AT_sibling               <0x00000050 GOFF=0x00000050>
-                                        DW_AT_decl_file             0x00000001
-                                        DW_AT_decl_line             0x0000000f
-                                        DW_AT_decl_column           0x00000002
-                                        DW_AT_decl_column           0x00000012
-                                        DW_AT_name                  f01
-                                        DW_AT_accessibility         DW_ACCESS_public
-                                        DW_AT_containing_type       <0x0000002c GOFF=0x0000002c>
-                                        DW_AT_declaration           yes(1)
-                                        DW_AT_type                  <0x00000025 GOFF=0x00000025>
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_sibling               <0x00000050 GOFF=0x00000050>
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_decl_file             0x00000001
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_decl_line             0x0000000f
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_decl_column           0x00000002
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_decl_column           0x00000012
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_name                  f01
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_accessibility         DW_ACCESS_public
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_containing_type       <0x0000002c GOFF=0x0000002c>
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_declaration           yes(1)
+                                        NOTE: DIE context address size of 4 while object address size is 8
+DW_AT_type                  <0x00000025 GOFF=0x00000025>
 
 dwarfdump ERROR:  ERROR: A parent DW_AT_sibling of 0x00000050 points at the first child 0x00000050 so the die tree is corrupt (showing section, not CU, offsets). :  DW_DLE_USER_DECLARED_ERROR: ERROR: A parent DW_AT_sibling of 0x00000050 points at the first child 0x00000050 so the die tree is corrupt (showing section, not CU, offsets). . Attempting to continue.
 
