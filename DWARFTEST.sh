@@ -939,6 +939,16 @@ fi
 #  r=$?
 #  chkres $r 'check test_dwnames-error compile test_dwnames.c failed'
 
+echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_die_cu_offset.c "
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/fuzz_die_cu_offset.c \
+     -o fuzz_die_cu_offset $dwlib $libopts"
+  echo "$x"
+  $x
+  r=$?
+  chkres $r 'check fuzz_die_cu_offset.c compile  failed'
+
 echo "=====BUILD  $testsrc/test_simple_libfuncs "
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
@@ -2374,8 +2384,8 @@ runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
 
 runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz56465.base  ./fuzz_die_cu_offset $testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
 runsingle test_simple_libfuncs.base ./test_simple_libfuncs ./jitreader
-
 runsingle frame1-orig.base ./frame1/frame1  \
   $testsrc/frame1/frame1.orig
 runsingle frame1-2018.base ./frame1/frame1 \
@@ -2383,14 +2393,12 @@ runsingle frame1-2018.base ./frame1/frame1 \
 runsingle frame1-2018s.base ./frame1/frame1  \
   --just-print-selected-regs \
   $testsrc/frame1/frame1.exe.2018-05-11
-
 runsingle dwdebuglink-a.base ./dwdebuglink \
   "--add-debuglink-path=/exam/ple" \
   "--add-debuglink-path=/tmp/phony" $codedir/test/dummyexecutable
 runsingle dwdebuglink-b.base ./dwdebuglink \
   --no-follow-debuglink --add-debuglink-path=/exam/ple \
   --add-debuglink-path=/tmp/phony $codedir/test/dummyexecutable
-
 #runsingle test_dwnames.base ./test_dwnames \
 #  -i $codedir/src/lib/libdwarf --run-self-test
 
