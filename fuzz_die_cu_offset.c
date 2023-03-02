@@ -91,7 +91,6 @@ int main(int argc, char **argv)
           free(errp);
           dwarf_finish(dbg);
           close(fuzz_fd);
-          unlink(filename);
           return 0;
         }
         dwarf_dealloc(dbg, cu_die, DW_DLA_DIE);
@@ -101,6 +100,5 @@ int main(int argc, char **argv)
   free(errp);
   dwarf_finish(dbg);
   close(fuzz_fd);
-  unlink(filename);
   return 0;
 }
