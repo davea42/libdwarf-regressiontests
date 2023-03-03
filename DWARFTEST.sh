@@ -3,7 +3,7 @@ trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
 echo "Env vars that affect the tests:" 
 echo "  If you wish do one or more of these before running the tests."
-echo "  Add sanity..............: export NLIZE=y"
+echt "  Add sanity..............: export NLIZE=y"
 echo "  Suppress de_alloc_tree..: export SUPPRESSDEALLOCTREE=y"
 echo "  Use valgrind............: export VALGRIND=y"
 echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE"
@@ -939,6 +939,16 @@ fi
 #  r=$?
 #  chkres $r 'check test_dwnames-error compile test_dwnames.c failed'
 
+echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_debug_addr_access.c "
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/fuzz_debug_addr_access.c \
+     -o fuzz_debug_addr_access  $dwlib $libopts"
+  echo "$x"
+  $x
+  r=$?
+  chkres $r 'check fuzz_debug_addr_access.c compile  failed'
+
 echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_die_cu_offset.c "
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
@@ -1049,9 +1059,18 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   echo "$x"
   $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
-  # As of Feb 6, 2023 these checks are handled by runsingle().
-  #sh $testsrc/filelist/runtest.sh
   cd ..
+
+runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz56636.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56636/fuzz_debug_addr_access-4801779658522624.fuzz
+
+runsingle ossfuzz56548.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56548/fuzz_findfuncbypc-5073632331431936
+runsingle ossfuzz56443.base  ./fuzz_crc_32 $testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
+
+runsingle ossfuzz56530.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
+
+runsingle ossfuzz56465.base  ./fuzz_die_cu_offset $testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
+
 
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
@@ -2402,16 +2421,6 @@ ls -l ./test_harmless
 # -g: use old dwarf loclist code.
 runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
-
-runsingle dwnames_all.base ./dwnames_all
-
-runsingle ossfuzz56548.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56548/fuzz_findfuncbypc-5073632331431936
-runsingle ossfuzz56443.base  ./fuzz_crc_32 $testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
-
-runsingle ossfuzz56530.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
-
-runsingle ossfuzz56465.base  ./fuzz_die_cu_offset $testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
-
 
 runsingle test_simple_libfuncs.base ./test_simple_libfuncs ./jitreader
 runsingle frame1-orig.base ./frame1/frame1  \
