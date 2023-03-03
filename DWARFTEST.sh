@@ -2405,11 +2405,13 @@ runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
 
 runsingle dwnames_all.base ./dwnames_all
 
+runsingle ossfuzz56548.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56548/fuzz_findfuncbypc-5073632331431936
 runsingle ossfuzz56443.base  ./fuzz_crc_32 $testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
 
 runsingle ossfuzz56530.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
 
 runsingle ossfuzz56465.base  ./fuzz_die_cu_offset $testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
+
 
 runsingle test_simple_libfuncs.base ./test_simple_libfuncs ./jitreader
 runsingle frame1-orig.base ./frame1/frame1  \
