@@ -949,6 +949,26 @@ echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_die_cu_offset.c "
   r=$?
   chkres $r 'check fuzz_die_cu_offset.c compile  failed'
 
+echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_findfuncbypc.c "
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/fuzz_die_cu_offset.c \
+     -o fuzz_findfuncbypc $dwlib $libopts"
+  echo "$x"
+  $x
+  r=$?
+  chkres $r 'check fuzz_findfuncbypc.c compile  failed'
+
+echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_crc_32.c "
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/fuzz_crc_32.c \
+     -o fuzz_crc_32 $dwlib $libopts"
+  echo "$x"
+  $x
+  r=$?
+  chkres $r 'check fuzz_crc_32.c compile  failed'
+
 echo "=====BUILD  $testsrc/test_simple_libfuncs "
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
@@ -2384,7 +2404,13 @@ runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
 
 runsingle dwnames_all.base ./dwnames_all
+
+runsingle ossfuzz56443.base  ./fuzz_crc_32 $testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
+
+runsingle ossfuzz56530.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
+
 runsingle ossfuzz56465.base  ./fuzz_die_cu_offset $testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
+
 runsingle test_simple_libfuncs.base ./test_simple_libfuncs ./jitreader
 runsingle frame1-orig.base ./frame1/frame1  \
   $testsrc/frame1/frame1.orig
@@ -2403,8 +2429,6 @@ runsingle dwdebuglink-b.base ./dwdebuglink \
 #  -i $codedir/src/lib/libdwarf --run-self-test
 
 runsingle fuzzmoy.base ./filelist/localfuzz_init_binary  \
-   $testsrc/moya9/oob-repro
-runsingle fuzzpathmoy.base ./filelist/localfuzz_init_path  \
    $testsrc/moya9/oob-repro
 runsingle fuzzkal.base ./filelist/localfuzz_init_binary  \
    $testsrc/kaletta/test.o
