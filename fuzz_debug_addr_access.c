@@ -89,7 +89,9 @@ int main(int argc, char **argv)
         break;
       }
     }
+#if 0
     dwarf_dealloc_error(dbg, *errp);
+#endif
     dwarf_dealloc_debug_addr_table(debug_address_table);
     dwarf_finish(dbg);
     close(fuzz_fd);
