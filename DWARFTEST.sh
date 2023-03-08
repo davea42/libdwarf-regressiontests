@@ -938,6 +938,15 @@ fi
 #  $x
 #  r=$?
 #  chkres $r 'check test_dwnames-error compile test_dwnames.c failed'
+echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_gnu_index.c "
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/fuzz_gnu_index.c \
+     -o fuzz_gnu_index  $dwlib $libopts"
+  echo "$x"
+  $x
+  r=$?
+  chkres $r 'check fuzz_gnu_index.c compile  failed'
 
 echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_debug_addr_access.c "
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
@@ -1061,7 +1070,9 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+
 runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz56666.base  ./fuzz_gnu_index $testsrc/ossfuzz56666/fuzz_gnu_index-4803574417981440
 runsingle ossfuzz56636.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56636/fuzz_debug_addr_access-4801779658522624.fuzz
 
 runsingle ossfuzz56548.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56548/fuzz_findfuncbypc-5073632331431936

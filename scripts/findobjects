@@ -34,7 +34,7 @@ checkdetails() {
   f=$1
   readelfobj $f >junkro
   #grep ".debug_macro" junkro >junk2ro
-  grep ".debug_macinfo" junkro >junk2ro
+  grep ".debug_gnu_pubnames" junkro >junk2ro
   if [ $? -eq 0 ]
   then
     echo "$f"
