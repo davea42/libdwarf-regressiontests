@@ -1,4 +1,5 @@
 #!/bin/sh
+
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
 echo "Env vars that affect the tests:" 
@@ -929,85 +930,44 @@ then
   libopts="$libopts -lzstd"
 fi
 
-#echo "=====BUILD  $testsrc/test_dwnames/ "
-#  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-#     -I$libbld/libdwarf \
-#     -gdwarf $nlizeopt $testsrc/test_dwnames.c \
-#     -o test_dwnames $dwlib $libopts"
-#  echo "%x"
-#  $x
-#  r=$?
-#  chkres $r 'check test_dwnames-error compile test_dwnames.c failed'
-echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_gnu_index.c "
+
+# BUILDS
+simpleexe='
+fuzz_gnu_index
+fuzz_debug_addr_access
+fuzz_die_cu_offset
+fuzz_die_cu_attrs
+fuzz_findfuncbypc 
+fuzz_crc_32
+fuzz_srcfiles
+fuzz_str_offsets
+test_simple_libfuncs
+test_harmless
+test_sectionnames
+'
+
+for f in $simpleexe
+do
+  echo "====BUILD $f"
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/fuzz_gnu_index.c \
-     -o fuzz_gnu_index  $dwlib $libopts"
+     -gdwarf $nlizeopt $testsrc/${f}.c \
+     -o $f  $dwlib $libopts"
   echo "$x"
   $x
   r=$?
-  chkres $r 'check fuzz_gnu_index.c compile  failed'
+  chkres $r "compile of ${f}.c failed"
+done
 
-echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_debug_addr_access.c "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/fuzz_debug_addr_access.c \
-     -o fuzz_debug_addr_access  $dwlib $libopts"
-  echo "$x"
-  $x
-  r=$?
-  chkres $r 'check fuzz_debug_addr_access.c compile  failed'
-
-echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_die_cu_offset.c "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/fuzz_die_cu_offset.c \
-     -o fuzz_die_cu_offset $dwlib $libopts"
-  echo "$x"
-  $x
-  r=$?
-  chkres $r 'check fuzz_die_cu_offset.c compile  failed'
-
-echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_findfuncbypc.c "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/fuzz_die_cu_offset.c \
-     -o fuzz_findfuncbypc $dwlib $libopts"
-  echo "$x"
-  $x
-  r=$?
-  chkres $r 'check fuzz_findfuncbypc.c compile  failed'
-
-echo "=====BUILD  $testsrc/~/dwarf/regressiontests/fuzz_crc_32.c "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/fuzz_crc_32.c \
-     -o fuzz_crc_32 $dwlib $libopts"
-  echo "$x"
-  $x
-  r=$?
-  chkres $r 'check fuzz_crc_32.c compile  failed'
-
-echo "=====BUILD  $testsrc/test_simple_libfuncs "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
-     -gdwarf $nlizeopt $testsrc/test_simple_libfuncs.c \
-     -o test_simple_libfuncs $dwlib $libopts"
-  echo "$x"
-  $x
-  r=$?
-  chkres $r 'check dwnames_all-error compile dwnames_all.c failed'
-
-echo "=====BUILD  $testsrc/dwnames_checks/dwnames_all "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+echo "=====BUILD  dwnames_checks_dwnames_all/frame1.c into frame1/frame1 "
+   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/dwnames_checks/dwnames_all.c \
      -o dwnames_all $dwlib $libopts"
-  echo "$x"
-  $x
-  r=$?
-  chkres $r 'check dwnames_all-error compile dwnames_all.c failed'
-
+   echo "$x"
+   $x
+   r=$?
+   chkres $r 'check dwnames_all-error compile dwnames_all.c failed'
 
 # frame1 is a directory name, hence the build -o frame1/frame1
 echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
@@ -1022,7 +982,6 @@ echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
   r=$?
   chkres $r 'check frame1-error compile dwarfexample/frame1.c failed'
   cd ..
-
 echo "=====BUILD  dwarfexample/jitreader.c "
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf  \
@@ -1072,6 +1031,9 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
 
 
 runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz56489.base  ./fuzz_str_offsets $testsrc/ossfuzz56489/fuzz_srcfiles-5091530466787328
+runsingle ossfuzz56460.base  ./fuzz_str_offsets $testsrc/ossfuzz56460/fuzz_str_offsets-5376904040677376
+
 runsingle ossfuzz56666.base  ./fuzz_gnu_index $testsrc/ossfuzz56666/fuzz_gnu_index-4803574417981440
 runsingle ossfuzz56636.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56636/fuzz_debug_addr_access-4801779658522624.fuzz
 
@@ -1082,6 +1044,8 @@ runsingle ossfuzz56530.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56530/fuzz_find
 
 runsingle ossfuzz56465.base  ./fuzz_die_cu_offset $testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
 
+#dadebug
+exit 1 
 
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \

@@ -36,8 +36,9 @@ int main(int argc, char **argv)
   Dwarf_Handler errhand = 0;
   Dwarf_Ptr errarg = 0;
   Dwarf_Error *errp = 0;
+  Dwarf_Error error = 0;
   int i = 0;
-  Dwarf_Die die;
+  Dwarf_Die die = 0;
 
   for (i = 1; i< argc; ++i)  {
       if (argv[i][0] == '-') {
@@ -96,6 +97,7 @@ int main(int argc, char **argv)
           res = dwarf_die_abbrev_global_offset(cu_die, &agoff, &acount, errp);
 
           Dwarf_Bool someinfo = dwarf_get_die_infotypes_flag(cu_die);
+          (void)someinfo;
 
           Dwarf_Off globaloff = 0;
           Dwarf_Unsigned length = 0;
@@ -113,6 +115,7 @@ int main(int argc, char **argv)
           res = dwarf_dieoffset(cu_die, &die_goff, errp);
 
           int abbrev_code = dwarf_die_abbrev_code(cu_die);
+          (void)abbrev_code;
 
           Dwarf_Bool has_attr = 0;
           res = dwarf_hasattr(cu_die, DW_AT_external, &has_attr, errp);
@@ -160,19 +163,19 @@ int main(int argc, char **argv)
             Dwarf_Half attrnum = 0;
             const char *attrname = 0;
             res = dwarf_whatform(attr, &formnum, errp);
-            Dwarf_Bool *dw_returned_bool;
+            Dwarf_Bool *dw_returned_bool = 0;
             res = dwarf_hasform(attr, formnum, dw_returned_bool, errp);
             res = dwarf_get_FORM_name(formnum, &formname);
             Dwarf_Block *tempb = 0;
             res = dwarf_formblock(attr, &tempb, errp);
             if (res == DW_DLV_OK) {
               Dwarf_Dsc_Head h = 0;
-              Dwarf_Unsigned u = 0;
               Dwarf_Unsigned arraycount = 0;
               int sres = 0;
 
               sres = dwarf_discr_list(dbg, (Dwarf_Small *)tempb->bl_data,
                                       tempb->bl_len, &h, &arraycount, errp);
+              (void)sres;
             }
             res = dwarf_whatattr(atlist[i], &attrnum, errp);
             dwarf_get_AT_name(attrnum, &attrname);

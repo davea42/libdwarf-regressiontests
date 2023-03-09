@@ -100,13 +100,12 @@ int main(int argc, char **argv)
   char *filepath = 0;
   Dwarf_Debug dbg = 0;
   int res = DW_DLV_ERROR;
-  Dwarf_Die die = 0;
   Dwarf_Error error;
   Dwarf_Unsigned target_pc = 0x1000;
   struct target_data_s target_data;
   int i = 0;
    
-  memset(&target_data,0.sizeof(target_data));
+  memset(&target_data,0,sizeof(target_data));
   target_data.td_target_pc = target_pc;
   for (i = 1; i< argc; ++i)  {
       if (argv[i][0] == '-') {
@@ -321,6 +320,7 @@ static int look_for_our_target(Dwarf_Debug dbg, struct target_data_s *td,
                                  &typeoffset, 0, &header_cu_type, errp);
     if (res == DW_DLV_ERROR) {
       char *em = dwarf_errmsg(*errp);
+      (void)em;
       return DW_DLV_NO_ENTRY;
     }
     if (res == DW_DLV_NO_ENTRY) {
@@ -331,6 +331,7 @@ static int look_for_our_target(Dwarf_Debug dbg, struct target_data_s *td,
     res = dwarf_siblingof_b(dbg, no_die, is_info, &cu_die, errp);
     if (res == DW_DLV_ERROR) {
       char *em = dwarf_errmsg(*errp);
+      (void)em;
       return res;
     }
     if (res == DW_DLV_NO_ENTRY) {
@@ -347,9 +348,11 @@ static int look_for_our_target(Dwarf_Debug dbg, struct target_data_s *td,
       return res;
     } else if (res == IN_THIS_CU) {
       char *em = dwarf_errmsg(*errp);
+      (void)em;
       return res;
     } else if (res == DW_DLV_ERROR) {
       char *em = dwarf_errmsg(*errp);
+      (void)em;
       return DW_DLV_ERROR;
     }
     return DW_DLV_NO_ENTRY;
@@ -407,6 +410,7 @@ static int get_die_and_siblings(Dwarf_Debug dbg, Dwarf_Die in_die, int is_info,
     res = dwarf_siblingof_b(dbg, cur_die, is_info, &sib_die, errp);
     if (res == DW_DLV_ERROR) {
       char *em = dwarf_errmsg(*errp);
+      (void)em;
       return res;
     }
     if (res == DW_DLV_NO_ENTRY) {
