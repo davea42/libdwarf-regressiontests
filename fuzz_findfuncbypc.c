@@ -99,17 +99,15 @@ int main(int argc, char **argv)
 {
   char *filepath = 0;
   Dwarf_Debug dbg = 0;
-  int fuzz_fd = 0;
   int res = DW_DLV_ERROR;
-  Dwarf_Handler errhand = 0;
-  Dwarf_Ptr errarg = 0;
-  int i = 0;
   Dwarf_Die die = 0;
   Dwarf_Error error;
-  int i = 0;
   Dwarf_Unsigned target_pc = 0x1000;
   struct target_data_s target_data;
-
+  int i = 0;
+   
+  memset(&target_data,0.sizeof(target_data));
+  target_data.td_target_pc = target_pc;
   for (i = 1; i< argc; ++i)  {
       if (argv[i][0] == '-') {
            /* ignore options for now */
@@ -124,8 +122,7 @@ int main(int argc, char **argv)
   }
   filepath = argv[i];
 
-  int res =
-      dwarf_init_path(filepath, 0, 0, DW_GROUPNUMBER_ANY, 0, 0, &dbg, &error);
+  res = dwarf_init_path(filepath, 0, 0, DW_GROUPNUMBER_ANY, 0, 0, &dbg, &error);
   if (res == DW_DLV_ERROR) {
     dwarf_dealloc_error(dbg, error);
     dwarf_finish(dbg);
