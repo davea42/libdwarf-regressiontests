@@ -933,12 +933,13 @@ fi
 
 # BUILDS
 simpleexe='
-fuzz_gnu_index
+fuzz_crc_32
 fuzz_debug_addr_access
 fuzz_die_cu_offset
 fuzz_die_cu_attrs
 fuzz_findfuncbypc 
-fuzz_crc_32
+fuzz_gnu_index
+fuzz_macro_dwarf5
 fuzz_rng
 fuzz_srcfiles
 fuzz_str_offsets
@@ -1032,6 +1033,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
 
 
 runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz56453.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56453/fuzz_debug_addr_access-5069447397507072
+runsingle ossfuzz56476.base  ./fuzz_rng $testsrc/ossfuzz56476/fuzz_rng-5008229349588992
 runsingle ossfuzz56478.base  ./fuzz_rng $testsrc/ossfuzz56478/fuzz_rng-5030515398017024
 
 runsingle ossfuzz56489.base  ./fuzz_str_offsets $testsrc/ossfuzz56489/fuzz_srcfiles-5091530466787328

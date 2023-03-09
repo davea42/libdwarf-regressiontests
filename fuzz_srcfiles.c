@@ -89,7 +89,6 @@ int main(int argc, char **argv)
   free(errp);
   dwarf_finish(dbg);
   close(fuzz_fd);
-  unlink(filename);
   return 0;
 }
 
