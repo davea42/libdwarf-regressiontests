@@ -26,19 +26,12 @@ int main(int argc, char **argv)
 {
   char *filename = 0;
   Dwarf_Debug dbg = 0;
-  int fuzz_fd = 0;
   Dwarf_Handler errhand = 0;
   Dwarf_Ptr errarg = 0;
   int i = 0;
   Dwarf_Error error;
   int res = DW_DLV_ERROR;
-#if 0
-  off_t size_left = 0;
-  off_t fsize = 0;
-#endif
-  unsigned char *crcbuf = 0;
-  int regtabrulecount = 0;
-  int curopt = 0;
+  int fd = -1;
 
   for (i = 1; i< argc; ++i)  {
       if (argv[i][0] == '-') {
@@ -54,8 +47,7 @@ int main(int argc, char **argv)
   }
   filename = argv[i];
 
-
-  int fd = open(filename, O_RDONLY | O_BINARY);
+  fd = open(filename, O_RDONLY | O_BINARY);
   if (fd < 0) {
     exit(EXIT_FAILURE);
   }

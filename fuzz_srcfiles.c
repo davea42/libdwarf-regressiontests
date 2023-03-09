@@ -30,10 +30,8 @@ int main(int argc, char **argv)
   Dwarf_Handler errhand = 0;
   Dwarf_Ptr errarg = 0;
   int i = 0;
-  Dwarf_Error error = 0;
   int res = DW_DLV_ERROR;
   Dwarf_Error *errp = 0;
-  Dwarf_Die die = 0;
 
   for (i = 1; i< argc; ++i)  {
       if (argv[i][0] == '-') {
@@ -69,7 +67,6 @@ int main(int argc, char **argv)
       Dwarf_Half header_cu_type = 0;
       int res = 0;
       Dwarf_Die cu_die = 0;
-      int level = 0;
       static const Dwarf_Sig8 zerosignature;
 
       type_signature = zerosignature;

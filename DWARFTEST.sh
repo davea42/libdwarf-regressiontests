@@ -939,6 +939,7 @@ fuzz_die_cu_offset
 fuzz_die_cu_attrs
 fuzz_findfuncbypc 
 fuzz_crc_32
+fuzz_rng
 fuzz_srcfiles
 fuzz_str_offsets
 test_simple_libfuncs
@@ -1031,6 +1032,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
 
 
 runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz56478.base  ./fuzz_rng $testsrc/ossfuzz56478/fuzz_rng-5030515398017024
+
 runsingle ossfuzz56489.base  ./fuzz_str_offsets $testsrc/ossfuzz56489/fuzz_srcfiles-5091530466787328
 runsingle ossfuzz56460.base  ./fuzz_str_offsets $testsrc/ossfuzz56460/fuzz_str_offsets-5376904040677376
 
@@ -1057,7 +1060,6 @@ echo "=====START  $testsrc/test_pubsreader"
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
       -o test_pubsreader $dwlib $libopts
-  r=$?
   chkres $r 'check pubsreader-error compile test_pubsreader.c failed'
   echo "./test_pubsreader $suppresstree $testsrc/mustacchi/m32t.o \
     $testsrc/irixn32/dwarfdump"
