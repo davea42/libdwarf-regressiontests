@@ -36,12 +36,12 @@ int main(int argc, char **argv)
 {
   char *filename = 0;
   Dwarf_Debug dbg = 0;
-  int fuzz_fd = 0;
   Dwarf_Handler errhand = 0;
   Dwarf_Ptr errarg = 0;
   int i = 0;
   int res = DW_DLV_ERROR;
   Dwarf_Error error = 0;
+  int fd = -1;
 
   for (i = 1; i< argc; ++i)  {
       if (argv[i][0] == '-') {
@@ -91,9 +91,10 @@ int get_globals_example(Dwarf_Debug dbg, Dwarf_Error *error) {
     return res;
   }
   for (i = 0; i < count; ++i) {
-    int tag_idx = dwarf_global_tag_number(globs[i]); // DWARF5 only
-
     char *name = 0;
+    int tag_idx = dwarf_global_tag_number(globs[i]); // DWARF5 only
+    (void)tag_idx;
+
     res = dwarf_globname(globs[i], &name, error);
     if (res != DW_DLV_OK) {
       continue;
