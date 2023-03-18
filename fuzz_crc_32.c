@@ -35,11 +35,8 @@ int main(int argc, char **argv)
   Dwarf_Handler errhand = 0;
   Dwarf_Ptr errarg = 0;
   int i = 0;
-  Dwarf_Error error;
-#if 0
-  off_t size_left = 0;
-  off_t fsize = 0;
-#endif
+  /*  BUG IN ORIGINAL. fails to init field */
+  Dwarf_Error error = 0;
   unsigned char *crcbuf = 0;
 
   for (i = 1; i< argc; ++i)  {
@@ -50,7 +47,7 @@ int main(int argc, char **argv)
       break;
   }
   if (i >= argc) {
-        printf("fuzz_die_cu_offset.c not given file to open\n");
+        printf("fuzz_globals.c not given file to open\n");
         printf("fuzz_die_cu_offset.c exits\n");
         exit(EXIT_FAILURE);
   }

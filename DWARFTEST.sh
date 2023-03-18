@@ -619,7 +619,7 @@ runsingle () {
   shift
   args=$*
   based=baselines
-  rm tmp2erra
+  rm -f tmp2erra
   rm -f junksingle.$base junksingle2.$base junksingle3.$base
   totalct=`expr $goodcount + $failcount + $skipcount + 1`
   pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
@@ -938,9 +938,12 @@ fuzz_debug_addr_access
 fuzz_die_cu_offset
 fuzz_die_cu_attrs
 fuzz_findfuncbypc 
+fuzz_gdbindex
+fuzz_globals
 fuzz_gnu_index
 fuzz_macro_dwarf5
 fuzz_rng
+fuzz_set_frame_all
 fuzz_srcfiles
 fuzz_str_offsets
 test_simple_libfuncs
@@ -1033,6 +1036,16 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
 
 
 runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz56458.base  ./fuzz_die_cu_attrs $testsrc/ossfuzz56458/fuzz_globals-5286908805906432
+
+runsingle ossfuzz56450.base  ./fuzz_die_cu_attrs $testsrc/ossfuzz56450/fuzz_die_cu_attrs-4953133005799424
+exit 1
+
+runsingle ossfuzz56676.base  ./fuzz_gdbindex $testsrc/ossfuzz56676/fuzz_set_frame_all-5081006119190528.fuzz
+runsingle ossfuzz56456.base  ./fuzz_gdbindex $testsrc/ossfuzz56456/fuzz_gdbindex-5240324382654464
+
+runsingle ossfuzz56807.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56807/fuzz_srcfiles-4626047380619264
+runsingle ossfuzz56735.base  ./fuzz_macro_dwarf5 $testsrc/ossfuzz56735/fuzz_macro_dwarf5-6718585377783808
 runsingle ossfuzz56453.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56453/fuzz_debug_addr_access-5069447397507072
 runsingle ossfuzz56476.base  ./fuzz_rng $testsrc/ossfuzz56476/fuzz_rng-5008229349588992
 runsingle ossfuzz56478.base  ./fuzz_rng $testsrc/ossfuzz56478/fuzz_rng-5030515398017024
@@ -1040,7 +1053,6 @@ runsingle ossfuzz56478.base  ./fuzz_rng $testsrc/ossfuzz56478/fuzz_rng-503051539
 runsingle ossfuzz56489.base  ./fuzz_str_offsets $testsrc/ossfuzz56489/fuzz_srcfiles-5091530466787328
 runsingle ossfuzz56460.base  ./fuzz_str_offsets $testsrc/ossfuzz56460/fuzz_str_offsets-5376904040677376
 
-runsingle ossfuzz56666.base  ./fuzz_gnu_index $testsrc/ossfuzz56666/fuzz_gnu_index-4803574417981440
 runsingle ossfuzz56636.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56636/fuzz_debug_addr_access-4801779658522624.fuzz
 
 runsingle ossfuzz56548.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56548/fuzz_findfuncbypc-5073632331431936
@@ -1049,9 +1061,6 @@ runsingle ossfuzz56443.base  ./fuzz_crc_32 $testsrc/ossfuzz56443/fuzz_crc_32-475
 runsingle ossfuzz56530.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
 
 runsingle ossfuzz56465.base  ./fuzz_die_cu_offset $testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
-
-#dadebug
-exit 1 
 
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
@@ -1494,6 +1503,7 @@ runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print-raw-rngl
 runtest $d1 $d2 moya2/filecheck.dwo -ka 
 # Checking .debug_str_offsets used properly
 runtest $d1 $d2 moya5/hello.dwo -a -M -v --print-str-offsets 
+
 runtest $d1 $d2 moya5/hello.dwo --file-tied=$testsrc/moya5/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya5/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya6/hello.dwp -a -M -v --print-str-offsets --print-strings

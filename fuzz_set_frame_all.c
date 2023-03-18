@@ -48,7 +48,6 @@ int main(int argc, char **argv)
   Dwarf_Handler errhand = 0;
   Dwarf_Ptr errarg = 0;
   char *filename = 0;
-  int fuzz_fd = 0;
   int  iarg = 0;
 
   for (iarg = 1; iarg< argc; ++iarg)  {
