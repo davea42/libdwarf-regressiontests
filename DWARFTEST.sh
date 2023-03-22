@@ -932,7 +932,7 @@ fi
 
 
 # BUILDS
-simpleexe='
+fuzzexe='
 fuzz_crc_32
 fuzz_debug_addr_access
 fuzz_die_cu_offset
@@ -945,11 +945,28 @@ fuzz_macro_dwarf5
 fuzz_rng
 fuzz_set_frame_all
 fuzz_srcfiles
-fuzz_str_offsets
+fuzz_stack_frame_access
+fuzz_str_offsets'
+
+/* Do not do -Wall here. */
+for f in $fuzzexe
+do
+  echo "====BUILD $f"
+  x="$CC -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     -gdwarf $nlizeopt $testsrc/testbuildfuzz.c \
+     $codedir/fuzz/${f}.c \
+     -o $f  $dwlib $libopts"
+  echo "$x"
+  $x
+  r=$?
+  chkres $r "compile of ${f}.c failed"
+done
+
+simpleexe='
 test_simple_libfuncs
 test_harmless
-test_sectionnames
-'
+test_sectionnames'
 
 for f in $simpleexe
 do
@@ -964,7 +981,7 @@ do
   chkres $r "compile of ${f}.c failed"
 done
 
-echo "=====BUILD  dwnames_checks_dwnames_all/frame1.c into frame1/frame1 "
+echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
    x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/dwnames_checks/dwnames_all.c \
@@ -987,6 +1004,7 @@ echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
   r=$?
   chkres $r 'check frame1-error compile dwarfexample/frame1.c failed'
   cd ..
+
 echo "=====BUILD  dwarfexample/jitreader.c "
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf  \
@@ -1036,34 +1054,37 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
 
 
 runsingle dwnames_all.base ./dwnames_all
-runsingle ossfuzz56897.base  ./fuzz_die_cu_attrs $testsrc/ossfuzz56897/fuzz_rng-5105415777288192
+runsingle ossfuzz57027.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuzz57027/fuzz_stack_frame_access-5123569972805632
+runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993/fuzz_macro_dwarf5-5770464300761088
+runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
+runtest $d1 $d2 $testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz --print-raw-rnglists
 
-exit 1
+runsingle ossfuzz56897.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56897/fuzz_rng-5105415777288192
 
-runsingle ossfuzz56458.base  ./fuzz_die_cu_attrs $testsrc/ossfuzz56458/fuzz_globals-5286908805906432
+runsingle ossfuzz56458.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz56458/fuzz_globals-5286908805906432
 
-runsingle ossfuzz56450.base  ./fuzz_die_cu_attrs $testsrc/ossfuzz56450/fuzz_die_cu_attrs-4953133005799424
+runsingle ossfuzz56450.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz56450/fuzz_die_cu_attrs-4953133005799424
 
-runsingle ossfuzz56676.base  ./fuzz_gdbindex $testsrc/ossfuzz56676/fuzz_set_frame_all-5081006119190528.fuzz
-runsingle ossfuzz56456.base  ./fuzz_gdbindex $testsrc/ossfuzz56456/fuzz_gdbindex-5240324382654464
+runsingle ossfuzz56676.base  ./fuzz_gdbindex --testobj=$testsrc/ossfuzz56676/fuzz_set_frame_all-5081006119190528.fuzz
+runsingle ossfuzz56456.base  ./fuzz_gdbindex --testobj=$testsrc/ossfuzz56456/fuzz_gdbindex-5240324382654464
 
-runsingle ossfuzz56807.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56807/fuzz_srcfiles-4626047380619264
-runsingle ossfuzz56735.base  ./fuzz_macro_dwarf5 $testsrc/ossfuzz56735/fuzz_macro_dwarf5-6718585377783808
-runsingle ossfuzz56453.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56453/fuzz_debug_addr_access-5069447397507072
-runsingle ossfuzz56476.base  ./fuzz_rng $testsrc/ossfuzz56476/fuzz_rng-5008229349588992
-runsingle ossfuzz56478.base  ./fuzz_rng $testsrc/ossfuzz56478/fuzz_rng-5030515398017024
+runsingle ossfuzz56807.base  ./fuzz_debug_addr_access --testobj=$testsrc/ossfuzz56807/fuzz_srcfiles-4626047380619264
+runsingle ossfuzz56735.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56735/fuzz_macro_dwarf5-6718585377783808
+runsingle ossfuzz56453.base  ./fuzz_debug_addr_access --testobj=$testsrc/ossfuzz56453/fuzz_debug_addr_access-5069447397507072
+runsingle ossfuzz56476.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56476/fuzz_rng-5008229349588992
+runsingle ossfuzz56478.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56478/fuzz_rng-5030515398017024
 
-runsingle ossfuzz56489.base  ./fuzz_str_offsets $testsrc/ossfuzz56489/fuzz_srcfiles-5091530466787328
-runsingle ossfuzz56460.base  ./fuzz_str_offsets $testsrc/ossfuzz56460/fuzz_str_offsets-5376904040677376
+runsingle ossfuzz56489.base  ./fuzz_str_offsets --testobj=$testsrc/ossfuzz56489/fuzz_srcfiles-5091530466787328
+runsingle ossfuzz56460.base  ./fuzz_str_offsets --testobj=$testsrc/ossfuzz56460/fuzz_str_offsets-5376904040677376
 
-runsingle ossfuzz56636.base  ./fuzz_debug_addr_access $testsrc/ossfuzz56636/fuzz_debug_addr_access-4801779658522624.fuzz
+runsingle ossfuzz56636.base  ./fuzz_debug_addr_access --testobj=$testsrc/ossfuzz56636/fuzz_debug_addr_access-4801779658522624.fuzz
 
-runsingle ossfuzz56548.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56548/fuzz_findfuncbypc-5073632331431936
-runsingle ossfuzz56443.base  ./fuzz_crc_32 $testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
+runsingle ossfuzz56548.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56548/fuzz_findfuncbypc-5073632331431936
+runsingle ossfuzz56443.base  ./fuzz_crc_32 --testobj=$testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
 
-runsingle ossfuzz56530.base  ./fuzz_findfuncbypc $testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
+runsingle ossfuzz56530.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
 
-runsingle ossfuzz56465.base  ./fuzz_die_cu_offset $testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
+runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
 
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
