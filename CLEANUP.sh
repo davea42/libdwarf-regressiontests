@@ -15,6 +15,7 @@ rm -f /tmp/dwb.*
 rm -f config.h.in~
 rm -f vglog
 rm -f sancheck.o
+rm -f fuzz_*.o
 rm -f dwgenc/runx
 rm -f dwgenc/testoutput.o
 rm -f filelist/filelist
