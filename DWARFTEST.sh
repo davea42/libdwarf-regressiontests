@@ -931,6 +931,7 @@ then
 fi
 
 
+
 # BUILDS
 fuzzexe='
 fuzz_crc_32
@@ -1053,7 +1054,12 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   cd ..
 
 
+FIXME
+#/home/davea/dwarf/regressiontests/ossfuzz56454
+#fuzz_die_cu_offset-5171954224332800.fuzz
 runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz56454.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz56454/fuzz_die_cu_offset-5171954224332800.fuzz
+exit 1
 runsingle ossfuzz57027.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuzz57027/fuzz_stack_frame_access-5123569972805632
 runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993/fuzz_macro_dwarf5-5770464300761088
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
