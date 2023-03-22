@@ -1,2 +1,2 @@
 
-libdwarf is unable to record error DW_DLE_SECTION_SIZE_ERROR(435) Corrupt Elf. Section size: > file size or not a multiple of entry size No error argument or handler available
+libdwarf is unable to record error DW_DLE_RNGLISTS_ERROR(468) Corrupt dwarf. Bad .debug_rnglists data. No error argument or handler available

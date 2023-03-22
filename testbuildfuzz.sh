@@ -3,6 +3,7 @@
 src=~/dwarf/code/
 fdir=$src/fuzz
 lib=$src/src/lib/libdwarf
+testsrc=~/dwarf/regressiontests/testbuildfuzz.c
 
 list='
 fuzz_aranges.c
@@ -40,7 +41,7 @@ fuzz_xuindex.c'
 
 for s in $list
 do
-   x="cc -c  -I $lib $fdir/$s"
+   x="cc -I $lib $testsrc $fdir/$s "
    echo $x
    $x
    if [ $? -ne 0 ]
