@@ -1,0 +1,30 @@
+
+libdwarf is unable to record error DW_DLE_DIE_BAD (112) No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_LEB_IMPROPER (329) Runs off end of section or CU No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_STRING_FORM_IMPROPER(327) An internal libdwarf logic error No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_INVALID_NULL_ARGUMENT(498) Argument must be a valid pointer and non-null No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_ATTR_FORM_BAD (114) No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_STRING_FORM_IMPROPER(327) An internal libdwarf logic error No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_INVALID_NULL_ARGUMENT(498) Argument must be a valid pointer and non-null No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_ATTR_FORM_BAD (114) No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_STRING_FORM_IMPROPER(327) An internal libdwarf logic error No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_INVALID_NULL_ARGUMENT(498) Argument must be a valid pointer and non-null No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_ATTR_FORM_BAD (114) No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_STRING_FORM_IMPROPER(327) An internal libdwarf logic error No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_INVALID_NULL_ARGUMENT(498) Argument must be a valid pointer and non-null No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_ATTR_FORM_BAD (114) No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_STRING_FORM_IMPROPER(327) An internal libdwarf logic error No error argument or handler available
