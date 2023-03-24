@@ -939,6 +939,7 @@ fuzz_debug_addr_access
 fuzz_die_cu_offset
 fuzz_die_cu_attrs
 fuzz_die_cu_attrs_loclist
+fuzz_die_cu_print
 fuzz_findfuncbypc 
 fuzz_gdbindex
 fuzz_globals
@@ -1055,18 +1056,37 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   cd ..
 
 runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz57292.base  ./fuzz_die_cu_print --testobj=$testsrc/ossfuzz57292/fuzz_die_cu_print-5412313393135616
 
-# Cannot get the test object, oss-fuzz server error
+runsingle ossfuzz57149.base  ./fuzz_srcfiles --testobj=$testsrc/ossfuzz57149/fuzz_srcfiles-6213793811398656
+
+runsingle ossfuzz57193.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz57193/fuzz_die_cu_offset-5215024489824256
+
+
+runsingle ossfuzz56958.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuzz56958/fuzz_stack_frame_access-6097292873826304
+
+#Runs the intended op
+runsingle ossfuzz56895mac.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56895/fuzz_macro_dwarf5-5080340952907776
+# This one runs the wrong app.
+runsingle ossfuzz56895.base  ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz56895/fuzz_macro_dwarf5-5080340952907776
+
+# Here running correct app for the test
+runsingle ossfuzz56480dcp.base  ./fuzz_die_cu_print --testobj=$testsrc/ossfuzz56480/fuzz_die_cu_print-5264022485467136
+# Here running the wrong app for the testcase.
 runsingle ossfuzz56480.base  ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz56480/fuzz_die_cu_print-5264022485467136
-exit 1
 
-
-runsingle ossfuzz56487.base  ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz56487/clusterfuzz-testcase-fuzz_rng-6655451078197248
+runsingle ossfuzz56807.base  ./fuzz_srcfiles --testobj=$testsrc/ossfuzz56807/fuzz_srcfiles-4626047380619264
+#running wrong app
+runsingle ossfuzz56487w.base  ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz56487/clusterfuzz-testcase-fuzz_rng-6655451078197248
+# running correct app
+runsingle ossfuzz56487.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56487/clusterfuzz-testcase-fuzz_rng-6655451078197248
 runsingle ossfuzz57107.base  ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz57107/fuzz_die_cu_attrs_loclist-4991396240293888
 
 runsingle ossfuzz57048.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz57048/fuzz_findfuncbypc-4647942385696768
 runsingle ossfuzz56454.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz56454/fuzz_die_cu_offset-5171954224332800.fuzz
+
 runsingle ossfuzz57027.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuzz57027/fuzz_stack_frame_access-5123569972805632
+
 runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993/fuzz_macro_dwarf5-5770464300761088
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
 runtest $d1 $d2 $testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz --print-raw-rnglists
@@ -1080,7 +1100,6 @@ runsingle ossfuzz56450.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz56450
 runsingle ossfuzz56676.base  ./fuzz_gdbindex --testobj=$testsrc/ossfuzz56676/fuzz_set_frame_all-5081006119190528.fuzz
 runsingle ossfuzz56456.base  ./fuzz_gdbindex --testobj=$testsrc/ossfuzz56456/fuzz_gdbindex-5240324382654464
 
-runsingle ossfuzz56807.base  ./fuzz_debug_addr_access --testobj=$testsrc/ossfuzz56807/fuzz_srcfiles-4626047380619264
 runsingle ossfuzz56735.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56735/fuzz_macro_dwarf5-6718585377783808
 runsingle ossfuzz56453.base  ./fuzz_debug_addr_access --testobj=$testsrc/ossfuzz56453/fuzz_debug_addr_access-5069447397507072
 runsingle ossfuzz56476.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56476/fuzz_rng-5008229349588992
@@ -1097,6 +1116,7 @@ runsingle ossfuzz56443.base  ./fuzz_crc_32 --testobj=$testsrc/ossfuzz56443/fuzz_
 runsingle ossfuzz56530.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
 
 runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
+exit 1
 
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
