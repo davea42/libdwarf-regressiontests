@@ -640,12 +640,13 @@ runsingle () {
     fi
     valgrindcount=`expr $valgrindcount + 1`
   else
-    echo "run $exe $suppresstree $args"
+    rsrun="$exe $suppresstree $args"
+    echo "run: $rsrun"
     if [ x$wrtimeo != "x" ]
     then
-      $wrtimeo $exe $suppresstree $args 1> junksingle.$base 2>tmp2erra
+      $wrtimeo $rsrun  1> junksingle.$base 2>tmp2erra
     else
-      $exe $suppresstree $args 1> junksingle.$base 2>tmp2erra
+      $rsrun 1> junksingle.$base 2>tmp2erra
     fi
     cat tmp2erra >> junksingle.$base
   fi
@@ -662,12 +663,12 @@ runsingle () {
   fi
   if [ $modpath = "y" ]
   then
-    # Only dwdebuglink introduces local directory paths.
+    # Only dwdebuglink/findfuncbypc emit local directory paths.
     sed -e "s:${codedir}:..std..:"  < junksingle.$base \
        > junksingle2.$base
     sed -e "s:/home/davea/dwarf/code:..std..:" \
       <junksingle2.$base >junksingle3.$base
-   else
+  else
      echo junk >junksingle2.$base
      cp junksingle.$base junksingle3.$base
   fi
@@ -1056,6 +1057,9 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   cd ..
 
 runsingle dwnames_all.base ./dwnames_all
+
+runsingle ossfuzz57300.base  ./fuzz_die_cu --testobj=$testsrc/ossfuzz57300/fuzz_die_cu-4752724662288384
+exit 1
 runsingle ossfuzz57292.base  ./fuzz_die_cu_print --testobj=$testsrc/ossfuzz57292/fuzz_die_cu_print-5412313393135616
 
 runsingle ossfuzz57149.base  ./fuzz_srcfiles --testobj=$testsrc/ossfuzz57149/fuzz_srcfiles-6213793811398656
@@ -1116,7 +1120,6 @@ runsingle ossfuzz56443.base  ./fuzz_crc_32 --testobj=$testsrc/ossfuzz56443/fuzz_
 runsingle ossfuzz56530.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
 
 runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
-exit 1
 
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
