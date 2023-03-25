@@ -1,0 +1,3 @@
+ERROR *abi= does not allow an empty text
+./dwarfdump option error.
+To see the options list: ./dwarfdump -h
