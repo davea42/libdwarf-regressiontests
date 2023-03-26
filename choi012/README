@@ -1,4 +1,14 @@
 
 This is for testing
 
+DW202303-041
 dwarfdump --check-frame-extended poc_file_06
+
+DW202303-042
+dwarfdump --check-all poc_file_07  
+
+DW202303-043
+dwarfdump poc_file_08
+
+DW202303-046
+dwarfdump "--search-regex=t[ą--]e" poc_file_10

@@ -1,0 +1,20 @@
+
+*** DWARF CHECK: Attribute 0x0000006e (DW_AT_linkage_name) 1 times near offset 0x00000357.: Duplicated attribute in abbrevs  ***
+
+CU Name = <unknown>
+CU Producer = GNU C11 6.3.0 20170516 -mtune=generic -march=x86-64 -g -g -O2 -O3 -fPIC -funroll-loops
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+
+1 Compilers detected:
+01: GNU C11 6.3.0 20170516 -mtune=generic -march=x86-64 -g -g -O2 -O3 -fPIC -funroll-loops
+
+1 Compilers verified:
+01: errors =     2, GNU C11 6.3.0 20170516 -mtune=generic -march=x86-64 -g -g -O2 -O3 -fPIC -funroll-loops
+
+*** TOTAL ERRORS FOR ALL COMPILERS ***
+
+DWARF CHECK RESULT
+<item>                    <checks>    <errors>
+abbreviations                 2510           2
+** Summarize **               2843           2
+

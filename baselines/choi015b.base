@@ -1,0 +1,6 @@
+dwarfdump looking for configuration as "/home/davea/dwarf/regressiontests/choi015/poc_file_03"
+ERROR: Found the configure file is too small to be reasonable. Add a few comment lines to enlarge it from 1 bytes to 100
+ERROR: dwarfdump configuration file "/home/davea/dwarf/regressiontests/choi015/poc_file_03" is not plain text. Error.
+Frame not configured due to configure error(s), using generic 100 registers.
+Frame section access suppressed.
+./dwarfdump ERROR:  Can't open/use /home/davea/dwarf/regressiontests/choi015/poc_file_03. Error DW_DLE_FILE_TOO_SMALL(423) File is too small to be an object file.
