@@ -1,0 +1,18 @@
+
+.debug_frame is not present
+
+./dwarfdump ERROR:  Looking for function name for a frame. dwarf_siblingof failed trying to get the name. :  DW_DLE_SIBLING_OFFSET_WRONG(413). Corrupt dwarf.. Attempting to continue.
+
+CU Name = listfdb.c
+CU Producer = GNU C11 6.3.0 20170516 -mtune=generic -march=x86-64 -g -g -O2 -O3 -fPIC -funroll-loops
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+
+ERROR: dwarf_attrlist call fails in attempt  to get a procedure/function name Major error
+
+ERROR:load_nested_proc_name dwarf_child() failed. Major error
+
+ERROR: on getting fde details for fde row for address 0x00002267
+ERROR: Printing fde 14 fails. Error DW_DLE_DF_FRAME_DECODING_ERROR:  instr opcode 0x19 unknown
+ERROR: printing fdes fails. DW_DLE_DF_FRAME_DECODING_ERROR:  instr opcode 0x19 unknown  Attempting to continue. 
+
+There were 6 DWARF errors reported: see ERROR above.

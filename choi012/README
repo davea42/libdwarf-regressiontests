@@ -1,0 +1,4 @@
+
+This is for testing
+
+dwarfdump --check-frame-extended poc_file_06

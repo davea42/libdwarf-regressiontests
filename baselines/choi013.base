@@ -1,0 +1,4 @@
+ERROR Regular expression backslash missing its operand. Erroneous regex
+regcomp: unable to compile  search regular expression \
+No object file name provided to ./dwarfdump
+To see the options list: ./dwarfdump -h

@@ -1,0 +1,4 @@
+ERROR: Only the ASCII subset of  characters are supported in dwarfdump regular expressions
+ERROR: regcomp: unable to compile  search regular expression t[ą--]e so regex= ignored.
+
+There were 2 DWARF errors reported: see ERROR above.
