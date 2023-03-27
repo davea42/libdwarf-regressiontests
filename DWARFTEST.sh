@@ -1098,7 +1098,7 @@ runsingle ossfuzz57027.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuz
 
 runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993/fuzz_macro_dwarf5-5770464300761088
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
-runtest $d1 $d2 $testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz --print-raw-rnglists
+runtest $d1 $d2 ossfuzz56906/fuzz_rng-6031783801257984.fuzz --print-raw-rnglists
 
 runsingle ossfuzz56897.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56897/fuzz_rng-5105415777288192
 
