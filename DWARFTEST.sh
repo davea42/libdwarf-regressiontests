@@ -672,7 +672,9 @@ runsingle () {
      echo junk >junksingle2.$base
      cp junksingle.$base junksingle3.$base
   fi
-  wc junksingle.$base junksingle2.$base junksingle3.$base
+  wc junksingle.$base 
+  #wc junksingle2.$base 
+  wc junksingle3.$base
   if [ ! -f $testsrc/baselines/$base ]
   then
      # first time setup.
@@ -799,6 +801,8 @@ runtest () {
            rm core
     fi
     #=======old end
+    echo "old done " `date "+%Y-%m-%d %H:%M:%S"`
+    # =======  Run -O file-path
     # To deal with the -O file=path naming dwarfdump output.
     if [ -f testOfile ] 
     then
@@ -810,7 +814,7 @@ runtest () {
     fi
     # We will now build the other file=testOfile if such is involved
     rm -f testOfile
-    echo "old done " `date "+%Y-%m-%d %H:%M:%S"`
+    # =======  END -O file-path
     #=======new
     echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     echo "======" $tmplist $targ >> $ntimeout
@@ -851,6 +855,7 @@ runtest () {
       exit 1
     fi
     #=======new done
+    #=======Now test -O file=path
     cat tmp2n  >tmp3
     #echo "counts in tmp3"
     #wc tmp3
@@ -875,9 +880,10 @@ runtest () {
         echo "FAIL -O file=testOfile"  $* $targ
       fi
     fi
-
-    #echo "counts in tmp1o tmp3"
-    #wc tmp1o tmp3
+    # ===========Now do final diff
+    echo "counts in tmp1o (old) tmp3 (new)"
+    wc tmp1o
+    wc tmp3
     filediff tmp1o tmp3 $* $targ
     if [ $? -ne 0 ]
     then
@@ -937,6 +943,7 @@ fi
 fuzzexe='
 fuzz_crc_32
 fuzz_debug_addr_access
+fuzz_die_cu
 fuzz_die_cu_offset
 fuzz_die_cu_attrs
 fuzz_die_cu_attrs_loclist
