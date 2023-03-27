@@ -672,9 +672,6 @@ runsingle () {
      echo junk >junksingle2.$base
      cp junksingle.$base junksingle3.$base
   fi
-  wc junksingle.$base 
-  #wc junksingle2.$base 
-  wc junksingle3.$base
   if [ ! -f $testsrc/baselines/$base ]
   then
      # first time setup.
@@ -687,6 +684,8 @@ runsingle () {
   if [ $r -ne 0 ]
   then
     echo "FAIL diff $base junksingle3.$base" 
+    wc junksingle.$base 
+    wc junksingle3.$base
     allgood=n
     echo "To update mv $bldtest/junksingle3.$base $testsrc/baselines/$base"
   fi
@@ -795,18 +794,19 @@ runtest () {
     fi
     unifyddname tmp1a tmp1o
     unifyddnameb tmp1erra tmp1err
+    grep -v Usage   tmp1err >>tmp1o
     if [ -f core ]
     then
            echo "corefile in  $olddw '(old dwarfdump)'"
            rm core
     fi
-    #=======old end
     echo "old done " `date "+%Y-%m-%d %H:%M:%S"`
+    #=======old end
     # =======  Run -O file-path
     # To deal with the -O file=path naming dwarfdump output.
     if [ -f testOfile ] 
     then
-      echo "Test(old)  -O file=testOfile"
+      echo "Test(old)  -O file=testOfile" `date "+%Y-%m-%d %H:%M:%S"`
       unifyddname testOfile OFo1
       grep -v Usage   OFo1 >OFo2
       # Delete date on first line
@@ -816,7 +816,10 @@ runtest () {
     rm -f testOfile
     # =======  END -O file-path
     #=======new
-    echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
+    if [ -f testOfile ] 
+    then
+      echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
+    fi
     echo "======" $tmplist $targ >> $ntimeout
     if [ x$VALGRIND = "xy" ]
     then
@@ -846,9 +849,9 @@ runtest () {
     fi
     #echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
     # No need to unify for new dd name.
-    unifyddname tmp2a tmp2n
+    unifyddname tmp2a tmp3
     unifyddnameb tmp2erra tmp2err
-    #date "+%Y-%m-%d %H:%M:%S"
+    grep -v Usage  tmp2err >>tmp3
     if [ -f core ]
     then
       echo corefile in  $newdw
@@ -856,9 +859,7 @@ runtest () {
     fi
     #=======new done
     #=======Now test -O file=path
-    cat tmp2n  >tmp3
     #echo "counts in tmp3"
-    #wc tmp3
     if [ -f testOfile ]
     then
       # testing -O file=path
@@ -877,25 +878,19 @@ runtest () {
       if [ $? -ne 0 ]
       then
         allgood=n
+        wc OFo3
+        wc OFn3
         echo "FAIL -O file=testOfile"  $* $targ
       fi
     fi
     # ===========Now do final diff
-    echo "counts in tmp1o (old) tmp3 (new)"
-    wc tmp1o
-    wc tmp3
+    #echo "counts in tmp1o (old) tmp3 (new)"
     filediff tmp1o tmp3 $* $targ
     if [ $? -ne 0 ]
     then
       #echo FAIL filediff tmp1o tmp2
-      allgood=n
-    fi
-    grep -v Usage   tmp1err >tmp1berr
-    grep -v Usage   tmp2err >tmp2berr
-
-    filediff tmp1berr tmp2berr  $* $targ
-    if [ $? -ne 0 ]
-    then
+       wc tmp1o
+       wc tmp3
       allgood=n
     fi
     if [ $allgood = "y" ]
@@ -908,6 +903,7 @@ runtest () {
     echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
     rm -f core
     rm -f tmp1o tmp2n tmp3
+    rm -f tmp1erra  tmp2aesb  tmp2erra
     rm -f tmp1err tmp2err tmp3err 
     rm -f tmp1errb tmp1errc
     rm -f tmp1berr tmp2berr
