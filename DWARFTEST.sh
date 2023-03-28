@@ -1060,6 +1060,9 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   cd ..
 
 runsingle dwnames_all.base ./dwnames_all
+runsingle ossfuzz57442.base  ./fuzz_rng --testobj=$testsrc/ossfuzz57442/fuzz_rng-5974595378479104
+runsingle ossfuzz57437.base  ./fuzz_srcfiles --testobj=$testsrc/ossfuzz57437/fuzz_srcfiles-5281689109921792
+runsingle ossfuzz57429.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz57429/fuzz_die_cu_attrs-4845537731149824
 
 runsingle ossfuzz57335.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz57335/fuzz_die_cu_attrs-6235345560928256.fuzz
 
