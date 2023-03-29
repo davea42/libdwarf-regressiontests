@@ -597,7 +597,7 @@ else
     #echo "pass diff Identical "  $* 
     return 0
   else
-    #echo "fail diff Differ "  $*
+    echo "fail diff Differ "  $*
     return 1
   fi
 fi
@@ -684,7 +684,7 @@ runsingle () {
   if [ $r -ne 0 ]
   then
     echo "FAIL diff $base junksingle3.$base" 
-    wc junksingle.$base 
+    wc $testsrc/baselines/$base
     wc junksingle3.$base
     allgood=n
     echo "To update mv $bldtest/junksingle3.$base $testsrc/baselines/$base"
@@ -1061,6 +1061,7 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
 
 runsingle dwnames_all.base ./dwnames_all
 
+runsingle ossfuzz57516.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz57516/fuzz_die_cu_attrs-6171488289161216
 runsingle ossfuzz57485.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz57485/fuzz_die_cu_attrs-6025735319191552
 runsingle ossfuzz57463.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz57463/fuzz_die_cu_attrs-5158380196200448
 
