@@ -1,2 +1,4 @@
 
-libdwarf is unable to record error DW_DLE_RNGLISTS_ERROR(468) Corrupt dwarf. Bad .debug_rnglists data. No error argument or handler available
+libdwarf is unable to record error DW_DLE_IMPROPER_SECTION_ZERO(497) Section zero header contents incorrect. See Elf ABI.  Unsafe object. No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_DBG_NULL (81) No error argument or handler available

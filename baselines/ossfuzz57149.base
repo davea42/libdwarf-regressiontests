@@ -1,0 +1,2 @@
+
+libdwarf is unable to record error DW_DLE_IMPROPER_SECTION_ZERO(497) Section zero header contents incorrect. See Elf ABI.  Unsafe object. No error argument or handler available

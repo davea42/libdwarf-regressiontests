@@ -1,8 +1,2 @@
 
-libdwarf is unable to record error DW_DLE_ABBREV_MISSING(394) Unable to find abbrev for DIE No error argument or handler available
-
-libdwarf is unable to record error DW_DLE_ATTR_FORM_BAD (114) No error argument or handler available
-
-libdwarf is unable to record error DW_DLE_ATTR_FORM_BAD (114) No error argument or handler available
-
-libdwarf is unable to record error DW_DLE_DW_DLE_ATTR_OUTSIDE_SECTION(281) No error argument or handler available
+libdwarf is unable to record error DW_DLE_IMPROPER_SECTION_ZERO(497) Section zero header contents incorrect. See Elf ABI.  Unsafe object. No error argument or handler available
