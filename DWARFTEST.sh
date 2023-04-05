@@ -1276,6 +1276,12 @@ cd ..
 # Early test of -h.
 runtest $d1 $d2 foo.o -h
 
+# Testing that the elf extension of using sh_size and sh_link
+# as values of e_shnum and e_shstrndx in the Elf header.
+# So at least 32 bit values instead of the Elf header 16bit.
+runtest $d1 $d2 elfextend/testobj.extend -i
+runtest $d1 $d2 elfextend/testobj64.extend -i
+
 # The testcase is empty file. Ensure it behaves ok.
 runtest $d1 $d2 ossfuzz51183/ossfuzz54358-emptyfile -i
 
