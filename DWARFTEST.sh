@@ -4,7 +4,7 @@ trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
 echo "Env vars that affect the tests:" 
 echo "  If you wish do one or more of these before running the tests."
-echt "  Add sanity..............: export NLIZE=y"
+echo "  Add sanity..............: export NLIZE=y"
 echo "  Suppress de_alloc_tree..: export SUPPRESSDEALLOCTREE=y"
 echo "  Use valgrind............: export VALGRIND=y"
 echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE"
@@ -1060,6 +1060,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   cd ..
 
 runsingle dwnames_all.base ./dwnames_all
+
+runsingle ossfuzz57711.base  ./fuzz_srcfiles --testobj=$testsrc/ossfuzz57711/fuzz_srcfiles-4695324781576192
 
 runsingle ossfuzz57562.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz57562/fuzz_findfuncbypc-6681114772373504
 
