@@ -1,4 +1,4 @@
-#!tbin/sh
+#!/usr/bin/sh
 
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
