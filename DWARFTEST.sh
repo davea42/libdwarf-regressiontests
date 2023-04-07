@@ -1,4 +1,4 @@
-#!/bin/sh
+#!tbin/sh
 
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
@@ -1283,6 +1283,8 @@ runtest $d1 $d2 foo.o -h
 # So at least 32 bit values instead of the Elf header 16bit.
 runtest $d1 $d2 elfextend/testobj.extend -i
 runtest $d1 $d2 elfextend/testobj64.extend -i
+runtest $d1 $d2 elfextend/testobjgnu.extend -i
+runtest $d1 $d2 elfextend/testobj64gnu.extend -i
 
 # The testcase is empty file. Ensure it behaves ok.
 runtest $d1 $d2 ossfuzz51183/ossfuzz54358-emptyfile -i

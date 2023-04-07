@@ -1,0 +1,22 @@
+These are testing objects created to allow more
+than 64K  Elf sections in a object file.
+
+In all cases the e_shstrndx field is set to 0xffff
+
+The first is Elf64 obeying the rules stated in 'man 5 elf'
+The e_shnum field is set to the 0xff00 value.
+testobj64.extend  
+
+The second is Elf32 obeying the rules stated in 'man 5 elf'
+The e_shnum field is set to the 0xff00 value.
+testobj.extend  
+
+The third is Elf64 following what the GNU linker actually emitted.
+Here the 16 bit e_shnum field is set to 0x0000
+testobj64gnu.extend  
+
+The third is Elf32 following what the GNU linker actually emitted.
+Here the 16 bit e_shnum field is set to 0x0000
+testobjgnu.extend
+
+David Anderson, 7 April 2023.
