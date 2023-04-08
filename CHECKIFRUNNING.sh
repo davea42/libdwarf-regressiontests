@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 echo 'precheck for already running'
 . ./SHALIAS.sh
 

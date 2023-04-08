@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env  sh
 # Clean up the temp files left behind by a test.
 # Unwise to run this except in a regressiontest
 # source or test directory.

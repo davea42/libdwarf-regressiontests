@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Look for certain things to see what objects have them.
 # Useful for finding an object with something we want to see.
 # Like a particular attribute or form.

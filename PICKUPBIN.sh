@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 . ./SHALIAS.sh
 # The -fsanitize=address tells gcc to use extra run-time
 # code to look for code writing where it should not.

@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env sh
 
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #

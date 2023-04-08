@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 #
 # By default runs the entire test suite.
 echo "Running all regressiontests tests"
@@ -40,7 +40,7 @@ rm -f ALLdd
 start=`date`
 echo "start regressiontests in $loc at: $start"
 stsecs=`date '+%s'`
-echo "Begin regressiontests    $loc/RUNALL.sh $withlibelf" 
+echo "Begin regressiontests    $testsrc/RUNALL.sh $withlibelf" 
 echo "Write regressiontests to $loc/ALLdd" 
 $testsrc/DWARFTEST.sh 2>ALLdd 1>&2
 r=$?
