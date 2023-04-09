@@ -1061,6 +1061,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
 
 runsingle dwnames_all.base ./dwnames_all
 
+runsingle ossfuzz57766.base  ./fuzz_die_cu_print --testobj=$testsrc/ossfuzz57766/fuzz_die_cu_print-5295062170075136
+
 runsingle ossfuzz57711.base  ./fuzz_srcfiles --testobj=$testsrc/ossfuzz57711/fuzz_srcfiles-4695324781576192
 
 runsingle ossfuzz57562.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz57562/fuzz_findfuncbypc-6681114772373504
