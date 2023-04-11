@@ -1,3 +1,819 @@
+2023-04-11:  David Anderson
+    commit cf3d7451f2e58b72d894f98a47ccd4d30dd71e61
+
+    Now with latest baselines and new test.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz57766.base
+            new file:   baselines/ossfuzz57887.base
+            new file:   ossfuzz57887/fuzz_die_cu-4866423964172288
+
+2023-04-09:  David Anderson
+    commit 5e4b3a10910cb7d3088c91e1f79a0fbdbb3c5fc6
+
+    Added test for  DW202304-002 oss fuzz  57766
+            modified:   DWARFTEST.sh
+
+2023-04-08:  David Anderson
+    commit 47f55094f18b81586cfa9c2a56aeb7d4d7d44626
+
+    New testcase, fuzzed.
+            new file:   ossfuzz57766/fuzz_die_cu_print-5295062170075136
+
+2023-04-07:  David Anderson
+    commit fbfa3c8291852b627229512f6da927df8d0bfb25
+
+    Update baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-04-07:  David Anderson
+    commit a627108904368453f43992aec188d7d5a6f9b814
+
+    In freebsd there is no longer a /bin/sh
+    automatically. So now we do
+    /usr/bin/env bash
+    /usr/bin/env sh
+    so things work ok on ubuntu and freebsd.
+
+            modified:   CHECKIFRUNNING.sh
+            modified:   CLEANUP.sh
+            modified:   DWARFTEST.sh
+            modified:   LOOKFOR.sh
+            modified:   PICKUPBIN.sh
+            modified:   RUNALL.sh
+
+2023-04-07:  David Anderson
+    commit 116218c9f02328faa369dd88f66fd2e6d1d5f956
+
+    Horribly botch in line 1...fixed
+            modified:   DWARFTEST.sh
+
+2023-04-07:  David Anderson
+    commit 04807bb8d1212fa0ece87407558be78be288ed26
+
+    Test all four flavors of elfextend.
+            modified:   DWARFTEST.sh
+            new file:   elfextend/README
+            new file:   elfextend/testobj64gnu.extend
+            new file:   elfextend/testobjgnu.extend
+
+2023-04-06:  David Anderson
+    commit 81b93f67c37ee42301263d7fec0e6be8ec716ff1
+
+    A few improvements in messages required
+    new baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-04-06:  David Anderson
+    commit 633189d5988dc81e557aa6f6e5ac4e5819195c22
+
+    Now tests the oss fuzz 57711 problem.
+            modified:   DWARFTEST.sh
+    New testcase baseline.
+            new file:   baselines/ossfuzz57711.base
+
+2023-04-05:  David Anderson
+    commit 5fd71fd84e5ce6b3a8af5fef20919cbe28c1a375
+
+    Added tests of the elfextend objects
+    which show tests of an ELF feature
+    allowing a 32bit section count.
+    On linux 'man 5 elf' will have the details
+    in the text.
+            modified:   DWARFTEST.sh
+
+2023-04-05:  David Anderson
+    commit 5812eef79880949dd2a8bbe8fb42a08f1d60ba52
+
+    corrected baselines - due to minor change in
+    some error message production
+            modified:   baselines/ossfuzz57149.base
+            modified:   baselines/ossfuzz57335.base
+            modified:   baselines/ossfuzz57429.base
+            modified:   baselines/ossfuzz57442.base
+            modified:   baselines/ossfuzz57463.base
+            modified:   baselines/ossfuzz57485.base
+            modified:   baselines/ossfuzz57516.base
+
+            new file:   ossfuzz57562/fuzz_findfuncbypc-6681114772373504
+            new file:   ossfuzz57711/fuzz_srcfiles-4695324781576192
+
+2023-04-04:  David Anderson
+    commit 8b508b84782aa2e37cc8176c3c3a45d35dcac534
+
+    New object using the Elf extension mechanism to allow
+    32bit for number of sections and 32bit for the number
+    of the section strings section.
+            new file:   elfextend/testobj.extend
+            new file:   elfextend/testobj64.extend
+
+2023-04-01:  David Anderson
+    commit 0dd078bfbfe5821845830d1545d185529e5fd6fd
+
+    New tests.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz57516.base
+            new file:   baselines/ossfuzz57527.base
+            new file:   baselines/ossfuzz57562.base
+            new file:   ossfuzz57527/fuzz_srcfiles-4599045397282816
+
+2023-03-29:  David Anderson
+    commit b84322fca8d14511b8e07436ce786f9574471588
+
+    Now we have this new baseline.
+    All the latest baseline dwarfdump really had
+    only one difference. Due to improvements
+    in checking .debug_rnglists for corrupted data.
+            modified:   dwarfdump-s390.O
+
+2023-03-29:  David Anderson
+    commit a37189ea410475005fc80491ab9385ea2b3a5e80
+
+            new file:   ossfuzz57516/fuzz_die_cu_attrs-6171488289161216
+
+    Now testing the new file testcase.
+            modified:   DWARFTEST.sh
+
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-03-28:  David Anderson
+    commit 3027eb90f178db2e99de3947d42faf5fc1756d72
+
+    Now testing all known bugs/vulnerabilities and
+    all fixed.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz57443.base
+            new file:   baselines/ossfuzz57463.base
+            new file:   baselines/ossfuzz57485.base
+            new file:   ossfuzz57443/fuzz_srcfiles-6015429578719232
+            new file:   ossfuzz57463/fuzz_die_cu_attrs-5158380196200448
+            new file:   ossfuzz57485/fuzz_die_cu_attrs-6025735319191552
+
+2023-03-28:  David Anderson
+    commit 91837a67e378a03de97b2df9e38722ca56b2c633
+
+    with latest tests ossfuzz
+            modified:   DWARFTEST.sh
+
+2023-03-28:  David Anderson
+    commit ded20dd201b9eb6746802859ba323b25121618fe
+
+    baselines and test cases
+            new file:   baselines/ossfuzz57429.base
+            new file:   baselines/ossfuzz57437.base
+            new file:   baselines/ossfuzz57442.base
+            new file:   ossfuzz57437/fuzz_srcfiles-5281689109921792
+            new file:   ossfuzz57442/fuzz_rng-5974595378479104
+
+2023-03-28:  David Anderson
+    commit 6c740bcf23e154d48b14b4f0617370cf02e9810b
+
+    Forgot to update the baseline before.
+    This is where the "DIE context address size of 4"
+    repeated ad nauseum but now stop after one such NOTE:
+            modified:   baddie1/incorrectdies.base
+
+2023-03-27:  David Anderson
+    commit e7380edd46aee822c68a99fca07c4f787cb03f7e
+
+    New baseline executables.
+    Three 'runsingle' do not match from 386-frebsd to the
+    others, but that is not related to the executables here anyway.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-03-27:  David Anderson
+    commit d1fa19e223129ad61199d29ba908d8715bbae240
+
+    The runtest... on ossfuzz56906 failed because
+    I made a mistake using full path to the test object
+    on the runtest line.
+    Fixed
+            modified:   DWARFTEST.sh
+
+2023-03-27:  David Anderson
+    commit 988648667f0bc6d2698718557edcae1a774b54ae
+
+    Now dealing better with stderr (though it
+    was checked all along) and the runtest() code
+    is easier to understand as well as being
+    slightly faster shell code.
+            modified:   DWARFTEST.sh
+
+2023-03-27:  David Anderson
+    commit 3d0bdc2ab1014a8983cef742eb13c877b908a9e6
+
+    Now with new tests, and showing line counts.
+            modified:   DWARFTEST.sh
+            modified:   baselines/choi014.base
+            modified:   baselines/ossfuzz57300.base
+            new file:   baselines/ossfuzz57408.base
+            new file:   ossfuzz57429/fuzz_die_cu_attrs-4845537731149824
+
+2023-03-26:  David Anderson
+    commit 0e369c290a87d0ed69b92219e3897c557b4adb51
+
+    Slightly changed output.
+            modified:   baselines/choi013.base
+            modified:   choi012/README
+
+    New.
+            new file:   baselines/choi015a.base
+            new file:   baselines/choi015b.base
+            new file:   ossfuzz57408/fuzz_die_cu-4702098356043776
+
+2023-03-26:  David Anderson
+    commit 4ee6bcf7edcc5c3a212b2bcb619bd92eb869eee0
+
+    New testcases
+            new file:   choi015/poc_file_03
+            new file:   choi015/poc_file_04
+
+2023-03-26:  David Anderson
+    commit 40d24287964b252fffd82f7d387f6d3231ea6640
+
+    New test cases and baselines
+            modified:   baselines/choi010.base
+            new file:   baselines/choi012-10.base
+            new file:   baselines/choi012.base
+            new file:   baselines/choi012.base06
+            new file:   baselines/choi012.base07
+            new file:   baselines/choi012.base08
+            new file:   baselines/choi013.base
+            new file:   baselines/choi014.base
+            new file:   choi012/README
+            new file:   choi012/poc_file_06
+            new file:   choi012/poc_file_07
+            new file:   choi012/poc_file_08
+            new file:   choi012/poc_file_10
+            new file:   choi014/command.sh
+
+2023-03-25:  David Anderson
+    commit d4b62a3c5d62a10597886905762facdab13d94d5
+
+    New test. Passing DW202303-040
+            new file:   baselines/choi011.base
+            new file:   choi011/README
+
+2023-03-25:  David Anderson
+    commit d6e35e33519a4cf4eb89151a00ba33fcbb9f50ed
+
+    New test. of Dwarfdump.
+            new file:   baselines/choi010.base
+            new file:   choi010/poc_file
+
+2023-03-24:  David Anderson
+    commit 89c5ab4468102d78978ae8679dda00e0a22eea74
+
+    New, and last libdwarf vulnerability. So far.
+            new file:   baselines/ossfuzz57335.base
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-03-24:  David Anderson
+    commit bfc3c5127410a7eacc5f7a88934dea6113bb8073
+
+    removed trial exit 1
+            modified:   DWARFTEST.sh
+    The test for 57335 oss fuzz
+            new file:   ossfuzz57335/fuzz_die_cu_attrs-6235345560928256.fuzz
+
+2023-03-24:  David Anderson
+    commit 015d34f24b91a7e22a0bb24cce1a12efb9ca0daa
+
+    New testcase. Passing.
+            new file:   baselines/ossfuzz57300.base
+
+2023-03-24:  David Anderson
+    commit 755bd289ab7f3234caa1018e1a17cadffb088b83
+
+    Runs all latest
+            modified:   DWARFTEST.sh
+    Results from having two different tests of 56487
+            modified:   baselines/ossfuzz56487.base
+
+    New test
+            new file:   ossfuzz57300/fuzz_die_cu-4752724662288384
+
+2023-03-24:  David Anderson
+    commit d59f4e2ac0385d04a6e898324469f0b40134693a
+
+    Testcase checkin.
+            new file:   ossfuzz57193/fuzz_die_cu_offset-5215024489824256
+
+2023-03-24:  David Anderson
+    commit 5c5476e4806793f26b5d75d36f10bccf5fc712d9
+
+    New testcases added.
+    In some cases were running the wrong fuzz*.c app
+    on a test object, so now we add runs of the
+    correct app for each testcase (keeping the accidental
+    runs).
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz56480dcp.base
+            new file:   baselines/ossfuzz56487.base
+            new file:   baselines/ossfuzz56487w.base
+            modified:   baselines/ossfuzz56807.base
+            new file:   baselines/ossfuzz56895.base
+            new file:   baselines/ossfuzz56895mac.base
+            modified:   baselines/ossfuzz57027.base
+            new file:   baselines/ossfuzz57149.base
+            new file:   baselines/ossfuzz57193.base
+            new file:   baselines/ossfuzz57292.base
+            new file:   ossfuzz56895/fuzz_macro_dwarf5-5080340952907776
+            new file:   ossfuzz57292/fuzz_die_cu_print-5412313393135616
+
+2023-03-24:  David Anderson
+    commit ed8f3008b0b5b1537441bfe4f9a34f0213af77b6
+
+    This has an exit early in the file.
+    To be removed shortly.
+            modified:   DWARFTEST.sh
+
+2023-03-24:  David Anderson
+    commit 91c7b34ef7c56b839af6a51406d09d28f1303abc
+
+    Working toward a complete set of ossfuzz tests
+            new file:   baselines/ossfuzz56480.base
+            new file:   baselines/ossfuzz57048.base
+            new file:   baselines/ossfuzz57107.base
+            new file:   ossfuzz56480/fuzz_die_cu_print-5264022485467136
+            new file:   ossfuzz56487/clusterfuzz-testcase-fuzz_rng-6655451078197248
+            new file:   ossfuzz57048/fuzz_findfuncbypc-4647942385696768
+            new file:   ossfuzz57107/fuzz_die_cu_attrs_loclist-4991396240293888
+            new file:   ossfuzz57149/fuzz_srcfiles-6213793811398656
+
+2023-03-22:  David Anderson
+    commit 89aba7e067562c239515f5473f587ace23c8764a
+
+    Added removal of local fuzz_*.o object files,
+    these never need to be kept.
+            modified:   CLEANUP.sh
+
+2023-03-22:  David Anderson
+    commit d7317cfc2f8e15e1b429a79b7e59073b2b055d9f
+
+    Now tests 56454, which was acknowledge as fixed by ossfuzz.
+            modified:   DWARFTEST.sh
+
+    These are new-ish and need to be in the repository.
+            new file:   baselines/ossfuzz56454.base
+            new file:   ossfuzz56454/fuzz_die_cu_offset-5171954224332800.fuzz
+            new file:   ossfuzz56993/fuzz_macro_dwarf5-5770464300761088
+            new file:   ossfuzz57027/fuzz_stack_frame_access-5123569972805632
+            new file:   testbuildfuzz.c
+
+2023-03-22:  David Anderson
+    commit 25213ecb9c53f5b281d644b642ca875b7aa5e44f
+
+    New test. Now passing.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz57027.base
+
+2023-03-22:  David Anderson
+    commit b6806868d403c7e5efb1b1954daa32bf0df625b4
+
+    All these baselines seem good.
+            modified:   baselines/ossfuzz56453.base
+            modified:   baselines/ossfuzz56456.base
+            modified:   baselines/ossfuzz56476.base
+            modified:   baselines/ossfuzz56478.base
+            modified:   baselines/ossfuzz56676.base
+            modified:   baselines/ossfuzz56897.base
+    The test main. Working.
+            modified:   testbuildfuzz.sh
+
+2023-03-22:  David Anderson
+    commit 97d9778fa1ce78150ed697f13f70ab4a80e1cc38
+
+    New baselines. Passing.
+            new file:   baselines/ossfuzz56906.base
+            new file:   baselines/ossfuzz56958.base
+            new file:   baselines/ossfuzz56993.base
+
+2023-03-20:  David Anderson
+    commit 84d09d8a3bb3b785271134bfd82b1e2ac08cfa43
+
+    Test cases
+            new file:   ossfuzz56906/fuzz_rng-6031783801257984.fuzz
+            new file:   ossfuzz56958/fuzz_stack_frame_access-6097292873826304
+    For testing fuzz source compiles
+            new file:   testbuildfuzz.sh
+
+2023-03-18:  David Anderson
+    commit 9bfc3db881d92450411b59b31cbe8aa404fa2dd3
+
+    New test cases. These pass -fsanitize oss-fuzz.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz56458.base
+            new file:   baselines/ossfuzz56897.base
+            modified:   fuzz_globals.c
+            new file:   ossfuzz56897/fuzz_rng-5105415777288192
+
+2023-03-18:  David Anderson
+    commit 9e646264b4ae37ec3c4e750be0643646d3999756
+
+    New tests, baselines, sourcefiles added for oss-fuzz
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz56450.base
+            new file:   baselines/ossfuzz56456.base
+            modified:   baselines/ossfuzz56476.base
+            new file:   baselines/ossfuzz56676.base
+            new file:   baselines/ossfuzz56807.base
+            modified:   fuzz_crc_32.c
+            new file:   fuzz_gdbindex.c
+            new file:   fuzz_globals.c
+            modified:   fuzz_set_frame_all.c
+            new file:   ossfuzz56458/fuzz_globals-5286908805906432
+
+2023-03-09:  David Anderson
+    commit c063df10722de9b9d752271050ede183b551a92f
+
+    New
+            new file:   ../baselines/ossfuzz56735.base
+            new file:   fuzz_srcfiles-4626047380619264
+
+2023-03-09:  David Anderson
+    commit 187a4323d324d0e4316049a8b6f0059e3b3a18bd
+
+    New testcases
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz56453.base
+            new file:   baselines/ossfuzz56476.base
+            modified:   baselines/ossfuzz56478.base
+            new file:   fuzz_macro_dwarf5.c
+            new file:   fuzz_rng.c
+            modified:   fuzz_srcfiles.c
+
+2023-03-09:  David Anderson
+    commit 7febc4c84f123fbfe0159c5587147dee8e561cb1
+
+            new file:   ossfuzz56453/fuzz_debug_addr_access-5069447397507072
+
+2023-03-09:  David Anderson
+    commit e25a417c4c910a5a5c1db478e443ecfcc0196c09
+
+    New tests.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz56478.base
+            modified:   fuzz_srcfiles.c
+            modified:   fuzz_str_offsets.c
+
+2023-03-09:  David Anderson
+    commit b6dde72c9cd3abd1b375a038662f36abf43b4d3b
+
+    New testcases
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz56460.base
+            new file:   baselines/ossfuzz56489.base
+            modified:   fuzz_die_cu_attrs.c
+            modified:   fuzz_findfuncbypc.c
+
+2023-03-09:  David Anderson
+    commit df4b32fb0dcf59f8d1550d6cb71edde468c34607
+
+    ossfuzz56489 testcase
+            new file:   fuzz_srcfiles-5091530466787328
+
+2023-03-09:  David Anderson
+    commit 37f549653e8be21f0231506db0ac0b5364002a00
+
+    New test src
+            new file:   fuzz_srcfiles.c
+
+2023-03-09:  David Anderson
+    commit 47cb24802716309c383b8cf9dd466ad59d8727b9
+
+    New testcases
+            new file:   fuzz_gnu_index.c
+            new file:   fuzz_set_frame_all.c
+            new file:   fuzz_str_offsets.c
+            new file:   ossfuzz56450/fuzz_die_cu_attrs-4953133005799424
+            new file:   ossfuzz56460/fuzz_str_offsets-5376904040677376
+
+2023-03-09:  David Anderson
+    commit dfa3bfa24be133f98fce842928c5dfb1cfce87e0
+
+    Corrections to original.
+            modified:   fuzz_findfuncbypc.c
+    Wrong name
+            deleted:    ossfuzz65460/fuzz_str_offsets-5376904040677376
+
+2023-03-09:  David Anderson
+    commit 2547d77560d66bcb1c99bc647c67ebb296af128b
+
+    New testcase
+            new file:   fuzz_die_cu_attrs.c
+
+2023-03-09:  David Anderson
+    commit 010a461d0edf0a1a6bb9fd9e35ddd5d139bbc89f
+
+    New test case: oss fuzz 665460
+            new file:   fuzz_str_offsets-5376904040677376
+
+2023-03-08:  David Anderson
+    commit 275b86500f2d315e346de41d51d1d4f5f36390a1
+
+    For new tests.
+            new file:   baselines/ossfuzz56666.base
+            new file:   ossfuzz56476/fuzz_rng-5008229349588992
+            new file:   ossfuzz56478/fuzz_rng-5030515398017024
+
+2023-03-07:  David Anderson
+    commit 41fe73cd670bbee096f9ac469850442091f0d8e7
+
+    New tests
+            modified:   DWARFTEST.sh
+    Updated baseline
+            modified:   baselines/ossfuzz56636.base
+    New baseline executable
+            modified:   dwarfdump-x86_64-ubuntu.O
+    Recording a usuful version
+            modified:   scripts/findobjects
+
+2023-03-06:  David Anderson
+    commit 462e5d9913970f2892bc7ddd432cff94390911f4
+
+    New test object.
+            new file:   ossfuzz56735/fuzz_macro_dwarf5-6718585377783808
+
+2023-03-06:  David Anderson
+    commit 9c0ec993bb0a2bbd1ce5f415b80646295600dd4f
+
+    New test object
+    regressiontests/ossfuzz56456/
+            new file:   fuzz_gdbindex-5240324382654464
+
+2023-03-05:  David Anderson
+    commit 5623931b3e94989fbc176f9831de910b2ad90ff2
+
+    New test objects.
+            new file:   fuzz_set_frame_all-5081006119190528.fuzz
+            new file:   minimized-fuzz_set_frame_all-5081006119190528.fuzz
+
+2023-03-04:  David Anderson
+    commit 5a3343b47c778377a181cac692505a1ee88b17aa
+
+    This was a type. Wrong file.
+            deleted:    ossfuzz56666/fuzz_debug_addr_access-4801779658522624.fuzz
+
+2023-03-04:  David Anderson
+    commit c2e75182c7141cc2546e266daff9066da487903b
+
+    The correct new fuzzed object.
+            new file:   ossfuzz56666/fuzz_gnu_index-4803574417981440
+
+2023-03-04:  David Anderson
+    commit 48449d64fa2255692e78c1a67e963ac1be91340f
+
+    New test object file.
+            new file:   ossfuzz56666/fuzz_debug_addr_access-4801779658522624.fuzz
+
+2023-03-03:  David Anderson
+    commit f16511cd1dfef6983c32bcee8b10265b70f9d4c7
+
+    Now correct baseline.
+            modified:   baselines/ossfuzz56636.base
+
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Removing erroneous *errp
+            modified:   fuzz_debug_addr_access.c
+
+2023-03-03:  David Anderson
+    commit ae886d5617dfc6545f638d410251ca3cda350b7c
+
+    Now runs new tests.
+            modified:   DWARFTEST.sh
+    The source for the latest new test.
+            new file:   fuzz_debug_addr_access.c
+
+2023-03-03:  David Anderson
+    commit 35870cf0df97d4423b551bd317087ea6d571b96d
+
+    New oss-fuzz test cases.
+            new file:   baselines/ossfuzz56548.base
+            new file:   baselines/ossfuzz56636.base
+            new file:   ossfuzz56636/fuzz_debug_addr_access-4801779658522624.fuzz
+
+2023-03-03:  David Anderson
+    commit 55a0623908721916888462aa514ce1fa41ce6dc2
+
+    Now with latest test run. oss-fuzz  56548
+            modified:   DWARFTEST.sh
+
+2023-03-02:  David Anderson
+    commit 0a0685d727001d9351748c8b22027b08da2421d8
+
+    New test object oss fuzz 56548
+            new file:   fuzz_findfuncbypc-5073632331431936
+
+2023-03-02:  David Anderson
+    commit 3ea61a85fefb483205c748c9947e20ce07465a9a
+
+    Now with the tests mentioned just below.
+            modified:   DWARFTEST.sh
+
+    New baselines
+            new file:   baselines/ossfuzz56443.base
+            new file:   baselines/ossfuzz56530.base
+    new test code reading DWARF.
+            new file:   fuzz_crc_32.c
+            new file:   fuzz_findfuncbypc.c
+
+2023-03-02:  David Anderson
+    commit d23b5232f329e05197025b4fe9fbc188ad10edfa
+
+    Correct baseline now.
+            modified:   baselines/ossfuzz56465.base
+
+2023-03-02:  David Anderson
+    commit 724a5a1233c4fadc45d4e602fb2bb33d3f01f42f
+
+    Removing the unlink() calls, we do NOT want those
+    here.
+            modified:   fuzz_die_cu_offset.c
+
+2023-03-02:  David Anderson
+    commit e49650a20851ce0b87c241920432da4eee1ec04f
+
+    New fuzz test.
+            new file:   ossfuzz56443/fuzz_crc_32-4750941179215872
+
+2023-03-02:  David Anderson
+    commit 99ef8ac52ff994c907b85dde085e99cc7cf64070
+
+    ossfuzz/56465/
+            new file:   fuzz_die_cu_offset-5866690199289856
+
+2023-03-02:  David Anderson
+    commit 84aef601f5202af04287defebb88b1ae6c939efc
+
+    Will get this back.
+            deleted:    ossfuzz56465/fuzz_die_cu_offset-5866690199289856
+
+2023-03-02:  David Anderson
+    commit cc9f525bec9fd4c314b8fbe1a977b76f1efacf8c
+
+    New testcase.
+            new file:   fuzz_findfuncbypc-6272642689925120
+
+2023-03-02:  David Anderson
+    commit fe79c8c783f023083f3dbc5a10c5e4cdadba89ca
+
+    Now testing object file in ossfuzz56465
+            modified:   DWARFTEST.sh
+
+2023-03-01:  David Anderson
+    commit 7b3eccb498cf939d46db88f0797fd3ab2fcde277
+
+    Correct object.
+            new file:   ossfuzz56465/fuzz_die_cu_offset-5866690199289856
+    Incorrect object.
+            deleted:    ossfuzz56465/fuzz_init_path-6011554641870848
+
+2023-03-01:  David Anderson
+    commit cdc4e164ce548308ad9dbfcd33c6a1abb260d09f
+
+    A new fuzzing issue holding spot
+            new file:   baselines/ossfuzz56465.base
+    The source to test with
+            new file:   fuzz_die_cu_offset.c
+    The binary to test.
+            new file:   ossfuzz56465/fuzz_init_path-6011554641870848
+
+2023-02-28:  David Anderson
+    commit be9e191d0f910816368f6f285fa27ec9093777dd
+
+    With latest timings.
+            modified:   RegressionTestsResults.ods
+    macro section output changed, so the baseline
+    needed updating.
+            modified:   baddie1/incorrectdies.base
+
+    These are the latest baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-02-27:  David Anderson
+    commit a08cb685bad2ffb286edc71e7c1b14499a2a47eb
+
+    Minor tweaks in researching problems
+    (a script rarely used).
+            modified:   scripts/findobjects
+
+2023-02-27:  David Anderson
+    commit b1e826e185b9b13e151e4b1b28b347f28ddc136c
+
+            modified:   DWARFTEST.sh
+    Modfied tests for better code coverage.
+
+2023-02-27:  David Anderson
+    commit b84ff0138f896835fee74173839ec38c00d9ab0d
+
+    Updated the expected total so percent
+    shows a bit better.
+            modified:   python2/showpct.py
+            modified:   python3/showpct.py
+
+2023-02-27:  David Anderson
+    commit 765f5fec40bec94358347839d1ceea6acd1d1c44
+
+    Added a dwarf_finish() to avoid a leak.
+            modified:   test_simple_libfuncs.c
+
+2023-02-23:  David Anderson
+    commit dd9c38b6ec4f47b934e679581d0dce80f71df855
+
+    Update total number of tests so percent calculation
+    is fairly close to right.
+            modified:   python2/showpct.py
+            modified:   python3/showpct.py
+
+2023-02-23:  David Anderson
+    commit 932df66f43778f7fbf6d4bf43afd3c9cfa9d5444
+
+    These superceded by other test files. Not needed.
+            deleted:    baselines/test_dnames_codes.base
+            deleted:    test_dnames_codes.c
+
+2023-02-23:  David Anderson
+    commit 226222b62ef845805e932505b3d34ba599130af7
+
+    Latest test version.
+            modified:   DWARFTEST.sh
+
+    One-shot tests. Ignore.
+            modified:   RUNVAL
+
+    These fixed minor indent error and the like.
+            modified:   test_dwnames.c
+            modified:   test_harmless.c
+
+2023-02-23:  David Anderson
+    commit cf38232eb466f2ab591751a2cfe6cf80b537f780
+
+    This will be deleted shortly. Never completed.
+            new file:   baselines/test_dnames_codes.base
+
+    New tests of some simple libdwarf calls.
+            new file:   baselines/test_simple_libfuncs.base
+            modified:   test_simple_libfuncs.c
+
+2023-02-21:  David Anderson
+    commit e0171fa20db75401692baaf7f07132b8ac828208
+
+    Cleaning up and fixing runsingle (which was not quite right).
+            modified:   DWARFTEST.sh
+
+    Added PASS output.
+            modified:   test_dwnames.c
+
+    minor tweaks.
+            modified:   test_pubsreader.c
+            modified:   test_sectionnames.c
+
+2023-02-21:  David Anderson
+    commit d8de24b0ca61f0181b08652a43675fba08280667
+
+    New baseline and new test code.
+            new file:   baselines/test_sectionnames.base
+            new file:   test_dnames_codes.c
+            new file:   test_simple_libfuncs.c
+
+2023-02-21:  David Anderson
+    commit 776c66fcd2c160ed70277720a098dfb3ec8a26ab
+
+    Added comments.
+            modified:   dwnames_checks/build_dwnames.sh
+    Corrected the output C a little.
+            modified:   dwnames_checks/build_dwnames_source.c
+
+    Regenerated.
+    Now this has an ending newline as it should.
+            modified:   dwnames_checks/dwnames_all.c
+
+2023-02-20:  David Anderson
+    commit d3f9adfb7c4bdfd664f7f048768fe7a7e71f8ab4
+
+    Up to date with git log
+            modified:   ChangeLog
+
 2023-02-20:  David Anderson
     The date is the 0.6.0  libdwarf release date.
 
