@@ -1,3 +1,43 @@
+2023-04-24:  David Anderson
+    commit b5f0ff56bcd6514f9fc7c6cda5dc78d8bdfe9b32
+
+    New baseline executables. Revisions handling
+    extended dwarf meant an error message changed
+    for three tests.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-04-24:  David Anderson
+    commit 463549866617353aa6fa1bea26a86ed7043108f1
+
+    Just adding clarifying comments.
+            modified:   DWARFTEST.sh
+            modified:   elfextend/README
+
+2023-04-15:  David Anderson
+    commit 8076f6b65a0349b9567a963c74fe5bf8107432e4
+
+    Added the test for ossfuzz58026
+            modified:   DWARFTEST.sh
+
+    trivial change to baseline.
+            modified:   baselines/ossfuzz58026.base
+
+2023-04-15:  David Anderson
+    commit 4f2e033300f9e2e059f8e0ce221b90ba0d30ace0
+
+    New test case and new baseline.
+            new file:   baselines/ossfuzz58026.base
+            new file:   ossfuzz58026/fuzz_set_frame_all-4582976972521472.fuzz
+
+2023-04-11:  David Anderson
+    commit 343871334c334601c91a4a53d3d61dfd48fcd611
+
+    Lots of data from git log
+            modified:   ChangeLog
+
 2023-04-11:  David Anderson
     commit cf3d7451f2e58b72d894f98a47ccd4d30dd71e61
 
