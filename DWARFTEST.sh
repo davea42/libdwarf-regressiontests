@@ -1286,8 +1286,12 @@ runtest $d1 $d2 foo.o -h
 # Testing that the elf extension of using sh_size and sh_link
 # as values of e_shnum and e_shstrndx in the Elf header.
 # So at least 32 bit values instead of the Elf header 16bit.
+# The next two examples were wrong, but
+# an error is returned so all is well.
 runtest $d1 $d2 elfextend/testobj.extend -i
 runtest $d1 $d2 elfextend/testobj64.extend -i
+# Following two examples are correct uses
+# of the Elf gabi+ section numbering extension.
 runtest $d1 $d2 elfextend/testobjgnu.extend -i
 runtest $d1 $d2 elfextend/testobj64gnu.extend -i
 

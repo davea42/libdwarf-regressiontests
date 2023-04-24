@@ -3,20 +3,25 @@ than 64K  Elf sections in a object file.
 
 In all cases the e_shstrndx field is set to 0xffff
 
-The first is Elf64 obeying the rules stated in 'man 5 elf'
+The first is Elf64 but incorrect.
 The e_shnum field is set to the 0xff00 value.
 testobj64.extend  
 
-The second is Elf32 obeying the rules stated in 'man 5 elf'
+The second is Elf32 but incorrect.
 The e_shnum field is set to the 0xff00 value.
 testobj.extend  
 
-The third is Elf64 following what the GNU linker actually emitted.
+The third is Elf64 following what the Elf ABI
+https://refspecs.linuxfoundation.org/elf/gabi4+/
+actually says:
 Here the 16 bit e_shnum field is set to 0x0000
 testobj64gnu.extend  
 
-The third is Elf32 following what the GNU linker actually emitted.
+The third is Elf32 following what the Elf ABI
+https://refspecs.linuxfoundation.org/elf/gabi4+/
+actually says.
 Here the 16 bit e_shnum field is set to 0x0000
 testobjgnu.extend
 
+Corrected 20 April 2023.
 David Anderson, 7 April 2023.
