@@ -1,3 +1,3 @@
 localfuzz_init_binary returns DW_DLV_ERROR
 
-libdwarf is unable to record error DW_DLE_NO_SECT_STRINGS(493) Section strings section number from header is incorrect. Unusable object No error argument or handler available
+libdwarf is unable to record error DW_DLE_TOO_FEW_SECTIONS(494) Sections incomplete, corrupted. Unusable object No error argument or handler available
