@@ -6,3 +6,14 @@ There are more, these tests will be expanded.
 Both .o files contain section groups.
 
 DavidA May 17, 2014
+
+======
+Update May 2, 2023.
+copied archive.o to mungegroup.o
+Modified the group content at 0xa8 to look like
+that at 0x98.
+That way it fails in a section error as there is
+a duplicat use of a section that libdwarf
+does not care about.  As of yesterday libdwarf
+understands it is a don't care and lets it pass ok.
+======

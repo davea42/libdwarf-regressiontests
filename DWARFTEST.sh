@@ -1545,6 +1545,12 @@ runtest $d1 $d2 moya3/ranges_base.o    -a -G -M -v
 runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v
 runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=$testsrc/moya3/ranges_base.o
 
+# This deliberately has a duplicate id of a section 
+# in two different groups.  Created by binary edit of
+# archive.o Before May 2023 this
+# would get an error even though the section involved
+# is of no interest to libdwarf.
+runtest $d1 $d2 debugfission/mungegroup.o -i
 
 # New September 11, 2019.
 if [ x$withlibelf = "xnolibelf" ]
