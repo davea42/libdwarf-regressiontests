@@ -1,0 +1,7 @@
+
+New oss fuzz testcase 9 May 2023.
+
+Out of memory from libdwarf.
+
+test with:
+fuzz_macro_dwarf5 fuzz_macro_dwarf5-5460713058205696
