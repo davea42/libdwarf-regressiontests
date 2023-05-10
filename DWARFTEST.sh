@@ -32,6 +32,13 @@ if [ x$COMPILEONLY = "xy" ]
 then
   compileonly=y
 fi
+ismacos=n
+os=`uname`
+if [ "$os" = "Darwin" ]
+then
+  ismacos=y
+fi
+
 
 s=SHALIAS.sh
 if [ ! -f ./$s ]
@@ -971,8 +978,8 @@ do
 done
 
 simpleexe='
-test_simple_libfuncs
 test_harmless
+test_simple_libfuncs
 test_sectionnames'
 
 for f in $simpleexe
@@ -1058,6 +1065,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
+
+runsingle ossfuzz58769.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz58769/fuzz_macro_dwarf5-5460713058205696
 
 runsingle ossfuzz58026.base  ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz58026/fuzz_set_frame_all-4582976972521472.fuzz
 
@@ -1217,26 +1226,6 @@ echo "=====BUILD  $testsrc/test_arange"
   $x
   chkres $? 'check arange-error compiling test_arange.c\
      failed' 
-
-echo "=====BUILD  $testsrc/test_harmless.c"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     $libzstdhdrdir \
-    -I$libbld/libdwarf  \
-    -gdwarf $nlizeopt $testsrc/test_harmless.c  -o test_harmless\
-      $dwlib $libopts"
-  echo "test_harmless: $x"
-  $x
-  chkres $? 'check harmless-error compiling test_harmless.c failed'
-  ls -l ./test_harmless
-echo "=====BUILD  $testsrc/test_sectionnames"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
-     $libzstdhdrdir \
-     -gdwarf $nlizeopt $testsrc/test_sectionnames.c  -o \
-      test_sectionnames $dwlib $libopts"
-  echo $x
-  $x
-  chkres $? 'check sectionnames-error compiling test_sectionnames.c\
-     failed'
 
 if [ $compileonly = "y" ]
 then
@@ -2466,20 +2455,6 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-#Now the build is done above, see BUILD
-#echo check test_harmless before frame1 `pwd`
-#ls -l ./test_harmless
-#echo "=====BUILD frame1/frame $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd"
-#mklocal frame1 
-#  @this just builds frame1
-#  echo "sh runtest.sh  $withlibelf $withlibz $withlibzstd"
-#  sh $testsrc/frame1/runtest.sh $withlibelf $withlibz $withlibzstd
-#  r=$?
-#  chkres $r $testsrc/frame1
-#cd ..
-
-echo check test_harmless before sandnes2 `pwd`
-ls -l ./test_harmless
 echo "=====START   $testsrc/sandnes2/runtest.sh"
 mklocal sandnes2
   sh $testsrc/sandnes2/runtest.sh
@@ -2487,8 +2462,6 @@ mklocal sandnes2
   chkres $r  $testsrc/sandnes2
 cd ..
 
-echo check test_harmless before legendre `pwd`
-ls -l ./test_harmless
 if [ $NLIZE = 'n' ]
 then
   echo "=====START $testsrc/legendre/runtest.sh $withlibelf $withlibz $withlibzstd"
@@ -2502,16 +2475,12 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-echo check test_harmless before enciso4 `pwd`
-ls -l ./test_harmless
 echo "=====START   $testsrc/enciso4/runtest.sh"
 mklocal enciso4
   sh $testsrc/enciso4/runtest.sh
   chkres $?  $testsrc/enciso4
 cd ..
 
-echo check test_harmless before old dwarf loclist `pwd`
-ls -l ./test_harmless
 # -g: use old dwarf loclist code.
 runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
@@ -2589,11 +2558,19 @@ runsingle test_bitoffseta.base ./test_bitoffset  \
     $testsrc/bitoffset/bitoffsetexampledw3.o \
     $testsrc/bitoffset/bitoffsetexampledw5.o  \
 
-ls -l ./test_harmless
-runsingle test_harmlessb.base ./test_harmless $suppresstree 
+echo "ismacos : $ismacos"
 
-runsingle test_harmlessc.base ./test_harmless $suppresstree  -f \
+if [ $ismacos = "n" ]
+then
+  runsingle test_harmlessb.base ./test_harmless $suppresstree 
+  skipcount=`expr $skipcount +  1 `
+
+  runsingle test_harmlessc.base ./test_harmless $suppresstree  -f \
   $testsrc/testfindfuncbypc/findfuncbypc.exe1
+else
+  echo "====SKIP run test_harmless on macos (Dwarwin) "
+  skipcount=`expr $skipcount +  2 `
+fi
 
 runsingle test_sectionnames.base  ./test_sectionnames  \
     $testsrc/dwarf4/dd2g4.5dwarf-4
