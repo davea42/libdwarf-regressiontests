@@ -163,7 +163,12 @@ then
 fi
 
 # if shared, no dwarfgen or libdwarfp
-if [ ! $sharedlib = "sharedlib" ]
+echo "sharedlib     : $sharedlib"  
+echo "configdwarfgen: $configdwarfgen"
+echo "buildlibsubdir: $buildlibsubdir"
+echo "configlibpname: $configlibpname"
+echo "buildbinsubdir: $buildbinsubdir"
+if [  $sharedlib = "n"  -a  x$configdwarfgen = "x--enable-dwarfgen" ]
 then
   cp src/lib/libdwarfp/${buildlibsubdir}$configlibpname $targetdir/$configlibpname
   if [ $? -ne 0 ]
