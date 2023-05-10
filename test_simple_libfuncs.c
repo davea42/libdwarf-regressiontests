@@ -44,6 +44,12 @@ basename(const char *path)
     return path+lastslash+1;
 }
 
+/*  For the test to work properly on macOS
+    we need to allow finding dSYM.
+    So we need  a real buffer */
+char dw_true_path_buffer[BUFSIZ];
+unsigned int dw_true_path_bufferlen = BUFSIZ;
+
 int
 main(int argc, char **argv)
 {
@@ -74,7 +80,8 @@ main(int argc, char **argv)
     filepath = argv[i];
     base = basename(filepath);
     res = dwarf_init_path(filepath,
-        0,0,
+        dw_true_path_buffer,
+        dw_true_path_bufferlen,
         DW_GROUPNUMBER_ANY,errhand,errarg,&dbg,
         &error);
     if (res == DW_DLV_ERROR) {
