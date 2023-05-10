@@ -11,6 +11,6 @@ then
   echo "FAIL dwarfdump -a -v -M guilfanov/libdwarf_crash.elf"
   echo "To update baseline: mv $tf/junkn $ts/crash.base"
   echo "rerun: $ts/runtest.sh"
-  return 1
+  exit 1
 fi
-return 0
+exit 0

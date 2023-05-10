@@ -11,6 +11,6 @@ then
   echo "FAIL dwarfdump -a guilfanov2/double-free-poc"
   echo "To update baseline: mv $tf/junkn $ts/double-free-poc.base"
   echo "rerun: $ts/runtest.sh"
-  return 1
+  exit 1
 fi
-return 0
+exit 0
