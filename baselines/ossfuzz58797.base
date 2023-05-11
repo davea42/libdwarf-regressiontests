@@ -1,0 +1,9 @@
+>>CU header length..........0x24c
+>>Version stamp.............4
+>>Address size .............8
+>>Offset size...............4
+>>Next cu header offset.....0x250
+
+libdwarf is unable to record error DW_DLE_ELF_SECTION_ERROR(446) Section offset or size is too large. Corrupt elf object. No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_ELF_SECTION_ERROR(446) Section offset or size is too large. Corrupt elf object. No error argument or handler available
