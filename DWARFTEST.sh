@@ -1066,6 +1066,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+runsingle ossfuzz59091.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz59091/fuzz_macro_dwarf5-5135813562990592
+
 runsingle ossfuzz58797.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz58797/fuzz_macro_dwarf5-4872686367801344
 
 runsingle ossfuzz58769.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz58769/fuzz_macro_dwarf5-5460713058205696
