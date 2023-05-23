@@ -1,3 +1,178 @@
+2023-05-22:  David Anderson
+    commit 8aa37052f15de5b9e7010ac45128dcc81d4b0ced
+
+    Now with a new test, setting up improper
+    frame register values and verifying these
+    are caught.
+    Testing DW202305-003 ossfuzz id: 59091
+    by supplying invalid values in test_setframe.c.
+            modified:   DWARFTEST.sh
+            new file:   baselines/test_setframe.base
+            new file:   test_setframe.c
+
+2023-05-21:  David Anderson
+    commit 29fe2b0f25cad2e7d44a292692ebba460b63f639
+
+    These have not been used for months.
+    The fuzz_ sources are now in libdwarf-code/fuzz.
+            deleted:    fuzz_crc_32.c
+            deleted:    fuzz_debug_addr_access.c
+            deleted:    fuzz_die_cu_attrs.c
+            deleted:    fuzz_die_cu_offset.c
+            deleted:    fuzz_findfuncbypc.c
+            deleted:    fuzz_gdbindex.c
+            deleted:    fuzz_globals.c
+            deleted:    fuzz_gnu_index.c
+            deleted:    fuzz_macro_dwarf5.c
+            deleted:    fuzz_rng.c
+            deleted:    fuzz_set_frame_all.c
+            deleted:    fuzz_srcfiles.c
+            deleted:    fuzz_str_offsets.c
+
+2023-05-19:  David Anderson
+    commit a03e7502cf21ae65e15acd9ebb81debf709f0e51
+
+    Now runs the test for ossfuzz59091
+            modified:   DWARFTEST.sh
+    Now with baseline for the new test.
+            new file:   baselines/ossfuzz59091.base
+
+2023-05-19:  David Anderson
+    commit 682774409d227fe031aa2025edc889f4d1228720
+
+    New issue.
+            new file:   ossfuzz59091/fuzz_macro_dwarf5-5135813562990592
+
+2023-05-10:  David Anderson
+    commit a1b2dc9412221544c6df84e45bdfa09b9b300513
+
+    Baseline for the new testcase
+            new file:   baselines/ossfuzz58797.base
+
+2023-05-10:  David Anderson
+    commit 96d20f4f2be5c004e9b019a5594651aa0339ee30
+
+    Adds a test. DW202305-002 ossfuzz 58797
+            modified:   DWARFTEST.sh
+            new file:   ossfuzz58797/fuzz_macro_dwarf5-4872686367801344
+
+2023-05-09:  David Anderson
+    commit 8548ede88160de5d69bf075657fb7b9bd8187f1f
+
+    New: regression result timing for Apple M2
+            modified:   RegressionTestsResults.ods
+
+2023-05-09:  David Anderson
+    commit 6a022eebb9cc856b065ca392672b6774726161cf
+
+    Now we avoid running test_harmless on macOS as its
+    dwarf_init_b() has no way to find dSYM
+    (unlike dwarf_init_path).
+            modified:   DWARFTEST.sh
+
+2023-05-09:  David Anderson
+    commit 948153534554cbac83d2dbf03273d710bfa47fec
+
+    Fixed the code determining if dwargen should be built.
+    Problem show by macOS testing.
+            modified:   PICKUPBIN.sh
+
+2023-05-09:  David Anderson
+    commit 278dae454ac1139e45605783ea41a106f3caa0b8
+
+    baseline executable for macOS. this generated
+    for a new M2 machine.
+            modified:   dwarfdump-macos.O
+
+2023-05-09:  David Anderson
+    commit 0de661f8254721953b72e9c3c9486bc1b8feaadf
+
+    These were doing return where only exit was
+    legal.  The error noticed by bash on macOS.
+            modified:   guilfanov/runtest.sh
+            modified:   guilfanov2/runtest.sh
+
+2023-05-09:  David Anderson
+    commit 14e043ede5015d24e5cef368eea991a1d6561ff8
+
+    Updated baseline
+            modified:   baselines/ossfuzz58769.base
+
+2023-05-09:  David Anderson
+    commit 7d0f2fa6eeb976bbc459735fea7d77317d328b3a
+
+    New baseline
+            new file:   baselines/ossfuzz58769.base
+
+    Change dwarf_init_path() to include path buffer
+    so that macOS dSYM dwarf data can be found.
+            modified:   test_arange.c
+            modified:   test_sectionnames.c
+            modified:   test_simple_libfuncs.c
+
+2023-05-09:  David Anderson
+    commit 339f1ed71525ef10c0e24015c964c06fbf7ad0e4
+
+    New ossfuzz failure today, 9 March 2023.
+            new file:   ossfuzz58769/README
+            new file:   ossfuzz58769/fuzz_macro_dwarf5-5460713058205696
+
+2023-05-03:  David Anderson
+    commit 7010bc5bc273eed0a7491ee9d0dd7d40ff099b9c
+
+    New baselines due to added DWARF_CHECKs
+    and fix for problem with groups in sections
+    we do not care about. See debugfission README
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-05-02:  David Anderson
+    commit 5067e52384955bf0b639707c869fd3d1c4e2c764
+
+    Now with a test of debugfission/mungegroup.o
+            modified:   DWARFTEST.sh
+
+    Explains what mungegroup.o is and how created.
+            modified:   debugfission/README
+
+    New object file binary-edited so it is
+    a test of the new code allowing overuse
+    of non-dwarf sections in .group sections.
+            new file:   debugfission/mungegroup.o
+
+    New baseline executable.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-04-25:  David Anderson
+    commit d63b2d8ce463b839e605fb5f1e583731528c8358
+
+    New baselines to reflect earlier detection
+    of certain corrupted Elf headers.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-04-25:  David Anderson
+    commit a0e30e0daefc7223e619cb96e9e5e18723af2540
+
+    Changes in error output due to earlier
+    detection of corrupt elf object.
+            modified:   baselines/fuzz40624.base
+            modified:   baselines/fuzz40802b.base
+            modified:   baselines/fuzz54724.base
+            modified:   baselines/fuzzpath40624.base
+            modified:   baselines/fuzzpath40802b.base
+            modified:   baselines/fuzzpath54724.base
+
+2023-04-24:  David Anderson
+    commit 8e7e9aadec27cc42a0d288bf114e4e5d22b008a3
+
+    Now up to date with ChangeLog
+            modified:   ChangeLog
+
 2023-04-24:  David Anderson
     commit b5f0ff56bcd6514f9fc7c6cda5dc78d8bdfe9b32
 
