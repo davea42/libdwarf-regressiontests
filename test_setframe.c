@@ -195,7 +195,8 @@ main(int argc, char **argv)
         return 1;
     }
     if (!strcmp(argv[i],"--suppress-de-alloc-tree")) {
-        dwarf_set_de_alloc_flag(FALSE);
+        /*  The test code does not expect or allow this.
+            So ignore it. */
         ++i;
     }
     if (i >= argc) {
