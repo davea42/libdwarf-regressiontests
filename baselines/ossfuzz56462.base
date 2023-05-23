@@ -1,1 +1,2 @@
-junk
+ Print .debug_frame
+Error reading frame data 
