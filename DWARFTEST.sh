@@ -1066,6 +1066,7 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+FIXME
 runsingle ossfuzz59091.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz59091/fuzz_macro_dwarf5-5135813562990592
 
 runsingle ossfuzz58797.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz58797/fuzz_macro_dwarf5-4872686367801344
@@ -1222,13 +1223,24 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
       $testsrc/bitoffset.base"
   fi
 echo "=====BUILD  $testsrc/test_arange"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
      $libzstdhdrdir \
      -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
       test_arange $dwlib $libopts "
   echo "$x"
   $x
   chkres $? 'check arange-error compiling test_arange.c\
+     failed' 
+echo "=====BUILD  $testsrc/test_setframe"
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf \
+     $libzstdhdrdir \
+     -gdwarf $nlizeopt $testsrc/test_setframe.c  -o \
+      test_setframe $dwlib $libopts "
+  echo "$x"
+  $x
+  chkres $? 'check setframe-error compiling test_setframe.c\
      failed' 
 
 if [ $compileonly = "y" ]
@@ -1241,6 +1253,8 @@ then
   echo "STOP after successfully building dwtests executables"
   exit 0
 fi
+
+runsingle test_setframe.base ./test_setframe ./test_setframe
 
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  $testsrc/supplementary/runtest.sh"

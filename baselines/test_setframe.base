@@ -1,0 +1,8 @@
+Opened objectfile test_setframe
+PASS: 0 errormsg DW_DLE_DEBUGFRAME_ERROR same_value == undefined_value
+PASS: 1 errormsg DW_DLE_DEBUGFRAME_ERROR same_value == cfa_column_number 
+PASS: 2 errormsg DW_DLE_DEBUGFRAME_ERROR same_value == cfa_column_number 
+PASS: 3 errormsg DW_DLE_DEBUGFRAME_ERROR initial_value not set to  same_value or undefined_value
+PASS: 4 errormsg DW_DLE_DEBUGFRAME_ERROR undefined_value less than number of registers
+PASS: 5 errormsg DW_DLE_DEBUGFRAME_ERROR same_value  <= number of registers
+PASS: 6 errormsg DW_DLE_DEBUGFRAME_ERROR cfa_column <= number of registers
