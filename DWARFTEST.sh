@@ -951,6 +951,7 @@ fuzz_die_cu_offset
 fuzz_die_cu_attrs
 fuzz_die_cu_attrs_loclist
 fuzz_die_cu_print
+fuzz_dnames
 fuzz_findfuncbypc 
 fuzz_gdbindex
 fuzz_globals
@@ -1066,7 +1067,12 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
-FIXME
+
+runsingle ossfuzz56462.base  ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz56462/fuzz_set_frame_all-5424385441005568
+
+runsingle ossfuzz56446.base  ./fuzz_dnames --testobj=$testsrc/ossfuzz56446/fuzz_dnames-4784811358420992
+exit 1
+
 runsingle ossfuzz59091.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz59091/fuzz_macro_dwarf5-5135813562990592
 
 runsingle ossfuzz58797.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz58797/fuzz_macro_dwarf5-4872686367801344
