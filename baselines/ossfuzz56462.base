@@ -1,2 +1,60 @@
  Print .debug_frame
 Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present

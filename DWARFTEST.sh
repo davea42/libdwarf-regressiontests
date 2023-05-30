@@ -11,6 +11,7 @@ echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE"
 echo "  Revert to normal test...: unset NLIZE"
 echo "  Revert to normal test...: unset VALGRIND"
 echo "  Revert to normal test...: unset COMPILEONLY"
+echo "  Revert to all tests  ...: unset SINGLEONLY"
 echo "  Stop after building test_bitoffset etc"
 # On certain VMs if too much change, we get
 # stuck at 1% done forever (and after 10 hours
@@ -31,6 +32,11 @@ compileonly=n
 if [ x$COMPILEONLY = "xy" ]
 then
   compileonly=y
+fi
+singleonly=n
+if [ x$SINGLEONLY = "xy" ]
+then
+  singleonly=y
 fi
 ismacos=n
 os=`uname`
@@ -771,6 +777,10 @@ runtest () {
 	shift
 	shift
 	allgood="y"
+    if [ $singleonly = "y" ]
+    then
+        return
+    fi
     #  Add 1 to show our summary number. We have not yet
     #  counted it as a good or a fail.
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
@@ -1068,6 +1078,12 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+
+runsingle ossfuzz56451.base  ./fuzz_dnames --testobj=$testsrc/ossfuzz56451/fuzz_dnames-4986494365597696
+
+
+runsingle ossfuzz56443.base  ./fuzz_crc_32 --testobj=$testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
+
 runsingle ossfuzz56492.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56492/fuzz_macro_dwarf5-6497277180248064
 
 runsingle ossfuzz56462.base  ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz56462/fuzz_set_frame_all-5424385441005568
@@ -1168,7 +1184,7 @@ runsingle ossfuzz56460.base  ./fuzz_str_offsets --testobj=$testsrc/ossfuzz56460/
 runsingle ossfuzz56636.base  ./fuzz_debug_addr_access --testobj=$testsrc/ossfuzz56636/fuzz_debug_addr_access-4801779658522624.fuzz
 
 runsingle ossfuzz56548.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56548/fuzz_findfuncbypc-5073632331431936
-runsingle ossfuzz56443.base  ./fuzz_crc_32 --testobj=$testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
+
 
 runsingle ossfuzz56530.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
 
@@ -1260,9 +1276,11 @@ then
   if [ $failcount -ne 0 ]
   then
     echo "FAIL: STOP after failed building dwtests executables"
+    rm -f dwbb
     exit 1
   fi
   echo "STOP after successfully building dwtests executables"
+  rm -f dwbb
   exit 0
 fi
 
