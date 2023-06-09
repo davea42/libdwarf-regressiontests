@@ -1,0 +1,25 @@
+
+AddressSanitizer: heap-use-after-free /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/lib/libdwarf/dwarf_query.c:347:21 in empty_local_attrlist
+
+==905358==ERROR: AddressSanitizer: heap-use-after-free on address 0x607000001640 at pc 0x000000776d6a bp 0x7fffcfa22190 sp 0x7fffcfa22188
+READ of size 8 at 0x607000001640 thread T0
+#0 0x776d69 in empty_local_attrlist /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/lib/libdwarf/dwarf_query.c:347:21
+#1 0x7761c7 in dwarf_attrlist /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/lib/libdwarf/dwarf_query.c:575:21
+#2 0x53991e in print_one_die /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/bin/dwarfdump/print_die.c:2207:13
+#3 0x564fc7 in print_die_and_childr
+
+0x607000001640 is located 64 bytes inside of 72-byte region [0x607000001600,0x607000001648)
+freed by thread T0 here:
+#0 0x4a4952 in free (/home/root/sp/Fuzz/aflpp_fuzz/Libdwarf/dwarfdump/dwarfdump_1/dwarfdump+0x4a4952)
+#1 0x6001de in dwarf_dealloc /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/lib/libdwarf/dwarf_alloc.c:952:5
+#2 0x776d86 in empty_local_attrlist /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/lib/libdwarf/dwarf_query.c:348:9
+#3 0x775785 in dwarf_attrlist /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/lib/libdwarf/dwarf_query.c:511:17
+#4 0x53991e in print_one_die /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/bin/dwarfdump/print_die.c:2207:13
+#5 0x564fc7 in print_die_and_children_internal /home/root/sp/Dataset/
+
+previously allocated by thread T0 here:
+#0 0x4a4bbd in __interceptor_malloc (/home/root/sp/Fuzz/aflpp_fuzz/Libdwarf/dwarfdump/dwarfdump_1/dwarfdump+0x4a4bbd)
+#1 0x5ff13a in _dwarf_get_alloc /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/lib/libdwarf/dwarf_alloc.c:597:17
+#2 0x77589e in dwarf_attrlist /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/lib/libdwarf/dwarf_query.c:522:17
+#3 0x53991e in print_one_die /home/root/sp/Dataset/Libdwarf/libdwarf-code-0.5.0/src/bin/dwarfdump/print_die.c:2207:13
+#4 0x564fc7 in print_die_and_childr
