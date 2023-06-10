@@ -1,3 +1,134 @@
+2023-06-09:  David Anderson
+    commit 566f24873540e791a9378f9608b4fd40c704f19c
+
+    Updated Frame code and a new test and an improved
+    message.
+    So new baselines.
+            modified:   DWARFTEST.sh
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-06-09:  David Anderson
+    commit 186c82c2268caeffbc6850196511d05deb953f6e
+
+    Noted fix version (0.7.0)
+            modified:   shinibufa/README
+
+2023-06-09:  David Anderson
+    commit f9794e8baa73296ac2d68b5022683e87d57a48a1
+
+    Fixing mis-spelling in a printf.
+            modified:   test_setframe.c
+
+2023-06-09:  David Anderson
+    commit 2ba2b0fe5bffe0f3c1e0b6012e82c35d6d335de9
+
+    New vulnerability.  DW202306-003
+            new file:   shinibufa/README
+            new file:   shinibufa/fuzzed_input_file
+
+2023-06-08:  David Anderson
+    commit 8eefc41fe4c8277f983891bf324ff973992a81b7
+
+    Fixing DW202306-001 oss fuzz 59517
+    resulted  in a small change in dwarfdump
+    output for a corrupt object.
+    And ossfuzz59517.base is changed more
+    substantially due to its corrupt data.
+            modified:   baselines/ossfuzz59517.base
+    New dwarfdump baseline.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-06-04:  David Anderson
+    commit b31fa4b4075557bd21831d4ae6b52a80607a93cd
+
+    A correction of a line in fuzz/fuzz_set_frame_all.c
+    where the printf lacked an ending newline resulted
+    in a small change for this baseline.
+            modified:   baselines/ossfuzz58026.base
+
+2023-06-04:  David Anderson
+    commit d6c5687571247f1f315e535e26b0075f6f69b97a
+
+    Adding a new test. DW202306-001 ossfuzz id: 59517
+    The corrupted object has an erroneous large frame offset.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz59517.base
+            new file:   ossfuzz59517/fuzz_set_frame_all-5741671019839488
+
+2023-05-31:  David Anderson
+    commit 88960f379250064914806704feb35ca46d5736b2
+
+    Now we run ossfuzz59478.
+            modified:   DWARFTEST.sh
+
+    New tests, baselines.
+            new file:   baselines/ossfuzz56451.base
+            new file:   baselines/ossfuzz59478.base
+            new file:   ossfuzz56451/fuzz_dnames-4986494365597696
+            new file:   ossfuzz59478/fuzz_set_frame_all-5300774457180160
+
+2023-05-30:  David Anderson
+    commit 5e3d39469ed688eb77d3b652df7d9231f1d777dc
+
+    Added two new tests and the env var
+    SINGLEONLY=y
+    tells DWARFTEST.sh to skip runtest commands.
+            modified:   DWARFTEST.sh
+            modified:   baselines/ossfuzz56462.base
+            modified:   baselines/ossfuzz58026.base
+
+2023-05-23:  David Anderson
+    commit ea85b10c7b578273de5e8a19ecdc2f8ee29ad1e2
+
+    New tests, new baselines.
+            modified:   DWARFTEST.sh
+            modified:   baselines/ossfuzz56462.base
+            new file:   baselines/ossfuzz56492.base
+            new file:   ossfuzz56492/fuzz_macro_dwarf5-6497277180248064
+
+2023-05-23:  David Anderson
+    commit 6a9f597e6662549778bf60922b8b6796e0212724
+
+    New testcases and updates to tests run.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz56472.base
+            new file:   baselines/ossfuzz56474.base
+            new file:   ossfuzz56472/fuzz_simplereader_tu-6614412934119424
+            new file:   ossfuzz56474/fuzz_die_cu_attrs_loclist-4719938125561856
+
+2023-05-23:  David Anderson
+    commit 5826bd620a4b73f934307291d8086f6289283fe4
+
+    Two new testcases run.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz56446.base
+            new file:   baselines/ossfuzz56462.base
+            new file:   ossfuzz56462/fuzz_set_frame_all-5424385441005568
+
+2023-05-23:  David Anderson
+    commit 035aa9dcdfb160b318fbec6badf89d4c8d1fd564
+
+    New testcase.
+            new file:   ossfuzz56446/fuzz_dnames-4784811358420992
+
+    Removed unwanted call, added comment.
+            modified:   test_setframe.c
+
+2023-05-22:  David Anderson
+    commit 37f5b932eb5d18cc562bb71d62660100fe871a88
+
+    Now with latest from git log.
+    Now with a test of invalide
+    frame register settings.
+    The settings were previously not tested for
+    the required consistency.
+    Things like dwarf_set_frame_rule_initial_value()
+    dwarf_set_frame_rule_table_size().
+            modified:   ChangeLog
+
 2023-05-22:  David Anderson
     commit 8aa37052f15de5b9e7010ac45128dcc81d4b0ced
 
