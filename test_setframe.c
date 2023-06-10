@@ -122,7 +122,7 @@ testn(unsigned u,
     if (res == DW_DLV_ERROR) {
         dwarf_dealloc_error(dbg,*error);
         ++failcount;
-        printf("FAIL %u Got erroror calling dwarf_get_fde_list()"
+        printf("FAIL %u Got error calling dwarf_get_fde_list()"
            " errmsg: %s\n",u,dwarf_errmsg(*error));
         *error = 0;
         return;
