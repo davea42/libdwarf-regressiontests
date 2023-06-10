@@ -1193,6 +1193,7 @@ runsingle ossfuzz56530.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56530
 
 runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
 
+
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
     $libzstdhdrdir \
@@ -1319,6 +1320,9 @@ mklocal guilfanov2
   # but most likely not in libdwarf 0.1.2 or later.
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
+
+#  Fails in 0.5.0, 0.6.0, fixed in 0.7.0 
+runtest $d1 $d2 $testsrc/shinibufa/fuzzed_input_file
 
 # Early test of -h.
 runtest $d1 $d2 foo.o -h
