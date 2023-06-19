@@ -46,6 +46,7 @@ configlibname=$filelibname
 configlibpname=$fileplibname
 if [ $sharedlib = "sharedlib" ]
 then
+  echo "WARNING: shared lib is problematic for these tests."
   configsharedlib="--enable-shared"
   configstaticlib="--disable-static"
 else
