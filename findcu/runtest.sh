@@ -9,9 +9,8 @@ tf=$bldtest/findcu
 libdw=$libbld
 bld=$libbld
 
-withlibelf=$1
-withlibz=$2
-withlibzstd=$3
+withlibz=$1
+withlibzstd=$2
 if [ x$withlibz = "x" ]
 then
    echo "fail findcu runtest.sh missing arguments"
@@ -29,10 +28,6 @@ else
 fi
 opts="-I$bld -I$bld/libdwarf -I$codedir/src/lib/libdwarf"
 
-if [ $withlibelf = "withlibelf" ]
-then
-  libs="$libs -lelf"
-fi
 if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"

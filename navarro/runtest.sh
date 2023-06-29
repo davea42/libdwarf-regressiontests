@@ -8,10 +8,6 @@ echo $libdw/libdwarf
 dw=$libdw/libdwarf
 echo $dw/libdwarf
 libs=
-if [ $withlibelf = "withlibelf" ]
-then
-  libs="$libs -lelf"
-fi
 if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"

@@ -25,38 +25,6 @@ then
    exit 1
 fi
 
-#$dd -E test.o  >junk2 2>&1
-#r=$?
-#if [ $r -ne 0 ]
-#then
-#  echo "fail 2 nolibelf -E test.o"
-#  exit 1
-#fi
-#diff $ts/test2.base junk2
-#if [ $? -ne 0 ]
-#then
-#   echo "fail nolibelf test 2 diff test2.base junk2"
-#   echo "If junk2 is correct do: mv $tf/junk2 $ts/test2.base"
-#   echo "rerun: $ts/runtest.sh"
-#   exit 1
-#fi
-
-#$dd -o test.o >junk3 2>&1
-#r=$?
-#if [ $r -ne 0 ]
-#then
-#  echo "fail 3 nolibelf -o test.o"
-#  exit 1
-#fi
-#diff  $ts/test3.base junk3
-#if [ $? -ne 0 ]
-#then
-#   echo "fail nolibelf test 3 diff test3.base junk3"
-#   echo "If junk3 is correct do: mv $tf/junk3 $ts/test3.base"
-#   echo "rerun: $ts/runtest.sh"
-#   exit 1
-#fi
-
 $dd -i test.a  >junk4 2>&1
 r=$?
 if [ $r -ne 0 ]

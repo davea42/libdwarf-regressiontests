@@ -6,8 +6,7 @@ ts=$testsrc/err_allocate
 tf=$bldtest/err_allocate
 . $testsrc/BASEFUNCS.sh
 libdw=$1
-withlibelf=$2
-withlibz=$3
+withlibz=$2
 if [ x$NLIZE = 'xy' ]
 then 
   opt=`checkargs -fsanitize=address -fsanitize=leak \
@@ -16,10 +15,6 @@ else
   opt=
 fi
 libs=
-if [ $withlibelf = "withlibelf"]
-then
-  libs="-lelf"
-fi
 if [ $withlibz = "withlibz"]
 then
   libs="$libs -lz"
@@ -32,7 +27,7 @@ fi
 if [ $? -ne 0 ]
 then
     echo fail building err_allocate/alloc_test .c
-    echo "rerun: $ts/runtest.sh $libdw $withlibelf $withlibz"
+    echo "rerun: $ts/runtest.sh $libdw  $withlibz"
     exit 1
 fi
 ./alloc_test >junk_alloc_test_out
@@ -47,12 +42,12 @@ then
       echo "PASS with dealloc failed, NLIZE, check output next."
     else
       echo fail RUNNNG err_allocate/alloc_test NLIZE=y .c
-      echo "rerun: $ts/runtest.sh $libdw $withlibelf $withlibz"
+      echo "rerun: $ts/runtest.sh $libdw  $withlibz"
       exit 1
     fi
   else
     echo fail RUNNNG err_allocate/alloc_test .c
-    echo "rerun: $ts/runtest.sh $libdw $withlibelf $withlibz"
+    echo "rerun: $ts/runtest.sh $libdw  $withlibz"
     exit 1
   fi
 fi
@@ -62,7 +57,7 @@ then
     echo "fail err_allocate test.  got diffs in output."
     cat diffs
     echo "To update baseline  do mv $tf/junk_alloc_test_out $ts/alloc_test.base"
-    echo "rerun: $ts/runtest.sh $libdw $withlibelf $withlibz"
+    echo "rerun: $ts/runtest.sh $libdw $withlibz"
     exit 1
 fi
 echo "PASS err_allocate/runtest.sh" 

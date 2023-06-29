@@ -13,14 +13,10 @@ OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdw
 if [ x$withlibz = "x" ]
 then
   echo "fail test-alex2. missing withlibz"
-  echo " arg 2. We got: $withlibelf , $withlibz"
+  echo " arg 2. We got:  $withlibz"
   exit 1
 fi
 libs=
-#if [ $withlibelf = "withlibelf" ]
-#then
-#  libs="$libs -lelf"
-#fi
 if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"

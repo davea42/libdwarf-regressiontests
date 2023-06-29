@@ -1,8 +1,11 @@
 # This is libdwarf-regressiontests README.md
 
-Updated 23 September 2022
+
+Updated 29 June 2023
 
 ## Historical note
+Before July 2023 libelf was used by dwarfgen.
+libelf is no longer used anywhere.
 
 In the sourceforge.net days the libdwarf source itself
 was in a directory named 'code'. Since the move to
@@ -18,12 +21,12 @@ Configure options:
 Use --enable-libdwarf  when the libdwarf/dwarfdump source tree is
 not in parallel with the regressiontests source tree.
 
-    --enable-shared --disable-libelf --disable-static
+    --enable-shared --disable-static
 
 Use when generating and testing shared-library
 libdwarf.so.0 instead of the default archive library libdwarf.a.
 
-## Running the 18000 tests
+## Running the 19000+ tests
 
 We recommend running the tests outside
 of the regression test and libdwarf source trees.
@@ -49,7 +52,7 @@ If the code directory is /some/thing/libdwarf-code
 To build and test-with a shared library libdwarf.so.0
 add:
 
-    --enable-shared --disable-static --disable-libelf
+    --enable-shared --disable-static
 
 to the configure command.
 

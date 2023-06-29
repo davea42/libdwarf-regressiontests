@@ -119,14 +119,6 @@ testn(unsigned u,
 
     res = dwarf_get_fde_list (dbg, &cie_data, &cie_count,
         &fde_data,&fde_count,error);
-    if (res == DW_DLV_ERROR) {
-        dwarf_dealloc_error(dbg,*error);
-        ++failcount;
-        printf("FAIL %u Got error calling dwarf_get_fde_list()"
-           " errmsg: %s\n",u,dwarf_errmsg(*error));
-        *error = 0;
-        return;
-    }
     if (res == DW_DLV_NO_ENTRY) {
         res = dwarf_get_fde_list_eh(dbg, &cie_data, &cie_count, 
             &fde_data,&fde_count,error);

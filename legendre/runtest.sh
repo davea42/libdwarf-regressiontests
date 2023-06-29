@@ -13,9 +13,8 @@ ts=$testsrc/legendre
 tf=$bldtest/legendre
 libdw=$libdw
 bopt=$libbld
-withlibelf=$1
-withlibz=$2
-withlibzstd=$3
+withlibz=$1
+withlibzstd=$2
 if [ "x$withlibz" = x ]
 then
    echo "fail legendre runtest.sh missing arguments"
@@ -24,10 +23,6 @@ fi
 
 OPTS="-I$bopt -I$bopt/src/lib/libdwarf -I$libdw/src/lib/libdwarf -I$" 
 libs=
-if [ $withlibelf = "withlibelf" ]
-then
-  libs="$libs -lelf"
-fi
 if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"

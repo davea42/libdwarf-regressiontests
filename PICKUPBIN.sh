@@ -11,7 +11,6 @@ sharedlib=
 sharedlibsudir=
 configsharedlibopt=
 configsharedlibpopt=
-withlibelf=
 configlibname=
 configlibpname=
 configwall="--enable-wall"
@@ -20,7 +19,6 @@ configdwarfgen=
 configsharedlib=
 configdwarfex="--enable-dwarfexample"
 configsanitize=
-configlibelf=
 # BASEFILES has the basic data we need to build.
 if [ ! -f BASEFILES.sh ]
 then
@@ -34,14 +32,7 @@ then
   echo "Giving up"
   exit 1
 fi
-if [ $dwarf_with_libelf = "withlibelf" ]
-then
-  configlibelf="--enable-libelf"
-  configdwarfgen="--enable-dwarfgen"
-else
-  configlibelf="--disable-libelf"
-  configdwarfgen="--disable-dwarfgen"
-fi
+configdwarfgen="--enable-dwarfgen"
 configlibname=$filelibname
 configlibpname=$fileplibname
 if [ $sharedlib = "sharedlib" ]
@@ -62,18 +53,8 @@ fi
 for i in $*
 do
   case $i in
-  --nolibelf) withlibelf="nolibelf"
-    configlibelf="--disable-libelf --disable-dwarfgen"
-    configdwarfgen="--disable-dwarfgen"
-    echo "PICKUPBIN.sh set to nolibelf."
-    shift;;
   --sanitize) configsanitize="--enable-sanitize"
     echo "PICKUPBIN.sh set to use -fsanitize."
-    shift;;
-  --withlibelf) withlibelf="withlibelf"
-    echo "PICKUPBIN.sh set to withlibelf (the default)."
-    configlibelf="--enable-libelf"
-    configdwarfgen="--enable-dwarfgen"
     shift;;
   --sharedlib) 
     sharedlib="sharedlib"
@@ -143,10 +124,10 @@ echo "CONFIGURE now"
 #CFLAGS="-O0 -gdwarf-5  --no-omit-frame-pointer" 
 echo "$libdw/configure $configwall $configstaticlib"
 echo "    $configsharedlib $configdwarfgen $configdwarfex"
-echo "    $configsanitize $configlibelf"
+echo "    $configsanitize "
 $libdw/configure $configwall $configstaticlib \
   $configsharedlib $configdwarfgen $configdwarfex \
-  $configsanitize $configlibelf
+  $configsanitize 
 if [ $? -ne 0 ]
 then
   echo "configure failed. giving up."

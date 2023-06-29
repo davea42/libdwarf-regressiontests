@@ -82,43 +82,9 @@ AC_ARG_ENABLE(shared,
    [enableshared=no])
 
 
-AC_ARG_ENABLE([libelf],
-   [AS_HELP_STRING([--disable-libelf],
-     [disable use of libelf (default is enable) @<:@default=yes@:>@])],
-   [ AS_IF(
-        [test "x${enableval}" = "xyes"],
-        [dwarf_with_libelf="withlibelf"],
-        [dwarf_with_libelf="nolibelf"])
-   ],
-   [dwarf_with_libelf="withlibelf"])
-
-if test $dwarf_with_libelf = "withlibelf" ; then
-  AC_CHECK_HEADERS(libelf.h libelf/libelf.h)
-
-  ### if no libelf.h add no -lelf and turn off
-  ### libelf recognition.
-  if test "x${ac_cv_header_libelf_h}" != "xyes" -a "x${ac_cv_header_libelf_libelf_h}" != "xyes"  ;then
-    dwarf_with_libelf="nolibelf"
-    echo "no libelf headers, so no libelf" 
-  else
-    echo "Allowing use of libelf."
-  fi
-fi
-
-if test $dwarf_with_libelf = "withlibelf" ; then
-  enable_dwarfgen="yes"
-  AC_DEFINE([DWARF_WITH_LIBELF],[1],
-    [Set to 1 as we are building with libelf])
-  AC_DEFINE([HAVE_DWARFGEN],[1],
+enable_dwarfgen="yes"
+AC_DEFINE([HAVE_DWARFGEN],[1],
     [Set to 1 as we are building dwarfgen])
-else
-  enable_dwarfgen="no"
-fi
-
-if test $dwarf_with_libelf = "withlibelf" ; then
-  AC_SUBST(withlibelf,"withlibelf")
-else
-  AC_SUBST(withlibelf,"nolibelf")
 fi
 
 AC_ARG_ENABLE([static],
@@ -248,7 +214,6 @@ fi
 libbld=$abs_builddir/libbld
 echo "libbld=$libbld" >>        BASEFILES.sh
 echo "sharedlib=$sharedlib"  >> BASEFILES.sh
-echo "dwarf_with_libelf=$dwarf_with_libelf"  >> BASEFILES.sh
 echo "filelibname=$filelibname" >> BASEFILES.sh
 echo "fileplibname=$fileplibname" >> BASEFILES.sh
 echo "buildlibsubdir=$buildlibsubdir" >> BASEFILES.sh
@@ -276,7 +241,6 @@ fi
 
 echo "Configuration Options Summary:"
 echo
-echo " have libelf............: ${dwarf_with_libelf}"
 echo " dwarfgen...............: ${enable_dwarfgen}"
 echo " testbuilddir...........: ${abs_builddir}"
 echo " libdwarf.build.dir.....: $libbld"

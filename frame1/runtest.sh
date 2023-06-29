@@ -7,18 +7,12 @@ tf=$bldtest/frame1
 libdw=$codedir/src/lib/libdwarf
 bld=$bldtest
 dwlib=../$filelibname
-withlibelf=$1
-withlibz=$2
-withlibzstd=$3
+withlibz=$1
+withlibzstd=$2
 if [ x$withlibz = "x" ]
 then
    echo "fail frame1 runtest.sh does not have its args: withlibz missing"
    exit 1
-fi
-if [ x$withlibelf = "x" ]
-then
-    echo "fail frame1 runtest.sh, does not have its two args: withlibelf missing"
-    exit 1
 fi
 echo "where is libbld? : $libbld"
 if [ x$NLIZE = 'xy' ]
@@ -29,10 +23,6 @@ else
   opt=
 fi
 libs=
-if [ $withlibelf = "withlibelf" ]
-then
-  libs="-lelf"
-fi
 if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
@@ -69,7 +59,7 @@ then
     echo "fail frame1 test.  got diffs in output."
     cat diffs
     echo "To update do: cp $tf/frame1.out $ts/frame1.base"
-    echo "rerun: $ts/runtest.sh $withlibelf $withlibz $withlibzstd"
+    echo "rerun: $ts/runtest.sh  $withlibz $withlibzstd"
     exit 1
 fi
 

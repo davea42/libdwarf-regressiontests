@@ -68,8 +68,6 @@ fi
 . $testsrc/BASEFUNCS.sh
 
 stsecs=`date '+%s'`
-# dwarfgen dwarfgen needs libelf.
-withlibelf=$dwarf_with_libelf
 dwbb=$bldtest/dwbb
 
 suppresstree=
@@ -109,9 +107,6 @@ mklocal() {
 for i in $*
 do
   case $i in
-  nolibelf) echo "DWARFTESTS.sh arg is $i"
-        withlibelf="nolibelf" 
-        shift;;
   # Makefile does not support this option but
   # export SUPPRESSDEALLOCTREE=y
   # works so we set that here. It's fine to
@@ -123,15 +118,8 @@ do
         SUPPRESSDEALLOCTREE=y
         export SUPPRESSDEALLOCTREE
         shift;;
-
-  withlibelf) echo "DWARFTESTS.sh arg is $i"
-        withlibelf="withlibelf" 
-        shift;;
-
   *)
        echo "Improper argument $i to DWARFTEST.sh" 
-       echo "use withlibelf or nolibelf"
-       echo "or use --suppress-de-alloc-tree"
        exit 1 ;;
   esac
 done
@@ -187,11 +175,6 @@ then
 fi
 
 wl="no"
-if [ $withlibelf = "withlibelf" ]
-then
-  wl="yes"
-fi
-echo "build with libelf.........: $wl"
 
 wl="no"
 if [ $withlibz = "withlibz" ]
@@ -934,12 +917,7 @@ runtest () {
 echo "=============BEGIN THE TESTS==============="
 echo  "=====BLOCK individual tests and runtest.sh tests"
 
-#libdwarf no longer uses libelf.
 libopts=''
-#if test $withlibelf = "withlibelf"
-#then
-#    libopts=''
-#fi
 if [ $withlibz = "withlibz" ]
 then
   libopts="$libopts -lz"
@@ -1611,17 +1589,11 @@ runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=$testsrc/moya3/ra
 runtest $d1 $d2 debugfission/mungegroup.o -i
 
 # New September 11, 2019.
-if [ x$withlibelf = "xnolibelf" ]
-then
-  echo "=====SKIP  testoffdie  runtest.sh nolibelf $withlibz $withlibzstd "
-  skipcount=`expr $skipcount + 1`
-else
-  echo "=====START  $testsrc/testoffdie runtest.sh $withlibelf $withlibz $withlibzstd"
+echo "=====START  $testsrc/testoffdie runtest.sh  $withlibz $withlibzstd"
   mklocal testoffdie
-    sh $testsrc/testoffdie/runtest.sh $withlibelf $withlibz $withlibzstd
+    sh $testsrc/testoffdie/runtest.sh  $withlibz $withlibzstd
     chkres $? "$testsrc/testoffdie/runtest.sh"
   cd ..
-fi
 
 
 
@@ -1770,13 +1742,6 @@ fi
 # which is standard
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr --format-extensions
-#if [ x$withlibelf = "xnolibelf" ]
-#then
-#  #runtest $d1 $d2 encisoa/DW_AT_containing_type.o -o --check-tag-attr
-#  #runtest $d1 $d2 encisoa/DW_AT_containing_type.o -Ei --check-tag-attr --format-extensions
-#  echo "=====SKIP  encisoa/DW_AT_containing_type.o"
-#  skipcount=`expr $skipcount + 1`
-#fi
 
 # PE basic tests.
 runtest $d1 $d2 pe1/libexamine-0.dll --print-all 
@@ -1833,14 +1798,6 @@ runtest $d1 $d2 foo.o -M  -M
 runtest $d1 $d2 enciso8/test-clang-dw5.o -s --print-str-offsets
 # This has a correct table (new clang, soon will be available).
 runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -s --print-str-offsets
-#if [ $withlibelf = "withlibelf" ]
-#then
-#  #runtest $d1 $d2 enciso8/test-clang-dw5.o -o -s --print-str-offsets
-#  #runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -o -s --print-str-offsets
-#  echo "=====SKIP enciso8/test-clang-wpieb-dw5.o -o -s"
-#  skipcount=`expr $skipcount + 2`
-#fi
-
 
 # These have .debug_str_offsets sections, but they are empty
 # or bogus (created from a draft, not final, DWARF5, I think)
@@ -1879,10 +1836,6 @@ runtest $d1 $d2   marcel/crash7 -a
 # Got DW_DLE_RELOC_SECTION_RELOC_TARGET_SIZE_UNKNOWN due to
 # presence of unexpected R_X86_64_PC32
 runtest $d1 $d2   convey/foo.g3-O0-strictdwarf.o -F
-#if [ $withlibelf = "withlibelf" ]
-#then
-#  runtest $d1 $d2   convey/foo.g3-O0-strictdwarf.o -oi -F
-#fi
 
 # Before 4 March 2017 would terminate early with error.
 runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a
@@ -1896,16 +1849,10 @@ echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simpleread
   cd ..
 
 echo "=====START   $testsrc/implicitconst sh runtest.sh"
-if [ $withlibelf = "withlibelf" ]
-then
   mklocal implicitconst
     sh $testsrc/implicitconst/runtest.sh
     chkres $?  $testsrc/implicitconst/runtest.sh
   cd ..
-else
-  echo "=====SKIP implicitconst/runtest.sh, no libelf available"
-  skipcount=`expr $skipcount +  1 `
-fi
 
 echo "=====START  $testsrc/nolibelf/runtest.sh "
 mklocal nolibelf
@@ -2208,32 +2155,19 @@ mklocal baddie1
   chkres $?  $testsrc/baddie1
 cd ..
 
-if [ $withlibelf = "withlibelf" ]
-then
   # Also tests dwarfgen and libdwarf with DW_CFA_advance_loc
   # operations
-  echo "=====START  $testsrc/offsetfromlowpc/runtest.sh"
-  mklocal offsetfromlowpc
+echo "=====START  $testsrc/offsetfromlowpc/runtest.sh"
+mklocal offsetfromlowpc
     sh $testsrc/offsetfromlowpc/runtest.sh 
     chkres $?  $testsrc/offsetfromlowpc/runtest.sh
   cd ..
-else
-  echo "=====SKIP  $testsrc/offsetfromlowpc sh runtest.sh no libelf"
-  skipcount=`expr $skipcount + 1`
-fi
 
-if [ $withlibelf = "withlibelf" ]
-then
-  echo "=====START  $testsrc/strsize/runtest.sh"
+echo "=====START  $testsrc/strsize/runtest.sh"
   mklocal strsize
     sh $testsrc/strsize/runtest.sh 
     chkres $? $testsrc/strsize
   cd ..
-else
-  echo "=====SKIP   $testsrc/strsize sh runtest.sh no libelf"
-  skipcount=`expr $skipcount + 1`
-fi
-
 # tests simple reader and more than one dwarf_init* interface
 # across all object types
 # here kaufmann/t.o is tested as input to simplereader.
@@ -2249,18 +2183,11 @@ mklocal debugfission
   chkres $?  "$testsrc/debugfission/runtest.sh ../$d2"
 cd ..
 
-#echo "=====START $testsrc/data16 runtest.sh"
-if [ $NLIZE = 'n' -a $withlibelf = "withlibelf" ]
-then
 echo "=====START  $testsrc/data16 runtest.sh ../$d2"
   mklocal data16
     sh $testsrc/data16/runtest.sh
     chkres $?  "$testsrc/data16/runtest.sh"
   cd ..
-else
-  echo "=====SKIP  $testsrc/data16/runtest.sh with NLIZE or if no libelf"
-  skipcount=`expr $skipcount + 1`
-fi
 
 if [ $NLIZE = 'n' ]
 then
@@ -2290,37 +2217,6 @@ runtest $d1 $d2 libc6fedora18/libc-2.16.so.debug -a
 
 # Testing the wasted-space from not using LEB.
 runtest $d1 $d2 enciso5/sample_S_option.o  -kE
-
-#if test $withlibelf = "withlibelf" ; then
-#  # These print object header (elf) information.
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -E
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ea
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Eh
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -El
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ei
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ep
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Er
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Er -g
-#  runtest $d1 $d2 irixn32/dwarfdump  -Ef
-#  # Following finds no debug_loc.
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Eo
-#  # Following finds a debug_loc.
-#  runtest $d1 $d2 mucci/main.gcc -Eo
-#  #Following has no .debug_ranges
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -ER
-#  #Following has .debug_ranges
-#  runtest $d1 $d2 mucci/main.gcc  -ER
-#  runtest $d1 $d2 mucci/main.gcc  -ER -g
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Es
-#  # The Et does nothing, we do not seem to have 
-#  # a .debug_pubtypes (IRIX specific) section anywhere.
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Et
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ex
-#  runtest $d1 $d2 enciso5/sample_S_option.o  -Ed
-#else
-  echo "=====SKIP 18 -E options, not usable with no libelf" 
-  skipcount=`expr $skipcount + 18 `
-#fi
 
 # AARCH64 Arm 64bit.
 runtest $d1 $d2 juszkiewicz/t1.o -a
@@ -2472,25 +2368,14 @@ runtest $d1 $d2  lloyd/arange.elf  -kr
 # It is not MIPS and MIPS is just wrong here.  Testing it anyway!
 runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 
-if test $withlibelf = "withlibelf" ; then
-  echo "=====START  $testsrc/findcu/runtest.sh $withlibelf $withlibz $withlibzstd"
+echo "=====START  $testsrc/findcu/runtest.sh  $withlibz $withlibzstd"
   mklocal findcu 
-    sh $testsrc/findcu/runtest.sh  $withlibelf $withlibz $withlibzstd 
+    sh $testsrc/findcu/runtest.sh   $withlibz $withlibzstd 
     chkres $? "$testsrc/findcu/cutest-of-a-libdwarf-interface"
   cd ..
-else
-  echo "=====SKIP  $testsrc/findcu runtest.sh  $withlibelf $withlibz $withlibzstd"
-  skipcount=`expr $skipcount + 1`
-fi
 
 
-
-#libdwarf no longer uses libelf.
 libopts=''
-if test $withlibelf = "withlibelf" 
-then
-    libopts=''
-fi
 if [ $withlibz = "withlibz" ]
 then
     libopts="$libopts -lz"
@@ -2500,29 +2385,19 @@ then
     libopts="$libopts -lzstd"
 fi
 
-if test $withlibelf = "withlibelf" ; then
-  echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
+echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
   mklocal dwgena
     sh $testsrc/dwgena/runtest.sh
     r=$?
     chkresn $r '$testsrc/dwgena/runtest.sh' 9
   cd ..
-else
-  echo "====SKIP 1 dwgena/runtest.sh no libelf"
-  skipcount=`expr $skipcount + 1`
-fi
 
-if test $withlibelf = "withlibelf" ; then
-  echo "=====START   $testsrc/dwgenc/runtest.sh"
+echo "=====START   $testsrc/dwgenc/runtest.sh"
   mklocal dwgenc
     sh $testsrc/dwgenc/runtest.sh 
     r=$?
     chkresn $r "$testsrc/dwgenc/runtest.sh" 1
   cd ..
-else
-  echo "====SKIP 1 $testsrc/dwgenc/runtest.sh no libelf"
-  skipcount=`expr $skipcount + 1`
-fi
 
 echo "=====START   $testsrc/sandnes2/runtest.sh"
 mklocal sandnes2
@@ -2533,9 +2408,9 @@ cd ..
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START $testsrc/legendre/runtest.sh $withlibelf $withlibz $withlibzstd"
+  echo "=====START $testsrc/legendre/runtest.sh  $withlibz $withlibzstd"
   mklocal legendre
-    sh $testsrc/legendre/runtest.sh $withlibelf $withlibz $withlibzstd
+    sh $testsrc/legendre/runtest.sh  $withlibz $withlibzstd
     r=$?
     chkres $r  $testsrc/legendre
   cd ..
@@ -2758,31 +2633,11 @@ runtest $d1 $d2 mucci/stream.o -i -e
 runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F 
 runtest $d1 $d2 legendre/libmpich.so.1.0 -ka 
 
-#if test $withlibelf = "withlibelf" ; then
-#  for i in cell/c_malloc.o moore/simplec.o \
-#    enciso2/test_templates.o enciso3/test.o kartashev/combined.o \
-#    linkonce/comdattest.o louzon/ppcobj.o  mucci/main.o \
-#    mucci/main.o.gcc mucci/main.o.pathcc  \
-#    mucci/stream.o  saurabh/augstring.o \
-#    shihhuangti/t1.o shihhuangti/t2.o shihhuangti/tcombined.o \
-#    sparc/tcombined.o  atefail/ig_server  cell/c_malloc.o
-#  do
-#    runtest $d1 $d2 $i -o
-#    for o in -oi -ol -op -or -of -oo -oR
-#    do
-#      runtest $d1 $d2 $i $o
-#    done
-#  done
-#else 
-  echo "=====SKIP 18*7 range of -o options and test objects, no libelf"
-  skipcount=`expr $skipcount + 18 + 18 + 18 + 18 + 18 + 18 + 18`
-#fi
-
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START $testsrc/test-alex1/runtest.sh $withlibelf $withlibz $withlibzstd"
+  echo "=====START $testsrc/test-alex1/runtest.sh  $withlibz $withlibzstd"
   mklocal test-alex1
-    sh $testsrc/test-alex1/runtest.sh $withlibelf $withlibz $withlibzstd
+    sh $testsrc/test-alex1/runtest.sh  $withlibz $withlibzstd
     chkres $?  $testsrc/test-alex1
   cd ..
 else

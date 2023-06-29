@@ -10,18 +10,13 @@ tf=$bldtest/testoffdie
 
 src=$testsrc/testoffdie
 bld=$libbld
-withlibelf="$1"
-withlibz="$2"
-withlibzstd=$3
+withlibz="$1"
+withlibzstd=$2
 # libzstdhdrdir and libzstdlibdir are in BASEFILES.sh.
-echo "entering testoffdie/runtest.sh  $withlibelf $withlibz"
+echo "entering testoffdie/runtest.sh  $withlibz"
 h="-I$testsrc/libdwarf -I$codedir/src/lib/libdwarf"
 l="-L$src/libdwarf"
 libs="../$filelibname"
-if [ x$withlibelf = "xwithlibelf" ]
-then
-  libs="$libs -lelf"
-fi
 if [ x$withlibz = "xwithlibz" ]
 then
   libs="$libs -lz"
@@ -41,14 +36,6 @@ then
   echo "rerun: $ts/runtest.sh $1 $2"
   exit 1
 fi
-if [ x$withlibelf = "x" ]
-then
-  echo "Improper arg withlibelf!"
-  echo fail testoffdie withlibelf not set
-  echo "rerun: $ts/runtest.sh $1 $2"
-  exit 1
-fi
-
 if [ x$NLIZE = 'xy' ]
 then
   nli=`checkargs -fsanitize=address -fsanitize=leak \
