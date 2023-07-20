@@ -15,7 +15,7 @@ DW_AT_name                  test.cpp
 LOCAL_SYMBOLS:
 < 1><0x00000025 GOFF=0x00000025>    DW_TAG_base_type
                                       DW_AT_name                  int
-                                      DW_AT_byte_size             0x00000004
+                                      DW_AT_byte_size             4
                                       DW_AT_encoding              DW_ATE_signed
 < 1><0x0000002c GOFF=0x0000002c>    DW_TAG_structure_type
                                       DW_AT_sibling               <0x000000ac GOFF=0x000000ac>
@@ -23,7 +23,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_decl_line             0x00000001
                                       DW_AT_decl_column           0x00000031
                                       DW_AT_name                  bar
-                                      DW_AT_byte_size             0x00000001
+                                      DW_AT_byte_size             1
 < 2><0x00000039 GOFF=0x00000039>      DW_TAG_subprogram
                                         DW_AT_sibling               <0x00000050 GOFF=0x00000050>
                                         DW_AT_decl_file             0x00000001

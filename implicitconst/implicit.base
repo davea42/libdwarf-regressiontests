@@ -37,7 +37,7 @@ LOCAL_SYMBOLS:
                         DW_AT_type                  <0x0000005d> <form DW_FORM_ref4>
 < 1><0x00000056>    DW_TAG_base_type
                       DW_AT_name                  int <form DW_FORM_string>
-                      DW_AT_byte_size             0x00000004 <form DW_FORM_data1>
+                      DW_AT_byte_size             4 <form DW_FORM_data1>
                       DW_AT_encoding              DW_ATE_signed <form DW_FORM_data1>
 < 1><0x0000005d>    DW_TAG_const_type
                       DW_AT_type                  <0x00000056> <form DW_FORM_ref4>

@@ -22,5 +22,5 @@ LOCAL_SYMBOLS:
 < 1><0x00000033>    DW_TAG_base_type
                       DW_AT_name                  int <form DW_FORM_strp>
                       DW_AT_encoding              DW_ATE_signed <form DW_FORM_data1>
-                      DW_AT_byte_size             0x00000004 <form DW_FORM_data1>
+                      DW_AT_byte_size             4 <form DW_FORM_data1>
 

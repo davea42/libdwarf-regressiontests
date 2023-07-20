@@ -40,11 +40,11 @@ LOCAL_SYMBOLS:
                         DW_AT_location              len 0x0002: 0x916c: 
                             DW_OP_fbreg -20
 < 1><0x00000069>    DW_TAG_base_type
-                      DW_AT_byte_size             0x00000004
+                      DW_AT_byte_size             4
                       DW_AT_encoding              DW_ATE_signed
                       DW_AT_name                  int
 < 1><0x00000070>    DW_TAG_base_type
-                      DW_AT_byte_size             0x00000004
+                      DW_AT_byte_size             4
                       DW_AT_encoding              DW_ATE_unsigned
                       DW_AT_name                  unsigned int
 

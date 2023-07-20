@@ -39,7 +39,7 @@ diff $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission archivedwo 2
-    echo "update in $tf via : mv $jt $b"
+    echo "update in $tf via : mv $tf/$jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
     echo "rerun: $ts/runtest.sh"
     exit 1
@@ -54,7 +54,7 @@ diff  $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission targeto test 3
-    echo "update via : $jt $b"
+    echo "update via : mv $tf/$jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
     echo "rerun: $ts/runtest.sh"
     exit 1
@@ -69,7 +69,7 @@ diff  $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission targetdwo 4
-    echo "update via : cp $jt $b"
+    echo "update via : cp $tf/$jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
     echo "rerun: $ts/runtest.sh"
     exit 1
@@ -84,7 +84,7 @@ diff  $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission archivedwo-iMvvv 5
-    echo "update via : cp $jt $b"
+    echo "update via : cp $tf/$jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
     echo "rerun: $ts/runtest.sh"
     exit 1

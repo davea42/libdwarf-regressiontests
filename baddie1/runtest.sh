@@ -32,7 +32,7 @@ m() {
   if test  $?  -ne 0
   then
       echo "fail test baddie1/$obj, mismatch base $base vs $test "
-      echo "Update via mv $tf/$test $base"
+      echo "Update via cp $tf/$test $base"
       echo "rerun: $ts/runtest.sh"
       exit 1
   fi
