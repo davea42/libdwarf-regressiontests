@@ -1,0 +1,13 @@
+
+This is a test of using a cmake feature to download and
+build libdwarf.
+
+To run the test from this directory
+
+  cmake cmaketest
+
+The executables etc are built in _deps  
+
+To remove all the files created, do
+
+  sh CLEAN
