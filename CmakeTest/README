@@ -4,7 +4,8 @@ build libdwarf.
 
 To run the test from this directory
 
-  cmake cmaketest
+  cmake ./cmaketest
+  make
 
 The executables etc are built in _deps  
 
