@@ -11,4 +11,10 @@ FetchContent_Declare(
   GIT_TAG 340b0e131922943f00dacd4ee4d3389fbcbd2e76
 )
 FetchContent_MakeAvailable(libdwarf)
+
+# dwarf-static is the target created by the
+# base CMakeLists.txt in the libdwarf-code project.
+# If adding cmake choices here causes the build to be
+# a shared object libdwarf.so/dll the correct
+# reference here would be dwarf-shared
 target_link_libraries(myprogram PRIVATE dwarf-static)
