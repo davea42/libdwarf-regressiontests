@@ -1,3 +1,211 @@
+2023-08-08:  David Anderson
+    commit 71ed67824e7cd36759eb0a9172797cc8da6a9d88
+
+    Refined and corrected the comments.
+            modified:   CmakeTest/README
+
+2023-08-08:  David Anderson
+    commit 62ae0db59978be581177d7fd2cf214a5386c7f55
+
+    Removing references to libelf.
+            modified:   config.h.in
+            modified:   test-eh/Makefile
+
+2023-08-08:  David Anderson
+    commit 5a8229b3c2dedf8134ab58b87d24130b90559739
+
+    A tiny working testcase using cmake FetchContent
+            modified:   CmakeTest/CLEAN
+            modified:   CmakeTest/README
+            modified:   CmakeTest/cmaketest/CMakeLists.txt
+            new file:   CmakeTest/test.c
+
+2023-08-07:  David Anderson
+    commit ac417950183f8077e9e8a5bc2df12bb30f234f65
+
+    A new test of the cmake FetchContent module.
+    Only run by hand see CmakeTest/README
+
+            new file:   CmakeTest/CLEAN
+            new file:   CmakeTest/README
+            new file:   CmakeTest/cmaketest/CMakeLists.txt
+
+2023-07-20:  David Anderson
+    commit 211ff2f5ccf4eee21381e9ab946a97dfea43fc19
+
+    A simplification/correction in print_die.c
+    lead to a slight difference in appearance:
+    printing 4 or 8 instead of 0x00000004 or 0x00000008
+    for a certain attribute.
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectbeforechild.base
+            modified:   baddie1/incorrectbeforeitself.base
+            modified:   baddie1/incorrectdies.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+            modified:   debugfission/archivedwo-iMvvv.base.gz
+            modified:   debugfission/archivedwo.base.gz
+            modified:   debugfission/targetdwo.base.gz
+            modified:   dwgena/test1.base.gz
+            modified:   dwgena/test2.base.gz
+            modified:   dwgena/test3.base.gz
+            modified:   dwgena/test4.base.gz
+            modified:   dwgena/test5.base.gz
+            modified:   dwgena/test6.base.gz
+            modified:   dwgena/test7.base.gz
+            modified:   dwgena/test8.base.gz
+            modified:   dwgena/test9.base.gz
+            modified:   dwgenc/base.debugnames
+            modified:   implicitconst/implicit.base
+            modified:   mustacchi/m32out.base
+            modified:   mustacchi/m64out.base
+            modified:   nolibelf/test1.base
+
+    Improving the 'how to update' that appears
+    if tests fail.
+            modified:   debugfission/runtest.sh
+            modified:   baddie1/runtest.sh
+
+2023-07-12:  David Anderson
+    commit 8640f0f99d55d53166605c9625829ee2d8b3bff2
+
+    New baseline needed to match the
+    dwarfdump print_die.c changes
+    in libdwarf commit 9ba4501eff0e21422b3986f36d6d8b7df43ad911
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-07-11:  David Anderson
+    commit 119b9aea6284be93f5d982e28a1352323a491aa0
+
+    The fix for DW202307-001 changed output
+    of dwarfdump for a couple of defective
+    objects. So we need to update the baseline
+    executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-07-11:  David Anderson
+    commit cf1587964ee42249231a4bd862fa9d6ebb015d1f
+
+    A new test.  For ossfuzz id: 60506  Vulnerability  DW202307-001
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz60506.base
+            new file:   ossfuzz60506/fuzz_srcfiles-6494439909228544.fuzz
+
+2023-06-29:  David Anderson
+    commit 43e84657762d05f818798e858a2aab93553c9b93
+
+    Removing all trace of libelf, libelf.h,
+    and elf.
+            modified:   DWARFTEST.sh
+            modified:   PICKUPBIN.sh
+            modified:   README.md
+            modified:   RUNALL.sh
+            modified:   configure.ac
+            modified:   err_allocate/runtest.sh
+            modified:   findcu/runtest.sh
+            modified:   frame1/runtest.sh
+            modified:   legendre/runtest.sh
+            modified:   navarro/runtest.sh
+            modified:   nolibelf/runtest.sh
+            modified:   test-alex1/runtest.sh
+            modified:   test-alex2/runtest.sh
+            modified:   test_setframe.c
+            modified:   testoffdie/runtest.sh
+
+2023-06-29:  David Anderson
+    commit ee5ea3fb7249220e3d6936be3f29d778ed8c1d86
+
+    dwarfgen text output changed.
+    this is the only place we check that, the wording not
+    really a purpose of the test.
+            modified:   implicitconst/dgout.base
+
+2023-06-26:  David Anderson
+    commit 9d79eb5e34aa2319c85831acd14556637372c77e
+
+    New fuzzed object tested DW202306-011.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz60090.base
+
+2023-06-26:  David Anderson
+    commit 14c441cccec80d8a7e9d897fa6a966cbee7681be
+
+            new file:   ossfuzz60090/fuzz_set_frame_all-5757752673435648
+
+2023-06-19:  David Anderson
+    commit 4821fc7482301b634a9c0a92708214835e79e374
+
+    Now with ossfuzz 59950 tested and passing.
+            modified:   DWARFTEST.sh
+
+    Just changed a comment.
+            modified:   PICKUPBIN.sh
+
+2023-06-19:  David Anderson
+    commit 1d32ef2d89ba0f23969c480861f68b2419a5e77e
+
+            new file:   baselines/ossfuzz59699.base
+            new file:   baselines/ossfuzz59775.base
+            new file:   baselines/ossfuzz59950.base
+            new file:   ossfuzz59950/fuzz_set_frame_all-6613067367317504
+
+2023-06-13:  David Anderson
+    commit 341871d816b266874f795104a363a3256d92baf7
+
+    Now with latest vulnerabilities fixed.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-06-13:  David Anderson
+    commit cc274c2ab9875c8deadbabfbebc4c8979b73faa1
+
+    New tests for vulnerabilities with fuzzed object files.
+            modified:   DWARFTEST.sh
+
+2023-06-11:  David Anderson
+    commit 53fe674e62f37f24b5bab834775a3bdb1bf63329
+
+    New vulnerability
+            new file:   ossfuzz59775/fuzz_die_cu_attrs_loclist-4504718844755968
+
+2023-06-10:  David Anderson
+    commit 41f465e28910b7a0375408c588c9c91a800ea622
+
+    New test case
+            new file:   ossfuzz59699/fuzz_stack_frame_access-6523659305746432
+
+2023-06-10:  David Anderson
+    commit 8ca5d213e0cef0ede95e5aebc23c8ed8b7b0102b
+
+    testcases
+            new file:   ../baselines/ossfuzz59595.base
+            new file:   ../baselines/ossfuzz59602.base
+            new file:   ../ossfuzz59595/fuzz_set_frame_all-5319697747542016
+            new file:   ../ossfuzz59602/fuzz_die_cu_attrs_loclist-6737086749999104
+
+2023-06-10:  David Anderson
+    commit 58424b5256b9852d6620af199885bd23a3ad7637
+
+    New test for oss fuzz 59519
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz59519.base
+            new file:   ossfuzz59519/fuzz_set_frame_all-4670829255065600
+
+2023-06-09:  David Anderson
+    commit e27f6ab9e9ab4186cfca87a2226cf873f04f6a8f
+
+    Up to date with git log.
+            modified:   ChangeLog
+
 2023-06-09:  David Anderson
     commit 566f24873540e791a9378f9608b4fd40c704f19c
 
