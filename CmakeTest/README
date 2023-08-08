@@ -7,8 +7,26 @@ To run the test from this directory
   cmake ./cmaketest
   make
 
-The executables etc are built in _deps  
+This creates a _deps directory with the libdwarf
+data and it creates the executable 'myprogram'
+from compiling test.c and linking against
+the libdwarf.a that the FetchContent enabled.
 
 To remove all the files created, do
 
   sh CLEAN
+
+If you have a dwarf.h and libdwarf.h
+visible in a standard include directory
+the test is not a complete test.
+If, by hand, you type
+    cc test.c
+in this directory it must fail on the
+#includes for this to be a full test.
+
+Otherwise the test is still useful
+as it will link against the cmake-built
+libdwarf created here.
+
+
+
