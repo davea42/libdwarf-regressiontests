@@ -3,20 +3,13 @@
 /* Define if building universal (internal helper macro) */
 #undef AC_APPLE_UNIVERSAL_BUILD
 
-/* Set to 1 as we are building with libelf */
-#undef DWARF_WITH_LIBELF
-
 /* Set to 1 as we are building dwarfgen */
 #undef HAVE_DWARFGEN
+/* Set to 1 if we can print utf8 */
+#undef HAVE_UTF8
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
-
-/* Define to 1 if you have the <libelf.h> header file. */
-#undef HAVE_LIBELF_H
-
-/* Define to 1 if you have the <libelf/libelf.h> header file. */
-#undef HAVE_LIBELF_LIBELF_H
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #undef HAVE_STDINT_H
