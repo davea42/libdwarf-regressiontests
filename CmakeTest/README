@@ -6,9 +6,11 @@ To run the test from this directory
 
   cmake ./cmaketest
   make
+  ./myprogram
 
 This creates a _deps directory with the libdwarf
-data and it creates the executable 'myprogram'
+data and it creates and executes the 
+executable 'myprogram'
 from compiling test.c and linking against
 the libdwarf.a that the FetchContent enabled.
 
