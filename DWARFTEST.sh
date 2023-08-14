@@ -2,16 +2,17 @@
 
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
-echo "Env vars that affect the tests:" 
+echo "Env vars that affect the tests:"
 echo "  If you wish do one or more of these before running the tests."
-echo "  Add sanity..............: export NLIZE=y"
-echo "  Suppress de_alloc_tree..: export SUPPRESSDEALLOCTREE=y"
-echo "  Use valgrind............: export VALGRIND=y"
-echo "  Revert to normal test...: unset SUPPRESSDEALLOCTREE"
-echo "  Revert to normal test...: unset NLIZE"
-echo "  Revert to normal test...: unset VALGRIND"
-echo "  Revert to normal test...: unset COMPILEONLY"
-echo "  Revert to all tests  ...: unset SINGLEONLY"
+echo "  Add sanity...................: export NLIZE=y"
+echo "  Suppress de_alloc_tree.......: export SUPPRESSDEALLOCTREE=y"
+echo "  Use valgrind.................: export VALGRIND=y"
+echo "  Revert to normal test........: unset SUPPRESSDEALLOCTREE"
+echo "  Revert to normal test........: unset NLIZE"
+echo "  Revert to normal test........: unset VALGRIND"
+echo "  Revert to normal test........: unset COMPILEONLY"
+echo "  Revert to all tests  ........: unset SINGLEONLY"
+echo "  Avoid non-ASCII UTF-8 test...: export ASCIIONLY"
 echo "  Stop after building test_bitoffset etc"
 # On certain VMs if too much change, we get
 # stuck at 1% done forever (and after 10 hours
@@ -22,7 +23,7 @@ echo "  Stop after building test_bitoffset etc"
 # If the actual result difference is substantial
 # the shell time doing diff etc takes too long.
 # 28 August 2020. Completely revamped the way
-# tests are counted and the way $suppressbigdiffs is implemented. 
+# tests are counted and the way $suppressbigdiffs is implemented.
 
 #set -x
 echo 'Starting regressiontests: DWARFTEST.sh' \
@@ -38,13 +39,17 @@ if [ x$SINGLEONLY = "xy" ]
 then
   singleonly=y
 fi
+asciionly=n
+if [ x$ASCIIONLY = "xy" ]
+then
+  asciionly=y
+fi
 ismacos=n
 os=`uname`
 if [ "$os" = "Darwin" ]
 then
   ismacos=y
 fi
-
 
 s=SHALIAS.sh
 if [ ! -f ./$s ]
@@ -77,7 +82,7 @@ suppresstree=
 #Now with env var.
 if [ x$SUPPRESSDEALLOCTREE = "xy" ]
 then
-   suppresstree="--suppress-de-alloc-tree" 
+   suppresstree="--suppress-de-alloc-tree"
 fi
 okcd() {
    s=$1
@@ -90,7 +95,7 @@ okcd() {
 
 mklocal() {
   d=$1
-  if [ ! -d $d ] 
+  if [ ! -d $d ]
   then
      rm -f $d
      mkdir $d
@@ -100,7 +105,7 @@ mklocal() {
        exit 1
      fi
   fi
-  cd $d 
+  cd $d
   okcd $? $d
 }
 
@@ -114,19 +119,19 @@ do
   # before running this script.
   --suppress-de-alloc-tree) echo "DWARFTESTS.sh arg is $i"
         echo "Suppressing de_alloc_tree"
-        suppresstree=$i 
+        suppresstree=$i
         SUPPRESSDEALLOCTREE=y
         export SUPPRESSDEALLOCTREE
         shift;;
   *)
-       echo "Improper argument $i to DWARFTEST.sh" 
+       echo "Improper argument $i to DWARFTEST.sh"
        exit 1 ;;
   esac
 done
 
 if [ ! -f ./dwarfdump ]
 then
-  echo " ./dwarfdump needed." 
+  echo " ./dwarfdump needed."
   echo "do configure  and make build before running the tests"
   exit 1
 fi
@@ -151,7 +156,7 @@ cd ..
 if [ $r -eq 1 ]
 then
   withlibzstd="nozstd"
-else 
+else
   if [ $r = 0 ]
   then
       withlibzstd="yezstd"
@@ -228,7 +233,7 @@ echo "Host Endianness...........: $endian"
 
 # In FreeBSD python2 &3 in /usr/local/bin, not /usr/bin
 # shell func from BASEFUNCS.sh
-setpythondirs 
+setpythondirs
 if [ $? -ne 0 ]
 then
   echo "FAIL DWARFTEST.sh cannot find python? to use."
@@ -274,7 +279,7 @@ then
   set +x
 fi
 # Only suppress anything if we find the diffs are so
-# big that some machines or VMs will not complete 
+# big that some machines or VMs will not complete
 # handling the really big diffs in a sensible time.
 suppressbigdiffs=n
 if [ x$SUPPRESSBIGDIFFS = "xy" ]
@@ -295,16 +300,16 @@ diffopt="--speed-large-files"
 diff $diffopt $bldtest/junkadwtests $bldtest/junkbdwtests 2>/dev/null
 if [ $? -ne 0 ]
 then
-  # the option is not supported.  
+  # the option is not supported.
   diffopt=""
   echo "speed up big diffs........: no"
-else 
+else
   echo "speed up big diffs........: yes"
 fi
 
 if [ "x$VALGRIND" = "xy" ]
 then
-  echo "valgrind?.................: $VALGRIND"         
+  echo "valgrind?.................: $VALGRIND"
 else
   echo "valgrind?.................: (no)"
 fi
@@ -345,7 +350,7 @@ then
 else
   echo "/usr/bin/time timing......: no"
 fi
-rm -f $otimeout 
+rm -f $otimeout
 rm -f $ntimeout
 chkres () {
   if [ $1 -eq 0 ]
@@ -369,19 +374,19 @@ chkresn () {
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 
 filepaths='moshe/hello
+jborg/simple
+diederen/hello
 duplicateattr.o
 google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
 google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
 ckdev/modulewithdwarf.ko
 sleicasper/bufferoverflow
-jborg/simple
 gilmore/a.out
 enciso8/test-clang-dw5.o
 enciso8/test-clang-wpieb-dw5.o
 sarubbo-7/4.crashes.bin
 sarubbo-5/1.crashes.bin
 jacobs/test.o
-diederen/hello
 diederen2/pc_dwarf_bad_attributes.elf
 diederen2/pc_dwarf_bad_sibling2.elf
 diederen2/pc_dwarf_bad_reloc_empty_debug_info.elf
@@ -407,7 +412,7 @@ emre3/a.out.dwp
 emre3/foo.dwo
 emre3/main.dwo
 emre3/foo.o
-emre3/main.o 
+emre3/main.o
 hughes/libkrb5support.so.0.1.debug
 shopov1/main.exe
 shopov2/clang-9.0.0-test-dwarf5.elf
@@ -430,31 +435,31 @@ relocerr64/sparc64-64-tls.o
 enciso6/ranges.o
 moshe/a.out.t
 marinescu/stream.o.test
-simonian/test-gcc-4.3.0  
+simonian/test-gcc-4.3.0
 simonian/test-gcc-4.5.1
 enciso3/test.o
-x86/dwarfdumpv4.3 
+x86/dwarfdumpv4.3
 allen1/todd-allen-gcc-4.4.4-bin.exe
 wynn/unoptimised.axf
 shihhuangti/tcombined.o
 kartashev/combined.o
-macinfo/a.out3.4 
-macinfo/a.out4.3 
-arm/armcc-test-dwarf2  
-arm/armcc-test-dwarf3 
-sun/sunelf1 
-val_expr/libpthread-2.5.so 
-ia64/hxdump.ia64 
-ia64/mytry.ia64 
-ia32/mytry.ia32  
-ia32/libc.so.6 
-testcase/testcase 
-test-eh/eh-frame.386 
-test-eh/test-eh.386 
-mutatee/test1.mutatee_gcc.exe 
-cristi2/libpthread-2.4.so 
-ia32/preloadable_libintl.so 
-ia32/libpfm.so.3 
+macinfo/a.out3.4
+macinfo/a.out4.3
+arm/armcc-test-dwarf2
+arm/armcc-test-dwarf3
+sun/sunelf1
+val_expr/libpthread-2.5.so
+ia64/hxdump.ia64
+ia64/mytry.ia64
+ia32/mytry.ia32
+ia32/libc.so.6
+testcase/testcase
+test-eh/eh-frame.386
+test-eh/test-eh.386
+mutatee/test1.mutatee_gcc.exe
+cristi2/libpthread-2.4.so
+ia32/preloadable_libintl.so
+ia32/libpfm.so.3
 modula2/write-fixed
 cristi3/cristibadobj
 liu/divisionbyzero02.elf
@@ -480,13 +485,13 @@ liu/OOB_READ0519.elf
 liu/outofbound01.elf
 liu/outofboundread2.elf
 liu/outofboundread.elf
-irix64/libc.so 
-irixn32/libc.so 
+irix64/libc.so
+irixn32/libc.so
 irixn32/dwarfdump
 dwgenb/dwarfgen
 dwarf4/dd2g4.5dwarf-4
 dwarf4/ddg4.5dwarf-4
-' 
+'
 
 echo "Checklibz: $withlibz"
 if [ x$withlibz = "xnolibz" ]
@@ -503,12 +508,12 @@ fi
 #echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because archives not handled"
 
 # Was in the list, but does not exist!
-#x86-64/x86_64testcase.o 
+#x86-64/x86_64testcase.o
 
 stripx() {
     #x=`echo $* | sed -e 's/-g//'`
     x=`echo $*`
-    echo $x 
+    echo $x
 }
 # Avoid spurious differences because of the names of the
 # various dwarfdump versions being tested.
@@ -530,17 +535,17 @@ unifyddnameb () {
   sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart > $nend
 }
 
-# Some files to be diff'd can be 5+GB. 
+# Some files to be diff'd can be 5+GB.
 # Files which are too big will often take hours before
-# finishing diff. 
+# finishing diff.
 # At least on the freebsd VMs where I test.
-# With the native host OS it is usually not necessary to 
+# With the native host OS it is usually not necessary to
 # set suppressbigdiffs=y  .
 
 filediff() {
 t1=$1
 t2=$2
-shift ; shift  
+shift ; shift
 if [ "$suppressbigdiffs" = "y" ]
 then
   if [ ! -f $t2 -a ! -f $t1 ]
@@ -567,7 +572,7 @@ then
     diff $diffopt $t1 $t2
     if [ $? -eq 0 ]
     then
-      #echo "pass diff Identical "  $* 
+      #echo "pass diff Identical "  $*
       return 0
     else
       #echo "fail diff Differ "  $*
@@ -579,7 +584,7 @@ then
     cmp $t1 $t2
     if [ $? -eq 0 ]
     then
-      #echo "pass cmp Identical "  $* 
+      #echo "pass cmp Identical "  $*
       return 0
     else
       #echo "fail cmp Differ "  $*
@@ -590,7 +595,7 @@ else
   diff $diffopt $t1 $t2
   if [ $? -eq 0 ]
   then
-    #echo "pass diff Identical "  $* 
+    #echo "pass diff Identical "  $*
     return 0
   else
     echo "fail diff Differ "  $*
@@ -649,11 +654,11 @@ runsingle () {
   modpath=n
   # Fix up names to eliminate owner in path.
   # Checking return code from sed is not productive.
-  if [ "x$exe" = "x./dwdebuglink" ] 
+  if [ "x$exe" = "x./dwdebuglink" ]
   then
      modpath=y
   fi
-  if [ "x$exe" = "x./findfuncbypc" ] 
+  if [ "x$exe" = "x./findfuncbypc" ]
   then
      modpath=y
   fi
@@ -679,7 +684,7 @@ runsingle () {
   chkres $r 'compare runsingle failed'
   if [ $r -ne 0 ]
   then
-    echo "FAIL diff $base junksingle3.$base" 
+    echo "FAIL diff $base junksingle3.$base"
     wc $testsrc/baselines/$base
     wc junksingle3.$base
     allgood=n
@@ -702,7 +707,7 @@ runversiontest () {
     rm -f junk.versiontest
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
     pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
-    echo  "=====START Pct $pctstring $arg" 
+    echo  "=====START Pct $pctstring $arg"
     echo  "=====STATS Pct $pctstring ct: $totalct"
     echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     $dw $arg >junk.versiontest
@@ -768,29 +773,37 @@ runtest () {
     #  counted it as a good or a fail.
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
     pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
-    echo  "=====START Pct $pctstring $* $targ" 
+    echo  "=====START Pct $pctstring $* $targ"
     echo  "=====STATS Pct $pctstring ct: $totalct"
     rm -f core
     rm -f tmp1o tmp2n tmp3
-    rm -f tmp1err tmp2err tmp3err 
+    rm -f tmp1err tmp2err tmp3err
     rm -f tmp1erra  tmp2erra
     rm -f tmp1errb tmp1errc
     rm -f tmp1berr tmp2berr
     # testOfile OFn OF* are targets of dwarfdump -O file=testOfile
-    rm -f testOfile OFn  OFo1 OFn1 
+    rm -f testOfile OFn  OFo1 OFn1
     rm -f OFo2 OFn2
     rm -f OFo3 OFn3
 
+    #--format-suppress_utf8
+    fsu=""
+    if [ x$asciionly = "y" ]
+    then
+      fsu="--format-suppress_utf8"
+    fi
+
     # Running an old one till baselines established.
+
     #=======old
     echo "old start " `date "+%Y-%m-%d %H:%M:%S"`
     tmplist="$*"
     echo "======" $tmplist $targ >> $otimeout
     if [ x$wrtimeo != "x" ]
     then
-          $wrtimeo $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
+          $wrtimeo $olddw $fsu $tmplist  $targ 1>tmp1a 2>tmp1erra
     else
-          $olddw $tmplist  $targ 1>tmp1a 2>tmp1erra
+          $olddw $fsu $tmplist  $targ 1>tmp1a 2>tmp1erra
     fi
     unifyddname tmp1a tmp1o
     unifyddnameb tmp1erra tmp1err
@@ -804,7 +817,7 @@ runtest () {
     #=======old end
     # =======  Run -O file-path
     # To deal with the -O file=path naming dwarfdump output.
-    if [ -f testOfile ] 
+    if [ -f testOfile ]
     then
       echo "Test(old)  -O file=testOfile" `date "+%Y-%m-%d %H:%M:%S"`
       unifyddname testOfile OFo1
@@ -816,7 +829,7 @@ runtest () {
     rm -f testOfile
     # =======  END -O file-path
     #=======new
-    if [ -f testOfile ] 
+    if [ -f testOfile ]
     then
       echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     fi
@@ -824,7 +837,7 @@ runtest () {
     if [ x$VALGRIND = "xy" ]
     then
         #echo "valgrind -q --leak-check=full $newdw $suppresstree $* $targ"
-        valgrind -q --leak-check=full --show-leak-kinds=all --error-exitcode=7 $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+        valgrind -q --leak-check=full --show-leak-kinds=all --error-exitcode=7 $newdw $fsu $suppresstree $* $targ 1>tmp2a 2>tmp2erra
         if [ $? -eq 7 ]
         then
           echo "valgrind exit code 7, valgrinderrcount:$valgrinderrcount"
@@ -835,9 +848,9 @@ runtest () {
     else
       if [ "x$wrtimen" != "x" ]
       then
-        $wrtimen $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+        $wrtimen $newdw $suppresstree $fsu $* $targ 1>tmp2a 2>tmp2erra
       else
-        $newdw $suppresstree $* $targ 1>tmp2a 2>tmp2erra
+        $newdw $suppresstree $fsu $* $targ 1>tmp2a 2>tmp2erra
       fi
     fi
     tesb=tmp2aesb
@@ -904,15 +917,14 @@ runtest () {
     rm -f core
     rm -f tmp1o tmp2n tmp3
     rm -f tmp1erra  tmp2aesb  tmp2erra
-    rm -f tmp1err tmp2err tmp3err 
+    rm -f tmp1err tmp2err tmp3err
     rm -f tmp1errb tmp1errc
     rm -f tmp1berr tmp2berr
-    rm -f testOfile OFn  OFo1 OFn1 
+    rm -f testOfile OFn  OFo1 OFn1
     rm -f OFo2 OFn2
     rm -f OFo3 OFn3
 }
 # end 'runtest'
-
 
 echo "=============BEGIN THE TESTS==============="
 echo  "=====BLOCK individual tests and runtest.sh tests"
@@ -924,11 +936,9 @@ then
 fi
 if [ $withlibzstd = "yezstd" ]
 then
-  libopts="$libopts $libzstdlibdir" 
+  libopts="$libopts $libzstdlibdir"
   libopts="$libopts -lzstd"
 fi
-
-
 
 # BUILDS
 fuzzexe='
@@ -940,7 +950,7 @@ fuzz_die_cu_attrs
 fuzz_die_cu_attrs_loclist
 fuzz_die_cu_print
 fuzz_dnames
-fuzz_findfuncbypc 
+fuzz_findfuncbypc
 fuzz_gdbindex
 fuzz_globals
 fuzz_gnu_index
@@ -997,7 +1007,7 @@ echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
 
 # frame1 is a directory name, hence the build -o frame1/frame1
 echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
-  mklocal frame1 
+  mklocal frame1
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
     -I$libbld/libdwarf  \
     -gdwarf $nlizeopt \
@@ -1078,7 +1088,6 @@ runsingle ossfuzz59478.base  ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz5947
 
 runsingle ossfuzz56451.base  ./fuzz_dnames --testobj=$testsrc/ossfuzz56451/fuzz_dnames-4986494365597696
 
-
 runsingle ossfuzz56443.base  ./fuzz_crc_32 --testobj=$testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
 
 runsingle ossfuzz56492.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56492/fuzz_macro_dwarf5-6497277180248064
@@ -1088,7 +1097,6 @@ runsingle ossfuzz56462.base  ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz5646
 runsingle ossfuzz56474.base  ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz56474/fuzz_die_cu_attrs_loclist-4719938125561856
 
 runsingle ossfuzz56472.base  ./fuzz_simplereader_tu --testobj=$testsrc/ossfuzz56472/fuzz_simplereader_tu-6614412934119424
-
 
 runsingle ossfuzz56446.base  ./fuzz_dnames --testobj=$testsrc/ossfuzz56446/fuzz_dnames-4784811358420992
 
@@ -1115,7 +1123,6 @@ runsingle ossfuzz57516.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz57516
 runsingle ossfuzz57485.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz57485/fuzz_die_cu_attrs-6025735319191552
 runsingle ossfuzz57463.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz57463/fuzz_die_cu_attrs-5158380196200448
 
-
 runsingle ossfuzz57443.base  ./fuzz_srcfiles --testobj=$testsrc/ossfuzz57443/fuzz_srcfiles-6015429578719232
 
 runsingle ossfuzz57442.base  ./fuzz_rng --testobj=$testsrc/ossfuzz57442/fuzz_rng-5974595378479104
@@ -1131,7 +1138,6 @@ runsingle ossfuzz57292.base  ./fuzz_die_cu_print --testobj=$testsrc/ossfuzz57292
 runsingle ossfuzz57149.base  ./fuzz_srcfiles --testobj=$testsrc/ossfuzz57149/fuzz_srcfiles-6213793811398656
 
 runsingle ossfuzz57193.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz57193/fuzz_die_cu_offset-5215024489824256
-
 
 runsingle ossfuzz56958.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuzz56958/fuzz_stack_frame_access-6097292873826304
 
@@ -1182,11 +1188,9 @@ runsingle ossfuzz56636.base  ./fuzz_debug_addr_access --testobj=$testsrc/ossfuzz
 
 runsingle ossfuzz56548.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56548/fuzz_findfuncbypc-5073632331431936
 
-
 runsingle ossfuzz56530.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56530/fuzz_findfuncbypc-6272642689925120
 
 runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
-
 
 echo "=====START  $testsrc/test_pubsreader"
   echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
@@ -1211,9 +1215,9 @@ echo "=====START  $testsrc/test_pubsreader"
   diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout
   r=$?
   chkres $r "fail comparison pubsreader.base vs junk_pubsreaderout"
-  if [ $r -ne 0 ] 
+  if [ $r -ne 0 ]
   then
-    echo "FAIL diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout" 
+    echo "FAIL diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout"
     echo "To update mv $bldtest/junk_pubsreaderout $testsrc/pubsreader.base"
   fi
 
@@ -1244,7 +1248,7 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
   if [ $r -ne 0 ]
   then
     echo "FAIL diff $testsrc/bitoffset.base \
-      $bldtest/junk_bitoffset" 
+      $bldtest/junk_bitoffset"
     echo "To update mv $bldtest/junk_bitoffset \
       $testsrc/bitoffset.base"
   fi
@@ -1257,7 +1261,7 @@ echo "=====BUILD  $testsrc/test_arange"
   echo "$x"
   $x
   chkres $? 'check arange-error compiling test_arange.c\
-     failed' 
+     failed'
 echo "=====BUILD  $testsrc/test_setframe"
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
@@ -1267,7 +1271,7 @@ echo "=====BUILD  $testsrc/test_setframe"
   echo "$x"
   $x
   chkres $? 'check setframe-error compiling test_setframe.c\
-     failed' 
+     failed'
 
 if [ $compileonly = "y" ]
 then
@@ -1287,14 +1291,14 @@ runsingle test_setframe.base ./test_setframe ./test_setframe
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  $testsrc/supplementary/runtest.sh"
 mklocal supplementary
-  sh $testsrc/supplementary/runtest.sh 
+  sh $testsrc/supplementary/runtest.sh
   chkres $? "$testsrc/supplementary/runtest.sh"
 cd ..
 
 # For these, see runsingle. This subdir is no longer relevant.
 #echo "=====START  showsectiongroups  $testsrc/showsecgroupsdir/runtest.sh"
 #mklocal showsecgroupsdir
-#  sh $testsrc/showsecgroupsdir/runtest.sh 
+#  sh $testsrc/showsecgroupsdir/runtest.sh
 #  chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
 #cd ..
 
@@ -1302,21 +1306,36 @@ runversiontest $d2 -V
 
 echo "=====START  guilfanov  $testsrc/guilfanov/runtest.sh"
 mklocal guilfanov
-  sh $testsrc/guilfanov/runtest.sh 
+  sh $testsrc/guilfanov/runtest.sh
   # A fuzzed object which can crash libdwarf due to a bug.
   # hangs libdwarf/dwarfdump.
   chkres $? "$testsrc/guilfanov/runtest.sh"
 cd ..
 echo "=====START  guilfanov2  $testsrc/guilfanov2/runtest.sh"
 mklocal guilfanov2
-  sh $testsrc/guilfanov2/runtest.sh 
+  sh $testsrc/guilfanov2/runtest.sh
   # A fuzzed object which can encounter a double-free
   # but most likely not in libdwarf 0.1.2 or later.
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
-#  Fails in 0.5.0, 0.6.0, fixed in 0.7.0 
+# contains local variables spelled with utf-8 and non-ASCII bytes
+if  [  "x$asciionly" = "n" ]
+then
+  runtest $d1 $d2 $testsrc/utf8/test -i
+else
+  skipcount=`expr $skipcount +  1`
+fi
+runtest $d1 $d2 $testsrc/utf8/test --format-suppress_utf8 -i
+
+#  Fails in 0.5.0, 0.6.0, fixed in 0.7.0
 runtest $d1 $d2 $testsrc/shinibufa/fuzzed_input_file
+
+# Test of DWARF5 line table includes from
+# an unknown shared library.debug (nothing executable
+# here). This had erroneous output (duplicated include path)
+# from recent builds of dwarfdump 11 Aug 2023
+runtest $d1 $d2 $testsrc/debugso20230811.debug -i -vvv
 
 # Early test of -h.
 runtest $d1 $d2 foo.o -h
@@ -1339,16 +1358,15 @@ runtest $d1 $d2 ossfuzz51183/ossfuzz54358-emptyfile -i
 # Testcase uses DW_FORM_strx3.
 # Similar problem exists with DW_FORM_addrx3.
 # Neither handled properly until 24 January 2023 v0.6.0
-runtest $d1 $d2 kaufmann2/ct-bad.o -a -M -vv 
+runtest $d1 $d2 kaufmann2/ct-bad.o -a -M -vv
 
 runtest $d1 $d2 data16/data16.bin               -a -M
 runtest $d1 $d2 implicitconst/implicitconst.bin -a -M
 runtest $d1 $d2 offsetfromlowpc/offsetfromlowpc.bin -a -M
 runtest $d1 $d2 dwgenc/dwgenc.bin -a -M
 
-
 # So lcov sees this option used.
-runtest $d1 $d2 supplementary/dwarfstringsup.o --print-debug-sup 
+runtest $d1 $d2 supplementary/dwarfstringsup.o --print-debug-sup
 runtest $d1 $d2 supplementary/dwarfstringsup.o -i -cs
 runtest $d1 $d2 supplementary/dwarfstringsup.o -i -cg
 
@@ -1413,8 +1431,8 @@ runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -v
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -vv
 runtest $d1 $d2 debugnames/dwarfdump    -i -G --print-debug-names -vv
-runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names 
-runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-pubnames 
+runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names
+runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-pubnames
 runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -v
 runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -vv
 
@@ -1489,12 +1507,12 @@ runtest $d1 $d2 \
  ossfuzz40802/clusterfuzz-testcase-fuzz_init_binary-5538015955517440.fuzz -a -F -f
 
 runtest $d1 $d2 \
-  ossfuzz40895/clusterfuzz-testcase-fuzz_init_binary-4805508242997248 -a 
+  ossfuzz40895/clusterfuzz-testcase-fuzz_init_binary-4805508242997248 -a
 runtest $d1 $d2 \
   ossfuzz40895/clusterfuzz-testcase-minimized-fuzz_init_binary-4805508242997248 -a
 
 runtest $d1 $d2 \
-  ossfuzz40896/clusterfuzz-testcase-fuzz_init_path-5337872492789760 -a 
+  ossfuzz40896/clusterfuzz-testcase-fuzz_init_path-5337872492789760 -a
 runtest $d1 $d2 \
   ossfuzz40896/clusterfuzz-testcase-minimized-fuzz_init_path-5337872492789760 -a
 
@@ -1506,10 +1524,10 @@ runtest $d1 $d2 \
 #These two were a libelf bug. Lets see how libdwarf elf reading
 #deals with it.
 runtest $d1 $d2 \
-  sarubbo-a/00031-elfutils-memalloc-__libelf_set_rawdata_wrlock 
+  sarubbo-a/00031-elfutils-memalloc-__libelf_set_rawdata_wrlock
 
 runtest $d1 $d2 \
-  sarubbo-b/00011-elfutils-memalloc-allocate_elf 
+  sarubbo-b/00011-elfutils-memalloc-allocate_elf
 
 # SHF_COMPRESSED testcases.
 if [ x$withlibz = "xnolibz" ]
@@ -1517,9 +1535,9 @@ then
   echo "=====SKIP COMPRESSED tests, no libz available"
   skipcount=`expr $skipcount +  6 `
 else
-  runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v 
-  runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv 
-  runtest $d1 $d2 compressed-be/testprog-be-dw4 -ka 
+  runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v
+  runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv
+  runtest $d1 $d2 compressed-be/testprog-be-dw4 -ka
   runtest $d1 $d2 compressed-le/testprog-le-dw4 -b -v
   runtest $d1 $d2 compressed-le/testprog-le-dw4 -a -vvvv
   runtest $d1 $d2 compressed-le/testprog-le-dw4 -ka
@@ -1542,7 +1560,7 @@ runtest $d1 $d2 kaletta2/minimal_fdebug_types_section.o \
 # any use of the Elf GROUP flag.
 # No documentation I can find explains how it
 # is supposed to work with these people's linker.
-runtest $d1 $d2  kaletta/test.armlink.elf -i -vv 
+runtest $d1 $d2  kaletta/test.armlink.elf -i -vv
 runtest $d1 $d2  kaletta/test.o  -i -vv
 
 # example of command mistakes. Too many object names
@@ -1583,7 +1601,7 @@ runtest $d1 $d2 moya3/ranges_base.o    -a -G -M -v
 runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v
 runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=$testsrc/moya3/ranges_base.o
 
-# This deliberately has a duplicate id of a section 
+# This deliberately has a duplicate id of a section
 # in two different groups.  Created by binary edit of
 # archive.o Before May 2023 this
 # would get an error even though the section involved
@@ -1596,9 +1614,6 @@ echo "=====START  $testsrc/testoffdie runtest.sh  $withlibz $withlibzstd"
     sh $testsrc/testoffdie/runtest.sh  $withlibz $withlibzstd
     chkres $? "$testsrc/testoffdie/runtest.sh"
   cd ..
-
-
-
 
 # .gnu_debuglink and .note.gnu.build-id  section tests.
 if [ x$endian = "xB" ]
@@ -1615,18 +1630,18 @@ fi
 
 #gcc using -gsplit-dwarf option
 # debuglink via DWARF4. frame one via DWARF5
-runtest $d1 $d2 gsplitdwarf/getdebuglink     --print-fission -a 
+runtest $d1 $d2 gsplitdwarf/getdebuglink     --print-fission -a
 runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --print-fission -a
 runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=$testsrc/gsplitdwarf/getdebuglink --print-fission -a
 runtest $d1 $d2 gsplitdwarf/frame1.dwo       -a --print-fission
-runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=$testsrc/gsplitdwarf/frame1 -a --print-fission 
+runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=$testsrc/gsplitdwarf/frame1 -a --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission
 # Same but now with -vv
-runtest $d1 $d2 gsplitdwarf/getdebuglink -a -vv --print-fission 
+runtest $d1 $d2 gsplitdwarf/getdebuglink -a -vv --print-fission
 runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo -a -vv --print-fission
 runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=$testsrc/gsplitdwarf/getdebuglink -a -vv --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1.dwo -a -vv --print-fission
-runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=$testsrc/gsplitdwarf/frame1 -a -vv --print-fission 
+runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=$testsrc/gsplitdwarf/frame1 -a -vv --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission -vv
 
 # tiny and severly damaged 'object' file.
@@ -1634,30 +1649,29 @@ runtest $d1 $d2 kapus/bad.obj -a
 
 #DWARF5 with .debug_rnglists and .debug_loclists
 runtest $d1 $d2 moya4/hello -ka -v
-runtest $d1 $d2 moya4/hello -a -v -M 
+runtest $d1 $d2 moya4/hello -a -v -M
 runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print-raw-rnglists
-runtest $d1 $d2 moya2/filecheck.dwo -ka 
+runtest $d1 $d2 moya2/filecheck.dwo -ka
 # Checking .debug_str_offsets used properly
-runtest $d1 $d2 moya5/hello.dwo -a -M -v --print-str-offsets 
+runtest $d1 $d2 moya5/hello.dwo -a -M -v --print-str-offsets
 
 runtest $d1 $d2 moya5/hello.dwo --file-tied=$testsrc/moya5/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya5/hello -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya6/hello.dwp -a -M -v --print-str-offsets --print-strings
 runtest $d1 $d2 moya6/hello.dwp --file-tied=$testsrc/moya6/hello -a -M -v --print-str-offsets --print-strings
-runtest $d1 $d2 moya7/read-line-table-program-leak-test -a -M -v 
-runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=$testsrc/moya-loc/loclists -a -M -v 
+runtest $d1 $d2 moya7/read-line-table-program-leak-test -a -M -v
+runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=$testsrc/moya-loc/loclists -a -M -v
 runtest $d1 $d2 moya-loc/loclists.dwp --file-tied=$testsrc/moya-loc/loclists -ka
 
-runtest $d1 $d2 moya8/index-out-of-bounds-test  -a -M -v 
-runtest $d1 $d2 moya9/oob-repro -a -M -v --print-str-offsets --print-strings 
-runtest $d1 $d2 moya-rb/ranges3.dwp -a -M -v -a -v --file-tied=$testsrc/moya-rb/ranges3 
-runtest $d1 $d2 moya-rb/ranges3 -a -M -v 
-
+runtest $d1 $d2 moya8/index-out-of-bounds-test  -a -M -v
+runtest $d1 $d2 moya9/oob-repro -a -M -v --print-str-offsets --print-strings
+runtest $d1 $d2 moya-rb/ranges3.dwp -a -M -v -a -v --file-tied=$testsrc/moya-rb/ranges3
+runtest $d1 $d2 moya-rb/ranges3 -a -M -v
 
 runtest $d1 $d2 rnglists/readelfobj -vv  --print-raw-loclists --print-raw-rnglists
 runtest $d1 $d2 rnglists/readelfobj -ka
 runtest $d1 $d2 rnglists/linelen.o  -v --print-raw-loclists --print-raw-rnglists
-runtest $d1 $d2 rnglists/linelen.o  -ka 
+runtest $d1 $d2 rnglists/linelen.o  -ka
 runtest $d1 $d2 rnglists/extractdba.o -v --print-raw-loclists --print-raw-rnglists
 runtest $d1 $d2 rnglists/extractdba.o -v  -ka
 runtest $d1 $d2 rnglists/pe_map.o -v --print-raw-loclists --print-raw-rnglists
@@ -1708,14 +1722,12 @@ runtest $d1 $d2 liu/OOB0517_02.elf                 -vvv --print-fission
 runtest $d1 $d2 liu/OOB_read4.elf                       --print-fission
 runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
 
-
-
-# See mustacchi/README. 
+# See mustacchi/README.
 # Clang generates a slightly unusual relocation set for -m32.
 # As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
 echo "=====START  $testsrc/mustacchi runtest.sh nolibelf"
   mklocal mustacchi
-    sh $testsrc/mustacchi/runtestnolibelf.sh 
+    sh $testsrc/mustacchi/runtestnolibelf.sh
     chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
   cd ..
 
@@ -1746,29 +1758,29 @@ runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr --format-extensions
 
 # PE basic tests.
-runtest $d1 $d2 pe1/libexamine-0.dll --print-all 
+runtest $d1 $d2 pe1/libexamine-0.dll --print-all
 runtest $d1 $d2 pe1/libexamine-0.dll --print-info --format-attr-name --format-global-offsets
 runtest $d1 $d2 pe1/libexamine-0.dll --print-info --format-attr-name -vvv
-runtest $d1 $d2 pe1/libexamine-0.dll --print-strings 
+runtest $d1 $d2 pe1/libexamine-0.dll --print-strings
 
-runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --print-all 
-runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --print-info --format-attr-name -vvv 
-runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --no-follow-debuglink --print-all 
-runtest $d1 $d2 pe1/kask-dwarfdump_64.exe  --no-follow-debuglink --print-info --format-attr-name -vvv 
+runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --print-all
+runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --print-info --format-attr-name -vvv
+runtest $d1 $d2 pe1/kask-dwarfdump_64.exe --no-follow-debuglink --print-all
+runtest $d1 $d2 pe1/kask-dwarfdump_64.exe  --no-follow-debuglink --print-info --format-attr-name -vvv
 
 # mach-o basic tests.
-runtest $d1 $d2 macho-kask/simplereaderi386   -a 
-runtest $d1 $d2 macho-kask/simplereaderi386   -b 
+runtest $d1 $d2 macho-kask/simplereaderi386   -a
+runtest $d1 $d2 macho-kask/simplereaderi386   -b
 runtest $d1 $d2 macho-kask/simplereaderi386   -a -vvv
-runtest $d1 $d2 macho-kask/simplereaderx86_64 -a 
-runtest $d1 $d2 macho-kask/simplereaderx86_64 -b 
+runtest $d1 $d2 macho-kask/simplereaderx86_64 -a
+runtest $d1 $d2 macho-kask/simplereaderx86_64 -b
 runtest $d1 $d2 macho-kask/simplereaderx86_64 -a -vvv
 # The following 2 should give the same output as the first,
 # in spite of naming a simple text placeholder.
 # now the mach-o-object32/63 placeholders are useless.
-#runtest $d1 $d2 macho-kask/mach-o-object32    -a 
+#runtest $d1 $d2 macho-kask/mach-o-object32    -a
 #runtest $d1 $d2 macho-kask/mach-o-object32    -a  -vvv
-#runtest $d1 $d2 macho-kask/mach-o-object64    -a 
+#runtest $d1 $d2 macho-kask/mach-o-object64    -a
 #runtest $d1 $d2 macho-kask/mach-o-object64    -a  -vvv
 # This is G4 big-endian with dSYM
 runtest $d1 $d2 macho-kask/dwarfdump_G4    -a  -vvv
@@ -1804,11 +1816,11 @@ runtest $d1 $d2 enciso8/test-clang-wpieb-dw5.o -s --print-str-offsets
 # These have .debug_str_offsets sections, but they are empty
 # or bogus (created from a draft, not final, DWARF5, I think)
 # so do not expect much output.
-runtest $d1 $d2 emre3/a.out.dwp --print-str-offsets 
+runtest $d1 $d2 emre3/a.out.dwp --print-str-offsets
 runtest $d1 $d2 emre3/foo.dwo --print-str-offsets
-runtest $d1 $d2 emre3/main.dwo --print-str-offsets 
+runtest $d1 $d2 emre3/main.dwo --print-str-offsets
 runtest $d1 $d2 emre5/test33_64_opt_fpo_split.dwp
-runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp 
+runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp
 runtest $d1 $d2 emre6/class_64_opt_fpo_split --print-gnu-debuglink
 
 runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b
@@ -1823,7 +1835,6 @@ runtest $d1 $d2   camp/empty.o -a -x groupnumber=2
 # DW201712-001: Was failing to check augmentation length for fde.
 runtest $d1 $d2   sarubbo-10/1.crashes.bin -a -b -d -e -f -F -g -G -i -I \
  -m -M -N -p -P -R -r -s -ta -w -y
-
 
 # These all involved bounds violations so should error off
 # fairly early.
@@ -1861,7 +1872,6 @@ mklocal nolibelf
   sh $testsrc/nolibelf/runtest.sh
   chkres $?  $testsrc/nolibelf/runtest.sh
 cd ..
-
 
 # All the following have been fuzzed and some have
 # elf that is so badly damaged it is unusable.
@@ -1920,7 +1930,6 @@ runtest $d1 $d2 sarubbo-2/00027-libdwarf-heapoverflow-_dwarf_skim_forms -a
 # in signed leb reading.
 runtest $d1 $d2 sarubbo-2/00050-libdwarf-negate-itself -a
 
-
 # This exposed a different off-end in abbrev reading.
 runtest $d1 $d2   sarubbo/1112.crashes -a
 
@@ -1931,13 +1940,13 @@ runtest $d1 $d2 parodi/TestA2l.elf -ka
 
 # Exposed failure to check DW_FORM_string in _dwarf_get_size_of_val(),
 # which is the real contribution of this fuzzed-object testcase.
-# Libelf as of Ubuntu 16.04  will try to malloc an absurd 
+# Libelf as of Ubuntu 16.04  will try to malloc an absurd
 # section size of # 0x8000000110 for .debug_abbrev.
 # That is, of course, way larger than the actual size of the object file.
 runtest $d1 $d2   sarubbo/test433.crashes -a
 
 # Testing DW201609-001 vulnerability.
-# This will pass. Valid dwarf. 
+# This will pass. Valid dwarf.
 runtest $d1 $d2   DW201609-001/test1.o -i
 # This will get an error, the object was patched
 # to demonstrate the vulnerability is fixed.
@@ -1958,35 +1967,35 @@ runtest $d1 $d2   DW201609-002/DW201609-002-poc  -i
 # Testing DW_AT_discr_list
 runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i
 runtest $d1 $d2  grumbach/Test_ODB_Ada_record_types09_pkg_.o -i -vvv
-runtest $d1 $d2  grumbach/test2.o -i -vvv 
-runtest $d1 $d2  grumbach/test_odb_ada_record_types12_pkg_.o -i -vvv 
-runtest $d1 $d2  grumbach/test4.o -i -vvv 
-# Testing DW_AT_GNU_numerator, DW_AT_GNU_denominator and 
+runtest $d1 $d2  grumbach/test2.o -i -vvv
+runtest $d1 $d2  grumbach/test_odb_ada_record_types12_pkg_.o -i -vvv
+runtest $d1 $d2  grumbach/test4.o -i -vvv
+# Testing DW_AT_GNU_numerator, DW_AT_GNU_denominator and
 # DW_AT_GNU_bias DWARF attributes.
-runtest $d1 $d2  grumbach/test_bias.o -i -vvv 
-runtest $d1 $d2  grumbach/test_fixed.o -i -vvv 
+runtest $d1 $d2  grumbach/test_bias.o -i -vvv
+runtest $d1 $d2  grumbach/test_fixed.o -i -vvv
 runtest $d1 $d2  grumbach/test_bias.o -ka
 runtest $d1 $d2  grumbach/test_fixed.o -ka
 
 # The object has a bad ELF section type. So should
 # generate an error.  Should not coredump.
-runtest $d1 $d2  xqx/awbug6.elf -i 
+runtest $d1 $d2  xqx/awbug6.elf -i
 
 # This test has odd abbreviation codes. See that we notice them.
-runtest $d1 $d2  xqx-b/aw.elf -kb 
-runtest $d1 $d2  xqx-b/aw.elf -ka 
-runtest $d1 $d2  xqx-b/aw.elf -a 
-runtest $d1 $d2  xqx-b/aw.elf -f 
-runtest $d1 $d2  xqx-b/aw.elf -F 
-runtest $d1 $d2  xqx-b/awbug5.elf -kb 
-runtest $d1 $d2  xqx-b/awbug5.elf -ka 
-runtest $d1 $d2  xqx-b/awbug5.elf -a 
-runtest $d1 $d2  xqx-b/awbug5.elf -f 
-runtest $d1 $d2  xqx-b/awbug5.elf -F 
+runtest $d1 $d2  xqx-b/aw.elf -kb
+runtest $d1 $d2  xqx-b/aw.elf -ka
+runtest $d1 $d2  xqx-b/aw.elf -a
+runtest $d1 $d2  xqx-b/aw.elf -f
+runtest $d1 $d2  xqx-b/aw.elf -F
+runtest $d1 $d2  xqx-b/awbug5.elf -kb
+runtest $d1 $d2  xqx-b/awbug5.elf -ka
+runtest $d1 $d2  xqx-b/awbug5.elf -a
+runtest $d1 $d2  xqx-b/awbug5.elf -f
+runtest $d1 $d2  xqx-b/awbug5.elf -F
 
 runtest $d1 $d2  xqx-c/awbug6.elf -a
 
-# Corrupted object files 
+# Corrupted object files
 runtest $d1 $d2  liu/divisionbyzero02.elf -a
 runtest $d1 $d2  liu/divisionbyzero.elf -a
 runtest $d1 $d2  liu/free_invalid_address.elf -a
@@ -2005,7 +2014,7 @@ else
   runtest $d1 $d2  liu/NULLderefer0505_01.elf -a
 fi
 runtest $d1 $d2  liu/NULLdereference0522.elf -a
-runtest $d1 $d2  liu/NULLdeference0522c.elf -a 
+runtest $d1 $d2  liu/NULLdeference0522c.elf -a
 runtest $d1 $d2  liu/OOB0505_01.elf -a
 runtest $d1 $d2  liu/OOB0505_02_02.elf -a
 runtest $d1 $d2  liu/OOB0505_02.elf -a
@@ -2014,7 +2023,7 @@ runtest $d1 $d2  liu/OOB0517_01.elf -a
 # OOB0517_02.elf has a bogus non-dwo section name
 # Because of the bogosity in the sections
 # one cannot run all tests on this, nothing
-# useful happens. 
+# useful happens.
 runtest $d1 $d2  liu/OOB0517_02.elf -a
 # There is a bogus .debug_str section, lets show it.
 runtest $d1 $d2  liu/OOB0517_02.elf -s
@@ -2030,7 +2039,6 @@ runtest $d1 $d2  liu/outofbound01.elf -a
 runtest $d1 $d2  liu/outofbound01.elf -ka
 runtest $d1 $d2  liu/outofboundread2.elf -a
 runtest $d1 $d2  liu/outofboundread.elf -a
-
 
 #  For line table variants checking.
 for x in '-x line5=std' '-x line5=s2l' '-x line5=orig' '-x line5=orig2l'
@@ -2049,18 +2057,18 @@ runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v 
 runtest $d1 $d2  mucci/main.o -R -ka  -v -v -v -v -v -v $x
 done
 
-runtest $d1 $d2 augmentation/a.out -f 
+runtest $d1 $d2 augmentation/a.out -f
 runtest $d1 $d2 augmentation/a.out -f  -vvv
-runtest $d1 $d2 corruptdwarf-a/simplereader.elf -i  
-runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a  
+runtest $d1 $d2 corruptdwarf-a/simplereader.elf -i
+runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a
 runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a  -vvv
 
 runtest $d1 $d2 irixn32/dwarfdump -i -x name=./dwarfdump.conf -x abi=mips -g
 
 # Test support for DW_FORM_GNU_strp_alt
-runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=$testsrc/hughes/krb5-1.11.3-38.fc20.x86_64 
+runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=$testsrc/hughes/krb5-1.11.3-38.fc20.x86_64
 
-# for two-level line tables 
+# for two-level line tables
 runtest $d1 $d2 emre4/test19_64_dbg -l
 runtest $d1 $d2 emre4/test19_64_dbg -a
 runtest $d1 $d2 emre4/test19_64_dbg -ka
@@ -2078,7 +2086,6 @@ runtest $d1 $d2 emre4/test19_64_dbg -ka -v
 runtest $d1 $d2 emre4/test3_64_dbg -l -v
 runtest $d1 $d2 emre4/test3_64_dbg -a -v
 runtest $d1 $d2 emre4/test3_64_dbg -ka -v
-
 
 # This one has .debug_cu_index
 # Some duplication with generic test loop.
@@ -2102,15 +2109,14 @@ runtest $d1 $d2 williamson/heap_buffer_overflow_01.exe -i
 # The following has a bad info value in a rela. Coredumped dwarfdump.
 runtest $d1 $d2 williamson/heap_vulnerability_20150201 -i
 
-# duplicatedattr test dir has stuff to test. FIXME 
+# duplicatedattr test dir has stuff to test. FIXME
 
 # This should not coredump dwarfdump. Did as of Jan 1, 2015
 runtest $d1 $d2 comdatex/example.o -i
 runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=2
 runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 
-
-# Results are so large that if there are differences 
+# Results are so large that if there are differences
 # the diffs will take hours, allow ignoring these.
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
@@ -2133,12 +2139,12 @@ runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
 runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=$testsrc/debugfissionb/ld-new
 runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=$testsrc/debugfissionb/ld-new
 runtest $d1 $d2  debugfissionb/ld-new -I
-runtest $d1 $d2  debugfissionb/ld-new -a  
+runtest $d1 $d2  debugfissionb/ld-new -a
 echo "Testing -i --format-expr-ops-joined . a -d for exprs"
 runtest $d1 $d2  debugfissionb/ld-new -i --format-expr-ops-joined
-runtest $d1 $d2  debugfissionb/ld-new -ka  
+runtest $d1 $d2  debugfissionb/ld-new -ka
 #The following is also --format-expr-ops-joined
-runtest $d1 $d2  emre4/test19_64_dbg --file-name=./testdwarfdump.conf  -i -v 
+runtest $d1 $d2  emre4/test19_64_dbg --file-name=./testdwarfdump.conf  -i -v
 
 # A very short debug_types file. Used to result in error due to bug.
 runtest $d1 $d2 emre/input.o -a
@@ -2147,13 +2153,12 @@ runtest $d1 $d2 emre/input.o -a
 runtest $d1 $d2 emre2/emre.ex -I
 runtest $d1 $d2 emre2/emre.ex --print-gnu-debuglink
 
-runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=$testsrc/emre5/test33_64_opt_fpo_split 
-runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=$testsrc/emre5/test33_64_opt_fpo_split 
-
+runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=$testsrc/emre5/test33_64_opt_fpo_split
+runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=$testsrc/emre5/test33_64_opt_fpo_split
 
 echo "=====START  $testsrc/baddie1/runtest.sh"
 mklocal baddie1
-  sh $testsrc/baddie1/runtest.sh ../$d2 
+  sh $testsrc/baddie1/runtest.sh ../$d2
   chkres $?  $testsrc/baddie1
 cd ..
 
@@ -2161,13 +2166,13 @@ cd ..
   # operations
 echo "=====START  $testsrc/offsetfromlowpc/runtest.sh"
 mklocal offsetfromlowpc
-    sh $testsrc/offsetfromlowpc/runtest.sh 
+    sh $testsrc/offsetfromlowpc/runtest.sh
     chkres $?  $testsrc/offsetfromlowpc/runtest.sh
   cd ..
 
 echo "=====START  $testsrc/strsize/runtest.sh"
   mklocal strsize
-    sh $testsrc/strsize/runtest.sh 
+    sh $testsrc/strsize/runtest.sh
     chkres $? $testsrc/strsize
   cd ..
 # tests simple reader and more than one dwarf_init* interface
@@ -2175,13 +2180,13 @@ echo "=====START  $testsrc/strsize/runtest.sh"
 # here kaufmann/t.o is tested as input to simplereader.
 echo "=====START $testsrc/debugfissionb runtest.sh ../simplereader"
 mklocal debugfissionb
-  sh $testsrc/debugfissionb/runtest.sh  
+  sh $testsrc/debugfissionb/runtest.sh
   chkres $?  $testsrc/debugfissionb-simplreader
 cd ..
 
 echo "=====START $testsrc/debugfission runtest.sh ../$d2"
 mklocal debugfission
-  sh $testsrc/debugfission/runtest.sh  ../$d2 
+  sh $testsrc/debugfission/runtest.sh  ../$d2
   chkres $?  "$testsrc/debugfission/runtest.sh ../$d2"
 cd ..
 
@@ -2193,7 +2198,7 @@ echo "=====START  $testsrc/data16 runtest.sh ../$d2"
 
 if [ $NLIZE = 'n' ]
 then
-  runtest $d1 $d2   sarubbo-8/1.crashes.bin  -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
+  runtest $d1 $d2   sarubbo-8/1.crashes.bin  -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y
 else
   skipcount=`expr $skipcount + 1`
   echo "=====SKIP  sarubbo-8 with NLIZE"
@@ -2201,8 +2206,8 @@ fi
 
 if [ $NLIZE = 'n' ]
 then
-  runtest  $d1 $d2   sarubbo-9/3.crashes.bin -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y 
-  chkres $?  sarubbo-8 
+  runtest  $d1 $d2   sarubbo-9/3.crashes.bin -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y
+  chkres $?  sarubbo-8
 else
   echo "=====SKIP  sarubbo-9 with NLIZE"
   skipcount=`expr $skipcount + 1`
@@ -2225,7 +2230,6 @@ runtest $d1 $d2 juszkiewicz/t1.o -a
 runtest $d1 $d2 juszkiewicz/t2.o -a -v
 runtest $d1 $d2 juszkiewicz/tcombined.o -a
 
-
 # Prints DIEs with the name or value DW_AT_low_pc
 runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_low_pc
 runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_low_pc -W
@@ -2235,7 +2239,7 @@ runtest $d1 $d2 enciso5/sample_S_option.o  -S vmatch=DW_AT_low_pc -W
 # Prints DIEs with the name or value DW_AT_high_pc
 runtest $d1 $d2 enciso5/sample_S_option.o  -S match=DW_AT_high_pc
 # Prints DIEs with the name or value 0x0000001c
-runtest $d1 $d2 enciso5/sample_S_option.o  -S match=0x0000001c 
+runtest $d1 $d2 enciso5/sample_S_option.o  -S match=0x0000001c
 # Prints DIEs with the name or value value DW_OP_plus
 runtest $d1 $d2 enciso5/sample_S_option.o  -S any=DW_OP_plus
 # Following is for URI testing.
@@ -2254,16 +2258,16 @@ runtest $d1 $d2 enciso5/sample_S_option.o  -S regex="reg%5b0-9]"
 # The following prints a single DIE, just basic information about it.
 runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg
 # With -W, both parent and child data about the DIE is printed.
-runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -W 
+runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -W
 # With -W, just parent data about the DIE is printed.
-runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wp 
+runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wp
 # With -W, just children data about the DIE is printed.
-runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wc 
+runtest $d1 $d2 enciso5/sample_W_option.o  -S match=gg -Wc
 
 # The next are on the clang compiler v 2.9, which is making some mistakes.
 runtest $d1 $d2 vlasceanu/a.out -i -M
-runtest $d1 $d2 vlasceanu/a.out -a 
-runtest $d1 $d2 vlasceanu/a.out -ka 
+runtest $d1 $d2 vlasceanu/a.out -a
+runtest $d1 $d2 vlasceanu/a.out -ka
 
 # Put uri in name. We don't do uri conversion on the input
 # so these fail.
@@ -2281,7 +2285,7 @@ runtest $d1 $d2 moshe%2fhello  --format-suppress-uri -i
 runtest $d1 $d2 moshe%2fhello  -q -i
 
 # The -h option exists now
-runtest $d1 $d2  moshe/hello -h 
+runtest $d1 $d2  moshe/hello -h
 runtest $d1 $d2  moshe/hello -a -vvv -R -M
 runtest $d1 $d2  moshe/hello -a -vvv -R -M -g
 runtest $d1 $d2  moshe/hello -ka -vvv -R -M
@@ -2294,20 +2298,20 @@ runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/dd2g4.5dwarf-4 -ka -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -a  -vvv -R -M
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -vvv -R -M
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ku 
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ku
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ku -kuf
-# ka p, where we test a warning message is generated 
+# ka p, where we test a warning message is generated
 # (p is printing option)
-# And should run like just -p (as of Jan 2015 erroneously 
+# And should run like just -p (as of Jan 2015 erroneously
 # did many checks).
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -p  -R -M 
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -p  -R -M
 # normal ka, full checks
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka  -R -M 
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka  -R -M
 # ka P, where P means print CU names per compiler.
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M 
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -P  -R -M
 # ka P kd, where so print CU names and error summary per compiler
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M 
-runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i  
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -ka -kd -P  -R -M
+runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -g
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d
 runtest $d1 $d2  dwarf4/ddg4.5dwarf-4 -i -d -v
@@ -2328,11 +2332,11 @@ runtest $d1 $d2  marinescu2/hello.o.div -a
 # The second a filepath for each line
 # The third prints details on the line operators.
 # In these 3 the name is long, so -l and -l -v print differently.
-runtest $d1 $d2  wynn/unoptimised.axf -l 
+runtest $d1 $d2  wynn/unoptimised.axf -l
 runtest $d1 $d2  wynn/unoptimised.axf -l -v
 runtest $d1 $d2  wynn/unoptimised.axf -l -vvv
 # These have short names, so -l -v prints like -l  prints.
-runtest $d1 $d2  mucci/stream.o -l 
+runtest $d1 $d2  mucci/stream.o -l
 runtest $d1 $d2  mucci/stream.o -l  -v
 runtest $d1 $d2  mucci/stream.o -l  -vvv
 
@@ -2347,17 +2351,17 @@ runtest $d1 $d2  enciso2/template.elf -ka -R -M
 runtest $d1 $d2  enciso2/template.elf -ka -kxe -R -M
 runtest $d1 $d2  enciso2/template.elf -kxe -R -M
 runtest $d1 $d2  enciso2/test_templates.o  -a -R -M
-runtest $d1 $d2  enciso2/test_templates.o  -a -R 
+runtest $d1 $d2  enciso2/test_templates.o  -a -R
 runtest $d1 $d2  enciso2/test_templates.o  --print-pubnames
-runtest $d1 $d2  x86/dwarfdumpv4.3 -S match=main 
-runtest $d1 $d2  x86/dwarfdumpv4.3 -S any=leb 
-runtest $d1 $d2  x86/dwarfdumpv4.3 -S 'regex=u.*leb' 
+runtest $d1 $d2  x86/dwarfdumpv4.3 -S match=main
+runtest $d1 $d2  x86/dwarfdumpv4.3 -S any=leb
+runtest $d1 $d2  x86/dwarfdumpv4.3 -S 'regex=u.*leb'
 runtest $d1 $d2  wynn/unoptimised.axf  -f   -x abi=arm
 runtest $d1 $d2  wynn/unoptimised.axf  -kf  -x abi=arm
-runtest $d1 $d2  arm/armcc-test-dwarf2 -f   -x abi=arm 
-runtest $d1 $d2  arm/armcc-test-dwarf2 -ka  -x abi=arm 
-runtest $d1 $d2  arm/armcc-test-dwarf2 -ka -kxe -x abi=arm 
-runtest $d1 $d2  arm/armcc-test-dwarf2 -kxe -x abi=arm 
+runtest $d1 $d2  arm/armcc-test-dwarf2 -f   -x abi=arm
+runtest $d1 $d2  arm/armcc-test-dwarf2 -ka  -x abi=arm
+runtest $d1 $d2  arm/armcc-test-dwarf2 -ka -kxe -x abi=arm
+runtest $d1 $d2  arm/armcc-test-dwarf2 -kxe -x abi=arm
 runtest $d1 $d2  arm/armcc-test-dwarf3 -f  -x abi=arm
 runtest $d1 $d2  arm/armcc-test-dwarf3 -ka  -x abi=arm
 runtest $d1 $d2  arm/armcc-test-dwarf3 -ka  -kxe -x abi=arm
@@ -2365,17 +2369,16 @@ runtest $d1 $d2  arm/armcc-test-dwarf3 -kxe -x abi=arm
 runtest $d1 $d2  lloyd/arange.elf  -r
 runtest $d1 $d2  lloyd/arange.elf  -kr
 
-# With mips abi and C dwarfdump we get error 
+# With mips abi and C dwarfdump we get error
 # DW_DLE_FRAME_REGISTER_UNREPRESENTABLE.  That is normal, expected.
 # It is not MIPS and MIPS is just wrong here.  Testing it anyway!
 runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 
 echo "=====START  $testsrc/findcu/runtest.sh  $withlibz $withlibzstd"
-  mklocal findcu 
-    sh $testsrc/findcu/runtest.sh   $withlibz $withlibzstd 
+  mklocal findcu
+    sh $testsrc/findcu/runtest.sh   $withlibz $withlibzstd
     chkres $? "$testsrc/findcu/cutest-of-a-libdwarf-interface"
   cd ..
-
 
 libopts=''
 if [ $withlibz = "withlibz" ]
@@ -2396,7 +2399,7 @@ echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
 
 echo "=====START   $testsrc/dwgenc/runtest.sh"
   mklocal dwgenc
-    sh $testsrc/dwgenc/runtest.sh 
+    sh $testsrc/dwgenc/runtest.sh
     r=$?
     chkresn $r "$testsrc/dwgenc/runtest.sh" 1
   cd ..
@@ -2508,7 +2511,7 @@ echo "ismacos : $ismacos"
 
 if [ $ismacos = "n" ]
 then
-  runsingle test_harmlessb.base ./test_harmless $suppresstree 
+  runsingle test_harmlessb.base ./test_harmless $suppresstree
   skipcount=`expr $skipcount +  1 `
 
   runsingle test_harmlessc.base ./test_harmless $suppresstree  -f \
@@ -2523,7 +2526,7 @@ runsingle test_sectionnames.base  ./test_sectionnames  \
 
 runsingle test_sectionnamesb.base ./test_sectionnames \
   $testsrc/testfindfuncbypc/findfuncbypc.exe1 \
-  $testsrc/convey/testesb.c.o 
+  $testsrc/convey/testesb.c.o
 
 runsingle test_arangeb.base ./test_arange  \
   $testsrc/irixn32/dwarfdump
@@ -2549,7 +2552,6 @@ runsingle test_findfuncbypcb4.base ./findfuncbypc  \
 runsingle test_findfuncbypcb5.base ./findfuncbypc  \
   --printdetails --pc=0x36a4 $testsrc/testfindfuncbypc/findfuncbypc.exe1
 
-
 runsingle test_simplereaderb.base ./simplereader \
   $testsrc/corruptdwarf-a/simplereader.elf
 runsingle test_simplereaderb1.base ./simplereader \
@@ -2571,7 +2573,7 @@ runsingle test_showsectiongroupsb.base  \
   $testsrc/debugfission/archive.o \
   $testsrc/debugfission/archive.dwo  \
   $testsrc/debugfission/target.o \
-  $testsrc/debugfission/target.dwo 
+  $testsrc/debugfission/target.dwo
 runsingle test_showsectiongroupsb1.base \
    ./showsectiongroups \
    "-group 1" $testsrc/debugfission/target.dwo
@@ -2597,7 +2599,7 @@ runsingle test_showsectiongroupsc4.base  ./showsectiongroups \
 runsingle test_showsectiongroupsc5.base  ./showsectiongroups \
   "-group 5" $testsrc/comdatex/example.o
 
-# -u lets you provide a cu-name so you can select a CU and 
+# -u lets you provide a cu-name so you can select a CU and
 # skip others when printing DIEs
 runtest $d1 $d2 irixn32/dwarfdump -u  dwconf.c\
      -x name=dwarfdump.conf  -x abi=mips
@@ -2608,7 +2610,7 @@ runtest $d1 $d2 irixn32/dwarfdump -u  \
     /xlv44/6.5.15m/work/irix/lib/libc/libc_n32_M3/csu/crt1text.s \
      -x name=dwarfdump.conf -x abi=mips
 
-#Following tests -c<str> and URI, the one restricted to GNU AS 
+#Following tests -c<str> and URI, the one restricted to GNU AS
 # -cs means something different, not the same as -cg !
 # The unadorned -c means print old .debug_loc in an unreliable way.
 # which is really odd and confusing.
@@ -2624,16 +2626,16 @@ runtest $d1 $d2  x86/dwarfdumpv4.3 -a -R  -v -v -v -v -v -v
 runtest $d1 $d2  x86/dwarfdumpv4.3 -ka -R -v -v -v -v -v -v
 runtest $d1 $d2  mucci/stream.o -a -R   -v -v -v -v -v -v
 runtest $d1 $d2  mucci/stream.o -ka -R   -v -v -v -v -v -v
-runtest $d1 $d2  mucci/stream.o  -R -ka  
+runtest $d1 $d2  mucci/stream.o  -R -ka
 runtest $d1 $d2  mucci/stream.o  -R -ka  -v -v -v -v -v -v
 runtest $d1 $d2  mucci/main.o -a -R   -v -v -v -v -v -v
 runtest $d1 $d2  mucci/main.o -ka -R   -v -v -v -v -v -v
 runtest $d1 $d2  mucci/main.o  -R -ka  -v -v -v -v -v -v
-runtest $d1 $d2  mucci/main.o  -R -ka  
+runtest $d1 $d2  mucci/main.o  -R -ka
 runtest $d1 $d2 mucci/stream.o -a -R -M
 runtest $d1 $d2 mucci/stream.o -i -e
-runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F 
-runtest $d1 $d2 legendre/libmpich.so.1.0 -ka 
+runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F
+runtest $d1 $d2 legendre/libmpich.so.1.0 -ka
 
 if [ $NLIZE = 'n' ]
 then
@@ -2685,7 +2687,7 @@ runtest $d1 $d2 wynn/unoptimised.axf  -v  --print-macinfo
 
 runtest $d1 $d2 macro5/dwarfdump-g3  --print-macinfo
 runtest $d1 $d2 macro5/dwarfdump-g3  --print-macinfo -v
-runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros 
+runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros
 runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros  -G
 runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros  -G -M
 runtest $d1 $d2 macro5/dwarfdump-g3  --check-macros -v
@@ -2707,40 +2709,40 @@ runtest $d1 $d2  irixn32/libc.so --print-pubnames --print-static-var --print-wea
 
 #Following shows -C differences, see ia64/README. So -C works.
 runtest $d1 $d2  ia64/mytry.ia64 -i
-runtest $d1 $d2  ia64/mytry.ia64 -ka 
+runtest $d1 $d2  ia64/mytry.ia64 -ka
 runtest $d1 $d2  ia64/mytry.ia64 -i -C
 runtest $d1 $d2  ia64/mytry.ia64 -ka  -C
 
-runtest $d1 $d2  ref_addr/ELF3.elf -R -a -v -v -v -v -v -v 
-runtest $d1 $d2  ref_addr/ELF3.elf -R -a -M  -v -v -v -v -v -v 
-runtest $d1 $d2  ref_addr/ELF3.elf -R -ka -M -v -v -v -v -v -v 
+runtest $d1 $d2  ref_addr/ELF3.elf -R -a -v -v -v -v -v -v
+runtest $d1 $d2  ref_addr/ELF3.elf -R -a -M  -v -v -v -v -v -v
+runtest $d1 $d2  ref_addr/ELF3.elf -R -ka -M -v -v -v -v -v -v
 
 # This one fails,return add reg num 108.
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a  -v -v -v -v -v -v 
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -ka  -v -v -v -v -v -v 
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a  -v -v -v -v -v -v
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -ka  -v -v -v -v -v -v
 # This one works, return address reg 108 allowed.
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v 
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -i   -R -v -v -v -v -v -v 
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a   -R -v -v -v -v -v -v
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -i   -R -v -v -v -v -v -v
 # This one works, return address reg 108 allowed.
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a -R -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc 
-runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -i -R -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc 
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -a -R -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
+runtest $d1 $d2  ppc2/powerpc-750-linux-gnu-hello-static -i -R -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 
 runtest $d1 $d2  louzon/ppcobj.o -a  -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 runtest $d1 $d2  louzon/ppcobj.o -ka -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 runtest $d1 $d2  linkonce/comdattest.o -ka -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
 runtest $d1 $d2  linkonce/comdattest.o -a -v -v -v -v -v -v -x name=./dwarfdump.conf  -x abi=ppc
-runtest $d1 $d2 atefail/ig_server -kt 
+runtest $d1 $d2 atefail/ig_server -kt
 
 # Testing old interface to libdwarf with -g. IRIX only.
-runtest $d1 $d2 irixn32/dwarfdump -f -g 
-runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3  
+runtest $d1 $d2 irixn32/dwarfdump -f -g
+runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3
 runtest $d1 $d2 irixn32/dwarfdump --print-pubnames --print-static-var --print-weakname --print-type --print-static-var --print-static-func
 
 runtest $d1 $d2 ia32/mytry.ia32 -F -x name=dwarfdump.conf -x abi=x86
-runtest $d1 $d2 ia64/mytry.ia64 -F -x name=dwarfdump.conf -x abi=ia64 
+runtest $d1 $d2 ia64/mytry.ia64 -F -x name=dwarfdump.conf -x abi=ia64
 echo "The following is a misspelling of abi. Checks for error spelling so leave it in."
-runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple 
-runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3 
+runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple
+runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips-simple3
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips
 # Restrict to a single fde report
 runtest $d1 $d2 irixn32/dwarfdump -f -H 1  -x name=./dwarfdump.conf -x abi=mips
@@ -2750,21 +2752,21 @@ runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips
 runtest $d1 $d2  irixn32/dwarfdump -f -x name=./dwarfdump.conf -x abi=mips
 runtest $d1 $d2 irixn32/dwarfdump -f -x name=./dwarfdump.conferr1 -x abi=mips
 runtest $d1 $d2 irixn32/dwarfdump --show-dwarfdump-conf -f -x name=./dwarfdump.conferr1 -x abi=mips
-runtest $d1 $d2 val_expr/libpthread-2.5.so -f -v -v -x name=dwarfdump.conf -x abi=x86_64 
-runtest $d1 $d2 irixn32/dwarfdump -i -G 
+runtest $d1 $d2 val_expr/libpthread-2.5.so -f -v -v -x name=dwarfdump.conf -x abi=x86_64
+runtest $d1 $d2 irixn32/dwarfdump -i -G
 # restrict to a single CU
-runtest $d1 $d2 irixn32/dwarfdump -i -H 1 
+runtest $d1 $d2 irixn32/dwarfdump -i -H 1
 runtest $d1 $d2 irixn32/dwarfdump -ka
-runtest $d1 $d2 irixn32/dwarfdump -i -G -d  
+runtest $d1 $d2 irixn32/dwarfdump -i -G -d
 
 # Using old loclist call. Without -v nothing prints, so use -v.
 # Adding -D is useless since then the attributes don't print at all so
 # one cannot see the removal of offset from the loclist.
 runtest $d1 $d2 irixn32/libc.so -g  -v -x name=dwarfdump.conf  -x abi=mips
-runtest $d1 $d2 --show-dwarfdump-conf ia32/mytry.ia32 -i -G  
-runtest $d1 $d2 ia32/mytry.ia32 -i -G  
-runtest $d1 $d2 ia32/mytry.ia32 -i -G -d  
-runtest $d1 $d2 ia32/mytry.ia32 -ka -G -d 
+runtest $d1 $d2 --show-dwarfdump-conf ia32/mytry.ia32 -i -G
+runtest $d1 $d2 ia32/mytry.ia32 -i -G
+runtest $d1 $d2 ia32/mytry.ia32 -i -G -d
+runtest $d1 $d2 ia32/mytry.ia32 -ka -G -d
 runtest $d1 $d2 cristi2/libc-2.5.so -F -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 ia32/libc.so.6 -F -f -x name=dwarfdump.conf -x abi=x86
 # Do not find function names (using -n)
@@ -2779,7 +2781,7 @@ runtest $d1 $d2 cristi2/libpthread-2.4.so -ka -P -x name=dwarfdump.conf -x abi=x
 runtest $d1 $d2 cristi2/libpthread-2.4.so -ka -kd -P -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 cristi2/libpthread-2.4.so -R -F  -v -v -v
 runtest $d1 $d2 cristi2/libpthread-2.4.so -R -ka  -v -v -v
-runtest $d1 $d2 cristi3/cristibadobj -m 
+runtest $d1 $d2 cristi3/cristibadobj -m
 runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj --trace=0
 
@@ -2787,14 +2789,14 @@ runtest $d1 $d2 cristi3/cristibadobj --trace=0
 # ... at least a little of it.
 runtest $d1 $d2 ckdev/modulewithdwarf.ko -ka --trace=1 --trace=2 --trace=3
 runtest $d1 $d2 debugnames/dwarfdump -ka --trace=1 --trace=2 --trace=3
-runtest $d1 $d2 dwarf4/ddg4.5dwarf-4 -ka --trace=1 --trace=2 --trace=3  
+runtest $d1 $d2 dwarf4/ddg4.5dwarf-4 -ka --trace=1 --trace=2 --trace=3
 
 for i in $filepaths
 do
   echo  "=====BLOCK $i all options"
   for xtra in "-v" "-vv" "-vvv" "-D" "-H 2"
   do
-    for k in  $baseopts " -M" 
+    for k in  $baseopts " -M"
     do
 	  runtest $d1 $d2 $i $k $xtra
     done
@@ -2803,7 +2805,7 @@ done
 for i in $filepaths
 do
   echo "=====BLOCK $i all checking options"
-  for xtra in "" "-kd"  "-ki" 
+  for xtra in "" "-kd"  "-ki"
   do
     for k in  $kopts
     do
@@ -2852,7 +2854,7 @@ else
 fi
 if [ "x$VALGRIND" = "xy" ]
 then
-  echo "valgrind?              : $VALGRIND"         
+  echo "valgrind?              : $VALGRIND"
 fi
 
 if [ $failcount -ne 0 ]
