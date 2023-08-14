@@ -1,0 +1,6 @@
+The test case created 14 August 2023
+with a pair of UTF-8 local variables to
+test dwarfdump handling of such.
+
+It is NOT intended that one compiles test.c,
+that is already done.
