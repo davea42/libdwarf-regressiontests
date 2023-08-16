@@ -12,8 +12,10 @@ echo "  Revert to normal test........: unset NLIZE"
 echo "  Revert to normal test........: unset VALGRIND"
 echo "  Revert to normal test........: unset COMPILEONLY"
 echo "  Revert to all tests  ........: unset SINGLEONLY"
-echo "  Avoid non-ASCII UTF-8 test...: export ASCIIONLY"
-echo "  Stop after building test_bitoffset etc"
+echo "  Revert to default printf ....: unset PRINTFFMT"
+echo "  printf_sanitize..............: export PRINTFFMT=DEFAULT"
+echo "  printf_sanitize..............: export PRINTFFMT=NOSANITY"
+echo "  printf_sanitize..............: export PRINTFFMT=ASCII"
 # On certain VMs if too much change, we get
 # stuck at 1% done forever (and after 10 hours
 # far from done with the tests).
@@ -29,6 +31,9 @@ echo "  Stop after building test_bitoffset etc"
 echo 'Starting regressiontests: DWARFTEST.sh' \
    `date "+%Y-%m-%d %H:%M:%S"`
 
+# Affects running dwarfdump in runtest with
+# dwarfdump printf options.
+
 compileonly=n
 if [ x$COMPILEONLY = "xy" ]
 then
@@ -39,11 +44,25 @@ if [ x$SINGLEONLY = "xy" ]
 then
   singleonly=y
 fi
+# currently defaults to utf8
 asciionly=n
-if [ x$ASCIIONLY = "xy" ]
+nosanity=n
+fsu=
+# refering to dwarfdump printf
+if [ x$PRINTFFMT = "xASCII" ]
 then
+  fsu="--format-suppress-utf8"
   asciionly=y
 fi
+# refering to dwarfdump printf
+nosanity=n
+if [ x$PRINTFFMT = "xNOSANITY" ]
+then
+  nosanity=y
+  fsu="--format-suppress-sanitize"
+fi
+echo "  dwarfdump printf option......: $fsu"
+
 ismacos=n
 os=`uname`
 if [ "$os" = "Darwin" ]
@@ -306,6 +325,7 @@ then
 else
   echo "speed up big diffs........: yes"
 fi
+  echo "dd printf checks?.........: $PRINTFFMT"
 
 if [ "x$VALGRIND" = "xy" ]
 then
@@ -785,15 +805,6 @@ runtest () {
     rm -f testOfile OFn  OFo1 OFn1
     rm -f OFo2 OFn2
     rm -f OFo3 OFn3
-
-    #--format-suppress_utf8
-    fsu=""
-    if [ x$asciionly = "y" ]
-    then
-      fsu="--format-suppress_utf8"
-    fi
-
-    # Running an old one till baselines established.
 
     #=======old
     echo "old start " `date "+%Y-%m-%d %H:%M:%S"`
@@ -1326,7 +1337,7 @@ then
 else
   skipcount=`expr $skipcount +  1`
 fi
-runtest $d1 $d2 $testsrc/utf8/test --format-suppress_utf8 -i
+runtest $d1 $d2 $testsrc/utf8/test --format-suppress-utf8 -i
 
 #  Fails in 0.5.0, 0.6.0, fixed in 0.7.0
 runtest $d1 $d2 $testsrc/shinibufa/fuzzed_input_file
