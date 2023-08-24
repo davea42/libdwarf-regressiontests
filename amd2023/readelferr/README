@@ -1,4 +1,0 @@
-readelf fails to report all
-loclists. 23 Aug 2023.
-dwarfdump/libdwarf do it correctly.
- https://sourceware.org/bugzilla/show_bug.cgi?id=30792
