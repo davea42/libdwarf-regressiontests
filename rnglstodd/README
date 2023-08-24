@@ -1,0 +1,10 @@
+
+There have been concerns about readelf (some versions)
+against this test object.
+
+This is the .debug half of a split-dwarf object,
+one thinks.
+
+libdwarf has no trouble with this.
+
+

@@ -1,0 +1,18 @@
+f=dwarf_test_versions_mix.elf
+#dwarfdump -a -M -G -  $f >junka
+#dwarfdump -a -v -M -G $f >junkav
+#readelf --debug-dump=Ranges $f >junkre
+#readelfobj $f >junkro
+
+hxdump -s 0x04351  -l 0x00020 -b $f > junkrange
+hxdump -s  0x044af -l 0x0042 -b $f > junkrnglist
+echo "debug_ranges" > junkbothranges
+echo "" >> junkbothranges
+cat junkrange >>junkbothranges
+echo "" >> junkbothranges
+echo "debug_rnglsts" >> junkbothranges
+echo "" >> junkbothranges
+cat junkrnglist* >>junkbothranges
+
+
+
