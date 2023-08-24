@@ -1,4 +1,4 @@
 
-libdwarf is unable to record error DW_DLE_RELOC_SECTION_SYMBOL_INDEX_BAD (232) so doing a relocation seems unsafe No error argument or handler available
+libdwarf is unable to record error DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE (342) Corrupt dwarf No error argument or handler available
 
 libdwarf is unable to record error DW_DLE_DEBUG_FRAME_LENGTH_BAD (89) No error argument or handler available
