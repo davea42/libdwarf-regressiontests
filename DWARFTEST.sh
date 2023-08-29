@@ -1076,6 +1076,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
+runsingle ossfuzz59576.base  ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz59576/fuzz_set_frame_all-5867083595120640
+exit 1
 
 runsingle ossfuzz60506.base  ./fuzz_srcfiles --testobj=$testsrc/ossfuzz60506/fuzz_srcfiles-6494439909228544.fuzz
 
