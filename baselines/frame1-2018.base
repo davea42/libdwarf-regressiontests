@@ -6,7 +6,7 @@ Print cie of fde 0
 Print fde 0
 function low pc 0x400f10  and length 0x2c0  and midpoint addr we choose 0x401070
 function actual addr of row 0x400f20
-cfa type: 2 DW_EXPR_EXPRESSION  r7  offset_rel? 0  offset  24 Block ptr set? yes  Value is at address given by expr val 
+cfa type: 2 DW_EXPR_EXPRESSION  r7 Block ptr set? yes  Value is at address given by expr val 
 reg 0 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 1 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
 reg 2 type: 0 DW_EXPR_OFFSET  2000 UNDEF_VAL  offset_rel? 0 value in register
