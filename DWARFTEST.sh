@@ -63,11 +63,20 @@ then
 fi
 echo "  dwarfdump printf option......: $fsu"
 
-ismacos=n
+platform="unknown"
+dwarfgenok=n
 os=`uname`
 if [ "$os" = "Darwin" ]
 then
-  ismacos=y
+  platform='macos'
+elif [ "$os" = "Linux" ]
+then
+  platform='linux'
+  dwarfgenok=y
+elif [ "$os" = "FreeBSD" ]
+then
+  dwarfgenok=y
+  platform='freebsd'
 fi
 
 s=SHALIAS.sh
@@ -778,13 +787,13 @@ runversiontest () {
 }
 
 runtest () {
-	olddw=$1
-	newdw=$2
-	targ=$testsrc/$3
-	shift
-	shift
-	shift
-	allgood="y"
+    olddw=$1
+    newdw=$2
+    targ=$testsrc/$3
+    shift
+    shift
+    shift
+    allgood="y"
     if [ $singleonly = "y" ]
     then
         return
@@ -1298,7 +1307,13 @@ then
   exit 0
 fi
 
-runsingle test_setframe.base ./test_setframe ./test_setframe
+if [  $platform = "macos" ]
+then
+  echo "=====SKIP test_setframe test on macos"
+  skipcount=`expr $skipcount +  1 `
+else
+  runsingle test_setframe.base ./test_setframe ./test_setframe
+fi
 
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  $testsrc/supplementary/runtest.sh"
@@ -1332,22 +1347,22 @@ mklocal guilfanov2
 cd ..
 
 # contains local variables spelled with utf-8 and non-ASCII bytes
-if  [  "x$asciionly" = "n" ]
+if  [  "x$asciionly" = "xn" ]
 then
-  runtest $d1 $d2 $testsrc/utf8/test -i
+  runtest $d1 $d2 utf8/test -i
 else
   skipcount=`expr $skipcount +  1`
 fi
-runtest $d1 $d2 $testsrc/utf8/test --format-suppress-utf8 -i
+runtest $d1 $d2 utf8/test --format-suppress-utf8 -i
 
 #  Fails in 0.5.0, 0.6.0, fixed in 0.7.0
-runtest $d1 $d2 $testsrc/shinibufa/fuzzed_input_file
+runtest $d1 $d2 shinibufa/fuzzed_input_file
 
 # Test of DWARF5 line table includes from
 # an unknown shared library.debug (nothing executable
 # here). This had erroneous output (duplicated include path)
 # from recent builds of dwarfdump 11 Aug 2023
-runtest $d1 $d2 $testsrc/debugso20230811.debug -i -vvv
+runtest $d1 $d2 debugso20230811.debug -i -vvv
 
 # Early test of -h.
 runtest $d1 $d2 foo.o -h
@@ -2177,16 +2192,28 @@ cd ..
   # Also tests dwarfgen and libdwarf with DW_CFA_advance_loc
   # operations
 echo "=====START  $testsrc/offsetfromlowpc/runtest.sh"
-mklocal offsetfromlowpc
+if [ $dwarfgenok = "n" ]
+then
+  echo "====SKIP run offsetfromlowpc "
+  skipcount=`expr $skipcount +  1 `
+else
+  mklocal offsetfromlowpc
     sh $testsrc/offsetfromlowpc/runtest.sh
     chkres $?  $testsrc/offsetfromlowpc/runtest.sh
   cd ..
+fi
 
 echo "=====START  $testsrc/strsize/runtest.sh"
+if [ $dwarfgenok = "n" ]
+then
+  echo "====SKIP run strsize "
+  skipcount=`expr $skipcount +  1 `
+else
   mklocal strsize
     sh $testsrc/strsize/runtest.sh
     chkres $? $testsrc/strsize
   cd ..
+fi
 # tests simple reader and more than one dwarf_init* interface
 # across all object types
 # here kaufmann/t.o is tested as input to simplereader.
@@ -2203,10 +2230,16 @@ mklocal debugfission
 cd ..
 
 echo "=====START  $testsrc/data16 runtest.sh ../$d2"
+if [ $dwarfgenok = "n" ]
+then
+  echo "====SKIP run data16 "
+  skipcount=`expr $skipcount +  1 `
+else
   mklocal data16
     sh $testsrc/data16/runtest.sh
     chkres $?  "$testsrc/data16/runtest.sh"
   cd ..
+fi
 
 if [ $NLIZE = 'n' ]
 then
@@ -2403,18 +2436,30 @@ then
 fi
 
 echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
+if [ $dwarfgenok = "n" ]
+then
+  echo "====SKIP run dwgena "
+  skipcount=`expr $skipcount +  1 `
+else
   mklocal dwgena
     sh $testsrc/dwgena/runtest.sh
     r=$?
     chkresn $r '$testsrc/dwgena/runtest.sh' 9
   cd ..
+fi
 
 echo "=====START   $testsrc/dwgenc/runtest.sh"
+if [ $dwarfgenok = "n" ]
+then
+  echo "====SKIP run dwgenc "
+  skipcount=`expr $skipcount +  1 `
+else
   mklocal dwgenc
     sh $testsrc/dwgenc/runtest.sh
     r=$?
     chkresn $r "$testsrc/dwgenc/runtest.sh" 1
   cd ..
+fi
 
 echo "=====START   $testsrc/sandnes2/runtest.sh"
 mklocal sandnes2
@@ -2519,9 +2564,9 @@ runsingle test_bitoffseta.base ./test_bitoffset  \
     $testsrc/bitoffset/bitoffsetexampledw3.o \
     $testsrc/bitoffset/bitoffsetexampledw5.o  \
 
-echo "ismacos : $ismacos"
+echo "platform : $platform"
 
-if [ $ismacos = "n" ]
+if [ ! $platform = "macos" ]
 then
   runsingle test_harmlessb.base ./test_harmless $suppresstree
   skipcount=`expr $skipcount +  1 `
