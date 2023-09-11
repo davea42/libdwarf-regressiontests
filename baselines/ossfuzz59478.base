@@ -1,115 +1,11 @@
  Print .debug_frame
 No .debug_frame data present
  Print .eh_frame
-1 cies present. 1 fdes present. 
-Print cie of fde 0
-Print fde 0
-
- pc=0x2e647f00 col=1 <off  r1 = r12289   more=1 next=0x2e648800> 
- pc=0x2e647f00 col=3 <off  r3 = r12289   more=1 next=0x2e648800> 
- pc=0x2e647f00 col=5 <off  r5 = r12289   more=1 next=0x2e648800> 
-
- pc=0x2e648800 col=1 <off  r1 = r12289   more=1 next=0x2e649140> 
- pc=0x2e648800 col=3 <off  r3 = r12289   more=1 next=0x2e649140> 
- pc=0x2e648800 col=5 <off  r5 = r12289   more=1 next=0x2e649140> 
-
- pc=0x2e649140 col=1 <off  r1 = r12289   more=1 next=0x2e6499c0> 
- pc=0x2e649140 col=3 <off  r3 = r12289   more=1 next=0x2e6499c0> 
- pc=0x2e649140 col=5 <off  r5 = r12289   more=1 next=0x2e6499c0> 
-
- pc=0x2e6499c0 col=1 <off  r1 = r12289   more=1 next=0x2e64a700> 
- pc=0x2e6499c0 col=3 <off  r3 = r12289   more=1 next=0x2e64a700> 
- pc=0x2e6499c0 col=5 <off  r5 = r12289   more=1 next=0x2e64a700> 
-
- pc=0x2e64a700 col=1 <off  r1 = r12289   more=1 next=0x2e64b0c0> 
- pc=0x2e64a700 col=3 <off  r3 = r12289   more=1 next=0x2e64b0c0> 
- pc=0x2e64a700 col=5 <off  r5 = r12289   more=1 next=0x2e64b0c0> 
-
- pc=0x2e64b0c0 col=1 <off  r1 = r12289   more=1 next=0x2e64b880> 
- pc=0x2e64b0c0 col=3 <off  r3 = r12289   more=1 next=0x2e64b880> 
- pc=0x2e64b0c0 col=5 <off  r5 = r12289   more=1 next=0x2e64b880> 
-
- pc=0x2e64b880 col=1 <off  r1 = r12289   more=1 next=0x2e64c540> 
- pc=0x2e64b880 col=3 <off  r3 = r12289   more=1 next=0x2e64c540> 
- pc=0x2e64b880 col=5 <off  r5 = r12289   more=1 next=0x2e64c540> 
-
- pc=0x2e64c540 col=1 <off  r1 = r12289   more=1 next=0x2e64d240> 
- pc=0x2e64c540 col=3 <off  r3 = r12289   more=1 next=0x2e64d240> 
- pc=0x2e64c540 col=5 <off  r5 = r12289   more=1 next=0x2e64d240> 
-
- pc=0x2e64d240 col=1 <off  r1 = r12289   more=1 next=0x2e64dec0> 
- pc=0x2e64d240 col=3 <off  r3 = r12289   more=1 next=0x2e64dec0> 
- pc=0x2e64d240 col=5 <off  r5 = r12289   more=1 next=0x2e64dec0> 
-function low pc 0x2e647f00  and length 0x5f5f  and midpoint addr we choose 0x2e64aeaf
-function actual addr of row 0x2e64a700
-cfa type: 0 DW_EXPR_OFFSET  r0  offset_rel? 1  offset  0 defines cfa value
-reg 0 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 1 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 2 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 3 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 4 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 5 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 6 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 7 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 8 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 9 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-dwarf_expand_frame_instructions failed!
+Error reading frame data 
  Print .debug_frame
 No .debug_frame data present
  Print .eh_frame
-1 cies present. 1 fdes present. 
-Print cie of fde 0
-Print fde 0
-
- pc=0x2e647f00 col=1 <off  r1 = r12289   more=1 next=0x2e648800> 
- pc=0x2e647f00 col=3 <off  r3 = r12289   more=1 next=0x2e648800> 
- pc=0x2e647f00 col=5 <off  r5 = r12289   more=1 next=0x2e648800> 
-
- pc=0x2e648800 col=1 <off  r1 = r12289   more=1 next=0x2e649140> 
- pc=0x2e648800 col=3 <off  r3 = r12289   more=1 next=0x2e649140> 
- pc=0x2e648800 col=5 <off  r5 = r12289   more=1 next=0x2e649140> 
-
- pc=0x2e649140 col=1 <off  r1 = r12289   more=1 next=0x2e6499c0> 
- pc=0x2e649140 col=3 <off  r3 = r12289   more=1 next=0x2e6499c0> 
- pc=0x2e649140 col=5 <off  r5 = r12289   more=1 next=0x2e6499c0> 
-
- pc=0x2e6499c0 col=1 <off  r1 = r12289   more=1 next=0x2e64a700> 
- pc=0x2e6499c0 col=3 <off  r3 = r12289   more=1 next=0x2e64a700> 
- pc=0x2e6499c0 col=5 <off  r5 = r12289   more=1 next=0x2e64a700> 
-
- pc=0x2e64a700 col=1 <off  r1 = r12289   more=1 next=0x2e64b0c0> 
- pc=0x2e64a700 col=3 <off  r3 = r12289   more=1 next=0x2e64b0c0> 
- pc=0x2e64a700 col=5 <off  r5 = r12289   more=1 next=0x2e64b0c0> 
-
- pc=0x2e64b0c0 col=1 <off  r1 = r12289   more=1 next=0x2e64b880> 
- pc=0x2e64b0c0 col=3 <off  r3 = r12289   more=1 next=0x2e64b880> 
- pc=0x2e64b0c0 col=5 <off  r5 = r12289   more=1 next=0x2e64b880> 
-
- pc=0x2e64b880 col=1 <off  r1 = r12289   more=1 next=0x2e64c540> 
- pc=0x2e64b880 col=3 <off  r3 = r12289   more=1 next=0x2e64c540> 
- pc=0x2e64b880 col=5 <off  r5 = r12289   more=1 next=0x2e64c540> 
-
- pc=0x2e64c540 col=1 <off  r1 = r12289   more=1 next=0x2e64d240> 
- pc=0x2e64c540 col=3 <off  r3 = r12289   more=1 next=0x2e64d240> 
- pc=0x2e64c540 col=5 <off  r5 = r12289   more=1 next=0x2e64d240> 
-
- pc=0x2e64d240 col=1 <off  r1 = r12289   more=1 next=0x2e64dec0> 
- pc=0x2e64d240 col=3 <off  r3 = r12289   more=1 next=0x2e64dec0> 
- pc=0x2e64d240 col=5 <off  r5 = r12289   more=1 next=0x2e64dec0> 
-function low pc 0x2e647f00  and length 0x5f5f  and midpoint addr we choose 0x2e64aeaf
-function actual addr of row 0x2e64a700
-cfa type: 0 DW_EXPR_OFFSET  r0  offset_rel? 1  offset  0 defines cfa value
-reg 0 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 1 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 2 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 3 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 4 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 5 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 6 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 7 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 8 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-reg 9 type: 0 DW_EXPR_OFFSET  r12289  offset_rel? 0 value in register
-dwarf_expand_frame_instructions failed!
+Error reading frame data 
  Print .debug_frame
 No .debug_frame data present
  Print .eh_frame
