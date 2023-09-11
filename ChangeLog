@@ -1,3 +1,171 @@
+2023-09-11:  David Anderson
+    commit 679534aa54360f41691f78f0e33bc1ea5ae0d841
+
+    New baseline executables with new
+    tests for corrupted DWARF. These
+    pass clang 14 -fsanitize now.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-09-11:  David Anderson
+    commit 1fde85d161fc8208cd9bfae28fdddff55922bf77
+
+    Changes in testing for corrupted dwarf
+    meant sligly different error messages.
+    the changes due to issues found by
+    clang 14 -fsanitize.
+    Now updated.
+            modified:   baselines/ossfuzz58026.base
+            modified:   baselines/ossfuzz59478.base
+            modified:   baselines/ossfuzz59517.base
+            modified:   baselines/ossfuzz59519.base
+            modified:   baselines/ossfuzz59595.base
+            modified:   baselines/ossfuzz59699.base
+
+2023-09-09:  David Anderson
+    commit d80276f7cc20ade8a72f1d2acf37807a9c34816f
+
+    Now works on MacosDarwin
+            modified:   DWARFTEST.sh
+    New basline executables.
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-09-07:  David Anderson
+    commit 98fa2a50d5c0e7adae798043910d9310404d5440
+
+    A small change in a message forced this baseline
+    update.
+            modified:   baselines/frame1-2018.base
+
+2023-09-07:  David Anderson
+    commit 44db53e10d40f3ce221c1bf992946865f6d1da7a
+
+    Ubuntu no longer makes 32bit linux releases,
+    so we have no way to check such.
+            deleted:    dwarfdump-i386-ubuntu.O
+
+2023-08-29:  David Anderson
+    commit fb0a8fa1d8372e36d60cfb0a00aae8c1ca230af4
+
+    Removed early exit 1
+    which was for quick testing of oss-fuzz
+    detection of vulnerability.
+            modified:   DWARFTEST.sh
+
+2023-08-28:  David Anderson
+    commit a358e3a2f995d486a7ae52aa4535222e555cc375
+
+    ossfuzz found a new vulnerability. At line
+    This is the testcase and correct output.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz59576.base
+            new file:   ossfuzz59576/fuzz_set_frame_all-5867083595120640
+
+2023-08-24:  David Anderson
+    commit d9d4a0a7fd6631ceab4e4301b553385802df6668
+
+    Does not really need to be in a dwarfdump run.
+            new file:   rnglstodd/README
+            new file:   rnglstodd/RUN
+            new file:   rnglstodd/dwarf_test_versions_mix.elf
+
+2023-08-24:  David Anderson
+    commit d8043935435c8c1028abd88582a0c1646ccc536e
+
+    Separated to readelferr at top level.
+            deleted:    amd2023/readelferr/README
+            deleted:    amd2023/readelferr/dwarf_v5ops.so.elf
+
+2023-08-24:  David Anderson
+    commit 079e4c086f80e35fa906bf7822449b5a84a9887f
+
+    Testcase though libdwarf already handles ok.
+            new file:   readelferr/README
+            new file:   readelferr/dwarf_v5ops.so.elf
+            new file:   readelferr/dwarf_v5ops.so.zip
+
+2023-08-23:  David Anderson
+    commit 4e75a6cbce11ad27a516a38a9ec5b58707087b8d
+
+    dwarfdump/libdwarf do this ok.
+            new file:   amd2023/readelferr/README
+            new file:   amd2023/readelferr/dwarf_v5ops.so.elf
+
+    now only running relocs if the object is ET_REL
+    changes the error detected in this damaged elf object.
+            modified:   baselines/ossfuzz59699.base
+
+2023-08-15:  David Anderson
+    commit d19222489a82d90103a1a3f53368e20eed5f03aa
+
+    new baselines ok with UTF-8
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-08-15:  David Anderson
+    commit 4a4f16d53716ad878f02031e85925aa7cbd41df4
+
+    Testing default/ASCII/utf8
+
+            modified:   DWARFTEST.sh
+
+2023-08-14:  David Anderson
+    commit 3e7fc4d19358e5e8abf6214a4188a58370ef4126
+
+    Added  ASCIIONLY env var to arrange
+    test that don't emit native utf-8, but
+    emit uri-style in all cases.
+
+    Changed flags to exectable
+            modified:   DWARFTEST.sh
+
+2023-08-14:  David Anderson
+    commit 9caea9e6de3c5762c7d881dd5266a956336fc57c
+
+    Has example of a specific DWARF5 line table
+    header feature: a header file index referring
+    directly to a line table header directory
+    index 0.
+            new file:   debugso20230811.debug
+
+    For utf8 testing.
+            new file:   utf8/README
+            new file:   utf8/test
+            new file:   utf8/test.c
+
+2023-08-08:  David Anderson
+    commit 8bf828722e7bb47c9e8b804f3e270e5ceeabc915
+
+    Added commentary about how the
+    target_link_library command is coded to link with
+    libdwarf.
+            modified:   CmakeTest/cmaketest/CMakeLists.txt
+
+2023-08-08:  David Anderson
+    commit c54bc5a2ec10884b265def26960041169a220d10
+
+    Now shows executing the test program.
+            modified:   CmakeTest/README
+
+2023-08-08:  David Anderson
+    commit b38f073881fd14b78fe31d85925de5b39a38998c
+
+    Refined the test code to print a more detailed
+    comment when executed.
+            modified:   CmakeTest/test.c
+
+2023-08-08:  David Anderson
+    commit 6a730b4f092c5c42fc0c63bade6cf9f8394aa4f7
+
+    Updated with latest from git log.
+            modified:   ChangeLog
+
 2023-08-08:  David Anderson
     commit 71ed67824e7cd36759eb0a9172797cc8da6a9d88
 
