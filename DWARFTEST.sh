@@ -1085,6 +1085,13 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
+
+
+# Testing Mach-O Universal Binary access
+runsingle macuniv.base  ./dwarfdump -i -vvv $testsrc/macuniv/demo
+runsingle macuniv0.base  ./dwarfdump -vvv --format-universalnumber=0 -i -vvv  $testsrc/macuniv/demo
+runsingle macuniv1.base  ./dwarfdump -vvv --format-universalnumber=1 -i -vvv $testsrc/macuniv/demo
+
 runsingle ossfuzz62547.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuzz62547/fuzz_stack_frame_access-5263709637050368
 
 runsingle ossfuzz59576.base  ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz59576/fuzz_set_frame_all-5867083595120640

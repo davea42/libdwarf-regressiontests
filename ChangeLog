@@ -13,7 +13,7 @@
     commit 1fde85d161fc8208cd9bfae28fdddff55922bf77
 
     Changes in testing for corrupted dwarf
-    meant sligly different error messages.
+    meant slightly different error messages.
     the changes due to issues found by
     clang 14 -fsanitize.
     Now updated.
