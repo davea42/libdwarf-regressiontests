@@ -974,6 +974,7 @@ fuzz_findfuncbypc
 fuzz_gdbindex
 fuzz_globals
 fuzz_gnu_index
+fuzz_init_path
 fuzz_macro_dwarf5
 fuzz_rng
 fuzz_set_frame_all
@@ -1086,6 +1087,10 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+runsingle ossfuzz62833.base  ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz62833/fuzz_set_frame_all-4521858130903040
+runsingle ossfuzz62834.base  ./fuzz_init_path --testobj=$testsrc/ossfuzz62834/fuzz_init_path-4573857635500032
+
+runsingle ossfuzz62842.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz62842/fuzz_findfuncbypc-4964619766333440.fuzz
 
 # Testing Mach-O Universal Binary access
 runsingle macuniv.base  ./dwarfdump -i -vvv $testsrc/macuniv/demo

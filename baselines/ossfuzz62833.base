@@ -1,0 +1,2 @@
+Giving up, dwarf_init failed, cannot do DWARF processing
+Error code  DW_DLE_UNIVERSAL_BINARY_ERROR(502) Error reading Mach-O uninversal binary head. Corrupt Mach-O object.
