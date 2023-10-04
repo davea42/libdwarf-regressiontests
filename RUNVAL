@@ -4,6 +4,10 @@
 # but the object is too big to work with.
 
 # run from /var/tmp/dwtest
+valgrind --leak-check=full --show-leak-kinds=all /tmp/object_detector ossfuzz62943/fuzz_init_path-5486726493372416
+
+exit 0
+
 cc -I. -I /home/davea/dwarf/code/src/lib/libdwarf /home/davea/dwarf/regressiontests/test_simple_libfuncs.c ./libdwarf.a -lz -lzstd 
 ./a.out /tmp/jitreader 
 exit 0
