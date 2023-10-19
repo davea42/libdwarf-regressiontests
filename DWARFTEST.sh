@@ -975,6 +975,7 @@ fuzz_gdbindex
 fuzz_globals
 fuzz_gnu_index
 fuzz_init_path
+fuzz_macro_dwarf4
 fuzz_macro_dwarf5
 fuzz_rng
 fuzz_set_frame_all
@@ -1086,6 +1087,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
+
+runsingle ossfuzz63024.base  ./fuzz_macro_dwarf4 --testobj=$testsrc/ossfuzz63024/fuzz_macro_dwarf4-4887579306360832
 
 runsingle ossfuzz62943.base  ./fuzz_init_path --testobj=$testsrc/ossfuzz62943/fuzz_init_path-5486726493372416
 

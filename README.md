@@ -1,16 +1,64 @@
 # This is libdwarf-regressiontests README.md
 
 
-Updated 29 June 2023
+Updated 19 October 2023
 
 ## Historical note
-Before July 2023 libelf was used by dwarfgen.
+
+Before July 2023 libelf was in these tests.
 libelf is no longer used anywhere.
 
 In the sourceforge.net days the libdwarf source itself
-was in a directory named 'code'. Since the move to
+was in a directory named 
+
+    code
+
+Since the move to
 github the libdwarf source is in a directory
-named libdwarf-code. 
+named 
+
+    libdwarf-code
+
+on github, which is also the
+source project name. the regressiontesting project is
+named 
+
+    libdwarf-regressiontests
+
+on github.
+
+## Testing overview hints
+
+In spite of the github naming there are a number (unspecified) 
+of points where the locations of the tests and source matter
+in comparing the output of a test run with the expected result.
+
+The tests are run using GNU configure and shell and python3
+scripts..
+
+The tests expect $HOME/dwarf/code
+and $HOME/dwarf/regressiontests to be the
+project directories.  To run these tests with
+success we recommend you put the
+source into the expected places.
+The test builds and runs  occur in directories
+under /var/tmp and those /var/tmp names don't appear
+in test results.
+
+You must have both zlib (-lz) and libzstd (-lzstd) installed to
+as a few tests involve compressed Elf sections.
+
+If there are no FAILs the end of a test run
+prints PASS along with the counts of tests, SKIPs,
+and FAILs and a detailed list of tests is recorded
+in ALLdd. To extract failed tests (if any) from ALLdd
+the scripts install a useful
+python program in the build directory
+so do
+
+    ./exfail.py >fails
+
+to split out the FAILs.
 
 ## Testing command options
 
@@ -26,7 +74,7 @@ not in parallel with the regressiontests source tree.
 Use when generating and testing shared-library
 libdwarf.so.0 instead of the default archive library libdwarf.a.
 
-## Running the 19000+ tests
+## Running the 20000 tests
 
 We recommend running the tests outside
 of the regression test and libdwarf source trees.
@@ -78,7 +126,7 @@ the test-built dwarfdump by hand without installing one could do
 when running a test, ensure to do the following to
 make a standard test run.
 With all unset on an example 3GHz machine a test run
-takes about 22 minutes.
+takes about 24 minutes.
 
     unset NLIZE
     unset SUPPRESSDEALLOCTREE
@@ -106,7 +154,9 @@ of its allocations.
 Used to verify dwarfdump does every appropriate 
 dealloc.
 
-This speeds up the test run a few percent.
+This speeds up the test run a few percent, though
+the real purpose is to allow libdwarf itself to
+be faster.
 
 Can be combined with NLIZE.
 
@@ -127,9 +177,8 @@ as a standard run.
 
 ### LCOV
    
-Currently not supported, LCOV may eventually be used to
-tell the build to generate code coverage statistics.
-
+Currently not supported. To run lcov usefull requires
+a completely separate build setup.
    
 ## Important Build Files
 
@@ -155,7 +204,7 @@ twice simultaneously in a test directory.
 
 ### PICKUPBIN.sh
 
-Used to compile the libdwarf/dwarfdump source tree
+Uses configure  to compile the libdwarf/dwarfdump source tree
 in the directory libbld in the testing directory.
 
 ### CLEANUP.sh
