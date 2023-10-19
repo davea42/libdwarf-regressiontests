@@ -60,6 +60,25 @@ so do
 
 to split out the FAILs.
 
+##  What is dwarfdump-x86_64-ubuntu.O?
+
+Some of the tests involve dwarfdump emitting 
+Gigabytes of text.  Keeping a text file
+with the expected dwarfdump output is impractical.
+Instead we run most tests with the dwarfdump built
+in the testing and with a baseline *dwarfdump.O
+dwarfdump and compare the results.
+
+dwarfdump-x86_64-ubuntu.O is, on Ubuntu 22.04 LTS, a dwarfdump
+that produces correct and expected output.
+
+Other environments also need such: the
+test scripts choose the most useful *.O
+to run.
+
+When a change to libdwarf or dwarfdump
+changes output we update the relevant *dwarfdump.O .
+
 ## Testing command options
 
 Configure options:
