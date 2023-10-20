@@ -649,7 +649,6 @@ ac_header_c_list=
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
 sharedlib
-withlibelf
 target_os
 target_vendor
 target_cpu
@@ -721,7 +720,6 @@ ac_user_opts='
 enable_option_checking
 enable_libdwarf
 enable_shared
-enable_libelf
 enable_static
 '
       ac_precious_vars='build_alias
@@ -1359,8 +1357,6 @@ Optional Features:
                           base
   --enable-shared         Enable shared libdwarf (default is static)
                           [default=no]]
-  --disable-libelf        disable use of libelf (default is enable)
-                          [default=yes]
   --enable-static         build test using static libdwarf [default=yes]
 
 Some influential environment variables:
@@ -4461,65 +4457,10 @@ fi
 
 
 
-# Check whether --enable-libelf was given.
-if test ${enable_libelf+y}
-then :
-  enableval=$enable_libelf;  if test "x${enableval}" = "xyes"
-then :
-  dwarf_with_libelf="withlibelf"
-else $as_nop
-  dwarf_with_libelf="nolibelf"
-fi
-
-else $as_nop
-  dwarf_with_libelf="withlibelf"
-fi
-
-
-if test $dwarf_with_libelf = "withlibelf" ; then
-  ac_fn_c_check_header_compile "$LINENO" "libelf.h" "ac_cv_header_libelf_h" "$ac_includes_default"
-if test "x$ac_cv_header_libelf_h" = xyes
-then :
-  printf "%s\n" "#define HAVE_LIBELF_H 1" >>confdefs.h
-
-fi
-ac_fn_c_check_header_compile "$LINENO" "libelf/libelf.h" "ac_cv_header_libelf_libelf_h" "$ac_includes_default"
-if test "x$ac_cv_header_libelf_libelf_h" = xyes
-then :
-  printf "%s\n" "#define HAVE_LIBELF_LIBELF_H 1" >>confdefs.h
-
-fi
-
-
-  ### if no libelf.h add no -lelf and turn off
-  ### libelf recognition.
-  if test "x${ac_cv_header_libelf_h}" != "xyes" -a "x${ac_cv_header_libelf_libelf_h}" != "xyes"  ;then
-    dwarf_with_libelf="nolibelf"
-    echo "no libelf headers, so no libelf"
-  else
-    echo "Allowing use of libelf."
-  fi
-fi
-
-if test $dwarf_with_libelf = "withlibelf" ; then
-  enable_dwarfgen="yes"
-
-printf "%s\n" "#define DWARF_WITH_LIBELF 1" >>confdefs.h
-
+enable_dwarfgen="yes"
 
 printf "%s\n" "#define HAVE_DWARFGEN 1" >>confdefs.h
 
-else
-  enable_dwarfgen="no"
-fi
-
-if test $dwarf_with_libelf = "withlibelf" ; then
-  withlibelf="withlibelf"
-
-else
-  withlibelf="nolibelf"
-
-fi
 
 # Check whether --enable-static was given.
 if test ${enable_static+y}
@@ -4578,13 +4519,11 @@ do
    r=$?
    if test $r -eq 0
    then
-     # was ./$i, but now full path so no .
-     #echo "Try $i -i $srcdir/moshe/a.out.t"
-     #$i -i --show-dwarfdump-conf $srcdir/moshe/a.out.t | head -n 15
      ($i -i $srcdir/moshe/a.out.t |head -n 20) >junkf2    2>/dev/null
      # Remove file that should not be here, if it exists.
      rm -f *@*
-     cmp junkf2 $srcdir/findexecutable.base  >/dev/null 2>/dev/null
+     # use python to diff as we deal with windows line-ends easily.
+     $srcdir/dwdiff.py $srcdir/findexecutable.base junkf2 >/dev/null 2>/dev/null
      t=$?
      if test $t -eq 0
      then
@@ -4647,6 +4586,9 @@ fi
 if test ! -f exfail.py ;  then
   cp  $srcdir/exfail.py exfail.py
 fi
+if test ! -f dwdiff.py ;  then
+  cp  $srcdir/dwdiff.py dwdiff.py
+fi
 if test ! -f dwarfdump.conf ;  then
   cp  $codedir/src/bin/dwarfdump/dwarfdump.conf dwarfdump.conf
 fi
@@ -4654,7 +4596,6 @@ fi
 libbld=$abs_builddir/libbld
 echo "libbld=$libbld" >>        BASEFILES.sh
 echo "sharedlib=$sharedlib"  >> BASEFILES.sh
-echo "dwarf_with_libelf=$dwarf_with_libelf"  >> BASEFILES.sh
 echo "filelibname=$filelibname" >> BASEFILES.sh
 echo "fileplibname=$fileplibname" >> BASEFILES.sh
 echo "buildlibsubdir=$buildlibsubdir" >> BASEFILES.sh
@@ -4682,7 +4623,6 @@ fi
 
 echo "Configuration Options Summary:"
 echo
-echo " have libelf............: ${dwarf_with_libelf}"
 echo " dwarfgen...............: ${enable_dwarfgen}"
 echo " testbuilddir...........: ${abs_builddir}"
 echo " libdwarf.build.dir.....: $libbld"

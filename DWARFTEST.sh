@@ -324,15 +324,25 @@ maxdiffile=31457280
 # Speeds up diff on big files with small differences.
 echo a >$bldtest/junkadwtests
 echo a >$bldtest/junkbdwtests
-diffopt="--speed-large-files"
-diff $diffopt $bldtest/junkadwtests $bldtest/junkbdwtests 2>/dev/null
+diffopt=""
+diff --speed-large-files $bldtest/junkadwtests $bldtest/junkbdwtests 2>/dev/null
 if [ $? -ne 0 ]
 then
-  # the option is not supported.
-  diffopt=""
+  #  --speed-large-files is not supported.
   echo "speed up big diffs........: no"
 else
+  diffopt="--speed-large-files $diffopt"
   echo "speed up big diffs........: yes"
+fi
+# To run on Windows we must deal with the <cr> ending of lines
+diff --strip-trailing-cr $bldtest/junkadwtests $bldtest/junkbdwtests 2>/dev/null
+if [ $? -ne 0 ]
+then
+  #  --strip-trailing-cr is not supported.
+  echo "strip trailing cr.........: no"
+else
+  diffopt="--strip-trailing-cr $diffopt"
+  echo "strip trailing cr.........: yes"
 fi
   echo "dd printf checks?.........: $PRINTFFMT"
 

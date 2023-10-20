@@ -85,7 +85,6 @@ AC_ARG_ENABLE(shared,
 enable_dwarfgen="yes"
 AC_DEFINE([HAVE_DWARFGEN],[1],
     [Set to 1 as we are building dwarfgen])
-fi
 
 AC_ARG_ENABLE([static],
    [AS_HELP_STRING([--enable-static],
@@ -138,13 +137,11 @@ do
    r=$?
    if test $r -eq 0
    then
-     # was ./$i, but now full path so no .
-     #echo "Try $i -i $srcdir/moshe/a.out.t"
-     #$i -i --show-dwarfdump-conf $srcdir/moshe/a.out.t | head -n 15
      ($i -i $srcdir/moshe/a.out.t |head -n 20) >junkf2    2>/dev/null
      # Remove file that should not be here, if it exists.
      rm -f *@*
-     cmp junkf2 $srcdir/findexecutable.base  >/dev/null 2>/dev/null
+     # use python to diff as we deal with windows line-ends easily.
+     $srcdir/dwdiff.py $srcdir/findexecutable.base junkf2 >/dev/null 2>/dev/null
      t=$?
      if test $t -eq 0
      then
@@ -206,6 +203,9 @@ if test ! -f SHALIAS.sh ; then
 fi
 if test ! -f exfail.py ;  then
   cp  $srcdir/exfail.py exfail.py
+fi
+if test ! -f dwdiff.py ;  then
+  cp  $srcdir/dwdiff.py dwdiff.py
 fi
 if test ! -f dwarfdump.conf ;  then
   cp  $codedir/src/bin/dwarfdump/dwarfdump.conf dwarfdump.conf
