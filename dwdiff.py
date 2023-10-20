@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Run aas:
-# dwdiff.py config baseline newfile
+# dwdiff.py baseline newfile
 
 import os
 import sys
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         origfile = sys.argv[1]
         newfile = sys.argv[2]
     else:
-        print("dwdiff.py args required: bldtype baseline newfile")
+        print("dwdiff.py args required: baseline newfile")
         exit(1)
     hasdos, olines = readin(origfile)
     hasdos, nlines = readin(newfile)
