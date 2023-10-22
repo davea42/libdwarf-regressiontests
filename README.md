@@ -33,12 +33,12 @@ In spite of the github naming there are a number (unspecified)
 of points where the locations of the tests and source matter
 in comparing the output of a test run with the expected result.
 
-The tests are run using GNU configure and shell and python3
-scripts..
+The tests are run using shell and python3
+scripts while meson is used to build libdwarf/dwarfdump.
 
-The tests expect $HOME/dwarf/code
+The test results expect $HOME/dwarf/code
 and $HOME/dwarf/regressiontests to be the
-project directories.  To run these tests with
+project directories.   To run these tests with
 success we recommend you put the
 source into the expected places.
 The test builds and runs  occur in directories
@@ -98,6 +98,8 @@ libdwarf.so.0 instead of the default archive library libdwarf.a.
 
 We recommend running the tests outside
 of the regression test and libdwarf source trees.
+The default is to build a static libdwarf.a and
+use it everywhere in the builds here.
 
 Lets assume  /path/to/regressiontests is the libdwarf test source
 and /path/to has a 'code' or 'libdwarf-code'
@@ -105,41 +107,13 @@ directory with the libdwarf/dwarfdump source.
  
     cd /my/emptydirectory/
     /path/to/regressiontests/configure
-    make
+    /path/to/regressiontests/RUNALL.sh
 
 The dwarfdump/libdwarf build will be in
 /my/emptydirectory/libbld in this example.
 
 If the code directory is /some/thing/libdwarf-code
-
-    cd /tmp/emptydirectory/
-    /path/to/regressiontests/configure \
-        --enable-libdwarf=/some/thing/libdwarf-code
-    make
-
-To build and test-with a shared library libdwarf.so.0
-add:
-
-    --enable-shared --disable-static
-
-to the configure command.
-
-Note that any existing date-versioned
-shared-library libdwarf is named libdwarf.so.1
-and no semantic-version shared-library
-libdwarf will ever be
-named libdwarf.so.1 (we will skip from 
-libdwarf.so.0 to libdwarf.so.2
-at some point in the future).
-
-When doing a shared library build/test, 
-one must set LD_LIBRARY_PATH so running the
-generated dwarfdump  will find the right libdwarf
-DWARFTEST.sh does that for you, but to run
-the test-built dwarfdump by hand without installing one could do
-
-    export LD_LIBRARY_PATH="/tmp/emptydirectory:$LD_LIBRARY_PATH
-    /tmp/emptydirectory/dwarfdump
+the directions are the same.
 
 ## Environment Variables
 
@@ -150,18 +124,18 @@ takes about 24 minutes.
 
     unset NLIZE
     unset SUPPRESSDEALLOCTREE
-    unset LCOV
     unset VALGRIND
 
 
 ### NLIZE
 
 This adds -fsanitize to all compiles under
-libdwarf and in the tests.
+libdwarf and compiles in the tests.
 Any problems found are reported as FAIL.
 
 Usually takes twice as long to run as a
-standard test run. 
+standard test run, at this time on a 3GHz
+Linux machine it takes around 50 minutes. 
 
     NLIZE=y
     export NLIZE
@@ -197,13 +171,19 @@ as a standard run.
 
 ### LCOV
    
-Currently not supported. To run lcov usefull requires
-a completely separate build setup.
+Not supported. To run lcov usefully
+requires a completely different build setup.
    
 ## Important Build Files
 
+### RUNALL.sh
+
+This does the builds and runs all the tests. It uses
+the scripts named below to do its work.
+
 ### DWARFTEST.sh
-this is the main test script, which runs the tests.
+
+Runs the tests and compiles a few things and runs the test code.
 
 ### BASEFILES.sh.in
 
@@ -224,7 +204,7 @@ twice simultaneously in a test directory.
 
 ### PICKUPBIN.sh
 
-Uses configure  to compile the libdwarf/dwarfdump source tree
+Uses meson to compile the libdwarf/dwarfdump source tree
 in the directory libbld in the testing directory.
 
 ### CLEANUP.sh

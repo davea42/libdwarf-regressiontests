@@ -4,47 +4,22 @@
 # in a single directory will result in incorrect 
 # results and errors.
 # We use BASEFILES to give tests the needed context.
+# We do not use this at all. This useless content
+# is here to avoid a warning.
+#### IGNORE THIS Makefile.in
 
-buildwithlibelf = @withlibelf@
 testsrc = @srcdir@
 all:  pretest build testonly
-
 test: pretest build testonly
-
 build: pretest
 	sh $(testsrc)/PICKUPBIN.sh
-
 check: pretest testonly
 testonly:
 	sh $(testsrc)/RUNALL.sh
 pretest:
 	sh $(testsrc)/CHECKIFRUNNING.sh
-# RUNALL.sh does this
 dd:
 	$(testsrc)/DWARFTEST.sh   2>ALLdd 1>&2
 clean:
 	sh $(testsrc)/CLEANUP.sh 
 distclean: clean
-	rm -f Makefile
-	rm -f config.h
-	rm -f config.status
-	rm -f config.status
-	rm -f config.log
-	rm -fr autom4te.cache
-	rm -f dwarfdump.O
-	rm -f dwarfdump2.O
-	rm -f baddie1/dwarfdump.conf
-	rm -f bigobj/dwarfdump.conf
-	rm -f data16/dwarfdump.conf
-	rm -f debugfission/dwarfdump.conf
-	rm -f debugfissionb/dwarfdump.conf
-	rm -f debuglink/dwarfdump.conf
-	rm -f dwarfextract/dwarfdump.conf
-	rm -f dwgena/dwarfdump.conf
-	rm -f dwgenc/dwarfdump.conf
-	rm -f emre2/dwarfdump.conf
-	rm -f enciso4/dwarfdump.conf
-	rm -f fails
-	rm -f guilfanov/dwarfdump.conf
-	rm -f implicitconst/dwarfdump.conf
-

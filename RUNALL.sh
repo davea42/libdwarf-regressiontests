@@ -1,9 +1,15 @@
 #!/usr/bin/env sh
 #
-# By default runs the entire test suite.
+# Runs the entire test suite in your testing directory
+# where this is all run, for example /var/tmp/dwtest .
+# In the test directory execute 
+#    /path/to/configure 
+# (using a full path, with no configure options) before RUNALL.sh .
+# 
+# configure up SHALIAS.sh and BASEFILES.sh in your testing directory.
+
 echo "Running all regressiontests tests"
 . ./SHALIAS.sh
-
 . ./BASEFILES.sh
 chkres() {
 if test $1 != 0
@@ -14,7 +20,7 @@ fi
 }
 
 # We expect there to be 1 fail line saying "FAIL     count: 0"
-chkfail () {
+finalfailcheck () {
   f=$1
   grep '^FAIL     count: 0$' $f >junkck2 
   c=`wc -l <junkck2`
@@ -34,6 +40,10 @@ chkfail () {
   fi
   rm -f junkck2
 }
+$testsrc/CHECKIFRUNNING.sh
+chkres $? "Checking if tests running already"
+$testsrc/PICKUPBIN.sh
+chkres $? "Trying to build from libdwarf etc sources"
 
 loc=$bldtest
 rm -f ALLdd 
@@ -45,10 +55,12 @@ echo "Write regressiontests to $loc/ALLdd"
 $testsrc/DWARFTEST.sh 2>ALLdd 1>&2
 r=$?
 chkres $r "Failure in $testsrc/DWARFTEST.sh."
-chkfail ALLdd "RUNALL.sh regressiontests"
+finalfailcheck ALLdd "RUNALL.sh regressiontests"
+finalpass=
 if [ $r -eq 0 ]
 then
   echo "Status return 0 says PASS"
+  finalpass=y
 fi
 ndsecs=`date '+%s'`
 endt=`date`
@@ -59,4 +71,10 @@ showminutes() {
    echo "Run time in minutes: $t"
 }
 showminutes $stsecs $ndsecs
+if test "$finalpass" = "y" ; then
+  $testsrc/CLEANUP.sh
+else
+  echo "Not cleaning up due to error"
+  echo "Run $testsrc/CLEANUP.sh to clean up here"
+fi
 exit 0

@@ -1,11 +1,26 @@
 #!/usr/bin/env sh
 . ./SHALIAS.sh
-# The -fsanitize=address tells gcc to use extra run-time
-# code to look for code writing where it should not.
 
-# dwarfgen and libelf go together here, only
-# dwarfgen uses libelf as of June 2021, release 0.1.0.
-# configure deals with -lz and -lzstd and their headers.
+# options -Dsanitize=true
+#         -Dwerror=false
+# env var $NLIZE=y
+# env var $WALL=n
+
+# NLIZE tells gcc/clang to use extra run-time
+# code to look for code reading, reading or leaking 
+# where it should not.
+# set env var NLIZE to y or pass in --sanitize
+# to build with 
+# meson's support: This built in to meson as
+# as -Db_sanitize=address,leak,undefined 
+# (see code/meson.build)
+
+# compiler warnings default to errors is true by default.
+# Pass in --disable-wall or set env var WALL to "n"
+# to turn off warning as error.
+# Nothing uses libelf now, and as of October 2023
+# we always build dwarfgen.
+# meson deals with -lz and -lzstd and their headers.
 
 sharedlib=
 sharedlibsudir=
@@ -13,16 +28,14 @@ configsharedlibopt=
 configsharedlibpopt=
 configlibname=
 configlibpname=
-configwall="--enable-wall"
 configstaticlib=
 configdwarfgen=
 configsharedlib=
-configdwarfex="--enable-dwarfexample"
-configsanitize=
+buildsanitize=
 # BASEFILES has the basic data we need to build.
 if [ ! -f BASEFILES.sh ]
 then
-    echo "./BASEFILES.sh missing. Run configure"
+    echo "./BASEFILES.sh missing. Run regressiontests configure"
     exit 1
 fi
 . ./BASEFILES.sh
@@ -44,16 +57,21 @@ else
   configsharedlib="--disable-shared"
   configstaticlib="--enable-static"
 fi
+buildsanitize=""
 # Checking env var.
-if [ x$NLIZE = 'xy' ]
+if [ "x$NLIZE" = "xy" ]
 then
-  configsanitize="--enable-sanitize"
+  buildsanitize="-Dsanitize=true"
+fi
+if [ "x$WALL" = "xn" ]
+then
+  buildwall="-Dwerror=false" 
 fi
 
 for i in $*
 do
   case $i in
-  --sanitize) configsanitize="--enable-sanitize"
+  --sanitize) buildsanitize="-Dsanitize=true"
     echo "PICKUPBIN.sh set to use -fsanitize."
     shift;;
   --sharedlib) 
@@ -64,11 +82,15 @@ do
     configsharedlib="--enable-shared"
     configstaticlib="--disable-static"
     shift;;
+  --disable-wall) 
+    buildwall="-Dwerror=false" 
+    shift;;
   *)
     echo "Improper argument $i to PICKUPBIN.sh"
     exit 1 ;;
   esac
 done
+echo "buildsanitize = $buildsanitize"
 
 if [ "$bldtest" = "$codedir" ]
 then
@@ -107,9 +129,10 @@ fi
 # Fix the following line to match the desired 
 # libdwarf/dwarfdump source 
 # directory.
-if [ ! -f $codedir/Makefile.in ]
-then
-  echo "FAIL. $codedir/Makefile.in missing, run autogen.sh in $codedir."
+if test ! -f $codedir/configure ; then
+  echo "FAIL. $codedir/configure missing. "
+  echo "      Which suggests not the right source directory"
+  echo "      even though we no longer use configure here." 
   exit 1
 fi
 cd $top_build 
@@ -119,89 +142,54 @@ then
    exit 1
 fi
 set -x
-###  CONFIGURE now
-echo "CONFIGURE now"
-#CFLAGS="-O0 -gdwarf-5  --no-omit-frame-pointer" 
-echo "$libdw/configure $configwall $configstaticlib"
-echo "    $configsharedlib $configdwarfgen $configdwarfex"
-echo "    $configsanitize "
-$libdw/configure $configwall $configstaticlib \
-  $configsharedlib $configdwarfgen $configdwarfex \
-  $configsanitize 
+###  Build now
+m="meson setup --default-library static $buildsanitize  $buildwall  -Ddwarfexample=true -Ddwarfgen=true . $libdw"
+echo $m
+$m
 if [ $? -ne 0 ]
 then
-  echo "configure failed. giving up."
+  echo "meson setup failed. giving up."
   exit 1;
 fi
-make
-
+ninja
 set +x
 #  Now copy the items built into $targetdir.
-cp src/lib/libdwarf/${buildlibsubdir}$configlibname $targetdir/$configlibname
-if [ $? -ne 0 ]
-then
-  echo "No  ${buildlibsubdir}$configlibname , $configlibname to copy! giving up."
-  exit 1;
-fi
+copyobject() {
+  f=$1
+  s=$2
+  t=$3
+  if test ! -f $s/$f ; then  
+     echo "FAIL source copyobject $f $s $t"
+     exit 1
+  fi
+  if test ! -d $t ; then  
+     echo "FAIL targetdir copyobject $f $s $t"
+     exit 1
+  fi
+  cp $s/$f $t/$f
+  r=$?
+  if test $r -ne 0 ; then
+     echo "FAIL copy in copyobject $f $s $t"
+     exit 1
+  fi
+}
 
-# if shared, no dwarfgen or libdwarfp
-echo "sharedlib     : $sharedlib"  
+
+echo "sharedlib     : $sharedlib"
 echo "configdwarfgen: $configdwarfgen"
 echo "buildlibsubdir: $buildlibsubdir"
 echo "configlibpname: $configlibpname"
 echo "buildbinsubdir: $buildbinsubdir"
 if [  $sharedlib = "n"  -a  x$configdwarfgen = "x--enable-dwarfgen" ]
 then
-  cp src/lib/libdwarfp/${buildlibsubdir}$configlibpname $targetdir/$configlibpname
-  if [ $? -ne 0 ]
-  then
-    echo "No  ${buildlibsubdir}$configplibname , $configplibname to copy! giving up."
-    exit 1;
-  fi
-  cp src/bin/dwarfgen/${buildbinsubdir}dwarfgen  $targetdir/dwarfgen
-  if [ $? -ne 0 ]
-  then
-    echo "No dwarfgen to copy from bin/dwarfgen/${buildbinsubdir}dwarfgen! giving up."
-    exit 1;
-  fi
+  copyobject libdwarfp.a $libbld/src/lib/libdwarfp $targetdir 
+  copyobject dwarfgen    $libbld/src/bin/dwarfgen $targetdir
 fi
-
-cp src/bin/dwarfexample/${buildbinsubdir}showsectiongroups \
-  $targetdir/showsectiongroups
-if [ $? -ne 0 ]
-then
-  echo "src/bin/dwarfexample/${buildbinsubdir}showsectiongroups $targetdir/showsectiongroups"
-  echo "No showsectiongroups copy! giving up."
-  exit 1;
-fi
-cp src/bin/dwarfexample/${buildbinsubdir}findfuncbypc  $targetdir/findfuncbypc
-if [ $? -ne 0 ]
-then
-  echo "No findfuncbypc copy! giving up."
-  exit 1;
-fi
-cp src/bin/dwarfexample/${buildbinsubdir}jitreader  $targetdir/jitreader
-if [ $? -ne 0 ]
-then
-  echo "No jitreader copy! giving up."
-  exit 1;
-fi
-cp src/bin/dwarfdump/${buildbinsubdir}dwarfdump  $targetdir/dwarfdump
-if [ $? -ne 0 ]
-then
-  echo "No dwarfdump to copy! giving up."
-  exit 1;
-fi
-cp $codedir/src/bin/dwarfdump/dwarfdump.conf  $targetdir/dwarfdump.conf
-if [ $? -ne 0 ]
-then
-  echo "No dwarfdump.conf to copy! giving up."
-  exit 1;
-fi
-cp src/bin/dwarfexample/${buildbinsubdir}simplereader  $targetdir/simplereader
-if [ $? -ne 0 ]
-then
-  echo "No simplereader to copy! giving up."
-  exit 1;
-fi
+copyobject libdwarf.a        $libbld/src/lib/libdwarf $targetdir 
+copyobject showsectiongroups $libbld/src/bin/dwarfexample $targetdir
+copyobject findfuncbypc      $libbld/src/bin/dwarfexample $targetdir
+copyobject jitreader         $libbld/src/bin/dwarfexample $targetdir
+copyobject simplereader      $libbld/src/bin/dwarfexample $targetdir
+copyobject dwarfdump      $libbld/src/bin/dwarfdump $targetdir
+copyobject dwarfdump.conf $codedir/src/bin/dwarfdump $targetdir
 exit 0

@@ -1,6 +1,6 @@
 # This file lets test directories know where relevant
 # directories are.
-
-# Main configure options:
-# ./configure --enable-libdwarf=/path/to/code --enable-shared
-#             --disable-libelf 
+# Running configure with no options sets up base
+# pathnames for the tests,
+# and those names (assigned to shell variables)
+# are appended to this file.
