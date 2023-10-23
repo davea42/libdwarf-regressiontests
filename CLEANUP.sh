@@ -1,10 +1,20 @@
 #!/usr/bin/env  sh
 # Clean up the temp files left behind by a test.
 # Unwise to run this except in a regressiontest
-# source or test directory.
+# test directory.
 . ./SHALIAS.sh
-(cd dwgena ; make clean)
-(cd debugfission ; make clean)
+here=`pwd`
+hereb=`basename $here`
+if test "x$hereb" = "xregressiontests" ; then
+  echo "Might be in regressiontest source here. Not cleaning up"
+  exit 1
+fi
+if test "x$hereb" = "xlibdwarf-regressiontests" ; then
+  echo "Might be in regressiontest source here. Not cleaning up"
+  exit 1
+fi
+(cd dwgena ; rm -f t*.base)
+(cd debugfission ; rm -f *.base)
 # The following is copied from the kaufmann dir. Drop it.
 rm -f debugfissionb/t.o
 # The /tmp/dwa* files are lock files to prevent running two regr.
@@ -16,6 +26,7 @@ rm -f config.h.in~
 rm -f vglog
 rm -f sancheck.o
 rm -f fuzz_*.o
+rm -f fuzz_* 
 rm -f dwgenc/runx
 rm -f dwgenc/testoutput.o
 rm -f filelist/filelist
@@ -29,6 +40,8 @@ rm -f filelist/localfuzz_init_binary
 rm -f libdwallocs
 rm -f */libdwallocs
 rm -rf libbld
+rm -f libdwarf.a
+rm -f libdwarfp.a
 rm -f test_arange
 rm -f test_pubsreader
 rm -f test_bitoffset
@@ -117,6 +130,7 @@ rm -f junkckpath
 # The following only really do anything if one
 # accidentally did a build configure under regressiontests.
 rm -f config.h.in~
+rm -f dwarfdump.conf
 rm -f showsectiongroups
 rm -f jitreader
 rm -rf dwarfdump/

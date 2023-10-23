@@ -28,15 +28,20 @@ on github.
 
 ## Testing overview hints
 
-In spite of the github naming there are a number (unspecified) 
+Never run the tests in a regressiontests or libdwarf-regressiontests
+directory. Instead, run tests in a directory set up for
+regression testing.
+
+There are a number (unspecified) 
 of points where the locations of the tests and source matter
-in comparing the output of a test run with the expected result.
+in comparing the output of a test run with the expected result,
+and such can result in failures.
 
 The tests are run using shell and python3
-scripts while meson is used to build libdwarf/dwarfdump.
+scripts.   Meson is used to build libdwarf/dwarfdump.
 
-The test results expect $HOME/dwarf/code
-and $HOME/dwarf/regressiontests to be the
+The test results expect $HOME/dwarf/code (or libdwarf-code)
+and $HOME/dwarf/regressiontests (or libdwarf-regressiontests) to be the
 project directories.   To run these tests with
 success we recommend you put the
 source into the expected places.
