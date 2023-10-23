@@ -1,45 +1,67 @@
-dnl Process this file with autoconf to produce a configure script.
-dnl
-dnl configure can only work sensibly run like ./configure [options]
-dnl
-AC_INIT
-AC_CONFIG_SRCDIR([configure.ac])
-AC_CONFIG_HEADERS([config.h])
+#!/bin/sh 
+#for i in $*
+#do
+#  case $i in
+#  # Makefile does not support this option but
+#  # export SUPPRESSDEALLOCTREE=y
+#  # works so we set that here. It's fine to
+#  # ignore this option and export SUPPRESSDEALLOCTREE=y
+#  # before running this script.
+#  --enable-libdwarf * echo "libdwarfdir is $i"
+#        srcdir =  
+#        export SUPPRESSDEALLOCTREE
+#        shift ;
+#        shift;;
+#  *)
+#       echo "Improper argument $i to DWARFTEST.sh"
+#       exit 1 ;;
+#  esac
+#done
 
-AC_PROG_CC
-AC_C_BIGENDIAN
-AC_PROG_GCC_TRADITIONAL
-AC_PROG_INSTALL
-AC_CHECK_TOOL(RANLIB, ranlib, :)
-AC_CHECK_TOOL(AR, ar)
-
-AC_CANONICAL_TARGET
-# i686-pc-linux-gnu
-
-# The path to libdwarf source we want is a path to
-# the directory containing the libdwarf, dwarfdump, 
-# dwarfgen, and dwarfexample source directories.
 here=`pwd`
-# The following for generating Makefile
-# not using datadir quite as autoconf expects.
-echo "here: $here"
-echo "srcdir: $srcdir"
-if test "$srcdir" = "."
+chkres() {
+if test $1 != 0
 then
-  # srcdir is the test source
-  srcdir=$here
+  echo "Test failure: $2"
+  exit 2
 fi
+}
+
+srcdir=$1
+
 #srcdir is regressiontests source dir
 #codedir is libdwarf code source dir
 #datadir is libdwarf code source 'data'
+
+if test ! -d $srcdir ; then
+  echo "$srcdir is not a directory"
+  exit 1
+fi
+for s in  enciso7 ossfuzz56530  ossfuzz56548 enciso9 ossfuzz56636
+do
+  if test ! -d $srcdir/$s ; then
+    echo "FAIL: $srcdir/$s is not found" 
+    echo "  $srcdir is not regressiontest source."
+    exit 1
+  fi
+done
+for s in dwdiff.py exfail.py showpct.py trimsimple.py usertime.py
+do
+  if test ! -f $srcdir/$s ; then
+    echo "FAIL: $srcdir/$s is not found" 
+    echo "  $srcdir is not regressiontest source."
+    exit 1
+  fi
+done
+
+
 codedir=
 for s in code libdwarf-code
 do
-  echo "Try $srcdir/../$s"
   if test -d  $srcdir/../$s  ; then
     codedir=$srcdir/../$s
     datadir=$srcdir/../$s
-    #echo "FOUND codedir as $codedir"
+    break
   fi
 done
 
@@ -47,71 +69,24 @@ if test  "x$codedir" = "x"  ; then
   echo "Unable to locate codedir off of $srcdir"
   exit 1
 fi
-echo "FOUND codedir as $codedir"
-
-# ALLow user to specify the code source dir
-AC_ARG_ENABLE(libdwarf,
-  AS_HELP_STRING([--enable-libdwarf=sourcedirectory],[Give the full path to the libdwarf/dwarfdump source base]),
-  [ ],[ ])
-rm -f junkckpath
-echo libdwarfval $enableval
-if test x$enableval != 'x'
-then
-  echo $enableval |grep '^/' >junkckpath
-  f=`wc -l <junkckpath`
-  if test $f != 1
-  then
-    rm -f junkckpath
-    echo "Error: The libdwarf code source path $enableval does not start with /."
-    exit 2
-  fi
-  codedir=$enableval
-  datadir=$enableval
+echo "FOUND libdwarf source as $codedir"
   rm -f junkckpath
-fi
 
-# ALLow user to specify the code source dir
-AC_ARG_ENABLE(shared,
-  AS_HELP_STRING([--enable-shared],
-    [Enable shared libdwarf (default is static)
-    @<:@default=no@:>@]]),
-   [ AS_IF(
-        [test "x${enableval}" = "xyes"],
-        [enableshared=sharedlib])
-   ],
-   [enableshared=no])
+for s in bugxml doc src fuzz test doc
+do
+  if test ! -d $codedir/$s ; then
+    echo "FAIL: $codedir/$s is not found"
+    echo "  $codedir is not libdwarf source."
+    exit 1
+  fi
+done
 
 
-enable_dwarfgen="yes"
-AC_DEFINE([HAVE_DWARFGEN],[1],
-    [Set to 1 as we are building dwarfgen])
-
-AC_ARG_ENABLE([static],
-   [AS_HELP_STRING([--enable-static],
-     [build test using static libdwarf @<:@default=yes@:>@])],
-   [ AS_IF(
-        [test "x${enableval}" = "xyes"],
-        [staticlib="static"])
-   ],
-   [staticlib="nonshared"])
-
-# shared build later finds actual lib and executable under .libs
-# in the libdwarf/dwarfdump build tree.
-if test x$enableshared = "xsharedlib" ; then
-  AC_SUBST(sharedlib,"sharedlib")
-  sharedlib=sharedlib
-  filelibname="libdwarf.so.0"
-  fileplibname="libdwarfp.so.0"
-  buildlibsubdir=".libs/"
-  buildbinsubdir=".libs/"
-else
-  AC_SUBST(sharedlib,"n")
   sharedlib=n
   filelibname="libdwarf.a"
   fileplibname="libdwarfp.a"
   buildlibsubdir=".libs/"
   buildbinsubdir=
-fi
 
 
 # We look for a usable dwarfdump.O 
@@ -124,7 +99,6 @@ fi
 # An empty file.
 # It is not clear why sh creates a file in that case.
 ddfound='n'
-dd2found='n'
 rm -f junkf1
 rm -f junkf2
 abs_builddir="$here"
@@ -147,6 +121,7 @@ do
      then
         echo "Found usable dwarfdump  $i"
         ddfound='y'
+        ddbaselinename=$i
         rm -f dwarfdump.O
         cp $i dwarfdump.O
      fi
@@ -196,19 +171,24 @@ echo "libdw=$lw" >>             BASEFILES.sh
 cod=`$pyloc $codedir`
 echo "codedir=$cod" >>          BASEFILES.sh
 echo "bldtest=$abs_builddir" >> BASEFILES.sh
+echo "ddbaselinename=$ddbaselinename" >> BASEFILES.sh
 
 ### Now copy code source files to the test directory
 if test ! -f SHALIAS.sh ; then
   cp  $srcdir/SHALIAS.sh SHALIAS.sh
+  chkres $? "Fail cp  $srcdir/SHALIAS.sh SHALIAS.sh"
 fi
 if test ! -f exfail.py ;  then
   cp  $srcdir/exfail.py exfail.py
+  chkres $? "Fail cp  $srcdir/exfail.py exfail.py"
 fi
 if test ! -f dwdiff.py ;  then
   cp  $srcdir/dwdiff.py dwdiff.py
+  chkres $? "Fail cp  $srcdir/dwdiff.py dwdiff.py"
 fi
 if test ! -f dwarfdump.conf ;  then
   cp  $codedir/src/bin/dwarfdump/dwarfdump.conf dwarfdump.conf
+  chkres $? "Fail cp  $codedir/src/.../dwarfdump.conf dwarfdump.conf"
 fi
 #libbld is libdwarf build directory.
 libbld=$abs_builddir/libbld
@@ -227,27 +207,26 @@ do
   if test ! -d $abs_builddir/$d
   then
     mkdir $abs_builddir/$d
+    chkres $? "Fail mkdir $abs_builddir/$d"
   fi
   if test ! -f $abs_builddir/$d/dwarfdump.conf ; then
     cp dwarfdump.conf $abs_builddir/$d/dwarfdump.conf
+    chkres $? "Fail cp  dwarfdump.conf $abs_builddir/$d/dwarfdump.conf"
   fi
 done
 
 useshared=no
-echo "sharedlib = $sharedlib"
-if test $sharedlib = "sharedlib" ; then
-  useshared="yes"
-fi
+#echo "sharedlib = $sharedlib"
+#if test $sharedlib = "sharedlib" ; then
+#  useshared="yes"
+#fi
 
 echo "Configuration Options Summary:"
 echo
-echo " dwarfgen...............: ${enable_dwarfgen}"
 echo " testbuilddir...........: ${abs_builddir}"
 echo " libdwarf.build.dir.....: $libbld"
-echo " libdwarf.so............: $useshared"
+echo " use.libdwarf.a?........: yes"
 echo " regressiontests........: $ts"
 echo " code...................: $cod"
+echo " baseline.dwarfdump.....: $ddbaselinename"
 
-echo "Ready to test."
-AC_CONFIG_FILES([Makefile])
-AC_OUTPUT

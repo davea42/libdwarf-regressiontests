@@ -1,7 +1,6 @@
 # This is libdwarf-regressiontests README.md
 
-
-Updated 19 October 2023
+Updated 23 October 2023
 
 ## Historical note
 
@@ -82,17 +81,12 @@ changes output we update the relevant *dwarfdump.O .
 
 ## Testing command options
 
+There are no real options, but there are environment variables
+you may set but do not need to use:
+
+See NLIZE SUPPRESSDEALLOCTREE VALGRIND below.
+
 Configure options:
-
-    --enable-libdwarf=/path/to/libdwarf-code
-
-Use --enable-libdwarf  when the libdwarf/dwarfdump source tree is
-not in parallel with the regressiontests source tree.
-
-    --enable-shared --disable-static
-
-Use when generating and testing shared-library
-libdwarf.so.0 instead of the default archive library libdwarf.a.
 
 ## Running the 20000 tests
 
@@ -101,23 +95,30 @@ of the regression test and libdwarf source trees.
 The default is to build a static libdwarf.a and
 use it everywhere in the builds here.
 
-Lets assume  /path/to/regressiontests is the libdwarf test source
-and /path/to has a 'code' or 'libdwarf-code'
-directory with the libdwarf/dwarfdump source.
+Lets assume  /path/to/libdwarf-regressiontests is the regression test source
+directory (or you might have /path/to/regressiontests)
+
+INITIALSETUP.sh assumes the libdwarf source code is alongside
+the regressiontests directory, and the source code base directory
+is named libdwarf-code or code .
+It checks directories it identifies as having content
+to be sure the content looks appropriate.
+In case of error the scripts exit with a small non-zero error code,
+typically one(1).
  
     cd /my/emptydirectory/
-    /path/to/regressiontests/configure
-    /path/to/regressiontests/RUNALL.sh
+    lrt=/path/to/libdwarf-regressiontests
+    $lrt/INITIALSETUP.sh $lrt
+    $lrt/RUNALL.sh
 
-The dwarfdump/libdwarf build will be in
+The dwarfdump/libdwarf build will be in libbld
+which the build creates.
 /my/emptydirectory/libbld in this example.
 
-If the code directory is /some/thing/libdwarf-code
-the directions are the same.
 
 ## Environment Variables
 
-when running a test, ensure to do the following to
+when running a test, Unset the mentioned variables
 make a standard test run.
 With all unset on an example 3GHz machine a test run
 takes about 24 minutes.
@@ -188,7 +189,7 @@ Runs the tests and compiles a few things and runs the test code.
 ### BASEFILES.sh.in
 
 Used to help generate BASEFILES.sh. 
-The generation is done by the configure command.
+The generation is done by the INITIALSETUP.sh command.
 BASEFILES.sh is
 sourced (with the dot (.) shell command) in all *.sh scripts
 involved in the testing.
@@ -219,9 +220,3 @@ before rerunning.
 Testing never creates files with
 a leading period (.).
 
-## If updating regression tests configure.ac
-
-On changing configure.ac, run autoconf with no options
-to create a new configure script.
-
-    autoconf

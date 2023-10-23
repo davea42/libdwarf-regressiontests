@@ -1,6 +1,4 @@
-# This file lets test directories know where relevant
-# directories are.
-# Running configure with no options sets up base
-# pathnames for the tests,
-# and those names (assigned to shell variables)
-# are appended to this file.
+# BASENAMES.sh.in is a prefix to BASENAMES.sh,
+# which INITIALSETUP.py creates.
+# It informs regression test shell scripts
+# where relevant files are.
