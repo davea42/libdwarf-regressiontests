@@ -1,4 +1,4 @@
-# BASENAMES.sh.in is a prefix to BASENAMES.sh,
+# BASENAMES.sh.in is an input to BASENAMES.sh,
 # which INITIALSETUP.py creates.
-# It informs regression test shell scripts
+# BASENAMES.sh informs regression test shell scripts
 # where relevant files are.
