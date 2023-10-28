@@ -1,13 +1,17 @@
 #!/bin/sh
 
 . ../BASEFILES.sh
+# This gets us
+#withlibz="withlibz"
+#libzlink=" -lz -lzstd"
+#libzhdr=""
+#libzlib=""
+
 ts=$testsrc/test-alex1
 tf=$bldtest/test-alex1
 top_bld=$bldtest
 top_src=$testsrc
 . $testsrc/BASEFUNCS.sh
-withlibz=$1
-withlibzstd=$2
 if [ x$NLIZE = 'xy' ]
 then
   opt=`checkargs -fsanitize=address -fsanitize=leak \
@@ -15,35 +19,18 @@ then
 else
   opt=
 fi
-if [ x$withlibz = "x" ]
-then
-  echo "Missing final withlibz arg in test-alex1/runtest.sh"
-  echo "fail test-alex1 due to missing withlibz arg"
-  echo "rerun: $ts/runtest.sh  $withlibz"
-  exit 1
-fi
-libs=
-if [ $withlibz = "withlibz" ]
-then
-  libs="$libs -lz"
-fi
-if [ $withlibzstd = "yezstd" ]
-then
-  if  [ ! "x$libzstdlibdir" = "x" ]
-  then
-      libs="$libs $libzstdlibdir"
-  fi
-  libs="$libs -lzstd"
-fi
 
 OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf"
-echo "cc -DWORKING=1 $opt $OPTS $libzstdhdrdir  $ts/test.c ../$filelibname $libs -o test1"
-cc -DWORKING=1 $opt $OPTS  $ts/test.c ../$filelibname $libs -o test1
+x="cc -DWORKING=1 $opt $OPTS $libzhdr  $ts/test.c ../$filelibname $libzlib $libzlink -o test1"
+echo "$x"
+$x
 if [ $? -ne 0 ]
 then
      exit 1
 fi
-cc  $opt $OPTS $libzstdhdrdir  $ts/test.c ../$filelibname  $libs -o test2
+x="cc  $opt $OPTS $libzhdr  $ts/test.c ../$filelibname  $libzlib $libzlink -o test2"
+echo "$x"
+$x
 if [ $? -ne 0 ]
 then
      echo fail test-alex1 cc 2

@@ -4,38 +4,23 @@
 # simple to test for zlib.h, the zlib.h test below does
 # not work on such systems.
 . ../BASEFILES.sh
+#This gets us
+#withlibz="withlibz"
+#libzlink=" -lz -lzstd"
+#libzhdr=""
+#libzlib=""
+#properly set up.
 ts=$testsrc/testoffdie
 tf=$bldtest/testoffdie
 . $testsrc/BASEFUNCS.sh
 
 src=$testsrc/testoffdie
 bld=$libbld
-withlibz="$1"
-withlibzstd=$2
 # libzstdhdrdir and libzstdlibdir are in BASEFILES.sh.
-echo "entering testoffdie/runtest.sh  $withlibz"
+echo "entering testoffdie/runtest.sh  "
 h="-I$testsrc/libdwarf -I$codedir/src/lib/libdwarf"
 l="-L$src/libdwarf"
 libs="../$filelibname"
-if [ x$withlibz = "xwithlibz" ]
-then
-  libs="$libs -lz"
-fi
-if [ x$withlibzstd = "xyezstd" ]
-then
-  if  [ ! "x$libzstdlibdir" = "x" ]
-  then
-      libs="$libs $libzstdlibdir"
-  fi
-  libs="$libs -lzstd"
-fi
-if [ x$withlibz = "x" ]
-then
-  echo "Improper arg withlibz!"
-  echo fail testoffdie withlibz not set
-  echo "rerun: $ts/runtest.sh $1 $2"
-  exit 1
-fi
 if [ x$NLIZE = 'xy' ]
 then
   nli=`checkargs -fsanitize=address -fsanitize=leak \
@@ -45,9 +30,9 @@ else
 fi
 
 opts="-I$bld -I$bld/src/lib/libdwarf"
-echo cc $h $opts $libzstdhdrdir  $ts/testoffdie.c  \
-  $nli $l -o junkoffdie $libs
-cc $h $opts  $libzstdhdrdir  $ts/testoffdie.c $nli $l -o junkoffdie $libs
+x="cc $h $opts $libzhdr  $ts/testoffdie.c  $nli $l -o junkoffdie $libs $libzlib $libzlink"
+echo "$x"
+$x
 if [ $? -ne 0 ]
 then
    echo fail compile testoffdie/testoffdie.c 

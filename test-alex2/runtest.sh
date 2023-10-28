@@ -2,36 +2,23 @@
 #  This is really a test of the new dwarf_get_form_class function.
 
 . ../BASEFILES.sh
+#This gets us
+#withlibz="withlibz"
+#libzlink=" -lz -lzstd"
+#libzhdr=""
+#libzlib=""
+#properly set up
+
 . $testsrc/BASEFUNCS.sh
 ts=$testsrc/test-alex2
 tf=$bldtest/test-alex2
 l=../$filelibname
-withlibz=$1
-withlibzstd=$2
 
 OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf"
-if [ x$withlibz = "x" ]
-then
-  echo "fail test-alex2. missing withlibz"
-  echo " arg 2. We got:  $withlibz"
-  exit 1
-fi
 libs=
-if [ $withlibz = "withlibz" ]
-then
-  libs="$libs -lz"
-fi
-if [ $withlibzstd = "yezstd" ]
-then
-  if  [ ! "x$libzstdlibdir" = "x" ]
-  then
-      libs="$libs $libzstdlibdir"
-  fi
-
-  libs="$libs -lzstd"
-fi
-
-cc -DWORKING=1 $OPTS  $libzstdhdrdir $ts/test.c $l $libs -o test2
+x="cc -DWORKING=1 $OPTS  $libzhdr $ts/test.c $l $libs $libzlib $libzlink -o test2"
+echo "$x"
+$x
 
 cpifmissing $ts/orig.a.out orig.a.out
 ./test2 orig.a.out >out1

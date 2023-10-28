@@ -1,6 +1,12 @@
 #!/bin/sh
 
 . ../BASEFILES.sh
+# This gets us 
+#withlibz="withlibz"
+#libzlink=" -lz -lzstd"
+#libzhdr=""
+#libzlib=""
+
 . $testsrc/BASEFUNCS.sh
 
 ts=$testsrc/findcu
@@ -9,8 +15,6 @@ tf=$bldtest/findcu
 libdw=$libbld
 bld=$libbld
 
-withlibz=$1
-withlibzstd=$2
 if [ x$withlibz = "x" ]
 then
    echo "fail findcu runtest.sh missing arguments"
@@ -28,20 +32,7 @@ else
 fi
 opts="-I$bld -I$bld/libdwarf -I$codedir/src/lib/libdwarf"
 
-if [ $withlibz = "withlibz" ]
-then
-  libs="$libs -lz"
-fi
-if [ $withlibzstd = "yezstd" ]
-then
-  if  [ ! "x$libzstdlibdir" = "x" ]
-  then
-      libs="$libs $libzstdlibdir"
-  fi
-  libs="$libs -lzstd"
-fi
-
-cc $h $opts  $libzstdhdrdir $ts/cutest.c $nli $l -o cutest $libs
+cc $h $opts  $libzhdr $ts/cutest.c $nli $l -o cutest $libs $libzlib $libzlink
 ./cutest $ts/cutestobj.save
 r=$?
 if [ $r -ne 0 ]

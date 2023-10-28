@@ -1,5 +1,11 @@
 #!/bin/sh
 . ../BASEFILES.sh
+# This gets us
+#withlibz="withlibz"
+#libzlink=" -lz -lzstd"
+#libzhdr=""
+#libzlib=""
+
 . $testsrc/BASEFUNCS.sh
 if [ x$NLIZE = 'xy' ]
 then
@@ -13,33 +19,17 @@ ts=$testsrc/legendre
 tf=$bldtest/legendre
 libdw=$libdw
 bopt=$libbld
-withlibz=$1
-withlibzstd=$2
-if [ "x$withlibz" = x ]
-then
-   echo "fail legendre runtest.sh missing arguments"
-   exit 1
-fi
 
 OPTS="-I$bopt -I$bopt/src/lib/libdwarf -I$libdw/src/lib/libdwarf -I$" 
 libs=
-if [ $withlibz = "withlibz" ]
-then
-  libs="$libs -lz"
-fi
-if [ $withlibzstd = "yezstd" ]
-then
-  if  [ ! "x$libzstdlibdir" = "x" ]
-  then
-      libs="$libs $libzstdlibdir"
-  fi
-  libs="$libs -lzstd"
-fi
 
 cpifmissing $ts/libmpich.so.1.0 libmpich.so.1.0
 
-cc -I $libdw/libdwarf $opt $OPTS -DNEW $libzstdhdrdir \
-  $ts/frame_test.c ../$filelibname $libs -o frame_test1
+x="cc -I $libdw/libdwarf $opt $OPTS -DNEW $libzhdr \
+  $ts/frame_test.c ../$filelibname $libs $libzlib $libzlink\
+  -o frame_test1"
+echo "$x"
+$x
 if [ $? -ne 0 ]
 then
   echo fail legendre cc frame_test.c frame CFA reg new
