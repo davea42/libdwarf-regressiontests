@@ -160,43 +160,108 @@ done
 if [ ! -f ./dwarfdump ]
 then
   echo " ./dwarfdump needed."
-  echo "do configure  and make build before running the tests"
+  echo "Redo the tests and check for build problems"
   exit 1
 fi
 
+withlibz=no
+libzlink=
+libzlib=
+libzhdr=
+# For test purposes, withlibz is set to 'withlibz'
+# only when both libz and libzstd are available
+# and in that case 
+#  libzhdr is set to zero or more -I
+# and 
+#  libzlib is set to zero or more -L
+# and 
+#  libzlink is set to -lz -lzstd
+
 mklocal checkforlibz
+  # exit code will be 0 if libz in std locations 
+  # exit code will be 1 if libz in /usr/local
+  # exit code will be 2 if libz in /opt/local
+  # exit code will be 3 if libz not found
+  # Otherwise is an error, give up.
   sh $testsrc/checkforlibz/runtest.sh $testsrc
-  if [ $? -ne 0 ]
-  then
-    withlibz="nolibz"
+  rz=$?
+  if test $rz -eq 0 ; then
+    withlibz=withlibz
+    libzlink="$libzlink -lz"
+    echo "FOUND zlib standard location"
+  elif test $rz -eq 1 ; then
+    withlibz=withlibz
+    libzlink="$libzlink -lz"
+    libzhdr="$libzhdr -I/usr/local/include"
+    libzlib="$libzlib -L/usr/local/lib"
+    echo "FOUND zlib /usr/local"
+  elif test $rz -eq 2 ; then
+    withlibz=withlibz
+    libzlink="$libzlink -lz"
+    libzhdr="$libzhdr -I/opt/local/include"
+    libzlib="$libzlib -L/opt/local/lib"
+    echo "FOUND zlib /opt/local"
+  elif test $rz -eq 3 ; then
+    echo "NOT FOUND Missing zlib"
+    withlibz=no
   else
-    withlibz="withlibz"
+    echo "Something went wrong in looking for libz. "
+    echo "Fix the tests and rerun"
+    exit 1
   fi
 cd ..
-libzstdhdrdir=""
-libzstdlibdir=""
-mklocal checkforlibzstd
-  sh $testsrc/checkforlibzstd/runtest.sh $testsrc
-  r=$?
-  # Return to outer level.
-cd ..
-#  Update these vars and BASEFILES.sh in outer level.
-if [ $r -eq 1 ]
-then
-  withlibzstd="nozstd"
-else
-  if [ $r = 0 ]
-  then
-      withlibzstd="yezstd"
-  else
-      # assuming $r = 2
-      withlibzstd="yezstd"
-      libzstdhdrdir="-I/usr/local/include"
-      libzstdlibdir="-L/usr/local/lib"
-      echo 'libzstdhdrdir="-I/usr/local/include"' >> $b
-      echo 'libzstdlibdir="-L/usr/local/lib"' >> $b
-  fi
+
+if test "$withlibz" = "withlibz" ; then
+  mklocal checkforlibzstd
+    # exit code will be 0 if libz in std locations
+    # exit code will be 1 if libz in /usr/local
+    # exit code will be 2 if libz in /opt/local
+    # exit code will be 3 if libz not found
+    # Otherwise is an error, give up.
+    sh $testsrc/checkforlibzstd/runtest.sh $testsrc
+    rz=$?
+    if test $rz -eq 0 ; then
+      # still withlibz.
+      withlibz=withlibz
+      libzlink="$libzlink -lzstd"
+      1echo "FOUND libzstd standard location"
+    elif test $rz -eq 1 ; then
+      #withlibz=withlibz
+      libzlink="$libzlink -lzstd"
+      libzhdr="$libzhdr -I/usr/local/include"
+      libzlib="$libzlib -L/usr/local/lib"
+      1echo "FOUND libzstd /usr/local"
+    elif test $rz -eq 2 ; then
+      #withlibz=withlibz
+      libzlink="$libzlink -lzstd"
+      libzhdr="$libzhdr -I/opt/local/include"
+      libzlib="$libzlib -L/opt/local/lib"
+      1echo "FOUND libzstd /opt/local"
+    elif test $rz -eq 3 ; then
+      echo "NOT FOUND Missing libzstd, so turn off zlib too"
+      withlibz=no
+    else
+      echo "Something went wrong in looking for libz. "
+      echo "Fix the tests and rerun"
+      cd ..
+      exit 1
+    fi
+  cd ..
 fi
+
+if test "$withlibz" = "no" ; then
+  echo "Do not have both zlib and libzstd. Ignore both"
+  # Either handle both or neither.
+  libzlink=""
+  libzlib=""
+  libzhdr=""
+fi
+
+#  Update these vars and BASEFILES.sh 
+echo "withlibz=\"$withlibz\"" >>BASEFILES.sh
+echo "libzlink=\"$libzlink\"" >>BASEFILES.sh
+echo "libzhdr=\"$libzhdr\"" >>BASEFILES.sh
+echo "libzlib=\"$libzlib\"" >>BASEFILES.sh
 
 echo "Lock file.................: $dwbb"
 if [ -f $dwbb ]
@@ -208,30 +273,19 @@ then
 fi
 
 wl="no"
-
-wl="no"
 if [ $withlibz = "withlibz" ]
 then
   wl="yes"
 fi
-echo "build with libz...........: $wl"
-
-wl="no"
-if [ $withlibzstd = "yezstd" ]
-then
-  wl="yes"
-fi
-echo "build with libzstd........: $wl"
-
 echo "test source...............: $testsrc"
 echo "library source............: $codedir"
 echo "test build................: $bldtest"
 echo "library build.............: $libbld"
-if [ ! "x"  = "x$libzstdhdrdir" ]
-then
-echo "special libz.h in ........: $libzstdhdrdir"
-echo "special libzstd...........: $libzstdlibdir"
-fi
+echo "build with libz-libzstd...: $wl"
+echo "libzlib...................: $libzlib"
+echo "libzhdr...................: $libzhdr"
+echo "libzlink..................: $libzlink"
+
 echo "DWARFTEST lock set at.....: " `date "+%Y-%m-%d %H:%M:%S"` >$dwbb
 echo "Lock file content follows.:"
 cat $dwbb
@@ -533,9 +587,9 @@ dwarf4/ddg4.5dwarf-4
 '
 
 echo "Checklibz: $withlibz"
-if [ x$withlibz = "xnolibz" ]
+if [ x$withlibz = "xno" ]
 then
-     echo "=====SKIP klingler navarro liu libz tests, no libz available"
+     echo "=====SKIP klingler navarro liu skip count 252 libz tests, no libz available"
      skipcount=`expr $skipcount +  252 `
 else
      echo "=====DO klinkler navarro liu libz tests"
@@ -959,17 +1013,6 @@ runtest () {
 echo "=============BEGIN THE TESTS==============="
 echo  "=====BLOCK individual tests and runtest.sh tests"
 
-libopts=''
-if [ $withlibz = "withlibz" ]
-then
-  libopts="$libopts -lz"
-fi
-if [ $withlibzstd = "yezstd" ]
-then
-  libopts="$libopts $libzstdlibdir"
-  libopts="$libopts -lzstd"
-fi
-
 # BUILDS
 fuzzexe='
 fuzz_crc_32
@@ -999,10 +1042,10 @@ for f in $fuzzexe
 do
   echo "====BUILD $f"
   x="$CC -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf \
+     -I$libbld/libdwarf $libzhdr \
      -gdwarf $nlizeopt $testsrc/testbuildfuzz.c \
      $codedir/fuzz/${f}.c \
-     -o $f  $dwlib $libopts"
+     -o $f  $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   r=$?
@@ -1017,10 +1060,10 @@ test_sectionnames'
 for f in $simpleexe
 do
   echo "====BUILD $f"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/${f}.c \
-     -o $f  $dwlib $libopts"
+     -o $f  $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   r=$?
@@ -1028,10 +1071,10 @@ do
 done
 
 echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
-   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+   x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/dwnames_checks/dwnames_all.c \
-     -o dwnames_all $dwlib $libopts"
+     -o dwnames_all $dwlib $libzlib $libzlink"
    echo "$x"
    $x
    r=$?
@@ -1040,11 +1083,11 @@ echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
 # frame1 is a directory name, hence the build -o frame1/frame1
 echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
   mklocal frame1
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
     -I$libbld/libdwarf  \
     -gdwarf $nlizeopt \
     $codedir/src/bin/dwarfexample/frame1.c \
-    -o frame1 $dwlib $libopts"
+    -o frame1 $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   r=$?
@@ -1052,20 +1095,20 @@ echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
   cd ..
 
 echo "=====BUILD  dwarfexample/jitreader.c "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf  \
      -gdwarf $nlizeopt $codedir/src/bin/dwarfexample/jitreader.c \
-     -o jitreader $dwlib $libopts"
+     -o jitreader $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   r=$?
   chkres $r 'check jitreader compile dwarfexample/jitreader.c failed'
 
 echo "=====BUILD  dwarfexample/dwdebuglink.c "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf  \
      -gdwarf $nlizeopt $codedir/src/bin/dwarfexample/dwdebuglink.c \
-     -o dwdebuglink $dwlib $libopts"
+     -o dwdebuglink $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   r=$?
@@ -1082,17 +1125,17 @@ echo "=====START  $testsrc/testfindfuncbypc/ tests"
 echo "=====BUILD  $testsrc/filelist/localfuzz_init_path"
   mklocal filelist
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf $libzstdhdrdir \
+     -I$libbld/libdwarf $libzhdr \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
-     -o localfuzz_init_path $dwlib $libopts "
+     -o localfuzz_init_path $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   chkres $? "check -error compiling $testsrc/filelist/localfuzz_init_path.c failed"
 echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf $lihbzstdhdrdir \
      -gdwarf  $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
-     -o localfuzz_init_binary $dwlib $libopts"
+     -o localfuzz_init_binary $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
@@ -1242,16 +1285,17 @@ runsingle ossfuzz56530.base  ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz56530
 
 runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz56465/fuzz_die_cu_offset-5866690199289856
 
+runsingle databitoffset.base $d2 -i -M $testsrc/databitoffset/dbotest.o
+
 echo "=====START  $testsrc/test_pubsreader"
-  echo "test_pubsreader: $CC -Wall -I$codedir/libdwarf -I$libbld \
-    $libzstdhdrdir \
-    -I$libbld/libdwarf  -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
-     -o test_pubsreader $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     $libzstdhdrdir \
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+     $libzhdr \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
-      -o test_pubsreader $dwlib $libopts
+      -o test_pubsreader $dwlib $libzlib $libzlink"
+  echo $x
+  $x
+  r=$?
   chkres $r 'check pubsreader-error compile test_pubsreader.c failed'
   echo "./test_pubsreader $suppresstree $testsrc/mustacchi/m32t.o \
     $testsrc/irixn32/dwarfdump"
@@ -1272,15 +1316,13 @@ echo "=====START  $testsrc/test_pubsreader"
   fi
 
 echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
-   echo "test_bitoffset: $CC -Wall -I$codedir/libdwarf -I$libbld \
-     -I$libbld/libdwarf  -gdwarf $nlizeopt \
-     $libzstdhdrdir \
-     $testsrc/bitoffset/test_bitoffset.c.c \
-     -o test_test_bitoffset $dwlib $libopts"
-  $CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
-     $libzstdhdrdir \
+  echo "test_bitoffset:"
+  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+     $libzhdr \
      -gdwarf $nlizeopt $testsrc/bitoffset/test_bitoffset.c  -o \
-      test_bitoffset $dwlib $libopts
+      test_bitoffset $dwlib $libzlib $libzlink"
+  echo $x
+  $x
   chkres $? "check bitoffset-error compiling bitoffset/test_bitoffset.c\
      failed"
   echo "./test_bitoffset  \
@@ -1305,9 +1347,9 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
 echo "=====BUILD  $testsrc/test_arange"
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
-     $libzstdhdrdir \
+     $libzhdr \
      -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
-      test_arange $dwlib $libopts "
+      test_arange $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   chkres $? 'check arange-error compiling test_arange.c\
@@ -1315,9 +1357,9 @@ echo "=====BUILD  $testsrc/test_arange"
 echo "=====BUILD  $testsrc/test_setframe"
   x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
-     $libzstdhdrdir \
+     $libzhdr \
      -gdwarf $nlizeopt $testsrc/test_setframe.c  -o \
-      test_setframe $dwlib $libopts "
+      test_setframe $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   chkres $? 'check setframe-error compiling test_setframe.c\
@@ -1380,9 +1422,11 @@ if  [  "x$asciionly" = "xn" ]
 then
   runtest $d1 $d2 utf8/test -i
 else
+  echo "=====SKIP running utft/test as we are restricting to ASCII."
   skipcount=`expr $skipcount +  1`
 fi
 runtest $d1 $d2 utf8/test --format-suppress-utf8 -i
+
 
 #  Fails in 0.5.0, 0.6.0, fixed in 0.7.0
 runtest $d1 $d2 shinibufa/fuzzed_input_file
@@ -1403,7 +1447,6 @@ runtest $d1 $d2 foo.o -h
 # an error is returned so all is well.
 runtest $d1 $d2 elfextend/testobj.extend -i
 runtest $d1 $d2 elfextend/testobj64.extend -i
-# Following two examples are correct uses
 # of the Elf gabi+ section numbering extension.
 runtest $d1 $d2 elfextend/testobjgnu.extend -i
 runtest $d1 $d2 elfextend/testobj64gnu.extend -i
@@ -1586,9 +1629,9 @@ runtest $d1 $d2 \
   sarubbo-b/00011-elfutils-memalloc-allocate_elf
 
 # SHF_COMPRESSED testcases.
-if [ x$withlibz = "xnolibz" ]
+if [ x$withlibz = "xno" ]
 then
-  echo "=====SKIP COMPRESSED tests, no libz available"
+  echo "=====SKIP COMPRESSED tests, skipcount+6 no libz available"
   skipcount=`expr $skipcount +  6 `
 else
   runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v
@@ -1665,9 +1708,9 @@ runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=$testsrc/moya3/ra
 runtest $d1 $d2 debugfission/mungegroup.o -i
 
 # New September 11, 2019.
-echo "=====START  $testsrc/testoffdie runtest.sh  $withlibz $withlibzstd"
+echo "=====START  $testsrc/testoffdie runtest.sh  "
   mklocal testoffdie
-    sh $testsrc/testoffdie/runtest.sh  $withlibz $withlibzstd
+    sh $testsrc/testoffdie/runtest.sh  
     chkres $? "$testsrc/testoffdie/runtest.sh"
   cd ..
 
@@ -1799,9 +1842,9 @@ fi
 
 # Test ensuring R_386_GOTPC relocation understood. June 202
 runtest $d1 $d2 mustacchi/relgotpc.o -a -M
-if [ x$withlibz = "xnolibz" ]
+if [ x$withlibz = "xno" ]
 then
-  echo "=====SKIP COMPRESSED test, no libz available"
+  echo "=====SKIP COMPRESSED test, count 2, no libz available"
   skipcount=`expr $skipcount +  2 `
 else
   # DWARF5 test, new 17 June 2020.
@@ -1971,7 +2014,7 @@ runtest $d1 $d2   sarubbo-11/testcase5.bin -a
 runtest $d1 $d2   puzzor/heap_buf_overflow.o -a
 
 # Fuzzed objects, each of which resulted in a specific out of bounds memory access.
-if [ x$withlibz = "xnolibz" ]
+if [ x$withlibz = "xno" ]
 then
   echo "=====SKIP sarubbno-2 COMPRESSED test, no libz available"
   skipcount=`expr $skipcount +  1 `
@@ -2062,10 +2105,10 @@ runtest $d1 $d2  liu/infinitloop.elf -a
 runtest $d1 $d2  liu/null01.elf -a
 runtest $d1 $d2  liu/null02.elf -a
 runtest $d1 $d2  liu/NULLdereference0519.elf -a
-if [ x$withlibz = "xnolibz" ]
+if [ x$withlibz = "xno" ]
 then
-  echo "=====SKIP COMPRESSED liu/NULLderefer0505_01.elf no libz available"
-  skipcount=`expr $skipcount +  2 `
+  echo "=====SKIP COMPRESSED count liu/NULLderefer0505_01.elf no libz available"
+  skipcount=`expr $skipcount +  1 `
 else
   runtest $d1 $d2  liu/NULLderefer0505_01.elf -a
 fi
@@ -2177,9 +2220,9 @@ runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
-if [ x$withlibz = "xnolibz" ]
+if [ x$withlibz = "xno" ]
 then
-  echo "=====SKIP klingler2/compresseddebug tests, no libz available"
+  echo "=====SKIP klingler2/compresseddebug tests count 3, no libz available"
   skipcount=`expr $skipcount +  3 `
 else
   # Testing SHF_COMPRESSED .debug* section reading.
@@ -2274,8 +2317,8 @@ if [ $NLIZE = 'n' ]
 then
   runtest $d1 $d2   sarubbo-8/1.crashes.bin  -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP  sarubbo-8 with NLIZE"
+  skipcount=`expr $skipcount + 1`
 fi
 
 if [ $NLIZE = 'n' ]
@@ -2448,21 +2491,11 @@ runtest $d1 $d2  lloyd/arange.elf  -kr
 # It is not MIPS and MIPS is just wrong here.  Testing it anyway!
 runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 
-echo "=====START  $testsrc/findcu/runtest.sh  $withlibz $withlibzstd"
+echo "=====START  $testsrc/findcu/runtest.sh "
   mklocal findcu
-    sh $testsrc/findcu/runtest.sh   $withlibz $withlibzstd
+    sh $testsrc/findcu/runtest.sh   
     chkres $? "$testsrc/findcu/cutest-of-a-libdwarf-interface"
   cd ..
-
-libopts=''
-if [ $withlibz = "withlibz" ]
-then
-    libopts="$libopts -lz"
-fi
-if [ $withlibzstd = "yezstd" ]
-then
-    libopts="$libopts -lzstd"
-fi
 
 echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
 if [ $dwarfgenok = "n" ]
@@ -2499,9 +2532,9 @@ cd ..
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START $testsrc/legendre/runtest.sh  $withlibz $withlibzstd"
+  echo "=====START $testsrc/legendre/runtest.sh  "
   mklocal legendre
-    sh $testsrc/legendre/runtest.sh  $withlibz $withlibzstd
+    sh $testsrc/legendre/runtest.sh  
     r=$?
     chkres $r  $testsrc/legendre
   cd ..
@@ -2598,12 +2631,10 @@ echo "platform : $platform"
 if [ ! $platform = "macos" ]
 then
   runsingle test_harmlessb.base ./test_harmless $suppresstree
-  skipcount=`expr $skipcount +  1 `
-
   runsingle test_harmlessc.base ./test_harmless $suppresstree  -f \
   $testsrc/testfindfuncbypc/findfuncbypc.exe1
 else
-  echo "====SKIP run test_harmless on macos (Dwarwin) "
+  echo "====SKIP run test_harmless on macos count 2 (Dwarwin) "
   skipcount=`expr $skipcount +  2 `
 fi
 
@@ -2725,21 +2756,21 @@ runtest $d1 $d2 legendre/libmpich.so.1.0 -ka
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START $testsrc/test-alex1/runtest.sh  $withlibz $withlibzstd"
+  echo "=====START $testsrc/test-alex1/runtest.sh"
   mklocal test-alex1
-    sh $testsrc/test-alex1/runtest.sh  $withlibz $withlibzstd
+    sh $testsrc/test-alex1/runtest.sh 
     chkres $?  $testsrc/test-alex1
   cd ..
 else
-  skipcount=`expr $skipcount + 1`
   echo "=====SKIP 1 $testsrc/test-alex1/runtest.sh NLIZE as it has leaks"
+  skipcount=`expr $skipcount + 1`
 fi
 
 if [ $NLIZE = 'n' ]
 then
-  echo "=====START $testsrc/test-alex2/runtest.sh $withlibz $withlibzstd"
+  echo "=====START $testsrc/test-alex2/runtest.sh "
   mklocal test-alex2
-    sh $testsrc/test-alex2/runtest.sh $withlibz $withlibzstd
+    sh $testsrc/test-alex2/runtest.sh 
     chkres $?  $testsrc/test-alex2
   cd ..
 else
