@@ -71,10 +71,6 @@ showminutes() {
    echo "Run time in minutes: $t"
 }
 showminutes $stsecs $ndsecs
-if test "$finalpass" = "y" ; then
-  $testsrc/CLEANUP.sh
-else
-  echo "Not cleaning up due to error"
-  echo "Run $testsrc/CLEANUP.sh to clean up here"
-fi
+echo "Not cleaning up."
+echo "Run $testsrc/CLEANUP.sh to clean up here"
 exit 0
