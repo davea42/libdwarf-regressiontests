@@ -82,11 +82,11 @@ do
 done
 
 
-  sharedlib=n
-  filelibname="libdwarf.a"
-  fileplibname="libdwarfp.a"
-  buildlibsubdir=".libs/"
-  buildbinsubdir=
+sharedlib=n
+filelibname="libdwarf.a"
+fileplibname="libdwarfp.a"
+buildlibsubdir=".libs/"
+buildbinsubdir=
 
 
 # We look for a usable dwarfdump.O 
@@ -150,6 +150,26 @@ do
   fi
 done
 
+os=`uname`
+oso=`uname -o`
+if [ "$os" = "Darwin" ]
+then
+  platform='macos'
+elif [ "$os" = "Linux" ]
+then
+  platform='linux'
+elif [ "$os" = "FreeBSD" ]
+then
+  platform='freebsd'
+elif [ "$oso" = "Msys" ]
+then
+  # Windows msys2
+  platform='msys2'
+else
+  platform='other'
+fi
+
+
 ### Now set up BASEFILES.sh to initialize vars for DWARFTEST.sh
 cp $srcdir/BASEFILES.sh.in BASEFILES.sh
 if test $? -ne 0 
@@ -163,12 +183,13 @@ then
 else
   tsa=$srcdir
 fi
+# Using xxxx to prevent canonicalpath.py from emitting ..std.. here
 pyloc="$tsa/scripts/canonicalpath.py"
-ts=`$pyloc $tsa`
+ts=`$pyloc $tsa  xxxx name`
 echo "testsrc=$ts" >>           BASEFILES.sh
-lw=`$pyloc $codedir`
+lw=`$pyloc $codedir xxxx name`
 echo "libdw=$lw" >>             BASEFILES.sh
-cod=`$pyloc $codedir`
+cod=`$pyloc $codedir xxxx name`
 echo "codedir=$cod" >>          BASEFILES.sh
 echo "bldtest=$abs_builddir" >> BASEFILES.sh
 echo "ddbaselinename=$ddbaselinename" >> BASEFILES.sh
@@ -191,11 +212,12 @@ if test ! -f dwarfdump.conf ;  then
   chkres $? "Fail cp  $codedir/src/.../dwarfdump.conf dwarfdump.conf"
 fi
 #libbld is libdwarf build directory.
+echo "platform=$platform"    >> BASEFILES.sh
 libbld=$abs_builddir/libbld
-echo "libbld=$libbld" >>        BASEFILES.sh
+echo "libbld=$libbld"        >> BASEFILES.sh
 echo "sharedlib=$sharedlib"  >> BASEFILES.sh
-echo "filelibname=$filelibname" >> BASEFILES.sh
-echo "fileplibname=$fileplibname" >> BASEFILES.sh
+echo "filelibname=$filelibname"       >> BASEFILES.sh
+echo "fileplibname=$fileplibname"     >> BASEFILES.sh
 echo "buildlibsubdir=$buildlibsubdir" >> BASEFILES.sh
 echo "buildbinsubdir=$buildbinsubdir" >> BASEFILES.sh
 

@@ -63,22 +63,6 @@ then
 fi
 echo "  dwarfdump printf option......: $fsu"
 
-platform="unknown"
-dwarfgenok=n
-os=`uname`
-if [ "$os" = "Darwin" ]
-then
-  platform='macos'
-elif [ "$os" = "Linux" ]
-then
-  platform='linux'
-  dwarfgenok=y
-elif [ "$os" = "FreeBSD" ]
-then
-  dwarfgenok=y
-  platform='freebsd'
-fi
-
 s=SHALIAS.sh
 if [ ! -f ./$s ]
 then
@@ -88,7 +72,7 @@ then
 fi
 . ./$s
 
-# BASEFILES.sh created by configure.
+# BASEFILES.sh created by INITIALSETUP.sh
 b=BASEFILES.sh
 if [ ! -f ./$b ]
 then
@@ -96,9 +80,21 @@ then
   echo "do configure before running the tests"
   exit 1
 fi
+cat ./$b
 . ./$b
 
 . $testsrc/BASEFUNCS.sh
+
+warn="-Wall"
+dwarfgenok=y
+if [ $platform = "macos" ]
+then
+  dwarfgenok=n
+fi
+if [ $platform = "msys2" ]
+then
+  warn=
+fi
 
 stsecs=`date '+%s'`
 dwbb=$bldtest/dwbb
@@ -224,19 +220,19 @@ if test "$withlibz" = "withlibz" ; then
       # still withlibz.
       withlibz=withlibz
       libzlink="$libzlink -lzstd"
-      1echo "FOUND libzstd standard location"
+      echo "FOUND libzstd standard location"
     elif test $rz -eq 1 ; then
       #withlibz=withlibz
       libzlink="$libzlink -lzstd"
       libzhdr="$libzhdr -I/usr/local/include"
       libzlib="$libzlib -L/usr/local/lib"
-      1echo "FOUND libzstd /usr/local"
+      echo "FOUND libzstd /usr/local"
     elif test $rz -eq 2 ; then
       #withlibz=withlibz
       libzlink="$libzlink -lzstd"
       libzhdr="$libzhdr -I/opt/local/include"
       libzlib="$libzlib -L/opt/local/lib"
-      1echo "FOUND libzstd /opt/local"
+      echo "FOUND libzstd /opt/local"
     elif test $rz -eq 3 ; then
       echo "NOT FOUND Missing libzstd, so turn off zlib too"
       withlibz=no
@@ -353,12 +349,16 @@ else
   echo "Suppress de_alloc_tree....: no"
   suppresstree=
 fi
+nonsharedopt=""
 if [ $sharedlib = "sharedlib" ]
 then
   # Ensure we get the test libdwarf.so.0 .
-  set -x
+  #set -x
   export LD_LIBRARY_PATH="$bldtest:$LD_LIBRARY_PATH"
-  set +x
+  #set +x
+elif [ $sharedlib = "n" ]
+then
+  nonsharedopt="-DLIBDWARF_STATIC"
 fi
 # Only suppress anything if we find the diffs are so
 # big that some machines or VMs will not complete
@@ -397,6 +397,7 @@ then
 else
   diffopt="--strip-trailing-cr $diffopt"
   echo "strip trailing cr.........: yes"
+  echo "diffopt=\"$diffopt\"" >> BASEFILES.sh
 fi
   echo "dd printf checks?.........: $PRINTFFMT"
 
@@ -659,16 +660,21 @@ then
     return 1
   fi
   $mypycom $testsrc/$mypydir/checksize.py $maxdiffile $t1  $t2
-  if [ $?  -eq 0 ]
+  if [ $?  -eq 0 -o "$platform" = "msys2"  ]
   then
+    # on msys2 we must diff: cmp will fail new to CRs.
     # Ok to diff
-    diff $diffopt $t1 $t2
+    x="diff $diffopt $t1 $t2"
+    echo "$x"
+    $x
     if [ $? -eq 0 ]
     then
       #echo "pass diff Identical "  $*
       return 0
     else
-      #echo "fail diff Differ "  $*
+      echo "size" `wc $t1`
+      echo "size" `wc $t2`
+      echo "fail diff Differ "  $*
       return 1
     fi
   else
@@ -680,7 +686,7 @@ then
       #echo "pass cmp Identical "  $*
       return 0
     else
-      #echo "fail cmp Differ "  $*
+      echo "fail cmp Differ "  $*
       return 1
     fi
   fi
@@ -747,34 +753,33 @@ runsingle () {
   modpath=n
   # Fix up names to eliminate owner in path.
   # Checking return code from sed is not productive.
-  if [ "x$exe" = "x./dwdebuglink" ]
+  if [ "x$exe" = "x./dwdebuglink" -o "x$exe" = "x./dwdebuglink.exe" ]
   then
      modpath=y
   fi
-  if [ "x$exe" = "x./findfuncbypc" ]
+  if [ "x$exe" = "x./findfuncbypc" -o "x$exe" = "x./findfuncbypc.exe" ]
   then
      modpath=y
   fi
   if [ $modpath = "y" ]
   then
-    # Only dwdebuglink/findfuncbypc emit local directory paths.
-    sed -e "s:${codedir}:..std..:"  < junksingle.$base \
-       > junksingle2.$base
-    sed -e "s:/home/davea/dwarf/code:..std..:" \
-      <junksingle2.$base >junksingle3.$base
+    scr=$testsrc/scripts/canonicalpath.py
+    echo "$scr junksingle.$base $code $codedir content"
+    $scr junksingle.$base $code $codedir content >junksingle3.$base
   else
-     echo junk >junksingle2.$base
-     cp junksingle.$base junksingle3.$base
-  fi
-  if [ ! -f $testsrc/baselines/$base ]
-  then
-     # first time setup.
-     echo junk > $testsrc/baselines/$base
+    cp junksingle.$base junksingle3.$base
   fi
   allgood=y
+  if [ ! -f $testsrc/baselines/$base ]
+  then
+    # first time setup.
+    echo junk > $testsrc/baselines/$base
+    echo "First time setup $base"
+    allgood=n
+  fi
   filediff $testsrc/baselines/$base junksingle3.$base $exe $args
   r=$?
-  chkres $r 'compare runsingle failed'
+  chkres $r 'filediff compare junksingle3 failed'
   if [ $r -ne 0 ]
   then
     echo "FAIL diff $base junksingle3.$base"
@@ -1037,12 +1042,12 @@ fuzz_srcfiles
 fuzz_stack_frame_access
 fuzz_str_offsets'
 
-# Do not do -Wall here.
+# Do not do -Wall here ever.
 for f in $fuzzexe
 do
   echo "====BUILD $f"
   x="$CC -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf $libzhdr \
+     -I$libbld/libdwarf $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/testbuildfuzz.c \
      $codedir/fuzz/${f}.c \
      -o $f  $dwlib $libzlib $libzlink"
@@ -1060,8 +1065,8 @@ test_sectionnames'
 for f in $simpleexe
 do
   echo "====BUILD $f"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
-     -I$libbld/libdwarf \
+  x="$CC -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf $nonsharedopt\
      -gdwarf $nlizeopt $testsrc/${f}.c \
      -o $f  $dwlib $libzlib $libzlink"
   echo "$x"
@@ -1071,8 +1076,8 @@ do
 done
 
 echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
-   x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
-     -I$libbld/libdwarf \
+   x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/dwnames_checks/dwnames_all.c \
      -o dwnames_all $dwlib $libzlib $libzlink"
    echo "$x"
@@ -1083,8 +1088,8 @@ echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
 # frame1 is a directory name, hence the build -o frame1/frame1
 echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
   mklocal frame1
-  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
-    -I$libbld/libdwarf  \
+  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+    -I$libbld/libdwarf  $nonsharedopt \
     -gdwarf $nlizeopt \
     $codedir/src/bin/dwarfexample/frame1.c \
     -o frame1 $dwlib $libzlib $libzlink"
@@ -1095,8 +1100,8 @@ echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
   cd ..
 
 echo "=====BUILD  dwarfexample/jitreader.c "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
-     -I$libbld/libdwarf  \
+  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf  $nonsharedopt \
      -gdwarf $nlizeopt $codedir/src/bin/dwarfexample/jitreader.c \
      -o jitreader $dwlib $libzlib $libzlink"
   echo "$x"
@@ -1105,8 +1110,8 @@ echo "=====BUILD  dwarfexample/jitreader.c "
   chkres $r 'check jitreader compile dwarfexample/jitreader.c failed'
 
 echo "=====BUILD  dwarfexample/dwdebuglink.c "
-  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
-     -I$libbld/libdwarf  \
+  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf  $nonsharedopt \
      -gdwarf $nlizeopt $codedir/src/bin/dwarfexample/dwdebuglink.c \
      -o dwdebuglink $dwlib $libzlib $libzlink"
   echo "$x"
@@ -1124,16 +1129,16 @@ echo "=====START  $testsrc/testfindfuncbypc/ tests"
 # (but if the required arg omitted, return 1).
 echo "=====BUILD  $testsrc/filelist/localfuzz_init_path"
   mklocal filelist
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
-     -I$libbld/libdwarf $libzhdr \
+  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
+     -I$libbld/libdwarf $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
      -o localfuzz_init_path $dwlib $libzlib $libzlink"
   echo "$x"
   $x
   chkres $? "check -error compiling $testsrc/filelist/localfuzz_init_path.c failed"
 echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
-     -I$libbld/libdwarf $lihbzstdhdrdir \
+  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf $lihbzstdhdrdir $nonsharedopt \
      -gdwarf  $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
      -o localfuzz_init_binary $dwlib $libzlib $libzlink"
   echo "$x"
@@ -1288,7 +1293,7 @@ runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz5646
 runsingle databitoffset.base $d2 -i -M $testsrc/databitoffset/dbotest.o
 
 echo "=====START  $testsrc/test_pubsreader"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
      $libzhdr \
      -I$libbld/libdwarf \
      -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
@@ -1317,7 +1322,7 @@ echo "=====START  $testsrc/test_pubsreader"
 
 echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
   echo "test_bitoffset:"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
      $libzhdr \
      -gdwarf $nlizeopt $testsrc/bitoffset/test_bitoffset.c  -o \
       test_bitoffset $dwlib $libzlib $libzlink"
@@ -1345,9 +1350,9 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
       $testsrc/bitoffset.base"
   fi
 echo "=====BUILD  $testsrc/test_arange"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
-     $libzhdr \
+     $libzhdr$nonsharedopt  \
      -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
       test_arange $dwlib $libzlib $libzlink"
   echo "$x"
@@ -1355,9 +1360,9 @@ echo "=====BUILD  $testsrc/test_arange"
   chkres $? 'check arange-error compiling test_arange.c\
      failed'
 echo "=====BUILD  $testsrc/test_setframe"
-  x="$CC -Wall -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
-     $libzhdr \
+     $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/test_setframe.c  -o \
       test_setframe $dwlib $libzlib $libzlink"
   echo "$x"
@@ -2908,6 +2913,7 @@ runtest $d1 $d2 ckdev/modulewithdwarf.ko -ka --trace=1 --trace=2 --trace=3
 runtest $d1 $d2 debugnames/dwarfdump -ka --trace=1 --trace=2 --trace=3
 runtest $d1 $d2 dwarf4/ddg4.5dwarf-4 -ka --trace=1 --trace=2 --trace=3
 
+echo "BEGIN all-options testing"
 for i in $filepaths
 do
   echo  "=====BLOCK $i all options"

@@ -2,11 +2,9 @@
 #
 # Runs the entire test suite in your testing directory
 # where this is all run, for example /var/tmp/dwtest .
-# In the test directory execute 
-#    /path/to/configure 
-# (using a full path, with no configure options) before RUNALL.sh .
-# 
-# configure up SHALIAS.sh and BASEFILES.sh in your testing directory.
+# And libdwarf-code (or code) is $HOME/dwarf/regressiontests
+#  $rg/INITIALSETUP.sh $rg
+#  $rg/RUNALL.sh
 
 echo "Running all regressiontests tests"
 . ./SHALIAS.sh
