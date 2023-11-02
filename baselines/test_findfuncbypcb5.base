@@ -1,198 +1,198 @@
  Srclines: linetable version 3 table count 1
   Filenames base index 1 file count 13 endindex 14
-  [1]  directory index 1 file: findfuncbypc.c 
-  [2]  directory index 2 file: stdio2.h 
-  [3]  directory index 2 file: string_fortified.h 
-  [4]  directory index 3 file: stddef.h 
-  [5]  directory index 2 file: types.h 
-  [6]  directory index 4 file: struct_FILE.h 
-  [7]  directory index 4 file: FILE.h 
-  [8]  directory index 5 file: stdio.h 
-  [9]  directory index 2 file: sys_errlist.h 
-  [10]  directory index 6 file: libdwarf.h 
-  [11]  directory index 5 file: stdlib.h 
-  [12]  directory index 0 file: <built-in> 
-  [13]  directory index 5 file: string.h 
+  [1]  directory index 1 file: findfuncbypc.c
+  [2]  directory index 2 file: stdio2.h
+  [3]  directory index 2 file: string_fortified.h
+  [4]  directory index 3 file: stddef.h
+  [5]  directory index 2 file: types.h
+  [6]  directory index 4 file: struct_FILE.h
+  [7]  directory index 4 file: FILE.h
+  [8]  directory index 5 file: stdio.h
+  [9]  directory index 2 file: sys_errlist.h
+  [10]  directory index 6 file: libdwarf.h
+  [11]  directory index 5 file: stdlib.h
+  [12]  directory index 0 file: <built-in>
+  [13]  directory index 5 file: string.h
   Directories count: 6
-  [1] directory:  ..std../src/bin/dwarfexample 
-  [2] directory:  /usr/include/x86_64-linux-gnu/bits 
-  [3] directory:  /usr/lib/gcc/x86_64-linux-gnu/9/include 
-  [4] directory:  /usr/include/x86_64-linux-gnu/bits/types 
-  [5] directory:  /usr/include 
-  [6] directory:  ..std../src/lib/libdwarf 
-  [0]  address 0x3430 filenum 0 lineno 232 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [1]  address 0x3430 filenum 0 lineno 233 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [2]  address 0x3430 filenum 0 lineno 232 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [3]  address 0x3437 filenum 0 lineno 232 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [4]  address 0x343a filenum 0 lineno 233 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [5]  address 0x343e filenum 0 lineno 233 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [6]  address 0x3443 filenum 0 lineno 234 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [7]  address 0x344d filenum 0 lineno 235 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [8]  address 0x344d filenum 0 lineno 235 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [9]  address 0x3455 filenum 0 lineno 237 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [10]  address 0x3455 filenum 0 lineno 237 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [11]  address 0x345c filenum 0 lineno 237 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [12]  address 0x3461 filenum 0 lineno 238 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [13]  address 0x346e filenum 0 lineno 239 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [14]  address 0x346e filenum 0 lineno 239 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [15]  address 0x3479 filenum 0 lineno 241 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [16]  address 0x3479 filenum 0 lineno 214 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [17]  address 0x347e filenum 0 lineno 241 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [18]  address 0x3485 filenum 0 lineno 242 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [19]  address 0x3485 filenum 0 lineno 211 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [20]  address 0x3485 filenum 0 lineno 213 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [21]  address 0x3485 filenum 0 lineno 214 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [22]  address 0x3485 filenum 0 lineno 214 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [23]  address 0x3485 filenum 0 lineno 214 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [24]  address 0x3487 filenum 0 lineno 214 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [25]  address 0x3490 filenum 0 lineno 215 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [26]  address 0x34a0 filenum 0 lineno 214 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [27]  address 0x34a4 filenum 0 lineno 215 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [28]  address 0x34a9 filenum 0 lineno 214 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [29]  address 0x34a9 filenum 0 lineno 214 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [30]  address 0x34a9 filenum 0 lineno 214 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [31]  address 0x34af filenum 0 lineno 217 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [32]  address 0x34c0 filenum 0 lineno 218 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [33]  address 0x34c0 filenum 0 lineno 225 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [34]  address 0x34c7 filenum 0 lineno 218 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [35]  address 0x34ce filenum 0 lineno 219 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [36]  address 0x34ce filenum 0 lineno 219 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [37]  address 0x34d6 filenum 0 lineno 220 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [38]  address 0x34d6 filenum 0 lineno 220 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [39]  address 0x34de filenum 0 lineno 220 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [40]  address 0x34de filenum 0 lineno 243 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [41]  address 0x34de filenum 0 lineno 222 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [42]  address 0x34de filenum 0 lineno 224 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [43]  address 0x34de filenum 0 lineno 224 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [44]  address 0x34e8 filenum 0 lineno 225 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [45]  address 0x34e8 filenum 0 lineno 225 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [46]  address 0x34ed filenum 0 lineno 226 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [47]  address 0x34fa filenum 0 lineno 227 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [48]  address 0x34fa filenum 0 lineno 227 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [49]  address 0x3505 filenum 0 lineno 227 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [50]  address 0x3505 filenum 0 lineno 244 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [51]  address 0x3506 filenum 0 lineno 244 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [52]  address 0x3507 filenum 0 lineno 244 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [53]  address 0x3510 filenum 0 lineno 247 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [54]  address 0x3510 filenum 0 lineno 248 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [55]  address 0x3510 filenum 0 lineno 249 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [56]  address 0x3510 filenum 0 lineno 247 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [57]  address 0x3516 filenum 0 lineno 249 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [58]  address 0x3519 filenum 0 lineno 249 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [59]  address 0x351e filenum 0 lineno 253 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [60]  address 0x3524 filenum 0 lineno 252 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [61]  address 0x3524 filenum 0 lineno 253 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [62]  address 0x3527 filenum 0 lineno 253 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [63]  address 0x352c filenum 0 lineno 254 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [64]  address 0x352c filenum 0 lineno 254 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [65]  address 0x3533 filenum 0 lineno 254 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [66]  address 0x3538 filenum 0 lineno 255 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [67]  address 0x3545 filenum 0 lineno 256 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [68]  address 0x3545 filenum 0 lineno 256 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [69]  address 0x3550 filenum 0 lineno 258 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [70]  address 0x3560 filenum 0 lineno 101 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [71]  address 0x3560 filenum 0 lineno 102 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [72]  address 0x3560 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [73]  address 0x3560 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [74]  address 0x3560 filenum 0 lineno 101 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [75]  address 0x3564 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [76]  address 0x3570 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [77]  address 0x3570 filenum 0 lineno 104 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [78]  address 0x3570 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [79]  address 0x3570 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [80]  address 0x3570 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [81]  address 0x357c filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [82]  address 0x357c filenum 0 lineno 105 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [83]  address 0x357c filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [84]  address 0x357c filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [85]  address 0x357c filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [86]  address 0x3588 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [87]  address 0x3588 filenum 0 lineno 106 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [88]  address 0x3588 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [89]  address 0x3588 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [90]  address 0x3588 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [91]  address 0x3594 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [92]  address 0x3594 filenum 0 lineno 107 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [93]  address 0x3594 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [94]  address 0x3594 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [95]  address 0x3594 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [96]  address 0x35a0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [97]  address 0x35a0 filenum 0 lineno 108 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [98]  address 0x35a0 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [99]  address 0x35a0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [100]  address 0x35a0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [101]  address 0x35ac filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [102]  address 0x35ac filenum 0 lineno 109 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [103]  address 0x35ac filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [104]  address 0x35ac filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [105]  address 0x35ac filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [106]  address 0x35b8 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [107]  address 0x35b8 filenum 0 lineno 110 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [108]  address 0x35b8 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [109]  address 0x35b8 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [110]  address 0x35b8 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [111]  address 0x35c4 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [112]  address 0x35c4 filenum 0 lineno 111 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [113]  address 0x35c4 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [114]  address 0x35c4 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [115]  address 0x35c4 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [116]  address 0x35d0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [117]  address 0x35d0 filenum 0 lineno 112 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [118]  address 0x35d0 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [119]  address 0x35d0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [120]  address 0x35d0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [121]  address 0x35d7 filenum 0 lineno 113 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [122]  address 0x35db filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h 
-  [123]  address 0x35e0 filenum 0 lineno 809 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [124]  address 0x35e0 filenum 0 lineno 809 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [125]  address 0x35ea filenum 0 lineno 824 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [126]  address 0x35ed filenum 0 lineno 809 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [127]  address 0x35fe filenum 0 lineno 809 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [128]  address 0x360e filenum 0 lineno 818 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [129]  address 0x360e filenum 0 lineno 823 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [130]  address 0x3614 filenum 0 lineno 820 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [131]  address 0x3616 filenum 0 lineno 824 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [132]  address 0x3619 filenum 0 lineno 818 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [133]  address 0x3622 filenum 0 lineno 819 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [134]  address 0x3622 filenum 0 lineno 820 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [135]  address 0x3622 filenum 0 lineno 820 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [136]  address 0x3627 filenum 0 lineno 821 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [137]  address 0x3627 filenum 0 lineno 821 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [138]  address 0x362f filenum 0 lineno 823 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [139]  address 0x362f filenum 0 lineno 824 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [140]  address 0x362f filenum 0 lineno 824 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [141]  address 0x3634 filenum 0 lineno 825 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [142]  address 0x3634 filenum 0 lineno 825 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [143]  address 0x3638 filenum 0 lineno 826 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [144]  address 0x3638 filenum 0 lineno 826 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [145]  address 0x3652 filenum 0 lineno 827 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [146]  address 0x3652 filenum 0 lineno 827 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [147]  address 0x3656 filenum 0 lineno 828 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [148]  address 0x3656 filenum 0 lineno 828 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [149]  address 0x3662 filenum 0 lineno 829 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [150]  address 0x3662 filenum 0 lineno 829 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [151]  address 0x3666 filenum 0 lineno 831 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [152]  address 0x3666 filenum 0 lineno 831 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [153]  address 0x3669 filenum 0 lineno 832 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [154]  address 0x3669 filenum 0 lineno 832 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [155]  address 0x3671 filenum 0 lineno 833 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [156]  address 0x3671 filenum 0 lineno 839 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [157]  address 0x367f filenum 0 lineno 839 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [158]  address 0x3687 filenum 0 lineno 839 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [159]  address 0x3689 filenum 0 lineno 839 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [160]  address 0x368b filenum 0 lineno 839 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [161]  address 0x368d filenum 0 lineno 839 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [162]  address 0x3690 filenum 0 lineno 838 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [163]  address 0x3695 filenum 0 lineno 838 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [164]  address 0x3697 filenum 0 lineno 839 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [165]  address 0x36a0 filenum 0 lineno 1231 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [166]  address 0x36a0 filenum 0 lineno 1231 ..std../src/bin/dwarfexample/findfuncbypc.c 
-  [167]  address 0x36af filenum 0 lineno 1235 ..std../src/bin/dwarfexample/findfuncbypc.c 
+  [1] directory:  ...std.../src/bin/dwarfexample
+  [2] directory:  /usr/include/x86_64-linux-gnu/bits
+  [3] directory:  /usr/lib/gcc/x86_64-linux-gnu/9/include
+  [4] directory:  /usr/include/x86_64-linux-gnu/bits/types
+  [5] directory:  /usr/include
+  [6] directory:  ...std.../src/lib/libdwarf
+  [0]  address 0x3430 filenum 0 lineno 232 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [1]  address 0x3430 filenum 0 lineno 233 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [2]  address 0x3430 filenum 0 lineno 232 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [3]  address 0x3437 filenum 0 lineno 232 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [4]  address 0x343a filenum 0 lineno 233 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [5]  address 0x343e filenum 0 lineno 233 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [6]  address 0x3443 filenum 0 lineno 234 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [7]  address 0x344d filenum 0 lineno 235 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [8]  address 0x344d filenum 0 lineno 235 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [9]  address 0x3455 filenum 0 lineno 237 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [10]  address 0x3455 filenum 0 lineno 237 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [11]  address 0x345c filenum 0 lineno 237 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [12]  address 0x3461 filenum 0 lineno 238 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [13]  address 0x346e filenum 0 lineno 239 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [14]  address 0x346e filenum 0 lineno 239 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [15]  address 0x3479 filenum 0 lineno 241 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [16]  address 0x3479 filenum 0 lineno 214 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [17]  address 0x347e filenum 0 lineno 241 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [18]  address 0x3485 filenum 0 lineno 242 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [19]  address 0x3485 filenum 0 lineno 211 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [20]  address 0x3485 filenum 0 lineno 213 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [21]  address 0x3485 filenum 0 lineno 214 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [22]  address 0x3485 filenum 0 lineno 214 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [23]  address 0x3485 filenum 0 lineno 214 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [24]  address 0x3487 filenum 0 lineno 214 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [25]  address 0x3490 filenum 0 lineno 215 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [26]  address 0x34a0 filenum 0 lineno 214 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [27]  address 0x34a4 filenum 0 lineno 215 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [28]  address 0x34a9 filenum 0 lineno 214 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [29]  address 0x34a9 filenum 0 lineno 214 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [30]  address 0x34a9 filenum 0 lineno 214 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [31]  address 0x34af filenum 0 lineno 217 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [32]  address 0x34c0 filenum 0 lineno 218 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [33]  address 0x34c0 filenum 0 lineno 225 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [34]  address 0x34c7 filenum 0 lineno 218 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [35]  address 0x34ce filenum 0 lineno 219 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [36]  address 0x34ce filenum 0 lineno 219 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [37]  address 0x34d6 filenum 0 lineno 220 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [38]  address 0x34d6 filenum 0 lineno 220 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [39]  address 0x34de filenum 0 lineno 220 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [40]  address 0x34de filenum 0 lineno 243 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [41]  address 0x34de filenum 0 lineno 222 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [42]  address 0x34de filenum 0 lineno 224 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [43]  address 0x34de filenum 0 lineno 224 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [44]  address 0x34e8 filenum 0 lineno 225 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [45]  address 0x34e8 filenum 0 lineno 225 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [46]  address 0x34ed filenum 0 lineno 226 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [47]  address 0x34fa filenum 0 lineno 227 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [48]  address 0x34fa filenum 0 lineno 227 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [49]  address 0x3505 filenum 0 lineno 227 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [50]  address 0x3505 filenum 0 lineno 244 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [51]  address 0x3506 filenum 0 lineno 244 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [52]  address 0x3507 filenum 0 lineno 244 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [53]  address 0x3510 filenum 0 lineno 247 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [54]  address 0x3510 filenum 0 lineno 248 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [55]  address 0x3510 filenum 0 lineno 249 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [56]  address 0x3510 filenum 0 lineno 247 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [57]  address 0x3516 filenum 0 lineno 249 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [58]  address 0x3519 filenum 0 lineno 249 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [59]  address 0x351e filenum 0 lineno 253 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [60]  address 0x3524 filenum 0 lineno 252 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [61]  address 0x3524 filenum 0 lineno 253 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [62]  address 0x3527 filenum 0 lineno 253 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [63]  address 0x352c filenum 0 lineno 254 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [64]  address 0x352c filenum 0 lineno 254 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [65]  address 0x3533 filenum 0 lineno 254 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [66]  address 0x3538 filenum 0 lineno 255 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [67]  address 0x3545 filenum 0 lineno 256 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [68]  address 0x3545 filenum 0 lineno 256 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [69]  address 0x3550 filenum 0 lineno 258 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [70]  address 0x3560 filenum 0 lineno 101 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [71]  address 0x3560 filenum 0 lineno 102 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [72]  address 0x3560 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [73]  address 0x3560 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [74]  address 0x3560 filenum 0 lineno 101 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [75]  address 0x3564 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [76]  address 0x3570 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [77]  address 0x3570 filenum 0 lineno 104 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [78]  address 0x3570 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [79]  address 0x3570 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [80]  address 0x3570 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [81]  address 0x357c filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [82]  address 0x357c filenum 0 lineno 105 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [83]  address 0x357c filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [84]  address 0x357c filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [85]  address 0x357c filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [86]  address 0x3588 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [87]  address 0x3588 filenum 0 lineno 106 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [88]  address 0x3588 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [89]  address 0x3588 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [90]  address 0x3588 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [91]  address 0x3594 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [92]  address 0x3594 filenum 0 lineno 107 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [93]  address 0x3594 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [94]  address 0x3594 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [95]  address 0x3594 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [96]  address 0x35a0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [97]  address 0x35a0 filenum 0 lineno 108 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [98]  address 0x35a0 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [99]  address 0x35a0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [100]  address 0x35a0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [101]  address 0x35ac filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [102]  address 0x35ac filenum 0 lineno 109 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [103]  address 0x35ac filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [104]  address 0x35ac filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [105]  address 0x35ac filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [106]  address 0x35b8 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [107]  address 0x35b8 filenum 0 lineno 110 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [108]  address 0x35b8 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [109]  address 0x35b8 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [110]  address 0x35b8 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [111]  address 0x35c4 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [112]  address 0x35c4 filenum 0 lineno 111 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [113]  address 0x35c4 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [114]  address 0x35c4 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [115]  address 0x35c4 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [116]  address 0x35d0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [117]  address 0x35d0 filenum 0 lineno 112 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [118]  address 0x35d0 filenum 1 lineno 105 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [119]  address 0x35d0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [120]  address 0x35d0 filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [121]  address 0x35d7 filenum 0 lineno 113 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [122]  address 0x35db filenum 1 lineno 107 /usr/include/x86_64-linux-gnu/bits/stdio2.h
+  [123]  address 0x35e0 filenum 0 lineno 809 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [124]  address 0x35e0 filenum 0 lineno 809 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [125]  address 0x35ea filenum 0 lineno 824 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [126]  address 0x35ed filenum 0 lineno 809 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [127]  address 0x35fe filenum 0 lineno 809 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [128]  address 0x360e filenum 0 lineno 818 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [129]  address 0x360e filenum 0 lineno 823 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [130]  address 0x3614 filenum 0 lineno 820 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [131]  address 0x3616 filenum 0 lineno 824 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [132]  address 0x3619 filenum 0 lineno 818 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [133]  address 0x3622 filenum 0 lineno 819 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [134]  address 0x3622 filenum 0 lineno 820 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [135]  address 0x3622 filenum 0 lineno 820 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [136]  address 0x3627 filenum 0 lineno 821 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [137]  address 0x3627 filenum 0 lineno 821 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [138]  address 0x362f filenum 0 lineno 823 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [139]  address 0x362f filenum 0 lineno 824 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [140]  address 0x362f filenum 0 lineno 824 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [141]  address 0x3634 filenum 0 lineno 825 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [142]  address 0x3634 filenum 0 lineno 825 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [143]  address 0x3638 filenum 0 lineno 826 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [144]  address 0x3638 filenum 0 lineno 826 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [145]  address 0x3652 filenum 0 lineno 827 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [146]  address 0x3652 filenum 0 lineno 827 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [147]  address 0x3656 filenum 0 lineno 828 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [148]  address 0x3656 filenum 0 lineno 828 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [149]  address 0x3662 filenum 0 lineno 829 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [150]  address 0x3662 filenum 0 lineno 829 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [151]  address 0x3666 filenum 0 lineno 831 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [152]  address 0x3666 filenum 0 lineno 831 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [153]  address 0x3669 filenum 0 lineno 832 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [154]  address 0x3669 filenum 0 lineno 832 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [155]  address 0x3671 filenum 0 lineno 833 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [156]  address 0x3671 filenum 0 lineno 839 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [157]  address 0x367f filenum 0 lineno 839 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [158]  address 0x3687 filenum 0 lineno 839 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [159]  address 0x3689 filenum 0 lineno 839 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [160]  address 0x368b filenum 0 lineno 839 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [161]  address 0x368d filenum 0 lineno 839 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [162]  address 0x3690 filenum 0 lineno 838 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [163]  address 0x3695 filenum 0 lineno 838 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [164]  address 0x3697 filenum 0 lineno 839 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [165]  address 0x36a0 filenum 0 lineno 1231 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [166]  address 0x36a0 filenum 0 lineno 1231 ...std.../src/bin/dwarfexample/findfuncbypc.c
+  [167]  address 0x36af filenum 0 lineno 1235 ...std.../src/bin/dwarfexample/findfuncbypc.c
 FOUND function "examine_die_data", requested pc 0x36a4
       function lowpc 0x36a0 highpc 0x41a0
       file name index 0x1
       in:
-      CU 0  ..std../src/bin/dwarfexample/findfuncbypc.c
+      CU 0  ...std.../src/bin/dwarfexample/findfuncbypc.c
       comp-dir  /var/tmp/bld/src/bin/dwarfexample
-      Src line address 0x36a0 lineno 1231 ..std../src/bin/dwarfexample/findfuncbypc.c
+      Src line address 0x36a0 lineno 1231 ...std.../src/bin/dwarfexample/findfuncbypc.c
 
