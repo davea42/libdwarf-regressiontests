@@ -33,7 +33,7 @@ onetest n $testsrc/debugfission/target.dwo junk.sgtestout
 echo "There is no group 1 in target.dwo so it gets NO ENTRY"  >>junk.sgtestout
 onetest "-group 1" $testsrc/debugfission/target.dwo junk.sgtestout
 
-diff $ts/sgtest.baseline junk.sgtestout
+diff $diffopt $ts/sgtest.baseline junk.sgtestout
 if [ $? -ne 0 ]
 then
   echo "FAIL diff $ts/sgtest.baseline $tf/junk.sgtestout"
@@ -59,7 +59,7 @@ onetest "-group 4" $testsrc/comdatex/example.o >>junk.sgtest2out
 echo "There is no group 5 in example.o but it is chosen." \
   >>junk.sgtest2out
 onetest "-group 5" $testsrc/comdatex/example.o junk.sgtest2out
-diff $ts/sgtest2.baseline junk.sgtest2out
+diff $diffopt $ts/sgtest2.baseline junk.sgtest2out
 if [ $? -ne 0 ]
 then
     echo "FAIL diff $ts/sgtest2.baseline $tf/junk.sgtest2out"

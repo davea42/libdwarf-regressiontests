@@ -28,8 +28,14 @@ then
 else
   nli=
 fi
+staticopt=
+if [ $sharedlib = "n" ]
+then
+staticopt="-DLIBDWARF_STATIC"
+fi
 
-opts="-I$bld -I$bld/src/lib/libdwarf"
+
+opts="-I$bld -I$bld/src/lib/libdwarf $staticopt"
 x="cc $h $opts $libzhdr  $ts/testoffdie.c  $nli $l -o junkoffdie $libs $libzlib $libzlink"
 echo "$x"
 $x
@@ -48,7 +54,7 @@ then
   echo "rerun: $ts/runtest.sh $1 $2"
    exit 1
 fi
-diff $ts/baseout junkout
+diff $diffopt $ts/baseout junkout
 if [ $? -ne 0 ]
 then
   echo "fail mismatch expected from testoffdie/runtest.sh $1 $2"

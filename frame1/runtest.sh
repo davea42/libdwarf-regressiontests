@@ -35,7 +35,12 @@ then
   fi
   libs="$libs -lzstd"
 fi
-iopts="-I$libbld -I$bld -I$bld/src/libdwarf -I$libdw -I$libbld/src/liblibdwarf"
+staticopt=
+if [ $sharedlib = "n" ]
+then
+staticopt="-DLIBDWARF_STATIC"
+fi
+iopts="-I$libbld -I$bld -I$bld/src/libdwarf -I$libdw -I$libbld/src/liblibdwarf $staticopt"
 cpifmissing $codedir/src/bin/dwarfexample/frame1.c framexlocal.c
 x="cc -g $opt $iopts $libzstdhdrdir framexlocal.c $dwlib $libs -o frame1"
 echo "$x"
@@ -53,7 +58,7 @@ then
     echo fail running framexlocal.c
     exit 1
 fi
-diff $ts/frame1.base frame1.out >diffs
+diff $diffopt $ts/frame1.base frame1.out >diffs
 if [ $? -ne 0 ]
 then
     echo "fail frame1 test.  got diffs in output."
@@ -70,7 +75,7 @@ then
     echo "rerun: $ts/runtest.sh"
     exit 1
 fi
-diff $ts/selregs2018.base  selregs2018.out >diffs
+diff $diffopt $ts/selregs2018.base  selregs2018.out >diffs
 if [ $? -ne 0 ]
 then
     echo "fail selregs2018 test.  got diffs in output."
@@ -87,7 +92,7 @@ then
     echo "rerun: $ts/runtest.sh"
     exit 1
 fi
-diff $ts/frame2018.base  frame2018.out >diffs
+diff $diffopt $ts/frame2018.base  frame2018.out >diffs
 if [ $? -ne 0 ]
 then
     echo "fail frame2018 test.  got diffs in output."

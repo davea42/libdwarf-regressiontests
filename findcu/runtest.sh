@@ -30,7 +30,13 @@ then
 else
   nli=
 fi
-opts="-I$bld -I$bld/libdwarf -I$codedir/src/lib/libdwarf"
+staticopt=
+if [ $sharedlib = "n" ]
+then
+staticopt="-DLIBDWARF_STATIC"
+fi
+
+opts="-I$bld -I$bld/l$bdwarf $staticopt -I$codedir/src/lib/libdwarf"
 
 cc $h $opts  $libzhdr $ts/cutest.c $nli $l -o cutest $libs $libzlib $libzlink
 ./cutest $ts/cutestobj.save

@@ -31,7 +31,7 @@ then
     cp junkimplcon.o $ts/implicitconst.bin
 fi
 
-diff $ts/dgout.base junkdg.new
+diff $diffopt $ts/dgout.base junkdg.new
 if [ $? -ne 0 ]
 then
   echo "fail implicitconst diff dgout.base junkdg.new

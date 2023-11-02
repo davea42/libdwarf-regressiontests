@@ -15,7 +15,7 @@ m() {
   base=$4
   $dwdumper -i -G $obj 1>junk1 2>&1
   unifyddname junk1 $test
-  diff $base $test
+  diff $diffopt $base $test
   if test  $?  -ne 0
   then
       echo "fail test williamson/...exe mismatch base $base vs $test "

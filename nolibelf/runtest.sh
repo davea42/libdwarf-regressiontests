@@ -16,7 +16,7 @@ then
   echo "fail 1 nolibelf -a test.o"
   exit 1
 fi
-diff $ts/test1.base junk1
+diff $diffopt $ts/test1.base junk1
 if [ $? -ne 0 ]
 then
    echo "fail nolibelf test 1 diff test1.base junk1"

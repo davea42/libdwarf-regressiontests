@@ -20,7 +20,13 @@ tf=$bldtest/legendre
 libdw=$libdw
 bopt=$libbld
 
-OPTS="-I$bopt -I$bopt/src/lib/libdwarf -I$libdw/src/lib/libdwarf -I$" 
+staticopt=
+if [ $sharedlib = "n" ]
+then
+staticopt="-DLIBDWARF_STATIC"
+fi
+
+OPTS="-I$bopt -I$bopt/src/lib/libdwarf -I$libdw/src/lib/libdwarf $staticopt" 
 libs=
 
 cpifmissing $ts/libmpich.so.1.0 libmpich.so.1.0

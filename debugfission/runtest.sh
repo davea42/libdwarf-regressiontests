@@ -20,7 +20,7 @@ b=archiveo.base
 bz=archiveo.base.gz
 $dd -a $ts/archive.o  >junk1.new
 $ourzcat $ts/$bz > $b
-diff $b junk1.new
+diff $diffopt $b junk1.new
 if [  $?  -ne 0 ]
 then
     echo fail debugfission archiveo test 1

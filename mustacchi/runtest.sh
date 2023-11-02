@@ -38,7 +38,7 @@ fi
 #fi
 
 
-diff $ts/m64outo.base junktest64o.x
+diff $diffopt $ts/m64outo.base junktest64o.x
 if [ $? -ne 0 ]
 then
   echo "fail mustacchi m64t.o libelf output does not match."

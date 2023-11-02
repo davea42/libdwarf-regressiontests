@@ -32,7 +32,7 @@ then
     exit 1
 fi
 
-diff $ts/base.debugnames junkdebugnames
+diff $diffopt $ts/base.debugnames junkdebugnames
 if [ $?  -ne 0 ]
 then
    echo "fail dwgenc dwarfdump."
@@ -40,7 +40,7 @@ then
    echo "rerun: $ts/runtest.sh"
    exit 1
 fi
-diff $ts/base.stderr junkstderr
+diff $diffopt $ts/base.stderr junkstderr
 if [ $?  -ne 0 ]
 then
    echo "fail dwgenc dwarfdump."

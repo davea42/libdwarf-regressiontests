@@ -27,7 +27,7 @@ m() {
       echo exit_status  $r $sr $obj  >>$tmp
       return
   fi
-  diff $baseline $tmp
+  diff $diffopt $baseline $tmp
   if test  $?  -ne 0
   then
       echo "fail test $baseline vs $tmp"

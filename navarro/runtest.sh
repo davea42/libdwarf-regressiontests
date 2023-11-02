@@ -12,8 +12,14 @@ if [ $withlibz = "withlibz" ]
 then
   libs="$libs -lz"
 fi
+staticopt=
+if [ $sharedlib = "n" ]
+then
+staticopt="-DLIBDWARF_STATIC"
+fi
 
-cc -g -I $dw -L $dw $ts/get_globals.c -ldwarf $libs -o getglobals
+
+cc -g -I$dw -L$dw $staticopt $ts/get_globals.c -ldwarf $libs -o getglobals
 if [ $? -ne 0 ]
 then
  echo fail to compile navarro/getglobals

@@ -119,7 +119,7 @@ then
   exit 1
 fi
 
-diff $ts/basestrpiM  $ta
+diff $diffopt $ts/basestrpiM  $ta
 if [ $? -ne 0 ]
 then
     echo fail diff basestrpiM $ta . Object gen is $tz
@@ -129,7 +129,7 @@ then
     exit 1
 fi
 
-diff $ts/basestrpgenout  $t9
+diff $diffopt $ts/basestrpgenout  $t9
 if [ $? -ne 0 ]
 then
     echo fail diff basestrpgenout $t9. Object gen is $tz
@@ -144,7 +144,7 @@ grep high_pc $t1 >$t5
 echo Now show FORM_str for $ty >> $t5
 grep DW_FORM_str $t1 >>$t5
 
-diff  $ts/basehighpc1 $t5
+diff $diffopt  $ts/basehighpc1 $t5
 if [ $? -ne 0 ]
 then
     echo fail diff basehighpc1 $t5 object gen is $ty
@@ -164,7 +164,7 @@ fi
 grep high_pc $t2  >$t6 2>/dev/null
 
 bas=basehighpc2
-diff  $ts/$bas $t6
+diff $diffopt  $ts/$bas $t6
 if [ $? -ne 0 ]
 then
     echo "did: $gen  -h -t obj -c 0 -o $tx $objf  >$t4 "
@@ -186,7 +186,7 @@ then
 fi
 
 bas=basehighpc3
-diff $ts/$bas $t3
+diff $diffopt $ts/$bas $t3
 if [ $? -ne 0 ]
 then
   echo "fail offsetfromlowpc/runtest.sh mismatch transformation to offset"
@@ -202,7 +202,7 @@ then
   exit 1
 fi
 bas=basehighpc4
-diff $ts/$bas $t7
+diff $diffopt $ts/$bas $t7
 if [ $? -ne 0 ]
 then
   echo "fail offsetfromlowpc:  simplereader --check $ty "
@@ -216,7 +216,7 @@ $dd -f -l -vvv $tz  > $tg2      2>/dev/null
 # Not every system agrees what day/mo/yr is shown for zero
 # or other times. TZ issues. 
 grep -v 'last time 0x' <$tg2 >$tg3
-diff $ts/$bas $tg3
+diff $diffopt $ts/$bas $tg3
 if [ $? -ne 0 ]
 then
   echo "fail dwarfdump -f $tz  offsetfromlowpc advloc err"

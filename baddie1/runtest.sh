@@ -28,7 +28,7 @@ m() {
   #$wrtimen 
   $dwdumper $opts $obj 1>junk1 2>&1
   unifyddname junk1 $test
-  diff $base $test
+  diff $diffopt $base $test
   if test  $?  -ne 0
   then
       echo "fail test baddie1/$obj, mismatch base $base vs $test "

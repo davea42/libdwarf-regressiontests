@@ -35,7 +35,7 @@ do
   chkres $? "Running $fzb $testsrc/$fname "
 done < $ts/fileliste
 
-diff ./result $ts/baseresult
+diff $diffopt ./result $ts/baseresult
 if [ $? -ne 0 ]
 then
    echo "FAIL in stderr for filelist tests."

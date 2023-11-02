@@ -8,7 +8,7 @@ tf=$bldtest/supplementary
 dd=../dwarfdump
 rm -f junkn
 $dd --print-debug-sup  $ts/dwarfstringsup.o  >junkn
-diff $ts/sup1.base junkn
+diff $diffopt $ts/sup1.base junkn
 if [ $? -ne 0 ]
 then
     echo "fail output of --print-debug-sup  dwarfstringsup.o"

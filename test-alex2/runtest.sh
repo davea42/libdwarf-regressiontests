@@ -14,7 +14,13 @@ ts=$testsrc/test-alex2
 tf=$bldtest/test-alex2
 l=../$filelibname
 
-OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf"
+staticopt=
+if [ $sharedlib = "n" ]
+then
+staticopt="-DLIBDWARF_STATIC"
+fi
+
+OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf $staticopt"
 libs=
 x="cc -DWORKING=1 $OPTS  $libzhdr $ts/test.c $l $libs $libzlib $libzlink -o test2"
 echo "$x"

@@ -19,8 +19,14 @@ then
 else
   opt=
 fi
+staticopt=
+if [ $sharedlib = "n" ]
+then
+staticopt="-DLIBDWARF_STATIC"
+fi
 
-OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf"
+
+OPTS="-I$bldtest -I$bldtest/libdwarf -I$codedir/src/lib/libdwarf -I$libbld/libdwarf $staticopt"
 x="cc -DWORKING=1 $opt $OPTS $libzhdr  $ts/test.c ../$filelibname $libzlib $libzlink -o test1"
 echo "$x"
 $x
@@ -51,7 +57,7 @@ then
      echo "rerun: $ts/runtest.sh $withlibz $withlibzstd"
      exit 1
 fi
-diff out1 out2 >outdiffs
+diff $diffopt out1 out2 >outdiffs
 if [ $? -ne  0 ]
 then
      echo "fail alex-s test in test-alex1."

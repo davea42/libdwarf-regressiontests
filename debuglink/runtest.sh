@@ -37,7 +37,7 @@ fi
 # regressiontests/debuglink/crc32.debug
 $dd --print-gnu-debuglink $ts/crc32 >junklink
 $mypycom $testsrc/$mypydir/filterpathto.py regressiontests/debuglink/crc32.debug <junklink >junklinky
-diff $ts/baselink junklinky 
+diff $diffopt $ts/baselink junklinky 
 if [ $? -ne 0 ]
 then
     echo "fail debuglink base link wrong"
@@ -49,7 +49,7 @@ fi
 $dd --print-gnu-debuglink $ts/crc32.debug >junklinkc
 sed  'sx/usr/home/x/home/x' <junklinkc >junklinkcx
 sed  'sx/home/ubuntu/x/home/davea/x' <junklinkcx >junklinkcy
-diff $ts/baselinkc junklinkcy
+diff $diffopt $ts/baselinkc junklinkcy
 if [ $? -ne 0 ]
 then
     echo "fail debuglink base link wrong"
@@ -66,7 +66,7 @@ then
     exit 1
 fi
 ./junkcrc32 $ts/crc32.debug > junkcrcout
-diff $ts/basecrcout junkcrcout 
+diff $diffopt $ts/basecrcout junkcrcout 
 if [ $? -ne 0 ]
 then
     echo "fail debuglink etc on crc32.debug wrong"
@@ -75,7 +75,7 @@ then
     exit 1
 fi
 ./junkcrc32 $ts/crc32 > junkcrcoutb
-diff $ts/basecrcoutb junkcrcoutb
+diff $diffopt $ts/basecrcoutb junkcrcoutb
 if [ $? -ne 0 ]
 then
     echo "fail debuglink etc crc32 out wrong"

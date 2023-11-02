@@ -35,7 +35,7 @@ cat $bte >> $bt
 #  else
 #    echo 'hughes2 test 2: $NLIZE set so skip checking 
 #  fi
-diff $ts/$b $bt
+diff $diffopt $ts/$b $bt
 if [ $? -ne 0 ]
 then
     echo "fail hughes2/simplereader $e $opts $t" 

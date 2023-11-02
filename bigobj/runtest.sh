@@ -57,7 +57,7 @@ then
   exit 1
 fi
 
-diff $bb $bn
+diff $diffopt $bb $bn
 if [ $? -ne 0 ]
 then
   echo "fail bigobject diff $bb $bn"

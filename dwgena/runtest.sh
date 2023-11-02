@@ -30,7 +30,7 @@ $dg -t obj -c 0  -o junk9.bin $ts/dwarfgen-bin >junkgen9.out
 echo $dd $ddopts -vvv  -a junk9.bin 
 $dd $ddopts -vvv -a junk9.bin | sed "$fix"   > $j
 $ourzcat $ts/$bz | sed "$fix" > $b
-diff $b $j
+diff $diffopt $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF2 -vvv 9
@@ -48,7 +48,7 @@ $dg -t obj -c 0  -o junk1.bin $ts/dwarfgen-bin >junkgen1.out
 echo $dd  $ddopts -a junk1.bin 
 $dd  $ddopts -a junk1.bin  | sed "$fix" >$j
 $ourzcat $ts/$bz | sed "$fix" >$b
-diff $b $j
+diff $diffopt $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF2 1
@@ -64,7 +64,7 @@ j=junk2.new
 echo "$dd $ddopts -a -vvv junk1.bin  output to junk2.new"
 $dd $ddopts -a -vvv junk1.bin | sed "$fix" >junk2.new
 $ourzcat $ts/$bz | sed "$fix" >$b
-diff $b $j
+diff $diffopt $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test 2
@@ -82,7 +82,7 @@ $dg -t obj -c 10 -o junk3.bin $ts//dwarfgen-bin >junkgen.out
 echo $dd $ddopts -a junk3.bin 
 $dd $ddopts -a junk3.bin |  sed "$fix"  >$j
 $ourzcat $ts/$bz |  sed "$fix"  >$b
-diff $b $j
+diff $diffopt $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test 3
@@ -98,7 +98,7 @@ j=junk4.new
 echo $dd $ddopts -a -vvv junk3.bin 
 $dd $ddopts -a -vvv junk3.bin |  sed "$fix"  >$j
 $ourzcat $ts/$bz |  sed "$fix"  >$b
-diff $b $j
+diff $diffopt $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test 4
@@ -117,7 +117,7 @@ $dg -t obj -c 2 -o junk5.bin $ts/dwarfdump-bin >junkgen.out
 echo $dd -a -y -p junk5.bin 
 $dd -a -y -p junk5.bin |  sed "$fix"  >$j
 $ourzcat $ts/$bz |  sed "$fix"  >$b
-diff $b $j
+diff $diffopt $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test 5
@@ -135,7 +135,7 @@ $dg -v 3 -t obj -c 0  -o junk8.bin $ts/dwarfgen-bin >junkgen8.out
 echo $dd -vvv -a junk8.bin
 $dd -vvv -a -vvv junk8.bin |  sed "$fix"  >$j
 $ourzcat $ts/$bz |  sed "$fix"  >$b
-diff $b $j
+diff $diffopt $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF3 8
@@ -154,7 +154,7 @@ $dg -v 4 -t obj -c 0  -o junk7.bin $ts/dwarfgen-bin >junkgen7.out
 echo $dd -vvv -a junk7.bin
 $dd -vvv -a -vvv junk7.bin |  sed "$fix"  >$j
 $ourzcat $ts/$bz  |  sed "$fix"  >$b
-diff test7.base junk7.new
+diff $diffopt test7.base junk7.new
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF4 7
@@ -172,7 +172,7 @@ $dg -v 5 -t obj -c 0  -o junk6.bin $ts/dwarfgen-bin >junkgen6.out
 echo $dd -vvv -a junk6.bin
 $dd -a -vvv junk6.bin |  sed "$fix"  >$j
 $ourzcat $ts/$bz |  sed "$fix"  >$b
-diff $b $j
+diff $diffopt $b $j
 if [  $?  -ne 0 ]
 then
     echo fail dwgena test DWARF5 6
