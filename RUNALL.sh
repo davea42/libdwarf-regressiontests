@@ -10,7 +10,7 @@ echo "Running all regressiontests tests"
 . ./SHALIAS.sh
 . ./BASEFILES.sh
 chkres() {
-if test $1 != 0
+if test $1 -ne 0
 then
   echo "Test failure: $2"
   exit 2

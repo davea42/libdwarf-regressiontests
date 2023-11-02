@@ -141,7 +141,7 @@ then
    echo "FAIL cd $libbld failed"
    exit 1
 fi
-set -x
+
 ###  Build now
 m="meson setup --default-library static $buildsanitize  $buildwall  -Ddwarfexample=true -Ddwarfgen=true . $libdw"
 echo $m
@@ -152,7 +152,7 @@ then
   exit 1;
 fi
 ninja
-set +x
+
 #  Now copy the items built into $targetdir.
 copyobject() {
   f=$1
