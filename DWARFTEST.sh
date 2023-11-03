@@ -763,11 +763,18 @@ runsingle () {
   fi
   if [ $modpath = "y" ]
   then
-    scr=$testsrc/scripts/canonicalpath.py
+    canp=$testsrc/scripts/canonicalpath.py
     echo "$scr junksingle.$base $code $codedir content"
-    $scr junksingle.$base $code $codedir content >junksingle3.$base
+    $canp junksingle.$base $code $codedir content >junksingle3a.$base
+    chkres $? "FAIL $canp a"
+    #Needed as some strings in the 
+    #object file itself are:
+    xstd="/home/davea/dwarf/code"
+    $canp junksingle3a.$base $xstd content >junksingle3.$base
+    chkres $? "FAIL $canp b"
   else
     cp junksingle.$base junksingle3.$base
+    chkres $? "FAIL cp junksingle.$base to junksingle3"
   fi
   allgood=y
   if [ ! -f $testsrc/baselines/$base ]
