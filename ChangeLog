@@ -1,3 +1,443 @@
+2023-11-03:  David Anderson
+    commit 55325d0ef2a80b51bb50e7818cb28311993ad752
+
+    Macos now passes regressiontesting.
+            modified:   dwarfdump-macos.O
+
+2023-11-03:  David Anderson
+    commit f0a42b1aee13e531541054c477ec772552973dfb
+
+    Renamed a local variable and fixed
+    a string used for removing machine-specific
+    pathnames from a couple of tests.
+            modified:   DWARFTEST.sh
+
+2023-11-03:  David Anderson
+    commit 114ba629279b80f4d1367f99c2386654753ec827
+
+    Removing print() statements used for debugging.
+            modified:   scripts/canonicalpath.py
+
+2023-11-02:  David Anderson
+    commit 4ec3d8e008821ddc66d9ef8f4a9e52977dcdd77a
+
+    Remove 'set -x' and +x.
+            modified:   PICKUPBIN.sh
+    Fix a test of exit code to use -ne
+            modified:   RUNALL.sh
+
+2023-11-02:  David Anderson
+    commit 9befe643b3af55f91eadbf1d5e1bedf4e54e7953
+
+    Now that the generated BASEFILES.sh has more useful
+    information, and these all source it,
+    we can enable more things to work correctly
+    across system types.
+            modified:   baddie1/runtest.sh
+            modified:   bigobj/runtest.sh
+            modified:   debugfission/runtest.sh
+            modified:   debugfissionb/runtest.sh
+            modified:   debuglink/runtest.sh
+            modified:   dwgena/runtest.sh
+            modified:   dwgenc/runtest.sh
+            modified:   err_allocate/runtest.sh
+            modified:   filelist/runtest.sh
+            modified:   findcu/runtest.sh
+            modified:   frame1/runtest.sh
+            modified:   guilfanov/runtest.sh
+            modified:   guilfanov2/runtest.sh
+            modified:   hughes2/runtest.sh
+            modified:   implicitconst/runtest.sh
+            modified:   legendre/runtest.sh
+            modified:   mustacchi/runtest.sh
+            modified:   navarro/runtest.sh
+            modified:   nolibelf/runtest.sh
+            modified:   offsetfromlowpc/runtest.sh
+            new file:   scripts/testcanonical.sh
+            modified:   showsecgroupsdir/runtest.sh
+            modified:   supplementary/runtest.sh
+            modified:   test-alex1/runtest.sh
+            modified:   test-alex2/runtest.sh
+            modified:   testfindfuncbypc/runtest.sh
+            modified:   testoffdie/runtest.sh
+            modified:   williamson/runtest.sh
+
+2023-11-02:  David Anderson
+    commit 357b7e1d42b993c21c1769da97d4e605cf5a31d8
+
+    This now does all name transformations
+    (whether of a single name or a file with
+    pathnames) for independence from
+    locations and systems.
+            modified:   scripts/canonicalpath.py
+
+2023-11-02:  David Anderson
+    commit 4925e0dedd8bbff9d89326640b7dd774d9a89f41
+
+    Now with a much better approach
+    to making the tests work in multiple
+    places and systems.
+            modified:   DWARFTEST.sh
+            modified:   INITIALSETUP.sh
+            modified:   RUNALL.sh
+
+2023-11-02:  David Anderson
+    commit 608333e833a9c826dcd6b836b3958b758c264e74
+
+    New baselines reflecting latest method for
+    making test results comparable across
+    different systems and file-system locations of the
+    tests and source.
+            modified:   baselines/dwdebuglink-a.base
+            modified:   baselines/dwdebuglink-b.base
+            modified:   baselines/test_findfuncbypcb1.base
+            modified:   baselines/test_findfuncbypcb4.base
+            modified:   baselines/test_findfuncbypcb5.base
+
+2023-10-31:  David Anderson
+    commit 0dcb05d310104eb21f7181edc7f0e39a5669f537
+
+    Minor change to initial wording for completeness.
+            modified:   BASEFILES.sh.in
+
+2023-10-29:  David Anderson
+    commit 06dfa10d3a0451cf245aa805ab57c2ab1d802a8d
+
+    Updating baseline executable due to new&correct formatting
+    of DW_AT_data_bit_offset value.
+            modified:   dwarfdump-s390.O
+
+2023-10-28:  David Anderson
+    commit 7b25d80c7a161d32ede99f675b41718e818bc11b
+
+    The new zlib libzstd approach is working here.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-10-28:  David Anderson
+    commit 43f501ad4f95fbea1d569504ab9e2e8118382b1b
+
+    Reflects the new and better printing of DW_AT_data_bit_offset
+    attribute value.
+            new file:   baselines/databitoffset.base
+
+2023-10-28:  David Anderson
+    commit 05292db7582b6c3a42cc9b45e26d163b0c5f2fd8
+
+    Major revision of zlib and libzstd handling.
+    As in meson, if one is missing library or header
+    then both are ignored.  Treating these
+    individually (as before now) was an accident of history
+    and no longer seems useful. Makes understanding
+    the code referring to these libraries
+    much easier.
+            modified:   DWARFTEST.sh
+
+2023-10-28:  David Anderson
+    commit 184f2b052d5cda10ed94d95b71ea6e3c36e60a50
+
+    No longer runs CLEANUP. Better to leave things there
+    for inspection.
+            modified:   RUNALL.sh
+
+2023-10-28:  David Anderson
+    commit 071b91d2922be0544b42425eb14cc43f6b8e2de4
+
+    Simpler wording describing what this is for
+            modified:   BASEFILES.sh.in
+
+2023-10-28:  David Anderson
+    commit 895b8301230c2e7b05b6655ab773782223b234ee
+
+    These now do a small compile to determine where
+    libz and libzstd, and returns an exit code meaning
+    'both in standard places'
+    'one or both missing'
+    'one or both in /opt/local in /usr/local'
+    and adds data to BASENAMES.sh to be used
+    when compiling during the testing.
+            modified:   checkforlibz/runtest.sh
+            modified:   checkforlibzstd/runtest.sh
+
+2023-10-28:  David Anderson
+    commit ff2ab8306f5160315d0a56bc6db8cc430795b870
+
+    All these use the generated BASEFILES.sh to determine link
+    and cpp options for zlib and libzstd.
+            modified:   bitoffset/test_bitoffset.c
+            modified:   findcu/runtest.sh
+            modified:   legendre/runtest.sh
+            modified:   test-alex1/runtest.sh
+            modified:   test-alex2/runtest.sh
+            modified:   testoffdie/runtest.sh
+
+2023-10-24:  David Anderson
+    commit 106b4e5bf5c0ad6fc26859dfe1c8ffaaa7b333ce
+
+    What dwarfdump printed for DW_AT_data_bit_offset was
+    sometimes a useless negative value.
+    Now prints a sensible hex value.
+            new file:   databitoffset/README
+            new file:   databitoffset/dbotest.c
+            new file:   databitoffset/dbotest.o
+
+2023-10-23:  David Anderson
+    commit 309c8b952e7960ba3c7ef5b1be57c3f004445dd8
+
+    We no longer use make in regression testing.
+            deleted:    Makefile.in
+
+2023-10-23:  David Anderson
+    commit b56653b9510496c2ed60ce13ff60bdd25513b3f7
+
+    Making this more cautious to avoid deleting too much.
+            modified:   CLEANUP.sh
+    Clarified recent comments.
+            modified:   README.md
+
+2023-10-23:  David Anderson
+    commit 86db44eef206906aa359962b72ba241b43d0d09c
+
+    This radically changes the regression tests to run
+    as shell scripts, meson, and python3.
+            modified:   BASEFILES.sh.in
+            renamed:    configure.ac -> INITIALSETUP.sh
+            modified:   README.md
+            deleted:    configure
+
+2023-10-22:  David Anderson
+    commit c6a610828428872d426a89b7fc204acf3edff386
+
+    Now we use meson/ninja to build
+    for regressiontesting.
+
+    We do not use make anywhere, it is
+    all relatively simple shell scripts.
+
+    configure is used (with no options) just to
+    establish directory locations.
+
+    We do keep a single Makefile.in (which we ignore)
+    to avoid a warning from the initial configure.
+            modified:   BASEFILES.sh.in
+            modified:   Makefile.in
+            modified:   PICKUPBIN.sh
+            modified:   README.md
+            modified:   RUNALL.sh
+
+2023-10-21:  David Anderson
+    commit fa5a0054a1aef9522b4cea5b6775607bb4583399
+
+    These were checking HAVE_STRING_H and HAVE_STDLIB_H
+    which is silly as we assume C90 is in use.
+    Removed the checks.
+            modified:   test_arange.c
+            modified:   test_pubsreader.c
+            modified:   test_sectionnames.c
+            modified:   test_setframe.c
+
+2023-10-20:  David Anderson
+    commit 0a4be3b820adceb788dfeaa86e6008cca0dc6034
+
+    We need this to run full tests
+            new file:   dwarfdump-msys2.O
+    Fixing error messages.
+            modified:   dwdiff.py
+
+2023-10-20:  David Anderson
+    commit cd350dd65890d5a9874b9cf1d8ba65f69192b575
+
+    Using option to diff to drop windows cr character.
+            modified:   DWARFTEST.sh
+
+    regeneratee
+            modified:   config.h.in
+            modified:   configure
+    using dwdiff.py
+            modified:   configure.ac
+
+    New baseline dwarfdump
+            modified:   dwarfdump-macos.O
+
+2023-10-20:  David Anderson
+    commit 52291bc53152fd961efe2d6d23a4f1170c646dbd
+
+    A simple python diff program. Drops
+    cr/lf and plain lf so compares posix to windows
+    ouptput pass.
+            new file:   dwdiff.py
+
+2023-10-19:  David Anderson
+    commit cb46f13ff6bb0839010140fb4642bd1fafb7999c
+
+    More small changes.
+            modified:   README.md
+
+2023-10-19:  David Anderson
+    commit 9a2062017540c7bbc90f8b28fbdec87c856bded8
+
+    More tweaks and explanation.
+            modified:   README.md
+
+2023-10-19:  David Anderson
+    commit 05b87fee04adcba6ec1807909f5453175207bcb4
+
+    Now with latest  vulnerability test
+            modified:   DWARFTEST.sh
+
+    Updated the advice for people wishing to run the test suite.
+            modified:   README.md
+
+    modified baseline text output
+            modified:   baselines/frame1-2018.base
+            modified:   baselines/frame1-orig.base
+            modified:   baselines/macuniv.base
+            modified:   baselines/macuniv0.base
+            modified:   baselines/macuniv1.base
+
+    New baseline executables (using static libdwarf.a)
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-10-18:  David Anderson
+    commit 2e756378c0e835171db917903e3c87ff6819778a
+
+    Vulnerability fixed recentl.
+            new file:   baselines/ossfuzz63024.base
+
+2023-10-06:  David Anderson
+    commit 18da8baa56b2cd5e8cb4ee2da7cf3f1f3df785a0
+
+    New failure.
+            new file:   ossfuzz63024/fuzz_macro_dwarf4-4887579306360832
+
+2023-10-03:  David Anderson
+    commit 751b5d822e4b613fffc24928ed7f2b3c9f61879d
+
+    new baseline covering latest Mach-O and
+
+    a correction in a new error message
+    relating to MachO.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-10-03:  David Anderson
+    commit 1a4c9fc7f153f99aa7a673893bd1f1ebc53a2198
+
+    Example of a test
+            modified:   RUNVAL
+
+2023-10-03:  David Anderson
+    commit a59fedc159f9114d6659927a3accad528ab400e6
+
+    Latest test of Mach-O universal binary
+            modified:   DWARFTEST.sh
+
+2023-10-03:  David Anderson
+    commit 4641a092893895a2faccc24fdf711c9ceb365042
+
+    Result of new test
+            new file:   baselines/ossfuzz62943.base
+
+2023-10-03:  David Anderson
+    commit 39e8ff02582f00177f8fe615df11b2f1912a4db7
+
+    Might be fixed already...maybe
+            new file:   ossfuzz62943/fuzz_init_path-5486726493372416
+
+2023-10-03:  David Anderson
+    commit 496f11c9b3f6f2d6a7246e0d6ab104663465146f
+
+    New test baselines
+            modified:   baselines/ossfuzz62833.base
+            modified:   baselines/ossfuzz62834.base
+
+2023-10-01:  David Anderson
+    commit b2f98cae726be30d8fe337b12f57d09a5391f396
+
+    Latest baseline executable.
+            modified:   dwarfdump-macos.O
+
+2023-09-30:  David Anderson
+    commit 7c595188afd3f3d50481c8fffa176a7bb9a2452f
+
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-09-30:  David Anderson
+    commit ed99dd7a6e9f3eb492559d2d9d02ce1da2ae17d1
+
+    Now passes with the new tests.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz62833.base
+            new file:   baselines/ossfuzz62834.base
+            new file:   baselines/ossfuzz62842.base
+
+2023-09-30:  David Anderson
+    commit 447cf938ed21b5c5edb77d9369ce27916b312df2
+
+    New testcases
+            new file:   ossfuzz62833/fuzz_set_frame_all-4521858130903040
+            new file:   ossfuzz62834/fuzz_init_path-4573857635500032
+            new file:   ossfuzz62842/fuzz_findfuncbypc-4964619766333440.fuzz
+
+2023-09-29:  David Anderson
+    commit 60a788e9e738d264086a0641cee2f610c255947d
+
+    Now with tests on a Mach-O universal binary.
+            modified:   ChangeLog
+            modified:   DWARFTEST.sh
+            new file:   baselines/macuniv.base
+            new file:   baselines/macuniv0.base
+            new file:   baselines/macuniv1.base
+
+    Updated baseline executable
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-09-26:  David Anderson
+    commit 0d93247fcbef1dbe4ff19c15533d64e5d0578447
+
+    The base (non-dSYM) executable.
+    Also an Apple  universal binary.
+            new file:   demo
+
+2023-09-26:  David Anderson
+    commit ff5ce6c3195acc4d57c972ea950c5b6e96608b64
+
+    The dSYM objectts with DWARF.
+    demo is a universal binary containing
+    demo.0 and demo.1 (which were extracted
+    from demo using dd)
+            new file:   demo
+            new file:   demo.0
+            new file:   demo.1
+
+2023-09-23:  David Anderson
+    commit ceceb3b13dd2a15bb0aa477455b6306a3e6f3fa6
+
+    Test case ossfuzz62547 is run now.
+    DW202309-001
+            modified:   DWARFTEST.sh
+
+2023-09-23:  David Anderson
+    commit f39b3ec7f8c3f10786389e667bff9b10887e385b
+
+    A new vulnerability and its test case.
+            new file:   baselines/ossfuzz62547.base
+            new file:   ossfuzz62547/README
+            new file:   ossfuzz62547/fuzz_stack_frame_access-5263709637050368
+
+2023-09-11:  David Anderson
+    commit ca027def2f26c2884c6111c6fda4502a320a3522
+
+    Up to date with git log.
+            modified:   ChangeLog
+
 2023-09-11:  David Anderson
     commit 679534aa54360f41691f78f0e33bc1ea5ae0d841
 
