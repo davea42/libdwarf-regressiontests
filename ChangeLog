@@ -1,3 +1,23 @@
+2023-11-05:  David Anderson
+    commit 51c974d25a6352ca9753d504998b76e2bf9c476b
+
+    Results today
+            modified:   RegressionTestsResults.ods
+
+2023-11-05:  David Anderson
+    commit dcbae6f6753ead4101e3f0085f012241d1378ee6
+
+    now we have zlib and libzstd on s390 so files with compressed
+    section show real data from dwarfdump, not complaints
+    about missing uncompress software.
+            modified:   dwarfdump-s390.O
+
+2023-11-03:  David Anderson
+    commit 8d9615943be87b319282dcf8a1a34fc612a07159
+
+    Up to date with git log
+            modified:   ChangeLog
+
 2023-11-03:  David Anderson
     commit 55325d0ef2a80b51bb50e7818cb28311993ad752
 
