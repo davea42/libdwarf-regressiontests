@@ -1027,13 +1027,16 @@ echo  "=====BLOCK individual tests and runtest.sh tests"
 
 # BUILDS
 fuzzexe='
+fuzz_crc
 fuzz_crc_32
 fuzz_debug_addr_access
 fuzz_die_cu
+fuzz_die_cu_e
 fuzz_die_cu_offset
 fuzz_die_cu_attrs
 fuzz_die_cu_attrs_loclist
 fuzz_die_cu_print
+fuzz_die_cu_e_print
 fuzz_dnames
 fuzz_findfuncbypc
 fuzz_gdbindex
