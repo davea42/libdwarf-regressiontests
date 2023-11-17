@@ -1,3 +1,47 @@
+2023-11-17:  David Anderson
+    commit 1531dc1ddfd2eee3bc0be8cb9c7e6355ab9acf35
+
+    Now with small differences from the past
+    due to revising the dwarf_next_cu_header_d
+    in dwarfdump to
+    the dwarf_next_cu_header_e function.
+    The differences are all due to a testcase
+    with a mangled .debug_info with some really
+    bad content (a test case run multiple times
+    with different options).
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-11-17:  David Anderson
+    commit d389e10294fa8c4f59ef6c3509a77f0d0beaeef3
+
+    now building fuzz tests using new cu_header interface function.
+            modified:   DWARFTEST.sh
+
+2023-11-07:  David Anderson
+    commit 3484fb1ed06bb0a229c1016dc3b5040f76930ada
+
+    This is a cleanup not usually used.
+
+    If running regressiontests in a clean directory
+    then this is unnecessary (there is nothing to
+    save anyway), but usable there.
+
+    If you run regressiontests in the regressiontests source
+    (Do Not Do That) this might be useful, but you will have to
+    delete the few lines at the beginning that refuse to let this
+    run in the regressiontests source directory.
+            modified:   CLEANUP.sh
+
+2023-11-05:  David Anderson
+    commit efb583d4da24da7370aae1a95d022cb65895bdd9
+
+    regression testing results.
+            modified:   ChangeLog
+
 2023-11-05:  David Anderson
     commit 51c974d25a6352ca9753d504998b76e2bf9c476b
 
