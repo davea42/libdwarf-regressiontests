@@ -1029,6 +1029,7 @@ echo  "=====BLOCK individual tests and runtest.sh tests"
 fuzzexe='
 fuzz_crc
 fuzz_crc_32
+fuzz_debuglink
 fuzz_debug_addr_access
 fuzz_die_cu
 fuzz_die_cu_e
@@ -1155,6 +1156,11 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
+
+
+runsingle ossfuzz64496.base  ./fuzz_debuglink --testobj=$testsrc/ossfuzz64496/fuzz_debuglink-6154376638234624
+
+runsingle ossfuzz56452.base  ./fuzz_debuglink --testobj=$testsrc/ossfuzz56452/fuzz_debuglink-cs4231a-5927365017731072
 
 runsingle ossfuzz63024.base  ./fuzz_macro_dwarf4 --testobj=$testsrc/ossfuzz63024/fuzz_macro_dwarf4-4887579306360832
 
