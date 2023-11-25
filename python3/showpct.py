@@ -6,7 +6,7 @@ percentage of work done so far on each test.
 import sys
 
 # Just a bit above the real total
-realtotal = 19800.0
+realtotal = 19980.0
 total = realtotal
 
 if __name__ == "__main__":
