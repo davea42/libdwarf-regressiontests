@@ -1,0 +1,20 @@
+Filename by debuglink is $HOME/dwarf/regressiontests/debuglink/crc32.debug
+Machine Architecture, Object Information fields
+  Filetype              : 1  (DW_FTYPE_ELF)
+  Pointersize           : 8
+  endian                : little endian
+  machine/architecture  : 62 (0x3e) <AMD x86_64>
+  machine flags         : 0x0
+  path source           : 3  (DW_PATHSOURCE_debuglink, GNU debuglink)
+  Comdat group number   : 1  (DW_GROUPNUMBER_BASE, standard)
+
+.note.gnu.build-id
+ Build-id  type     : 3
+ Build-id  ownername: GNU
+ Build-id  length   : 20
+ Build-id           : ded392f18f6fe0f223bc6ab845b90158b69a07a4
+ Possible .gnu_debuglink/.note.gnu.build-id pathnames for
+ an alternate object file with more detailed DWARF
+  [0] /usr/lib/debug/.build-id/de/d392f18f6fe0f223bc6ab845b90158b69a07a4.debug
+
+

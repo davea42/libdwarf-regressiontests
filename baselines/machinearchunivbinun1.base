@@ -1,0 +1,14 @@
+Filename by dSYM is $HOME/dwarf/regressiontests/macuniv/demo.dSYM/Contents/Resources/DWARF/demo
+This is a Mach-O Universal Binary with 2 objects.  This is object 1
+Machine Architecture, Object Information fields
+  Filetype              : 5  (DW_FTYPE_APPLEUNIVERSAL)
+  Pointersize           : 8
+  endian                : little endian
+  machine/architecture  : 16777228 (0x100000c) <CPU_TYPE_ARM64>
+  machine flags         : 0x0
+  path source           : 2  (DW_PATHSOURCE_dsym, MacOS)
+  MacOS Universal Binary 
+    Object Offset in UB : Ox0
+    UB object count     : 2
+    UB index            : 1
+

@@ -1,0 +1,60 @@
+Filename by debuglink is $HOME/dwarf/regressiontests/debuglink/crc32.debug
+Machine Architecture, Object Information fields
+  Filetype              : 1  (DW_FTYPE_ELF)
+  Pointersize           : 8
+  endian                : little endian
+  machine/architecture  : 62 (0x3e) <AMD x86_64>
+  machine flags         : 0x0
+  path source           : 3  (DW_PATHSOURCE_debuglink, GNU debuglink)
+  MacOS Universal Binary 
+    Object Offset in UB : Ox0
+    UB object count     : 0
+    UB index            : 0
+  Comdat group number   : 1  (DW_GROUPNUMBER_BASE, standard)
+  []    offset     size       flags      addr
+  [  0] 0x00000000 0x00000000 0x00000000 0x00000000 
+  [  1] 0x00000238 0x0000001c 0x00000002 0x00000238 .interp
+  [  2] 0x00000254 0x00000020 0x00000002 0x00000254 .note.ABI-tag
+  [  3] 0x00000274 0x00000024 0x00000002 0x00000274 .note.gnu.build-id
+  [  4] 0x00000298 0x0000001c 0x00000002 0x00000298 .gnu.hash
+  [  5] 0x00000298 0x00000168 0x00000002 0x000002b8 .dynsym
+  [  6] 0x00000298 0x000000cd 0x00000002 0x00000420 .dynstr
+  [  7] 0x00000298 0x0000001e 0x00000002 0x000004ee .gnu.version
+  [  8] 0x00000298 0x00000030 0x00000002 0x00000510 .gnu.version_r
+  [  9] 0x00000298 0x000000c0 0x00000002 0x00000540 .rela.dyn
+  [ 10] 0x00000298 0x000000d8 0x00000002 0x00000600 .rela.plt
+  [ 11] 0x00000298 0x00000017 0x00000006 0x000006d8 .init
+  [ 12] 0x00000298 0x000000a0 0x00000006 0x000006f0 .plt
+  [ 13] 0x00000298 0x00000008 0x00000006 0x00000790 .plt.got
+  [ 14] 0x00000298 0x0000056f 0x00000006 0x000007a0 .text
+  [ 15] 0x00000298 0x00000009 0x00000006 0x00000d10 .fini
+  [ 16] 0x00000298 0x000008e0 0x00000002 0x00000d20 .rodata
+  [ 17] 0x00000298 0x00000054 0x00000002 0x00001600 .eh_frame_hdr
+  [ 18] 0x00000298 0x00000160 0x00000002 0x00001658 .eh_frame
+  [ 19] 0x00001d78 0x00000008 0x00000003 0x00201d78 .init_array
+  [ 20] 0x00001d78 0x00000008 0x00000003 0x00201d80 .fini_array
+  [ 21] 0x00001d78 0x000001f0 0x00000003 0x00201d88 .dynamic
+  [ 22] 0x00001d78 0x00000088 0x00000003 0x00201f78 .got
+  [ 23] 0x00001d78 0x00000010 0x00000003 0x00202000 .data
+  [ 24] 0x00001d78 0x00000008 0x00000003 0x00202010 .bss
+  [ 25] 0x00000298 0x0000002b 0x00000030 0x00000000 .comment
+  [ 26] 0x000002c3 0x00000030 0x00000000 0x00000000 .debug_aranges
+  [ 27] 0x000002f3 0x000006a0 0x00000000 0x00000000 .debug_info
+  [ 28] 0x00000993 0x0000015b 0x00000000 0x00000000 .debug_abbrev
+  [ 29] 0x00000aee 0x000001d7 0x00000000 0x00000000 .debug_line
+  [ 30] 0x00000cc5 0x00000440 0x00000030 0x00000000 .debug_str
+  [ 31] 0x00001108 0x00000798 0x00000000 0x00000000 .symtab
+  [ 32] 0x000018a0 0x000002e2 0x00000000 0x00000000 .strtab
+  [ 33] 0x00001b82 0x0000013e 0x00000000 0x00000000 .shstrtab
+
+.note.gnu.build-id
+ Build-id  type     : 3
+ Build-id  ownername: GNU
+ Build-id  length   : 20
+ Build-id           : ded392f18f6fe0f223bc6ab845b90158b69a07a4
+ Possible .gnu_debuglink/.note.gnu.build-id pathnames for
+ an alternate object file with more detailed DWARF
+  [0] /usr/lib/debug/.build-id/de/d392f18f6fe0f223bc6ab845b90158b69a07a4.debug
+ file above does not exist
+
+

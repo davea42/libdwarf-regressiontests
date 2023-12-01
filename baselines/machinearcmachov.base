@@ -1,0 +1,26 @@
+Filename by dSYM is $HOME/dwarf/regressiontests/macho-kask/dwarfdump_32.dSYM/Contents/Resources/DWARF/dwarfdump_32
+Machine Architecture, Object Information fields
+  Filetype              : 2  (DW_FTYPE_MACH_O)
+  Pointersize           : 4
+  endian                : little endian
+  machine/architecture  : 7 (0x7) <CPU_TYPE_X86>
+  machine flags         : 0x0
+  path source           : 2  (DW_PATHSOURCE_dsym, MacOS)
+  MacOS Universal Binary 
+    Object Offset in UB : Ox0
+    UB object count     : 0
+    UB index            : 0
+  Comdat group number   : 1  (DW_GROUPNUMBER_BASE, standard)
+  []    offset     size       flags      addr
+  [  0] 0x00000000 0x00000000 0x00000000 0x00000000 
+  [  1] 0x0000e000 0x000003c1 0x00000000 0x000e6000 .debug_abbrev
+  [  2] 0x0000e3c1 0x00000560 0x00000000 0x000e63c1 .debug_aranges
+  [  3] 0x0000e921 0x00005200 0x00000000 0x000e6921 .debug_frame
+  [  4] 0x00013b21 0x000176d0 0x00000000 0x000ebb21 .debug_info
+  [  5] 0x0002b1f1 0x0000872b 0x00000000 0x001031f1 .debug_line
+  [  6] 0x0003391c 0x00005dd8 0x00000000 0x0010b91c .debug_loc
+  [  7] 0x000396f4 0x00003404 0x00000000 0x001116f4 .debug_pubnames
+  [  8] 0x0003caf8 0x00001d92 0x00000000 0x00114af8 .debug_pubtypes
+  [  9] 0x0003e88a 0x00000060 0x00000000 0x0011688a .debug_ranges
+  [ 10] 0x0003e8ea 0x00008fc6 0x00000000 0x001168ea .debug_str
+

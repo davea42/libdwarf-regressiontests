@@ -1,0 +1,9 @@
+Filename by dSYM is $HOME/dwarf/regressiontests/macho-kask/dwarfdump_32.dSYM/Contents/Resources/DWARF/dwarfdump_32
+Machine Architecture, Object Information fields
+  Filetype              : 2  (DW_FTYPE_MACH_O)
+  Pointersize           : 4
+  endian                : little endian
+  machine/architecture  : 7 (0x7) <CPU_TYPE_X86>
+  machine flags         : 0x0
+  path source           : 2  (DW_PATHSOURCE_dsym, MacOS)
+
