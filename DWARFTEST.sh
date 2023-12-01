@@ -1157,6 +1157,19 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+# MacOS universalbinary
+runsingle machinearchunivbin.base ./dwarfdump --print-machine-arch $testsrc/macuniv/demo 
+runsingle machinearchunivbinun1.base ./dwarfdump --format-universalnumber=1 --print-machine-arch $testsrc/macuniv/demo 
+runsingle machinearchunivbinv.base ./dwarfdump -v --print-machine-arch $testsrc/macuniv/demo 
+#macos simple binary
+runsingle machinearcmacho.base ./dwarfdump --print-machine-arch $testsrc/macho-kask/dwarfdump_32
+runsingle machinearcmachov.base ./dwarfdump -v --print-machine-arch $testsrc/macho-kask/dwarfdump_32
+# elf object
+runsingle machinearchi386.base ./dwarfdump --print-machine-arch $testsrc/debuglink/crc32
+runsingle machinearchi386v.base ./dwarfdump -v --print-machine-arch $testsrc/debuglink/crc32
+# PE object
+runsingle machinearchpe.base ./dwarfdump --print-machine-arch $testsrc/pe1/kask-dwarfdump_64.exe
+runsingle machinearchpev.base ./dwarfdump -v --print-machine-arch $testsrc/pe1/kask-dwarfdump_64.exe
 
 runsingle ossfuzz64496.base  ./fuzz_debuglink --testobj=$testsrc/ossfuzz64496/fuzz_debuglink-6154376638234624
 
