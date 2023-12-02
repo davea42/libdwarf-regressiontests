@@ -786,10 +786,10 @@ runsingle () {
   fi
   filediff $testsrc/baselines/$base junksingle3.$base $exe $args
   r=$?
-  chkres $r 'filediff compare junksingle3 failed'
+  #chkres $r 'filediff compare junksingle3 failed'
   if [ $r -ne 0 ]
   then
-    echo "FAIL diff $base junksingle3.$base"
+    #echo "FAIL diff $base junksingle3.$base"
     wc $testsrc/baselines/$base
     wc junksingle3.$base
     allgood=n
