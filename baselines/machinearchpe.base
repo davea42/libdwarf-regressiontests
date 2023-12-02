@@ -2,7 +2,7 @@ Machine Architecture, Object Information fields
   Filetype              : 3  (DW_FTYPE_PE)
   Pointersize           : 8
   endian                : little endian
-  machine/architecture  : 34404 (0x8664) <>
+  machine/architecture  : 34404 (0x8664) <AMD64>
   machine flags         : 0x27
   path source           : 1  (DW_PATHSOURCE_basic, standard)
 
