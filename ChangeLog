@@ -1,3 +1,92 @@
+2023-12-02:  David Anderson
+    commit 114e8f10a4e18468d06c369842edabfa870d69e2
+
+    New tests of --print-machine-arch
+    all passing except not all of dwarfdump-msys2.O.
+            modified:   DWARFTEST.sh
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-12-02:  David Anderson
+    commit 359a035a6710aa81936c2fd886259c97777ad3f0
+
+    Now in runsingle() we only emit one FAIL message
+    so fail counts are correct.
+            modified:   DWARFTEST.sh
+
+2023-12-02:  David Anderson
+    commit ce0e26111ae061d44114945902ad0ef992060ee7
+
+    Now with machine architecture name printed
+            modified:   baselines/machinearchpe.base
+            modified:   baselines/machinearchpev.base
+
+2023-12-01:  David Anderson
+    commit 40dde08472f9c8b01b7193e6ce592f609f319b5f
+
+    Added tests of --print-machine-arch
+            modified:   DWARFTEST.sh
+    Now baseline for one of those tests.
+            modified:   baselines/machinearchunivbinv.base
+
+    Up to date with latest.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2023-12-01:  David Anderson
+    commit c63ed126955226f7a2f060b1d9ee7aea4641a590
+
+    New tests and baselines
+            new file:   baselines/machinearchi386.base
+            new file:   baselines/machinearchi386v.base
+            new file:   baselines/machinearchpe.base
+            new file:   baselines/machinearchpev.base
+            new file:   baselines/machinearchunivbin.base
+            new file:   baselines/machinearchunivbinun1.base
+            new file:   baselines/machinearchunivbinv.base
+            new file:   baselines/machinearcmacho.base
+            new file:   baselines/machinearcmachov.base
+            new file:   baselines/ossfuzz64496.base
+
+2023-11-25:  David Anderson
+    commit 200104016693f7ff665bd387446c39d3b21070de
+
+    Two new ossfuzz tests DW202311-001 and 002.
+            modified:   DWARFTEST.sh
+
+2023-11-25:  David Anderson
+    commit 41d123050ffd435f01394185152c13d4126289ba
+
+    Just changes the total count so percentage
+    of completion numbers look right.
+            modified:   python2/showpct.py
+            modified:   python3/showpct.py
+
+2023-11-25:  David Anderson
+    commit 3cf2e0dc46d2771760198ed267cc65b9151475af
+
+    Bogus input noted earlier in the object file,
+    changing the test output.
+            modified:   baselines/ossfuzz56472.base
+    newtestcase
+            new file:   ossfuzz64496/fuzz_debuglink-6154376638234624
+
+2023-11-25:  David Anderson
+    commit d6eb99fecb2fc2a718ea854f0b0549d99e3521d6
+
+    Old ossfuzz, but we had not heard about it before Nov 24 2023!
+            new file:   baselines/ossfuzz56452.base
+            new file:   ossfuzz56452/fuzz_debuglink-cs4231a-5927365017731072
+
+2023-11-17:  David Anderson
+    commit f346b19f2b51c90037ceee820d5fc4a930ddcc91
+
+    Up to date with git log
+            modified:   ChangeLog
+
 2023-11-17:  David Anderson
     commit 1531dc1ddfd2eee3bc0be8cb9c7e6355ab9acf35
 
