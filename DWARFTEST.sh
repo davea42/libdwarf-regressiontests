@@ -1542,7 +1542,6 @@ runtest $d1 $d2 diederen7/pc_dwarf_aircrack_ng.macho -a -vv -M
 runtest $d1 $d2 moqigod/buffer-overflow-example-2022
 
 # May 6, 2022. debuglink tests exploring related options
-
 runtest $d1 $d2 debuglinkb/testid -P -i
 runtest $d1 $d2 debuglinkb/testid.debug -P -i
 runtest $d1 $d2 debuglinkb/testnoid -P -i
