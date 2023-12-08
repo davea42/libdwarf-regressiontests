@@ -1,4 +1,10 @@
 2023-12-02:  David Anderson
+    commit 51d13a789961ef3291af07c22c678745a1cd0fd6
+
+    Up to date with git log
+            modified:   ChangeLog
+
+2023-12-02:  David Anderson
     commit 114e8f10a4e18468d06c369842edabfa870d69e2
 
     New tests of --print-machine-arch
