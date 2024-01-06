@@ -1,0 +1,1348 @@
+
+2022-12-31:  David Anderson
+    commit 77471edbfc3a2487eaafcab4ad5d08eba1f55d46
+
+    Added additional tests an ensured
+    more libdwarf init calls are actually used.
+            modified:   DWARFTEST.sh
+            modified:   offsetfromlowpc/baseadvlocf
+            modified:   offsetfromlowpc/runtest.sh
+            modified:   test_arange.c
+            modified:   test_harmless.c
+            modified:   test_pubsreader.c
+            modified:   test_sectionnames.c
+
+2022-12-31:  David Anderson
+    commit 28baac360d18459021cb893d7fd8e384cbe45a59
+
+    Removed some silly blank lines.
+            modified:   sandnes2/runtest.sh
+
+2022-12-31:  David Anderson
+    commit 1d5ebb91a17970b40fb105c355a5630ed166be6f
+
+    Described the new test 'object', an empty file.
+            modified:   ossfuzz51183/README
+
+2022-12-31:  David Anderson
+    commit bbef4077a2f6c8da59f40589dde89b26480c5054
+
+    These now allow an argument of --suppress-dealloc-tree
+    and thus allow suppress dealloc tree generation
+    for testing when that is desired.
+            modified:   test_arange.c
+            modified:   test_harmless.c
+            modified:   test_pubsreader.c
+            modified:   test_sectionnames.c
+
+2022-12-31:  David Anderson
+    commit 139e07de8d566444ea288a76d0b8093a5c98a510
+
+    New testfile. 0 bytes long.
+            new file:   ossfuzz51183/ossfuzz54358-emptyfile
+
+    Baselines for 'runsingle' in DWARFTEST.sh
+
+            new file:   test_arangeb.base
+            new file:   test_harmlessb.base
+            new file:   test_pubsreaderb.base
+            new file:   test_sectionnamesb.base
+
+2022-12-29:  David Anderson
+    commit f3e345c2571cb926fddb408594ac6e8d5fb1901a
+
+    Added a new test, introducing the versiontest
+    shell function to enable the new test.
+            modified:   DWARFTEST.sh
+
+2022-12-27:  David Anderson
+    commit 37a73603897e86d180beddf0a35f7f3a1be702ae
+
+    Improvements in checking times from ALLdd
+            modified:   scripts/timereport.py
+
+2022-12-27:  David Anderson
+    commit 27034d7e87fd009103b038ddc4059a7805005cb1
+
+    Now somewhat useful.
+            modified:   timereport.py
+
+2022-12-27:  David Anderson
+    commit 2941d591eb02220e9aae1672edeeeb3ca08fe28e
+
+    Now with new tests
+            modified:   DWARFTEST.sh
+    The last of the three new test objects.
+            new file:   dwgenc/dwgenc.bin
+
+    Arrange to copy to test source (a .bin)
+    if not already there. Helps with
+    lcov.
+            modified:   dwgenc/runtest.sh
+            modified:   implicitconst/runtest.sh
+            modified:   offsetfromlowpc/runtest.sh
+
+2022-12-27:  David Anderson
+    commit bf2c1bc29a64395341102028b48ff128c7bf30e8
+
+    New test objects with modifications by dwarfgen
+            new file:   implicitconst/implicitconst.bin
+            new file:   offsetfromlowpc/offsetfromlowpc.bin
+
+2022-12-26:  David Anderson
+    commit c6da22e122956f32bcf7b807cf33917e10b45de1
+
+    Added specific test of --check-functions option.
+            modified:   DWARFTEST.sh
+
+2022-12-24:  David Anderson
+    commit 75b32f5cc9cf1a9118cf393e9877b603e81afee5
+
+    Now a test object with DW_FORM_data16 that shows up
+    in coverage runs.
+            modified:   DWARFTEST.sh
+            new file:   data16/data16.bin
+            modified:   data16/runtest.sh
+
+2022-12-20:  David Anderson
+    commit 919609d8a4fc15430a6911b870ebc9bc981f9905
+
+    Now with the 0.6.0 version of dwarf_dietype_offset
+    which deals properly with DWARF4 DW_FORM_ref_sig8
+    references from .debug_info to .debug_types.
+            modified:   bitoffset/test_bitoffset.c
+
+2022-12-12:  David Anderson
+    commit ac7580eae0afda9da3f0d206c22c029a91b8f2fa
+
+    Additional test -xabi=
+            modified:   DWARFTEST.sh
+
+2022-12-12:  David Anderson
+    commit ff70e6860291bf33202db03f5bc01f1adde6ebef
+
+    Now each has a 'fakeabi' which
+    has bogus adress_size: to get better
+    coverage of libdwarf
+    dwarf_set_default_address_size()
+
+            modified:   dwarfdump.conf
+            modified:   testdwarfdump.conf
+
+2022-12-12:  David Anderson
+    commit 4b8200233b8d0045e617ff6c6becc365237c603b
+
+    Now checks correctly for FAIL count of zero,
+    we had changed the format but not this script.
+            modified:   RUNALL.sh
+
+2022-12-09:  David Anderson
+    commit 6b98418dcfc3d6f50d01bc746bb99eb9020f0b2a
+
+    All environs tested now.
+            modified:   RegressionTestsResults.ods
+
+2022-12-09:  David Anderson
+    commit 1147a17e4c0da85e9f22a8a4e87eb2fe70de7bf1
+
+    Fuller tests in a couple cases.
+            modified:   DWARFTEST.sh
+
+    New 0.6.0 baselines
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    debugging only. Ignore.
+            modified:   RUNVAL
+
+2022-12-09:  David Anderson
+    commit 446e832738479b7b801f7856324503d525d2dfc3
+
+    Now we have baselines for these tests
+    and we verify output too.
+    We arrange to simplify one printf in each
+    source that would unavoidably differ across
+    endianness and full paths.
+            modified:   bitoffset.base
+            modified:   bitoffset/test_bitoffset.c
+            modified:   pubsreader.base
+            modified:   test_pubsreader.c
+
+2022-12-06:  David Anderson
+    commit d06f63c363a901028618279f2f93711749e081d1
+
+    New baseline. Should have done this
+    long ago.
+            new file:   bitoffset.base
+
+2022-12-06:  David Anderson
+    commit ab597cc27012e2b43d74a3dcd0ae195d9756a3c2
+
+    Now tests wi basereader.base
+            modified:   DWARFTEST.sh
+    Updates per changes to pubtypes etc changes.
+            modified:   test_pubsreader.c
+
+2022-12-06:  David Anderson
+    commit 209cc92c36740c751e0a5b568be998454ecfdaa2
+
+    New baseline. Should have done this years ago.
+            new file:   pubsreader.base
+
+2022-12-06:  David Anderson
+    commit dda14019cbe4aa6a7623b1c28ec11686f4999e88
+
+    Added dwarfdump options to some tests for more complete testing.
+            modified:   DWARFTEST.sh
+
+    Minor improvement in this script (ignore it).
+            modified:   scripts/findobjects
+
+2022-12-02:  David Anderson
+    commit ae031cfb5aaa4c7a7d495dbabdfcfbfc5bf91fcc
+
+    Latest timings.
+            modified:   RegressionTestsResults.ods
+
+    baseline executables:
+    Now match current 0.5.1 source.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-12-02:  David Anderson
+    commit 8bce2e8ecef09cc650a89ec932ca2e1b750b0001
+
+    With latest from git log
+            modified:   ChangeLog
+
+2022-12-01:  David Anderson
+    commit 08928128ab9378c1cbc39d9f1b10c453aefacc90
+
+    Removed tests mentioning -o, those options no longer
+    supported (as of 0.1.0 or so).
+            modified:   DWARFTEST.sh
+
+2022-12-01:  David Anderson
+    commit a781e33c6be7e2ba2bd902fb928500f7c422538d
+
+    Added -kw and -ls (which creates many more tests)
+    and added singular tests for better lcov
+    results.
+            modified:   DWARFTEST.sh
+
+2022-12-01:  David Anderson
+    commit 53eec1c027ec080179879b65c429b67dfa8605c0
+
+    Now mentions basetest
+            modified:   macro5/README
+    Fixed a typo so we now correctly test the 
+    --print-raw-rnglists and --print-raw-loclists
+    options of dwarfdump.
+    New testcase with specific combinations
+    of #define #undef for better code coverage
+    in reading .debug_macro.
+            new file:   macro5/basetest
+
+2022-12-01:  David Anderson
+    commit acd6a4637089704316d0fc3bc47d35ceab88f129
+
+    Now with a few specific tests
+    using dwarfdump --trace (used for debugging
+    dwarfdump).
+            modified:   DWARFTEST.sh
+
+2022-12-01:  David Anderson
+    commit 5912d8538383ebc286dcb67b4901c9d53be0cd0e
+
+    Just testing scripts. Ignore.
+            modified:   RUNVAL
+            modified:   scripts/findobjects
+
+2022-11-30:  David Anderson
+    commit 3858be6efe06229f07c015c71d5fafb9f0a47004
+
+    Simplified as we do not need to test for withlibelf
+    here now.
+    Add --trace options now that we have remove the printing
+    of pointers from the output (These not intended
+    for normal use, --trace=0  for example which
+    also only do anything with -k (checking) options).
+            modified:   DWARFTEST.sh
+
+2022-11-29:  David Anderson
+    commit abe6ac4af48cf1b17b935f5b20997d90e52a2653
+
+    Removed obsolete code related
+    to the running of the many options.
+    Made it easier to read.
+            modified:   DWARFTEST.sh
+
+2022-11-29:  David Anderson
+    commit fd16a9fc694b370fdd909c2628478b9a12376066
+
+    The dwarfdump -E and -o related options
+    have not been supported since 2021 so removing
+    the test of these.
+            modified:   nolibelf/runtest.sh
+
+2022-11-22:  David Anderson
+    commit 4cf15830f194809b91e33e07a59560a74d0403a1
+
+    Updated from git log
+            modified:   ChangeLog
+
+2022-11-22:  David Anderson
+    commit c397bfc55c0fff143182211ba211cd100c395941
+
+    Now up to date for v0.5.0 release.
+            modified:   DWARFTEST.sh
+    Now with latest statistics/times.
+            modified:   RegressionTestsResults.ods
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    baseline reflects small change in findfuncbypc.c
+            modified:   testfindfuncbypc/findfuncbypc.base
+    Just random testing, not important.
+            modified:   RUNVAL
+
+2022-11-06:  David Anderson
+    commit 43667f66558abe1e220b6e55bd0b38102db48b28
+
+    Removed unneeded comments.
+            modified:   debugaddr/BUILD
+
+2022-11-05:  David Anderson
+    commit 0923cfaec64c7b0e13b70bca8ab83e64aa187938
+
+    Up to date with changeLog
+            modified:   ChangeLog
+
+2022-11-05:  David Anderson
+    commit 311799720250017b9a93a3459ab5a6808dd39fc6
+
+    Updated: latest timing information.
+            modified:   RegressionTestsResults.ods
+
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-11-05:  David Anderson
+    commit 9b650e3738fb635b76f3772e03c6aadba9bbfc83
+
+    New baseline for .debug_addr print from dwarfdump.
+            modified:   dwarfdump-s390.O
+
+2022-11-05:  David Anderson
+    commit fb2009d8f286ff96e6196d088327b48fbd257add
+
+    Latest timings info
+            modified:   RegressionTestsResults.ods
+    Corrected new baseline, previous had two
+    lines printed by dwarfdump reversed
+    (coverity scan noticed the argument swap).
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-11-05:  David Anderson
+    commit 956d802531c6d865c821b0b783feb18172f6c99b
+
+    Now with tests including the new --print-debug-addr dwarfdump option.
+            modified:   RegressionTestsResults.ods
+
+    New baseline executable.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-11-05:  David Anderson
+    commit 03486ce93f7811e275609e8d962da52ef944db9a
+
+    Add 4 tests using the new dwarfdump --print-debug-addr option.
+            modified:   DWARFTEST.sh
+
+2022-11-05:  David Anderson
+    commit ed38ba1a30f7bf55a6c3ebcc4ef57d2d47452f57
+
+    Added comment: one test has a non-zero segment_size
+    field
+    as a result of fuzzing. Now that is noticed and an
+    error results.
+            modified:   diederen5/README
+
+2022-11-05:  David Anderson
+    commit 57f744a4858dc77e7da9412338a0e760e572d495
+
+    New test case with a very useful .debug_addr section
+    with two .debug_addr tables in that section.
+            new file:   BUILD
+            new file:   blaik.cc
+            new file:   blaik.so
+            new file:   t2.cc
+
+2022-11-01:  David Anderson
+    commit 8882702e3a86eaed2bcf8924bb18b46b2c94a825
+
+    With latest test results.
+            modified:   RegressionTestsResults.ods
+
+    New baseline executables, so now up to date.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-10-28:  David Anderson
+    commit 8b6abe959fb2a3f9d99a115e2d6b891e902a01dd
+
+    Updated with statistics for a couple test runs.
+            modified:   RegressionTestsResults.ods
+
+    Updated baselines. Still need to do FreeBSD
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Reflects the fixed code in dd_sanitized.c (dwarfdump)
+            modified:   guilfanov2/double-free-poc.base
+
+2022-10-17:  David Anderson
+    commit a2718e02361e84b7b845c623336e8544efa90d6f
+
+    Mentions how dw5_names.o created.
+            modified:   README
+
+    Compiled differently, so a new testcase.
+            new file:   dw5_names.o
+
+2022-10-15:  David Anderson
+    commit 6df3f59b0600fb42c6f575fe0577100e8f4a58a1
+
+    Should never have been in git.
+            deleted:    ../filelist/result
+
+2022-10-15:  David Anderson
+    commit da8a2959a6baab912197dbe4cc2c653737dfca34
+
+    Tidying up. the new C++ example is 1/6 the size.
+            new file:   dw5tests.exe
+            deleted:    dwarfgen-createirepfrombinary.o
+            new file:   pubname.o
+
+2022-10-15:  David Anderson
+    commit a44dbab09757bc9cb58b7015a8acf138ccf0092b
+
+    Another testcase for pubnames,
+            modified:   README
+            new file:   pubname.cc
+
+2022-10-15:  David Anderson
+    commit 3f460d41b8c1654017d8ec137962ce1c81366d27
+
+    New pubnames testcase with g++ std:: pubnames prefixes.
+            modified:   README
+            new file:   dwarfgen-createirepfrombinary.o
+
+2022-10-13:  David Anderson
+    commit 828a839d7a6fca05395c63bf3d8ee1ae5b2776ee
+
+    New baselines reflecting library and dwarfdump
+    corrections.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-10-13:  David Anderson
+    commit 4d5ffbbcaa765ffa380f612764f98bd47cbadd7f
+
+    Removing a duplicative chkres,
+    adding to unifyddname[b]
+    to guarantte the input file exists with 'touch'
+            modified:   DWARFTEST.sh
+
+2022-10-13:  David Anderson
+    commit 76df16af5a44e8cc92c2bcd3d3357a48a68a0282
+
+    Minor tidy of the script.
+            modified:   filelist/runtest.sh
+
+2022-10-13:  David Anderson
+    commit 4010ccc447563d92b4ca5b5df574b343c771249c
+
+    Now removes three additional files in the filelist directory
+    following a test run.
+            modified:   CLEANUP.sh
+
+2022-10-13:  David Anderson
+    commit db975bfde042f7bf7342719dcd7fda86fbf2eb98
+
+    Just removed an accidental blank line.
+            modified:   filelist/README
+
+2022-10-13:  David Anderson
+    commit a5c7c005fddedcc31daee3b58816cdcd113c3a85
+
+    Now mentions the version of clang used to
+    build the testcases: clang7
+            modified:   enciso8/README
+
+2022-10-13:  David Anderson
+    commit 058b80e04e96c955369cca39ad29c66e83a0edfe
+
+    Now properly coded to run the executables we
+    want to run, and be clearer when it PASSes.
+            modified:   filelist/runtest.sh
+
+2022-10-12:  David Anderson
+    commit 43ca1099d0c7e8eb5895f077d46d1aaa940e3532
+
+    We cannot have pre-built binaries from LSB linux
+    run on MSB Linux or anywhere else.
+    The test compiles these.
+            deleted:    localfuzz_init_binary
+            deleted:    localfuzz_init_path
+
+2022-10-11:  David Anderson
+    commit d63651d75768d01163b5ea1846834f1254781d85
+
+    Added details
+            modified:   issue137gh/README
+    This is just used for speicific single tests,
+    not used in standard testing..
+            modified:   pubnames/BUILD
+
+2022-10-11:  David Anderson
+    commit 3ff04ff7746ef65f748c74efab96e19f1fc60e77
+
+    Added tests of line table examples in issue137gh
+            modified:   DWARFTEST.sh
+    Added detailed report, during build of the configure command used.
+            modified:   PICKUPBIN.sh
+
+2022-10-11:  David Anderson
+    commit 2b3c05ffa24d39a1bcd302550dcdaa2f7040be21
+
+    Same test, different compiler
+    issue137gh:
+            new file:   mainclang14
+
+2022-10-11:  David Anderson
+    commit 6b5a09600f278bcc5e53837b6709c0bf6a18976b
+
+    New test case
+            new file:   README
+            new file:   main
+            new file:   main.cc
+            new file:   test.h
+
+2022-10-07:  David Anderson
+    commit 03349308408a8d84180db8361344b54dde9bc0c3
+
+    Updated baseline executables, matching v0.5.0
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-10-05:  David Anderson
+    commit a40daf24572a7a71c1650519ad64b4001ab39487
+
+    Baseline executables now up to date with dwarfdump changes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-10-05:  David Anderson
+    commit 9df466b1903eb3488b33f77d4967baeb3bd6ac33
+
+    New test case, with both .debug_names and .debug_pubnames sections.
+            new file:   pubnames/bothpubs.exe
+
+2022-10-05:  David Anderson
+    commit c22d102b66dd6610f8710a921b67056e7f36e76f
+
+    The last version used shared lib, which is not good
+    as a base executable, we want base and latest
+    to coexist with, usually, different library content!.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Now with the improved dwarfdump output.
+            modified:   dwgena/test5.base.gz
+
+2022-10-04:  David Anderson
+    commit 47787cbf8a847e910318653c5266d1fdcb6ee20b
+
+    New test on tests.exe. pubnames and pubtypes printing.
+            modified:   DWARFTEST.sh
+            new file:   pubnames/BUILD
+            new file:   pubnames/README
+            new file:   pubnames/testm.c
+            new file:   pubnames/tests.c
+            new file:   pubnames/tests.exe
+            new file:   pubnames/tests.h
+
+2022-09-23:  David Anderson
+    commit 024ae737d62b0bb5ad6fa0de55b975b50672beac
+
+    One instance naming shared libdwarf had a typo in
+    the name. Gnu configure generates libdwarf.so.0
+            modified:   README.md
+
+2022-09-23:  David Anderson
+    commit 5f0b9a972cf70882cff9d032efb13875b5e71e85
+
+    Now with latest git log data.
+            modified:   ChangeLog
+
+2022-09-23:  David Anderson
+    commit 40d36599a892dd8678f43c1b7be1ad422117ad65
+
+    Clarification of one sentence
+    on shared-library naming.
+            modified:   README.md
+
+2022-09-23:  David Anderson
+    commit 8ecc10a37f2334f60af8a3482e41211fb9765f09
+
+    Tweaking typos. Updated date.
+            modified:   README.md
+
+2022-09-23:  David Anderson
+    commit 4d51727d5b3175917bc4a7941c8c9e0127ae15fa
+
+    Clean up some formatting.
+    Added a cautionary comment.
+            modified:   CLEANUP.sh
+
+    Clarified formatting and wording.
+            modified:   README.md
+
+2022-09-23:  David Anderson
+    commit 89db099b37a6309f0eb62e6bd2f5631f69d0f34f
+
+    Added content useful in running
+    the tests.
+            modified:   README.md
+
+2022-09-22:  David Anderson
+    commit 80f4e20e8a8e606577255b51173aa530235be570
+
+    Added rm for a couple leftovers.
+    Deleted a couple lines related to ancient stuff
+    that cannot appear now.
+            modified:   CLEANUP.sh
+
+    These did not belong in git.
+            deleted:    config.h
+            deleted:    config.log
+            deleted:    config.status
+
+2022-09-22:  David Anderson
+    commit 5288bf34fe4cfc6424e3ffe646f073609ec416b5
+
+    Fixed runtest to work with the updated BASEFILES.sh
+    created by configue.
+
+    All the .sh now use BASEFILES.sh properly and
+    do not need arguments.
+
+    Now possible to build shared-lib libdwarf
+    and test it. If shared-lib build some
+    additional SKIPs  as dwarfgen not
+    supported here yet.
+            modified:   BASEFILES.sh.in
+            modified:   DWARFTEST.sh
+            modified:   Makefile.in
+            modified:   PICKUPBIN.sh
+            modified:   README.md
+            modified:   RUNALL.sh
+            modified:   checkforlibz/runtest.sh
+            modified:   checkforlibzstd/runtest.sh
+            modified:   config.guess
+            new file:   config.h
+            modified:   config.h.in
+            new file:   config.log
+            new file:   config.status
+            modified:   config.sub
+            modified:   configure
+            modified:   configure.ac
+            modified:   findcu/runtest.sh
+            modified:   frame1/runtest.sh
+            modified:   legendre/runtest.sh
+            modified:   test-alex1/runtest.sh
+            modified:   test-alex2/runtest.sh
+            modified:   testoffdie/runtest.sh
+
+2022-09-22:  David Anderson
+    commit 6aa47244fe6e78cea07d73807a4c9f91d8b23615
+
+    So all the scripts are .sh
+    LOOKFOR is just to help find things,
+    not for testing.
+            renamed:    CLEANUP -> CLEANUP.sh
+            renamed:    LOOKFOR -> LOOKFOR.sh
+
+2022-09-21:  David Anderson
+    commit 9740a3898a96d66411780fc9bab6a86c16e47897
+
+    no longer useful.
+            deleted:    BLDTAR.sh
+
+    New news.
+            modified:   NEWS
+    Rewritten as markdown.
+            new file:   README.md
+
+    renamed README.md
+            deleted:    README.txt
+
+2022-09-21:  David Anderson
+    commit e1ff1a90efe3ff91230a82b47344bef2bd5e27af
+
+    Comments simplified.
+            modified:   BASEFILES.sh.in
+    Now with --disable-libelf
+    and --enable-shared
+    and --enable-libdwarf=/path/to/code
+            modified:   configure.ac
+
+2022-09-18:  David Anderson
+    commit 26b70171aa171762b7a7b2381f9e99d356e7bd5c
+
+    Now, if libz missing, compressed-section tests
+    are skipped.
+            modified:   DWARFTEST.sh
+
+2022-09-15:  David Anderson
+    commit 1653aef8dacf4db8cf4f643d8b20a622ded3e133
+
+    Now all 4 baseline executables
+    are up to date with latest (improved) error
+    messages about corrupt compression.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-09-15:  David Anderson
+    commit 7af5f894dfa0e793092cb5ee1fc1ac5c2446833d
+
+    Tweaks to get all these to work and report
+    more details  on error.
+            modified:   DWARFTEST.sh
+    Tweaks to get it to work and report correctly
+    with details in case of fail.
+            modified:   filelist/runtest.sh
+
+2022-09-15:  David Anderson
+    commit 9a9833abbf2d81971ee7b9fbf7f1e6101186b027
+
+    Latest version, zstd built in
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Corrected silly typos. so this works.
+            modified:   checkforlibzstd/tzlstd.c
+
+    These all now handle libzstd  too
+            modified:   filelist/runtest.sh
+            modified:   findcu/runtest.sh
+            modified:   frame1/runtest.sh
+            modified:   legendre/runtest.sh
+            modified:   nolibelf/runtest.sh
+            modified:   test-alex1/runtest.sh
+            modified:   test-alex2/runtest.sh
+            modified:   testoffdie/runtest.sh
+
+2022-09-15:  David Anderson
+    commit 79040c4dd68399c6eb9e41519f9692020c2bfb93
+
+    Now handling libzstd zstd.h
+    when they are present.
+            modified:   DWARFTEST.sh
+            modified:   PICKUPBIN.sh
+            modified:   checkforlibz/runtest.sh
+            modified:   checkforlibzstd/runtest.sh
+
+2022-09-15:  David Anderson
+    commit 15d1fcf3f4f1db63c7ca35079a06069000a790d5
+
+    These let the tests know if zstd.h libsztd
+    are present and usable.
+            new file:   checkforlibzstd/runtest.sh
+            new file:   checkforlibzstd/tzlstd.c
+
+2022-09-14:  David Anderson
+    commit fbdb0aef06ecb834124e7181c30ec954ac1bdc2e
+
+    Correct misspelling in echo line
+            modified:   PICKUPBIN.sh
+
+2022-09-12:  David Anderson
+    commit eea1c4f83e5aeb70cea08a38184c59899f486a3e
+
+    Brings ChangeLog up to date with git log.
+            modified:   ChangeLog
+
+2022-09-12:  David Anderson
+    commit 69726a469aa0e25f1678d810411fe9c2a1ef5f59
+
+    Some test runs were improperly coded:
+    A couple cases of mistyped dwarfdump --no-sanitize-strings
+    are now fixed.
+    Every case where a tied file was named was wrong in that it
+    was only correct when running this script in its source directory
+    (which we just do not do any longer).  Now each
+    has the source file prefix of $testsrc/ here.
+            modified:   DWARFTEST.sh
+
+2022-09-11:  David Anderson
+    commit 82bd2add5e3dc1bae60eaf0813bd621908d89a51
+
+    New test, using a test case via oss-fuzz.
+            modified:   DWARFTEST.sh
+
+    New baseline executables per the error message changes
+    in dwarfdump/dd_getopt.c
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Added comments.
+            modified:   dwarfdump.conf
+
+    Updated compiler changed these a bit.
+    runing tests in the test-source dir rebuilds these.
+            modified:   filelist/localfuzz_init_binary
+            modified:   filelist/localfuzz_init_path
+
+    New baselines reflecting a small number of error messages
+    from getopt being revised to make it easier to
+    keep a universal baseline.
+            modified:   nolibelf/test2.base
+            modified:   nolibelf/test3.base
+            modified:   nolibelf/test4.base
+            modified:   offsetfromlowpc/baseadvlocf
+
+2022-09-10:  David Anderson
+    commit b7ad5e8c6720a7c463f8878c0fe6f7ce3e834d29
+
+    Now reflects the move of some errors from stderr to stdout
+            modified:   dwarfdump-s390.O
+
+2022-09-10:  David Anderson
+    commit 490e1a5c8e9f09b6fdfb8f9b231a377858f79d11
+
+    Added new test, ossfuzz found decompressed
+    debuglink section data not freed.
+            modified:   DWARFTEST.sh
+
+    New baseline with all-stdout errors.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-09-09:  David Anderson
+    commit df6691b5e2582338bdeb09527e3d75f240735b80
+
+    New leak.
+            new file:   README
+            new file:   clusterfuzz-51183-6011554641870848
+
+2022-09-09:  David Anderson
+    commit 6c328ae8442dfad1f3dcb1847b6ca168ee91e0bc
+
+    All now reflect the move of various errors
+    from stderr to stdout.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-09-08:  David Anderson
+    commit c9c6663080aaf0b796393c60631476b52793d1a1
+
+    the dwarfdump option --print-fission was misspelled
+    --print_fission in several places. The
+    filepaths list of names had a bogus first entry
+    of $filepaths.
+            modified:   DWARFTEST.sh
+
+2022-09-03:  David Anderson
+    commit 932e8067b5bfc5a4f441192f47f203914e9ba6e2
+
+    Comment out echo stmts not normally needed.
+            modified:   DWARFTEST.sh
+
+2022-09-03:  David Anderson
+    commit c24bd9eb1654dbef801912c200f20dff67c07bd3
+
+    Now the VALGRIND env var can be set,
+    causing all the 'runtest' runs to
+    use valgrind.
+            modified:   DWARFTEST.sh
+            modified:   RUNTIMEFILES.sh
+
+2022-09-01:  David Anderson
+    commit 8a93b2977784bf6ab9d1ec091403c2137ec6ee37
+
+    These are new baselines. dwarfdump -h had a missing
+    line for a rarely used option. --suppress-de-alloc-tree
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Accidentally left out of git
+            new file:   ossfuzz47150/clusterfuzz-testcase-minimized-fuzz_init_path-6727387238236160.fuzz
+
+2022-08-27:  David Anderson
+    commit c7bf2066892fc0438150421c876381b331abf9e6
+
+    Now tests hanzheng testcase.
+            modified:   DWARFTEST.sh
+
+2022-08-27:  David Anderson
+    commit b132d076f906f3876a76916d077620b6b73bd8bc
+
+    Explains the symptom.
+            new file:   hanzheng/README
+
+2022-08-27:  David Anderson
+    commit 242c3256544d39f90907d2692c2bed30e9c81138
+
+    A new problem with a fuzzed object.
+            new file:   hanzheng/fuzzedobject
+
+2022-08-05:  David Anderson
+    commit 389c509cc9f0aae23069a3ef5d85b54e510f1f1e
+
+    Baselines reflecting bug fixes and improvements.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-07-23:  David Anderson
+    commit 52e3d4a1a9fa60758147cd8fa72542b2e159a44b
+
+    Added the test for ossfuzz 47150
+            modified:   DWARFTEST.sh
+
+    Handy for debugging: ignore this test script
+            modified:   RUNVAL
+
+2022-07-15:  David Anderson
+    commit 8f80b20894a9f3f026e60aa072ee8e2f9022188b
+
+    New test, relocation type R_AARCH64_NONE.
+            modified:   DWARFTEST.sh
+            new file:   ckdev/README
+            new file:   ckdev/modulewithdwarf.ko
+
+    Updated for the relocation type NONE.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-06-17:  David Anderson
+    commit abe53348a6808c2207c2462f3caffe2b6065be8f
+
+    Now has latest changes.
+            modified:   ChangeLog
+
+2022-06-17:  David Anderson
+    commit 9a789ddde3010cac424d7d0bcd31b9b36de0ca35
+
+    New baseline executables to match
+    a new error message coming from
+    the fix to DW202206-001.
+            modified:   ../dwarfdump-i386-freebsd.O
+            modified:   ../dwarfdump-s390.O
+            modified:   ../dwarfdump-x86_64-freebsd.O
+            modified:   ../dwarfdump-x86_64-ubuntu.O
+
+2022-06-17:  David Anderson
+    commit ad28efa8e3e1f1608df55e2465b57078a6c490ce
+
+    Had to remove full paths from echo stmts
+    to remove file paths from the baseline
+    so it can pass on S390 linux tests.
+    testfindfuncbypc:
+            modified:   findfuncbypc.base
+            modified:   runall.sh
+
+2022-06-17:  David Anderson
+    commit a56a5db1b5b65260c0c9a5e154eb7c2be6951810
+
+    Accidentally left this important test objectfile
+    out of git.
+            new file:   ../sleicasper2/buffer-overflow-form-sig8
+
+2022-06-16:  David Anderson
+    commit 5ad522f6b2f1537b92e2647ceabe0ee671fe99df
+
+    Updated with git log data.
+            modified:   ChangeLog
+
+2022-06-16:  David Anderson
+    commit 398e021bc905e5ece5a896e159e320e864539e8c
+
+    Now we run the new  testfindfuncbypc test(s).
+            modified:   DWARFTEST.sh
+            modified:   PICKUPBIN.sh
+            modified:   testfindfuncbypc/findfuncbypc.base
+            modified:   testfindfuncbypc/runall.sh
+            modified:   testfindfuncbypc/runtest.sh
+
+    renamed
+            deleted:    sleicasper2/buffer-overlow-form-sig8
+
+2022-06-16:  David Anderson
+    commit baf44b8d0b27b6e1a462a8baa2415611e95081e8
+
+    New test of findfuncbypc
+            new file:   testfindfuncbypc/findfuncbypc.base
+            new file:   testfindfuncbypc/findfuncbypc.exe1
+            new file:   testfindfuncbypc/runall.sh
+            new file:   testfindfuncbypc/runtest.sh
+
+2022-06-15:  David Anderson
+    commit b9886982e9c9aac0f8d822e170c8659e29ffc2d2
+
+    Renaming the test to make it clearer what the
+    lack of vallidation was about.
+            modified:   ../DWARFTEST.sh
+            renamed:    buffer-overflow-dwarf-form -> buffer-overlow-form-sig8
+
+2022-06-15:  David Anderson
+    commit 5b6e7986727b9c9dd8146356e4ee357d4f8b4712
+
+    Mixing - and _ was not appealing. So rename.
+            renamed:    sleicasper2/buffer-overflow-dwarf_form -> sleicasper2/buffer-overflow-dwarf-form
+
+2022-06-15:  David Anderson
+    commit fd7472a518d80961082a92bc982930667cbd52c6
+
+    New buffer overflow
+    sleicasper2:
+            new file:   README
+            new file:   buffer-overflow-dwarf_form
+
+2022-05-31:  David Anderson
+    commit 7ac16eb3a736c069ae2257f2a144042bff466a7e
+
+    New baseline executables with the fix for
+    DW202205-001
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-05-30:  David Anderson
+    commit f6b7901f1639b3ab6a70dcf1910f94601ead7c90
+
+    Added test related to DW202205-001 vulnerability
+            modified:   DWARFTEST.sh
+
+2022-05-28:  David Anderson
+    commit 3c4f7f461dc2871b3311e47031bb8d288178ba8b
+
+    A new test of a particular corruption in a .debug_pubtypes
+    or .debug_pubnames section. Previously libdwarf would
+    try to access memory it should not have touched.
+            modified:   sleicasper/README
+            renamed:    sleicasper/poc -> sleicasper/bufferoverflow
+
+2022-05-27:  David Anderson
+    commit 2203f1bd03253b87f464ed3b5ad5190c4b1128cb
+
+    New test case heap buffer overflow
+            new file:   sleicasper/README
+            new file:   sleicasper/poc
+
+2022-05-23:  David Anderson
+    commit ef407469543f4cdd0544e2a365c3d3567f116514
+
+    Version test with test dideren7.
+    Good result.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2022-05-21:  David Anderson
+    commit c21efcbbf7448057c669c09d1783762f9d050614
+
+    Adds a new test dealing with any compiler choosing
+    to use DW_AT_entry_pc (from DWARF3) instead
+    of DW_AT_low_pc as a base address for .debug_loc
+    entries for a compilation unit.
+            modified:   DWARFTEST.sh
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-05-18:  David Anderson
+    commit 613f44a4a243b3d0c3da2087b8da17620f367f2a
+
+    A new test case related to DW_AT_entry_pc
+            new file:   README
+            new file:   pc_dwarf_aircrack_ng.macho
+            new file:   pc_dwarf_aircrack_ng.macho.dSYM/Contents/Resources/DWARF/pc_dwarf_aircrack_ng.macho
+            new file:   pc_dwarf_aircrack_ng.macho.efddump
+
+2022-05-06:  David Anderson
+    commit b5d338b477f504ec6a7a26033bdbfd8d389ac1cf
+
+    Adds tests of --suppress-debuglink-crc and --no-follow-debuglink
+    with objects designed for a thorough test.
+            modified:   DWARFTEST.sh
+
+2022-05-06:  David Anderson
+    commit 5d66bee624548615bf5e3eaf45695449c96499c1
+
+    And this is the renamed baseline.
+            new file:   guilfanov2/double-free-poc.base
+
+2022-05-06:  David Anderson
+    commit 410e3a0ab199bc8f50682d167360758a01b50bd4
+
+    Adding a new test, guilfanov2/
+
+            modified:   DWARFTEST.sh
+
+    Adding --enable-werror on all configure commands.
+            modified:   PICKUPBIN.sh
+
+    New baselines
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    latest updates.
+            modified:   guilfanov2/README
+            deleted:    guilfanov2/poc.base
+            modified:   guilfanov2/runtest.sh
+
+2022-05-06:  David Anderson
+    commit 1df82d66f759a31067db31144599d1fb5ffc5af9
+
+    in guilfanov2/
+    new file:   README
+    new file:   details.txt
+    new file:   double-free-poc
+    new file:   poc.base
+    new file:   runtest.sh
+
+2022-05-06:  David Anderson
+    commit fb29b2bae1e7a31690746a8584e20ccc40861d24
+
+    in debuglinkb/
+
+    Documented the history of the tests.
+            new file:   README
+
+    Modified so accidental rerunning the object file build
+    will not happen.
+        modified:   RUNBOTH
+            modified:   bldid
+            modified:   bldnoid
+
+    Removed irrelevant content.
+            modified:   sectionspresent.txt
+
+2022-05-06:  David Anderson
+    commit 093cb5b1c67f9f895432fdf0ed5c6c4e4c8a3e0e
+
+    New tests for debuglink.
+            new file:   RUNBOTH
+            new file:   bldid
+            new file:   bldnoid
+            new file:   hello.c
+            new file:   sectionspresent.txt
+            new file:   testany
+            new file:   testid
+            new file:   testid.debug
+            new file:   testnoid
+            new file:   testnoid.debug
+
+2022-04-12:  David Anderson
+    commit 5b99ccec82d75beffd637bc414ba1aa9ccf07682
+
+    reflects current
+            modified:   debugnames/README
+
+2022-04-06:  David Anderson
+    commit c668023e863b82cc253a8d78ea7c155507978a5a
+
+    New baselines for .debug_names output.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-03-29:  David Anderson
+    commit 92c9c1e012cbf072d2e7100dbc3a76a3c25f7164
+
+    Added the moqigod test
+            modified:   DWARFTEST.sh
+            modified:   moqigod/README
+
+    For local tests. not important.
+            modified:   RUNVAL
+
+    New baseline executable
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-03-24:  David Anderson
+    commit 41150fa27d656295c22af79cac022ba9e0802a48
+
+    in moqigod/
+    New buffer overflow example
+            new file:   README
+            new file:   buffer-overflow-example-2022
+
+2022-03-19:  David Anderson
+    commit d9d7f5e28d8b9550c44801cce1ac602ee6ef9fa8
+
+    Fixed a typo in the oldest date
+    in this 2022 changelog.
+            modified:   ChangeLog
+
+2022-03-19:  David Anderson
+    commit bd6887df3ed4cbe9f7879d2fb0eb5b514ffd078b
+
+    Adding -v and -vv --print-debug-names tests.
+            modified:   DWARFTEST.sh
+    New baseline.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Removing dwarfgen trying to force a .debug_names
+    section, we have real such sections now.
+    The dwarfgen/libdwarfp code for the force
+    is not quite right and should be fixed and
+    reintroduced...just because.
+            modified:   dwgenc/base.debugnames
+            modified:   dwgenc/runtest.sh
+
+2022-03-12:  David Anderson
+    commit 8da19582b9cad8a9927f08e5733cd2842a21ec9e
+
+    Changed the echo statements related to NLIZE and
+    SUPPRESSDEALLOCTREE
+            modified:   DWARFTEST.sh
+
+    New baseline (but not final, debugnames output
+    is changing)
+            modified:   dwgenc/base.debugnames
+
+    Fix an ancient mistake in the -I list to
+    a compile. Put -I$libbld first.
+            modified:   frame1/runtest.sh
+
+2022-02-22:  David Anderson
+    commit 33da3fec360de47056965612908bf22f4c16ea85
+
+    Now runs the new test
+            modified:   DWARFTEST.sh
+    A short description of the three test cases
+            modified:   debugnames/README
+    The newest test case in this directory
+            new file:   debugnames/dwarfdumpone
+
+2022-02-21:  David Anderson
+    commit d3bbe8527c5efcdf6e7cf0f3ba202c071ffa7362
+
+    Now has just 2022
+            modified:   ChangeLog
+    Now has just 2021
+            new file:   ChangeLog2021
+
+2022-02-21:  David Anderson
+    commit 574cc6a05df6d2c02520322d31a96c41fb322097
+
+    Up through 2021 end
+            modified:   ChangeLog
+
+2022-02-21:  David Anderson
+    commit b0c1ca95b26b57e30fc94672f6fe9e13b4bc22c2
+
+    Ensure some new temp files get cleaned up.
+            modified:   CLEANUP
+
+    Working versions for libdwarf 0.3.4
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2022-02-20:  David Anderson
+    commit bb44bed9b8fe86e4c04340363bffa6c1d81efddb
+
+    The baseline had full paths which is not portable.
+    So now we just show the basename of each path
+    in the echoed output.
+            modified:   dwgenc/base.debugnames
+
+2022-02-20:  David Anderson
+    commit 909f3afa13b928ea1ac33357431719fce9af7abe
+
+    New test script and baselines
+            modified:   showsecgroupsdir/runtest.sh
+            modified:   showsecgroupsdir/sgtest.baseline
+            modified:   showsecgroupsdir/sgtest2.baseline
+
+2022-02-20:  David Anderson
+    commit 2eb2d8ca907e48c79e0e85227772f6aa2cffbd5d
+
+    Cleanup leftover executable showsectiongroups
+            modified:   CLEANUP
+    With latest new tests
+            modified:   DWARFTEST.sh
+
+2022-02-20:  David Anderson
+    commit 38828305a02cdc11af931ab29663f5e26a3ae1ce
+
+    New tests objects
+            new file:   filelist/localfuzz_init_binary
+            new file:   filelist/localfuzz_init_path
+            new file:   filelist/result
+
+2022-02-17:  David Anderson
+    commit 11e4ae687ecb19e4ba02f1fcd2094cfca9c86388
+
+    clang 13 emits the section, so now we
+    have data to test with.
+            modified:   DWARFTEST.sh
+            new file:   debugnames/README
+            new file:   debugnames/dwarfdump
+            new file:   debugnames/jitreader
+
+2022-02-04:  David Anderson
+    commit bd1f7cd541bb81d20a58a72f9442a2baf6aa321c
+
+    New tests and baselines for section groups and
+    src/bin/dwarfexample/showsectiongroups.c
+            new file:   showsecgroupsdir/runtest.sh
+            new file:   showsecgroupsdir/sgtest.baseline
+            new file:   showsecgroupsdir/sgtest2.baseline
+
+2022-01-21:  David Anderson
+    commit aa89c82f776303607a4511665471209c9b4506de
+
+    This had an assert about DW_FRAME_CFA_COL[3]
+    that is no longer appropriate.
+    removed the now-meaningless assert.
+            modified:   legendre/frame_test.c
+
+2021-12-21:  David Anderson
+    commit a7ba7e9bfad6b2996bcce2ba319ab7dde3031601
+
+    regenerated
+            modified:   configure
+    Removed copying testdwarfdump.conf,
+    the file is checked in here already.
+            modified:   configure.ac
+    Removed commented-out lines.
+            modified:   dwarfdump.conf
+
