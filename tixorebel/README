@@ -1,0 +1,6 @@
+This is a trivial hello-world function compiled
+with an obsolete compiler called Metroworks
+that produces a form of DWARF2. Its DWARF2
+has mistakes (Example: using DW_FORM_ref_addr when
+DW_FORM_addr is meant).
+Donated 8 January 2024.
