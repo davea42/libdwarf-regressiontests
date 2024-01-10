@@ -1,3 +1,1 @@
-localfuzz_init_path returns DW_DLV_ERROR
-
-libdwarf is unable to record error DW_DLE_SECTION_DUPLICATION(247) No error argument or handler available
+localfuzz_init_path returns DW_DLV_OK
