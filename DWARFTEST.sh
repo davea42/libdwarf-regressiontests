@@ -27,6 +27,17 @@ echo "  printf_sanitize..............: export PRINTFFMT=ASCII"
 # 28 August 2020. Completely revamped the way
 # tests are counted and the way $suppressbigdiffs is implemented.
 
+#The following tests involve zlib:
+#regressiontests/debugso20230811.debug
+#regressiontests/compressed-be/testprog-be-dw4
+#regressiontests/moya2/filecheck.dwo
+#regressiontests/liu/NULLderefer0505_01.elf
+#regressiontests/klingler2/compresseddebug.amd64
+#regressiontests/navarro/compressed_aranges_test
+#regressiontests/klingler/dwarfgen-zdebug
+#regressiontests/klingler/test-with-zdebug
+#regressiontests/dwarf4/ddg4.5dwarf-4
+
 #set -x
 echo 'Starting regressiontests: DWARFTEST.sh' \
    `date "+%Y-%m-%d %H:%M:%S"`
