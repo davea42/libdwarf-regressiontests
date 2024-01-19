@@ -27,6 +27,7 @@ echo "  printf_sanitize..............: export PRINTFFMT=ASCII"
 # 28 August 2020. Completely revamped the way
 # tests are counted and the way $suppressbigdiffs is implemented.
 
+#At this time no tests involve zstd.
 #The following tests involve zlib:
 #regressiontests/debugso20230811.debug
 #regressiontests/compressed-be/testprog-be-dw4
