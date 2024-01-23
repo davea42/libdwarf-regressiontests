@@ -1,0 +1,15 @@
+Created January 23, 2024
+
+demo.cpp.o 
+A modern Mach-o object using recent Mac compiler.
+As a .o it has code and DWARF.
+It also leaves segment names empty,
+so libdwarf has to change to read it properly,
+as does readobjmacho.
+
+test-mach-o-32.dSYM
+An older dsym file, meaning it is a companion
+file and as such has only DWARF in it.
+The same object is in the 'make check' 
+test object set of libdwarf.
+
