@@ -1169,6 +1169,9 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+# Elf e_shoff is zero, validate DW_DLV_NO_ENTRY returned.
+runsingle zero-e_shoff.base ./dwarfdump -a $testsrc/helloz/zero-e_shoff.o
+
 # MacOS universalbinary
 runsingle machinearchunivbin.base ./dwarfdump --print-machine-arch $testsrc/macuniv/demo 
 runsingle machinearchunivbinun1.base ./dwarfdump --format-universalnumber=1 --print-machine-arch $testsrc/macuniv/demo 
@@ -1445,6 +1448,9 @@ cd ..
 #  sh $testsrc/showsecgroupsdir/runtest.sh
 #  chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
 #cd ..
+
+runtest $d1 $d2 rifkin/test-mach-o-32.dSYM -a
+runtest $d1 $d2 rifkin/demo.cpp.o  -a
 
 runversiontest $d2 -V
 
