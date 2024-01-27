@@ -1,3 +1,96 @@
+2024-01-27:  David Anderson
+    commit 646fbcc2c114016fde953d84f3fc19e44baffecc
+
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-01-26:  David Anderson
+    commit 8c1171c8f9188e3733242c710c137a7b778a674d
+
+    baseline using $HOME
+            modified:   baselines/zero-e_shoff.base
+
+2024-01-26:  David Anderson
+    commit 00c3f6033d7fa61f8d638267e02f6f19cb3cb88d
+
+    Added tests
+            modified:   DWARFTEST.sh
+
+2024-01-26:  David Anderson
+    commit d6f04173280945cd56db2a1c38bf4bee6f5ddc81
+
+    New test, baseline output (1 line long), object file
+    has no sections data.
+            new file:   baselines/zero-e_shoff.base
+
+2024-01-26:  David Anderson
+    commit 168deec949cfa5c1e5617822357a5ac02681ceac
+
+    We catch bogus Macho object quickly and say no DWARF present.
+            modified:   baselines/ossfuzz59950.base
+            modified:   baselines/ossfuzz60090.base
+
+    Source of a n Elf object used to create a .o with e_shoff zero.
+            new file:   helloz/hello.c
+
+2024-01-26:  David Anderson
+    commit 920e9b0d2f6907b930e0e285386e5b95bc071c79
+
+    For testing a zeroed e_shoff header.
+            new file:   zero-e_shoff.o
+
+2024-01-23:  David Anderson
+    commit 68b8758e620346bce1d06802f7a5770b5a676382
+
+    New test objects.
+    rifkin/
+            new file:   README
+            new file:   test-mach-o-32.dSYM
+
+2024-01-23:  David Anderson
+    commit 58a09e434ed4d72eba63e60442bb954f9b6449a0
+
+    Mach-o 64bit latest compilers, .o object, not executable object.
+            new file:   demo.cpp.o
+
+2024-01-19:  David Anderson
+    commit c5cca9082c66692616586f0922f4f89c831409aa
+
+    Additional comment, about zstd
+            modified:   DWARFTEST.sh
+
+2024-01-19:  David Anderson
+    commit ed89952dae782488ab314b8a2131de4852a36a93
+
+    Now lists, in comments, the executables with zlib compression
+            modified:   DWARFTEST.sh
+
+2024-01-10:  David Anderson
+    commit baa6f324ebc98cca9e8cc0ca8a27b95c0724678f
+
+    The last change affected these test results by removing errors.
+            modified:   baselines/fuzzkal.base
+            modified:   baselines/fuzzpathkal.base
+
+2024-01-09:  David Anderson
+    commit c99c8de6542c52b92b9cdb16530e3d9d8577c0e8
+
+    tixorebel/
+            new file:   README
+            new file:   test.c
+            new file:   test.o
+
+2024-01-09:  David Anderson
+    commit 810e5c1f0802eb3aedf2f1481595550b0bf63d48
+
+    Up to date with git log
+            modified:   ChangeLog
+
 2024-01-09:  David Anderson
     commit 9b50acc287fd87d69c36c1bdc9c46a562e85fa20
 
