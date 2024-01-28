@@ -1,0 +1,11 @@
+28 January 2024
+Test cases with e_shoff of zero.
+Do not recompile.
+
+cc -c -g      -o zero-e_shoff.o hello.c
+binpatch command not shown. 
+
+cc -c -m32 -g -o zero-e_shoff-i386.o hello.c
+binpatch 0x20 0x5007 0x0000 zero-e_shoff-i386.o
+
+After compilation the local binpatch utility zeroed e_shoff.
