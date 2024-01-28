@@ -13,6 +13,7 @@ echo "  Revert to normal test........: unset VALGRIND"
 echo "  Revert to normal test........: unset COMPILEONLY"
 echo "  Revert to all tests  ........: unset SINGLEONLY"
 echo "  Revert to default printf ....: unset PRINTFFMT"
+echo "  Skip tests needing zlib zstd : unset SKIPDECOMPRESS"
 echo "  printf_sanitize..............: export PRINTFFMT=DEFAULT"
 echo "  printf_sanitize..............: export PRINTFFMT=NOSANITY"
 echo "  printf_sanitize..............: export PRINTFFMT=ASCII"
@@ -74,6 +75,13 @@ then
   fsu="--format-suppress-sanitize"
 fi
 echo "  dwarfdump printf option......: $fsu"
+
+skipdecompress=n
+if [ "x$SKIPDECOMPRESS" = "xy" ]
+then
+  skipdecompress=y
+fi
+echo "  skipdecompress..............: $skipdecompress"
 
 s=SHALIAS.sh
 if [ ! -f ./$s ]
@@ -596,25 +604,22 @@ irixn32/libc.so
 irixn32/dwarfdump
 dwgenb/dwarfgen
 dwarf4/dd2g4.5dwarf-4
-dwarf4/ddg4.5dwarf-4
 '
-
-echo "Checklibz: $withlibz"
-if [ x$withlibz = "xno" ]
+echo "Checkwithlibz      : $withlibz"
+echo "Checkskipdecompress: $skipdecompress"
+if [ x$withlibz = "xno" -o "x$skipdecompress" = "xy" ]
 then
-     echo "=====SKIP klingler navarro liu skip count 252 libz tests, no libz available"
-     skipcount=`expr $skipcount +  252 `
+     echo "=====SKIP klingler navarro liu skip count 252 compression"
+     skipcount=`expr $skipcount +  770` 
 else
      echo "=====DO klinkler navarro liu libz tests"
      filepaths="klingler/dwarfgen-zdebug klingler/test-with-zdebug $filepaths"
      filepaths="navarro/compressed_aranges_test $filepaths"
      filepaths="liu/NULLderefer0505_01.elf $filepaths"
+     filepaths="dwarf4/ddg4.5dwarf-4 $filepaths"
 fi
 
 #echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because archives not handled"
-
-# Was in the list, but does not exist!
-#x86-64/x86_64testcase.o
 
 stripx() {
     #x=`echo $* | sed -e 's/-g//'`
@@ -1171,6 +1176,7 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
 
 # Elf e_shoff is zero, validate DW_DLV_NO_ENTRY returned.
 runsingle zero-e_shoff.base ./dwarfdump -a $testsrc/helloz/zero-e_shoff.o
+runsingle zero-e_shoff-i386.base ./dwarfdump -a $testsrc/helloz/zero-e_shoff-i386.o
 
 # MacOS universalbinary
 runsingle machinearchunivbin.base ./dwarfdump --print-machine-arch $testsrc/macuniv/demo 
@@ -1487,7 +1493,13 @@ runtest $d1 $d2 shinibufa/fuzzed_input_file
 # an unknown shared library.debug (nothing executable
 # here). This had erroneous output (duplicated include path)
 # from recent builds of dwarfdump 11 Aug 2023
-runtest $d1 $d2 debugso20230811.debug -i -vvv
+if [ "x$skipdecompress" = "xn" ]
+then
+  runtest $d1 $d2 debugso20230811.debug -i -vvv
+else
+  echo "=====SKIP .debugso20230811.debug as it has compression"
+  skipcount=`expr $skipcount +  1`
+fi
 
 # Early test of -h.
 runtest $d1 $d2 foo.o -h
@@ -1685,12 +1697,18 @@ then
   echo "=====SKIP COMPRESSED tests, skipcount+6 no libz available"
   skipcount=`expr $skipcount +  6 `
 else
-  runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v
-  runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv
-  runtest $d1 $d2 compressed-be/testprog-be-dw4 -ka
-  runtest $d1 $d2 compressed-le/testprog-le-dw4 -b -v
-  runtest $d1 $d2 compressed-le/testprog-le-dw4 -a -vvvv
-  runtest $d1 $d2 compressed-le/testprog-le-dw4 -ka
+  if [ "x$skipdecompress" = "xn" ]
+  then
+    runtest $d1 $d2 compressed-be/testprog-be-dw4 -b -v
+    runtest $d1 $d2 compressed-be/testprog-be-dw4 -a -vvvv
+    runtest $d1 $d2 compressed-be/testprog-be-dw4 -ka
+    runtest $d1 $d2 compressed-le/testprog-le-dw4 -b -v
+    runtest $d1 $d2 compressed-le/testprog-le-dw4 -a -vvvv
+    runtest $d1 $d2 compressed-le/testprog-le-dw4 -ka
+  else 
+    echo "=====SKIP compressed-be/testprog-be-dw4 "
+    skipcount=`expr $skipcount +  6`
+
 fi
 
 # See bug DW202010-002
@@ -1800,8 +1818,15 @@ runtest $d1 $d2 kapus/bad.obj -a
 #DWARF5 with .debug_rnglists and .debug_loclists
 runtest $d1 $d2 moya4/hello -ka -v
 runtest $d1 $d2 moya4/hello -a -v -M
-runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print-raw-rnglists
-runtest $d1 $d2 moya2/filecheck.dwo -ka
+if [ "x$skipdecompress" = "xn" ]
+then
+  runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print-raw-rnglists
+  runtest $d1 $d2 moya2/filecheck.dwo -ka
+else
+  echo "=====SKIP moya2/filecheck.dwo as it has compression"
+  skipcount=`expr $skipcount +  2`
+fi
+
 # Checking .debug_str_offsets used properly
 runtest $d1 $d2 moya5/hello.dwo -a -M -v --print-str-offsets
 
@@ -1893,14 +1918,16 @@ fi
 
 # Test ensuring R_386_GOTPC relocation understood. June 202
 runtest $d1 $d2 mustacchi/relgotpc.o -a -M
-if [ x$withlibz = "xno" ]
+if [ x$withlibz = "xno"  -o "x$skipdecompress" = "xy"]
 then
-  echo "=====SKIP COMPRESSED test, count 2, no libz available"
+  echo "=====SKIP moya2/filecheck.dwo, count 2, compression"
   skipcount=`expr $skipcount +  2 `
 else
   # DWARF5 test, new 17 June 2020.
   runtest $d1 $d2 moya2/filecheck.dwo -a -M
   runtest $d1 $d2 moya2/filecheck.dwo -a -vvv -M
+fi
+
 fi
 # sample object with DW_AT_containing type in a use
 # which is standard
@@ -2156,13 +2183,6 @@ runtest $d1 $d2  liu/infinitloop.elf -a
 runtest $d1 $d2  liu/null01.elf -a
 runtest $d1 $d2  liu/null02.elf -a
 runtest $d1 $d2  liu/NULLdereference0519.elf -a
-if [ x$withlibz = "xno" ]
-then
-  echo "=====SKIP COMPRESSED count liu/NULLderefer0505_01.elf no libz available"
-  skipcount=`expr $skipcount +  1 `
-else
-  runtest $d1 $d2  liu/NULLderefer0505_01.elf -a
-fi
 runtest $d1 $d2  liu/NULLdereference0522.elf -a
 runtest $d1 $d2  liu/NULLdeference0522c.elf -a
 runtest $d1 $d2  liu/OOB0505_01.elf -a
@@ -2271,9 +2291,9 @@ runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
-if [ x$withlibz = "xno" ]
+if [ x$withlibz = "xno" -o "x$skipdecompress" = "xy" ]
 then
-  echo "=====SKIP klingler2/compresseddebug tests count 3, no libz available"
+  echo "=====SKIP klingler2/compresseddebug.amd64"
   skipcount=`expr $skipcount +  3 `
 else
   # Testing SHF_COMPRESSED .debug* section reading.
@@ -2283,7 +2303,7 @@ else
   runtest $d1 $d2  klingler2/compresseddebug.amd64 -F
 fi
 
-  # A big object.
+# A big object.
 runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
 runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
 runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=$testsrc/debugfissionb/ld-new

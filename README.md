@@ -40,14 +40,21 @@ and such can result in failures.
 The tests are run using shell and python3
 scripts.   Meson is used to build libdwarf/dwarfdump.
 
-The test results expect $HOME/dwarf/code (or libdwarf-code)
-and $HOME/dwarf/regressiontests (or libdwarf-regressiontests) to be the
-project directories.   To run these tests with
+The test results expect $HOME/dwarf/code (for libdwarf-code)
+and $HOME/dwarf/regressiontests 
+(for libdwarf-regressiontests) to be the
+project directories.
+To run these tests with
 success we recommend you put the
 source into the expected places.
 The test builds and runs  occur in directories
 under /var/tmp and those /var/tmp names don't appear
 in test results.
+
+Many tests print paths beginning with a string matching
+$HOME.  dwarfdump (itself) and the regression tests script
+DWARFTEST.sh change such path strings to use $HOME by
+replacing (for example) /home/davea with $HOME  .
 
 You must have both zlib (-lz) and libzstd (-lzstd) installed to
 as a few tests involve compressed Elf sections.
@@ -100,7 +107,8 @@ of the regression test and libdwarf source trees.
 The default is to build a static libdwarf.a and
 use it everywhere in the builds here.
 
-Lets assume  /path/to/libdwarf-regressiontests is the regression test source
+Lets assume  /path/to/libdwarf-regressiontests is
+the regression test source
 directory (or you might have /path/to/regressiontests)
 
 INITIALSETUP.sh assumes the libdwarf source code is alongside
@@ -119,7 +127,6 @@ typically one(1).
 The dwarfdump/libdwarf build will be in libbld
 which the build creates.
 /my/emptydirectory/libbld in this example.
-
 
 ## Environment Variables
 
