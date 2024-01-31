@@ -1237,6 +1237,8 @@ runsingle ossfuzz59478.base  ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz5947
 runsingle ossfuzz56451.base  ./fuzz_dnames --testobj=$testsrc/ossfuzz56451/fuzz_dnames-4986494365597696
 
 runsingle ossfuzz56443.base  ./fuzz_crc_32 --testobj=$testsrc/ossfuzz56443/fuzz_crc_32-4750941179215872
+runsingle ossfuzz_crc.base  ./fuzz_crc --testobj=$testsrc/ossfuzz56443/fuzz_crc_testcase
+exit 1
 
 runsingle ossfuzz56492.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56492/fuzz_macro_dwarf5-6497277180248064
 

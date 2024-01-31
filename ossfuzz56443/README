@@ -1,0 +1,12 @@
+Updated 31 January 2024.
+
+fuzz_crc_32-4750941179215872  
+is a fuzzer test binary
+dwarf_crc_32().
+
+
+fuzz_crc_testcase
+is a binary for dwarf_basic_crc32()
+fuzzed by Matteo Marini.
+the uninitialized memory but is a mistake
+in fuzz/fuzz_crc.c
