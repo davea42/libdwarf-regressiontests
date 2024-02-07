@@ -1,0 +1,17 @@
+
+6 February 2024.
+
+Using valgrind and fuzz/fuzz_debug_str.c
+
+we find a warning about using uninitilized values.
+
+Because the value was not initialized by
+fuzz_debug_str.c.
+Even though an uninitialized value cause no trouble
+in terms of correctness
+it is wrong to do because it makes the test output
+behave in unpredictable ways under valgrind.
+
+
+
+
