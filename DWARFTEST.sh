@@ -1048,6 +1048,7 @@ fuzz_crc
 fuzz_crc_32
 fuzz_debuglink
 fuzz_debug_addr_access
+fuzz_debug_str
 fuzz_die_cu
 fuzz_die_cu_e
 fuzz_die_cu_offset
@@ -1173,6 +1174,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
+
+runsingle marini_testcase.base ./fuzz_debug_str  --testobj=$testsrc/marini/testcase
 
 # Elf e_shoff is zero, validate DW_DLV_NO_ENTRY returned.
 runsingle zero-e_shoff.base ./dwarfdump -a $testsrc/helloz/zero-e_shoff.o
