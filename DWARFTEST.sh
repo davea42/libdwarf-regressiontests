@@ -1175,6 +1175,9 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+
+runsingle ossfuzz66646.base ./fuzz_findfuncbypc  --testobj=$testsrc/ossfuzz66646/fuzz_findfuncbypc-5178544143532032
+
 runsingle marini_testcase.base ./fuzz_debug_str  --testobj=$testsrc/marini/testcase
 
 # Elf e_shoff is zero, validate DW_DLV_NO_ENTRY returned.
