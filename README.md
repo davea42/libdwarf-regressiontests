@@ -1,6 +1,14 @@
 # This is libdwarf-regressiontests README.md
 
-Updated 23 October 2023
+Updated 16 February 2024
+
+## valgrind note
+
+Valgrind uses  such as
+
+    valgrind --leak-check=full --show-leak-kinds=all
+
+have been found to be essential at times.
 
 ## Historical note
 

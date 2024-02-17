@@ -1175,6 +1175,16 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+runsingle hongg2024-02-16-a.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT-a.fuzz
+runsingle hongg2024-02-16-b.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT-b.fuzz
+runsingle hongg2024-02-16-c.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT-c.fuzz
+runsingle hongg2024-02-16-d.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-d.fuzz
+runsingle hongg2024-02-16-e.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-e.fuzz
+runsingle hongg2024-02-16-f.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-f.fuzz
+runsingle hongg2024-02-16-g.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-g.fuzz
+runsingle hongg2024-02-16-h.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-h.fuzz
+runsingle hongg2024-02-16-i.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-i.fuzz
+runsingle hongg2024-02-16-k.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-k.fuzz
 
 runsingle ossfuzz66646.base ./fuzz_findfuncbypc  --testobj=$testsrc/ossfuzz66646/fuzz_findfuncbypc-5178544143532032
 
