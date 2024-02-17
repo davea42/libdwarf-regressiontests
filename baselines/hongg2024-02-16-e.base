@@ -1,0 +1,28 @@
+
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000b>  DW_TAG_partial_unit
+                    
+./dwarfdump:  DW_AT_SUN_func_offsets cannot uncompress data
+ 
+
+CU Name = <unknown>
+CU Producer = <unknown>
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+DW_AT_SUN_func_offsets      
+
+LOCAL_SYMBOLS:
+< 1><0x0000003b>    DW_TAG_partial_unit
+                      DW_AT_SUN_func_offsets      
+       2 (0x00000002)      4 (0x00000004)
+
+.debug_line: line number info for a single cu
+
+.debug_str
+
+.debug_aranges
+
+.debug_frame is not present
+
+There was 1 DWARF error reported: see ERROR above.

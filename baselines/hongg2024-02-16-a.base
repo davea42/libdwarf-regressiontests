@@ -1,0 +1,34 @@
+
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000b>  DW_TAG_partial_unit
+                    
+./dwarfdump:  DW_AT_SUN_func_offsets cannot uncompress data
+ 
+
+CU Name = <unknown>
+CU Producer = <unknown>
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+DW_AT_SUN_func_offsets      
+                    ERROR: Cannot print the value of attribute DW_AT_linkage_name as it has form <Unknown FORM value 0x0> which seems wrong. Corrupted DWARF? Continuing. fails. Major error
+
+./dwarfdump ERROR:  Call to dwarf_child failed printing die tree:  DW_DLE_LEB_IMPROPER: decode uleb runs past allowed area.c. Attempting to continue.
+
+CU Name = <unknown>
+CU Producer = <unknown>
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+
+./dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_LEB_IMPROPER: decode uleb runs past allowed area.c. Attempting to continue.
+
+CU Name = <unknown>
+CU Producer = <unknown>
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+
+.debug_str
+
+.debug_aranges
+
+.debug_frame is not present
+
+There were 4 DWARF errors reported: see ERROR above.

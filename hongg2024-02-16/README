@@ -1,0 +1,7 @@
+These object files from ifygecko expose a problem with
+records in the staticerrlist in the presence of a dealloc
+on one or more of them. That does not clear that entry
+in the staticerrlist.
+
+Received
+February 16, 2024

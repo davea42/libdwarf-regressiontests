@@ -1,0 +1,35 @@
+
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000b>  DW_TAG_partial_unit
+                    
+./dwarfdump:  DW_AT_SUN_func_offsets cannot uncompress data
+ 
+
+CU Name = <unknown>
+CU Producer = <unknown>
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+DW_AT_SUN_func_offsets      
+                    ERROR: dwarf_whatform unexpected value, form code 0x0000 Major error
+DW_AT_endianity             
+
+./dwarfdump ERROR:  Call to dwarf_child failed printing die tree:  DW_DLE_ABBREV_MISSING: the abbrev code not found  in dwarf_child() is 71490211407708030. The highest known code in any compilation unit is 71490211407708030.. Attempting to continue.
+
+CU Name = <unknown>
+CU Producer = <unknown>
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+
+./dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_ABBREV_MISSING: the abbrev code not found  in dwarf_child() is 71490211407708030. The highest known code in any compilation unit is 71490211407708030.. Attempting to continue.
+
+CU Name = <unknown>
+CU Producer = <unknown>
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+
+.debug_str
+
+.debug_aranges
+
+.debug_frame is not present
+
+There were 4 DWARF errors reported: see ERROR above.
