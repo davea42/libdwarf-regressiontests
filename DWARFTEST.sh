@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
 echo "Env vars that affect the tests:"
@@ -1174,6 +1173,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   $x
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
+
+runsingle hongg2024-02-18-m.base ./dwarfdump -a $testsrc/hongg2024-02-18/SIGSEGV-m.fuzz
 
 runsingle hongg2024-02-16-a.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT-a.fuzz
 runsingle hongg2024-02-16-b.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT-b.fuzz
