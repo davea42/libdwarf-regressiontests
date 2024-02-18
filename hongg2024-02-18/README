@@ -1,0 +1,13 @@
+
+ifyguest writes:
+
+"I have another bug to report, it looks like you can hop
+the data pointer in the body of build_array_of_lle with
+a corrupted entrylen parsed from read_single_lle_entry
+causing an out of bounds access."
+
+The bug was created in June 2020 when
+dwarf_loclists.c was added to libdwarf.
+
+SIGSEGV-a.fuzz is the fuzzed test object he provides.
+-fsanitize and valgrind noted the error.

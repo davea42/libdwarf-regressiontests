@@ -1,0 +1,56 @@
+
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000c>  DW_TAG_compile_unit
+                    DW_AT_producer              <no string provided?>
+                    DW_AT_language              DW_LANG_C11
+                    DW_AT_name                  <no string provided?>
+                    DW_AT_comp_dir              <no string provided?>
+                    DW_AT_low_pc                0x00001149
+                    DW_AT_high_pc               <offset-from-lowpc> 47 <highpc: 0x00001178>
+                    
+./dwarfdump ERROR:  ERROR: dwarf_get_loclist_c fails:  DW_DLE_LOCLISTS_ERROR: The end of an lle entry is past the end of its allowed space. Attempting to continue.
+
+CU Name = <no string provided?>
+CU Producer = <no string provided?>
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = 0x00001149, High PC = 0x00001178
+
+./dwarfdump ERROR:  ERROR: Cannot get location list data:  DW_DLE_LOCLISTS_ERROR: The end of an lle entry is past the end of its allowed space. Attempting to continue.
+
+CU Name = <no string provided?>
+CU Producer = <no string provided?>
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = 0x00001149, High PC = 0x00001178
+
+./dwarfdump ERROR:  Cannot get location data, attr (with -M  also form) follow:  DW_DLE_LOCLISTS_ERROR: The end of an lle entry is past the end of its allowed space. Attempting to continue.
+
+CU Name = <no string provided?>
+CU Producer = <no string provided?>
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = 0x00001149, High PC = 0x00001178
+DW_AT_string_length         0x00000004
+                    ERROR: dwarf_whatform unexpected value, form code 0x0000 Major error
+DW_AT_call_origin           
+
+./dwarfdump ERROR:  ERROR: dwarf_siblingof fails tracing siblings of a DIE.:  DW_DLE_UNKNOWN_FORM: Abbrev form 0x33 DW_DLE_UNKNOWN_FORM: Abbrev form 0x33 with attribute 0x3f so abbreviations unusable. . Attempting to continue.
+
+CU Name = <no string provided?>
+CU Producer = <no string provided?>
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = 0x00001149, High PC = 0x00001178
+
+./dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_UNKNOWN_FORM: Abbrev form 0x33 DW_DLE_UNKNOWN_FORM: Abbrev form 0x33 with attribute 0x3f so abbreviations unusable. . Attempting to continue.
+
+CU Name = <no string provided?>
+CU Producer = <no string provided?>
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = 0x00001149, High PC = 0x00001178
+
+.debug_str
+
+.debug_aranges
+
+./dwarfdump ERROR:  Unable to load the .debug_aranges section.:  DW_DLE_VERSION_STAMP_ERROR (48) Corrupted DWARF or corrupted object. Attempting to continue.
+
+./dwarfdump ERROR:  printing the aranges section had a problem.:  DW_DLE_VERSION_STAMP_ERROR (48) Corrupted DWARF or corrupted object. Attempting to continue.
+
+.debug_frame is not present
+
+There were 8 DWARF errors reported: see ERROR above.
