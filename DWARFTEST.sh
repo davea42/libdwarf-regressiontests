@@ -1174,6 +1174,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+runsingle CelikCrash.base ./dwarfdump -a $testsrc/Celik/crash_elfio
+
 runsingle hongg2024-02-18-m.base ./dwarfdump -a $testsrc/hongg2024-02-18/SIGSEGV-m.fuzz
 
 runsingle hongg2024-02-16-a.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT-a.fuzz
