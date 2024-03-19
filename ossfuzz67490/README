@@ -1,0 +1,12 @@
+
+Failure reported 19 March 2024.
+
+Issue 67490
+
+Crash State: 	
+_dwarf_decode_line_udata_form
+_dwarf_read_line_table_header
+dwarf_srcfiles
+
+Crash Tykpe:
+Heap-buffer-overflow READ 1
