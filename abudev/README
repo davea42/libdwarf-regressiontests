@@ -1,0 +1,15 @@
+
+29 March 2024
+
+The command
+where dwarfdump built with -fsanitized
+./dwarfdump --format-limit=10 --print-eh-frame --print-frame --print-info -v poc
+
+gets
+==34292==ERROR: AddressSanitizer: heap-use-after-free on address 0x604000000430 at pc 0x559502b0fd98 bp 0x7ffe14b50800 sp 0x7ffe14b507f0
+READ of size 4 at 0x604000000430 thread T0
+
+Oops.
+Problem found by abudev.
+
+
