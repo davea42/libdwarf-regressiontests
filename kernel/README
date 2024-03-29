@@ -1,0 +1,5 @@
+
+test.ko is a kernel module and
+makes full use of DW_AT_decl_file,
+DW_AT_decl_line,
+and DW_AT_decl_column.
