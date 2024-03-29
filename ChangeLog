@@ -1,3 +1,176 @@
+2024-03-29:  David Anderson
+    commit 5c03493e704150d3a8e924b67e01065265500968
+
+    Now runs the new testcase (which
+    showed a bug in 0.9.1
+    (DW202402-002)  that was already fixed February 17 2024.
+            modified:   DWARFTEST.sh
+            new file:   baselines/abudev-a.base
+
+2024-03-29:  David Anderson
+    commit 46ed6f6c8705e3e0b2ddf24df8720e3114a61c75
+
+    New testcase.
+            new file:   abudev/README
+            new file:   abudev/abudev_test.poc
+
+2024-03-21:  David Anderson
+    commit 2f1a3f926eee82f889f0c9a2a674f2eee78621c8
+
+    Now with the test for DW202403-001
+            modified:   DWARFTEST.sh
+    Baseline result
+            new file:   baselines/ossfuzz67490.base
+
+2024-03-19:  David Anderson
+    commit b64860c960f1ad2bfabf369e9ce8756ff3a61018
+
+    New failure report.
+            new file:   ossfuzz67490/README
+            new file:   ossfuzz67490/fuzz_srcfiles-5195296927711232
+
+2024-03-03:  David Anderson
+    commit bb83ed3ef542c762368176503a4f2c22fc3fa77a
+
+    Now with an msys2 run to completion.
+    Very slow.
+            modified:   RegressionTestsResults.ods
+
+2024-03-01:  David Anderson
+    commit b410d1ec8219a0eabb3676c3a155db58c438c2a8
+
+    New testcase
+            new file:   Celik/README
+            new file:   Celik/crash_elfio
+    Run the new testcase
+            modified:   DWARFTEST.sh
+    Baseline with the expected output of dwarfdump
+            new file:   baselines/CelikCrash.base
+
+2024-02-18:  David Anderson
+    commit 45d6a5b63fe6304b4cc4ddf84679a09f913effe8
+
+    Now runs the test for DW202402-003.
+            modified:   DWARFTEST.sh
+
+2024-02-18:  David Anderson
+    commit fff8b79eddda31c73e194b28a2e9eb0d5be542c9
+
+    Test for DW202402-003.
+            new file:   baselines/hongg2024-02-18-m.base
+            new file:   hongg2024-02-18/README
+            new file:   hongg2024-02-18/SIGSEGV-m.fuzz
+
+2024-02-17:  David Anderson
+    commit bc167b941d5dfbbb06138304530de4e6ac741c4a
+
+    New tests relevant to DW202402-002.
+            modified:   DWARFTEST.sh
+            modified:   README.md
+    Showing latest
+            modified:   RegressionTestsResults.ods
+
+2024-02-17:  David Anderson
+    commit 1ba4e1981b676d762372b6503652d0f990793788
+
+    testing that a serious bug is fixed. DW202402-002
+            new file:   baselines/hongg2024-02-16-a.base
+            new file:   baselines/hongg2024-02-16-b.base
+            new file:   baselines/hongg2024-02-16-c.base
+            new file:   baselines/hongg2024-02-16-d.base
+            new file:   baselines/hongg2024-02-16-e.base
+            new file:   baselines/hongg2024-02-16-f.base
+            new file:   baselines/hongg2024-02-16-g.base
+            new file:   baselines/hongg2024-02-16-h.base
+            new file:   baselines/hongg2024-02-16-i.base
+            new file:   baselines/hongg2024-02-16-k.base
+            new file:   hongg2024-02-16/README
+            new file:   hongg2024-02-16/SIGABRT-a.fuzz
+            new file:   hongg2024-02-16/SIGABRT-b.fuzz
+            new file:   hongg2024-02-16/SIGABRT-c.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-d.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-e.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-f.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-g.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-h.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-i.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-k.fuzz
+
+2024-02-12:  David Anderson
+    commit fc0ae9f5bb5d99dd63ee7dc9bb0f28d24dcff6d7
+
+    Now with a test verifying vulnerability
+    DW202402-001 (oss fuzz 66646) is fixed.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz66646.base
+
+2024-02-12:  David Anderson
+    commit da0dd4e72a5b3c1fe4a9efda7f6bc75dafbd5c27
+
+    New issue found.
+            new file:   README
+            new file:   fuzz_findfuncbypc-5178544143532032
+
+2024-02-06:  David Anderson
+    commit ccfc02cae36e88ce82111a651d71a8f21a415aaa
+
+    Explaining the test and test failure.
+            new file:   marini/README
+
+2024-02-06:  David Anderson
+    commit c86ff1ae32ab195401fc32fc84c32c682f77b555
+
+    Adding marini/testcase to the tests.
+    The problem is not notice by -fsanitize,
+    but valgrind notices.
+    Now fixed.
+            modified:   DWARFTEST.sh
+            new file:   baselines/marini_testcase.base
+
+2024-01-31:  David Anderson
+    commit 30e6c88e8c5c0022ab920dd48a34306aeb03ee1b
+
+    Remove an exit 1 which was a one-time shortcut.
+            modified:   DWARFTEST.sh
+
+2024-01-31:  David Anderson
+    commit 97dfba854f69727027b3d9af808eacac5b72e623
+
+    Added new testcase
+            modified:   DWARFTEST.sh
+
+    new test and baseline.
+            new file:   baselines/ossfuzz_crc.base
+            new file:   ossfuzz56443/README
+            new file:   ossfuzz56443/fuzz_crc_testcase
+
+2024-01-28:  David Anderson
+    commit e91bb2058f5a686b1ae58fa5e5da6c5afd336193
+
+    New option via env var SKIPDECOMPRESS .
+            modified:   DWARFTEST.sh
+    Minor clarification
+            modified:   README.md
+
+2024-01-28:  David Anderson
+    commit b3b9f0637cdaf0910e679673a05b4f5c9249c208
+
+    baseline for helloz/zero-e_shoff-i386.o
+            new file:   baselines/zero-e_shoff-i386.base
+
+2024-01-28:  David Anderson
+    commit 47a0078baba40b602115ee7d7ee0bbd820031cb7
+
+    New 32bit test case alongside 64bit test case.
+            new file:   README
+            new file:   zero-e_shoff-i386.o
+
+2024-01-27:  David Anderson
+    commit 6b1495de03a35343fec225acdb985a3373f5c371
+
+    With latest from git log
+            modified:   ChangeLog
+
 2024-01-27:  David Anderson
     commit 646fbcc2c114016fde953d84f3fc19e44baffecc
 
