@@ -1174,6 +1174,8 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+runsingle abudev-a.base ./dwarfdump --format-limit=10 --print-eh-frame --print-frame --print-info -v $testsrc/abudev/abudev_test.poc
+
 runsingle ossfuzz67490.base ./fuzz_srcfiles  --testobj=$testsrc/ossfuzz67490/fuzz_srcfiles-5195296927711232
 
 runsingle CelikCrash.base ./dwarfdump -a $testsrc/Celik/crash_elfio
@@ -1185,7 +1187,7 @@ runsingle hongg2024-02-16-b.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT
 runsingle hongg2024-02-16-c.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT-c.fuzz
 runsingle hongg2024-02-16-d.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-d.fuzz
 runsingle hongg2024-02-16-e.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-e.fuzz
-runsingle hongg2024-02-16-f.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-f.fuzz
+/bin/bash: line 1: s: command not found
 runsingle hongg2024-02-16-g.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-g.fuzz
 runsingle hongg2024-02-16-h.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-h.fuzz
 runsingle hongg2024-02-16-i.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-i.fuzz
