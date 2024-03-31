@@ -1,3 +1,44 @@
+2024-03-31:  David Anderson
+    commit 7f68e2c680c07a1a13a94b8cbea2cad658a3d7b6
+
+    the checking source was wrong, now we check
+    for the correct spelling "DW_CFA_hi_user"
+            modified:   dwnames_checks/dwnames_all.c
+
+2024-03-31:  David Anderson
+    commit ab7ea2fc299d7796075015227cb554c5c9ea82a0
+
+    To keep track of these for the future.
+            new file:   helloz/bldwzlib
+            new file:   helloz/bldwzstd
+    SHould have committed this earler.
+            new file:   marini/testcase
+
+2024-03-29:  David Anderson
+    commit 034a710f7f8c2e4fcddee237b86dc525de86ab70
+
+    Updated the total count so the percent values
+    look right, the latest addition added enough
+    tests it seemed sensible to update the count.
+            modified:   python2/showpct.py
+            modified:   python3/showpct.py
+
+2024-03-29:  David Anderson
+    commit 77f5a55cc4cebc3e6f8d61b7bf6aa76517d0f1e1
+
+    Now running dwarfdump (with many options) on the .ko
+    which has really nice usage of DW_AT_decl_file,
+    DW_AT_decl_line *and* DW_AT_decl_column.
+            modified:   DWARFTEST.sh
+            new file:   kernel/README
+            new file:   kernel/test.ko
+
+2024-03-29:  David Anderson
+    commit 683f6e95c09da3116f20b04c6cefb70060a2215b
+
+    Up to date with git log
+            modified:   ChangeLog
+
 2024-03-29:  David Anderson
     commit 5c03493e704150d3a8e924b67e01065265500968
 
