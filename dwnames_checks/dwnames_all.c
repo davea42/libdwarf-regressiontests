@@ -3036,7 +3036,7 @@ run_tests(void) {
     check_valid(res,"dwarf_get_CFA_name", "DW_CFA_METAWARE_info", 52, ret_name);
 
     res = dwarf_get_CFA_name(63,&ret_name);
-    check_valid(res,"dwarf_get_CFA_name", "DW_CFA_high_user", 63, ret_name);
+    check_valid(res,"dwarf_get_CFA_name", "DW_CFA_hi_user", 63, ret_name);
 
     res = dwarf_get_CFA_name(64,&ret_name);
     check_valid(res,"dwarf_get_CFA_name", "DW_CFA_advance_loc", 64, ret_name);
