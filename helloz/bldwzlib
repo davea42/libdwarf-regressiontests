@@ -1,0 +1,2 @@
+
+cc -g -flto -flto-compression-level=6 hello.c
