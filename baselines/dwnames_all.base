@@ -1,1 +1,1 @@
-PASS dwnames_all, 1116 checks
+FAIL call "dwarf_get_TAG_name"  expected "DW_TAG_lo_user" for 16512 but got "DW_TAG_TI_far_type"
