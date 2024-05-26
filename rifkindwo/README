@@ -1,0 +1,31 @@
+
+26 May 2024.
+A problem noted in libdwarf github issue #243
+
+Jeremy Rifkin found that gcc is generating a
+.debug_addr which is not in the format that
+DWARF5 specifies.
+
+
+Instead it is the format defined in
+https://gcc.gnu.org/wiki/DebugFission 
+which is not the same as the format that
+the DWARF committee specified in DWARF5.
+
+
+https://github.com/ianlancetaylor/libbacktrace/blob/11427f31a64b11583fec94b4c2a265c7dafb1ab3/dwarf.c#L1427
+
+Jeremy writes, in the issue:
+
+Here's a small example (built from
+https://github.com/jeremy-rifkin/cpptrace/tree/dev with
+
+    cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Debug
+    -DCMAKE_EXPORT_COMPILE_COMMANDS=On
+    -DCPPTRACE_BUILD_TESTING=On
+    -DCMAKE_CXX_FLAGS="-gsplit-dwarf"
+    -DCMAKE_C_FLAGS="-gsplit-dwarf" -DBUILD_SHARED_LIBS=On
+
+The objects here, demo and  demo.cpp.dwo
+are the result of the build.
+
