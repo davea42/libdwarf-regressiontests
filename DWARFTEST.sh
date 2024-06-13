@@ -16,6 +16,7 @@ echo "  Skip tests needing zlib zstd : unset SKIPDECOMPRESS"
 echo "  printf_sanitize..............: export PRINTFFMT=DEFAULT"
 echo "  printf_sanitize..............: export PRINTFFMT=NOSANITY"
 echo "  printf_sanitize..............: export PRINTFFMT=ASCII"
+echo "  SkipBigObjects...............: export SKIPBIGOBJECTS=y"
 # On certain VMs if too much change, we get
 # stuck at 1% done forever (and after 10 hours
 # far from done with the tests).
@@ -66,6 +67,11 @@ then
   fsu="--format-suppress-utf8"
   asciionly=y
 fi
+skipbigobjects=n
+if [ "x$SKIPBIGOBJECTS" = "xy" ]
+then
+   skipbigobjects=y
+fi
 # refering to dwarfdump printf
 nosanity=n
 if [ x$PRINTFFMT = "xNOSANITY" ]
@@ -81,6 +87,7 @@ then
   skipdecompress=y
 fi
 echo "  skipdecompress..............: $skipdecompress"
+echo "  skipbigobjects..............: $skipbigobjects"
 
 s=SHALIAS.sh
 if [ ! -f ./$s ]
@@ -344,9 +351,9 @@ echo "Python dir in tests.......: $mypydir"
 # Not all tests will be run in that case.
 # Some of the tests involve compilation and linking,
 # so we need this here.
+nlize=n
 if [ x$NLIZE != 'xy' ]
 then
-  NLIZE='n'
   export NLIZE
   ASAN_OPTIONS=
   export ASAN_OPTIONS
@@ -354,6 +361,7 @@ then
   echo "Using -fsanitize .........: no"
 else
   ASAN_OPTIONS="allocator_may_return_null=1"
+  nlize=y
   export ASAN_OPTIONS
   # Ensure we can use the opts.
   nlizeopt=`checkargs -fsanitize=address -fsanitize=leak  \
@@ -1175,6 +1183,7 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+
 runsingle abudev-a.base ./dwarfdump --format-limit=10 --print-eh-frame --print-frame --print-info -v $testsrc/abudev/abudev_test.poc
 
 runsingle ossfuzz67490.base ./fuzz_srcfiles  --testobj=$testsrc/ossfuzz67490/fuzz_srcfiles-5195296927711232
@@ -1480,8 +1489,18 @@ cd ..
 #  chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
 #cd ..
 
-runtest $d1 $d2 rifkin/test-mach-o-32.dSYM -a
-runtest $d1 $d2 rifkin/demo.cpp.o  -a
+# New tests as of 12 June 2024.
+runtest $d1 $d2 rifkindwo/demo -a -M -vvv 
+runtest $d1 $d2 rifkindwo/demo --print-raw-rnglists --print-raw-loclists 
+runtest $d1 $d2 rifkindwo/demo.cpp.dwo  -a -M -vvv
+runtest $d1 $d2 rifkindwo/demo.cpp.dwo --print-raw-rnglists --print-raw-loclists 
+runtest $d1 $d2 rifkindwo/demo.cpp.dwo --file-tied=rifkindwo/demo -a -M -vvv
+
+runtest $d1 $d2 rifkindwo/libcpptrace.so.0.6.0 -a -M -vvv 
+runtest $d1 $d2 rifkindwo/libcpptrace.so.0.6.0  --print-raw-rnglists --print-raw-loclists 
+runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo  -a -M -vvv
+runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo --print-raw-rnglists --print-raw-loclists 
+runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo --file-tied=rifkindwo/libcpptrace.so.0.6.0 -a -M -vvv
 
 runversiontest $d2 -V
 
@@ -1518,9 +1537,15 @@ runtest $d1 $d2 shinibufa/fuzzed_input_file
 # an unknown shared library.debug (nothing executable
 # here). This had erroneous output (duplicated include path)
 # from recent builds of dwarfdump 11 Aug 2023
-if [ "x$skipdecompress" = "xn" ]
+if [ "x$skpdecompress" = "xn" ]
 then
-  runtest $d1 $d2 debugso20230811.debug -i -vvv
+  if [ "x$skipbigobjects" = "xy" ]
+  then
+    echo "=====SKIP running this big object with big .debug_loclists, rnglists"
+    skipcount=`expr $skipcount +  1`
+  else
+    runtest $d1 $d2 debugso20230811.debug -i -vvv
+  fi
 else
   echo "=====SKIP .debugso20230811.debug as it has compression"
   skipcount=`expr $skipcount +  1`
@@ -1618,10 +1643,23 @@ runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -v
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -vv
 runtest $d1 $d2 debugnames/dwarfdump    -i -G --print-debug-names -vv
-runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names
-runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-pubnames
-runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -v
-runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -vv
+# Comment out for sanitize run.
+if [ "$nlize" = "n" ]
+then
+  if ["x$skipbigobjects" = "xn" ]
+  then
+    runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names
+    runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-pubnames
+    runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -v
+    runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -vv
+  else
+    echo "=====SKIP bigobjects of dwarfdumpone, skipcount+4: very slow"
+    skipcount=`expr $skipcount +  4 `
+  fi
+else
+  echo "=====SKIP NLIZE of dwarfdumpone, skipcount+4: very slow"
+  skipcount=`expr $skipcount +  4 `
+fi
 
 #  A fuzzed object which hit a poorly written sanity
 #  offset test. Test received 10 october 2020.
@@ -1717,7 +1755,7 @@ runtest $d1 $d2 \
   sarubbo-b/00011-elfutils-memalloc-allocate_elf
 
 # SHF_COMPRESSED testcases.
-if [ x$withlibz = "xno" ]
+if [ "x$withlibz" = "xno" ]
 then
   echo "=====SKIP COMPRESSED tests, skipcount+6 no libz available"
   skipcount=`expr $skipcount +  6 `
@@ -1733,7 +1771,7 @@ else
   else 
     echo "=====SKIP compressed-be/testprog-be-dw4 "
     skipcount=`expr $skipcount +  6`
-
+  fi
 fi
 
 # See bug DW202010-002
@@ -1943,17 +1981,16 @@ fi
 
 # Test ensuring R_386_GOTPC relocation understood. June 202
 runtest $d1 $d2 mustacchi/relgotpc.o -a -M
-if [ x$withlibz = "xno"  -o "x$skipdecompress" = "xy"]
+if [ x$withlibz = "xno"  -o "x$skipdecompress" = "xy" ]
 then
   echo "=====SKIP moya2/filecheck.dwo, count 2, compression"
-  skipcount=`expr $skipcount +  2 `
+  skipcount=`expr $skipcount +  2`
 else
   # DWARF5 test, new 17 June 2020.
   runtest $d1 $d2 moya2/filecheck.dwo -a -M
   runtest $d1 $d2 moya2/filecheck.dwo -a -vvv -M
 fi
 
-fi
 # sample object with DW_AT_containing type in a use
 # which is standard
 runtest $d1 $d2 encisoa/DW_AT_containing_type.o --check-tag-attr
@@ -2316,6 +2353,7 @@ runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
+
 if [ x$withlibz = "xno" -o "x$skipdecompress" = "xy" ]
 then
   echo "=====SKIP klingler2/compresseddebug.amd64"
@@ -2329,16 +2367,21 @@ else
 fi
 
 # A big object.
-runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
-runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
-runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=$testsrc/debugfissionb/ld-new
-runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=$testsrc/debugfissionb/ld-new
-runtest $d1 $d2  debugfissionb/ld-new -I
-runtest $d1 $d2  debugfissionb/ld-new -a
-echo "Testing -i --format-expr-ops-joined . a -d for exprs"
-runtest $d1 $d2  debugfissionb/ld-new -i --format-expr-ops-joined
-runtest $d1 $d2  debugfissionb/ld-new -ka
-#The following is also --format-expr-ops-joined
+if [ "x$skipbigobjects" = "xn" ]
+then
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=$testsrc/debugfissionb/ld-new
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=$testsrc/debugfissionb/ld-new
+  runtest $d1 $d2  debugfissionb/ld-new -I
+  runtest $d1 $d2  debugfissionb/ld-new -a
+  echo "Testing -i --format-expr-ops-joined . a -d for exprs"
+  runtest $d1 $d2  debugfissionb/ld-new -i --format-expr-ops-joined
+  runtest $d1 $d2  debugfissionb/ld-new -ka
+else
+  echo ======SKIP BIG OBJects ld-new
+  skipcount=`expr $skipcount +  8`
+fi
 runtest $d1 $d2  emre4/test19_64_dbg --file-name=./testdwarfdump.conf  -i -v
 
 # A very short debug_types file. Used to result in error due to bug.
@@ -2409,7 +2452,7 @@ else
   cd ..
 fi
 
-if [ $NLIZE = 'n' ]
+if [ $nlize = 'n' ]
 then
   runtest $d1 $d2   sarubbo-8/1.crashes.bin  -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y
 else
@@ -2417,7 +2460,7 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-if [ $NLIZE = 'n' ]
+if [ $nlize = 'n' ]
 then
   runtest  $d1 $d2   sarubbo-9/3.crashes.bin -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y
   chkres $?  sarubbo-8
@@ -2626,7 +2669,7 @@ mklocal sandnes2
   chkres $r  $testsrc/sandnes2
 cd ..
 
-if [ $NLIZE = 'n' ]
+if [ $nlize = 'n' ]
 then
   echo "=====START $testsrc/legendre/runtest.sh  "
   mklocal legendre
@@ -2850,7 +2893,7 @@ runtest $d1 $d2 mucci/stream.o -i -e
 runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F
 runtest $d1 $d2 legendre/libmpich.so.1.0 -ka
 
-if [ $NLIZE = 'n' ]
+if [ $nlize = 'n' ]
 then
   echo "=====START $testsrc/test-alex1/runtest.sh"
   mklocal test-alex1
@@ -2862,7 +2905,7 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-if [ $NLIZE = 'n' ]
+if [ $nlize = 'n' ]
 then
   echo "=====START $testsrc/test-alex2/runtest.sh "
   mklocal test-alex2
@@ -3054,7 +3097,7 @@ showminutes() {
    echo "Run time in minutes: $t"
 }
 showminutes $stsecs $ndsecs
-if [ "x$NLIZE" = "xy" ]
+if [ "x$nlize" = "xy" ]
 then
   echo "Sanitize?              : y (yes)"
 else
