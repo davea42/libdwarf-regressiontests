@@ -1,3 +1,102 @@
+2024-06-15:  David Anderson
+    commit d058c801c004e26201c7050dfb50223ab9fb1236
+
+    Adds new tests related to DWARF5 rnglists and loclists
+            modified:   DWARFTEST.sh
+
+    Now equipped for all the DWARF5 rnglists loclists situations.
+            modified:   TEST
+    New baseline results.
+            new file:   baselines/ossfuzz69639.base
+            new file:   baselines/ossfuzz69641.base
+
+    New dwarfdump baseline executable.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-06-14:  David Anderson
+    commit 1b2d756f8c9e61c8b0a4e23afdfe582173a2f297
+
+    Updated baseline.
+            modified:   baselines/hongg2024-02-18-m.base
+    New testcases
+            new file:   ossfuzz69639/fuzz_die_cu_offset-6001910176350208
+            new file:   ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
+
+2024-06-13:  David Anderson
+    commit 523d59ad3776c19b20f93e15d274c597ccaa6967
+
+    Now with new tests and, a new ENV-var option
+    SKIPTBIGOBJECTS
+    which if 'y' will avoid running some tests
+    that generate several Gigabytes of output.
+            modified:   DWARFTEST.sh
+    Now matches current test results.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Moved this up one level, into base directory.
+    Ignore it :-)
+            deleted:    rifkindwo/TEST
+
+2024-06-12:  David Anderson
+    commit 935981d08b839ef8daca5c6b876865f8a9d6c154
+
+    Handy for certain tests with lots of differences
+    when certain changes made..
+            new file:   TEST
+
+2024-06-08:  David Anderson
+    commit 1854c266632a89b83dcbc04e5fc4d7f89e7c3d73
+
+    New test objects.
+            new file:   cpptrace.cpp.dwo
+            new file:   libcpptrace.so.0.6.0
+
+2024-06-08:  David Anderson
+    commit 84641acc4df52367acaa9953a5f5b0cb14eb77da
+
+    This is a file only for individual tests.
+    Ignore it.
+            new file:   TEST
+
+2024-05-26:  David Anderson
+    commit 0018eb0620d9c02c63c2b134c0ba84d4d4532192
+
+    New test cases.  DWARF4 in these objects
+    uses an extension of using .debug_addr
+    but not using the DWARF5 standard.
+    See the README for additional details.
+            new file:   rifkindwo/README
+            new file:   rifkindwo/demo
+            new file:   rifkindwo/demo.cpp.dwo
+
+2024-05-10:  David Anderson
+    commit 71b5d3965194271802b1c48e78b7aad617bd0abe
+
+    baselines matching the new error message format for
+    PE objects failing a heuristic sanity check.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2024-05-10:  David Anderson
+    commit 40d801db454351dd5d81f3511403c1c8e22457db
+
+    minor correction.
+            modified:   baselines/dwnames_all.base
+
+    New baseline due to renaming  DW_DLE_PE_SECTION_SIZE_ERROR
+    to  DW_DLE_PE_SECTION_SIZE_HEURISTIC_FAIL
+    in three places
+    for clarity when the failing is a heuristic, not
+    necessarily a genuine error.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-03-31:  David Anderson
+    commit 5e4306993f0bc90b7cd4ed4af0da20825b327d8e
+
+    Up to date.
+            modified:   ChangeLog
+
 2024-03-31:  David Anderson
     commit 7f68e2c680c07a1a13a94b8cbea2cad658a3d7b6
 
