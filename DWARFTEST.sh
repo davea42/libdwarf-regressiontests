@@ -615,7 +615,7 @@ dwarf4/dd2g4.5dwarf-4
 '
 echo "Checkwithlibz      : $withlibz"
 echo "Checkskipdecompress: $skipdecompress"
-if [ x$withlibz = "xno" -o "x$skipdecompress" = "xy" ]
+if [ "x$withlibz" = "xno" -o "x$skipdecompress" = "xy" ]
 then
      echo "=====SKIP klingler navarro liu skip count 252 compression"
      skipcount=`expr $skipcount +  770` 
@@ -1183,9 +1183,10 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
 
+runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
+runsingle ossfuzz69639.base ./fuzz_die_cu_offset  --testobj=$testsrc/ossfuzz69639/fuzz_die_cu_offset-6001910176350208
 
 runsingle abudev-a.base ./dwarfdump --format-limit=10 --print-eh-frame --print-frame --print-info -v $testsrc/abudev/abudev_test.poc
-
 runsingle ossfuzz67490.base ./fuzz_srcfiles  --testobj=$testsrc/ossfuzz67490/fuzz_srcfiles-5195296927711232
 
 runsingle CelikCrash.base ./dwarfdump -a $testsrc/Celik/crash_elfio
@@ -1197,7 +1198,7 @@ runsingle hongg2024-02-16-b.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT
 runsingle hongg2024-02-16-c.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGABRT-c.fuzz
 runsingle hongg2024-02-16-d.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-d.fuzz
 runsingle hongg2024-02-16-e.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-e.fuzz
-/bin/bash: line 1: s: command not found
+
 runsingle hongg2024-02-16-g.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-g.fuzz
 runsingle hongg2024-02-16-h.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-h.fuzz
 runsingle hongg2024-02-16-i.base ./dwarfdump -a $testsrc/hongg2024-02-16/SIGSEGV-i.fuzz
@@ -1537,7 +1538,7 @@ runtest $d1 $d2 shinibufa/fuzzed_input_file
 # an unknown shared library.debug (nothing executable
 # here). This had erroneous output (duplicated include path)
 # from recent builds of dwarfdump 11 Aug 2023
-if [ "x$skpdecompress" = "xn" ]
+if [ "x$skipdecompress" = "xn" ]
 then
   if [ "x$skipbigobjects" = "xy" ]
   then
@@ -1646,19 +1647,17 @@ runtest $d1 $d2 debugnames/dwarfdump    -i -G --print-debug-names -vv
 # Comment out for sanitize run.
 if [ "$nlize" = "n" ]
 then
-  if ["x$skipbigobjects" = "xn" ]
+  if [ "$skipbigobjects" = "n" ]
   then
-    runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names
     runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-pubnames
-    runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -v
     runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -vv
   else
     echo "=====SKIP bigobjects of dwarfdumpone, skipcount+4: very slow"
-    skipcount=`expr $skipcount +  4 `
+    skipcount=`expr $skipcount +  2 `
   fi
 else
   echo "=====SKIP NLIZE of dwarfdumpone, skipcount+4: very slow"
-  skipcount=`expr $skipcount +  4 `
+  skipcount=`expr $skipcount +  2 `
 fi
 
 #  A fuzzed object which hit a poorly written sanity
@@ -1981,7 +1980,7 @@ fi
 
 # Test ensuring R_386_GOTPC relocation understood. June 202
 runtest $d1 $d2 mustacchi/relgotpc.o -a -M
-if [ x$withlibz = "xno"  -o "x$skipdecompress" = "xy" ]
+if [ "x$withlibz" = "xno"  -o "x$skipdecompress" = "xy" ]
 then
   echo "=====SKIP moya2/filecheck.dwo, count 2, compression"
   skipcount=`expr $skipcount +  2`
@@ -2354,7 +2353,7 @@ runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
 
-if [ x$withlibz = "xno" -o "x$skipdecompress" = "xy" ]
+if [ "x$withlibz" = "xno" -o "x$skipdecompress" = "xy" ]
 then
   echo "=====SKIP klingler2/compresseddebug.amd64"
   skipcount=`expr $skipcount +  3 `

@@ -1,5 +1,8 @@
-# script useful for individual object testing when differences
-# are really large.  Created 8  June 2024.
+# Script useful for individual object testing when differences
+# are really large.  
+# Found it bests to run each object on its own since some of them
+# generate multi-gigabytes of text output.
+# Created 8  June 2024.
 t=/home/davea/dwarf/regressiontests/hongg2024-02-18/SIGSEGV-m.fuzz
 t=/home/davea/dwarf/regressiontests/pubnames/bothpubs.exe
 t=/home/davea/dwarf/regressiontests/moya2/filecheck.dwo

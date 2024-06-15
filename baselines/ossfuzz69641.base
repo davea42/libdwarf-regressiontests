@@ -1,0 +1,4 @@
+
+libdwarf is unable to record error DW_DLE_READ_LITTLEENDIAN_ERROR (331) Corrupted dwarfdata littleendian host No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_ATTR_NULL (111) No error argument or handler available
