@@ -444,6 +444,7 @@ failcount=0
 skipcount=0
 valgrindcount=0
 valgrinderrcount=0
+bldgoodcount=0
 
 top_builddir=$bldtest
 echo   "test code source..........: $testsrc"
@@ -473,6 +474,15 @@ else
 fi
 rm -f $otimeout
 rm -f $ntimeout
+chkresbld () {
+  if [ $1 -eq 0 ]
+  then
+    bldgoodcount=`expr $bldgoodcount + 1`
+  else
+    echo "FAIL $2"
+    failcount=`expr $failcount + 1`
+  fi
+}
 chkres () {
   if [ $1 -eq 0 ]
   then
@@ -617,7 +627,7 @@ echo "Checkwithlibz      : $withlibz"
 echo "Checkskipdecompress: $skipdecompress"
 if [ "x$withlibz" = "xno" -o "x$skipdecompress" = "xy" ]
 then
-     echo "=====SKIP klingler navarro liu skip count 252 compression"
+     echo "=====SKIP klingler navarro liu skip count 770 compression"
      skipcount=`expr $skipcount +  770` 
 else
      echo "=====DO klinkler navarro liu libz tests"
@@ -748,7 +758,12 @@ runsingle () {
   rm -f junksingle.$base junksingle2.$base junksingle3.$base
   totalct=`expr $goodcount + $failcount + $skipcount + 1`
   pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
-  echo  "=====STARTsingle Pct $pctstring $* $targ"
+  if [ "$args" = "" ]
+  then
+    echo  "=====STARTsingle Pct $pctstring $exe $targ good=$goodcount skip=$skipcount"
+  else
+    echo  "=====STARTsingle Pct $pctstring $args $targ good=$goodcount skip=$skipcount"
+  fi
   echo  "=====STATSsingle Pct $pctstring ct: $totalct"
   echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
   if [ "x$VALGRIND" = "xy" ]
@@ -791,15 +806,15 @@ runsingle () {
     canp=$testsrc/scripts/canonicalpath.py
     echo "$scr junksingle.$base $code $codedir content"
     $canp junksingle.$base $code $codedir content >junksingle3a.$base
-    chkres $? "FAIL $canp a"
+    chkresbld $? "FAIL $canp a"
     #Needed as some strings in the 
     #object file itself are:
     xstd="/home/davea/dwarf/code"
     $canp junksingle3a.$base $xstd content >junksingle3.$base
-    chkres $? "FAIL $canp b"
+    chkresbld $? "FAIL $canp b"
   else
     cp junksingle.$base junksingle3.$base
-    chkres $? "FAIL cp junksingle.$base to junksingle3"
+    chkresbld $? "FAIL cp junksingle.$base to junksingle3"
   fi
   allgood=y
   if [ ! -f $testsrc/baselines/$base ]
@@ -811,7 +826,6 @@ runsingle () {
   fi
   filediff $testsrc/baselines/$base junksingle3.$base $exe $args
   r=$?
-  #chkres $r 'filediff compare junksingle3 failed'
   if [ $r -ne 0 ]
   then
     #echo "FAIL diff $base junksingle3.$base"
@@ -837,7 +851,7 @@ runversiontest () {
     rm -f junk.versiontest
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
     pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
-    echo  "=====START Pct $pctstring $arg"
+    echo  "=====START Pct $pctstring $arg good=$goodcount skip=$skipcount"
     echo  "=====STATS Pct $pctstring ct: $totalct"
     echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     $dw $arg >junk.versiontest
@@ -903,7 +917,7 @@ runtest () {
     #  counted it as a good or a fail.
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
     pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
-    echo  "=====START Pct $pctstring $* $targ"
+    echo  "=====START Pct $pctstring $* $targ good=$goodcount skip=$skipcount"
     echo  "=====STATS Pct $pctstring ct: $totalct"
     rm -f core
     rm -f tmp1o tmp2n tmp3
@@ -1091,7 +1105,7 @@ do
   echo "$x"
   $x
   r=$?
-  chkres $r "compile of ${f}.c failed"
+  chkresbld $r "compile of ${f}.c failed"
 done
 
 simpleexe='
@@ -1109,7 +1123,7 @@ do
   echo "$x"
   $x
   r=$?
-  chkres $r "compile of ${f}.c failed"
+  chkresbld $r "compile of ${f}.c failed"
 done
 
 echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
@@ -1120,7 +1134,7 @@ echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
    echo "$x"
    $x
    r=$?
-   chkres $r 'check dwnames_all-error compile dwnames_all.c failed'
+   chkresbld $r 'check dwnames_all-error compile dwnames_all.c failed'
 
 # frame1 is a directory name, hence the build -o frame1/frame1
 echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
@@ -1133,7 +1147,7 @@ echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
   echo "$x"
   $x
   r=$?
-  chkres $r 'check frame1-error compile dwarfexample/frame1.c failed'
+  chkresbld $r 'check frame1-error compile dwarfexample/frame1.c failed'
   cd ..
 
 echo "=====BUILD  dwarfexample/jitreader.c "
@@ -1144,7 +1158,7 @@ echo "=====BUILD  dwarfexample/jitreader.c "
   echo "$x"
   $x
   r=$?
-  chkres $r 'check jitreader compile dwarfexample/jitreader.c failed'
+  chkresbld $r 'check jitreader compile dwarfexample/jitreader.c failed'
 
 echo "=====BUILD  dwarfexample/dwdebuglink.c "
   x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
@@ -1154,9 +1168,9 @@ echo "=====BUILD  dwarfexample/dwdebuglink.c "
   echo "$x"
   $x
   r=$?
-  chkres $r 'check dwdebuglink compile dwarfexample/dwdebuglink.c failed'
+  chkresbld $r 'check dwdebuglink compile dwarfexample/dwdebuglink.c failed'
 
-echo "=====START  $testsrc/testfindfuncbypc/ tests"
+echo "=====START  $testsrc/testfindfuncbypc/ tests good=$goodcount skip=$skipcount"
   mklocal testfindfuncbypc
   sh $testsrc/testfindfuncbypc/runtest.sh
   chkres $? 'check  of testfindfuncbypc failed'
@@ -1172,7 +1186,7 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_path"
      -o localfuzz_init_path $dwlib $libzlib $libzlink"
   echo "$x"
   $x
-  chkres $? "check -error compiling $testsrc/filelist/localfuzz_init_path.c failed"
+  chkresbld $? "check -error compiling $testsrc/filelist/localfuzz_init_path.c failed"
 echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf $lihbzstdhdrdir $nonsharedopt \
@@ -1180,14 +1194,21 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
      -o localfuzz_init_binary $dwlib $libzlib $libzlink"
   echo "$x"
   $x
-  chkres $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
+  chkresbld $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
+if [ "x$endian" = "xB" ]
+then
+  echo "====SKIP ossfuzz69641 BEendian message says error 332, not 331 (1)"
+  skipcount=`expr $skipcount +  1 `
+else
+  runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
+fi
 
-runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 runsingle ossfuzz69639.base ./fuzz_die_cu_offset  --testobj=$testsrc/ossfuzz69639/fuzz_die_cu_offset-6001910176350208
 
 runsingle abudev-a.base ./dwarfdump --format-limit=10 --print-eh-frame --print-frame --print-info -v $testsrc/abudev/abudev_test.poc
 runsingle ossfuzz67490.base ./fuzz_srcfiles  --testobj=$testsrc/ossfuzz67490/fuzz_srcfiles-5195296927711232
+
 
 runsingle CelikCrash.base ./dwarfdump -a $testsrc/Celik/crash_elfio
 
@@ -1347,7 +1368,9 @@ runsingle ossfuzz56454.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz5645
 runsingle ossfuzz57027.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuzz57027/fuzz_stack_frame_access-5123569972805632
 
 runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993/fuzz_macro_dwarf5-5770464300761088
+
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
+
 runtest $d1 $d2 ossfuzz56906/fuzz_rng-6031783801257984.fuzz --print-raw-rnglists
 
 runsingle ossfuzz56897.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56897/fuzz_rng-5105415777288192
@@ -1377,7 +1400,7 @@ runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz5646
 
 runsingle databitoffset.base $d2 -i -M $testsrc/databitoffset/dbotest.o
 
-echo "=====START  $testsrc/test_pubsreader"
+echo "=====START  $testsrc/test_pubsreader good=$goodcount skip=$skipcount"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
      $libzhdr \
      -I$libbld/libdwarf \
@@ -1386,7 +1409,7 @@ echo "=====START  $testsrc/test_pubsreader"
   echo $x
   $x
   r=$?
-  chkres $r 'check pubsreader-error compile test_pubsreader.c failed'
+  chkresbld $r 'check pubsreader-error compile test_pubsreader.c failed'
   echo "./test_pubsreader $suppresstree $testsrc/mustacchi/m32t.o \
     $testsrc/irixn32/dwarfdump"
   echo "Results in junk_pubsreaderout"
@@ -1394,7 +1417,7 @@ echo "=====START  $testsrc/test_pubsreader"
      $testsrc/mustacchi/m32t.o \
      >junk_pubsreaderout
   r=$?
-  chkres $r "check pubsreader-error execution failed look at \
+  chkresbld $r "check pubsreader-error execution failed look at \
     junk_pubsreaderout"
   diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout
   r=$?
@@ -1405,7 +1428,7 @@ echo "=====START  $testsrc/test_pubsreader"
     echo "To update mv $bldtest/junk_pubsreaderout $testsrc/pubsreader.base"
   fi
 
-echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
+echo "=====START  $testsrc/bitoffset/test_bitoffset.c good=$goodcount skip=$skipcount"
   echo "test_bitoffset:"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
      $libzhdr \
@@ -1413,7 +1436,7 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
       test_bitoffset $dwlib $libzlib $libzlink"
   echo $x
   $x
-  chkres $? "check bitoffset-error compiling bitoffset/test_bitoffset.c\
+  chkresbld $? "check bitoffset-error compiling bitoffset/test_bitoffset.c\
      failed"
   echo "./test_bitoffset  \
     $testsrc/bitoffset/bitoffsetexampledw3.o \
@@ -1422,7 +1445,7 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c"
     $testsrc/bitoffset/bitoffsetexampledw3.o \
     $testsrc/bitoffset/bitoffsetexampledw5.o  \
     >junk_bitoffset
-  chkres $? "check bitoffset-error execution failed look at \
+  chkresbld $? "check bitoffset-error execution failed look at \
      junk_bitoffset"
   diff $testsrc/bitoffset/bitoffset.base junk_bitoffset
   r=$?
@@ -1442,7 +1465,7 @@ echo "=====BUILD  $testsrc/test_arange"
       test_arange $dwlib $libzlib $libzlink"
   echo "$x"
   $x
-  chkres $? 'check arange-error compiling test_arange.c\
+  chkresbld $? 'check arange-error compiling test_arange.c\
      failed'
 echo "=====BUILD  $testsrc/test_setframe"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
@@ -1452,7 +1475,7 @@ echo "=====BUILD  $testsrc/test_setframe"
       test_setframe $dwlib $libzlib $libzlink"
   echo "$x"
   $x
-  chkres $? 'check setframe-error compiling test_setframe.c\
+  chkresbld $? 'check setframe-error compiling test_setframe.c\
      failed'
 
 if [ $compileonly = "y" ]
@@ -1470,14 +1493,14 @@ fi
 
 if [  $platform = "macos" ]
 then
-  echo "=====SKIP test_setframe test on macos"
+  echo "=====SKIP test_setframe test on macos (1)"
   skipcount=`expr $skipcount +  1 `
 else
   runsingle test_setframe.base ./test_setframe ./test_setframe
 fi
 
 # Checking that we can print the .debug_sup section
-echo "=====START  supplementary  $testsrc/supplementary/runtest.sh"
+echo "=====START  supplementary  $testsrc/supplementary/runtest.sh good=$goodcount skip=$skipcount"
 mklocal supplementary
   sh $testsrc/supplementary/runtest.sh
   chkres $? "$testsrc/supplementary/runtest.sh"
@@ -1505,14 +1528,14 @@ runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo --file-tied=rifkindwo/libcpptrace.so.
 
 runversiontest $d2 -V
 
-echo "=====START  guilfanov  $testsrc/guilfanov/runtest.sh"
+echo "=====START  guilfanov  $testsrc/guilfanov/runtest.sh good=$goodcount skip=$skipcount"
 mklocal guilfanov
   sh $testsrc/guilfanov/runtest.sh
   # A fuzzed object which can crash libdwarf due to a bug.
   # hangs libdwarf/dwarfdump.
   chkres $? "$testsrc/guilfanov/runtest.sh"
 cd ..
-echo "=====START  guilfanov2  $testsrc/guilfanov2/runtest.sh"
+echo "=====START  guilfanov2  $testsrc/guilfanov2/runtest.sh good=$goodcount skip=$skipcount"
 mklocal guilfanov2
   sh $testsrc/guilfanov2/runtest.sh
   # A fuzzed object which can encounter a double-free
@@ -1520,18 +1543,23 @@ mklocal guilfanov2
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
+echo "=====START utf8 test   good=$goodcount skip=$skipcount"
 # contains local variables spelled with utf-8 and non-ASCII bytes
 if  [  "x$asciionly" = "xn" ]
 then
   runtest $d1 $d2 utf8/test -i
+  chkres $? " running utf8 non ascii"
 else
-  echo "=====SKIP running utft/test as we are restricting to ASCII."
+  echo "=====SKIP running utft/test as we are restricting to ASCII. (1)"
   skipcount=`expr $skipcount +  1`
 fi
+echo "=====START utf8 test b   good=$goodcount skip=$skipcount"
 runtest $d1 $d2 utf8/test --format-suppress-utf8 -i
+chkres $? "utf8 check, ascii only "
 
 
 #  Fails in 0.5.0, 0.6.0, fixed in 0.7.0
+echo "=====START shinibufa fuzzed   good=$goodcount skip=$skipcount"
 runtest $d1 $d2 shinibufa/fuzzed_input_file
 
 # Test of DWARF5 line table includes from
@@ -1542,13 +1570,13 @@ if [ "x$skipdecompress" = "xn" ]
 then
   if [ "x$skipbigobjects" = "xy" ]
   then
-    echo "=====SKIP running this big object with big .debug_loclists, rnglists"
+    echo "=====SKIP running this big object with big .debug_loclists, rnglists(1)"
     skipcount=`expr $skipcount +  1`
   else
     runtest $d1 $d2 debugso20230811.debug -i -vvv
   fi
 else
-  echo "=====SKIP .debugso20230811.debug as it has compression"
+  echo "=====SKIP .debugso20230811.debug as it has compression(1)"
   skipcount=`expr $skipcount +  1`
 fi
 
@@ -1652,11 +1680,11 @@ then
     runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-pubnames
     runtest $d1 $d2 debugnames/dwarfdumpone -i -G --print-debug-names -vv
   else
-    echo "=====SKIP bigobjects of dwarfdumpone, skipcount+4: very slow"
+    echo "=====SKIP bigobjects of dwarfdumpone, skipcount+2: very slow"
     skipcount=`expr $skipcount +  2 `
   fi
 else
-  echo "=====SKIP NLIZE of dwarfdumpone, skipcount+4: very slow"
+  echo "=====SKIP NLIZE of dwarfdumpone, skipcount+2: very slow"
   skipcount=`expr $skipcount +  2 `
 fi
 
@@ -1756,7 +1784,7 @@ runtest $d1 $d2 \
 # SHF_COMPRESSED testcases.
 if [ "x$withlibz" = "xno" ]
 then
-  echo "=====SKIP COMPRESSED tests, skipcount+6 no libz available"
+  echo "=====SKIP COMPRESSED tests, skipcount+6 no libz available(6)"
   skipcount=`expr $skipcount +  6 `
 else
   if [ "x$skipdecompress" = "xn" ]
@@ -1768,7 +1796,7 @@ else
     runtest $d1 $d2 compressed-le/testprog-le-dw4 -a -vvvv
     runtest $d1 $d2 compressed-le/testprog-le-dw4 -ka
   else 
-    echo "=====SKIP compressed-be/testprog-be-dw4 "
+    echo "=====SKIP compressed-be/testprog-be-dw4 (6) "
     skipcount=`expr $skipcount +  6`
   fi
 fi
@@ -1839,19 +1867,19 @@ runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=$testsrc/moya3/ra
 runtest $d1 $d2 debugfission/mungegroup.o -i
 
 # New September 11, 2019.
-echo "=====START  $testsrc/testoffdie runtest.sh  "
+echo "=====START  $testsrc/testoffdie runtest.sh good=$goodcount skip=$skipcount  "
   mklocal testoffdie
     sh $testsrc/testoffdie/runtest.sh  
     chkres $? "$testsrc/testoffdie/runtest.sh"
   cd ..
 
 # .gnu_debuglink and .note.gnu.build-id  section tests.
-if [ x$endian = "xB" ]
+if [ "x$endian" = "xB" ]
 then
-  echo "=====SKIP debuglink runtest.sh as bigendian will fail"
+  echo "=====SKIP debuglink runtest.sh as bigendian will fail (1) good=$goodcount skip=$skipcount"
   skipcount=`expr $skipcount + 1`
 else
-  echo "=====START  $testsrc/debuglink runtest.sh"
+  echo "=====START  $testsrc/debuglink runtest.sh good=$goodcount skip=$skipcount"
   mklocal debuglink
     sh $testsrc/debuglink/runtest.sh
     chkres $? "$testsrc/debuglink/runtest.sh"
@@ -1885,7 +1913,7 @@ then
   runtest $d1 $d2 moya2/filecheck.dwo -i -vv --print-raw-loclists --print-raw-rnglists
   runtest $d1 $d2 moya2/filecheck.dwo -ka
 else
-  echo "=====SKIP moya2/filecheck.dwo as it has compression"
+  echo "=====SKIP moya2/filecheck.dwo as it has compression(2)"
   skipcount=`expr $skipcount +  2`
 fi
 
@@ -1962,7 +1990,7 @@ runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
 # See mustacchi/README.
 # Clang generates a slightly unusual relocation set for -m32.
 # As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
-echo "=====START  $testsrc/mustacchi runtest.sh nolibelf"
+echo "=====START  $testsrc/mustacchi runtest.sh nolibelf good=$goodcount skip=$skipcount"
   mklocal mustacchi
     sh $testsrc/mustacchi/runtestnolibelf.sh
     chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
@@ -1974,7 +2002,7 @@ if [ -f /lib/x86_64-linux-gnu/libc-2.27.so ]
 then
   runtest $d1 $d2 /lib/x86_64-linux-gnu/libc-2.27.so --print-gnu-debuglink
 else
-  echo "=====SKIP  --print-gnu-debuglink /lib/x86_64-linux-gnu/libc-2.27.so"
+  echo "=====SKIP  --print-gnu-debuglink /lib/x86_64-linux-gnu/libc-2.27.so(1)"
   skipcount=`expr $skipcount + 1`
 fi
 
@@ -1982,7 +2010,7 @@ fi
 runtest $d1 $d2 mustacchi/relgotpc.o -a -M
 if [ "x$withlibz" = "xno"  -o "x$skipdecompress" = "xy" ]
 then
-  echo "=====SKIP moya2/filecheck.dwo, count 2, compression"
+  echo "=====SKIP moya2/filecheck.dwo, count 2, compression(2)"
   skipcount=`expr $skipcount +  2`
 else
   # DWARF5 test, new 17 June 2020.
@@ -2093,19 +2121,19 @@ runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a
 # the fix had no effect on this, which works ok.
 runtest $d1 $d2   emre6/class_64_opt_fpo_split -a
 
-echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simplereader.elf"
+echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simplereader.elf good=$goodcount skip=$skipcount"
   mklocal hughes2
     sh $testsrc/hughes2/runtest.sh $testsrc/corruptdwarf-a/simplereader.elf
     chkres $?  $testsrc/hughes2
   cd ..
 
-echo "=====START   $testsrc/implicitconst sh runtest.sh"
+echo "=====START   $testsrc/implicitconst sh runtest.sh good=$goodcount skip=$skipcount"
   mklocal implicitconst
     sh $testsrc/implicitconst/runtest.sh
     chkres $?  $testsrc/implicitconst/runtest.sh
   cd ..
 
-echo "=====START  $testsrc/nolibelf/runtest.sh "
+echo "=====START  $testsrc/nolibelf/runtest.sh good=$goodcount skip=$skipcount "
 mklocal nolibelf
   sh $testsrc/nolibelf/runtest.sh
   chkres $?  $testsrc/nolibelf/runtest.sh
@@ -2155,7 +2183,7 @@ runtest $d1 $d2   puzzor/heap_buf_overflow.o -a
 # Fuzzed objects, each of which resulted in a specific out of bounds memory access.
 if [ x$withlibz = "xno" ]
 then
-  echo "=====SKIP sarubbno-2 COMPRESSED test, no libz available"
+  echo "=====SKIP sarubbno-2 COMPRESSED test, no libz available(1)"
   skipcount=`expr $skipcount +  1 `
 else
   runtest $d1 $d2 sarubbo-2/00024-libdwarf-memalloc-do_decompress_zlib -a
@@ -2355,7 +2383,7 @@ runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
 
 if [ "x$withlibz" = "xno" -o "x$skipdecompress" = "xy" ]
 then
-  echo "=====SKIP klingler2/compresseddebug.amd64"
+  echo "=====SKIP klingler2/compresseddebug.amd64(3)"
   skipcount=`expr $skipcount +  3 `
 else
   # Testing SHF_COMPRESSED .debug* section reading.
@@ -2372,13 +2400,13 @@ then
   runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
   runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=$testsrc/debugfissionb/ld-new
   runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=$testsrc/debugfissionb/ld-new
-  runtest $d1 $d2  debugfissionb/ld-new -I
-  runtest $d1 $d2  debugfissionb/ld-new -a
+  runtest $d1 $d2 debugfissionb/ld-new -I
+  runtest $d1 $d2 debugfissionb/ld-new -a
   echo "Testing -i --format-expr-ops-joined . a -d for exprs"
   runtest $d1 $d2  debugfissionb/ld-new -i --format-expr-ops-joined
   runtest $d1 $d2  debugfissionb/ld-new -ka
 else
-  echo ======SKIP BIG OBJects ld-new
+  echo "======SKIP BIG OBJects ld-new (8)"
   skipcount=`expr $skipcount +  8`
 fi
 runtest $d1 $d2  emre4/test19_64_dbg --file-name=./testdwarfdump.conf  -i -v
@@ -2393,7 +2421,7 @@ runtest $d1 $d2 emre2/emre.ex --print-gnu-debuglink
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=$testsrc/emre5/test33_64_opt_fpo_split
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=$testsrc/emre5/test33_64_opt_fpo_split
 
-echo "=====START  $testsrc/baddie1/runtest.sh"
+echo "=====START  $testsrc/baddie1/runtest.sh good=$goodcount skip=$skipcount"
 mklocal baddie1
   sh $testsrc/baddie1/runtest.sh ../$d2
   chkres $?  $testsrc/baddie1
@@ -2401,10 +2429,10 @@ cd ..
 
   # Also tests dwarfgen and libdwarf with DW_CFA_advance_loc
   # operations
-echo "=====START  $testsrc/offsetfromlowpc/runtest.sh"
+echo "=====START  $testsrc/offsetfromlowpc/runtest.sh good=$goodcount skip=$skipcount"
 if [ $dwarfgenok = "n" ]
 then
-  echo "====SKIP run offsetfromlowpc "
+  echo "====SKIP run offsetfromlowpc (1)"
   skipcount=`expr $skipcount +  1 `
 else
   mklocal offsetfromlowpc
@@ -2413,10 +2441,10 @@ else
   cd ..
 fi
 
-echo "=====START  $testsrc/strsize/runtest.sh"
+echo "=====START  $testsrc/strsize/runtest.sh good=$goodcount skip=$skipcount"
 if [ $dwarfgenok = "n" ]
 then
-  echo "====SKIP run strsize "
+  echo "====SKIP run strsize (1)"
   skipcount=`expr $skipcount +  1 `
 else
   mklocal strsize
@@ -2427,22 +2455,22 @@ fi
 # tests simple reader and more than one dwarf_init* interface
 # across all object types
 # here kaufmann/t.o is tested as input to simplereader.
-echo "=====START $testsrc/debugfissionb runtest.sh ../simplereader"
+echo "=====START $testsrc/debugfissionb runtest.sh ../simplereader good=$goodcount skip=$skipcount"
 mklocal debugfissionb
   sh $testsrc/debugfissionb/runtest.sh
   chkres $?  $testsrc/debugfissionb-simplreader
 cd ..
 
-echo "=====START $testsrc/debugfission runtest.sh ../$d2"
+echo "=====START $testsrc/debugfission runtest.sh ../$d2 good=$goodcount skip=$skipcount"
 mklocal debugfission
   sh $testsrc/debugfission/runtest.sh  ../$d2
   chkres $?  "$testsrc/debugfission/runtest.sh ../$d2"
 cd ..
 
-echo "=====START  $testsrc/data16 runtest.sh ../$d2"
+echo "=====START  $testsrc/data16 runtest.sh ../$d2 good=$goodcount skip=$skipcount"
 if [ $dwarfgenok = "n" ]
 then
-  echo "====SKIP run data16 "
+  echo "====SKIP run data16 (1)"
   skipcount=`expr $skipcount +  1 `
 else
   mklocal data16
@@ -2453,18 +2481,17 @@ fi
 
 if [ $nlize = 'n' ]
 then
-  runtest $d1 $d2   sarubbo-8/1.crashes.bin  -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y
+  runtest $d1 $d2  sarubbo-8/1.crashes.bin  -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y
 else
-  echo "=====SKIP  sarubbo-8 with NLIZE"
+  echo "=====SKIP  sarubbo-8 with NLIZE (1)"
   skipcount=`expr $skipcount + 1`
 fi
 
 if [ $nlize = 'n' ]
 then
   runtest  $d1 $d2   sarubbo-9/3.crashes.bin -a -b -d -e -f -F -g -G -i -I -m -M -N -p -P -R -r -s -ta -w -y
-  chkres $?  sarubbo-8
 else
-  echo "=====SKIP  sarubbo-9 with NLIZE"
+  echo "=====SKIP  sarubbo-9 with NLIZE (1)"
   skipcount=`expr $skipcount + 1`
 fi
 
@@ -2629,29 +2656,29 @@ runtest $d1 $d2  lloyd/arange.elf  -kr
 # It is not MIPS and MIPS is just wrong here.  Testing it anyway!
 runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 
-echo "=====START  $testsrc/findcu/runtest.sh "
+echo "=====START  $testsrc/findcu/runtest.sh "good=$goodcount skip=$skipcount
   mklocal findcu
     sh $testsrc/findcu/runtest.sh   
     chkres $? "$testsrc/findcu/cutest-of-a-libdwarf-interface"
   cd ..
 
-echo "=====START   $testsrc/dwgena/runtest.sh ../$d2"
+echo "=====START   $testsrc/dwgena/runtest.sh ../$d2 good=$goodcount skip=$skipcount"
 if [ $dwarfgenok = "n" ]
 then
-  echo "====SKIP run dwgena "
+  echo "====SKIP run dwgena  (1)"
   skipcount=`expr $skipcount +  1 `
 else
   mklocal dwgena
     sh $testsrc/dwgena/runtest.sh
     r=$?
-    chkresn $r '$testsrc/dwgena/runtest.sh' 9
+    chkres $r '$testsrc/dwgena/runtest.sh'
   cd ..
 fi
 
-echo "=====START   $testsrc/dwgenc/runtest.sh"
+echo "=====START   $testsrc/dwgenc/runtest.sh good=$goodcount skip=$skipcount"
 if [ $dwarfgenok = "n" ]
 then
-  echo "====SKIP run dwgenc "
+  echo "====SKIP run dwgenc  (1)"
   skipcount=`expr $skipcount +  1 `
 else
   mklocal dwgenc
@@ -2661,7 +2688,7 @@ else
   cd ..
 fi
 
-echo "=====START   $testsrc/sandnes2/runtest.sh"
+echo "=====START   $testsrc/sandnes2/runtest.sh good=$goodcount skip=$skipcount"
 mklocal sandnes2
   sh $testsrc/sandnes2/runtest.sh
   r=$?
@@ -2670,18 +2697,18 @@ cd ..
 
 if [ $nlize = 'n' ]
 then
-  echo "=====START $testsrc/legendre/runtest.sh  "
+  echo "=====START $testsrc/legendre/runtest.sh  good=$goodcount skip=$skipcount "
   mklocal legendre
     sh $testsrc/legendre/runtest.sh  
     r=$?
     chkres $r  $testsrc/legendre
   cd ..
 else
-  echo "=====SKIP 1  $testsrc/legendre/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP 1  $testsrc/legendre/runtest.sh NLIZE as it has leaks (1)"
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   $testsrc/enciso4/runtest.sh"
+echo "=====START   $testsrc/enciso4/runtest.sh good=$goodcount skip=$skipcount"
 mklocal enciso4
   sh $testsrc/enciso4/runtest.sh
   chkres $?  $testsrc/enciso4
@@ -2762,7 +2789,7 @@ runsingle fuzzpath54724.base ./filelist/localfuzz_init_path  \
 
 runsingle test_bitoffseta.base ./test_bitoffset  \
     $testsrc/bitoffset/bitoffsetexampledw3.o \
-    $testsrc/bitoffset/bitoffsetexampledw5.o  \
+    $testsrc/bitoffset/bitoffsetexampledw5.o  
 
 echo "platform : $platform"
 
@@ -2894,7 +2921,7 @@ runtest $d1 $d2 legendre/libmpich.so.1.0 -ka
 
 if [ $nlize = 'n' ]
 then
-  echo "=====START $testsrc/test-alex1/runtest.sh"
+  echo "=====START $testsrc/test-alex1/runtest.sh good=$goodcount skip=$skipcount"
   mklocal test-alex1
     sh $testsrc/test-alex1/runtest.sh 
     chkres $?  $testsrc/test-alex1
@@ -2906,7 +2933,7 @@ fi
 
 if [ $nlize = 'n' ]
 then
-  echo "=====START $testsrc/test-alex2/runtest.sh "
+  echo "=====START $testsrc/test-alex2/runtest.sh  good=$goodcount skip=$skipcount"
   mklocal test-alex2
     sh $testsrc/test-alex2/runtest.sh 
     chkres $?  $testsrc/test-alex2
@@ -3085,6 +3112,7 @@ fi
 echo "PASS     count: $goodcount"
 echo "FAIL     count: $failcount"
 echo "SKIP     count: $skipcount"
+echo "BUILDSOK count: $bldgoodcount (test harness ok)"
 echo "VALGRIND count: $valgrindcount"
 echo "VALGRIND  errs: $valgrinderrcount"
 totalcount=`expr $goodcount + $failcount + $skipcount`

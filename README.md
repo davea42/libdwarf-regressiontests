@@ -1,6 +1,6 @@
 # This is libdwarf-regressiontests README.md
 
-Updated 16 February 2024
+Updated 16 June 2024
 
 ## valgrind note
 
@@ -70,9 +70,16 @@ as a few tests involve compressed Elf sections.
 If there are no FAILs the end of a test run
 prints PASS along with the counts of tests, SKIPs,
 and FAILs and a detailed list of tests is recorded
-in ALLdd. To extract failed tests (if any) from ALLdd
-the scripts install a useful
-python program in the test directory
+in ALLdd.
+Before June 2024 some things which worked
+correctly (passed) but were test-harness
+setup (as opposed to formal tests) counted in the PASS
+category  -- now these are, instead, counted in the
+BUILDSOK count at the end of the output.
+All fails (test-harness or not) are counted as FAIL
+and reported as such).
+To extract failed tests (if any) from ALLdd
+the scripts install a useful python program in the test directory
 so do
 
     ./exfail.py >fails
