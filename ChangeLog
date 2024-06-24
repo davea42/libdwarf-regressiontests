@@ -1,3 +1,28 @@
+2024-06-17:  David Anderson
+    commit bf6cecda220e456830a462e2a6ebe2bf3ad7a59a
+
+    Minor tweaks to tests to get accurate counts.
+            modified:   DWARFTEST.sh
+
+    Added remark about using meson here.
+            modified:   README.md
+
+    Latest set of test results. 15 June.
+            modified:   RegressionTestsResults.ods
+
+    New baseline executables for the rnglists/loclists
+    fixes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2024-06-15:  David Anderson
+    commit 80fcf6ad7427c50b24e3c65c7e24b1a7529083da
+
+    Updated, now up to date.
+            modified:   ChangeLog
+
 2024-06-15:  David Anderson
     commit d058c801c004e26201c7050dfb50223ab9fb1236
 
