@@ -5,13 +5,11 @@
 # Created 8  June 2024.
 t=/home/davea/dwarf/regressiontests/hongg2024-02-18/SIGSEGV-m.fuzz
 t=/home/davea/dwarf/regressiontests/pubnames/bothpubs.exe
-t=/home/davea/dwarf/regressiontests/moya2/filecheck.dwo
 t=/home/davea/dwarf/regressiontests/moya-rb/ranges3.dwp
 
 t=/home/davea/dwarf/regressiontests/moya4/hello
 t=/home/davea/dwarf/regressiontests/debugnames/dwarfdump
 t=/home/davea/dwarf/regressiontests/debugnames/dwarfdumpone
-t=/home/davea/dwarf/regressiontests/moya2/filecheck.dwo
 t=/home/davea/dwarf/regressiontests/moya-loc/loclists.dwp
 t=/home/davea/dwarf/regressiontests/rnglists/extractdba.o
 t=/home/davea/dwarf/regressiontests/rnglists/pe_map.o
@@ -23,6 +21,8 @@ t=/home/davea/dwarf/regressiontests/shopov2/clang-9.0.0-test-dwarf5.elf
 t=/home/davea/dwarf/regressiontests/dwarf4/dd2g4.5dwarf-4
 t=/home/davea/dwarf/regressiontests/debugso20230811.debug
 t=rifkindwo/cpptrace.cpp.dwo
+t=/home/davea/dwarf/regressiontests/diederen6/implicit_const_example.so
+t=/home/davea/dwarf/regressiontests/moya-loc/loclists.dwp
 opt="-i -vv M "
 ropt="-a -vv -M --print-raw-loclists"
 ropt="-vv -M --print-raw-rnglists --print-raw-loclists"
@@ -35,14 +35,17 @@ opt="-v -ka"
 opt="-i -vv --print-raw-loclists --print-raw-rnglists"
 opt="-a -M -vv --print-raw-loclists"
 opt="-i -G --print-debug-names -vv"
+opt="-i -vvv -M "
 opt="--file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v"
-opt="-a -vvv -M "
+ropt="--print-raw-rnglists --print-raw-loclists"
+bopt=" -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists"
 /tmp/dwarfdump $opt  $t >junkn
-/tmp/dwarfdump092 $opt  $t >junko
 /tmp/dwarfdump  $ropt $t >junkrawn
+dwarfdump $opt  $t >junko
+dwarfdump  $ropt $t >junkrawo
+dwarfdump  $bopt  >junkotied
 cp junkrawn /tmp
-/tmp/dwarfdump092  $ropt $t >junkrawo
-cp junkrawo /tmp
+cp junkn /tmp
 exit 0
 #readelfobj $t |grep debug_loclists
 #0x00000040 0x0000005c 
