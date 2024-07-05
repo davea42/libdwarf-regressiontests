@@ -697,7 +697,7 @@ then
   $mypycom $testsrc/$mypydir/checksize.py $maxdiffile $t1  $t2
   if [ $?  -eq 0 -o "$platform" = "msys2"  ]
   then
-    # on msys2 we must diff: cmp will fail new to CRs.
+    # on msys2 we must diff: cmp will fail .
     # Ok to diff
     x="diff $diffopt $t1 $t2"
     echo "$x"
