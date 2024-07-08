@@ -1,0 +1,40 @@
+
+#Reproduce with
+dwarfdump --print-ranges --file-tied=unittest -M -i -vvv -G stacktrace.cpp.dwo >/tmp/junk
+exit 0
+Jeremy Rivkin writes, on 7 July 2024:
+In this case I'm trying to find which function has the
+program counter 0x188ad. It should be stacktrace_basic,
+which objdump confirms:
+
+0000000000018860 <_Z16stacktrace_basicv>:
+   18860:	f3 0f 1e fa          	endbr64
+   18864:	41 57                	push   r15
+    ....
+   188a1:	48 89 c7             	mov    rdi,rax
+   188a4:	48 89 44 24 10       	mov    QWORD PTR [rsp+0x10],rax
+   188a9:	e8 72 cd fe ff       	call   5620 <_ZN8cpptrace14generate_traceEmm@plt>
+   188ae:	48 8b 44 24 58       	mov    rax,QWORD PTR [rsp+0x58]
+However, the rangelist as reported by libdwarf doesn't contain this address:
+
+$ path/to/dwarfdump -i -M -G  -vv  --file-tied=unittest test/CMakeFiles/unittest.dir/unit/stacktrace.cpp.dwo
+...
+< 1><0x0008b7ce GOFF=0x0008b7ce>    DW_TAG_subprogram <abbrev 424 ABGOFF = 0x00002188 count = 0x0000000a>
+                                      DW_AT_external              yes(1) <form DW_FORM_flag_present 25>
+                                      DW_AT_name                  (indexed string: 0x000014e4)stacktrace_basic <form DW_FORM_GNU_str_index 7938>
+                                      DW_AT_decl_file             0x00000007 <form DW_FORM_data1 11>
+                                      DW_AT_decl_line             0x0000001f <form DW_FORM_data1 11>
+                                      DW_AT_decl_column           0x0000001f <form DW_FORM_data1 11>
+                                      DW_AT_linkage_name          (indexed string: 0x00000911)_Z16stacktrace_basicv <form DW_FORM_GNU_str_index 7938>
+                                      DW_AT_ranges                0x00017470 <form DW_FORM_sec_offset 23>
+  ranges: 2 at .debug_ranges offset 95344 (0x00017470) (32 bytes)
+   [ 0] range entry    0x00005c1e 0x00005c2f
+   [ 1] range end      0x00000000 0x00000000
+                                      DW_AT_frame_base            len 0x0001: 0x9c:  <form DW_FORM_exprloc 24>
+                                          DW_OP_call_frame_cfa
+                                      DW_AT_GNU_all_tail_call_sites yes(1) <form DW_FORM_flag_present 25>
+                                      DW_AT_sibling               <0x000928a5 GOFF=0x000928a5> <form DW_FORM_ref4 19>
+
+I'm not sure whether this is an issue with libdwarf's
+parsing of the range list or if gcc isn't emitting the
+correct information.
