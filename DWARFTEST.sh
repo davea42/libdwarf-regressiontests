@@ -1068,16 +1068,16 @@ echo  "=====BLOCK individual tests and runtest.sh tests"
 fuzzexe='
 fuzz_crc
 fuzz_crc_32
-fuzz_debuglink
 fuzz_debug_addr_access
+fuzz_debuglink
 fuzz_debug_str
 fuzz_die_cu
-fuzz_die_cu_e
-fuzz_die_cu_offset
 fuzz_die_cu_attrs
 fuzz_die_cu_attrs_loclist
-fuzz_die_cu_print
+fuzz_die_cu_e
 fuzz_die_cu_e_print
+fuzz_die_cu_offset
+fuzz_die_cu_print
 fuzz_dnames
 fuzz_findfuncbypc
 fuzz_gdbindex
@@ -1092,6 +1092,7 @@ fuzz_simplereader_tu
 fuzz_srcfiles
 fuzz_stack_frame_access
 fuzz_str_offsets'
+
 
 # Do not do -Wall here ever.
 for f in $fuzzexe
@@ -1203,6 +1204,10 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+runsingle ossfuzz70244.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz70244/fuzz_die_cu_attrs_loclist-4958134427254784
+
+runsingle ossfuzz70246.base ./fuzz_macro_dwarf5  --testobj=$testsrc/ossfuzz70246/fuzz_macro_dwarf5-5128935898152960
 
 runsingle ossfuzz69639.base ./fuzz_die_cu_offset  --testobj=$testsrc/ossfuzz69639/fuzz_die_cu_offset-6001910176350208
 
@@ -1512,6 +1517,11 @@ cd ..
 #  sh $testsrc/showsecgroupsdir/runtest.sh
 #  chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
 #cd ..
+
+# New tests as of July 2024.
+runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges --file-tied=unittest -M -i -vvv -G
+runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges -M -i -vvv -G stacktrace.cpp.dwo
+runtest $d1 $d2 rifkin3/unittest  --print-ranges -M -i -vvv -G
 
 # New tests as of 12 June 2024.
 runtest $d1 $d2 rifkindwo/demo -a -M -vvv 

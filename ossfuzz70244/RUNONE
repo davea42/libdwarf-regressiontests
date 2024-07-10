@@ -1,0 +1,9 @@
+
+# ossfuzz70244.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz70244/fuzz_die_cu_attrs_loclist-4958134427254784
+
+valgrind --leak-check=full --show-leak-kinds=all /var/tmp/dwtest/fuzz_die_cu_attrs_loclist --testobj=./fuzz_die_cu_attrs_loclist-4958134427254784
+exit 1
+echo 'b _dwarf_internal_global_formref_b'
+echo 'b _dwarf_error_string'
+echo "r --testobj=/home/davea/dwarf/regressiontests/ossfuzz66646/fuzz_findfuncbypc-5178544143532032"
+gdb /var/tmp/dwtest/fuzz_findfuncbypc

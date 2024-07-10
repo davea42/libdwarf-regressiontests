@@ -1,0 +1,5 @@
+
+/tmp/dwarfdump --print-ranges --file-tied=unittest -M -i -vvv -G stacktrace.cpp.dwo >junk2
+/tmp/dwarfdump --print-ranges -M -i -vvv -G stacktrace.cpp.dwo >junkdwo2
+/tmp/dwarfdump --print-ranges -M -i -vvv -G unittest >junkuni2
+

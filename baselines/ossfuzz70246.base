@@ -1,0 +1,7 @@
+>>CU header length..........0x73
+>>Version stamp.............5
+>>Address size .............3
+>>Offset size...............4
+>>Next cu header offset.....0x77
+
+libdwarf is unable to record error DW_DLE_RNGLISTS_ERROR(468) Corrupt dwarf. Bad .debug_rnglists data. No error argument or handler available

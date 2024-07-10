@@ -1,0 +1,10 @@
+
+
+#ossfuzz70246:
+#fuzz_macro_dwarf5-5128935898152960  RUNONE
+
+valgrind --leak-check=full --show-leak-kinds=all /var/tmp/dwtest/fuzz_macro_dwarf5 --testobj=./fuzz_macro_dwarf5-5128935898152960
+exit 1
+echo 'b _dwarf_internal_global_formref_b'
+echo 'b _dwarf_error_string'
+echo "r --testobj=/home/davea/dwarf/regressiontests/ossfuzz66646/fuzz_findfuncbypc-5178544143532032"
