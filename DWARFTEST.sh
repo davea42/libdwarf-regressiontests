@@ -1205,6 +1205,10 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle ossfuzz70266.base ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz70266/fuzz_findfuncbypc-6093996460408832
+runsingle ossfuzz70263.base ./fuzz_die_cu --testobj=$testsrc/ossfuzz70263/fuzz_die_cu-4960441042796544
+runsingle ossfuzz70256.base ./fuzz_rng --testobj=$testsrc/ossfuzz70256/fuzz_rng-4838222916550656
+
 runsingle ossfuzz70244.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz70244/fuzz_die_cu_attrs_loclist-4958134427254784
 
 runsingle ossfuzz70246.base ./fuzz_macro_dwarf5  --testobj=$testsrc/ossfuzz70246/fuzz_macro_dwarf5-5128935898152960
