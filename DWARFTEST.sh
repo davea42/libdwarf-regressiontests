@@ -1076,6 +1076,7 @@ fuzz_die_cu_attrs
 fuzz_die_cu_attrs_loclist
 fuzz_die_cu_e
 fuzz_die_cu_e_print
+fuzz_die_cu_info1
 fuzz_die_cu_offset
 fuzz_die_cu_print
 fuzz_dnames
@@ -1204,6 +1205,12 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+runsingle ossfuzz70277.base ./fuzz_die_cu_info1 --testobj=$testsrc/ossfuzz70277/fuzz_die_cu_info1-5380280051892224
+runsingle ossfuzz70278.base ./fuzz_stack_frame_access --testobj=$testsrc/ossfuzz70278/fuzz_stack_frame_access-5419136084148224
+
+runsingle ossfuzz70282.base ./fuzz_gnu_index --testobj=$testsrc/ossfuzz70282/fuzz_gnu_index-5974064515055616
+runsingle ossfuzz70287.base ./fuzz_die_cu_e --testobj=$testsrc/ossfuzz70287/fuzz_die_cu_e-6493908297646080
 
 runsingle ossfuzz70266.base ./fuzz_findfuncbypc --testobj=$testsrc/ossfuzz70266/fuzz_findfuncbypc-6093996460408832
 runsingle ossfuzz70263.base ./fuzz_die_cu --testobj=$testsrc/ossfuzz70263/fuzz_die_cu-4960441042796544
