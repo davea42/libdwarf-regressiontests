@@ -24,7 +24,7 @@ diff $diffopt $b junk1.new
 if [  $?  -ne 0 ]
 then
     echo fail debugfission archiveo test 1
-    echo "update in $tf via : mv junk1.new $b"
+    echo "update in $tf via : cp $tf/junk1.new $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
     echo "rerun: $ts/runtest.sh"
     exit 1
@@ -39,7 +39,7 @@ diff $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission archivedwo 2
-    echo "update in $tf via : mv $tf/$jt $b"
+    echo "update in $tf via : cp $tf/$jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
     echo "rerun: $ts/runtest.sh"
     exit 1
@@ -54,7 +54,7 @@ diff  $b $jt
 if [  $?  -ne 0 ]
 then
     echo fail debugfission targeto test 3
-    echo "update via : mv $tf/$jt $b"
+    echo "update via : cp $tf/$jt $b"
     echo " gzip $b ; mv $bz  $ts/$bz"
     echo "rerun: $ts/runtest.sh"
     exit 1

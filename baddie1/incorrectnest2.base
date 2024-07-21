@@ -5,11 +5,11 @@ COMPILE_UNIT<header overall offset = 0x00000000>:
 < 0><0x0000000b GOFF=0x0000000b>  DW_TAG_compile_unit
                                     DW_AT_stmt_list             0x00000000
                                     DW_AT_ranges                0x00000000
-  ranges: 4 at .debug_ranges offset 0 (0x00000000) (32 bytes)
-   [ 0] addr selection 0xffffffff 0x00000000
-   [ 1] range entry    0xfff40000 0xfff4009d
-   [ 2] range entry    0xfff441e5 0xfff441e9
-   [ 3] range end      0x00000000 0x00000000
+  ranges: 4 at .debug_ranges offset 0 (0x00000000)  ( base addr 0x00000000) (32 bytes)
+   [ 0] base address 0x00000000
+   [ 1] range entry  raw: 0xfff40000,  0xfff4009d cooked: 0xfff40000,  0xfff4009d
+   [ 2] range entry  raw: 0xfff441e5,  0xfff441e9 cooked: 0xfff441e5,  0xfff441e9
+   [ 3] range end    0,0
                                     DW_AT_name                  /home/kpit/fsfsrc/rx-v10.01-src/newlib-1.18.0/libgloss/rx/crt0.S
                                     DW_AT_comp_dir              /home/kpit/mingwrx-elfbld4.5-20091105/build-newlib-1.18.0/rx-elf/libgloss/rx
                                     DW_AT_producer              GNU AS 2.20-GNURX_v10.01
@@ -24,8 +24,8 @@ COMPILE_UNIT<header overall offset = 0x000000bd>:
                                     DW_AT_low_pc                0x00000000
                                     DW_AT_entry_pc              0x00000000
                                     DW_AT_ranges                0x00000020
-  ranges: 1 at .debug_ranges offset 32 (0x00000020) (8 bytes)
-   [ 0] range end      0x00000000 0x00000000
+  ranges: 1 at .debug_ranges offset 32 (0x00000020)  ( base addr 0x00000000) (8 bytes)
+   [ 0] range end    0,0
                                     DW_AT_stmt_list             0x000000ab
 
 LOCAL_SYMBOLS:
@@ -830,16 +830,16 @@ LOCAL_SYMBOLS:
                                         DW_AT_abstract_origin       <0x00000107 GOFF=0x0000038e>
                                         DW_AT_entry_pc              0xfff43a98
                                         DW_AT_ranges                0x00000058
-  ranges: 9 at .debug_ranges offset 88 (0x00000058) (72 bytes)
-   [ 0] range entry    0x00000002 0x000000c4
-   [ 1] range entry    0x0000037c 0x000003aa
-   [ 2] range entry    0x0000035e 0x00000379
-   [ 3] range entry    0x000002b3 0x0000035b
-   [ 4] range entry    0x000001c1 0x000002b0
-   [ 5] range entry    0x000001ba 0x000001be
-   [ 6] range entry    0x00000115 0x000001b7
-   [ 7] range entry    0x000000c7 0x00000112
-   [ 8] range end      0x00000000 0x00000000
+  ranges: 9 at .debug_ranges offset 88 (0x00000058)  ( base addr 0xfff43a96) (72 bytes)
+   [ 0] range entry  raw: 0x00000002,  0x000000c4 cooked: 0xfff43a98,  0xfff43b5a
+   [ 1] range entry  raw: 0x0000037c,  0x000003aa cooked: 0xfff43e12,  0xfff43e40
+   [ 2] range entry  raw: 0x0000035e,  0x00000379 cooked: 0xfff43df4,  0xfff43e0f
+   [ 3] range entry  raw: 0x000002b3,  0x0000035b cooked: 0xfff43d49,  0xfff43df1
+   [ 4] range entry  raw: 0x000001c1,  0x000002b0 cooked: 0xfff43c57,  0xfff43d46
+   [ 5] range entry  raw: 0x000001ba,  0x000001be cooked: 0xfff43c50,  0xfff43c54
+   [ 6] range entry  raw: 0x00000115,  0x000001b7 cooked: 0xfff43bab,  0xfff43c4d
+   [ 7] range entry  raw: 0x000000c7,  0x00000112 cooked: 0xfff43b5d,  0xfff43ba8
+   [ 8] range end    0,0
                                         DW_AT_call_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_call_line             0x00000474
 < 3><0x0000048e GOFF=0x00000715>        DW_TAG_formal_parameter
@@ -967,16 +967,16 @@ LOCAL_SYMBOLS:
                                               DW_OP_piece 4
 < 3><0x000004a6 GOFF=0x0000072d>        DW_TAG_lexical_block
                                           DW_AT_ranges                0x000000a0
-  ranges: 9 at .debug_ranges offset 160 (0x000000a0) (72 bytes)
-   [ 0] range entry    0x00000002 0x000000c4
-   [ 1] range entry    0x0000037c 0x000003aa
-   [ 2] range entry    0x0000035e 0x00000379
-   [ 3] range entry    0x000002b3 0x0000035b
-   [ 4] range entry    0x000001c1 0x000002b0
-   [ 5] range entry    0x000001ba 0x000001be
-   [ 6] range entry    0x00000115 0x000001b7
-   [ 7] range entry    0x000000c7 0x00000112
-   [ 8] range end      0x00000000 0x00000000
+  ranges: 9 at .debug_ranges offset 160 (0x000000a0)  ( base addr 0xfff43a96) (72 bytes)
+   [ 0] range entry  raw: 0x00000002,  0x000000c4 cooked: 0xfff43a98,  0xfff43b5a
+   [ 1] range entry  raw: 0x0000037c,  0x000003aa cooked: 0xfff43e12,  0xfff43e40
+   [ 2] range entry  raw: 0x0000035e,  0x00000379 cooked: 0xfff43df4,  0xfff43e0f
+   [ 3] range entry  raw: 0x000002b3,  0x0000035b cooked: 0xfff43d49,  0xfff43df1
+   [ 4] range entry  raw: 0x000001c1,  0x000002b0 cooked: 0xfff43c57,  0xfff43d46
+   [ 5] range entry  raw: 0x000001ba,  0x000001be cooked: 0xfff43c50,  0xfff43c54
+   [ 6] range entry  raw: 0x00000115,  0x000001b7 cooked: 0xfff43bab,  0xfff43c4d
+   [ 7] range entry  raw: 0x000000c7,  0x00000112 cooked: 0xfff43b5d,  0xfff43ba8
+   [ 8] range end    0,0
 < 4><0x000004ab GOFF=0x00000732>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x00000138 GOFF=0x000003bf>
 < 4><0x000004b0 GOFF=0x00000737>          DW_TAG_variable
@@ -1199,11 +1199,11 @@ LOCAL_SYMBOLS:
                                             DW_AT_abstract_origin       <0x000001bb GOFF=0x00000442>
 < 4><0x00000510 GOFF=0x00000797>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000000e8
-  ranges: 4 at .debug_ranges offset 232 (0x000000e8) (32 bytes)
-   [ 0] range entry    0x000001ec 0x000002b0
-   [ 1] range entry    0x0000037c 0x0000038b
-   [ 2] range entry    0x00000343 0x0000035b
-   [ 3] range end      0x00000000 0x00000000
+  ranges: 4 at .debug_ranges offset 232 (0x000000e8)  ( base addr 0xfff43a96) (32 bytes)
+   [ 0] range entry  raw: 0x000001ec,  0x000002b0 cooked: 0xfff43c82,  0xfff43d46
+   [ 1] range entry  raw: 0x0000037c,  0x0000038b cooked: 0xfff43e12,  0xfff43e21
+   [ 2] range entry  raw: 0x00000343,  0x0000035b cooked: 0xfff43dd9,  0xfff43df1
+   [ 3] range end    0,0
                                             DW_AT_sibling               <0x000005bf GOFF=0x00000846>
 < 5><0x00000519 GOFF=0x000007a0>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000341 GOFF=0x000005c8>
@@ -1243,14 +1243,14 @@ LOCAL_SYMBOLS:
                                                   DW_OP_stack_value
 < 5><0x0000052b GOFF=0x000007b2>            DW_TAG_lexical_block
                                               DW_AT_ranges                0x00000108
-  ranges: 7 at .debug_ranges offset 264 (0x00000108) (56 bytes)
-   [ 0] range entry    0x000001fb 0x00000203
-   [ 1] range entry    0x0000037c 0x0000038b
-   [ 2] range entry    0x0000028d 0x0000028f
-   [ 3] range entry    0x00000227 0x0000026a
-   [ 4] range entry    0x00000213 0x00000224
-   [ 5] range entry    0x0000020b 0x00000211
-   [ 6] range end      0x00000000 0x00000000
+  ranges: 7 at .debug_ranges offset 264 (0x00000108)  ( base addr 0xfff43a96) (56 bytes)
+   [ 0] range entry  raw: 0x000001fb,  0x00000203 cooked: 0xfff43c91,  0xfff43c99
+   [ 1] range entry  raw: 0x0000037c,  0x0000038b cooked: 0xfff43e12,  0xfff43e21
+   [ 2] range entry  raw: 0x0000028d,  0x0000028f cooked: 0xfff43d23,  0xfff43d25
+   [ 3] range entry  raw: 0x00000227,  0x0000026a cooked: 0xfff43cbd,  0xfff43d00
+   [ 4] range entry  raw: 0x00000213,  0x00000224 cooked: 0xfff43ca9,  0xfff43cba
+   [ 5] range entry  raw: 0x0000020b,  0x00000211 cooked: 0xfff43ca1,  0xfff43ca7
+   [ 6] range end    0,0
                                               DW_AT_sibling               <0x00000574 GOFF=0x000007fb>
 < 6><0x00000534 GOFF=0x000007bb>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x0000035c GOFF=0x000005e3>
@@ -1349,10 +1349,10 @@ LOCAL_SYMBOLS:
                                                     DW_OP_reg10
 < 5><0x00000574 GOFF=0x000007fb>            DW_TAG_lexical_block
                                               DW_AT_ranges                0x00000140
-  ranges: 3 at .debug_ranges offset 320 (0x00000140) (24 bytes)
-   [ 0] range entry    0x0000026a 0x0000028d
-   [ 1] range entry    0x0000028f 0x000002a0
-   [ 2] range end      0x00000000 0x00000000
+  ranges: 3 at .debug_ranges offset 320 (0x00000140)  ( base addr 0xfff43a96) (24 bytes)
+   [ 0] range entry  raw: 0x0000026a,  0x0000028d cooked: 0xfff43d00,  0xfff43d23
+   [ 1] range entry  raw: 0x0000028f,  0x000002a0 cooked: 0xfff43d25,  0xfff43d36
+   [ 2] range end    0,0
 < 6><0x00000579 GOFF=0x00000800>              DW_TAG_variable
                                                 DW_AT_abstract_origin       <0x000003b6 GOFF=0x0000063d>
                                                 DW_AT_location              0x00000894
@@ -1425,10 +1425,10 @@ LOCAL_SYMBOLS:
                                                     DW_OP_reg3
 < 4><0x000005bf GOFF=0x00000846>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000158
-  ranges: 3 at .debug_ranges offset 344 (0x00000158) (24 bytes)
-   [ 0] range entry    0x0000015d 0x000001b7
-   [ 1] range entry    0x0000038b 0x00000393
-   [ 2] range end      0x00000000 0x00000000
+  ranges: 3 at .debug_ranges offset 344 (0x00000158)  ( base addr 0xfff43a96) (24 bytes)
+   [ 0] range entry  raw: 0x0000015d,  0x000001b7 cooked: 0xfff43bf3,  0xfff43c4d
+   [ 1] range entry  raw: 0x0000038b,  0x00000393 cooked: 0xfff43e21,  0xfff43e29
+   [ 2] range end    0,0
                                             DW_AT_sibling               <0x00000608 GOFF=0x0000088f>
 < 5><0x000005c8 GOFF=0x0000084f>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000002bb GOFF=0x00000542>
@@ -1511,12 +1511,12 @@ LOCAL_SYMBOLS:
                                                   DW_OP_reg10
 < 4><0x00000608 GOFF=0x0000088f>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000170
-  ranges: 5 at .debug_ranges offset 368 (0x00000170) (40 bytes)
-   [ 0] range entry    0x0000011a 0x00000149
-   [ 1] range entry    0x0000039b 0x000003aa
-   [ 2] range entry    0x0000036d 0x00000375
-   [ 3] range entry    0x000001e5 0x000001ec
-   [ 4] range end      0x00000000 0x00000000
+  ranges: 5 at .debug_ranges offset 368 (0x00000170)  ( base addr 0xfff43a96) (40 bytes)
+   [ 0] range entry  raw: 0x0000011a,  0x00000149 cooked: 0xfff43bb0,  0xfff43bdf
+   [ 1] range entry  raw: 0x0000039b,  0x000003aa cooked: 0xfff43e31,  0xfff43e40
+   [ 2] range entry  raw: 0x0000036d,  0x00000375 cooked: 0xfff43e03,  0xfff43e0b
+   [ 3] range entry  raw: 0x000001e5,  0x000001ec cooked: 0xfff43c7b,  0xfff43c82
+   [ 4] range end    0,0
                                             DW_AT_sibling               <0x00000620 GOFF=0x000008a7>
 < 5><0x00000611 GOFF=0x00000898>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x0000024f GOFF=0x000004d6>
@@ -1531,10 +1531,10 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x00000243 GOFF=0x000004ca>
 < 4><0x00000620 GOFF=0x000008a7>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000198
-  ranges: 3 at .debug_ranges offset 408 (0x00000198) (24 bytes)
-   [ 0] range entry    0x0000005f 0x000000c4
-   [ 1] range entry    0x00000393 0x0000039b
-   [ 2] range end      0x00000000 0x00000000
+  ranges: 3 at .debug_ranges offset 408 (0x00000198)  ( base addr 0xfff43a96) (24 bytes)
+   [ 0] range entry  raw: 0x0000005f,  0x000000c4 cooked: 0xfff43af5,  0xfff43b5a
+   [ 1] range entry  raw: 0x00000393,  0x0000039b cooked: 0xfff43e29,  0xfff43e31
+   [ 2] range end    0,0
                                             DW_AT_sibling               <0x00000669 GOFF=0x000008f0>
 < 5><0x00000629 GOFF=0x000008b0>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000001e9 GOFF=0x00000470>
@@ -1617,11 +1617,11 @@ LOCAL_SYMBOLS:
                                                   DW_OP_reg7
 < 4><0x00000669 GOFF=0x000008f0>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000001b0
-  ranges: 4 at .debug_ranges offset 432 (0x000001b0) (32 bytes)
-   [ 0] range entry    0x00000014 0x00000046
-   [ 1] range entry    0x0000033b 0x00000343
-   [ 2] range entry    0x000001d0 0x000001df
-   [ 3] range end      0x00000000 0x00000000
+  ranges: 4 at .debug_ranges offset 432 (0x000001b0)  ( base addr 0xfff43a96) (32 bytes)
+   [ 0] range entry  raw: 0x00000014,  0x00000046 cooked: 0xfff43aaa,  0xfff43adc
+   [ 1] range entry  raw: 0x0000033b,  0x00000343 cooked: 0xfff43dd1,  0xfff43dd9
+   [ 2] range entry  raw: 0x000001d0,  0x000001df cooked: 0xfff43c66,  0xfff43c75
+   [ 3] range end    0,0
                                             DW_AT_sibling               <0x00000681 GOFF=0x00000908>
 < 5><0x00000672 GOFF=0x000008f9>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x000001d7 GOFF=0x0000045e>
@@ -1634,11 +1634,11 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x000001cb GOFF=0x00000452>
 < 4><0x00000681 GOFF=0x00000908>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000001d0
-  ranges: 4 at .debug_ranges offset 464 (0x000001d0) (32 bytes)
-   [ 0] range entry    0x000000ce 0x000000fe
-   [ 1] range entry    0x0000035e 0x0000036d
-   [ 2] range entry    0x000001c1 0x000001d0
-   [ 3] range end      0x00000000 0x00000000
+  ranges: 4 at .debug_ranges offset 464 (0x000001d0)  ( base addr 0xfff43a96) (32 bytes)
+   [ 0] range entry  raw: 0x000000ce,  0x000000fe cooked: 0xfff43b64,  0xfff43b94
+   [ 1] range entry  raw: 0x0000035e,  0x0000036d cooked: 0xfff43df4,  0xfff43e03
+   [ 2] range entry  raw: 0x000001c1,  0x000001d0 cooked: 0xfff43c57,  0xfff43c66
+   [ 3] range end    0,0
                                             DW_AT_sibling               <0x00000699 GOFF=0x00000920>
 < 5><0x0000068a GOFF=0x00000911>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000321 GOFF=0x000005a8>
@@ -1651,14 +1651,14 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x00000315 GOFF=0x0000059c>
 < 4><0x00000699 GOFF=0x00000920>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000001f0
-  ranges: 7 at .debug_ranges offset 496 (0x000001f0) (56 bytes)
-   [ 0] range entry    0x000002bb 0x000002c3
-   [ 1] range entry    0x000002e9 0x0000033b
-   [ 2] range entry    0x000002e1 0x000002e6
-   [ 3] range entry    0x000002d3 0x000002df
-   [ 4] range entry    0x000002ce 0x000002d0
-   [ 5] range entry    0x000002c8 0x000002cb
-   [ 6] range end      0x00000000 0x00000000
+  ranges: 7 at .debug_ranges offset 496 (0x000001f0)  ( base addr 0xfff43a96) (56 bytes)
+   [ 0] range entry  raw: 0x000002bb,  0x000002c3 cooked: 0xfff43d51,  0xfff43d59
+   [ 1] range entry  raw: 0x000002e9,  0x0000033b cooked: 0xfff43d7f,  0xfff43dd1
+   [ 2] range entry  raw: 0x000002e1,  0x000002e6 cooked: 0xfff43d77,  0xfff43d7c
+   [ 3] range entry  raw: 0x000002d3,  0x000002df cooked: 0xfff43d69,  0xfff43d75
+   [ 4] range entry  raw: 0x000002ce,  0x000002d0 cooked: 0xfff43d64,  0xfff43d66
+   [ 5] range entry  raw: 0x000002c8,  0x000002cb cooked: 0xfff43d5e,  0xfff43d61
+   [ 6] range end    0,0
 < 5><0x0000069e GOFF=0x00000925>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000261 GOFF=0x000004e8>
                                               DW_AT_location              0x00000bf3
@@ -2379,12 +2379,12 @@ LOCAL_SYMBOLS:
                                         DW_AT_abstract_origin       <0x00000107 GOFF=0x00000aa8>
                                         DW_AT_entry_pc              0xfff43e42
                                         DW_AT_ranges                0x00000228
-  ranges: 5 at .debug_ranges offset 552 (0x00000228) (40 bytes)
-   [ 0] range entry    0x00000002 0x000000ba
-   [ 1] range entry    0x000002b9 0x00000397
-   [ 2] range entry    0x00000117 0x000002b6
-   [ 3] range entry    0x000000bd 0x00000114
-   [ 4] range end      0x00000000 0x00000000
+  ranges: 5 at .debug_ranges offset 552 (0x00000228)  ( base addr 0xfff43e40) (40 bytes)
+   [ 0] range entry  raw: 0x00000002,  0x000000ba cooked: 0xfff43e42,  0xfff43efa
+   [ 1] range entry  raw: 0x000002b9,  0x00000397 cooked: 0xfff440f9,  0xfff441d7
+   [ 2] range entry  raw: 0x00000117,  0x000002b6 cooked: 0xfff43f57,  0xfff440f6
+   [ 3] range entry  raw: 0x000000bd,  0x00000114 cooked: 0xfff43efd,  0xfff43f54
+   [ 4] range end    0,0
                                         DW_AT_call_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_call_line             0x0000046a
 < 3><0x0000049c GOFF=0x00000e3d>        DW_TAG_formal_parameter
@@ -2511,12 +2511,12 @@ LOCAL_SYMBOLS:
                                               DW_OP_piece 4
 < 3><0x000004b3 GOFF=0x00000e54>        DW_TAG_lexical_block
                                           DW_AT_ranges                0x00000250
-  ranges: 5 at .debug_ranges offset 592 (0x00000250) (40 bytes)
-   [ 0] range entry    0x00000002 0x000000ba
-   [ 1] range entry    0x000002b9 0x00000397
-   [ 2] range entry    0x00000117 0x000002b6
-   [ 3] range entry    0x000000bd 0x00000114
-   [ 4] range end      0x00000000 0x00000000
+  ranges: 5 at .debug_ranges offset 592 (0x00000250)  ( base addr 0xfff43e40) (40 bytes)
+   [ 0] range entry  raw: 0x00000002,  0x000000ba cooked: 0xfff43e42,  0xfff43efa
+   [ 1] range entry  raw: 0x000002b9,  0x00000397 cooked: 0xfff440f9,  0xfff441d7
+   [ 2] range entry  raw: 0x00000117,  0x000002b6 cooked: 0xfff43f57,  0xfff440f6
+   [ 3] range entry  raw: 0x000000bd,  0x00000114 cooked: 0xfff43efd,  0xfff43f54
+   [ 4] range end    0,0
 < 4><0x000004b8 GOFF=0x00000e59>          DW_TAG_variable
                                             DW_AT_abstract_origin       <0x00000138 GOFF=0x00000ad9>
 < 4><0x000004bd GOFF=0x00000e5e>          DW_TAG_variable
@@ -2733,12 +2733,12 @@ LOCAL_SYMBOLS:
                                             DW_AT_abstract_origin       <0x000001bb GOFF=0x00000b5c>
 < 4><0x0000051d GOFF=0x00000ebe>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000278
-  ranges: 5 at .debug_ranges offset 632 (0x00000278) (40 bytes)
-   [ 0] range entry    0x000001ce 0x000002b6
-   [ 1] range entry    0x0000037d 0x00000388
-   [ 2] range entry    0x00000360 0x0000036f
-   [ 3] range entry    0x00000336 0x00000349
-   [ 4] range end      0x00000000 0x00000000
+  ranges: 5 at .debug_ranges offset 632 (0x00000278)  ( base addr 0xfff43e40) (40 bytes)
+   [ 0] range entry  raw: 0x000001ce,  0x000002b6 cooked: 0xfff4400e,  0xfff440f6
+   [ 1] range entry  raw: 0x0000037d,  0x00000388 cooked: 0xfff441bd,  0xfff441c8
+   [ 2] range entry  raw: 0x00000360,  0x0000036f cooked: 0xfff441a0,  0xfff441af
+   [ 3] range entry  raw: 0x00000336,  0x00000349 cooked: 0xfff44176,  0xfff44189
+   [ 4] range end    0,0
                                             DW_AT_sibling               <0x000005fa GOFF=0x00000f9b>
 < 5><0x00000526 GOFF=0x00000ec7>            DW_TAG_variable
                                               DW_AT_abstract_origin       <0x00000341 GOFF=0x00000ce2>

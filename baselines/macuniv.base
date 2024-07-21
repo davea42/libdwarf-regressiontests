@@ -95,48 +95,48 @@ COMPILE_UNIT<header overall offset = 0x00000000>:
                     DW_AT_comp_dir              /Users/rifkin/cpptrace/build
                     DW_AT_low_pc                0x100003610
                     DW_AT_ranges                0x00000000
-  ranges: 41 at .debug_ranges offset 0 (0x00000000) (656 bytes)
-   [ 0] range entry    0x00000000 0x00000052
-   [ 1] range entry    0x00000060 0x0000007b
-   [ 2] range entry    0x00000080 0x0000010a
-   [ 3] range entry    0x00000110 0x0000016f
-   [ 4] range entry    0x00000170 0x0000018b
-   [ 5] range entry    0x00000190 0x0000019f
-   [ 6] range entry    0x000001a0 0x000001bb
-   [ 7] range entry    0x000001c0 0x000001db
-   [ 8] range entry    0x000001e0 0x00000208
-   [ 9] range entry    0x00000210 0x000002b9
-   [10] range entry    0x000002c0 0x0000031a
-   [11] range entry    0x00000320 0x0000033a
-   [12] range entry    0x00000340 0x0000035e
-   [13] range entry    0x00000360 0x0000037b
-   [14] range entry    0x00000380 0x0000039c
-   [15] range entry    0x000003a0 0x000003ae
-   [16] range entry    0x000003b0 0x000003ff
-   [17] range entry    0x00000400 0x0000041b
-   [18] range entry    0x00000420 0x0000042e
-   [19] range entry    0x00000430 0x0000044e
-   [20] range entry    0x00000450 0x0000047b
-   [21] range entry    0x00000480 0x0000049f
-   [22] range entry    0x000004a0 0x0000051c
-   [23] range entry    0x00000520 0x00000543
-   [24] range entry    0x00000560 0x0000057f
-   [25] range entry    0x00000580 0x0000059b
-   [26] range entry    0x000005a0 0x0000060d
-   [27] range entry    0x00000610 0x00000637
-   [28] range entry    0x00000640 0x0000065f
-   [29] range entry    0x00000660 0x0000067b
-   [30] range entry    0x00000680 0x0000069b
-   [31] range entry    0x000006a0 0x000006ae
-   [32] range entry    0x000006b0 0x00000703
-   [33] range entry    0x00000710 0x00000757
-   [34] range entry    0x00000760 0x0000079e
-   [35] range entry    0x000007a0 0x000007d7
-   [36] range entry    0x000007e0 0x0000080f
-   [37] range entry    0x00000810 0x00000838
-   [38] range entry    0x00000840 0x00000862
-   [39] range entry    0x00000870 0x0000088c
-   [40] range end      0x00000000 0x00000000
+  ranges: 41 at .debug_ranges offset 0 (0x00000000)  ( base addr 0x100003610) (656 bytes)
+   [ 0] range entry  raw: 0x00000000,  0x00000052 cooked: 0x100003610,  0x100003662
+   [ 1] range entry  raw: 0x00000060,  0x0000007b cooked: 0x100003670,  0x10000368b
+   [ 2] range entry  raw: 0x00000080,  0x0000010a cooked: 0x100003690,  0x10000371a
+   [ 3] range entry  raw: 0x00000110,  0x0000016f cooked: 0x100003720,  0x10000377f
+   [ 4] range entry  raw: 0x00000170,  0x0000018b cooked: 0x100003780,  0x10000379b
+   [ 5] range entry  raw: 0x00000190,  0x0000019f cooked: 0x1000037a0,  0x1000037af
+   [ 6] range entry  raw: 0x000001a0,  0x000001bb cooked: 0x1000037b0,  0x1000037cb
+   [ 7] range entry  raw: 0x000001c0,  0x000001db cooked: 0x1000037d0,  0x1000037eb
+   [ 8] range entry  raw: 0x000001e0,  0x00000208 cooked: 0x1000037f0,  0x100003818
+   [ 9] range entry  raw: 0x00000210,  0x000002b9 cooked: 0x100003820,  0x1000038c9
+   [10] range entry  raw: 0x000002c0,  0x0000031a cooked: 0x1000038d0,  0x10000392a
+   [11] range entry  raw: 0x00000320,  0x0000033a cooked: 0x100003930,  0x10000394a
+   [12] range entry  raw: 0x00000340,  0x0000035e cooked: 0x100003950,  0x10000396e
+   [13] range entry  raw: 0x00000360,  0x0000037b cooked: 0x100003970,  0x10000398b
+   [14] range entry  raw: 0x00000380,  0x0000039c cooked: 0x100003990,  0x1000039ac
+   [15] range entry  raw: 0x000003a0,  0x000003ae cooked: 0x1000039b0,  0x1000039be
+   [16] range entry  raw: 0x000003b0,  0x000003ff cooked: 0x1000039c0,  0x100003a0f
+   [17] range entry  raw: 0x00000400,  0x0000041b cooked: 0x100003a10,  0x100003a2b
+   [18] range entry  raw: 0x00000420,  0x0000042e cooked: 0x100003a30,  0x100003a3e
+   [19] range entry  raw: 0x00000430,  0x0000044e cooked: 0x100003a40,  0x100003a5e
+   [20] range entry  raw: 0x00000450,  0x0000047b cooked: 0x100003a60,  0x100003a8b
+   [21] range entry  raw: 0x00000480,  0x0000049f cooked: 0x100003a90,  0x100003aaf
+   [22] range entry  raw: 0x000004a0,  0x0000051c cooked: 0x100003ab0,  0x100003b2c
+   [23] range entry  raw: 0x00000520,  0x00000543 cooked: 0x100003b30,  0x100003b53
+   [24] range entry  raw: 0x00000560,  0x0000057f cooked: 0x100003b70,  0x100003b8f
+   [25] range entry  raw: 0x00000580,  0x0000059b cooked: 0x100003b90,  0x100003bab
+   [26] range entry  raw: 0x000005a0,  0x0000060d cooked: 0x100003bb0,  0x100003c1d
+   [27] range entry  raw: 0x00000610,  0x00000637 cooked: 0x100003c20,  0x100003c47
+   [28] range entry  raw: 0x00000640,  0x0000065f cooked: 0x100003c50,  0x100003c6f
+   [29] range entry  raw: 0x00000660,  0x0000067b cooked: 0x100003c70,  0x100003c8b
+   [30] range entry  raw: 0x00000680,  0x0000069b cooked: 0x100003c90,  0x100003cab
+   [31] range entry  raw: 0x000006a0,  0x000006ae cooked: 0x100003cb0,  0x100003cbe
+   [32] range entry  raw: 0x000006b0,  0x00000703 cooked: 0x100003cc0,  0x100003d13
+   [33] range entry  raw: 0x00000710,  0x00000757 cooked: 0x100003d20,  0x100003d67
+   [34] range entry  raw: 0x00000760,  0x0000079e cooked: 0x100003d70,  0x100003dae
+   [35] range entry  raw: 0x000007a0,  0x000007d7 cooked: 0x100003db0,  0x100003de7
+   [36] range entry  raw: 0x000007e0,  0x0000080f cooked: 0x100003df0,  0x100003e1f
+   [37] range entry  raw: 0x00000810,  0x00000838 cooked: 0x100003e20,  0x100003e48
+   [38] range entry  raw: 0x00000840,  0x00000862 cooked: 0x100003e50,  0x100003e72
+   [39] range entry  raw: 0x00000870,  0x0000088c cooked: 0x100003e80,  0x100003e9c
+   [40] range end    0,0
 
 LOCAL_SYMBOLS:
 < 1><0x00000032>    DW_TAG_namespace <abbrev 2>
