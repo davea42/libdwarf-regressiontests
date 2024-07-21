@@ -1,5 +1,5 @@
 # Ignore this. For testing by hand only.
-dwarfdump --print-ranges --file-tied=unittest -M -i -vvv -G stacktrace.cpp.dwo >junk2
+dwarfdump --print-ranges --file-tied=unittest -M  -G-i -vvv -G stacktrace.cpp.dwo >junk2
 dwarfdump --print-ranges -M -i -vvv -G stacktrace.cpp.dwo >junkdwo2
 dwarfdump --print-ranges -M -i -vvv -G unittest >junkuni2
 
