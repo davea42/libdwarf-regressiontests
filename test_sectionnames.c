@@ -201,7 +201,6 @@ basename(const char *path)
 char dw_true_path_buffer[BUFSIZ];
 unsigned int dw_true_path_bufferlen = BUFSIZ;
 
-
 int
 main(int argc, char **argv)
 {

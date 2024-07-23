@@ -1,9 +1,9 @@
-/*   driver for fuzz testcases.
-     Copyright (C) 2023 David Anderson
+/*  driver for fuzz testcases.
+    Copyright (C) 2023 David Anderson
 
-     testbuildfuzz.c
-     This trivial driver code is hereby placed in
-     the public domain for any use without restrictions.
+    testbuildfuzz.c
+    This trivial driver code is hereby placed in
+    the public domain for any use without restrictions.
 
 */
 #include <fcntl.h> /* open() O_RDONLY */
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 {
     int i = 0;
     char *filename = 0;
-    const unsigned char *data = 0; 
+    const unsigned char *data = 0;
     size_t size = 0;
     ssize_t ssize = 0;
     int res = 0;
@@ -79,4 +79,3 @@ int main(int argc, char **argv)
     free((void *)data);
     return res;
 }
-

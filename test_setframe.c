@@ -96,7 +96,7 @@ static struct testv {
 static int failcount = 0;
 static void
 testn(unsigned u,
-    Dwarf_Debug dbg, 
+    Dwarf_Debug dbg,
     Dwarf_Error *error)
 {
     struct testv *t = 0;
@@ -116,39 +116,38 @@ testn(unsigned u,
     res = dwarf_get_fde_list (dbg, &cie_data, &cie_count,
         &fde_data,&fde_count,error);
     if (res == DW_DLV_NO_ENTRY) {
-        res = dwarf_get_fde_list_eh(dbg, &cie_data, &cie_count, 
+        res = dwarf_get_fde_list_eh(dbg, &cie_data, &cie_count,
             &fde_data,&fde_count,error);
     }
 
     if (res == DW_DLV_OK) {
-         dwarf_dealloc_fde_cie_list(dbg, cie_data,cie_count,
-             fde_data,fde_count);
-         printf("FAIL:  %u should have gotten error,"
-             " did not\n",u);
-             ++failcount;
-         return;
+        dwarf_dealloc_fde_cie_list(dbg, cie_data,cie_count,
+            fde_data,fde_count);
+        printf("FAIL:  %u should have gotten error,"
+            " did not\n",u);
+            ++failcount;
+        return;
     } else if (res == DW_DLV_NO_ENTRY) {
-         printf("FAIL: %u should have gotten error, not NO ENTRY\n",
-             u);
-         ++failcount;
-         return;
-    } 
+        printf("FAIL: %u should have gotten error, not NO ENTRY\n",
+            u);
+        ++failcount;
+        return;
+    }
     { /* DW_DLV_ERROR */
-         int errnum = dwarf_errno(*error);
-         if (errnum == DW_DLE_DEBUGFRAME_ERROR) {
-             printf("PASS: %u errormsg %s\n",u,
-                 dwarf_errmsg(*error));
-             dwarf_dealloc_error(dbg,*error);
-             *error = 0;
-             return;
-         } else {
-             printf("FAIL: %u wrong errormsg %s\n",
-                 u,
-                 dwarf_errmsg(*error));
-             ++failcount;
-         }
-         dwarf_dealloc_error(dbg,*error);
-         *error = 0;
+        int errnum = dwarf_errno(*error);
+        if (errnum == DW_DLE_DEBUGFRAME_ERROR) {
+            printf("PASS: %u errormsg %s\n",u,
+                dwarf_errmsg(*error));
+            dwarf_dealloc_error(dbg,*error);
+            *error = 0;
+            return;
+        } else {
+            printf("FAIL: %u wrong errormsg %s\n",
+                u, dwarf_errmsg(*error));
+            ++failcount;
+        }
+        dwarf_dealloc_error(dbg,*error);
+        *error = 0;
     }
     return;
 }

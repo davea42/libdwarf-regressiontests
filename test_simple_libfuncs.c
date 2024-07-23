@@ -136,12 +136,12 @@ main(int argc, char **argv)
             if (offset_size != 4 && offset_size != 8) {
                 printf("ERROR: dwarf_get_offset_size()"
                     "return offset size %d, not 4 or 8\n",
-                    offset_size); 
+                    offset_size);
                 ++failcount;
             }
         }
         dwarf_finish(dbg);
-        
+
     }
     if (failcount) {
         return 1;
