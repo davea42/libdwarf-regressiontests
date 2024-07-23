@@ -1,0 +1,8 @@
+regressiontests/checkexamples/README
+21 July 2024
+
+This directory holds main program test code that is to be
+compiled with doc/checkexample.c and run against selected
+test binaries to verify that checkexample.c is working.
+
+ 
