@@ -68,12 +68,14 @@ loop_on_CUs(Dwarf_Debug dbg,int maxcount)
         if (res == DW_DLV_ERROR) {
             printf("FAIL examplev CU %d\n",count);
             printf("error %s\n",dwarf_errmsg(error));
+            dwarf_dealloc_die(cu_die);
             return;
         }
         if (res == DW_DLV_NO_ENTRY) {
             printf("SKIP CU %d\n",count);
             count = count + maxcount;
         }
+        dwarf_dealloc_die(cu_die);
     }
 }
 int

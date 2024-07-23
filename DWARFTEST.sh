@@ -1162,6 +1162,18 @@ echo "=====BUILD  dwarfexample/jitreader.c "
   r=$?
   chkresbld $r 'check jitreader compile dwarfexample/jitreader.c failed'
 
+echo "=====BUILD  $testsrc/examplechecks/test_ranges.c "
+  x="$CC $warn -I$codedir/src/lib/libdwarf -I$testsrc/examplechecks \
+     $libzhdr -I$libbld \
+     -I$libbld/libdwarf  $nonsharedopt \
+     -gdwarf $nlizeopt $testsrc/examplechecks/test_ranges.c \
+     $codedir/doc/checkexamples.c \
+     -o test_ranges  $dwlib $libzlib $libzlink"
+  echo "$x"
+  $x
+  r=$?
+  chkresbld $r 'check examplechecs/test_ranges.c compile failed'
+
 echo "=====BUILD  dwarfexample/dwdebuglink.c "
   x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf  $nonsharedopt \
@@ -1205,6 +1217,9 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+runsingle examplev-ranges-a.base   ./test_ranges --testobj=$testsrc/macuniv/demo
+runsingle examplev-ranges-b.base   ./test_ranges --testobj=$testsrc/emre4/test19_64_dbg
 
 runsingle ossfuzz70277.base ./fuzz_die_cu_info1 --testobj=$testsrc/ossfuzz70277/fuzz_die_cu_info1-5380280051892224
 runsingle ossfuzz70278.base ./fuzz_stack_frame_access --testobj=$testsrc/ossfuzz70278/fuzz_stack_frame_access-5419136084148224

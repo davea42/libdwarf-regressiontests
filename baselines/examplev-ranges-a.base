@@ -1,0 +1,85 @@
+Open CU 0
+Range group base address: 0x100003610, offset in .debug_ranges: 0x00000000
+[   0] DW_RANGES_ENTRY: raw    addr1 0x00000000 addr2 0x00000052
+       DW_RANGES_ENTRY: cooked addr1 0x100003610 addr2  0x100003662 
+[   1] DW_RANGES_ENTRY: raw    addr1 0x00000060 addr2 0x0000007b
+       DW_RANGES_ENTRY: cooked addr1 0x100003670 addr2  0x10000368b 
+[   2] DW_RANGES_ENTRY: raw    addr1 0x00000080 addr2 0x0000010a
+       DW_RANGES_ENTRY: cooked addr1 0x100003690 addr2  0x10000371a 
+[   3] DW_RANGES_ENTRY: raw    addr1 0x00000110 addr2 0x0000016f
+       DW_RANGES_ENTRY: cooked addr1 0x100003720 addr2  0x10000377f 
+[   4] DW_RANGES_ENTRY: raw    addr1 0x00000170 addr2 0x0000018b
+       DW_RANGES_ENTRY: cooked addr1 0x100003780 addr2  0x10000379b 
+[   5] DW_RANGES_ENTRY: raw    addr1 0x00000190 addr2 0x0000019f
+       DW_RANGES_ENTRY: cooked addr1 0x1000037a0 addr2  0x1000037af 
+[   6] DW_RANGES_ENTRY: raw    addr1 0x000001a0 addr2 0x000001bb
+       DW_RANGES_ENTRY: cooked addr1 0x1000037b0 addr2  0x1000037cb 
+[   7] DW_RANGES_ENTRY: raw    addr1 0x000001c0 addr2 0x000001db
+       DW_RANGES_ENTRY: cooked addr1 0x1000037d0 addr2  0x1000037eb 
+[   8] DW_RANGES_ENTRY: raw    addr1 0x000001e0 addr2 0x00000208
+       DW_RANGES_ENTRY: cooked addr1 0x1000037f0 addr2  0x100003818 
+[   9] DW_RANGES_ENTRY: raw    addr1 0x00000210 addr2 0x000002b9
+       DW_RANGES_ENTRY: cooked addr1 0x100003820 addr2  0x1000038c9 
+[  10] DW_RANGES_ENTRY: raw    addr1 0x000002c0 addr2 0x0000031a
+       DW_RANGES_ENTRY: cooked addr1 0x1000038d0 addr2  0x10000392a 
+[  11] DW_RANGES_ENTRY: raw    addr1 0x00000320 addr2 0x0000033a
+       DW_RANGES_ENTRY: cooked addr1 0x100003930 addr2  0x10000394a 
+[  12] DW_RANGES_ENTRY: raw    addr1 0x00000340 addr2 0x0000035e
+       DW_RANGES_ENTRY: cooked addr1 0x100003950 addr2  0x10000396e 
+[  13] DW_RANGES_ENTRY: raw    addr1 0x00000360 addr2 0x0000037b
+       DW_RANGES_ENTRY: cooked addr1 0x100003970 addr2  0x10000398b 
+[  14] DW_RANGES_ENTRY: raw    addr1 0x00000380 addr2 0x0000039c
+       DW_RANGES_ENTRY: cooked addr1 0x100003990 addr2  0x1000039ac 
+[  15] DW_RANGES_ENTRY: raw    addr1 0x000003a0 addr2 0x000003ae
+       DW_RANGES_ENTRY: cooked addr1 0x1000039b0 addr2  0x1000039be 
+[  16] DW_RANGES_ENTRY: raw    addr1 0x000003b0 addr2 0x000003ff
+       DW_RANGES_ENTRY: cooked addr1 0x1000039c0 addr2  0x100003a0f 
+[  17] DW_RANGES_ENTRY: raw    addr1 0x00000400 addr2 0x0000041b
+       DW_RANGES_ENTRY: cooked addr1 0x100003a10 addr2  0x100003a2b 
+[  18] DW_RANGES_ENTRY: raw    addr1 0x00000420 addr2 0x0000042e
+       DW_RANGES_ENTRY: cooked addr1 0x100003a30 addr2  0x100003a3e 
+[  19] DW_RANGES_ENTRY: raw    addr1 0x00000430 addr2 0x0000044e
+       DW_RANGES_ENTRY: cooked addr1 0x100003a40 addr2  0x100003a5e 
+[  20] DW_RANGES_ENTRY: raw    addr1 0x00000450 addr2 0x0000047b
+       DW_RANGES_ENTRY: cooked addr1 0x100003a60 addr2  0x100003a8b 
+[  21] DW_RANGES_ENTRY: raw    addr1 0x00000480 addr2 0x0000049f
+       DW_RANGES_ENTRY: cooked addr1 0x100003a90 addr2  0x100003aaf 
+[  22] DW_RANGES_ENTRY: raw    addr1 0x000004a0 addr2 0x0000051c
+       DW_RANGES_ENTRY: cooked addr1 0x100003ab0 addr2  0x100003b2c 
+[  23] DW_RANGES_ENTRY: raw    addr1 0x00000520 addr2 0x00000543
+       DW_RANGES_ENTRY: cooked addr1 0x100003b30 addr2  0x100003b53 
+[  24] DW_RANGES_ENTRY: raw    addr1 0x00000560 addr2 0x0000057f
+       DW_RANGES_ENTRY: cooked addr1 0x100003b70 addr2  0x100003b8f 
+[  25] DW_RANGES_ENTRY: raw    addr1 0x00000580 addr2 0x0000059b
+       DW_RANGES_ENTRY: cooked addr1 0x100003b90 addr2  0x100003bab 
+[  26] DW_RANGES_ENTRY: raw    addr1 0x000005a0 addr2 0x0000060d
+       DW_RANGES_ENTRY: cooked addr1 0x100003bb0 addr2  0x100003c1d 
+[  27] DW_RANGES_ENTRY: raw    addr1 0x00000610 addr2 0x00000637
+       DW_RANGES_ENTRY: cooked addr1 0x100003c20 addr2  0x100003c47 
+[  28] DW_RANGES_ENTRY: raw    addr1 0x00000640 addr2 0x0000065f
+       DW_RANGES_ENTRY: cooked addr1 0x100003c50 addr2  0x100003c6f 
+[  29] DW_RANGES_ENTRY: raw    addr1 0x00000660 addr2 0x0000067b
+       DW_RANGES_ENTRY: cooked addr1 0x100003c70 addr2  0x100003c8b 
+[  30] DW_RANGES_ENTRY: raw    addr1 0x00000680 addr2 0x0000069b
+       DW_RANGES_ENTRY: cooked addr1 0x100003c90 addr2  0x100003cab 
+[  31] DW_RANGES_ENTRY: raw    addr1 0x000006a0 addr2 0x000006ae
+       DW_RANGES_ENTRY: cooked addr1 0x100003cb0 addr2  0x100003cbe 
+[  32] DW_RANGES_ENTRY: raw    addr1 0x000006b0 addr2 0x00000703
+       DW_RANGES_ENTRY: cooked addr1 0x100003cc0 addr2  0x100003d13 
+[  33] DW_RANGES_ENTRY: raw    addr1 0x00000710 addr2 0x00000757
+       DW_RANGES_ENTRY: cooked addr1 0x100003d20 addr2  0x100003d67 
+[  34] DW_RANGES_ENTRY: raw    addr1 0x00000760 addr2 0x0000079e
+       DW_RANGES_ENTRY: cooked addr1 0x100003d70 addr2  0x100003dae 
+[  35] DW_RANGES_ENTRY: raw    addr1 0x000007a0 addr2 0x000007d7
+       DW_RANGES_ENTRY: cooked addr1 0x100003db0 addr2  0x100003de7 
+[  36] DW_RANGES_ENTRY: raw    addr1 0x000007e0 addr2 0x0000080f
+       DW_RANGES_ENTRY: cooked addr1 0x100003df0 addr2  0x100003e1f 
+[  37] DW_RANGES_ENTRY: raw    addr1 0x00000810 addr2 0x00000838
+       DW_RANGES_ENTRY: cooked addr1 0x100003e20 addr2  0x100003e48 
+[  38] DW_RANGES_ENTRY: raw    addr1 0x00000840 addr2 0x00000862
+       DW_RANGES_ENTRY: cooked addr1 0x100003e50 addr2  0x100003e72 
+[  39] DW_RANGES_ENTRY: raw    addr1 0x00000870 addr2 0x0000088c
+       DW_RANGES_ENTRY: cooked addr1 0x100003e80 addr2  0x100003e9c 
+[  40] DW_RANGES_END  : 0,0
+Open CU 1
+End of CUs
