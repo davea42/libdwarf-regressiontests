@@ -1,3 +1,190 @@
+2024-07-23:  David Anderson
+    commit a61ef7a9e986a77a3f0ab633a128440c5e4f910e
+
+     Changes to be committed:
+    Runs new tests on .debug_ranges specifically
+    using the runsingle shell function, so new
+    executable baselines *.O are not needed at
+    this time.
+            modified:   DWARFTEST.sh
+
+    New baselines: examplev() is a function in doc/checkexamples.c
+            new file:   baselines/examplev-ranges-a.base
+            new file:   baselines/examplev-ranges-b.base
+    New test code.
+            modified:   examplechecks/test_ranges.c
+
+2024-07-23:  David Anderson
+    commit b95dc2da077a98e4b2bd622e28bc18f7ab73f08f
+
+    Cleaned up formatting to match libdwarf CODINGSTYLE.
+            modified:   test_sectionnames.c
+            modified:   test_setframe.c
+            modified:   test_simple_libfuncs.c
+            modified:   testbuildfuzz.c
+
+2024-07-23:  David Anderson
+    commit 372d9ee842ac70c5fb5256fdcdb182d32167d266
+
+    A new test, which uses examplev in
+    doc/checkexamples.c showing access to raw
+    and cooked values for .debug_ranges section
+    (which is in DWARF2,3, and 4).
+            new file:   examplechecks/README
+            new file:   examplechecks/checkexamples.h
+            new file:   examplechecks/test_ranges.c
+
+2024-07-21:  David Anderson
+    commit e57b2e8fc06845548fe0641df3c72456099e50f1
+
+    New baseline executable.
+            modified:   dwarfdump-s390.O
+
+    junk
+            deleted:    examplesarange
+            deleted:    examplesloclist
+            deleted:    examplesrnglist
+
+    Ignore this, occassionally useful..
+            modified:   rifkin3/TEST
+
+2024-07-21:  David Anderson
+    commit 780afe3f9239d0ecd7120589b57c0b49ff35c554
+
+    New baseline executables to match the .debug_ranges output format
+    changes in dwarfdump.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-07-21:  David Anderson
+    commit 77a7cea4298929efc7678e3e9422efaad266bf3a
+
+    Fix small mistakes in the messages about updating the baselines.
+            modified:   debugfission/runtest.sh
+
+    Now matching the new output format of .debug_ranges data from dwarfdump.
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectbeforechild.base
+            modified:   baddie1/incorrectbeforeitself.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+            modified:   baselines/macuniv.base
+            modified:   baselines/macuniv0.base
+            modified:   baselines/macuniv1.base
+            modified:   debugfission/archivedwo-iMvvv.base.gz
+            modified:   debugfission/archivedwo.base.gz
+            modified:   debugfission/archiveo.base.gz
+            modified:   debugfission/targetdwo.base.gz
+            modified:   debugfission/targeto.base.gz
+
+2024-07-11:  David Anderson
+    commit 1ba79ac0097de3e6ba8342aa86f52ca255572901
+
+    New tests, working. Looks good.
+            modified:   ../DWARFTEST.sh
+
+2024-07-11:  David Anderson
+    commit 61414bab42b6d9af7524e7a6abc9a799de5d40b0
+
+    New ossfuzz baselines.
+    These are identical, effectively, first
+    identified by ossfuzz 70246
+    All these inspect CUs and that means they
+    trip on the bug in rnglist reading
+    (Valid rnglists data was never incorrect,
+    these are about a particular object file
+    corruption in the test objects.)
+
+            new file:   baselines/ossfuzz70277.base
+            new file:   baselines/ossfuzz70278.base
+            new file:   baselines/ossfuzz70282.base
+            new file:   baselines/ossfuzz70287.base
+            new file:   ossfuzz70277/fuzz_die_cu_info1-5380280051892224
+            new file:   ossfuzz70278/fuzz_stack_frame_access-5419136084148224
+            new file:   ossfuzz70282/fuzz_gnu_index-5974064515055616
+            new file:   ossfuzz70287/fuzz_die_cu_e-6493908297646080
+
+2024-07-10:  David Anderson
+    commit 55f324622fd3405a997393b4b28595fa6bb0d711
+
+    three new tests, ossfuzz.
+            modified:   DWARFTEST.sh
+
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Ignore this.
+            modified:   rifkin3/TEST
+
+2024-07-10:  David Anderson
+    commit b70f2d7c7795d691097a34ffbdb9bf0b2c247428
+
+    New, baselines
+            new file:   baselines/ossfuzz70256.base
+            new file:   baselines/ossfuzz70263.base
+            new file:   baselines/ossfuzz70266.base
+
+2024-07-10:  David Anderson
+    commit c1cc27079719ae68410bd6a2d71f1c34ed423b74
+
+    New testcase.
+            new file:   ossfuzz70266/fuzz_findfuncbypc-6093996460408832
+
+2024-07-10:  David Anderson
+    commit dd62c3c10cb1a957a1ad77800a5a31205185ffc0
+
+    New failures (all rnglists...)
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz70244.base
+            new file:   baselines/ossfuzz70246.base
+            new file:   ossfuzz70244/RUNONE
+            new file:   ossfuzz70244/fuzz_die_cu_attrs_loclist-4958134427254784
+            new file:   ossfuzz70246/RUNONE
+            new file:   ossfuzz70246/fuzz_macro_dwarf5-5128935898152960
+            new file:   ossfuzz70256/fuzz_rng-4838222916550656
+            new file:   ossfuzz70263/fuzz_die_cu-4960441042796544
+            new file:   rifkin3/TEST
+
+2024-07-08:  David Anderson
+    commit 36884606ecdc8c7ef46b8a1dd5c3ae29595247eb
+
+    New dwarf4 testcase.
+            new file:   rifkin3/README
+            new file:   rifkin3/stacktrace.cpp.dwo
+            new file:   rifkin3/unittest
+
+2024-07-04:  David Anderson
+    commit 94673202bf7059f5ea124b32a1c4623f5c33b937
+
+    More relevent for current tests
+            modified:   TEST
+
+    Updating the baselines for dwarfdump to match 0.10.1
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-07-04:  David Anderson
+    commit 7dfce10e814452fc5da3b886ce5a1c33b19f5fa5
+
+    Correcting comment text.
+            modified:   DWARFTEST.sh
+
+2024-06-24:  David Anderson
+    commit 6ab0308e85ded5e01d19d8fbbcd581d102d11b92
+
+    Up to date now.
+            modified:   ChangeLog
+
 2024-06-17:  David Anderson
     commit bf6cecda220e456830a462e2a6ebe2bf3ad7a59a
 
