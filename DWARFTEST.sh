@@ -1219,6 +1219,9 @@ else
 fi
 
 runsingle examplev-ranges-a.base   ./test_ranges --testobj=$testsrc/macuniv/demo
+
+runsingle examplev-ranges-c.base   ./test_ranges --format-universalnumber=1 --testobj=$testsrc/macuniv/demo
+
 runsingle examplev-ranges-b.base   ./test_ranges --testobj=$testsrc/emre4/test19_64_dbg
 
 runsingle ossfuzz70277.base ./fuzz_die_cu_info1 --testobj=$testsrc/ossfuzz70277/fuzz_die_cu_info1-5380280051892224

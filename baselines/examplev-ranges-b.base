@@ -2,78 +2,78 @@ Open CU 0
 Range group base address: 0x00400800, offset in .debug_ranges: 0x00000000
 [   0] Base Address   : 0x00000000
 [   1] DW_RANGES_ENTRY: raw    addr1 0x00400738 addr2 0x0040074d
-       DW_RANGES_ENTRY: cooked addr1 0x400738 addr2  0x0040074d 
+       DW_RANGES_ENTRY: cooked addr1 0x00400738 addr2  0x0040074d 
 [   2] DW_RANGES_ENTRY: raw    addr1 0x00400c30 addr2 0x00400c34
-       DW_RANGES_ENTRY: cooked addr1 0x400c30 addr2  0x00400c34 
+       DW_RANGES_ENTRY: cooked addr1 0x00400c30 addr2  0x00400c34 
 [   3] DW_RANGES_END  : 0,0
 Open CU 1
 Range group base address: 0x00000000, offset in .debug_ranges: 0x00000000
 [   0] Base Address   : 0x00000000
 [   1] DW_RANGES_ENTRY: raw    addr1 0x00400738 addr2 0x0040074d
-       DW_RANGES_ENTRY: cooked addr1 0x400738 addr2  0x0040074d 
+       DW_RANGES_ENTRY: cooked addr1 0x00400738 addr2  0x0040074d 
 [   2] DW_RANGES_ENTRY: raw    addr1 0x00400c30 addr2 0x00400c34
-       DW_RANGES_ENTRY: cooked addr1 0x400c30 addr2  0x00400c34 
+       DW_RANGES_ENTRY: cooked addr1 0x00400c30 addr2  0x00400c34 
 [   3] DW_RANGES_END  : 0,0
 Open CU 2
 Range group base address: 0x00000000, offset in .debug_ranges: 0x00000000
 [   0] Base Address   : 0x00000000
 [   1] DW_RANGES_ENTRY: raw    addr1 0x00400738 addr2 0x0040074d
-       DW_RANGES_ENTRY: cooked addr1 0x400738 addr2  0x0040074d 
+       DW_RANGES_ENTRY: cooked addr1 0x00400738 addr2  0x0040074d 
 [   2] DW_RANGES_ENTRY: raw    addr1 0x00400c30 addr2 0x00400c34
-       DW_RANGES_ENTRY: cooked addr1 0x400c30 addr2  0x00400c34 
+       DW_RANGES_ENTRY: cooked addr1 0x00400c30 addr2  0x00400c34 
 [   3] DW_RANGES_END  : 0,0
 Open CU 3
 Range group base address: 0x00000000, offset in .debug_ranges: 0x00000040
 [   0] DW_RANGES_ENTRY: raw    addr1 0x00400946 addr2 0x004009c6
-       DW_RANGES_ENTRY: cooked addr1 0x400946 addr2  0x004009c6 
+       DW_RANGES_ENTRY: cooked addr1 0x00400946 addr2  0x004009c6 
 [   1] DW_RANGES_ENTRY: raw    addr1 0x004009c6 addr2 0x004009f4
-       DW_RANGES_ENTRY: cooked addr1 0x4009c6 addr2  0x004009f4 
+       DW_RANGES_ENTRY: cooked addr1 0x004009c6 addr2  0x004009f4 
 [   2] DW_RANGES_ENTRY: raw    addr1 0x004009f4 addr2 0x00400a1a
-       DW_RANGES_ENTRY: cooked addr1 0x4009f4 addr2  0x00400a1a 
+       DW_RANGES_ENTRY: cooked addr1 0x004009f4 addr2  0x00400a1a 
 [   3] DW_RANGES_ENTRY: raw    addr1 0x00400a1a addr2 0x00400a2f
-       DW_RANGES_ENTRY: cooked addr1 0x400a1a addr2  0x00400a2f 
+       DW_RANGES_ENTRY: cooked addr1 0x00400a1a addr2  0x00400a2f 
 [   4] DW_RANGES_ENTRY: raw    addr1 0x00400a30 addr2 0x00400a55
-       DW_RANGES_ENTRY: cooked addr1 0x400a30 addr2  0x00400a55 
+       DW_RANGES_ENTRY: cooked addr1 0x00400a30 addr2  0x00400a55 
 [   5] DW_RANGES_ENTRY: raw    addr1 0x00400a56 addr2 0x00400a90
-       DW_RANGES_ENTRY: cooked addr1 0x400a56 addr2  0x00400a90 
+       DW_RANGES_ENTRY: cooked addr1 0x00400a56 addr2  0x00400a90 
 [   6] DW_RANGES_ENTRY: raw    addr1 0x00400a90 addr2 0x00400ab6
-       DW_RANGES_ENTRY: cooked addr1 0x400a90 addr2  0x00400ab6 
+       DW_RANGES_ENTRY: cooked addr1 0x00400a90 addr2  0x00400ab6 
 [   7] DW_RANGES_END  : 0,0
 Open CU 4
 Range group base address: 0x00000000, offset in .debug_ranges: 0x000000c0
 [   0] DW_RANGES_ENTRY: raw    addr1 0x00400ab6 addr2 0x00400af0
-       DW_RANGES_ENTRY: cooked addr1 0x400ab6 addr2  0x00400af0 
+       DW_RANGES_ENTRY: cooked addr1 0x00400ab6 addr2  0x00400af0 
 [   1] DW_RANGES_ENTRY: raw    addr1 0x004009c6 addr2 0x004009f4
-       DW_RANGES_ENTRY: cooked addr1 0x4009c6 addr2  0x004009f4 
+       DW_RANGES_ENTRY: cooked addr1 0x004009c6 addr2  0x004009f4 
 [   2] DW_RANGES_ENTRY: raw    addr1 0x004009f4 addr2 0x00400a1a
-       DW_RANGES_ENTRY: cooked addr1 0x4009f4 addr2  0x00400a1a 
+       DW_RANGES_ENTRY: cooked addr1 0x004009f4 addr2  0x00400a1a 
 [   3] DW_RANGES_ENTRY: raw    addr1 0x00400a56 addr2 0x00400a90
-       DW_RANGES_ENTRY: cooked addr1 0x400a56 addr2  0x00400a90 
+       DW_RANGES_ENTRY: cooked addr1 0x00400a56 addr2  0x00400a90 
 [   4] DW_RANGES_ENTRY: raw    addr1 0x00400a90 addr2 0x00400ab6
-       DW_RANGES_ENTRY: cooked addr1 0x400a90 addr2  0x00400ab6 
+       DW_RANGES_ENTRY: cooked addr1 0x00400a90 addr2  0x00400ab6 
 [   5] DW_RANGES_END  : 0,0
 Open CU 5
 Range group base address: 0x00400af0, offset in .debug_ranges: 0x00000000
 [   0] Base Address   : 0x00000000
 [   1] DW_RANGES_ENTRY: raw    addr1 0x00400738 addr2 0x0040074d
-       DW_RANGES_ENTRY: cooked addr1 0x400738 addr2  0x0040074d 
+       DW_RANGES_ENTRY: cooked addr1 0x00400738 addr2  0x0040074d 
 [   2] DW_RANGES_ENTRY: raw    addr1 0x00400c30 addr2 0x00400c34
-       DW_RANGES_ENTRY: cooked addr1 0x400c30 addr2  0x00400c34 
+       DW_RANGES_ENTRY: cooked addr1 0x00400c30 addr2  0x00400c34 
 [   3] DW_RANGES_END  : 0,0
 Open CU 6
 Range group base address: 0x00000000, offset in .debug_ranges: 0x00000180
 [   0] DW_RANGES_ENTRY: raw    addr1 0x00400b40 addr2 0x00400ba6
-       DW_RANGES_ENTRY: cooked addr1 0x400b40 addr2  0x00400ba6 
+       DW_RANGES_ENTRY: cooked addr1 0x00400b40 addr2  0x00400ba6 
 [   1] DW_RANGES_ENTRY: raw    addr1 0x00400bb0 addr2 0x00400bb6
-       DW_RANGES_ENTRY: cooked addr1 0x400bb0 addr2  0x00400bb6 
+       DW_RANGES_ENTRY: cooked addr1 0x00400bb0 addr2  0x00400bb6 
 [   2] DW_RANGES_END  : 0,0
 Open CU 7
 Range group base address: 0x00000000, offset in .debug_ranges: 0x000001b0
 [   0] Base Address   : 0x00000000
 [   1] DW_RANGES_ENTRY: raw    addr1 0x00400757 addr2 0x0040075c
-       DW_RANGES_ENTRY: cooked addr1 0x400757 addr2  0x0040075c 
+       DW_RANGES_ENTRY: cooked addr1 0x00400757 addr2  0x0040075c 
 [   2] DW_RANGES_ENTRY: raw    addr1 0x00400c39 addr2 0x00400c3e
-       DW_RANGES_ENTRY: cooked addr1 0x400c39 addr2  0x00400c3e 
+       DW_RANGES_ENTRY: cooked addr1 0x00400c39 addr2  0x00400c3e 
 [   3] DW_RANGES_END  : 0,0
 Open CU 8
 End of CUs
