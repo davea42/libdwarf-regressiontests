@@ -736,6 +736,7 @@ else
     return 1
   fi
 fi
+echo "FAIL: filediff() shell function impossible error"
 return 0
 }
 
@@ -760,9 +761,9 @@ runsingle () {
   pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
   if [ "$args" = "" ]
   then
-    echo  "=====STARTsingle Pct $pctstring $exe $targ good=$goodcount skip=$skipcount"
+    echo  "=====STARTsingle Pct $pctstring $exe $targ good=$goodcount skip=$skipcount fail=$failcount"
   else
-    echo  "=====STARTsingle Pct $pctstring $args $targ good=$goodcount skip=$skipcount"
+    echo  "=====STARTsingle Pct $pctstring $args $targ good=$goodcount skip=$skipcount fail=$failcount"
   fi
   echo  "=====STATSsingle Pct $pctstring ct: $totalct"
   echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
@@ -851,7 +852,7 @@ runversiontest () {
     rm -f junk.versiontest
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
     pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
-    echo  "=====START Pct $pctstring $arg good=$goodcount skip=$skipcount"
+    echo  "=====START Pct $pctstring $arg good=$goodcount skip=$skipcount fail=$failcount"
     echo  "=====STATS Pct $pctstring ct: $totalct"
     echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
     $dw $arg >junk.versiontest
@@ -917,7 +918,7 @@ runtest () {
     #  counted it as a good or a fail.
     totalct=`expr $goodcount + $failcount + $skipcount + 1`
     pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
-    echo  "=====START Pct $pctstring $* $targ good=$goodcount skip=$skipcount"
+    echo  "=====START Pct $pctstring $* $targ good=$goodcount skip=$skipcount fail=$failcount"
     echo  "=====STATS Pct $pctstring ct: $totalct"
     rm -f core
     rm -f tmp1o tmp2n tmp3
@@ -1184,7 +1185,7 @@ echo "=====BUILD  dwarfexample/dwdebuglink.c "
   r=$?
   chkresbld $r 'check dwdebuglink compile dwarfexample/dwdebuglink.c failed'
 
-echo "=====START  $testsrc/testfindfuncbypc/ tests good=$goodcount skip=$skipcount"
+echo "=====START  $testsrc/testfindfuncbypc/ tests good=$goodcount skip=$skipcount fail=$failcount"
   mklocal testfindfuncbypc
   sh $testsrc/testfindfuncbypc/runtest.sh
   chkres $? 'check  of testfindfuncbypc failed'
@@ -1217,6 +1218,8 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+runsingle ossfuzz70721.base   ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz70721/fuzz_macro_dwarf5-4907954017468416
 
 runsingle examplev-ranges-a.base   ./test_ranges --testobj=$testsrc/macuniv/demo
 
@@ -1434,7 +1437,7 @@ runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz5646
 
 runsingle databitoffset.base $d2 -i -M $testsrc/databitoffset/dbotest.o
 
-echo "=====START  $testsrc/test_pubsreader good=$goodcount skip=$skipcount"
+echo "=====START  $testsrc/test_pubsreader good=$goodcount skip=$skipcount fail=$failcount"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
      $libzhdr \
      -I$libbld/libdwarf \
@@ -1462,7 +1465,7 @@ echo "=====START  $testsrc/test_pubsreader good=$goodcount skip=$skipcount"
     echo "To update mv $bldtest/junk_pubsreaderout $testsrc/pubsreader.base"
   fi
 
-echo "=====START  $testsrc/bitoffset/test_bitoffset.c good=$goodcount skip=$skipcount"
+echo "=====START  $testsrc/bitoffset/test_bitoffset.c good=$goodcount skip=$skipcount fail=$failcount"
   echo "test_bitoffset:"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
      $libzhdr \
@@ -1534,7 +1537,7 @@ else
 fi
 
 # Checking that we can print the .debug_sup section
-echo "=====START  supplementary  $testsrc/supplementary/runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START  supplementary  $testsrc/supplementary/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
 mklocal supplementary
   sh $testsrc/supplementary/runtest.sh
   chkres $? "$testsrc/supplementary/runtest.sh"
@@ -1567,14 +1570,14 @@ runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo --file-tied=rifkindwo/libcpptrace.so.
 
 runversiontest $d2 -V
 
-echo "=====START  guilfanov  $testsrc/guilfanov/runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START  guilfanov  $testsrc/guilfanov/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
 mklocal guilfanov
   sh $testsrc/guilfanov/runtest.sh
   # A fuzzed object which can crash libdwarf due to a bug.
   # hangs libdwarf/dwarfdump.
   chkres $? "$testsrc/guilfanov/runtest.sh"
 cd ..
-echo "=====START  guilfanov2  $testsrc/guilfanov2/runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START  guilfanov2  $testsrc/guilfanov2/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
 mklocal guilfanov2
   sh $testsrc/guilfanov2/runtest.sh
   # A fuzzed object which can encounter a double-free
@@ -1582,7 +1585,7 @@ mklocal guilfanov2
   chkres $? "$testsrc/guilfanov2/runtest.sh"
 cd ..
 
-echo "=====START utf8 test   good=$goodcount skip=$skipcount"
+echo "=====START utf8 test   good=$goodcount skip=$skipcount fail=$failcount"
 # contains local variables spelled with utf-8 and non-ASCII bytes
 if  [  "x$asciionly" = "xn" ]
 then
@@ -1592,13 +1595,13 @@ else
   echo "=====SKIP running utft/test as we are restricting to ASCII. (1)"
   skipcount=`expr $skipcount +  1`
 fi
-echo "=====START utf8 test b   good=$goodcount skip=$skipcount"
+echo "=====START utf8 test b   good=$goodcount skip=$skipcount fail=$failcount"
 runtest $d1 $d2 utf8/test --format-suppress-utf8 -i
 chkres $? "utf8 check, ascii only "
 
 
 #  Fails in 0.5.0, 0.6.0, fixed in 0.7.0
-echo "=====START shinibufa fuzzed   good=$goodcount skip=$skipcount"
+echo "=====START shinibufa fuzzed   good=$goodcount skip=$skipcount fail=$failcount"
 runtest $d1 $d2 shinibufa/fuzzed_input_file
 
 # Test of DWARF5 line table includes from
@@ -1906,7 +1909,7 @@ runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=$testsrc/moya3/ra
 runtest $d1 $d2 debugfission/mungegroup.o -i
 
 # New September 11, 2019.
-echo "=====START  $testsrc/testoffdie runtest.sh good=$goodcount skip=$skipcount  "
+echo "=====START  $testsrc/testoffdie runtest.sh good=$goodcount skip=$skipcount   fail=$failcount"
   mklocal testoffdie
     sh $testsrc/testoffdie/runtest.sh  
     chkres $? "$testsrc/testoffdie/runtest.sh"
@@ -1918,7 +1921,7 @@ then
   echo "=====SKIP debuglink runtest.sh as bigendian will fail (1) good=$goodcount skip=$skipcount"
   skipcount=`expr $skipcount + 1`
 else
-  echo "=====START  $testsrc/debuglink runtest.sh good=$goodcount skip=$skipcount"
+  echo "=====START  $testsrc/debuglink runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
   mklocal debuglink
     sh $testsrc/debuglink/runtest.sh
     chkres $? "$testsrc/debuglink/runtest.sh"
@@ -2029,7 +2032,7 @@ runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
 # See mustacchi/README.
 # Clang generates a slightly unusual relocation set for -m32.
 # As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
-echo "=====START  $testsrc/mustacchi runtest.sh nolibelf good=$goodcount skip=$skipcount"
+echo "=====START  $testsrc/mustacchi runtest.sh nolibelf good=$goodcount skip=$skipcount fail=$failcount"
   mklocal mustacchi
     sh $testsrc/mustacchi/runtestnolibelf.sh
     chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
@@ -2160,19 +2163,19 @@ runtest $d1 $d2   emre6/class_64_opt_fpo_split.dwp -a
 # the fix had no effect on this, which works ok.
 runtest $d1 $d2   emre6/class_64_opt_fpo_split -a
 
-echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simplereader.elf good=$goodcount skip=$skipcount"
+echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simplereader.elf good=$goodcount skip=$skipcount fail=$failcount"
   mklocal hughes2
     sh $testsrc/hughes2/runtest.sh $testsrc/corruptdwarf-a/simplereader.elf
     chkres $?  $testsrc/hughes2
   cd ..
 
-echo "=====START   $testsrc/implicitconst sh runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START   $testsrc/implicitconst sh runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
   mklocal implicitconst
     sh $testsrc/implicitconst/runtest.sh
     chkres $?  $testsrc/implicitconst/runtest.sh
   cd ..
 
-echo "=====START  $testsrc/nolibelf/runtest.sh good=$goodcount skip=$skipcount "
+echo "=====START  $testsrc/nolibelf/runtest.sh good=$goodcount skip=$skipcount  fail=$failcount"
 mklocal nolibelf
   sh $testsrc/nolibelf/runtest.sh
   chkres $?  $testsrc/nolibelf/runtest.sh
@@ -2460,7 +2463,7 @@ runtest $d1 $d2 emre2/emre.ex --print-gnu-debuglink
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=$testsrc/emre5/test33_64_opt_fpo_split
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=$testsrc/emre5/test33_64_opt_fpo_split
 
-echo "=====START  $testsrc/baddie1/runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START  $testsrc/baddie1/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
 mklocal baddie1
   sh $testsrc/baddie1/runtest.sh ../$d2
   chkres $?  $testsrc/baddie1
@@ -2468,7 +2471,7 @@ cd ..
 
   # Also tests dwarfgen and libdwarf with DW_CFA_advance_loc
   # operations
-echo "=====START  $testsrc/offsetfromlowpc/runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START  $testsrc/offsetfromlowpc/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
 if [ $dwarfgenok = "n" ]
 then
   echo "====SKIP run offsetfromlowpc (1)"
@@ -2480,7 +2483,7 @@ else
   cd ..
 fi
 
-echo "=====START  $testsrc/strsize/runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START  $testsrc/strsize/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
 if [ $dwarfgenok = "n" ]
 then
   echo "====SKIP run strsize (1)"
@@ -2494,19 +2497,19 @@ fi
 # tests simple reader and more than one dwarf_init* interface
 # across all object types
 # here kaufmann/t.o is tested as input to simplereader.
-echo "=====START $testsrc/debugfissionb runtest.sh ../simplereader good=$goodcount skip=$skipcount"
+echo "=====START $testsrc/debugfissionb runtest.sh ../simplereader good=$goodcount skip=$skipcount fail=$failcount"
 mklocal debugfissionb
   sh $testsrc/debugfissionb/runtest.sh
   chkres $?  $testsrc/debugfissionb-simplreader
 cd ..
 
-echo "=====START $testsrc/debugfission runtest.sh ../$d2 good=$goodcount skip=$skipcount"
+echo "=====START $testsrc/debugfission runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
 mklocal debugfission
   sh $testsrc/debugfission/runtest.sh  ../$d2
   chkres $?  "$testsrc/debugfission/runtest.sh ../$d2"
 cd ..
 
-echo "=====START  $testsrc/data16 runtest.sh ../$d2 good=$goodcount skip=$skipcount"
+echo "=====START  $testsrc/data16 runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
 if [ $dwarfgenok = "n" ]
 then
   echo "====SKIP run data16 (1)"
@@ -2695,13 +2698,13 @@ runtest $d1 $d2  lloyd/arange.elf  -kr
 # It is not MIPS and MIPS is just wrong here.  Testing it anyway!
 runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
 
-echo "=====START  $testsrc/findcu/runtest.sh "good=$goodcount skip=$skipcount
+echo "=====START  $testsrc/findcu/runtest.sh "good=$goodcount skip=$skipcoun fail=$failcountt
   mklocal findcu
     sh $testsrc/findcu/runtest.sh   
     chkres $? "$testsrc/findcu/cutest-of-a-libdwarf-interface"
   cd ..
 
-echo "=====START   $testsrc/dwgena/runtest.sh ../$d2 good=$goodcount skip=$skipcount"
+echo "====$START   $testsrc/dwgena/runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
 if [ $dwarfgenok = "n" ]
 then
   echo "====SKIP run dwgena  (1)"
@@ -2714,7 +2717,7 @@ else
   cd ..
 fi
 
-echo "=====START   $testsrc/dwgenc/runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START   $testsrc/dwgenc/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
 if [ $dwarfgenok = "n" ]
 then
   echo "====SKIP run dwgenc  (1)"
@@ -2727,7 +2730,7 @@ else
   cd ..
 fi
 
-echo "=====START   $testsrc/sandnes2/runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START   $testsrc/sandnes2/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
 mklocal sandnes2
   sh $testsrc/sandnes2/runtest.sh
   r=$?
@@ -2736,7 +2739,7 @@ cd ..
 
 if [ $nlize = 'n' ]
 then
-  echo "=====START $testsrc/legendre/runtest.sh  good=$goodcount skip=$skipcount "
+  echo "=====START $testsrc/legendre/runtest.sh  good=$goodcount skip=$skipcount  fail=$failcount"
   mklocal legendre
     sh $testsrc/legendre/runtest.sh  
     r=$?
@@ -2747,7 +2750,7 @@ else
   skipcount=`expr $skipcount + 1`
 fi
 
-echo "=====START   $testsrc/enciso4/runtest.sh good=$goodcount skip=$skipcount"
+echo "=====START   $testsrc/enciso4/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
 mklocal enciso4
   sh $testsrc/enciso4/runtest.sh
   chkres $?  $testsrc/enciso4
@@ -2960,7 +2963,7 @@ runtest $d1 $d2 legendre/libmpich.so.1.0 -ka
 
 if [ $nlize = 'n' ]
 then
-  echo "=====START $testsrc/test-alex1/runtest.sh good=$goodcount skip=$skipcount"
+  echo "=====START $testsrc/test-alex1/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
   mklocal test-alex1
     sh $testsrc/test-alex1/runtest.sh 
     chkres $?  $testsrc/test-alex1
@@ -2972,7 +2975,7 @@ fi
 
 if [ $nlize = 'n' ]
 then
-  echo "=====START $testsrc/test-alex2/runtest.sh  good=$goodcount skip=$skipcount"
+  echo "=====START $testsrc/test-alex2/runtest.sh  good=$goodcount skip=$skipcount fail=$failcount"
   mklocal test-alex2
     sh $testsrc/test-alex2/runtest.sh 
     chkres $?  $testsrc/test-alex2
