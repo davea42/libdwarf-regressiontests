@@ -1219,6 +1219,11 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+
+runsingle ossfuzz70753.base   ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz70753/fuzz_die_cu_offset-6598270743281664
+ 
+runsingle ossfuzz70763.base   ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz70763/fuzz_macro_dwarf5-5161075908083712
+
 runsingle ossfuzz70721.base   ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz70721/fuzz_macro_dwarf5-4907954017468416
 
 runsingle examplev-ranges-a.base   ./test_ranges --testobj=$testsrc/macuniv/demo
