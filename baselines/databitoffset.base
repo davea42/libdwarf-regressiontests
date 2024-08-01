@@ -48,7 +48,7 @@ LOCAL_SYMBOLS:
                       DW_AT_name                  long int <form DW_FORM_strp>
 < 1><0x00000068>    DW_TAG_pointer_type
                       DW_AT_byte_size             8 <form DW_FORM_implicit_const>
-                      DW_AT_type                  <0x0000006d> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x0000006d> <form DW_FORM_ref4> Refers to: char
 < 1><0x0000006d>    DW_TAG_base_type
                       DW_AT_byte_size             1 <form DW_FORM_data1>
                       DW_AT_encoding              DW_ATE_signed_char <form DW_FORM_data1>
@@ -79,7 +79,7 @@ LOCAL_SYMBOLS:
                         DW_AT_decl_file             0x00000001 <form DW_FORM_implicit_const>
                         DW_AT_decl_line             0x00000007 <form DW_FORM_data1>
                         DW_AT_decl_column           0x00000019 <form DW_FORM_implicit_const>
-                        DW_AT_type                  <0x0000005a> <form DW_FORM_ref4>
+                        DW_AT_type                  <0x0000005a> <form DW_FORM_ref4> Refers to: int
                         DW_AT_bit_size              1 <form DW_FORM_implicit_const>
                         DW_AT_data_bit_offset       0x00000080 <form DW_FORM_data1>
 < 2><0x000000a0>      DW_TAG_member
@@ -87,7 +87,7 @@ LOCAL_SYMBOLS:
                         DW_AT_decl_file             0x00000001 <form DW_FORM_implicit_const>
                         DW_AT_decl_line             0x00000008 <form DW_FORM_data1>
                         DW_AT_decl_column           0x00000019 <form DW_FORM_implicit_const>
-                        DW_AT_type                  <0x0000005a> <form DW_FORM_ref4>
+                        DW_AT_type                  <0x0000005a> <form DW_FORM_ref4> Refers to: int
                         DW_AT_bit_size              1 <form DW_FORM_implicit_const>
                         DW_AT_data_bit_offset       0x00000081 <form DW_FORM_data1>
 < 2><0x000000a9>      DW_TAG_member
@@ -95,14 +95,14 @@ LOCAL_SYMBOLS:
                         DW_AT_decl_file             0x00000001 <form DW_FORM_implicit_const>
                         DW_AT_decl_line             0x0000000a <form DW_FORM_data1>
                         DW_AT_decl_column           0x00000019 <form DW_FORM_data1>
-                        DW_AT_type                  <0x00000035> <form DW_FORM_ref4>
+                        DW_AT_type                  <0x00000035> <form DW_FORM_ref4> Refers to: unsigned int
                         DW_AT_data_member_location  20 <form DW_FORM_data1>
 < 1><0x000000b4>    DW_TAG_variable
                       DW_AT_name                  a <form DW_FORM_string>
                       DW_AT_decl_file             0x00000001 /home/davea/dwarf/regressiontests/databitoffset/dbotest.c <form DW_FORM_data1>
                       DW_AT_decl_line             0x0000000b <form DW_FORM_data1>
                       DW_AT_decl_column           0x00000003 <form DW_FORM_data1>
-                      DW_AT_type                  <0x00000074> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x00000074> <form DW_FORM_ref4> Refers to: struct_A
                       DW_AT_external              yes(1) <form DW_FORM_flag_present>
                       DW_AT_location              len 0x0009: 0x030000000000000000:  <form DW_FORM_exprloc>
                           DW_OP_addr 0x00000000
@@ -113,7 +113,7 @@ LOCAL_SYMBOLS:
                       DW_AT_decl_line             0x00000013 <form DW_FORM_data1>
                       DW_AT_decl_column           0x00000005 <form DW_FORM_data1>
                       DW_AT_prototyped            yes(1) <form DW_FORM_flag_present>
-                      DW_AT_type                  <0x0000005a> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x0000005a> <form DW_FORM_ref4> Refers to: int
                       DW_AT_low_pc                0x00000000 <form DW_FORM_addr>
                       DW_AT_high_pc               <offset-from-lowpc> 22 <form DW_FORM_data8> <highpc: 0x00000016>
                       DW_AT_frame_base            len 0x0001: 0x9c:  <form DW_FORM_exprloc>
@@ -125,7 +125,7 @@ LOCAL_SYMBOLS:
                         DW_AT_decl_file             0x00000001 <form DW_FORM_implicit_const>
                         DW_AT_decl_line             0x00000013 <form DW_FORM_implicit_const>
                         DW_AT_decl_column           0x0000000e <form DW_FORM_data1>
-                        DW_AT_type                  <0x0000005a> <form DW_FORM_ref4>
+                        DW_AT_type                  <0x0000005a> <form DW_FORM_ref4> Refers to: int
                         DW_AT_location              len 0x0002: 0x916c:  <form DW_FORM_exprloc>
                             DW_OP_fbreg -20
 < 2><0x000000f7>      DW_TAG_formal_parameter

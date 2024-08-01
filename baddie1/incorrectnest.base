@@ -74,7 +74,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_encoding              DW_ATE_unsigned
 < 1><0x00000072 GOFF=0x0000012f>    DW_TAG_pointer_type
                                       DW_AT_byte_size             4
-                                      DW_AT_type                  <0x00000078 GOFF=0x00000135>
+                                      DW_AT_type                  <0x00000078 GOFF=0x00000135> Refers to: char
 < 1><0x00000078 GOFF=0x00000135>    DW_TAG_base_type
                                       DW_AT_byte_size             1
                                       DW_AT_encoding              DW_ATE_unsigned_char
@@ -85,7 +85,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x0000000b
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_low_pc                0x00000000
                                       DW_AT_high_pc               0x00000000
                                       DW_AT_frame_base            len 0x0002: 0x7004: 
@@ -95,7 +95,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  i
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                         DW_AT_decl_line             0x0000000b
-                                        DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                        DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                         DW_AT_location              0x00000000
 < 1><0x000000a9 GOFF=0x00000166>    DW_TAG_subprogram
                                       DW_AT_external              yes(1)
@@ -103,7 +103,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x00000010
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_low_pc                0xfff400f4
                                       DW_AT_high_pc               0xfff400fe
                                       DW_AT_frame_base            len 0x0002: 0x7004: 
@@ -113,7 +113,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  i
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                         DW_AT_decl_line             0x00000010
-                                        DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                        DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                         DW_AT_location              0x00000013
       .debug_loc      offset  : 0x00000013
       <loclist at offset 0x00000013 with 1 entries follows>
@@ -125,7 +125,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x00000015
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_low_pc                0x00000000
                                       DW_AT_high_pc               0x00000000
                                       DW_AT_frame_base            len 0x0002: 0x7004: 
@@ -135,7 +135,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  i
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                         DW_AT_decl_line             0x00000015
-                                        DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                        DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                         DW_AT_location              0x00000026
 < 1><0x000000fd GOFF=0x000001ba>    DW_TAG_subprogram
                                       DW_AT_external              yes(1)
@@ -143,7 +143,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x0000001a
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_low_pc                0xfff400fb
                                       DW_AT_high_pc               0xfff40105
                                       DW_AT_frame_base            len 0x0002: 0x7004: 
@@ -153,7 +153,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  i
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                         DW_AT_decl_line             0x0000001a
-                                        DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                        DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                         DW_AT_location              0x00000039
       .debug_loc      offset  : 0x00000039
       <loclist at offset 0x00000039 with 1 entries follows>
@@ -165,7 +165,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x00000006
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_low_pc                0xfff40102
                                       DW_AT_high_pc               0xfff4012a
                                       DW_AT_frame_base            0x0000004c
@@ -182,7 +182,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  argc
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                         DW_AT_decl_line             0x00000006
-                                        DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                        DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                         DW_AT_location              0x00000078
       .debug_loc      offset  : 0x00000078
       <loclist at offset 0x00000078 with 1 entries follows>
@@ -203,7 +203,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  foo
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                         DW_AT_decl_line             0x00000008
-                                        DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                        DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                         DW_AT_declaration           yes(1)
                                         DW_AT_sibling               <0x00000175 GOFF=0x00000232>
 < 3><0x00000173 GOFF=0x00000230>        DW_TAG_unspecified_parameters
@@ -212,7 +212,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  foo2
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                         DW_AT_decl_line             0x00000008
-                                        DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                        DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                         DW_AT_declaration           yes(1)
 < 3><0x00000182 GOFF=0x0000023f>        DW_TAG_unspecified_parameters
 < 1><0x00000185 GOFF=0x00000242>    DW_TAG_pointer_type
@@ -222,21 +222,21 @@ LOCAL_SYMBOLS:
                                       DW_AT_name                  xxx
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x00000003
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_external              yes(1)
                                       DW_AT_declaration           yes(1)
 < 1><0x00000198 GOFF=0x00000255>    DW_TAG_variable
                                       DW_AT_name                  yyy
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x00000003
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_external              yes(1)
                                       DW_AT_declaration           yes(1)
 < 1><0x000001a5 GOFF=0x00000262>    DW_TAG_variable
                                       DW_AT_name                  xxx
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x00000003
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_external              yes(1)
                                       DW_AT_location              len 0x0005: 0x0318000000: 
                                           DW_OP_addr 0x00000018
@@ -244,7 +244,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_name                  yyy
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x00000003
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_external              yes(1)
                                       DW_AT_location              len 0x0005: 0x031c000000: 
                                           DW_OP_addr 0x0000001c
@@ -284,7 +284,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_name                  UQItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x00000088
-                                      DW_AT_type                  <0x00000053 GOFF=0x000002da>
+                                      DW_AT_type                  <0x00000053 GOFF=0x000002da> Refers to: unsigned char
 < 1><0x00000053 GOFF=0x000002da>    DW_TAG_base_type
                                       DW_AT_byte_size             1
                                       DW_AT_encoding              DW_ATE_unsigned_char
@@ -301,17 +301,17 @@ LOCAL_SYMBOLS:
                                       DW_AT_name                  SItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x0000008d
-                                      DW_AT_type                  <0x00000025 GOFF=0x000002ac>
+                                      DW_AT_type                  <0x00000025 GOFF=0x000002ac> Refers to: int
 < 1><0x00000073 GOFF=0x000002fa>    DW_TAG_typedef
                                       DW_AT_name                  USItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x0000008e
-                                      DW_AT_type                  <0x0000003a GOFF=0x000002c1>
+                                      DW_AT_type                  <0x0000003a GOFF=0x000002c1> Refers to: unsigned int
 < 1><0x0000007e GOFF=0x00000305>    DW_TAG_typedef
                                       DW_AT_name                  DItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x00000091
-                                      DW_AT_type                  <0x00000089 GOFF=0x00000310>
+                                      DW_AT_type                  <0x00000089 GOFF=0x00000310> Refers to: long long int
 < 1><0x00000089 GOFF=0x00000310>    DW_TAG_base_type
                                       DW_AT_byte_size             8
                                       DW_AT_encoding              DW_ATE_signed
@@ -320,7 +320,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_name                  UDItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x00000092
-                                      DW_AT_type                  <0x0000009b GOFF=0x00000322>
+                                      DW_AT_type                  <0x0000009b GOFF=0x00000322> Refers to: long long unsigned int
 < 1><0x0000009b GOFF=0x00000322>    DW_TAG_base_type
                                       DW_AT_byte_size             8
                                       DW_AT_encoding              DW_ATE_unsigned
@@ -343,14 +343,14 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  low
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                         DW_AT_decl_line             0x000001a2
-                                        DW_AT_type                  <0x00000068 GOFF=0x000002ef>
+                                        DW_AT_type                  <0x00000068 GOFF=0x000002ef> Refers to: SItype
                                         DW_AT_data_member_location  len 0x0002: 0x2300: 
                                             DW_OP_plus_uconst 0
 < 2><0x000000cc GOFF=0x00000353>      DW_TAG_member
                                         DW_AT_name                  high
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                         DW_AT_decl_line             0x000001a2
-                                        DW_AT_type                  <0x00000068 GOFF=0x000002ef>
+                                        DW_AT_type                  <0x00000068 GOFF=0x000002ef> Refers to: SItype
                                         DW_AT_data_member_location  len 0x0002: 0x2304: 
                                             DW_OP_plus_uconst 4
 < 1><0x000000dc GOFF=0x00000363>    DW_TAG_union_type
@@ -362,12 +362,12 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  s
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                         DW_AT_decl_line             0x000001ab
-                                        DW_AT_type                  <0x000000b0 GOFF=0x00000337>
+                                        DW_AT_type                  <0x000000b0 GOFF=0x00000337> Refers to: DWstruct
 < 2><0x000000ef GOFF=0x00000376>      DW_TAG_member
                                         DW_AT_name                  ll
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                         DW_AT_decl_line             0x000001ac
-                                        DW_AT_type                  <0x0000007e GOFF=0x00000305>
+                                        DW_AT_type                  <0x0000007e GOFF=0x00000305> Refers to: DItype
 < 1><0x000000fb GOFF=0x00000382>    DW_TAG_typedef
                                       DW_AT_name                  DWunion
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
@@ -378,19 +378,19 @@ LOCAL_SYMBOLS:
                                       DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                       DW_AT_decl_line             0x00000360
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x00000090 GOFF=0x00000317>
+                                      DW_AT_type                  <0x00000090 GOFF=0x00000317> Refers to: UDItype
                                       DW_AT_inline                DW_INL_declared_inlined
                                       DW_AT_sibling               <0x00000439 GOFF=0x000006c0>
 < 2><0x00000119 GOFF=0x000003a0>      DW_TAG_formal_parameter
                                         DW_AT_name                  n
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000360
-                                        DW_AT_type                  <0x00000090 GOFF=0x00000317>
+                                        DW_AT_type                  <0x00000090 GOFF=0x00000317> Refers to: UDItype
 < 2><0x00000123 GOFF=0x000003aa>      DW_TAG_formal_parameter
                                         DW_AT_name                  d
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000360
-                                        DW_AT_type                  <0x00000090 GOFF=0x00000317>
+                                        DW_AT_type                  <0x00000090 GOFF=0x00000317> Refers to: UDItype
 < 2><0x0000012d GOFF=0x000003b4>      DW_TAG_formal_parameter
                                         DW_AT_name                  rp
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
@@ -410,52 +410,52 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  rr
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000364
-                                        DW_AT_type                  <0x000000fb GOFF=0x00000382>
+                                        DW_AT_type                  <0x000000fb GOFF=0x00000382> Refers to: DWunion
 < 2><0x00000159 GOFF=0x000003e0>      DW_TAG_variable
                                         DW_AT_name                  d0
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x00000164 GOFF=0x000003eb>      DW_TAG_variable
                                         DW_AT_name                  d1
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x0000016f GOFF=0x000003f6>      DW_TAG_variable
                                         DW_AT_name                  n0
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x0000017a GOFF=0x00000401>      DW_TAG_variable
                                         DW_AT_name                  n1
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x00000185 GOFF=0x0000040c>      DW_TAG_variable
                                         DW_AT_name                  n2
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x00000190 GOFF=0x00000417>      DW_TAG_variable
                                         DW_AT_name                  q0
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000366
-                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x0000019b GOFF=0x00000422>      DW_TAG_variable
                                         DW_AT_name                  q1
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000366
-                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x000001a6 GOFF=0x0000042d>      DW_TAG_variable
                                         DW_AT_name                  b
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000367
-                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x000001b0 GOFF=0x00000437>      DW_TAG_variable
                                         DW_AT_name                  bm
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000367
-                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                        DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x000001bb GOFF=0x00000442>      DW_TAG_variable
                                         DW_AT_name                  ww
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
@@ -467,269 +467,269 @@ LOCAL_SYMBOLS:
                                           DW_AT_name                  __xr
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x00000397
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x000001d7 GOFF=0x0000045e>        DW_TAG_variable
                                           DW_AT_name                  __a
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x00000397
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x000001e4 GOFF=0x0000046b>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x0000023e GOFF=0x000004c5>
 < 3><0x000001e9 GOFF=0x00000470>        DW_TAG_variable
                                           DW_AT_name                  __d1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x000001f5 GOFF=0x0000047c>        DW_TAG_variable
                                           DW_AT_name                  __d0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000201 GOFF=0x00000488>        DW_TAG_variable
                                           DW_AT_name                  __q1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x0000020d GOFF=0x00000494>        DW_TAG_variable
                                           DW_AT_name                  __q0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000219 GOFF=0x000004a0>        DW_TAG_variable
                                           DW_AT_name                  __r1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000225 GOFF=0x000004ac>        DW_TAG_variable
                                           DW_AT_name                  __r0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000231 GOFF=0x000004b8>        DW_TAG_variable
                                           DW_AT_name                  __m
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x0000023e GOFF=0x000004c5>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x0000025c GOFF=0x000004e3>
 < 3><0x00000243 GOFF=0x000004ca>        DW_TAG_variable
                                           DW_AT_name                  __xr
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003af
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x0000024f GOFF=0x000004d6>        DW_TAG_variable
                                           DW_AT_name                  __a
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003af
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x0000025c GOFF=0x000004e3>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x000002b6 GOFF=0x0000053d>
 < 3><0x00000261 GOFF=0x000004e8>        DW_TAG_variable
                                           DW_AT_name                  __d1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x0000026d GOFF=0x000004f4>        DW_TAG_variable
                                           DW_AT_name                  __d0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000279 GOFF=0x00000500>        DW_TAG_variable
                                           DW_AT_name                  __q1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000285 GOFF=0x0000050c>        DW_TAG_variable
                                           DW_AT_name                  __q0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000291 GOFF=0x00000518>        DW_TAG_variable
                                           DW_AT_name                  __r1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x0000029d GOFF=0x00000524>        DW_TAG_variable
                                           DW_AT_name                  __r0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x000002a9 GOFF=0x00000530>        DW_TAG_variable
                                           DW_AT_name                  __m
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x000002b6 GOFF=0x0000053d>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x00000310 GOFF=0x00000597>
 < 3><0x000002bb GOFF=0x00000542>        DW_TAG_variable
                                           DW_AT_name                  __d1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x000002c7 GOFF=0x0000054e>        DW_TAG_variable
                                           DW_AT_name                  __d0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x000002d3 GOFF=0x0000055a>        DW_TAG_variable
                                           DW_AT_name                  __q1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x000002df GOFF=0x00000566>        DW_TAG_variable
                                           DW_AT_name                  __q0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x000002eb GOFF=0x00000572>        DW_TAG_variable
                                           DW_AT_name                  __r1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x000002f7 GOFF=0x0000057e>        DW_TAG_variable
                                           DW_AT_name                  __r0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000303 GOFF=0x0000058a>        DW_TAG_variable
                                           DW_AT_name                  __m
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x00000310 GOFF=0x00000597>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x0000032e GOFF=0x000005b5>
 < 3><0x00000315 GOFF=0x0000059c>        DW_TAG_variable
                                           DW_AT_name                  __xr
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003f0
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000321 GOFF=0x000005a8>        DW_TAG_variable
                                           DW_AT_name                  __a
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003f0
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x0000032e GOFF=0x000005b5>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x00000340 GOFF=0x000005c7>
 < 3><0x00000333 GOFF=0x000005ba>        DW_TAG_variable
                                           DW_AT_name                  __x
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003fe
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 2><0x00000340 GOFF=0x000005c7>      DW_TAG_lexical_block
 < 3><0x00000341 GOFF=0x000005c8>        DW_TAG_variable
                                           DW_AT_name                  m1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x0000040e
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x0000034c GOFF=0x000005d3>        DW_TAG_variable
                                           DW_AT_name                  m0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x0000040e
-                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                          DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000357 GOFF=0x000005de>        DW_TAG_lexical_block
                                           DW_AT_sibling               <0x000003b1 GOFF=0x00000638>
 < 4><0x0000035c GOFF=0x000005e3>          DW_TAG_variable
                                             DW_AT_name                  __d1
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x00000368 GOFF=0x000005ef>          DW_TAG_variable
                                             DW_AT_name                  __d0
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x00000374 GOFF=0x000005fb>          DW_TAG_variable
                                             DW_AT_name                  __q1
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x00000380 GOFF=0x00000607>          DW_TAG_variable
                                             DW_AT_name                  __q0
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x0000038c GOFF=0x00000613>          DW_TAG_variable
                                             DW_AT_name                  __r1
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x00000398 GOFF=0x0000061f>          DW_TAG_variable
                                             DW_AT_name                  __r0
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x000003a4 GOFF=0x0000062b>          DW_TAG_variable
                                             DW_AT_name                  __m
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x000003b1 GOFF=0x00000638>        DW_TAG_lexical_block
                                           DW_AT_sibling               <0x00000417 GOFF=0x0000069e>
 < 4><0x000003b6 GOFF=0x0000063d>          DW_TAG_variable
                                             DW_AT_name                  __x0
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x000003c2 GOFF=0x00000649>          DW_TAG_variable
                                             DW_AT_name                  __x1
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x000003ce GOFF=0x00000655>          DW_TAG_variable
                                             DW_AT_name                  __x2
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x000003da GOFF=0x00000661>          DW_TAG_variable
                                             DW_AT_name                  __x3
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x000003e6 GOFF=0x0000066d>          DW_TAG_variable
                                             DW_AT_name                  __ul
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x000003f2 GOFF=0x00000679>          DW_TAG_variable
                                             DW_AT_name                  __vl
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x000003fe GOFF=0x00000685>          DW_TAG_variable
                                             DW_AT_name                  __uh
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 4><0x0000040a GOFF=0x00000691>          DW_TAG_variable
                                             DW_AT_name                  __vh
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000417 GOFF=0x0000069e>        DW_TAG_lexical_block
                                           DW_AT_sibling               <0x00000429 GOFF=0x000006b0>
 < 4><0x0000041c GOFF=0x000006a3>          DW_TAG_variable
                                             DW_AT_name                  __x
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041f
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 3><0x00000429 GOFF=0x000006b0>        DW_TAG_lexical_block
 < 4><0x0000042a GOFF=0x000006b1>          DW_TAG_variable
                                             DW_AT_name                  __x
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000427
-                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa>
+                                            DW_AT_type                  <0x00000073 GOFF=0x000002fa> Refers to: USItype
 < 1><0x00000439 GOFF=0x000006c0>    DW_TAG_pointer_type
                                       DW_AT_byte_size             4
-                                      DW_AT_type                  <0x00000090 GOFF=0x00000317>
+                                      DW_AT_type                  <0x00000090 GOFF=0x00000317> Refers to: UDItype
 < 1><0x0000043f GOFF=0x000006c6>    DW_TAG_const_type
-                                      DW_AT_type                  <0x000000fb GOFF=0x00000382>
+                                      DW_AT_type                  <0x000000fb GOFF=0x00000382> Refers to: DWunion
 < 1><0x00000444 GOFF=0x000006cb>    DW_TAG_subprogram
                                       DW_AT_external              yes(1)
                                       DW_AT_name                  __udivdi3
                                       DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                       DW_AT_decl_line             0x00000472
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x00000090 GOFF=0x00000317>
+                                      DW_AT_type                  <0x00000090 GOFF=0x00000317> Refers to: UDItype
                                       DW_AT_low_pc                0xfff43a96
                                       DW_AT_high_pc               0xfff43e40
                                       DW_AT_frame_base            0x0000009e
@@ -744,7 +744,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  n
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000472
-                                        DW_AT_type                  <0x00000090 GOFF=0x00000317>
+                                        DW_AT_type                  <0x00000090 GOFF=0x00000317> Refers to: UDItype
                                         DW_AT_location              0x000000be
       .debug_loc      offset  : 0x000000be
       <loclist at offset 0x000000be with 8 entries follows>
@@ -792,7 +792,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  d
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000472
-                                        DW_AT_type                  <0x00000090 GOFF=0x00000317>
+                                        DW_AT_type                  <0x00000090 GOFF=0x00000317> Refers to: UDItype
                                         DW_AT_location              0x00000146
       .debug_loc      offset  : 0x00000146
       <loclist at offset 0x00000146 with 6 entries follows>
@@ -827,7 +827,7 @@ LOCAL_SYMBOLS:
                                             DW_OP_reg4
                                             DW_OP_piece 4
 < 2><0x0000047e GOFF=0x00000705>      DW_TAG_inlined_subroutine
-                                        DW_AT_abstract_origin       <0x00000107 GOFF=0x0000038e>
+                                        DW_AT_abstract_origin       <0x00000107 GOFF=0x0000038e> Refers to: __udivmoddi4
                                         DW_AT_entry_pc              0xfff43a98
                                         DW_AT_ranges                0x00000058
   ranges: 9 at .debug_ranges offset 88 (0x00000058)  ( base addr 0xfff43a96) (72 bytes)
@@ -843,10 +843,10 @@ LOCAL_SYMBOLS:
                                         DW_AT_call_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_call_line             0x00000474
 < 3><0x0000048e GOFF=0x00000715>        DW_TAG_formal_parameter
-                                          DW_AT_abstract_origin       <0x0000012d GOFF=0x000003b4>
+                                          DW_AT_abstract_origin       <0x0000012d GOFF=0x000003b4> Refers to: rp
                                           DW_AT_const_value           0
 < 3><0x00000494 GOFF=0x0000071b>        DW_TAG_formal_parameter
-                                          DW_AT_abstract_origin       <0x00000123 GOFF=0x000003aa>
+                                          DW_AT_abstract_origin       <0x00000123 GOFF=0x000003aa> Refers to: d
                                           DW_AT_location              0x000001ae
       .debug_loc      offset  : 0x000001ae
       <loclist at offset 0x000001ae with 7 entries follows>
@@ -886,7 +886,7 @@ LOCAL_SYMBOLS:
                                               DW_OP_reg4
                                               DW_OP_piece 4
 < 3><0x0000049d GOFF=0x00000724>        DW_TAG_formal_parameter
-                                          DW_AT_abstract_origin       <0x00000119 GOFF=0x000003a0>
+                                          DW_AT_abstract_origin       <0x00000119 GOFF=0x000003a0> Refers to: n
                                           DW_AT_location              0x00000226
       .debug_loc      offset  : 0x00000226
       <loclist at offset 0x00000226 with 15 entries follows>
@@ -978,13 +978,13 @@ LOCAL_SYMBOLS:
    [ 7] range entry  raw: 0x000000c7,  0x00000112 cooked: 0xfff43b5d,  0xfff43ba8
    [ 8] range end    0,0
 < 4><0x000004ab GOFF=0x00000732>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000138 GOFF=0x000003bf>
+                                            DW_AT_abstract_origin       <0x00000138 GOFF=0x000003bf> Refers to: nn
 < 4><0x000004b0 GOFF=0x00000737>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000143 GOFF=0x000003ca>
+                                            DW_AT_abstract_origin       <0x00000143 GOFF=0x000003ca> Refers to: dd
 < 4><0x000004b5 GOFF=0x0000073c>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x0000014e GOFF=0x000003d5>
+                                            DW_AT_abstract_origin       <0x0000014e GOFF=0x000003d5> Refers to: rr
 < 4><0x000004ba GOFF=0x00000741>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000159 GOFF=0x000003e0>
+                                            DW_AT_abstract_origin       <0x00000159 GOFF=0x000003e0> Refers to: d0
                                             DW_AT_location              0x0000031e
       .debug_loc      offset  : 0x0000031e
       <loclist at offset 0x0000031e with 12 entries follows>
@@ -1013,7 +1013,7 @@ LOCAL_SYMBOLS:
    [11]<low,hi addrs       0xfff43e21 , 0xfff43e31>
                                                 DW_OP_reg14
 < 4><0x000004c3 GOFF=0x0000074a>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000164 GOFF=0x000003eb>
+                                            DW_AT_abstract_origin       <0x00000164 GOFF=0x000003eb> Refers to: d1
                                             DW_AT_location              0x000003aa
       .debug_loc      offset  : 0x000003aa
       <loclist at offset 0x000003aa with 9 entries follows>
@@ -1036,7 +1036,7 @@ LOCAL_SYMBOLS:
    [ 8]<low,hi addrs       0xfff43e31 , 0xfff43e40>
                                                 DW_OP_reg4
 < 4><0x000004cc GOFF=0x00000753>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x0000016f GOFF=0x000003f6>
+                                            DW_AT_abstract_origin       <0x0000016f GOFF=0x000003f6> Refers to: n0
                                             DW_AT_location              0x00000415
       .debug_loc      offset  : 0x00000415
       <loclist at offset 0x00000415 with 17 entries follows>
@@ -1084,7 +1084,7 @@ LOCAL_SYMBOLS:
    [16]<low,hi addrs       0xfff43e31 , 0xfff43e40>
                                                 DW_OP_reg1
 < 4><0x000004d5 GOFF=0x0000075c>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x0000017a GOFF=0x00000401>
+                                            DW_AT_abstract_origin       <0x0000017a GOFF=0x00000401> Refers to: n1
                                             DW_AT_location              0x000004e7
       .debug_loc      offset  : 0x000004e7
       <loclist at offset 0x000004e7 with 21 entries follows>
@@ -1131,14 +1131,14 @@ LOCAL_SYMBOLS:
    [20]<low,hi addrs       0xfff43e31 , 0xfff43e40>
                                                 DW_OP_reg2
 < 4><0x000004de GOFF=0x00000765>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000185 GOFF=0x0000040c>
+                                            DW_AT_abstract_origin       <0x00000185 GOFF=0x0000040c> Refers to: n2
                                             DW_AT_location              0x000005d6
       .debug_loc      offset  : 0x000005d6
       <loclist at offset 0x000005d6 with 1 entries follows>
    [ 0]<low,hi addrs       0xfff43d51 , 0xfff43d66>
                                                 DW_OP_reg11
 < 4><0x000004e7 GOFF=0x0000076e>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000190 GOFF=0x00000417>
+                                            DW_AT_abstract_origin       <0x00000190 GOFF=0x00000417> Refers to: q0
                                             DW_AT_location              0x000005e9
       .debug_loc      offset  : 0x000005e9
       <loclist at offset 0x000005e9 with 2 entries follows>
@@ -1147,7 +1147,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43dd9 , 0xfff43dec>
                                                 DW_OP_reg11
 < 4><0x000004f0 GOFF=0x00000777>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x0000019b GOFF=0x00000422>
+                                            DW_AT_abstract_origin       <0x0000019b GOFF=0x00000422> Refers to: q1
                                             DW_AT_location              0x00000607
       .debug_loc      offset  : 0x00000607
       <loclist at offset 0x00000607 with 5 entries follows>
@@ -1164,7 +1164,7 @@ LOCAL_SYMBOLS:
    [ 4]<low,hi addrs       0xfff43e21 , 0xfff43e29>
                                                 DW_OP_reg2
 < 4><0x000004f9 GOFF=0x00000780>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x000001a6 GOFF=0x0000042d>
+                                            DW_AT_abstract_origin       <0x000001a6 GOFF=0x0000042d> Refers to: b
                                             DW_AT_location              0x00000648
       .debug_loc      offset  : 0x00000648
       <loclist at offset 0x00000648 with 2 entries follows>
@@ -1173,7 +1173,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43d49 , 0xfff43d4e>
                                                 DW_OP_reg7
 < 4><0x00000502 GOFF=0x00000789>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x000001b0 GOFF=0x00000437>
+                                            DW_AT_abstract_origin       <0x000001b0 GOFF=0x00000437> Refers to: bm
                                             DW_AT_location              0x00000666
       .debug_loc      offset  : 0x00000666
       <loclist at offset 0x00000666 with 9 entries follows>
@@ -1196,7 +1196,7 @@ LOCAL_SYMBOLS:
    [ 8]<low,hi addrs       0xfff43e12 , 0xfff43e21>
                                                 DW_OP_reg14
 < 4><0x0000050b GOFF=0x00000792>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x000001bb GOFF=0x00000442>
+                                            DW_AT_abstract_origin       <0x000001bb GOFF=0x00000442> Refers to: ww
 < 4><0x00000510 GOFF=0x00000797>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000000e8
   ranges: 4 at .debug_ranges offset 232 (0x000000e8)  ( base addr 0xfff43a96) (32 bytes)
@@ -1206,7 +1206,7 @@ LOCAL_SYMBOLS:
    [ 3] range end    0,0
                                             DW_AT_sibling               <0x000005bf GOFF=0x00000846>
 < 5><0x00000519 GOFF=0x000007a0>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000341 GOFF=0x000005c8>
+                                              DW_AT_abstract_origin       <0x00000341 GOFF=0x000005c8> Refers to: m1
                                               DW_AT_location              0x000006d1
       .debug_loc      offset  : 0x000006d1
       <loclist at offset 0x000006d1 with 2 entries follows>
@@ -1215,7 +1215,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43dd9 , 0xfff43dec>
                                                   DW_OP_reg3
 < 5><0x00000522 GOFF=0x000007a9>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x0000034c GOFF=0x000005d3>
+                                              DW_AT_abstract_origin       <0x0000034c GOFF=0x000005d3> Refers to: m0
                                               DW_AT_location              0x000006ef
       .debug_loc      offset  : 0x000006ef
       <loclist at offset 0x000006ef with 2 entries follows>
@@ -1253,7 +1253,7 @@ LOCAL_SYMBOLS:
    [ 6] range end    0,0
                                               DW_AT_sibling               <0x00000574 GOFF=0x000007fb>
 < 6><0x00000534 GOFF=0x000007bb>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x0000035c GOFF=0x000005e3>
+                                                DW_AT_abstract_origin       <0x0000035c GOFF=0x000005e3> Refers to: __d1
                                                 DW_AT_location              0x0000072b
       .debug_loc      offset  : 0x0000072b
       <loclist at offset 0x0000072b with 3 entries follows>
@@ -1270,7 +1270,7 @@ LOCAL_SYMBOLS:
                                                     DW_OP_shr
                                                     DW_OP_stack_value
 < 6><0x0000053d GOFF=0x000007c4>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x00000368 GOFF=0x000005ef>
+                                                DW_AT_abstract_origin       <0x00000368 GOFF=0x000005ef> Refers to: __d0
                                                 DW_AT_location              0x0000075c
       .debug_loc      offset  : 0x0000075c
       <loclist at offset 0x0000075c with 2 entries follows>
@@ -1279,7 +1279,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43e12 , 0xfff43e21>
                                                     DW_OP_reg13
 < 6><0x00000546 GOFF=0x000007cd>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x00000374 GOFF=0x000005fb>
+                                                DW_AT_abstract_origin       <0x00000374 GOFF=0x000005fb> Refers to: __q1
                                                 DW_AT_location              0x0000077a
       .debug_loc      offset  : 0x0000077a
       <loclist at offset 0x0000077a with 4 entries follows>
@@ -1292,7 +1292,7 @@ LOCAL_SYMBOLS:
    [ 3]<low,hi addrs       0xfff43e12 , 0xfff43e21>
                                                     DW_OP_reg12
 < 6><0x0000054f GOFF=0x000007d6>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x00000380 GOFF=0x00000607>
+                                                DW_AT_abstract_origin       <0x00000380 GOFF=0x00000607> Refers to: __q0
                                                 DW_AT_location              0x000007ae
       .debug_loc      offset  : 0x000007ae
       <loclist at offset 0x000007ae with 4 entries follows>
@@ -1305,7 +1305,7 @@ LOCAL_SYMBOLS:
    [ 3]<low,hi addrs       0xfff43e1c , 0xfff43e21>
                                                     DW_OP_reg11
 < 6><0x00000558 GOFF=0x000007df>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x0000038c GOFF=0x00000613>
+                                                DW_AT_abstract_origin       <0x0000038c GOFF=0x00000613> Refers to: __r1
                                                 DW_AT_location              0x000007e2
       .debug_loc      offset  : 0x000007e2
       <loclist at offset 0x000007e2 with 4 entries follows>
@@ -1318,7 +1318,7 @@ LOCAL_SYMBOLS:
    [ 3]<low,hi addrs       0xfff43cd5 , 0xfff43cdf>
                                                     DW_OP_reg15
 < 6><0x00000561 GOFF=0x000007e8>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x00000398 GOFF=0x0000061f>
+                                                DW_AT_abstract_origin       <0x00000398 GOFF=0x0000061f> Refers to: __r0
                                                 DW_AT_location              0x00000816
       .debug_loc      offset  : 0x00000816
       <loclist at offset 0x00000816 with 7 entries follows>
@@ -1337,7 +1337,7 @@ LOCAL_SYMBOLS:
    [ 6]<low,hi addrs       0xfff43e1e , 0xfff43e21>
                                                     DW_OP_reg7
 < 6><0x0000056a GOFF=0x000007f1>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003a4 GOFF=0x0000062b>
+                                                DW_AT_abstract_origin       <0x000003a4 GOFF=0x0000062b> Refers to: __m
                                                 DW_AT_location              0x0000086b
       .debug_loc      offset  : 0x0000086b
       <loclist at offset 0x0000086b with 3 entries follows>
@@ -1354,7 +1354,7 @@ LOCAL_SYMBOLS:
    [ 1] range entry  raw: 0x0000028f,  0x000002a0 cooked: 0xfff43d25,  0xfff43d36
    [ 2] range end    0,0
 < 6><0x00000579 GOFF=0x00000800>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003b6 GOFF=0x0000063d>
+                                                DW_AT_abstract_origin       <0x000003b6 GOFF=0x0000063d> Refers to: __x0
                                                 DW_AT_location              0x00000894
       .debug_loc      offset  : 0x00000894
       <loclist at offset 0x00000894 with 2 entries follows>
@@ -1363,7 +1363,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43dd9 , 0xfff43de0>
                                                     DW_OP_reg13
 < 6><0x00000582 GOFF=0x00000809>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003c2 GOFF=0x00000649>
+                                                DW_AT_abstract_origin       <0x000003c2 GOFF=0x00000649> Refers to: __x1
                                                 DW_AT_location              0x000008b2
       .debug_loc      offset  : 0x000008b2
       <loclist at offset 0x000008b2 with 2 entries follows>
@@ -1372,7 +1372,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43dd9 , 0xfff43ddb>
                                                     DW_OP_reg12
 < 6><0x0000058b GOFF=0x00000812>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003ce GOFF=0x00000655>
+                                                DW_AT_abstract_origin       <0x000003ce GOFF=0x00000655> Refers to: __x2
                                                 DW_AT_location              0x000008d0
       .debug_loc      offset  : 0x000008d0
       <loclist at offset 0x000008d0 with 2 entries follows>
@@ -1381,7 +1381,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43dd9 , 0xfff43df4>
                                                     DW_OP_reg4
 < 6><0x00000594 GOFF=0x0000081b>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003da GOFF=0x00000661>
+                                                DW_AT_abstract_origin       <0x000003da GOFF=0x00000661> Refers to: __x3
                                                 DW_AT_location              0x000008ee
       .debug_loc      offset  : 0x000008ee
       <loclist at offset 0x000008ee with 2 entries follows>
@@ -1390,15 +1390,15 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43d31 , 0xfff43d36>
                                                     DW_OP_reg3
 < 6><0x0000059d GOFF=0x00000824>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003e6 GOFF=0x0000066d>
+                                                DW_AT_abstract_origin       <0x000003e6 GOFF=0x0000066d> Refers to: __ul
                                                 DW_AT_location              len 0x0001: 0x5c: 
                                                     DW_OP_reg12
 < 6><0x000005a4 GOFF=0x0000082b>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003f2 GOFF=0x00000679>
+                                                DW_AT_abstract_origin       <0x000003f2 GOFF=0x00000679> Refers to: __vl
                                                 DW_AT_location              len 0x0001: 0x54: 
                                                     DW_OP_reg4
 < 6><0x000005ab GOFF=0x00000832>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003fe GOFF=0x00000685>
+                                                DW_AT_abstract_origin       <0x000003fe GOFF=0x00000685> Refers to: __uh
                                                 DW_AT_location              0x0000090c
       .debug_loc      offset  : 0x0000090c
       <loclist at offset 0x0000090c with 4 entries follows>
@@ -1417,7 +1417,7 @@ LOCAL_SYMBOLS:
                                                     DW_OP_shr
                                                     DW_OP_stack_value
 < 6><0x000005b4 GOFF=0x0000083b>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x0000040a GOFF=0x00000691>
+                                                DW_AT_abstract_origin       <0x0000040a GOFF=0x00000691> Refers to: __vh
                                                 DW_AT_location              0x00000948
       .debug_loc      offset  : 0x00000948
       <loclist at offset 0x00000948 with 1 entries follows>
@@ -1431,7 +1431,7 @@ LOCAL_SYMBOLS:
    [ 2] range end    0,0
                                             DW_AT_sibling               <0x00000608 GOFF=0x0000088f>
 < 5><0x000005c8 GOFF=0x0000084f>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000002bb GOFF=0x00000542>
+                                              DW_AT_abstract_origin       <0x000002bb GOFF=0x00000542> Refers to: __d1
                                               DW_AT_location              0x0000095b
       .debug_loc      offset  : 0x0000095b
       <loclist at offset 0x0000095b with 2 entries follows>
@@ -1440,7 +1440,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43e21 , 0xfff43e29>
                                                   DW_OP_reg4
 < 5><0x000005d1 GOFF=0x00000858>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000002c7 GOFF=0x0000054e>
+                                              DW_AT_abstract_origin       <0x000002c7 GOFF=0x0000054e> Refers to: __d0
                                               DW_AT_location              0x00000979
       .debug_loc      offset  : 0x00000979
       <loclist at offset 0x00000979 with 2 entries follows>
@@ -1449,7 +1449,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43e21 , 0xfff43e29>
                                                   DW_OP_reg7
 < 5><0x000005da GOFF=0x00000861>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000002d3 GOFF=0x0000055a>
+                                              DW_AT_abstract_origin       <0x000002d3 GOFF=0x0000055a> Refers to: __q1
                                               DW_AT_location              0x00000997
       .debug_loc      offset  : 0x00000997
       <loclist at offset 0x00000997 with 4 entries follows>
@@ -1462,7 +1462,7 @@ LOCAL_SYMBOLS:
    [ 3]<low,hi addrs       0xfff43e24 , 0xfff43e29>
                                                   DW_OP_reg15
 < 5><0x000005e3 GOFF=0x0000086a>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000002df GOFF=0x00000566>
+                                              DW_AT_abstract_origin       <0x000002df GOFF=0x00000566> Refers to: __q0
                                               DW_AT_location              0x000009cb
       .debug_loc      offset  : 0x000009cb
       <loclist at offset 0x000009cb with 2 entries follows>
@@ -1471,7 +1471,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43c49 , 0xfff43c4d>
                                                   DW_OP_reg1
 < 5><0x000005ec GOFF=0x00000873>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000002eb GOFF=0x00000572>
+                                              DW_AT_abstract_origin       <0x000002eb GOFF=0x00000572> Refers to: __r1
                                               DW_AT_location              0x000009e9
       .debug_loc      offset  : 0x000009e9
       <loclist at offset 0x000009e9 with 6 entries follows>
@@ -1488,7 +1488,7 @@ LOCAL_SYMBOLS:
    [ 5]<low,hi addrs       0xfff43e26 , 0xfff43e29>
                                                   DW_OP_reg3
 < 5><0x000005f5 GOFF=0x0000087c>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000002f7 GOFF=0x0000057e>
+                                              DW_AT_abstract_origin       <0x000002f7 GOFF=0x0000057e> Refers to: __r0
                                               DW_AT_location              0x00000a33
       .debug_loc      offset  : 0x00000a33
       <loclist at offset 0x00000a33 with 3 entries follows>
@@ -1499,7 +1499,7 @@ LOCAL_SYMBOLS:
    [ 2]<low,hi addrs       0xfff43c3e , 0xfff43c49>
                                                   DW_OP_reg5
 < 5><0x000005fe GOFF=0x00000885>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000303 GOFF=0x0000058a>
+                                              DW_AT_abstract_origin       <0x00000303 GOFF=0x0000058a> Refers to: __m
                                               DW_AT_location              0x00000a5c
       .debug_loc      offset  : 0x00000a5c
       <loclist at offset 0x00000a5c with 3 entries follows>
@@ -1519,7 +1519,7 @@ LOCAL_SYMBOLS:
    [ 4] range end    0,0
                                             DW_AT_sibling               <0x00000620 GOFF=0x000008a7>
 < 5><0x00000611 GOFF=0x00000898>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x0000024f GOFF=0x000004d6>
+                                              DW_AT_abstract_origin       <0x0000024f GOFF=0x000004d6> Refers to: __a
                                               DW_AT_location              0x00000a85
       .debug_loc      offset  : 0x00000a85
       <loclist at offset 0x00000a85 with 2 entries follows>
@@ -1528,7 +1528,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43d49 , 0xfff43d61>
                                                   DW_OP_reg12
 < 5><0x0000061a GOFF=0x000008a1>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000243 GOFF=0x000004ca>
+                                              DW_AT_abstract_origin       <0x00000243 GOFF=0x000004ca> Refers to: __xr
 < 4><0x00000620 GOFF=0x000008a7>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000198
   ranges: 3 at .debug_ranges offset 408 (0x00000198)  ( base addr 0xfff43a96) (24 bytes)
@@ -1537,7 +1537,7 @@ LOCAL_SYMBOLS:
    [ 2] range end    0,0
                                             DW_AT_sibling               <0x00000669 GOFF=0x000008f0>
 < 5><0x00000629 GOFF=0x000008b0>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000001e9 GOFF=0x00000470>
+                                              DW_AT_abstract_origin       <0x000001e9 GOFF=0x00000470> Refers to: __d1
                                               DW_AT_location              0x00000aa3
       .debug_loc      offset  : 0x00000aa3
       <loclist at offset 0x00000aa3 with 2 entries follows>
@@ -1546,7 +1546,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43e29 , 0xfff43e31>
                                                   DW_OP_reg4
 < 5><0x00000632 GOFF=0x000008b9>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000001f5 GOFF=0x0000047c>
+                                              DW_AT_abstract_origin       <0x000001f5 GOFF=0x0000047c> Refers to: __d0
                                               DW_AT_location              0x00000ac1
       .debug_loc      offset  : 0x00000ac1
       <loclist at offset 0x00000ac1 with 2 entries follows>
@@ -1555,7 +1555,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43e29 , 0xfff43e31>
                                                   DW_OP_reg10
 < 5><0x0000063b GOFF=0x000008c2>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000201 GOFF=0x00000488>
+                                              DW_AT_abstract_origin       <0x00000201 GOFF=0x00000488> Refers to: __q1
                                               DW_AT_location              0x00000adf
       .debug_loc      offset  : 0x00000adf
       <loclist at offset 0x00000adf with 4 entries follows>
@@ -1568,7 +1568,7 @@ LOCAL_SYMBOLS:
    [ 3]<low,hi addrs       0xfff43e2c , 0xfff43e31>
                                                   DW_OP_reg3
 < 5><0x00000644 GOFF=0x000008cb>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x0000020d GOFF=0x00000494>
+                                              DW_AT_abstract_origin       <0x0000020d GOFF=0x00000494> Refers to: __q0
                                               DW_AT_location              0x00000b13
       .debug_loc      offset  : 0x00000b13
       <loclist at offset 0x00000b13 with 2 entries follows>
@@ -1577,7 +1577,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43b54 , 0xfff43b58>
                                                   DW_OP_reg1
 < 5><0x0000064d GOFF=0x000008d4>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000219 GOFF=0x000004a0>
+                                              DW_AT_abstract_origin       <0x00000219 GOFF=0x000004a0> Refers to: __r1
                                               DW_AT_location              0x00000b31
       .debug_loc      offset  : 0x00000b31
       <loclist at offset 0x00000b31 with 6 entries follows>
@@ -1594,7 +1594,7 @@ LOCAL_SYMBOLS:
    [ 5]<low,hi addrs       0xfff43e2e , 0xfff43e31>
                                                   DW_OP_reg15
 < 5><0x00000656 GOFF=0x000008dd>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000225 GOFF=0x000004ac>
+                                              DW_AT_abstract_origin       <0x00000225 GOFF=0x000004ac> Refers to: __r0
                                               DW_AT_location              0x00000b7b
       .debug_loc      offset  : 0x00000b7b
       <loclist at offset 0x00000b7b with 3 entries follows>
@@ -1605,7 +1605,7 @@ LOCAL_SYMBOLS:
    [ 2]<low,hi addrs       0xfff43b49 , 0xfff43b54>
                                                   DW_OP_reg5
 < 5><0x0000065f GOFF=0x000008e6>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000231 GOFF=0x000004b8>
+                                              DW_AT_abstract_origin       <0x00000231 GOFF=0x000004b8> Refers to: __m
                                               DW_AT_location              0x00000ba4
       .debug_loc      offset  : 0x00000ba4
       <loclist at offset 0x00000ba4 with 3 entries follows>
@@ -1624,14 +1624,14 @@ LOCAL_SYMBOLS:
    [ 3] range end    0,0
                                             DW_AT_sibling               <0x00000681 GOFF=0x00000908>
 < 5><0x00000672 GOFF=0x000008f9>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000001d7 GOFF=0x0000045e>
+                                              DW_AT_abstract_origin       <0x000001d7 GOFF=0x0000045e> Refers to: __a
                                               DW_AT_location              0x00000bcd
       .debug_loc      offset  : 0x00000bcd
       <loclist at offset 0x00000bcd with 1 entries follows>
    [ 0]<low,hi addrs       0xfff43ac4 , 0xfff43ad7>
                                                   DW_OP_reg10
 < 5><0x0000067b GOFF=0x00000902>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000001cb GOFF=0x00000452>
+                                              DW_AT_abstract_origin       <0x000001cb GOFF=0x00000452> Refers to: __xr
 < 4><0x00000681 GOFF=0x00000908>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000001d0
   ranges: 4 at .debug_ranges offset 464 (0x000001d0)  ( base addr 0xfff43a96) (32 bytes)
@@ -1641,14 +1641,14 @@ LOCAL_SYMBOLS:
    [ 3] range end    0,0
                                             DW_AT_sibling               <0x00000699 GOFF=0x00000920>
 < 5><0x0000068a GOFF=0x00000911>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000321 GOFF=0x000005a8>
+                                              DW_AT_abstract_origin       <0x00000321 GOFF=0x000005a8> Refers to: __a
                                               DW_AT_location              0x00000be0
       .debug_loc      offset  : 0x00000be0
       <loclist at offset 0x00000be0 with 1 entries follows>
    [ 0]<low,hi addrs       0xfff43b7e , 0xfff43b92>
                                                   DW_OP_reg5
 < 5><0x00000693 GOFF=0x0000091a>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000315 GOFF=0x0000059c>
+                                              DW_AT_abstract_origin       <0x00000315 GOFF=0x0000059c> Refers to: __xr
 < 4><0x00000699 GOFF=0x00000920>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000001f0
   ranges: 7 at .debug_ranges offset 496 (0x000001f0)  ( base addr 0xfff43a96) (56 bytes)
@@ -1660,21 +1660,21 @@ LOCAL_SYMBOLS:
    [ 5] range entry  raw: 0x000002c8,  0x000002cb cooked: 0xfff43d5e,  0xfff43d61
    [ 6] range end    0,0
 < 5><0x0000069e GOFF=0x00000925>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000261 GOFF=0x000004e8>
+                                              DW_AT_abstract_origin       <0x00000261 GOFF=0x000004e8> Refers to: __d1
                                               DW_AT_location              0x00000bf3
       .debug_loc      offset  : 0x00000bf3
       <loclist at offset 0x00000bf3 with 1 entries follows>
    [ 0]<low,hi addrs       0xfff43d7f , 0xfff43dd1>
                                                   DW_OP_reg4
 < 5><0x000006a7 GOFF=0x0000092e>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x0000026d GOFF=0x000004f4>
+                                              DW_AT_abstract_origin       <0x0000026d GOFF=0x000004f4> Refers to: __d0
                                               DW_AT_location              0x00000c06
       .debug_loc      offset  : 0x00000c06
       <loclist at offset 0x00000c06 with 1 entries follows>
    [ 0]<low,hi addrs       0xfff43d7f , 0xfff43dd1>
                                                   DW_OP_reg7
 < 5><0x000006b0 GOFF=0x00000937>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000279 GOFF=0x00000500>
+                                              DW_AT_abstract_origin       <0x00000279 GOFF=0x00000500> Refers to: __q1
                                               DW_AT_location              0x00000c19
       .debug_loc      offset  : 0x00000c19
       <loclist at offset 0x00000c19 with 3 entries follows>
@@ -1685,7 +1685,7 @@ LOCAL_SYMBOLS:
    [ 2]<low,hi addrs       0xfff43d95 , 0xfff43dd1>
                                                   DW_OP_reg15
 < 5><0x000006b9 GOFF=0x00000940>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000285 GOFF=0x0000050c>
+                                              DW_AT_abstract_origin       <0x00000285 GOFF=0x0000050c> Refers to: __q0
                                               DW_AT_location              0x00000c42
       .debug_loc      offset  : 0x00000c42
       <loclist at offset 0x00000c42 with 3 entries follows>
@@ -1696,7 +1696,7 @@ LOCAL_SYMBOLS:
    [ 2]<low,hi addrs       0xfff43dc6 , 0xfff43dd1>
                                                   DW_OP_reg12
 < 5><0x000006c2 GOFF=0x00000949>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000291 GOFF=0x00000518>
+                                              DW_AT_abstract_origin       <0x00000291 GOFF=0x00000518> Refers to: __r1
                                               DW_AT_location              0x00000c6b
       .debug_loc      offset  : 0x00000c6b
       <loclist at offset 0x00000c6b with 4 entries follows>
@@ -1709,7 +1709,7 @@ LOCAL_SYMBOLS:
    [ 3]<low,hi addrs       0xfff43d97 , 0xfff43dd1>
                                                   DW_OP_reg11
 < 5><0x000006cb GOFF=0x00000952>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x0000029d GOFF=0x00000524>
+                                              DW_AT_abstract_origin       <0x0000029d GOFF=0x00000524> Refers to: __r0
                                               DW_AT_location              0x00000c9f
       .debug_loc      offset  : 0x00000c9f
       <loclist at offset 0x00000c9f with 5 entries follows>
@@ -1724,7 +1724,7 @@ LOCAL_SYMBOLS:
    [ 4]<low,hi addrs       0xfff43dcb , 0xfff43dd1>
                                                   DW_OP_reg10
 < 5><0x000006d4 GOFF=0x0000095b>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x000002a9 GOFF=0x00000530>
+                                              DW_AT_abstract_origin       <0x000002a9 GOFF=0x00000530> Refers to: __m
                                               DW_AT_location              0x00000cde
       .debug_loc      offset  : 0x00000cde
       <loclist at offset 0x00000cde with 2 entries follows>
@@ -1733,7 +1733,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff43dae , 0xfff43dd1>
                                                   DW_OP_reg13
 < 1><0x000006e1 GOFF=0x00000968>    DW_TAG_array_type
-                                      DW_AT_type                  <0x00000048 GOFF=0x000002cf>
+                                      DW_AT_type                  <0x00000048 GOFF=0x000002cf> Refers to: UQItype
                                       DW_AT_sibling               <0x000006f1 GOFF=0x00000978>
 < 2><0x000006ea GOFF=0x00000971>      DW_TAG_subrange_type
                                         DW_AT_type                  <0x000006f1 GOFF=0x00000978>
@@ -1795,7 +1795,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_name                  UQItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x00000088
-                                      DW_AT_type                  <0x00000053 GOFF=0x000009f4>
+                                      DW_AT_type                  <0x00000053 GOFF=0x000009f4> Refers to: unsigned char
 < 1><0x00000053 GOFF=0x000009f4>    DW_TAG_base_type
                                       DW_AT_byte_size             1
                                       DW_AT_encoding              DW_ATE_unsigned_char
@@ -1812,17 +1812,17 @@ LOCAL_SYMBOLS:
                                       DW_AT_name                  SItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x0000008d
-                                      DW_AT_type                  <0x00000025 GOFF=0x000009c6>
+                                      DW_AT_type                  <0x00000025 GOFF=0x000009c6> Refers to: int
 < 1><0x00000073 GOFF=0x00000a14>    DW_TAG_typedef
                                       DW_AT_name                  USItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x0000008e
-                                      DW_AT_type                  <0x0000003a GOFF=0x000009db>
+                                      DW_AT_type                  <0x0000003a GOFF=0x000009db> Refers to: unsigned int
 < 1><0x0000007e GOFF=0x00000a1f>    DW_TAG_typedef
                                       DW_AT_name                  DItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x00000091
-                                      DW_AT_type                  <0x00000089 GOFF=0x00000a2a>
+                                      DW_AT_type                  <0x00000089 GOFF=0x00000a2a> Refers to: long long int
 < 1><0x00000089 GOFF=0x00000a2a>    DW_TAG_base_type
                                       DW_AT_byte_size             8
                                       DW_AT_encoding              DW_ATE_signed
@@ -1831,7 +1831,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_name                  UDItype
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x00000092
-                                      DW_AT_type                  <0x0000009b GOFF=0x00000a3c>
+                                      DW_AT_type                  <0x0000009b GOFF=0x00000a3c> Refers to: long long unsigned int
 < 1><0x0000009b GOFF=0x00000a3c>    DW_TAG_base_type
                                       DW_AT_byte_size             8
                                       DW_AT_encoding              DW_ATE_unsigned
@@ -1854,14 +1854,14 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  low
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                         DW_AT_decl_line             0x000001a2
-                                        DW_AT_type                  <0x00000068 GOFF=0x00000a09>
+                                        DW_AT_type                  <0x00000068 GOFF=0x00000a09> Refers to: SItype
                                         DW_AT_data_member_location  len 0x0002: 0x2300: 
                                             DW_OP_plus_uconst 0
 < 2><0x000000cc GOFF=0x00000a6d>      DW_TAG_member
                                         DW_AT_name                  high
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                         DW_AT_decl_line             0x000001a2
-                                        DW_AT_type                  <0x00000068 GOFF=0x00000a09>
+                                        DW_AT_type                  <0x00000068 GOFF=0x00000a09> Refers to: SItype
                                         DW_AT_data_member_location  len 0x0002: 0x2304: 
                                             DW_OP_plus_uconst 4
 < 1><0x000000dc GOFF=0x00000a7d>    DW_TAG_union_type
@@ -1873,12 +1873,12 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  s
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                         DW_AT_decl_line             0x000001ab
-                                        DW_AT_type                  <0x000000b0 GOFF=0x00000a51>
+                                        DW_AT_type                  <0x000000b0 GOFF=0x00000a51> Refers to: DWstruct
 < 2><0x000000ef GOFF=0x00000a90>      DW_TAG_member
                                         DW_AT_name                  ll
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                         DW_AT_decl_line             0x000001ac
-                                        DW_AT_type                  <0x0000007e GOFF=0x00000a1f>
+                                        DW_AT_type                  <0x0000007e GOFF=0x00000a1f> Refers to: DItype
 < 1><0x000000fb GOFF=0x00000a9c>    DW_TAG_typedef
                                       DW_AT_name                  DWunion
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
@@ -1889,19 +1889,19 @@ LOCAL_SYMBOLS:
                                       DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                       DW_AT_decl_line             0x00000360
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x00000090 GOFF=0x00000a31>
+                                      DW_AT_type                  <0x00000090 GOFF=0x00000a31> Refers to: UDItype
                                       DW_AT_inline                DW_INL_declared_inlined
                                       DW_AT_sibling               <0x00000439 GOFF=0x00000dda>
 < 2><0x00000119 GOFF=0x00000aba>      DW_TAG_formal_parameter
                                         DW_AT_name                  n
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000360
-                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31>
+                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31> Refers to: UDItype
 < 2><0x00000123 GOFF=0x00000ac4>      DW_TAG_formal_parameter
                                         DW_AT_name                  d
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000360
-                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31>
+                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31> Refers to: UDItype
 < 2><0x0000012d GOFF=0x00000ace>      DW_TAG_formal_parameter
                                         DW_AT_name                  rp
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
@@ -1921,52 +1921,52 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  rr
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000364
-                                        DW_AT_type                  <0x000000fb GOFF=0x00000a9c>
+                                        DW_AT_type                  <0x000000fb GOFF=0x00000a9c> Refers to: DWunion
 < 2><0x00000159 GOFF=0x00000afa>      DW_TAG_variable
                                         DW_AT_name                  d0
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x00000164 GOFF=0x00000b05>      DW_TAG_variable
                                         DW_AT_name                  d1
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x0000016f GOFF=0x00000b10>      DW_TAG_variable
                                         DW_AT_name                  n0
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x0000017a GOFF=0x00000b1b>      DW_TAG_variable
                                         DW_AT_name                  n1
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x00000185 GOFF=0x00000b26>      DW_TAG_variable
                                         DW_AT_name                  n2
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000365
-                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x00000190 GOFF=0x00000b31>      DW_TAG_variable
                                         DW_AT_name                  q0
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000366
-                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x0000019b GOFF=0x00000b3c>      DW_TAG_variable
                                         DW_AT_name                  q1
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000366
-                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x000001a6 GOFF=0x00000b47>      DW_TAG_variable
                                         DW_AT_name                  b
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000367
-                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x000001b0 GOFF=0x00000b51>      DW_TAG_variable
                                         DW_AT_name                  bm
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000367
-                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                        DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x000001bb GOFF=0x00000b5c>      DW_TAG_variable
                                         DW_AT_name                  ww
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
@@ -1978,269 +1978,269 @@ LOCAL_SYMBOLS:
                                           DW_AT_name                  __xr
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x00000397
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x000001d7 GOFF=0x00000b78>        DW_TAG_variable
                                           DW_AT_name                  __a
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x00000397
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x000001e4 GOFF=0x00000b85>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x0000023e GOFF=0x00000bdf>
 < 3><0x000001e9 GOFF=0x00000b8a>        DW_TAG_variable
                                           DW_AT_name                  __d1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x000001f5 GOFF=0x00000b96>        DW_TAG_variable
                                           DW_AT_name                  __d0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000201 GOFF=0x00000ba2>        DW_TAG_variable
                                           DW_AT_name                  __q1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x0000020d GOFF=0x00000bae>        DW_TAG_variable
                                           DW_AT_name                  __q0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000219 GOFF=0x00000bba>        DW_TAG_variable
                                           DW_AT_name                  __r1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000225 GOFF=0x00000bc6>        DW_TAG_variable
                                           DW_AT_name                  __r0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000231 GOFF=0x00000bd2>        DW_TAG_variable
                                           DW_AT_name                  __m
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003a3
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x0000023e GOFF=0x00000bdf>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x0000025c GOFF=0x00000bfd>
 < 3><0x00000243 GOFF=0x00000be4>        DW_TAG_variable
                                           DW_AT_name                  __xr
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003af
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x0000024f GOFF=0x00000bf0>        DW_TAG_variable
                                           DW_AT_name                  __a
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003af
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x0000025c GOFF=0x00000bfd>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x000002b6 GOFF=0x00000c57>
 < 3><0x00000261 GOFF=0x00000c02>        DW_TAG_variable
                                           DW_AT_name                  __d1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x0000026d GOFF=0x00000c0e>        DW_TAG_variable
                                           DW_AT_name                  __d0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000279 GOFF=0x00000c1a>        DW_TAG_variable
                                           DW_AT_name                  __q1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000285 GOFF=0x00000c26>        DW_TAG_variable
                                           DW_AT_name                  __q0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000291 GOFF=0x00000c32>        DW_TAG_variable
                                           DW_AT_name                  __r1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x0000029d GOFF=0x00000c3e>        DW_TAG_variable
                                           DW_AT_name                  __r0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x000002a9 GOFF=0x00000c4a>        DW_TAG_variable
                                           DW_AT_name                  __m
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003c8
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x000002b6 GOFF=0x00000c57>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x00000310 GOFF=0x00000cb1>
 < 3><0x000002bb GOFF=0x00000c5c>        DW_TAG_variable
                                           DW_AT_name                  __d1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x000002c7 GOFF=0x00000c68>        DW_TAG_variable
                                           DW_AT_name                  __d0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x000002d3 GOFF=0x00000c74>        DW_TAG_variable
                                           DW_AT_name                  __q1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x000002df GOFF=0x00000c80>        DW_TAG_variable
                                           DW_AT_name                  __q0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x000002eb GOFF=0x00000c8c>        DW_TAG_variable
                                           DW_AT_name                  __r1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x000002f7 GOFF=0x00000c98>        DW_TAG_variable
                                           DW_AT_name                  __r0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000303 GOFF=0x00000ca4>        DW_TAG_variable
                                           DW_AT_name                  __m
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003cd
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x00000310 GOFF=0x00000cb1>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x0000032e GOFF=0x00000ccf>
 < 3><0x00000315 GOFF=0x00000cb6>        DW_TAG_variable
                                           DW_AT_name                  __xr
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003f0
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000321 GOFF=0x00000cc2>        DW_TAG_variable
                                           DW_AT_name                  __a
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003f0
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x0000032e GOFF=0x00000ccf>      DW_TAG_lexical_block
                                         DW_AT_sibling               <0x00000340 GOFF=0x00000ce1>
 < 3><0x00000333 GOFF=0x00000cd4>        DW_TAG_variable
                                           DW_AT_name                  __x
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x000003fe
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 2><0x00000340 GOFF=0x00000ce1>      DW_TAG_lexical_block
 < 3><0x00000341 GOFF=0x00000ce2>        DW_TAG_variable
                                           DW_AT_name                  m1
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x0000040e
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x0000034c GOFF=0x00000ced>        DW_TAG_variable
                                           DW_AT_name                  m0
                                           DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                           DW_AT_decl_line             0x0000040e
-                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                          DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000357 GOFF=0x00000cf8>        DW_TAG_lexical_block
                                           DW_AT_sibling               <0x000003b1 GOFF=0x00000d52>
 < 4><0x0000035c GOFF=0x00000cfd>          DW_TAG_variable
                                             DW_AT_name                  __d1
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x00000368 GOFF=0x00000d09>          DW_TAG_variable
                                             DW_AT_name                  __d0
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x00000374 GOFF=0x00000d15>          DW_TAG_variable
                                             DW_AT_name                  __q1
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x00000380 GOFF=0x00000d21>          DW_TAG_variable
                                             DW_AT_name                  __q0
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x0000038c GOFF=0x00000d2d>          DW_TAG_variable
                                             DW_AT_name                  __r1
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x00000398 GOFF=0x00000d39>          DW_TAG_variable
                                             DW_AT_name                  __r0
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x000003a4 GOFF=0x00000d45>          DW_TAG_variable
                                             DW_AT_name                  __m
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000419
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x000003b1 GOFF=0x00000d52>        DW_TAG_lexical_block
                                           DW_AT_sibling               <0x00000417 GOFF=0x00000db8>
 < 4><0x000003b6 GOFF=0x00000d57>          DW_TAG_variable
                                             DW_AT_name                  __x0
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x000003c2 GOFF=0x00000d63>          DW_TAG_variable
                                             DW_AT_name                  __x1
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x000003ce GOFF=0x00000d6f>          DW_TAG_variable
                                             DW_AT_name                  __x2
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x000003da GOFF=0x00000d7b>          DW_TAG_variable
                                             DW_AT_name                  __x3
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x000003e6 GOFF=0x00000d87>          DW_TAG_variable
                                             DW_AT_name                  __ul
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x000003f2 GOFF=0x00000d93>          DW_TAG_variable
                                             DW_AT_name                  __vl
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x000003fe GOFF=0x00000d9f>          DW_TAG_variable
                                             DW_AT_name                  __uh
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 4><0x0000040a GOFF=0x00000dab>          DW_TAG_variable
                                             DW_AT_name                  __vh
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041a
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000417 GOFF=0x00000db8>        DW_TAG_lexical_block
                                           DW_AT_sibling               <0x00000429 GOFF=0x00000dca>
 < 4><0x0000041c GOFF=0x00000dbd>          DW_TAG_variable
                                             DW_AT_name                  __x
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x0000041f
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 3><0x00000429 GOFF=0x00000dca>        DW_TAG_lexical_block
 < 4><0x0000042a GOFF=0x00000dcb>          DW_TAG_variable
                                             DW_AT_name                  __x
                                             DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                             DW_AT_decl_line             0x00000427
-                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14>
+                                            DW_AT_type                  <0x00000073 GOFF=0x00000a14> Refers to: USItype
 < 1><0x00000439 GOFF=0x00000dda>    DW_TAG_pointer_type
                                       DW_AT_byte_size             4
-                                      DW_AT_type                  <0x00000090 GOFF=0x00000a31>
+                                      DW_AT_type                  <0x00000090 GOFF=0x00000a31> Refers to: UDItype
 < 1><0x0000043f GOFF=0x00000de0>    DW_TAG_const_type
-                                      DW_AT_type                  <0x000000fb GOFF=0x00000a9c>
+                                      DW_AT_type                  <0x000000fb GOFF=0x00000a9c> Refers to: DWunion
 < 1><0x00000444 GOFF=0x00000de5>    DW_TAG_subprogram
                                       DW_AT_external              yes(1)
                                       DW_AT_name                  __umoddi3
                                       DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                       DW_AT_decl_line             0x00000466
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x00000090 GOFF=0x00000a31>
+                                      DW_AT_type                  <0x00000090 GOFF=0x00000a31> Refers to: UDItype
                                       DW_AT_low_pc                0xfff43e40
                                       DW_AT_high_pc               0xfff441d7
                                       DW_AT_frame_base            0x00000cfc
@@ -2255,7 +2255,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  u
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000466
-                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31>
+                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31> Refers to: UDItype
                                         DW_AT_location              0x00000d1c
       .debug_loc      offset  : 0x00000d1c
       <loclist at offset 0x00000d1c with 8 entries follows>
@@ -2303,7 +2303,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  v
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000466
-                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31>
+                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31> Refers to: UDItype
                                         DW_AT_location              0x00000da4
       .debug_loc      offset  : 0x00000da4
       <loclist at offset 0x00000da4 with 8 entries follows>
@@ -2351,7 +2351,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_name                  w
                                         DW_AT_decl_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_decl_line             0x00000468
-                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31>
+                                        DW_AT_type                  <0x00000090 GOFF=0x00000a31> Refers to: UDItype
                                         DW_AT_location              0x00000e2c
       .debug_loc      offset  : 0x00000e2c
       <loclist at offset 0x00000e2c with 4 entries follows>
@@ -2376,7 +2376,7 @@ LOCAL_SYMBOLS:
                                             DW_OP_reg2
                                             DW_OP_piece 4
 < 2><0x0000048c GOFF=0x00000e2d>      DW_TAG_inlined_subroutine
-                                        DW_AT_abstract_origin       <0x00000107 GOFF=0x00000aa8>
+                                        DW_AT_abstract_origin       <0x00000107 GOFF=0x00000aa8> Refers to: __udivmoddi4
                                         DW_AT_entry_pc              0xfff43e42
                                         DW_AT_ranges                0x00000228
   ranges: 5 at .debug_ranges offset 552 (0x00000228)  ( base addr 0xfff43e40) (40 bytes)
@@ -2388,9 +2388,9 @@ LOCAL_SYMBOLS:
                                         DW_AT_call_file             0x00000001 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.c
                                         DW_AT_call_line             0x0000046a
 < 3><0x0000049c GOFF=0x00000e3d>        DW_TAG_formal_parameter
-                                          DW_AT_abstract_origin       <0x0000012d GOFF=0x00000ace>
+                                          DW_AT_abstract_origin       <0x0000012d GOFF=0x00000ace> Refers to: rp
 < 3><0x000004a1 GOFF=0x00000e42>        DW_TAG_formal_parameter
-                                          DW_AT_abstract_origin       <0x00000123 GOFF=0x00000ac4>
+                                          DW_AT_abstract_origin       <0x00000123 GOFF=0x00000ac4> Refers to: d
                                           DW_AT_location              0x00000e74
       .debug_loc      offset  : 0x00000e74
       <loclist at offset 0x00000e74 with 9 entries follows>
@@ -2440,7 +2440,7 @@ LOCAL_SYMBOLS:
                                               DW_OP_reg4
                                               DW_OP_piece 4
 < 3><0x000004aa GOFF=0x00000e4b>        DW_TAG_formal_parameter
-                                          DW_AT_abstract_origin       <0x00000119 GOFF=0x00000aba>
+                                          DW_AT_abstract_origin       <0x00000119 GOFF=0x00000aba> Refers to: n
                                           DW_AT_location              0x00000f0c
       .debug_loc      offset  : 0x00000f0c
       <loclist at offset 0x00000f0c with 13 entries follows>
@@ -2518,13 +2518,13 @@ LOCAL_SYMBOLS:
    [ 3] range entry  raw: 0x000000bd,  0x00000114 cooked: 0xfff43efd,  0xfff43f54
    [ 4] range end    0,0
 < 4><0x000004b8 GOFF=0x00000e59>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000138 GOFF=0x00000ad9>
+                                            DW_AT_abstract_origin       <0x00000138 GOFF=0x00000ad9> Refers to: nn
 < 4><0x000004bd GOFF=0x00000e5e>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000143 GOFF=0x00000ae4>
+                                            DW_AT_abstract_origin       <0x00000143 GOFF=0x00000ae4> Refers to: dd
 < 4><0x000004c2 GOFF=0x00000e63>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x0000014e GOFF=0x00000aef>
+                                            DW_AT_abstract_origin       <0x0000014e GOFF=0x00000aef> Refers to: rr
 < 4><0x000004c7 GOFF=0x00000e68>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000159 GOFF=0x00000afa>
+                                            DW_AT_abstract_origin       <0x00000159 GOFF=0x00000afa> Refers to: d0
                                             DW_AT_location              0x00000fe4
       .debug_loc      offset  : 0x00000fe4
       <loclist at offset 0x00000fe4 with 15 entries follows>
@@ -2559,7 +2559,7 @@ LOCAL_SYMBOLS:
    [14]<low,hi addrs       0xfff441bd , 0xfff441c3>
                                                 DW_OP_reg3
 < 4><0x000004d0 GOFF=0x00000e71>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000164 GOFF=0x00000b05>
+                                            DW_AT_abstract_origin       <0x00000164 GOFF=0x00000b05> Refers to: d1
                                             DW_AT_location              0x00001091
       .debug_loc      offset  : 0x00001091
       <loclist at offset 0x00001091 with 8 entries follows>
@@ -2580,7 +2580,7 @@ LOCAL_SYMBOLS:
    [ 7]<low,hi addrs       0xfff441b4 , 0xfff441d7>
                                                 DW_OP_reg4
 < 4><0x000004d9 GOFF=0x00000e7a>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x0000016f GOFF=0x00000b10>
+                                            DW_AT_abstract_origin       <0x0000016f GOFF=0x00000b10> Refers to: n0
                                             DW_AT_location              0x000010f1
       .debug_loc      offset  : 0x000010f1
       <loclist at offset 0x000010f1 with 19 entries follows>
@@ -2623,7 +2623,7 @@ LOCAL_SYMBOLS:
    [18]<low,hi addrs       0xfff441b8 , 0xfff441d7>
                                                 DW_OP_reg1
 < 4><0x000004e2 GOFF=0x00000e83>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x0000017a GOFF=0x00000b1b>
+                                            DW_AT_abstract_origin       <0x0000017a GOFF=0x00000b1b> Refers to: n1
                                             DW_AT_location              0x000011ca
       .debug_loc      offset  : 0x000011ca
       <loclist at offset 0x000011ca with 20 entries follows>
@@ -2668,14 +2668,14 @@ LOCAL_SYMBOLS:
    [19]<low,hi addrs       0xfff441c8 , 0xfff441d7>
                                                 DW_OP_reg2
 < 4><0x000004eb GOFF=0x00000e8c>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000185 GOFF=0x00000b26>
+                                            DW_AT_abstract_origin       <0x00000185 GOFF=0x00000b26> Refers to: n2
                                             DW_AT_location              0x000012ae
       .debug_loc      offset  : 0x000012ae
       <loclist at offset 0x000012ae with 1 entries follows>
    [ 0]<low,hi addrs       0xfff44101 , 0xfff4411b>
                                                 DW_OP_reg10
 < 4><0x000004f4 GOFF=0x00000e95>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x00000190 GOFF=0x00000b31>
+                                            DW_AT_abstract_origin       <0x00000190 GOFF=0x00000b31> Refers to: q0
                                             DW_AT_location              0x000012c1
       .debug_loc      offset  : 0x000012c1
       <loclist at offset 0x000012c1 with 1 entries follows>
@@ -2683,7 +2683,7 @@ LOCAL_SYMBOLS:
                                                 DW_OP_lit1
                                                 DW_OP_stack_value
 < 4><0x000004fd GOFF=0x00000e9e>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x0000019b GOFF=0x00000b3c>
+                                            DW_AT_abstract_origin       <0x0000019b GOFF=0x00000b3c> Refers to: q1
                                             DW_AT_location              0x000012d5
       .debug_loc      offset  : 0x000012d5
       <loclist at offset 0x000012d5 with 4 entries follows>
@@ -2700,7 +2700,7 @@ LOCAL_SYMBOLS:
                                                 DW_OP_lit0
                                                 DW_OP_stack_value
 < 4><0x00000506 GOFF=0x00000ea7>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x000001a6 GOFF=0x00000b47>
+                                            DW_AT_abstract_origin       <0x000001a6 GOFF=0x00000b47> Refers to: b
                                             DW_AT_location              0x0000130d
       .debug_loc      offset  : 0x0000130d
       <loclist at offset 0x0000130d with 2 entries follows>
@@ -2709,7 +2709,7 @@ LOCAL_SYMBOLS:
    [ 1]<low,hi addrs       0xfff440f9 , 0xfff440fe>
                                                 DW_OP_reg7
 < 4><0x0000050f GOFF=0x00000eb0>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x000001b0 GOFF=0x00000b51>
+                                            DW_AT_abstract_origin       <0x000001b0 GOFF=0x00000b51> Refers to: bm
                                             DW_AT_location              0x0000132b
       .debug_loc      offset  : 0x0000132b
       <loclist at offset 0x0000132b with 8 entries follows>
@@ -2730,7 +2730,7 @@ LOCAL_SYMBOLS:
    [ 7]<low,hi addrs       0xfff441b4 , 0xfff441c8>
                                                 DW_OP_reg14
 < 4><0x00000518 GOFF=0x00000eb9>          DW_TAG_variable
-                                            DW_AT_abstract_origin       <0x000001bb GOFF=0x00000b5c>
+                                            DW_AT_abstract_origin       <0x000001bb GOFF=0x00000b5c> Refers to: ww
 < 4><0x0000051d GOFF=0x00000ebe>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000278
   ranges: 5 at .debug_ranges offset 632 (0x00000278)  ( base addr 0xfff43e40) (40 bytes)
@@ -2741,7 +2741,7 @@ LOCAL_SYMBOLS:
    [ 4] range end    0,0
                                             DW_AT_sibling               <0x00000544 GOFF=0x00000ee5>
 < 5><0x00000526 GOFF=0x00000ec7>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x00000341 GOFF=0x00000ce2>
+                                              DW_AT_abstract_origin       <0x00000341 GOFF=0x00000ce2> Refers to: m1
                                               DW_AT_location              0x0000138b
       .debug_loc      offset  : 0x0000138b
       <loclist at offset 0x0000138b with 3 entries follows>
@@ -2752,7 +2752,7 @@ LOCAL_SYMBOLS:
    [ 2]<low,hi addrs       0xfff441bd , 0xfff441c8>
                                                   DW_OP_reg11
 < 5><0x0000052f GOFF=0x00000ed0>            DW_TAG_variable
-                                              DW_AT_abstract_origin       <0x0000034c GOFF=0x00000ced>
+                                              DW_AT_abstract_origin       <0x0000034c GOFF=0x00000ced> Refers to: m0
                                               DW_AT_location              0x000013b4
       .debug_loc      offset  : 0x000013b4
       <loclist at offset 0x000013b4 with 5 entries follows>
@@ -2777,7 +2777,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000538 GOFF = 0x00000ed9, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x00000545 GOFF=0x00000ee6>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x0000042a GOFF=0x00000dcb>
+                                                DW_AT_abstract_origin       <0x0000042a GOFF=0x00000dcb> Refers to: __x
                                                 DW_AT_location              0x000013f3
       .debug_loc      offset  : 0x000013f3
       <loclist at offset 0x000013f3 with 1 entries follows>
@@ -2803,7 +2803,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x0000054f GOFF = 0x00000ef0, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x00000558 GOFF=0x00000ef9>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003b6 GOFF=0x00000d57>
+                                                DW_AT_abstract_origin       <0x000003b6 GOFF=0x00000d57> Refers to: __x0
                                                 DW_AT_location              0x00001406
       .debug_loc      offset  : 0x00001406
       <loclist at offset 0x00001406 with 1 entries follows>
@@ -2816,7 +2816,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000558 GOFF = 0x00000ef9, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x00000561 GOFF=0x00000f02>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003c2 GOFF=0x00000d63>
+                                                DW_AT_abstract_origin       <0x000003c2 GOFF=0x00000d63> Refers to: __x1
                                                 DW_AT_location              0x00001419
       .debug_loc      offset  : 0x00001419
       <loclist at offset 0x00001419 with 1 entries follows>
@@ -2829,7 +2829,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000561 GOFF = 0x00000f02, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x0000056a GOFF=0x00000f0b>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003ce GOFF=0x00000d6f>
+                                                DW_AT_abstract_origin       <0x000003ce GOFF=0x00000d6f> Refers to: __x2
                                                 DW_AT_location              0x0000142c
       .debug_loc      offset  : 0x0000142c
       <loclist at offset 0x0000142c with 1 entries follows>
@@ -2842,7 +2842,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x0000056a GOFF = 0x00000f0b, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x00000573 GOFF=0x00000f14>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003da GOFF=0x00000d7b>
+                                                DW_AT_abstract_origin       <0x000003da GOFF=0x00000d7b> Refers to: __x3
                                                 DW_AT_location              0x0000143f
       .debug_loc      offset  : 0x0000143f
       <loclist at offset 0x0000143f with 2 entries follows>
@@ -2857,7 +2857,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000573 GOFF = 0x00000f14, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x0000057c GOFF=0x00000f1d>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003e6 GOFF=0x00000d87>
+                                                DW_AT_abstract_origin       <0x000003e6 GOFF=0x00000d87> Refers to: __ul
                                                 DW_AT_location              len 0x0001: 0x5a: 
                                                     DW_OP_reg10
 
@@ -2867,7 +2867,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x0000057c GOFF = 0x00000f1d, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x00000583 GOFF=0x00000f24>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003f2 GOFF=0x00000d93>
+                                                DW_AT_abstract_origin       <0x000003f2 GOFF=0x00000d93> Refers to: __vl
                                                 DW_AT_location              len 0x0001: 0x5c: 
                                                     DW_OP_reg12
 
@@ -2877,7 +2877,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x00000583 GOFF = 0x00000f24, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x0000058a GOFF=0x00000f2b>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003fe GOFF=0x00000d9f>
+                                                DW_AT_abstract_origin       <0x000003fe GOFF=0x00000d9f> Refers to: __uh
                                                 DW_AT_location              0x0000145d
       .debug_loc      offset  : 0x0000145d
       <loclist at offset 0x0000145d with 1 entries follows>
@@ -2890,7 +2890,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x0000058a GOFF = 0x00000f2b, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x00000593 GOFF=0x00000f34>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x0000040a GOFF=0x00000dab>
+                                                DW_AT_abstract_origin       <0x0000040a GOFF=0x00000dab> Refers to: __vh
                                                 DW_AT_location              0x00001470
       .debug_loc      offset  : 0x00001470
       <loclist at offset 0x00001470 with 3 entries follows>
@@ -2925,7 +2925,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x0000059d GOFF = 0x00000f3e, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x000005a6 GOFF=0x00000f47>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x0000035c GOFF=0x00000cfd>
+                                                DW_AT_abstract_origin       <0x0000035c GOFF=0x00000cfd> Refers to: __d1
                                                 DW_AT_location              0x00001499
       .debug_loc      offset  : 0x00001499
       <loclist at offset 0x00001499 with 5 entries follows>
@@ -2958,7 +2958,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x000005a6 GOFF = 0x00000f47, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x000005af GOFF=0x00000f50>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x00000368 GOFF=0x00000d09>
+                                                DW_AT_abstract_origin       <0x00000368 GOFF=0x00000d09> Refers to: __d0
                                                 DW_AT_location              0x000014e8
       .debug_loc      offset  : 0x000014e8
       <loclist at offset 0x000014e8 with 5 entries follows>
@@ -2988,7 +2988,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x000005af GOFF = 0x00000f50, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x000005b8 GOFF=0x00000f59>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x00000374 GOFF=0x00000d15>
+                                                DW_AT_abstract_origin       <0x00000374 GOFF=0x00000d15> Refers to: __q1
                                                 DW_AT_location              0x00001539
       .debug_loc      offset  : 0x00001539
       <loclist at offset 0x00001539 with 4 entries follows>
@@ -3007,7 +3007,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x000005b8 GOFF = 0x00000f59, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x000005c1 GOFF=0x00000f62>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x00000380 GOFF=0x00000d21>
+                                                DW_AT_abstract_origin       <0x00000380 GOFF=0x00000d21> Refers to: __q0
                                                 DW_AT_location              0x0000156d
       .debug_loc      offset  : 0x0000156d
       <loclist at offset 0x0000156d with 4 entries follows>
@@ -3026,7 +3026,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x000005c1 GOFF = 0x00000f62, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x000005ca GOFF=0x00000f6b>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x0000038c GOFF=0x00000d2d>
+                                                DW_AT_abstract_origin       <0x0000038c GOFF=0x00000d2d> Refers to: __r1
                                                 DW_AT_location              0x000015a1
       .debug_loc      offset  : 0x000015a1
       <loclist at offset 0x000015a1 with 4 entries follows>
@@ -3045,7 +3045,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x000005ca GOFF = 0x00000f6b, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x000005d3 GOFF=0x00000f74>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x00000398 GOFF=0x00000d39>
+                                                DW_AT_abstract_origin       <0x00000398 GOFF=0x00000d39> Refers to: __r0
                                                 DW_AT_location              0x000015d5
       .debug_loc      offset  : 0x000015d5
       <loclist at offset 0x000015d5 with 8 entries follows>
@@ -3072,7 +3072,7 @@ CU Name = /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2
 CU Producer = GNU C 4.5-GNURX_v10.01 20091105-MP1 (experimental)
 DIE OFF = 0x000005d3 GOFF = 0x00000f74, Low PC = 0xfff43e40, High PC = 0xfff441d7
 < 6><0x000005dc GOFF=0x00000f7d>              DW_TAG_variable
-                                                DW_AT_abstract_origin       <0x000003a4 GOFF=0x00000d45>
+                                                DW_AT_abstract_origin       <0x000003a4 GOFF=0x00000d45> Refers to: __m
                                                 DW_AT_location              0x00001635
       .debug_loc      offset  : 0x00001635
       <loclist at offset 0x00001635 with 5 entries follows>

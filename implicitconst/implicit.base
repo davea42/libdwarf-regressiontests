@@ -25,7 +25,7 @@ LOCAL_SYMBOLS:
                       DW_AT_external              yes(1) <form DW_FORM_flag>
                       DW_AT_frame_base            len 0x0001: 0x9c:  <form DW_FORM_exprloc>
                           DW_OP_call_frame_cfa
-                      DW_AT_type                  <0x00000056> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x00000056> <form DW_FORM_ref4> Refers to: int
                       DW_AT_GNU_all_tail_call_sites yes(1) <form DW_FORM_flag>
 < 2><0x00000047>      DW_TAG_variable
                         DW_AT_location              len 0x0002: 0x916c:  <form DW_FORM_exprloc>
@@ -40,7 +40,7 @@ LOCAL_SYMBOLS:
                       DW_AT_byte_size             4 <form DW_FORM_data1>
                       DW_AT_encoding              DW_ATE_signed <form DW_FORM_data1>
 < 1><0x0000005d>    DW_TAG_const_type
-                      DW_AT_type                  <0x00000056> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x00000056> <form DW_FORM_ref4> Refers to: int
 < 1><0x00000062>    DW_TAG_subprogram
                       DW_AT_sibling               <0x00000096> <form DW_FORM_ref4>
                       DW_AT_name                  myfunc3 <form DW_FORM_strp>
@@ -52,7 +52,7 @@ LOCAL_SYMBOLS:
                       DW_AT_external              yes(1) <form DW_FORM_flag>
                       DW_AT_frame_base            len 0x0001: 0x9c:  <form DW_FORM_exprloc>
                           DW_OP_call_frame_cfa
-                      DW_AT_type                  <0x00000056> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x00000056> <form DW_FORM_ref4> Refers to: int
                       DW_AT_GNU_all_tail_call_sites yes(1) <form DW_FORM_flag>
 < 2><0x0000007b>      DW_TAG_formal_parameter
                         DW_AT_location              len 0x0002: 0x915c:  <form DW_FORM_exprloc>
@@ -60,7 +60,7 @@ LOCAL_SYMBOLS:
                         DW_AT_name                  y <form DW_FORM_string>
                         DW_AT_decl_file             0x00000001 <form DW_FORM_data1>
                         DW_AT_decl_line             0x0000000c <form DW_FORM_data1>
-                        DW_AT_type                  <0x00000056> <form DW_FORM_ref4>
+                        DW_AT_type                  <0x00000056> <form DW_FORM_ref4> Refers to: int
 < 2><0x00000087>      DW_TAG_variable
                         DW_AT_location              len 0x0002: 0x916c:  <form DW_FORM_exprloc>
                             DW_OP_fbreg -20
@@ -79,7 +79,7 @@ LOCAL_SYMBOLS:
                       DW_AT_external              yes(1) <form DW_FORM_flag>
                       DW_AT_frame_base            len 0x0001: 0x9c:  <form DW_FORM_exprloc>
                           DW_OP_call_frame_cfa
-                      DW_AT_type                  <0x00000056> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x00000056> <form DW_FORM_ref4> Refers to: int
                       DW_AT_GNU_all_tail_call_sites yes(1) <form DW_FORM_flag>
 < 2><0x000000ab>      DW_TAG_formal_parameter
                         DW_AT_location              len 0x0002: 0x915c:  <form DW_FORM_exprloc>
@@ -87,7 +87,7 @@ LOCAL_SYMBOLS:
                         DW_AT_name                  y <form DW_FORM_string>
                         DW_AT_decl_file             0x00000001 <form DW_FORM_data1>
                         DW_AT_decl_line             0x00000005 <form DW_FORM_data1>
-                        DW_AT_type                  <0x00000056> <form DW_FORM_ref4>
+                        DW_AT_type                  <0x00000056> <form DW_FORM_ref4> Refers to: int
 < 2><0x000000b7>      DW_TAG_variable
                         DW_AT_location              len 0x0002: 0x916c:  <form DW_FORM_exprloc>
                             DW_OP_fbreg -20

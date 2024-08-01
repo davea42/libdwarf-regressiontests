@@ -17,4 +17,3 @@ LOCAL_SYMBOLS:
                       DW_AT_name                  main
                       DW_AT_decl_file             0x00000001 /home/davea/dwarf/dwarf-working/trunk/dwarftest/moshe/t.c
                       DW_AT_decl_line             0x00000004
-                      DW_AT_type                  <0x0000003a>

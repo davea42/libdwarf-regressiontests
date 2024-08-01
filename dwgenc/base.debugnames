@@ -20,7 +20,7 @@ LOCAL_SYMBOLS:
                       DW_AT_external              yes(1) <form DW_FORM_flag>
                       DW_AT_frame_base            len 0x0001: 0x9c:  <form DW_FORM_exprloc>
                           DW_OP_call_frame_cfa
-                      DW_AT_type                  <0x0000003b> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x0000003b> <form DW_FORM_ref4> Refers to: int
                       DW_AT_GNU_all_call_sites    yes(1) <form DW_FORM_flag>
 < 1><0x0000003b>    DW_TAG_base_type
                       DW_AT_name                  int <form DW_FORM_string>
@@ -36,7 +36,7 @@ LOCAL_SYMBOLS:
                       DW_AT_external              yes(1) <form DW_FORM_flag>
                       DW_AT_frame_base            len 0x0001: 0x9c:  <form DW_FORM_exprloc>
                           DW_OP_call_frame_cfa
-                      DW_AT_type                  <0x0000003b> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x0000003b> <form DW_FORM_ref4> Refers to: int
                       DW_AT_GNU_all_tail_call_sites yes(1) <form DW_FORM_flag>
 < 2><0x0000005e>      DW_TAG_variable
                         DW_AT_location              len 0x0002: 0x916c:  <form DW_FORM_exprloc>
@@ -44,7 +44,7 @@ LOCAL_SYMBOLS:
                         DW_AT_name                  j <form DW_FORM_string>
                         DW_AT_decl_file             0x00000001 <form DW_FORM_data1>
                         DW_AT_decl_line             0x0000000a <form DW_FORM_data1>
-                        DW_AT_type                  <0x0000003b> <form DW_FORM_ref4>
+                        DW_AT_type                  <0x0000003b> <form DW_FORM_ref4> Refers to: int
 < 1><0x0000006b>    DW_TAG_variable
                       DW_AT_location              len 0x0009: 0x030000000000000000:  <form DW_FORM_exprloc>
                           DW_OP_addr 0x00000000
@@ -52,5 +52,5 @@ LOCAL_SYMBOLS:
                       DW_AT_decl_file             0x00000001 <form DW_FORM_data1>
                       DW_AT_decl_line             0x00000003 <form DW_FORM_data1>
                       DW_AT_external              yes(1) <form DW_FORM_flag>
-                      DW_AT_type                  <0x0000003b> <form DW_FORM_ref4>
+                      DW_AT_type                  <0x0000003b> <form DW_FORM_ref4> Refers to: int
 

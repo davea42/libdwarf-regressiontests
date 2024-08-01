@@ -18,7 +18,7 @@ LOCAL_SYMBOLS:
                       DW_AT_decl_file             0x00000001 /home/davea/dwarf/regressiontests/nolibelf/test.c
                       DW_AT_decl_line             0x00000005
                       DW_AT_prototyped            yes(1)
-                      DW_AT_type                  <0x00000069>
+                      DW_AT_type                  <0x00000069> Refers to: int
                       DW_AT_low_pc                0x00000000
                       DW_AT_high_pc               <offset-from-lowpc> 22 <highpc: 0x00000016>
                       DW_AT_frame_base            len 0x0001: 0x9c: 
@@ -29,14 +29,14 @@ LOCAL_SYMBOLS:
                         DW_AT_name                  myd
                         DW_AT_decl_file             0x00000001 /home/davea/dwarf/regressiontests/nolibelf/test.c
                         DW_AT_decl_line             0x00000005
-                        DW_AT_type                  <0x00000070>
+                        DW_AT_type                  <0x00000070> Refers to: unsigned int
                         DW_AT_location              len 0x0002: 0x915c: 
                             DW_OP_fbreg -36
 < 2><0x0000005c>      DW_TAG_variable
                         DW_AT_name                  x
                         DW_AT_decl_file             0x00000001 /home/davea/dwarf/regressiontests/nolibelf/test.c
                         DW_AT_decl_line             0x00000007
-                        DW_AT_type                  <0x00000069>
+                        DW_AT_type                  <0x00000069> Refers to: int
                         DW_AT_location              len 0x0002: 0x916c: 
                             DW_OP_fbreg -20
 < 1><0x00000069>    DW_TAG_base_type

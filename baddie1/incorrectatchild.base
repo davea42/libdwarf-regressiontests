@@ -74,7 +74,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_encoding              DW_ATE_unsigned
 < 1><0x00000072 GOFF=0x0000012f>    DW_TAG_pointer_type
                                       DW_AT_byte_size             4
-                                      DW_AT_type                  <0x00000078 GOFF=0x00000135>
+                                      DW_AT_type                  <0x00000078 GOFF=0x00000135> Refers to: char
 < 1><0x00000078 GOFF=0x00000135>    DW_TAG_base_type
                                       DW_AT_byte_size             1
                                       DW_AT_encoding              DW_ATE_unsigned_char
@@ -85,7 +85,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_decl_file             0x00000001 U:\\scratch/t.c
                                       DW_AT_decl_line             0x0000000b
                                       DW_AT_prototyped            yes(1)
-                                      DW_AT_type                  <0x0000004c GOFF=0x00000109>
+                                      DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                       DW_AT_low_pc                0x00000000
                                       DW_AT_high_pc               0x00000000
                                       DW_AT_frame_base            len 0x0002: 0x7004: 
