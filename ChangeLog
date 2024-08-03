@@ -1,3 +1,137 @@
+2024-08-03:  David Anderson
+    commit bbfc7fba94eadb81505bf1421903aacc01d6c0ec
+
+    The test used to emit a trailing space
+    but it no longer does that.
+    Baseline matches again.
+            modified:   baselines/examplev-ranges-a.base
+            modified:   baselines/examplev-ranges-b.base
+            modified:   baselines/examplev-ranges-c.base
+
+2024-08-03:  David Anderson
+    commit 965f48ce3eaf9f29f40a79a37ccb45028510a4a3
+
+    Reduce the length of text checked in finding
+    a usable dwarfdump*.O to 19 lines (from 20)
+    as a recent dwarfdump change involved a
+    change in dwarfdump output in the 20th line.
+            modified:   INITIALSETUP.sh
+
+2024-08-01:  David Anderson
+    commit a32cf864add277c7b31ab658fa0eb7aa0c8028ae
+
+    Baselines changed as dwarfdump does a better job
+    of informing about attributes
+    DW_AT_specification DW_AT_abstract_origin DW_AT_type  .
+
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectbeforechild.base
+            modified:   baddie1/incorrectbeforeitself.base
+            modified:   baddie1/incorrectdies.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+            modified:   baselines/databitoffset.base
+            modified:   baselines/macuniv.base
+            modified:   baselines/macuniv0.base
+            modified:   baselines/macuniv1.base
+            modified:   debugfission/archivedwo-iMvvv.base.gz
+            modified:   debugfission/archivedwo.base.gz
+            modified:   debugfission/targetdwo.base.gz
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+            modified:   dwgena/test1.base.gz
+            modified:   dwgena/test2.base.gz
+            modified:   dwgena/test3.base.gz
+            modified:   dwgena/test4.base.gz
+            modified:   dwgena/test5.base.gz
+            modified:   dwgena/test6.base.gz
+            modified:   dwgena/test7.base.gz
+            modified:   dwgena/test8.base.gz
+            modified:   dwgena/test9.base.gz
+            modified:   dwgenc/base.debugnames
+            modified:   findexecutable.base
+            modified:   implicitconst/implicit.base
+            modified:   mustacchi/m32out.base
+            modified:   mustacchi/m64out.base
+            modified:   nolibelf/test1.base
+
+2024-07-31:  David Anderson
+    commit 196a59794279926a127b5e35f6a2a6d40adb9c0f
+
+    Now with tests for ossfuzz 70753 and 70763
+            modified:   DWARFTEST.sh
+    Baseline executables update.
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-07-28:  David Anderson
+    commit 86f5a8392be757a74ca1e60ab0a69d6e15311e00
+
+    Newtests, initial baseline value
+            new file:   baselines/ossfuzz70753.base
+            new file:   baselines/ossfuzz70763.base
+
+2024-07-28:  David Anderson
+    commit ec88db13b5fb327a5c5bda759c3d29d211811433
+
+    New failures
+            new file:   ossfuzz70753/README.txt
+            new file:   ossfuzz70753/fuzz_die_cu_offset-6598270743281664
+            new file:   ossfuzz70763/README.txt
+            new file:   ossfuzz70763/fuzz_macro_dwarf5-5161075908083712
+
+2024-07-27:  David Anderson
+    commit 7d970208a6231e68dca1a0996b6a1faf53bcd33e
+
+    Reflecting change to dwarfdump output of .debug_ranges data
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectbeforechild.base
+            modified:   baddie1/incorrectbeforeitself.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+
+    New baselines given .debug_ranges output format change.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2024-07-27:  David Anderson
+    commit 313af648432c167fe262d6ec03a6fa43c1199d21
+
+    Adding testcase ossfuzz 70721, heap use after free.
+    The output lines about START all also echo the $failcount
+    to make it easier to check for script correctness.
+            modified:   DWARFTEST.sh
+
+2024-07-27:  David Anderson
+    commit 2b223303f23abe2ec88af4fe8154514a648d4f47
+
+    New test based on this ossfuzz error
+    DW202407-010.
+            new file:   baselines/ossfuzz70721.base
+            new file:   ossfuzz70721/fuzz_macro_dwarf5-4907954017468416
+
+2024-07-26:  David Anderson
+    commit 3bbf9f842be0d725ba39460f97ef91dbdfb69ee6
+
+    Now with new tests accessing .debug_ranges
+    validating code in doc/checkexamples.c
+            modified:   DWARFTEST.sh
+            modified:   baselines/examplev-ranges-b.base
+            new file:   baselines/examplev-ranges-c.base
+            modified:   baselines/ossfuzz56492.base
+    baseline executables.
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-07-23:  David Anderson
+    commit 7434331f135839b4d41c4de91e82e3ce669a3dac
+
+    Up to date with git log
+            modified:   ChangeLog
+
 2024-07-23:  David Anderson
     commit a61ef7a9e986a77a3f0ab633a128440c5e4f910e
 
