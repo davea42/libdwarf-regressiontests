@@ -111,7 +111,7 @@ do
    r=$?
    if test $r -eq 0
    then
-     ($i -i $srcdir/moshe/a.out.t |head -n 20) >junkf2    2>/dev/null
+     ($i -i $srcdir/moshe/a.out.t |head -n 19) >junkf2    2>/dev/null
      # Remove file that should not be here, if it exists.
      rm -f *@*
      # use python to diff as we deal with windows line-ends easily.
