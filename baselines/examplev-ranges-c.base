@@ -1,9 +1,9 @@
 Open CU 0
 Range group base address: 0x100003438, offset in .debug_ranges: 0x00000000
 [   0] DW_RANGES_ENTRY: raw    addr1 0x00000000 addr2 0x00000624
-       DW_RANGES_ENTRY: cooked addr1 0x100003438 addr2  0x100003a5c 
+       DW_RANGES_ENTRY: cooked addr1 0x100003438 addr2  0x100003a5c
 [   1] DW_RANGES_ENTRY: raw    addr1 0x00000630 addr2 0x000009d8
-       DW_RANGES_ENTRY: cooked addr1 0x100003a68 addr2  0x100003e10 
+       DW_RANGES_ENTRY: cooked addr1 0x100003a68 addr2  0x100003e10
 [   2] DW_RANGES_END  : 0,0
 Open CU 1
 End of CUs
