@@ -24,7 +24,7 @@ LOCAL_SYMBOLS:
                       DW_AT_frame_base            len 0x0001: 0x9c: 
                           DW_OP_call_frame_cfa
                       DW_AT_GNU_all_call_sites    yes(1)
-                      DW_AT_sibling               <0x00000069>
+                      DW_AT_sibling               <0x00000069> Refers to: int
 < 2><0x0000004e>      DW_TAG_formal_parameter
                         DW_AT_name                  myd
                         DW_AT_decl_file             0x00000001 /home/davea/dwarf/regressiontests/nolibelf/test.c

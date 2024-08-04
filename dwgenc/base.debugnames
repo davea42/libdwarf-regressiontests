@@ -27,7 +27,7 @@ LOCAL_SYMBOLS:
                       DW_AT_byte_size             4 <form DW_FORM_data1>
                       DW_AT_encoding              DW_ATE_signed <form DW_FORM_data1>
 < 1><0x00000042>    DW_TAG_subprogram
-                      DW_AT_sibling               <0x0000006b> <form DW_FORM_ref4>
+                      DW_AT_sibling               <0x0000006b> <form DW_FORM_ref4> Refers to: i
                       DW_AT_name                  main <form DW_FORM_strp>
                       DW_AT_low_pc                0x00000000 <form DW_FORM_addr>
                       DW_AT_high_pc               <offset-from-lowpc> 33 <form DW_FORM_data1> <highpc: 0x00000021>

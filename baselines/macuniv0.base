@@ -910,7 +910,7 @@ LOCAL_SYMBOLS:
                         DW_AT_name                  __1
                         DW_AT_export_symbols        yes(1)
 < 3><0x0000003c>        DW_TAG_class_type <abbrev 4>
-                          DW_AT_containing_type       <GOFF=0x0000003c>
+                          DW_AT_containing_type       <GOFF=0x0000003c> Refers to: ios_base
                           DW_AT_calling_convention    DW_CC_pass_by_reference
                           DW_AT_name                  ios_base
                           DW_AT_byte_size             136 (-120)
@@ -1502,7 +1502,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_public
-                            DW_AT_containing_type       <GOFF=0x0000003c>
+                            DW_AT_containing_type       <GOFF=0x0000003c> Refers to: ios_base
 < 5><0x00000486>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x00005a0a>
                               DW_AT_artificial            yes(1)
@@ -2114,7 +2114,7 @@ LOCAL_SYMBOLS:
 < 5><0x000008dd>            DW_TAG_formal_parameter <abbrev 16>
                               DW_AT_type                  <GOFF=0x000059b7> Refers to: long
 < 4><0x000008e3>          DW_TAG_class_type <abbrev 4>
-                            DW_AT_containing_type       <GOFF=0x00002f7a>
+                            DW_AT_containing_type       <GOFF=0x00002f7a> Refers to: __shared_count
                             DW_AT_calling_convention    DW_CC_pass_by_reference
                             DW_AT_name                  facet
                             DW_AT_byte_size             16
@@ -2146,7 +2146,7 @@ LOCAL_SYMBOLS:
                               DW_AT_declaration           yes(1)
                               DW_AT_external              yes(1)
                               DW_AT_accessibility         DW_ACCESS_protected
-                              DW_AT_containing_type       <GOFF=0x000008e3>
+                              DW_AT_containing_type       <GOFF=0x000008e3> Refers to: facet
 < 6><0x0000091a>              DW_TAG_formal_parameter <abbrev 15>
                                 DW_AT_type                  <GOFF=0x00005c03>
                                 DW_AT_artificial            yes(1)
@@ -2160,7 +2160,7 @@ LOCAL_SYMBOLS:
                                   DW_OP_constu 2
                               DW_AT_declaration           yes(1)
                               DW_AT_external              yes(1)
-                              DW_AT_containing_type       <GOFF=0x000008e3>
+                              DW_AT_containing_type       <GOFF=0x000008e3> Refers to: facet
 < 6><0x00000933>              DW_TAG_formal_parameter <abbrev 15>
                                 DW_AT_type                  <GOFF=0x00005c03>
                                 DW_AT_artificial            yes(1)
@@ -6819,7 +6819,7 @@ LOCAL_SYMBOLS:
                             DW_AT_decl_file             0x0000000d /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/type_traits
                             DW_AT_decl_line             0x000001b5
 < 3><0x00002f7a>        DW_TAG_class_type <abbrev 4>
-                          DW_AT_containing_type       <GOFF=0x00002f7a>
+                          DW_AT_containing_type       <GOFF=0x00002f7a> Refers to: __shared_count
                           DW_AT_calling_convention    DW_CC_pass_by_reference
                           DW_AT_name                  __shared_count
                           DW_AT_byte_size             16
@@ -6871,7 +6871,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x00002f7a>
+                            DW_AT_containing_type       <GOFF=0x00002f7a> Refers to: __shared_count
 < 5><0x00002fda>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x00005bea>
                               DW_AT_artificial            yes(1)
@@ -6885,7 +6885,7 @@ LOCAL_SYMBOLS:
                                 DW_OP_constu 2
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
-                            DW_AT_containing_type       <GOFF=0x00002f7a>
+                            DW_AT_containing_type       <GOFF=0x00002f7a> Refers to: __shared_count
 < 5><0x00002ff3>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x00005bea>
                               DW_AT_artificial            yes(1)
@@ -9417,1034 +9417,1034 @@ LOCAL_SYMBOLS:
 < 3><0x00004426>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x00000098
-                          DW_AT_import                <GOFF=0x00005f9d>
+                          DW_AT_import                <GOFF=0x00005f9d> Refers to: int8_t
 < 3><0x0000442d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x00000099
-                          DW_AT_import                <GOFF=0x00005faf>
+                          DW_AT_import                <GOFF=0x00005faf> Refers to: int16_t
 < 3><0x00004434>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x0000009a
-                          DW_AT_import                <GOFF=0x00005c26>
+                          DW_AT_import                <GOFF=0x00005c26> Refers to: int32_t
 < 3><0x0000443b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x0000009b
-                          DW_AT_import                <GOFF=0x00005fc1>
+                          DW_AT_import                <GOFF=0x00005fc1> Refers to: int64_t
 < 3><0x00004442>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x0000009d
-                          DW_AT_import                <GOFF=0x00005fd3>
+                          DW_AT_import                <GOFF=0x00005fd3> Refers to: uint8_t
 < 3><0x00004449>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x0000009e
-                          DW_AT_import                <GOFF=0x00005fde>
+                          DW_AT_import                <GOFF=0x00005fde> Refers to: uint16_t
 < 3><0x00004450>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x0000009f
-                          DW_AT_import                <GOFF=0x00005e20>
+                          DW_AT_import                <GOFF=0x00005e20> Refers to: uint32_t
 < 3><0x00004457>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000a0
-                          DW_AT_import                <GOFF=0x00005ff0>
+                          DW_AT_import                <GOFF=0x00005ff0> Refers to: uint64_t
 < 3><0x0000445e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000a2
-                          DW_AT_import                <GOFF=0x00006002>
+                          DW_AT_import                <GOFF=0x00006002> Refers to: int_least8_t
 < 3><0x00004465>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000a3
-                          DW_AT_import                <GOFF=0x0000600d>
+                          DW_AT_import                <GOFF=0x0000600d> Refers to: int_least16_t
 < 3><0x0000446c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000a4
-                          DW_AT_import                <GOFF=0x00006018>
+                          DW_AT_import                <GOFF=0x00006018> Refers to: int_least32_t
 < 3><0x00004473>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000a5
-                          DW_AT_import                <GOFF=0x00006023>
+                          DW_AT_import                <GOFF=0x00006023> Refers to: int_least64_t
 < 3><0x0000447a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000a7
-                          DW_AT_import                <GOFF=0x0000602e>
+                          DW_AT_import                <GOFF=0x0000602e> Refers to: uint_least8_t
 < 3><0x00004481>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000a8
-                          DW_AT_import                <GOFF=0x00006039>
+                          DW_AT_import                <GOFF=0x00006039> Refers to: uint_least16_t
 < 3><0x00004488>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000a9
-                          DW_AT_import                <GOFF=0x00005e15>
+                          DW_AT_import                <GOFF=0x00005e15> Refers to: uint_least32_t
 < 3><0x0000448f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000aa
-                          DW_AT_import                <GOFF=0x00006044>
+                          DW_AT_import                <GOFF=0x00006044> Refers to: uint_least64_t
 < 3><0x00004496>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000ac
-                          DW_AT_import                <GOFF=0x0000604f>
+                          DW_AT_import                <GOFF=0x0000604f> Refers to: int_fast8_t
 < 3><0x0000449d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000ad
-                          DW_AT_import                <GOFF=0x0000605a>
+                          DW_AT_import                <GOFF=0x0000605a> Refers to: int_fast16_t
 < 3><0x000044a4>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000ae
-                          DW_AT_import                <GOFF=0x00006065>
+                          DW_AT_import                <GOFF=0x00006065> Refers to: int_fast32_t
 < 3><0x000044ab>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000af
-                          DW_AT_import                <GOFF=0x00006070>
+                          DW_AT_import                <GOFF=0x00006070> Refers to: int_fast64_t
 < 3><0x000044b2>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000b1
-                          DW_AT_import                <GOFF=0x0000607b>
+                          DW_AT_import                <GOFF=0x0000607b> Refers to: uint_fast8_t
 < 3><0x000044b9>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000b2
-                          DW_AT_import                <GOFF=0x00006086>
+                          DW_AT_import                <GOFF=0x00006086> Refers to: uint_fast16_t
 < 3><0x000044c0>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000b3
-                          DW_AT_import                <GOFF=0x00006091>
+                          DW_AT_import                <GOFF=0x00006091> Refers to: uint_fast32_t
 < 3><0x000044c7>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000b4
-                          DW_AT_import                <GOFF=0x0000609c>
+                          DW_AT_import                <GOFF=0x0000609c> Refers to: uint_fast64_t
 < 3><0x000044ce>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000b6
-                          DW_AT_import                <GOFF=0x000060a7>
+                          DW_AT_import                <GOFF=0x000060a7> Refers to: intptr_t
 < 3><0x000044d5>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000b7
-                          DW_AT_import                <GOFF=0x00005e0a>
+                          DW_AT_import                <GOFF=0x00005e0a> Refers to: uintptr_t
 < 3><0x000044dc>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000b9
-                          DW_AT_import                <GOFF=0x000060bd>
+                          DW_AT_import                <GOFF=0x000060bd> Refers to: intmax_t
 < 3><0x000044e3>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000018 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdint
                           DW_AT_decl_line             0x000000ba
-                          DW_AT_import                <GOFF=0x000060c8>
+                          DW_AT_import                <GOFF=0x000060c8> Refers to: uintmax_t
 < 3><0x000044ea>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000022 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstddef
                           DW_AT_decl_line             0x00000031
-                          DW_AT_import                <GOFF=0x000059ac>
+                          DW_AT_import                <GOFF=0x000059ac> Refers to: ptrdiff_t
 < 3><0x000044f1>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000022 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstddef
                           DW_AT_decl_line             0x00000032
-                          DW_AT_import                <GOFF=0x000059e4>
+                          DW_AT_import                <GOFF=0x000059e4> Refers to: size_t
 < 3><0x000044f8>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000022 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstddef
                           DW_AT_decl_line             0x00000035
-                          DW_AT_import                <GOFF=0x000060d3>
+                          DW_AT_import                <GOFF=0x000060d3> Refers to: max_align_t
 < 3><0x000044ff>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000063
-                          DW_AT_import                <GOFF=0x000059e4>
+                          DW_AT_import                <GOFF=0x000059e4> Refers to: size_t
 < 3><0x00004506>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000064
-                          DW_AT_import                <GOFF=0x000060e5>
+                          DW_AT_import                <GOFF=0x000060e5> Refers to: div_t
 < 3><0x0000450d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000065
-                          DW_AT_import                <GOFF=0x0000610e>
+                          DW_AT_import                <GOFF=0x0000610e> Refers to: ldiv_t
 < 3><0x00004514>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000067
-                          DW_AT_import                <GOFF=0x00006137>
+                          DW_AT_import                <GOFF=0x00006137> Refers to: lldiv_t
 < 3><0x0000451b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000069
-                          DW_AT_import                <GOFF=0x00006160>
+                          DW_AT_import                <GOFF=0x00006160> Refers to: atof
 < 3><0x00004522>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000006a
-                          DW_AT_import                <GOFF=0x00006178>
+                          DW_AT_import                <GOFF=0x00006178> Refers to: atoi
 < 3><0x00004529>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000006b
-                          DW_AT_import                <GOFF=0x00006189>
+                          DW_AT_import                <GOFF=0x00006189> Refers to: atol
 < 3><0x00004530>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000006d
-                          DW_AT_import                <GOFF=0x0000619a>
+                          DW_AT_import                <GOFF=0x0000619a> Refers to: atoll
 < 3><0x00004537>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000006f
-                          DW_AT_import                <GOFF=0x000061ab>
+                          DW_AT_import                <GOFF=0x000061ab> Refers to: strtod
 < 3><0x0000453e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000070
-                          DW_AT_import                <GOFF=0x000061ca>
+                          DW_AT_import                <GOFF=0x000061ca> Refers to: strtof
 < 3><0x00004545>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000071
-                          DW_AT_import                <GOFF=0x000061eb>
+                          DW_AT_import                <GOFF=0x000061eb> Refers to: strtold
 < 3><0x0000454c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000072
-                          DW_AT_import                <GOFF=0x00006201>
+                          DW_AT_import                <GOFF=0x00006201> Refers to: strtol
 < 3><0x00004553>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000074
-                          DW_AT_import                <GOFF=0x0000621c>
+                          DW_AT_import                <GOFF=0x0000621c> Refers to: strtoll
 < 3><0x0000455a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000076
-                          DW_AT_import                <GOFF=0x00006237>
+                          DW_AT_import                <GOFF=0x00006237> Refers to: strtoul
 < 3><0x00004561>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000078
-                          DW_AT_import                <GOFF=0x00006252>
+                          DW_AT_import                <GOFF=0x00006252> Refers to: strtoull
 < 3><0x00004568>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000007a
-                          DW_AT_import                <GOFF=0x0000626d>
+                          DW_AT_import                <GOFF=0x0000626d> Refers to: rand
 < 3><0x0000456f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000007b
-                          DW_AT_import                <GOFF=0x00006278>
+                          DW_AT_import                <GOFF=0x00006278> Refers to: srand
 < 3><0x00004576>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000007c
-                          DW_AT_import                <GOFF=0x00006285>
+                          DW_AT_import                <GOFF=0x00006285> Refers to: calloc
 < 3><0x0000457d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000007d
-                          DW_AT_import                <GOFF=0x0000629b>
+                          DW_AT_import                <GOFF=0x0000629b> Refers to: free
 < 3><0x00004584>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000007e
-                          DW_AT_import                <GOFF=0x000062a8>
+                          DW_AT_import                <GOFF=0x000062a8> Refers to: malloc
 < 3><0x0000458b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000007f
-                          DW_AT_import                <GOFF=0x000062b9>
+                          DW_AT_import                <GOFF=0x000062b9> Refers to: realloc
 < 3><0x00004592>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000080
-                          DW_AT_import                <GOFF=0x000062cf>
+                          DW_AT_import                <GOFF=0x000062cf> Refers to: abort
 < 3><0x00004599>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000081
-                          DW_AT_import                <GOFF=0x000062d6>
+                          DW_AT_import                <GOFF=0x000062d6> Refers to: atexit
 < 3><0x000045a0>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000082
-                          DW_AT_import                <GOFF=0x000062ed>
+                          DW_AT_import                <GOFF=0x000062ed> Refers to: exit
 < 3><0x000045a7>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000083
-                          DW_AT_import                <GOFF=0x000062fa>
+                          DW_AT_import                <GOFF=0x000062fa> Refers to: _Exit
 < 3><0x000045ae>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000085
-                          DW_AT_import                <GOFF=0x00006307>
+                          DW_AT_import                <GOFF=0x00006307> Refers to: getenv
 < 3><0x000045b5>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000086
-                          DW_AT_import                <GOFF=0x00006318>
+                          DW_AT_import                <GOFF=0x00006318> Refers to: system
 < 3><0x000045bc>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000088
-                          DW_AT_import                <GOFF=0x0000632d>
+                          DW_AT_import                <GOFF=0x0000632d> Refers to: bsearch
 < 3><0x000045c3>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000089
-                          DW_AT_import                <GOFF=0x00006367>
+                          DW_AT_import                <GOFF=0x00006367> Refers to: qsort
 < 3><0x000045ca>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000008a
-                          DW_AT_import                <GOFF=0x00006383>
+                          DW_AT_import                <GOFF=0x00006383> Refers to: abs
 < 3><0x000045d1>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000008b
-                          DW_AT_import                <GOFF=0x00006398>
+                          DW_AT_import                <GOFF=0x00006398> Refers to: labs
 < 3><0x000045d8>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000008d
-                          DW_AT_import                <GOFF=0x000063a9>
+                          DW_AT_import                <GOFF=0x000063a9> Refers to: llabs
 < 3><0x000045df>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x0000008f
-                          DW_AT_import                <GOFF=0x000063ba>
+                          DW_AT_import                <GOFF=0x000063ba> Refers to: div
 < 3><0x000045e6>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000090
-                          DW_AT_import                <GOFF=0x000063d4>
+                          DW_AT_import                <GOFF=0x000063d4> Refers to: ldiv
 < 3><0x000045ed>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000092
-                          DW_AT_import                <GOFF=0x000063ea>
+                          DW_AT_import                <GOFF=0x000063ea> Refers to: lldiv
 < 3><0x000045f4>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000094
-                          DW_AT_import                <GOFF=0x00006400>
+                          DW_AT_import                <GOFF=0x00006400> Refers to: mblen
 < 3><0x000045fb>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000095
-                          DW_AT_import                <GOFF=0x00006416>
+                          DW_AT_import                <GOFF=0x00006416> Refers to: mbtowc
 < 3><0x00004602>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000096
-                          DW_AT_import                <GOFF=0x0000643d>
+                          DW_AT_import                <GOFF=0x0000643d> Refers to: wctomb
 < 3><0x00004609>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000097
-                          DW_AT_import                <GOFF=0x00006453>
+                          DW_AT_import                <GOFF=0x00006453> Refers to: mbstowcs
 < 3><0x00004610>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000024 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdlib
                           DW_AT_decl_line             0x00000098
-                          DW_AT_import                <GOFF=0x0000646e>
+                          DW_AT_import                <GOFF=0x0000646e> Refers to: wcstombs
 < 3><0x00004617>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002b /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__mbstate_t.h
                           DW_AT_decl_line             0x0000002a
-                          DW_AT_import                <GOFF=0x0000649f>
+                          DW_AT_import                <GOFF=0x0000649f> Refers to: mbstate_t
 < 3><0x0000461e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000044
-                          DW_AT_import                <GOFF=0x000059e4>
+                          DW_AT_import                <GOFF=0x000059e4> Refers to: size_t
 < 3><0x00004625>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000045
-                          DW_AT_import                <GOFF=0x000064ea>
+                          DW_AT_import                <GOFF=0x000064ea> Refers to: memcpy
 < 3><0x0000462c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000046
-                          DW_AT_import                <GOFF=0x00006505>
+                          DW_AT_import                <GOFF=0x00006505> Refers to: memmove
 < 3><0x00004633>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000047
-                          DW_AT_import                <GOFF=0x00006520>
+                          DW_AT_import                <GOFF=0x00006520> Refers to: strcpy
 < 3><0x0000463a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000048
-                          DW_AT_import                <GOFF=0x00006536>
+                          DW_AT_import                <GOFF=0x00006536> Refers to: strncpy
 < 3><0x00004641>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000049
-                          DW_AT_import                <GOFF=0x00006551>
+                          DW_AT_import                <GOFF=0x00006551> Refers to: strcat
 < 3><0x00004648>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x0000004a
-                          DW_AT_import                <GOFF=0x00006567>
+                          DW_AT_import                <GOFF=0x00006567> Refers to: strncat
 < 3><0x0000464f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x0000004b
-                          DW_AT_import                <GOFF=0x00006582>
+                          DW_AT_import                <GOFF=0x00006582> Refers to: memcmp
 < 3><0x00004656>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x0000004c
-                          DW_AT_import                <GOFF=0x0000659d>
+                          DW_AT_import                <GOFF=0x0000659d> Refers to: strcmp
 < 3><0x0000465d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x0000004d
-                          DW_AT_import                <GOFF=0x000065b3>
+                          DW_AT_import                <GOFF=0x000065b3> Refers to: strncmp
 < 3><0x00004664>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x0000004e
-                          DW_AT_import                <GOFF=0x000065ce>
+                          DW_AT_import                <GOFF=0x000065ce> Refers to: strcoll
 < 3><0x0000466b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x0000004f
-                          DW_AT_import                <GOFF=0x000065e4>
+                          DW_AT_import                <GOFF=0x000065e4> Refers to: strxfrm
 < 3><0x00004672>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000050
-                          DW_AT_import                <GOFF=0x000065ff>
+                          DW_AT_import                <GOFF=0x000065ff> Refers to: memchr
 < 3><0x00004679>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000051
-                          DW_AT_import                <GOFF=0x0000661e>
+                          DW_AT_import                <GOFF=0x0000661e> Refers to: strchr
 < 3><0x00004680>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000052
-                          DW_AT_import                <GOFF=0x00006638>
+                          DW_AT_import                <GOFF=0x00006638> Refers to: strcspn
 < 3><0x00004687>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000053
-                          DW_AT_import                <GOFF=0x0000664e>
+                          DW_AT_import                <GOFF=0x0000664e> Refers to: strpbrk
 < 3><0x0000468e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000054
-                          DW_AT_import                <GOFF=0x00006668>
+                          DW_AT_import                <GOFF=0x00006668> Refers to: strrchr
 < 3><0x00004695>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000055
-                          DW_AT_import                <GOFF=0x00006682>
+                          DW_AT_import                <GOFF=0x00006682> Refers to: strspn
 < 3><0x0000469c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000056
-                          DW_AT_import                <GOFF=0x00006698>
+                          DW_AT_import                <GOFF=0x00006698> Refers to: strstr
 < 3><0x000046a3>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x00000058
-                          DW_AT_import                <GOFF=0x000066b2>
+                          DW_AT_import                <GOFF=0x000066b2> Refers to: strtok
 < 3><0x000046aa>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x0000005a
-                          DW_AT_import                <GOFF=0x000066c8>
+                          DW_AT_import                <GOFF=0x000066c8> Refers to: memset
 < 3><0x000046b1>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x0000005b
-                          DW_AT_import                <GOFF=0x000066e3>
+                          DW_AT_import                <GOFF=0x000066e3> Refers to: strerror
 < 3><0x000046b8>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000002c /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstring
                           DW_AT_decl_line             0x0000005c
-                          DW_AT_import                <GOFF=0x000066f8>
+                          DW_AT_import                <GOFF=0x000066f8> Refers to: strlen
 < 3><0x000046bf>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x0000004b
-                          DW_AT_import                <GOFF=0x00006709>
+                          DW_AT_import                <GOFF=0x00006709> Refers to: clock_t
 < 3><0x000046c6>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x0000004d
-                          DW_AT_import                <GOFF=0x000059e4>
+                          DW_AT_import                <GOFF=0x000059e4> Refers to: size_t
 < 3><0x000046cd>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x0000004f
-                          DW_AT_import                <GOFF=0x0000671f>
+                          DW_AT_import                <GOFF=0x0000671f> Refers to: time_t
 < 3><0x000046d4>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x00000050
-                          DW_AT_import                <GOFF=0x00006735>
+                          DW_AT_import                <GOFF=0x00006735> Refers to: tm
 < 3><0x000046db>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x00000054
-                          DW_AT_import                <GOFF=0x000067c3>
+                          DW_AT_import                <GOFF=0x000067c3> Refers to: clock
 < 3><0x000046e2>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x00000055
-                          DW_AT_import                <GOFF=0x000067d2>
+                          DW_AT_import                <GOFF=0x000067d2> Refers to: difftime
 < 3><0x000046e9>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x00000056
-                          DW_AT_import                <GOFF=0x000067e8>
+                          DW_AT_import                <GOFF=0x000067e8> Refers to: mktime
 < 3><0x000046f0>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x00000057
-                          DW_AT_import                <GOFF=0x00006802>
+                          DW_AT_import                <GOFF=0x00006802> Refers to: time
 < 3><0x000046f7>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x00000059
-                          DW_AT_import                <GOFF=0x00006818>
+                          DW_AT_import                <GOFF=0x00006818> Refers to: asctime
 < 3><0x000046fe>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x0000005a
-                          DW_AT_import                <GOFF=0x00006833>
+                          DW_AT_import                <GOFF=0x00006833> Refers to: ctime
 < 3><0x00004705>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x0000005b
-                          DW_AT_import                <GOFF=0x0000684e>
+                          DW_AT_import                <GOFF=0x0000684e> Refers to: gmtime
 < 3><0x0000470c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x0000005c
-                          DW_AT_import                <GOFF=0x0000685f>
+                          DW_AT_import                <GOFF=0x0000685f> Refers to: localtime
 < 3><0x00004713>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000030 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/ctime
                           DW_AT_decl_line             0x0000005e
-                          DW_AT_import                <GOFF=0x00006870>
+                          DW_AT_import                <GOFF=0x00006870> Refers to: strftime
 < 3><0x0000471a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000006b
-                          DW_AT_import                <GOFF=0x00006894>
+                          DW_AT_import                <GOFF=0x00006894> Refers to: FILE
 < 3><0x00004721>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000006c
-                          DW_AT_import                <GOFF=0x00006a04>
+                          DW_AT_import                <GOFF=0x00006a04> Refers to: fpos_t
 < 3><0x00004728>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000006d
-                          DW_AT_import                <GOFF=0x000059e4>
+                          DW_AT_import                <GOFF=0x000059e4> Refers to: size_t
 < 3><0x0000472f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000006f
-                          DW_AT_import                <GOFF=0x00006a61>
+                          DW_AT_import                <GOFF=0x00006a61> Refers to: fclose
 < 3><0x00004736>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000070
-                          DW_AT_import                <GOFF=0x00006a77>
+                          DW_AT_import                <GOFF=0x00006a77> Refers to: fflush
 < 3><0x0000473d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000071
-                          DW_AT_import                <GOFF=0x00006a88>
+                          DW_AT_import                <GOFF=0x00006a88> Refers to: setbuf
 < 3><0x00004744>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000072
-                          DW_AT_import                <GOFF=0x00006a9a>
+                          DW_AT_import                <GOFF=0x00006a9a> Refers to: setvbuf
 < 3><0x0000474b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000073
-                          DW_AT_import                <GOFF=0x00006aba>
+                          DW_AT_import                <GOFF=0x00006aba> Refers to: fprintf
 < 3><0x00004752>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000074
-                          DW_AT_import                <GOFF=0x00006ad1>
+                          DW_AT_import                <GOFF=0x00006ad1> Refers to: fscanf
 < 3><0x00004759>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000075
-                          DW_AT_import                <GOFF=0x00006ae8>
+                          DW_AT_import                <GOFF=0x00006ae8> Refers to: snprintf
 < 3><0x00004760>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000076
-                          DW_AT_import                <GOFF=0x00006b05>
+                          DW_AT_import                <GOFF=0x00006b05> Refers to: sprintf
 < 3><0x00004767>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000077
-                          DW_AT_import                <GOFF=0x00006b1c>
+                          DW_AT_import                <GOFF=0x00006b1c> Refers to: sscanf
 < 3><0x0000476e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000078
-                          DW_AT_import                <GOFF=0x00006b33>
+                          DW_AT_import                <GOFF=0x00006b33> Refers to: vfprintf
 < 3><0x00004775>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000079
-                          DW_AT_import                <GOFF=0x00006b83>
+                          DW_AT_import                <GOFF=0x00006b83> Refers to: vfscanf
 < 3><0x0000477c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000007a
-                          DW_AT_import                <GOFF=0x00006b9f>
+                          DW_AT_import                <GOFF=0x00006b9f> Refers to: vsscanf
 < 3><0x00004783>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000007b
-                          DW_AT_import                <GOFF=0x00006bbb>
+                          DW_AT_import                <GOFF=0x00006bbb> Refers to: vsnprintf
 < 3><0x0000478a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000007c
-                          DW_AT_import                <GOFF=0x00006bdc>
+                          DW_AT_import                <GOFF=0x00006bdc> Refers to: vsprintf
 < 3><0x00004791>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000007d
-                          DW_AT_import                <GOFF=0x00006bf7>
+                          DW_AT_import                <GOFF=0x00006bf7> Refers to: fgetc
 < 3><0x00004798>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000007e
-                          DW_AT_import                <GOFF=0x00006c08>
+                          DW_AT_import                <GOFF=0x00006c08> Refers to: fgets
 < 3><0x0000479f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000007f
-                          DW_AT_import                <GOFF=0x00006c23>
+                          DW_AT_import                <GOFF=0x00006c23> Refers to: fputc
 < 3><0x000047a6>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000080
-                          DW_AT_import                <GOFF=0x00006c39>
+                          DW_AT_import                <GOFF=0x00006c39> Refers to: fputs
 < 3><0x000047ad>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000081
-                          DW_AT_import                <GOFF=0x00006c53>
+                          DW_AT_import                <GOFF=0x00006c53> Refers to: getc
 < 3><0x000047b4>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000082
-                          DW_AT_import                <GOFF=0x00006c64>
+                          DW_AT_import                <GOFF=0x00006c64> Refers to: putc
 < 3><0x000047bb>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000083
-                          DW_AT_import                <GOFF=0x00006c7a>
+                          DW_AT_import                <GOFF=0x00006c7a> Refers to: ungetc
 < 3><0x000047c2>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000084
-                          DW_AT_import                <GOFF=0x00006c90>
+                          DW_AT_import                <GOFF=0x00006c90> Refers to: fread
 < 3><0x000047c9>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000085
-                          DW_AT_import                <GOFF=0x00006cb0>
+                          DW_AT_import                <GOFF=0x00006cb0> Refers to: fwrite
 < 3><0x000047d0>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000087
-                          DW_AT_import                <GOFF=0x00006cd4>
+                          DW_AT_import                <GOFF=0x00006cd4> Refers to: fgetpos
 < 3><0x000047d7>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000089
-                          DW_AT_import                <GOFF=0x00006cef>
+                          DW_AT_import                <GOFF=0x00006cef> Refers to: fseek
 < 3><0x000047de>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000008b
-                          DW_AT_import                <GOFF=0x00006d0a>
+                          DW_AT_import                <GOFF=0x00006d0a> Refers to: fsetpos
 < 3><0x000047e5>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000008d
-                          DW_AT_import                <GOFF=0x00006d2a>
+                          DW_AT_import                <GOFF=0x00006d2a> Refers to: ftell
 < 3><0x000047ec>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000008e
-                          DW_AT_import                <GOFF=0x00006d3b>
+                          DW_AT_import                <GOFF=0x00006d3b> Refers to: rewind
 < 3><0x000047f3>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000008f
-                          DW_AT_import                <GOFF=0x00006d48>
+                          DW_AT_import                <GOFF=0x00006d48> Refers to: clearerr
 < 3><0x000047fa>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000090
-                          DW_AT_import                <GOFF=0x00006d55>
+                          DW_AT_import                <GOFF=0x00006d55> Refers to: feof
 < 3><0x00004801>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000091
-                          DW_AT_import                <GOFF=0x00006d66>
+                          DW_AT_import                <GOFF=0x00006d66> Refers to: ferror
 < 3><0x00004808>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000092
-                          DW_AT_import                <GOFF=0x00006d77>
+                          DW_AT_import                <GOFF=0x00006d77> Refers to: perror
 < 3><0x0000480f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000095
-                          DW_AT_import                <GOFF=0x00006d84>
+                          DW_AT_import                <GOFF=0x00006d84> Refers to: fopen
 < 3><0x00004816>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000096
-                          DW_AT_import                <GOFF=0x00006d9e>
+                          DW_AT_import                <GOFF=0x00006d9e> Refers to: freopen
 < 3><0x0000481d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x00000098
-                          DW_AT_import                <GOFF=0x00006dbd>
+                          DW_AT_import                <GOFF=0x00006dbd> Refers to: remove
 < 3><0x00004824>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000009a
-                          DW_AT_import                <GOFF=0x00006dce>
+                          DW_AT_import                <GOFF=0x00006dce> Refers to: rename
 < 3><0x0000482b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000009b
-                          DW_AT_import                <GOFF=0x00006de4>
+                          DW_AT_import                <GOFF=0x00006de4> Refers to: tmpfile
 < 3><0x00004832>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x0000009c
-                          DW_AT_import                <GOFF=0x00006def>
+                          DW_AT_import                <GOFF=0x00006def> Refers to: tmpnam
 < 3><0x00004839>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x000000a0
-                          DW_AT_import                <GOFF=0x00006e00>
+                          DW_AT_import                <GOFF=0x00006e00> Refers to: getchar
 < 3><0x00004840>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x000000a2
-                          DW_AT_import                <GOFF=0x00006e0b>
+                          DW_AT_import                <GOFF=0x00006e0b> Refers to: gets
 < 3><0x00004847>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x000000a4
-                          DW_AT_import                <GOFF=0x00006e1c>
+                          DW_AT_import                <GOFF=0x00006e1c> Refers to: scanf
 < 3><0x0000484e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x000000a5
-                          DW_AT_import                <GOFF=0x00006e2e>
+                          DW_AT_import                <GOFF=0x00006e2e> Refers to: vscanf
 < 3><0x00004855>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x000000a9
-                          DW_AT_import                <GOFF=0x00006e45>
+                          DW_AT_import                <GOFF=0x00006e45> Refers to: printf
 < 3><0x0000485c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x000000aa
-                          DW_AT_import                <GOFF=0x00006e57>
+                          DW_AT_import                <GOFF=0x00006e57> Refers to: putchar
 < 3><0x00004863>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x000000ab
-                          DW_AT_import                <GOFF=0x00006e68>
+                          DW_AT_import                <GOFF=0x00006e68> Refers to: puts
 < 3><0x0000486a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000035 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cstdio
                           DW_AT_decl_line             0x000000ac
-                          DW_AT_import                <GOFF=0x00006e79>
+                          DW_AT_import                <GOFF=0x00006e79> Refers to: vprintf
 < 3><0x00004871>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x00000067
-                          DW_AT_import                <GOFF=0x00006e8f>
+                          DW_AT_import                <GOFF=0x00006e8f> Refers to: isalnum
 < 3><0x00004878>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x00000068
-                          DW_AT_import                <GOFF=0x00006ea4>
+                          DW_AT_import                <GOFF=0x00006ea4> Refers to: isalpha
 < 3><0x0000487f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x00000069
-                          DW_AT_import                <GOFF=0x00006eb9>
+                          DW_AT_import                <GOFF=0x00006eb9> Refers to: isblank
 < 3><0x00004886>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x0000006a
-                          DW_AT_import                <GOFF=0x00006ece>
+                          DW_AT_import                <GOFF=0x00006ece> Refers to: iscntrl
 < 3><0x0000488d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x0000006b
-                          DW_AT_import                <GOFF=0x00006ee3>
+                          DW_AT_import                <GOFF=0x00006ee3> Refers to: isdigit
 < 3><0x00004894>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x0000006c
-                          DW_AT_import                <GOFF=0x00006ef8>
+                          DW_AT_import                <GOFF=0x00006ef8> Refers to: isgraph
 < 3><0x0000489b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x0000006d
-                          DW_AT_import                <GOFF=0x00006f0d>
+                          DW_AT_import                <GOFF=0x00006f0d> Refers to: islower
 < 3><0x000048a2>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x0000006e
-                          DW_AT_import                <GOFF=0x00006f22>
+                          DW_AT_import                <GOFF=0x00006f22> Refers to: isprint
 < 3><0x000048a9>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x0000006f
-                          DW_AT_import                <GOFF=0x00006f37>
+                          DW_AT_import                <GOFF=0x00006f37> Refers to: ispunct
 < 3><0x000048b0>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x00000070
-                          DW_AT_import                <GOFF=0x00006f4d>
+                          DW_AT_import                <GOFF=0x00006f4d> Refers to: isspace
 < 3><0x000048b7>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x00000071
-                          DW_AT_import                <GOFF=0x00006f63>
+                          DW_AT_import                <GOFF=0x00006f63> Refers to: isupper
 < 3><0x000048be>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x00000072
-                          DW_AT_import                <GOFF=0x00006f79>
+                          DW_AT_import                <GOFF=0x00006f79> Refers to: isxdigit
 < 3><0x000048c5>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x00000073
-                          DW_AT_import                <GOFF=0x00006f8f>
+                          DW_AT_import                <GOFF=0x00006f8f> Refers to: tolower
 < 3><0x000048cc>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000038 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cctype
                           DW_AT_decl_line             0x00000074
-                          DW_AT_import                <GOFF=0x00006fa5>
+                          DW_AT_import                <GOFF=0x00006fa5> Refers to: toupper
 < 3><0x000048d3>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x0000003f
-                          DW_AT_import                <GOFF=0x00006fbb>
+                          DW_AT_import                <GOFF=0x00006fbb> Refers to: wint_t
 < 3><0x000048da>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000040
-                          DW_AT_import                <GOFF=0x00006fd1>
+                          DW_AT_import                <GOFF=0x00006fd1> Refers to: wctrans_t
 < 3><0x000048e1>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000041
-                          DW_AT_import                <GOFF=0x00006fe7>
+                          DW_AT_import                <GOFF=0x00006fe7> Refers to: wctype_t
 < 3><0x000048e8>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000042
-                          DW_AT_import                <GOFF=0x00007008>
+                          DW_AT_import                <GOFF=0x00007008> Refers to: iswalnum
 < 3><0x000048ef>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000043
-                          DW_AT_import                <GOFF=0x0000701d>
+                          DW_AT_import                <GOFF=0x0000701d> Refers to: iswalpha
 < 3><0x000048f6>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000044
-                          DW_AT_import                <GOFF=0x00007032>
+                          DW_AT_import                <GOFF=0x00007032> Refers to: iswblank
 < 3><0x000048fd>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000045
-                          DW_AT_import                <GOFF=0x00007047>
+                          DW_AT_import                <GOFF=0x00007047> Refers to: iswcntrl
 < 3><0x00004904>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000046
-                          DW_AT_import                <GOFF=0x0000705c>
+                          DW_AT_import                <GOFF=0x0000705c> Refers to: iswdigit
 < 3><0x0000490b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000047
-                          DW_AT_import                <GOFF=0x00007071>
+                          DW_AT_import                <GOFF=0x00007071> Refers to: iswgraph
 < 3><0x00004912>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000048
-                          DW_AT_import                <GOFF=0x00007086>
+                          DW_AT_import                <GOFF=0x00007086> Refers to: iswlower
 < 3><0x00004919>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000049
-                          DW_AT_import                <GOFF=0x0000709b>
+                          DW_AT_import                <GOFF=0x0000709b> Refers to: iswprint
 < 3><0x00004920>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x0000004a
-                          DW_AT_import                <GOFF=0x000070b0>
+                          DW_AT_import                <GOFF=0x000070b0> Refers to: iswpunct
 < 3><0x00004927>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x0000004b
-                          DW_AT_import                <GOFF=0x000070c5>
+                          DW_AT_import                <GOFF=0x000070c5> Refers to: iswspace
 < 3><0x0000492e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x0000004c
-                          DW_AT_import                <GOFF=0x000070da>
+                          DW_AT_import                <GOFF=0x000070da> Refers to: iswupper
 < 3><0x00004935>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x0000004d
-                          DW_AT_import                <GOFF=0x000070ef>
+                          DW_AT_import                <GOFF=0x000070ef> Refers to: iswxdigit
 < 3><0x0000493c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x0000004e
-                          DW_AT_import                <GOFF=0x00007104>
+                          DW_AT_import                <GOFF=0x00007104> Refers to: iswctype
 < 3><0x00004943>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x0000004f
-                          DW_AT_import                <GOFF=0x0000711e>
+                          DW_AT_import                <GOFF=0x0000711e> Refers to: wctype
 < 3><0x0000494a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000050
-                          DW_AT_import                <GOFF=0x0000712f>
+                          DW_AT_import                <GOFF=0x0000712f> Refers to: towlower
 < 3><0x00004951>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000051
-                          DW_AT_import                <GOFF=0x00007144>
+                          DW_AT_import                <GOFF=0x00007144> Refers to: towupper
 < 3><0x00004958>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000052
-                          DW_AT_import                <GOFF=0x00007159>
+                          DW_AT_import                <GOFF=0x00007159> Refers to: towctrans
 < 3><0x0000495f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x0000003a /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwctype
                           DW_AT_decl_line             0x00000053
-                          DW_AT_import                <GOFF=0x0000716f>
+                          DW_AT_import                <GOFF=0x0000716f> Refers to: wctrans
 < 3><0x00004966>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000073
-                          DW_AT_import                <GOFF=0x0000649f>
+                          DW_AT_import                <GOFF=0x0000649f> Refers to: mbstate_t
 < 3><0x0000496d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000074
-                          DW_AT_import                <GOFF=0x000059e4>
+                          DW_AT_import                <GOFF=0x000059e4> Refers to: size_t
 < 3><0x00004974>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000075
-                          DW_AT_import                <GOFF=0x00006735>
+                          DW_AT_import                <GOFF=0x00006735> Refers to: tm
 < 3><0x0000497b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000076
-                          DW_AT_import                <GOFF=0x00006fbb>
+                          DW_AT_import                <GOFF=0x00006fbb> Refers to: wint_t
 < 3><0x00004982>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000077
-                          DW_AT_import                <GOFF=0x00006894>
+                          DW_AT_import                <GOFF=0x00006894> Refers to: FILE
 < 3><0x00004989>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000078
-                          DW_AT_import                <GOFF=0x00007180>
+                          DW_AT_import                <GOFF=0x00007180> Refers to: fwprintf
 < 3><0x00004990>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000079
-                          DW_AT_import                <GOFF=0x00007197>
+                          DW_AT_import                <GOFF=0x00007197> Refers to: fwscanf
 < 3><0x00004997>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000007a
-                          DW_AT_import                <GOFF=0x000071ae>
+                          DW_AT_import                <GOFF=0x000071ae> Refers to: swprintf
 < 3><0x0000499e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000007b
-                          DW_AT_import                <GOFF=0x000071ca>
+                          DW_AT_import                <GOFF=0x000071ca> Refers to: vfwprintf
 < 3><0x000049a5>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000007c
-                          DW_AT_import                <GOFF=0x000071e5>
+                          DW_AT_import                <GOFF=0x000071e5> Refers to: vswprintf
 < 3><0x000049ac>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000007d
-                          DW_AT_import                <GOFF=0x00007205>
+                          DW_AT_import                <GOFF=0x00007205> Refers to: swscanf
 < 3><0x000049b3>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000007e
-                          DW_AT_import                <GOFF=0x0000721c>
+                          DW_AT_import                <GOFF=0x0000721c> Refers to: vfwscanf
 < 3><0x000049ba>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000007f
-                          DW_AT_import                <GOFF=0x00007237>
+                          DW_AT_import                <GOFF=0x00007237> Refers to: vswscanf
 < 3><0x000049c1>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000080
-                          DW_AT_import                <GOFF=0x00007252>
+                          DW_AT_import                <GOFF=0x00007252> Refers to: fgetwc
 < 3><0x000049c8>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000081
-                          DW_AT_import                <GOFF=0x00007263>
+                          DW_AT_import                <GOFF=0x00007263> Refers to: fgetws
 < 3><0x000049cf>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000082
-                          DW_AT_import                <GOFF=0x0000727e>
+                          DW_AT_import                <GOFF=0x0000727e> Refers to: fputwc
 < 3><0x000049d6>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000083
-                          DW_AT_import                <GOFF=0x00007294>
+                          DW_AT_import                <GOFF=0x00007294> Refers to: fputws
 < 3><0x000049dd>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000084
-                          DW_AT_import                <GOFF=0x000072aa>
+                          DW_AT_import                <GOFF=0x000072aa> Refers to: fwide
 < 3><0x000049e4>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000085
-                          DW_AT_import                <GOFF=0x000072c0>
+                          DW_AT_import                <GOFF=0x000072c0> Refers to: getwc
 < 3><0x000049eb>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000086
-                          DW_AT_import                <GOFF=0x000072d1>
+                          DW_AT_import                <GOFF=0x000072d1> Refers to: putwc
 < 3><0x000049f2>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000087
-                          DW_AT_import                <GOFF=0x000072e7>
+                          DW_AT_import                <GOFF=0x000072e7> Refers to: ungetwc
 < 3><0x000049f9>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000088
-                          DW_AT_import                <GOFF=0x000072fd>
+                          DW_AT_import                <GOFF=0x000072fd> Refers to: wcstod
 < 3><0x00004a00>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000089
-                          DW_AT_import                <GOFF=0x00007318>
+                          DW_AT_import                <GOFF=0x00007318> Refers to: wcstof
 < 3><0x00004a07>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000008a
-                          DW_AT_import                <GOFF=0x0000732e>
+                          DW_AT_import                <GOFF=0x0000732e> Refers to: wcstold
 < 3><0x00004a0e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000008b
-                          DW_AT_import                <GOFF=0x00007344>
+                          DW_AT_import                <GOFF=0x00007344> Refers to: wcstol
 < 3><0x00004a15>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000008d
-                          DW_AT_import                <GOFF=0x0000735f>
+                          DW_AT_import                <GOFF=0x0000735f> Refers to: wcstoll
 < 3><0x00004a1c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000008f
-                          DW_AT_import                <GOFF=0x0000737a>
+                          DW_AT_import                <GOFF=0x0000737a> Refers to: wcstoul
 < 3><0x00004a23>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000091
-                          DW_AT_import                <GOFF=0x00007395>
+                          DW_AT_import                <GOFF=0x00007395> Refers to: wcstoull
 < 3><0x00004a2a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000093
-                          DW_AT_import                <GOFF=0x000073b0>
+                          DW_AT_import                <GOFF=0x000073b0> Refers to: wcscpy
 < 3><0x00004a31>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000094
-                          DW_AT_import                <GOFF=0x000073c6>
+                          DW_AT_import                <GOFF=0x000073c6> Refers to: wcsncpy
 < 3><0x00004a38>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000095
-                          DW_AT_import                <GOFF=0x000073e1>
+                          DW_AT_import                <GOFF=0x000073e1> Refers to: wcscat
 < 3><0x00004a3f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000096
-                          DW_AT_import                <GOFF=0x000073f7>
+                          DW_AT_import                <GOFF=0x000073f7> Refers to: wcsncat
 < 3><0x00004a46>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000097
-                          DW_AT_import                <GOFF=0x00007412>
+                          DW_AT_import                <GOFF=0x00007412> Refers to: wcscmp
 < 3><0x00004a4d>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000098
-                          DW_AT_import                <GOFF=0x00007428>
+                          DW_AT_import                <GOFF=0x00007428> Refers to: wcscoll
 < 3><0x00004a54>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x00000099
-                          DW_AT_import                <GOFF=0x0000743e>
+                          DW_AT_import                <GOFF=0x0000743e> Refers to: wcsncmp
 < 3><0x00004a5b>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000009a
-                          DW_AT_import                <GOFF=0x00007459>
+                          DW_AT_import                <GOFF=0x00007459> Refers to: wcsxfrm
 < 3><0x00004a62>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000009b
-                          DW_AT_import                <GOFF=0x00007474>
+                          DW_AT_import                <GOFF=0x00007474> Refers to: wcschr
 < 3><0x00004a69>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000009c
-                          DW_AT_import                <GOFF=0x0000748e>
+                          DW_AT_import                <GOFF=0x0000748e> Refers to: wcspbrk
 < 3><0x00004a70>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000009d
-                          DW_AT_import                <GOFF=0x000074a8>
+                          DW_AT_import                <GOFF=0x000074a8> Refers to: wcsrchr
 < 3><0x00004a77>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000009e
-                          DW_AT_import                <GOFF=0x000074c2>
+                          DW_AT_import                <GOFF=0x000074c2> Refers to: wcsstr
 < 3><0x00004a7e>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x0000009f
-                          DW_AT_import                <GOFF=0x000074dc>
+                          DW_AT_import                <GOFF=0x000074dc> Refers to: wmemchr
 < 3><0x00004a85>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a0
-                          DW_AT_import                <GOFF=0x000074fb>
+                          DW_AT_import                <GOFF=0x000074fb> Refers to: wcscspn
 < 3><0x00004a8c>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a1
-                          DW_AT_import                <GOFF=0x00007511>
+                          DW_AT_import                <GOFF=0x00007511> Refers to: wcslen
 < 3><0x00004a93>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a2
-                          DW_AT_import                <GOFF=0x00007522>
+                          DW_AT_import                <GOFF=0x00007522> Refers to: wcsspn
 < 3><0x00004a9a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a3
-                          DW_AT_import                <GOFF=0x00007538>
+                          DW_AT_import                <GOFF=0x00007538> Refers to: wcstok
 < 3><0x00004aa1>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a4
-                          DW_AT_import                <GOFF=0x00007553>
+                          DW_AT_import                <GOFF=0x00007553> Refers to: wmemcmp
 < 3><0x00004aa8>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a5
-                          DW_AT_import                <GOFF=0x0000756e>
+                          DW_AT_import                <GOFF=0x0000756e> Refers to: wmemcpy
 < 3><0x00004aaf>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a6
-                          DW_AT_import                <GOFF=0x00007589>
+                          DW_AT_import                <GOFF=0x00007589> Refers to: wmemmove
 < 3><0x00004ab6>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a7
-                          DW_AT_import                <GOFF=0x000075a4>
+                          DW_AT_import                <GOFF=0x000075a4> Refers to: wmemset
 < 3><0x00004abd>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a8
-                          DW_AT_import                <GOFF=0x000075bf>
+                          DW_AT_import                <GOFF=0x000075bf> Refers to: wcsftime
 < 3><0x00004ac4>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000a9
-                          DW_AT_import                <GOFF=0x000075e3>
+                          DW_AT_import                <GOFF=0x000075e3> Refers to: btowc
 < 3><0x00004acb>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000aa
-                          DW_AT_import                <GOFF=0x000075f4>
+                          DW_AT_import                <GOFF=0x000075f4> Refers to: wctob
 < 3><0x00004ad2>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000ab
-                          DW_AT_import                <GOFF=0x00007605>
+                          DW_AT_import                <GOFF=0x00007605> Refers to: mbsinit
 < 3><0x00004ad9>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000ac
-                          DW_AT_import                <GOFF=0x00007620>
+                          DW_AT_import                <GOFF=0x00007620> Refers to: mbrlen
 < 3><0x00004ae0>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000ad
-                          DW_AT_import                <GOFF=0x00007640>
+                          DW_AT_import                <GOFF=0x00007640> Refers to: mbrtowc
 < 3><0x00004ae7>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000ae
-                          DW_AT_import                <GOFF=0x00007660>
+                          DW_AT_import                <GOFF=0x00007660> Refers to: wcrtomb
 < 3><0x00004aee>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000af
-                          DW_AT_import                <GOFF=0x0000767b>
+                          DW_AT_import                <GOFF=0x0000767b> Refers to: mbsrtowcs
 < 3><0x00004af5>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000b0
-                          DW_AT_import                <GOFF=0x000076a0>
+                          DW_AT_import                <GOFF=0x000076a0> Refers to: wcsrtombs
 < 3><0x00004afc>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000b3
-                          DW_AT_import                <GOFF=0x000076c5>
+                          DW_AT_import                <GOFF=0x000076c5> Refers to: getwchar
 < 3><0x00004b03>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000b4
-                          DW_AT_import                <GOFF=0x000076d0>
+                          DW_AT_import                <GOFF=0x000076d0> Refers to: vwscanf
 < 3><0x00004b0a>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000b5
-                          DW_AT_import                <GOFF=0x000076e6>
+                          DW_AT_import                <GOFF=0x000076e6> Refers to: wscanf
 < 3><0x00004b11>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000b9
-                          DW_AT_import                <GOFF=0x000076f8>
+                          DW_AT_import                <GOFF=0x000076f8> Refers to: putwchar
 < 3><0x00004b18>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000ba
-                          DW_AT_import                <GOFF=0x00007709>
+                          DW_AT_import                <GOFF=0x00007709> Refers to: vwprintf
 < 3><0x00004b1f>        DW_TAG_imported_declaration <abbrev 74>
                           DW_AT_decl_file             0x00000040 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/cwchar
                           DW_AT_decl_line             0x000000bb
-                          DW_AT_import                <GOFF=0x0000771f>
+                          DW_AT_import                <GOFF=0x0000771f> Refers to: wprintf
 < 3><0x00004b26>        DW_TAG_typedef <abbrev 7>
                           DW_AT_type                  <GOFF=0x00004b31> Refers to: basic_ostream<char, std::__1::char_traits<char> >
                           DW_AT_name                  ostream
                           DW_AT_decl_file             0x0000000e /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iosfwd
                           DW_AT_decl_line             0x000000a7
 < 3><0x00004b31>        DW_TAG_class_type <abbrev 75>
-                          DW_AT_containing_type       <GOFF=0x00004b31>
+                          DW_AT_containing_type       <GOFF=0x00004b31> Refers to: basic_ostream<char, std::__1::char_traits<char> >
                           DW_AT_calling_convention    DW_CC_pass_by_reference
                           DW_AT_name                  basic_ostream<char, std::__1::char_traits<char> >
                           DW_AT_byte_size             160 (-96)
@@ -10496,7 +10496,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_public
-                            DW_AT_containing_type       <GOFF=0x00004b31>
+                            DW_AT_containing_type       <GOFF=0x00004b31> Refers to: basic_ostream<char, std::__1::char_traits<char> >
 < 5><0x00004b8d>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x000077ae>
                               DW_AT_artificial            yes(1)
@@ -10916,7 +10916,7 @@ LOCAL_SYMBOLS:
                               DW_AT_type                  <GOFF=0x000077ae>
                               DW_AT_artificial            yes(1)
 < 3><0x00004ebe>        DW_TAG_class_type <abbrev 75>
-                          DW_AT_containing_type       <GOFF=0x0000003c>
+                          DW_AT_containing_type       <GOFF=0x0000003c> Refers to: ios_base
                           DW_AT_calling_convention    DW_CC_pass_by_reference
                           DW_AT_name                  basic_ios<char, std::__1::char_traits<char> >
                           DW_AT_byte_size             152 (-104)
@@ -11096,7 +11096,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_public
-                            DW_AT_containing_type       <GOFF=0x00004ebe>
+                            DW_AT_containing_type       <GOFF=0x00004ebe> Refers to: basic_ios<char, std::__1::char_traits<char> >
 < 5><0x00005030>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000776d>
                               DW_AT_artificial            yes(1)
@@ -11302,7 +11302,7 @@ LOCAL_SYMBOLS:
 < 5><0x000051d1>            DW_TAG_formal_parameter <abbrev 16>
                               DW_AT_type                  <GOFF=0x00007772>
 < 3><0x000051d8>        DW_TAG_class_type <abbrev 75>
-                          DW_AT_containing_type       <GOFF=0x000051d8>
+                          DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
                           DW_AT_calling_convention    DW_CC_pass_by_reference
                           DW_AT_name                  basic_streambuf<char, std::__1::char_traits<char> >
                           DW_AT_byte_size             64
@@ -11376,7 +11376,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_public
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x00005278>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11780,7 +11780,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x000055a0>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11798,7 +11798,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x000055c4>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11818,7 +11818,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x000055ed>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11840,7 +11840,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x0000561b>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11860,7 +11860,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x00005644>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11876,7 +11876,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x00005663>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11892,7 +11892,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x00005682>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11912,7 +11912,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x000056ab>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11928,7 +11928,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x000056ca>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11944,7 +11944,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x000056e9>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11962,7 +11962,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x0000570d>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -11982,7 +11982,7 @@ LOCAL_SYMBOLS:
                             DW_AT_declaration           yes(1)
                             DW_AT_external              yes(1)
                             DW_AT_accessibility         DW_ACCESS_protected
-                            DW_AT_containing_type       <GOFF=0x000051d8>
+                            DW_AT_containing_type       <GOFF=0x000051d8> Refers to: basic_streambuf<char, std::__1::char_traits<char> >
 < 5><0x00005736>            DW_TAG_formal_parameter <abbrev 15>
                               DW_AT_type                  <GOFF=0x0000777c>
                               DW_AT_artificial            yes(1)
@@ -13591,7 +13591,7 @@ LOCAL_SYMBOLS:
 < 1><0x00006498>    DW_TAG_imported_declaration <abbrev 74>
                       DW_AT_decl_file             0x00000029 /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/stddef.h
                       DW_AT_decl_line             0x00000033
-                      DW_AT_import                <GOFF=0x00005970>
+                      DW_AT_import                <GOFF=0x00005970> Refers to: nullptr_t
 < 1><0x0000649f>    DW_TAG_typedef <abbrev 7>
                       DW_AT_type                  <GOFF=0x000064aa> Refers to: __darwin_mbstate_t
                       DW_AT_name                  mbstate_t
@@ -15981,7 +15981,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 27 <highpc: 0x10000368b>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x0000781e>
+                      DW_AT_object_pointer        <0x0000781e> Refers to: this
                       DW_AT_decl_file             0x00000013 /Users/rifkin/cpptrace/include/cpptrace/cpptrace.hpp
                       DW_AT_decl_line             0x0000004a
                       DW_AT_linkage_name          _ZN8cpptrace10stacktraceD1Ev
@@ -16162,7 +16162,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 27 <highpc: 0x1000037cb>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x000079b4>
+                      DW_AT_object_pointer        <0x000079b4> Refers to: this
                       DW_AT_decl_file             0x00000013 /Users/rifkin/cpptrace/include/cpptrace/cpptrace.hpp
                       DW_AT_decl_line             0x0000004a
                       DW_AT_linkage_name          _ZN8cpptrace10stacktraceD2Ev
@@ -16178,7 +16178,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 27 <highpc: 0x1000037eb>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x000079dc>
+                      DW_AT_object_pointer        <0x000079dc> Refers to: this
                       DW_AT_linkage_name          _ZNSt3__16vectorIN8cpptrace16stacktrace_frameENS_9allocatorIS2_EEED1Ev
                       DW_AT_specification         <GOFF=0x00003840> Refers to: ~vector
 < 2><0x000079dc>      DW_TAG_formal_parameter <abbrev 119>
@@ -16192,7 +16192,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 40 <highpc: 0x100003818>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007a04>
+                      DW_AT_object_pointer        <0x00007a04> Refers to: this
                       DW_AT_linkage_name          _ZNSt3__16vectorIN8cpptrace16stacktrace_frameENS_9allocatorIS2_EEED2Ev
                       DW_AT_specification         <GOFF=0x00003840> Refers to: ~vector
 < 2><0x00007a04>      DW_TAG_formal_parameter <abbrev 119>
@@ -16206,7 +16206,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 169 <highpc: 0x1000038c9>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007a28>
+                      DW_AT_object_pointer        <0x00007a28> Refers to: this
                       DW_AT_specification         <GOFF=0x00003fd8> Refers to: __annotate_delete
 < 2><0x00007a28>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16219,7 +16219,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 90 <highpc: 0x10000392a>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007a52>
+                      DW_AT_object_pointer        <0x00007a52> Refers to: this
                       DW_AT_decl_line             0x000001e3
                       DW_AT_linkage_name          _ZNSt3__113__vector_baseIN8cpptrace16stacktrace_frameENS_9allocatorIS2_EEED2Ev
                       DW_AT_specification         <GOFF=0x000031a6> Refers to: ~__vector_base
@@ -16234,7 +16234,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 26 <highpc: 0x10000394a>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007a76>
+                      DW_AT_object_pointer        <0x00007a76> Refers to: this
                       DW_AT_specification         <GOFF=0x00003f9b> Refers to: __annotate_contiguous_container
 < 2><0x00007a76>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16271,7 +16271,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 30 <highpc: 0x10000396e>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007ac6>
+                      DW_AT_object_pointer        <0x00007ac6> Refers to: this
                       DW_AT_specification         <GOFF=0x00003c3c> Refers to: data
 < 2><0x00007ac6>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16284,7 +16284,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 27 <highpc: 0x10000398b>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007aea>
+                      DW_AT_object_pointer        <0x00007aea> Refers to: this
                       DW_AT_specification         <GOFF=0x00003add> Refers to: capacity
 < 2><0x00007aea>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16297,7 +16297,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 28 <highpc: 0x1000039ac>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007b0e>
+                      DW_AT_object_pointer        <0x00007b0e> Refers to: this
                       DW_AT_specification         <GOFF=0x00003ac6> Refers to: size
 < 2><0x00007b0e>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16310,7 +16310,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 48 <highpc: 0x1000039f0>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007b32>
+                      DW_AT_object_pointer        <0x00007b32> Refers to: this
                       DW_AT_specification         <GOFF=0x000031c8> Refers to: capacity
 < 2><0x00007b32>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16323,7 +16323,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 31 <highpc: 0x100003a0f>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007b56>
+                      DW_AT_object_pointer        <0x00007b56> Refers to: this
                       DW_AT_specification         <GOFF=0x00003158> Refers to: __end_cap
 < 2><0x00007b56>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16336,7 +16336,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 27 <highpc: 0x100003a2b>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007b7a>
+                      DW_AT_object_pointer        <0x00007b7a> Refers to: this
                       DW_AT_specification         <GOFF=0x000035b9> Refers to: first
 < 2><0x00007b7a>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16349,7 +16349,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 14 <highpc: 0x100003a3e>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007b9e>
+                      DW_AT_object_pointer        <0x00007b9e> Refers to: this
                       DW_AT_specification         <GOFF=0x000036cc> Refers to: __get
 < 2><0x00007b9e>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16362,7 +16362,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 30 <highpc: 0x100003a5e>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007bc2>
+                      DW_AT_object_pointer        <0x00007bc2> Refers to: this
                       DW_AT_specification         <GOFF=0x000031b5> Refers to: clear
 < 2><0x00007bc2>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16402,7 +16402,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 31 <highpc: 0x100003aaf>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007c27>
+                      DW_AT_object_pointer        <0x00007c27> Refers to: this
                       DW_AT_specification         <GOFF=0x00003107> Refers to: __alloc
 < 2><0x00007c27>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16415,7 +16415,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 124 <highpc: 0x100003b2c>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007c4e>
+                      DW_AT_object_pointer        <0x00007c4e> Refers to: this
                       DW_AT_decl_line             0x000001be
                       DW_AT_specification         <GOFF=0x000031eb> Refers to: __destruct_at_end
 < 2><0x00007c4e>      DW_TAG_formal_parameter <abbrev 119>
@@ -16467,7 +16467,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 31 <highpc: 0x100003b8f>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007ccd>
+                      DW_AT_object_pointer        <0x00007ccd> Refers to: this
                       DW_AT_specification         <GOFF=0x000033ef> Refers to: destroy
 < 2><0x00007ccd>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16489,7 +16489,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 27 <highpc: 0x100003bab>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007d0a>
+                      DW_AT_object_pointer        <0x00007d0a> Refers to: this
                       DW_AT_decl_file             0x00000013 /Users/rifkin/cpptrace/include/cpptrace/cpptrace.hpp
                       DW_AT_decl_line             0x00000038
                       DW_AT_linkage_name          _ZN8cpptrace16stacktrace_frameD1Ev
@@ -16505,7 +16505,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 48 <highpc: 0x100003be0>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007d34>
+                      DW_AT_object_pointer        <0x00007d34> Refers to: this
                       DW_AT_decl_file             0x00000013 /Users/rifkin/cpptrace/include/cpptrace/cpptrace.hpp
                       DW_AT_decl_line             0x00000038
                       DW_AT_linkage_name          _ZN8cpptrace16stacktrace_frameD2Ev
@@ -16521,7 +16521,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 61 <highpc: 0x100003c1d>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007d58>
+                      DW_AT_object_pointer        <0x00007d58> Refers to: this
                       DW_AT_specification         <GOFF=0x0000333b> Refers to: deallocate
 < 2><0x00007d58>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16548,7 +16548,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 27 <highpc: 0x100003cab>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007d98>
+                      DW_AT_object_pointer        <0x00007d98> Refers to: this
                       DW_AT_specification         <GOFF=0x000035cf> Refers to: second
 < 2><0x00007d98>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 
@@ -16561,7 +16561,7 @@ LOCAL_SYMBOLS:
                       DW_AT_high_pc               <offset-from-lowpc> 14 <highpc: 0x100003cbe>
                       DW_AT_frame_base            len 0x0001: 0x56: 
                           DW_OP_reg6
-                      DW_AT_object_pointer        <0x00007dbc>
+                      DW_AT_object_pointer        <0x00007dbc> Refers to: this
                       DW_AT_specification         <GOFF=0x0000374b> Refers to: __get
 < 2><0x00007dbc>      DW_TAG_formal_parameter <abbrev 119>
                         DW_AT_location              len 0x0002: 0x9178: 

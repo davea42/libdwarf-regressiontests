@@ -90,7 +90,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_high_pc               0x00000000
                                       DW_AT_frame_base            len 0x0002: 0x7004: 
                                           DW_OP_breg0+4
-                                      DW_AT_sibling               <0x000000a9 GOFF=0x00000166>
+                                      DW_AT_sibling               <0x000000a9 GOFF=0x00000166> Refers to: foo
 < 2><0x0000009b GOFF=0x00000158>      DW_TAG_formal_parameter
                                         DW_AT_name                  i
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
@@ -108,7 +108,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_high_pc               0xfff400fe
                                       DW_AT_frame_base            len 0x0002: 0x7004: 
                                           DW_OP_breg0+4
-                                      DW_AT_sibling               <0x000000d3 GOFF=0x00000190>
+                                      DW_AT_sibling               <0x000000d3 GOFF=0x00000190> Refers to: bar2
 < 2><0x000000c5 GOFF=0x00000182>      DW_TAG_formal_parameter
                                         DW_AT_name                  i
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
@@ -130,7 +130,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_high_pc               0x00000000
                                       DW_AT_frame_base            len 0x0002: 0x7004: 
                                           DW_OP_breg0+4
-                                      DW_AT_sibling               <0x000000fd GOFF=0x000001ba>
+                                      DW_AT_sibling               <0x000000fd GOFF=0x000001ba> Refers to: foo2
 < 2><0x000000ef GOFF=0x000001ac>      DW_TAG_formal_parameter
                                         DW_AT_name                  i
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
@@ -148,7 +148,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_high_pc               0xfff40105
                                       DW_AT_frame_base            len 0x0002: 0x7004: 
                                           DW_OP_breg0+4
-                                      DW_AT_sibling               <0x00000127 GOFF=0x000001e4>
+                                      DW_AT_sibling               <0x00000127 GOFF=0x000001e4> Refers to: main
 < 2><0x00000119 GOFF=0x000001d6>      DW_TAG_formal_parameter
                                         DW_AT_name                  i
                                         DW_AT_decl_file             0x00000001 U:\\scratch/t.c
@@ -205,7 +205,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_decl_line             0x00000008
                                         DW_AT_type                  <0x0000004c GOFF=0x00000109> Refers to: int
                                         DW_AT_declaration           yes(1)
-                                        DW_AT_sibling               <0x00000175 GOFF=0x00000232>
+                                        DW_AT_sibling               <0x00000175 GOFF=0x00000232> Refers to: foo2
 < 3><0x00000173 GOFF=0x00000230>        DW_TAG_unspecified_parameters
 < 2><0x00000175 GOFF=0x00000232>      DW_TAG_subprogram
                                         DW_AT_external              yes(1)
@@ -357,7 +357,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_byte_size             8
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x000001a9
-                                      DW_AT_sibling               <0x000000fb GOFF=0x00000382>
+                                      DW_AT_sibling               <0x000000fb GOFF=0x00000382> Refers to: DWunion
 < 2><0x000000e5 GOFF=0x0000036c>      DW_TAG_member
                                         DW_AT_name                  s
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
@@ -1868,7 +1868,7 @@ LOCAL_SYMBOLS:
                                       DW_AT_byte_size             8
                                       DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h
                                       DW_AT_decl_line             0x000001a9
-                                      DW_AT_sibling               <0x000000fb GOFF=0x00000a9c>
+                                      DW_AT_sibling               <0x000000fb GOFF=0x00000a9c> Refers to: DWunion
 < 2><0x000000e5 GOFF=0x00000a86>      DW_TAG_member
                                         DW_AT_name                  s
                                         DW_AT_decl_file             0x00000002 /home/kpit/fsfsrc/rx-v10.01-src/gcc-4.5-20091105/libgcc/../gcc/libgcc2.h

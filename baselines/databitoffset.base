@@ -59,7 +59,7 @@ LOCAL_SYMBOLS:
                       DW_AT_decl_file             0x00000001 /home/davea/dwarf/regressiontests/databitoffset/dbotest.c <form DW_FORM_data1>
                       DW_AT_decl_line             0x00000003 <form DW_FORM_data1>
                       DW_AT_decl_column           0x00000008 <form DW_FORM_data1>
-                      DW_AT_sibling               <0x000000b4> <form DW_FORM_ref4>
+                      DW_AT_sibling               <0x000000b4> <form DW_FORM_ref4> Refers to: a
 < 2><0x00000081>      DW_TAG_member
                         DW_AT_name                  p0 <form DW_FORM_string>
                         DW_AT_decl_file             0x00000001 <form DW_FORM_implicit_const>
