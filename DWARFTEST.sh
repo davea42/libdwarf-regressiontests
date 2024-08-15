@@ -1533,13 +1533,16 @@ then
   exit 0
 fi
 
-if [  $platform = "macos" ]
-then
-  echo "=====SKIP test_setframe test on macos (1)"
-  skipcount=`expr $skipcount +  1 `
-else
-  runsingle test_setframe.base ./test_setframe ./test_setframe
-fi
+#if [  $platform = "macos" ]
+#then
+#  echo "=====SKIP test_setframe test on macos (1)"
+#  skipcount=`expr $skipcount +  1 `
+#else
+# No need to skip now we have a known-object-input.
+# and a test dependent on the *current* compiler was always
+# a bad idea...
+ runsingle test_setframe.base /test_setframe $testsrc/test_setframe.input
+#fi
 
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  $testsrc/supplementary/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
