@@ -1,4 +1,4 @@
-Opened objectfile test_setframe
+Opened objectfile test_setframe.input
 PASS: 0 errormsg DW_DLE_DEBUGFRAME_ERROR same_value == undefined_value
 PASS: 1 errormsg DW_DLE_DEBUGFRAME_ERROR same_value == cfa_column_number 
 PASS: 2 errormsg DW_DLE_DEBUGFRAME_ERROR same_value == cfa_column_number 

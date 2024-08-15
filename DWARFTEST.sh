@@ -761,9 +761,9 @@ runsingle () {
   pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
   if [ "$args" = "" ]
   then
-    echo  "=====STARTsingle Pct $pctstring $exe $targ good=$goodcount skip=$skipcount fail=$failcount"
+    echo  "=====STARTsingle Pct $pctstring $exe $args good=$goodcount skip=$skipcount fail=$failcount"
   else
-    echo  "=====STARTsingle Pct $pctstring $args $targ good=$goodcount skip=$skipcount fail=$failcount"
+    echo  "=====STARTsingle Pct $pctstring $args $args good=$goodcount skip=$skipcount fail=$failcount"
   fi
   echo  "=====STATSsingle Pct $pctstring ct: $totalct"
   echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
@@ -777,7 +777,7 @@ runsingle () {
     if [ $? -eq 7 ]
     then
       echo "valgrind exit code 7, valgrinderrcount:$valgrinderrcount"
-      echo "Doing valgrind $* $targ"
+      echo "Doing valgrind $* $args"
     fi
     valgrindcount=`expr $valgrindcount + 1`
   else
@@ -839,7 +839,7 @@ runsingle () {
   then
     goodcount=`expr $goodcount + 1`
   else
-    echo "FAIL  $* $targ"
+    echo "FAIL  $exe $args"
     failcount=`expr $failcount + 1`
   fi
   echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
@@ -1541,7 +1541,7 @@ fi
 # No need to skip now we have a known-object-input.
 # and a test dependent on the *current* compiler was always
 # a bad idea...
- runsingle test_setframe.base /test_setframe $testsrc/test_setframe.input
+runsingle test_setframe.base ./test_setframe $testsrc/test_setframe.input
 #fi
 
 # Checking that we can print the .debug_sup section
