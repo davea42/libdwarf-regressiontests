@@ -1,0 +1,15 @@
+Github issue #260
+
+Note from PolarNettles:
+
+clang-18: DW_DLE_DEBUG_NAMES_UNHANDLED_FORM: Form 0x19 DW_FORM_flag_present is not currently supported for .debug_names #260
+Open
+PolarNettles opened this issue 5 days ago · 2 comments
+Comments
+￼
+PolarNettles commented 5 days ago
+clang-18 is emitting DW_FORM_flag_present in .debug_names, causing this error. I believe it comes from llvm/llvm-project#77457
+
+Can be reproduced with a basic "hello world" .c file.
+clang-18 -g -gpubnames test.c
+./dwarfdump1
