@@ -1,0 +1,10 @@
+Jeremy Rifkin writes, in issue #259:
+I'm seeing errors along the following lines from libdwarf and dwarfdump:
+
+    DW_DLE_RNGLISTS_ERROR: rnglists table index of 26 is unusable, there is no default  rnglists base address .
+
+This was after compiling a test executable with gcc 10, dwarf 5, debug fission, and release mode. Interestingly I didn't encounter errors on a binary built in debug mode, I'm not sure if this is a fluke or a hint about what gcc is doing. I also didn't encounter this when building with newer versions of gcc.
+
+I invoked dwarfdump with libdwarf-code/build/src/bin/dwarfdump/dwarfdump -i -M -G  -vv --file-tied=demo test/CMakeFiles/demo.dir/demo.cpp.dwo.
+
+Here are the relevant demo and demo.cpp.dwo files: demo_and_dwo.zip

@@ -1,0 +1,17 @@
+#!/bin/bash
+#readelfobj /home/davea/dwarf/regressiontests/moya3/ranges_base.o
+#readelfobj /home/davea/dwarf/regressiontests/moya3/ranges_base.dwo
+#/tmp/dwarfdump -a -G -M -v --file-tied=/home/davea/dwarf/regressiontests/moya3/ranges_base.o /home/davea/dwarf/regressiontests/moya3/ranges_base.dwo > junkn
+#dwarfdump -a -G -M -v --file-tied=/home/davea/dwarf/regressiontests/moya3/ranges_base.o /home/davea/dwarf/regressiontests/moya3/ranges_base.dwo > junko
+#exit 0
+
+#/tmp/dwarfdump --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >& junkloclistsn
+#dwarfdump --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >& junkloclistso
+#exit 0
+
+dd=/tmp/dwarfdump
+$dd -vvv -i -M -G   --file-tied=demo demo.cpp.dwo >junkerror
+dwarfdump -vvv -i -M -G  --file-tied=demo demo.cpp.dwo >junkorig
+
+$dd -vvv --print-raw-rnglists -i -M demo  >junkdemo
+$dd -vvv --print-raw-rnglists -i -M demo.cpp.dwo  >junkdwo
