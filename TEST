@@ -3,6 +3,8 @@
 # Found it bests to run each object on its own since some of them
 # generate multi-gigabytes of text output.
 # Created 8  June 2024.
+#On the following investigate loclist details and --print-debug-names details.
+#-i -G --print-debug-names -vv /home/linux1/dwarf/regressiontests/debugnames/dwarfdumpone
 t=/home/davea/dwarf/regressiontests/hongg2024-02-18/SIGSEGV-m.fuzz
 t=/home/davea/dwarf/regressiontests/pubnames/bothpubs.exe
 t=/home/davea/dwarf/regressiontests/moya-rb/ranges3.dwp

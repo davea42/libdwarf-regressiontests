@@ -1,4 +1,6 @@
+
 Github issue #260
+
 
 Note from PolarNettles:
 
@@ -13,3 +15,35 @@ clang-18 is emitting DW_FORM_flag_present in .debug_names, causing this error. I
 Can be reproduced with a basic "hello world" .c file.
 clang-18 -g -gpubnames test.c
 ./dwarfdump1
+
+Github issue #261
+With the fix for #260 I am now hitting this error. It looks like it happens when the last entry of .debug_names specifies a DW_IDX_parent.
+
+ubu@xxx:~/libdwarf-0.11.0/src/bin/dwarfdump$ llvm-dwarfdump --debug-names cpp_test.o
+cpp_test.o:     file format elf64-x86-64
+
+.debug_names contents:
+Name Index @ 0x0 {
+...
+  Bucket 8 [
+    Name 9 {
+      Hash: 0x7C9400EA
+      String: 0x000000ef "afoo"
+      Entry @ 0x138 {
+        Abbrev: 0x1738
+        Tag: DW_TAG_subprogram
+        DW_IDX_die_offset: 0x00000071
+        DW_IDX_parent: 0x0000002a
+      }
+    }
+  ]
+}
+
+Reproduction steps:
+
+~/libdwarf-0.11.0/src/bin/dwarfdump$ ./dwarfdump --print-debug-names cpp_test.o
+...
+./dwarfdump ERROR:  print .debug_names section failed:  DW_DLE_READ_LITTLEENDIAN_ERROR Read would end past the end of section. Attempting to continue.
+
+
+

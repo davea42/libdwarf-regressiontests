@@ -505,6 +505,7 @@ chkresn () {
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 
 filepaths='moshe/hello
+polar/hello.o
 kernel/test.ko
 jborg/simple
 diederen/hello
@@ -901,6 +902,8 @@ runversiontest () {
     echo "PASS output version test content "
     goodcount=`expr $goodcount + 1`
 }
+
+
 
 runtest () {
     olddw=$1
@@ -1558,6 +1561,9 @@ cd ..
 #  chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
 #cd ..
 
+# New as of Aug 2024.
+runtest $d1 $d2 polar/cpp_test.o --print-debug-names
+
 # New tests as of July 2024.
 runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges --file-tied=unittest -M -i -vvv -G
 runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges -M -i -vvv -G stacktrace.cpp.dwo
@@ -1575,6 +1581,7 @@ runtest $d1 $d2 rifkindwo/libcpptrace.so.0.6.0  --print-raw-rnglists --print-raw
 runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo  -a -M -vvv
 runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo --print-raw-rnglists --print-raw-loclists 
 runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo --file-tied=rifkindwo/libcpptrace.so.0.6.0 -a -M -vvv
+runtest $d1 $d2 rifkin5/demo.cpp.dwo --file-tied=rifkin5/demo -a -M  -vvv
 
 runversiontest $d2 -V
 
@@ -1717,6 +1724,7 @@ runtest $d1 $d2 debuglinkb/testnoid -P -i --suppress-debuglink-crc
 runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --suppress-debuglink-crc
 
 # February 16, 2022, with clang-generated .debug_names
+# The ones with -v are ok, but not as nice looking.
 runtest $d1 $d2 debugnames/jitreader    --print-pubnames
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names
 runtest $d1 $d2 debugnames/jitreader    -i -G --print-debug-names -v
@@ -2375,7 +2383,7 @@ runtest $d1 $d2 corruptdwarf-a/simplereader.elf -a  -vvv
 runtest $d1 $d2 irixn32/dwarfdump -i -x name=./dwarfdump.conf -x abi=mips -g
 
 # Test support for DW_FORM_GNU_strp_alt
-runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x tied=$testsrc/hughes/krb5-1.11.3-38.fc20.x86_64
+runtest $d1 $d2 hughes/libkrb5support.so.0.1.debug -i  -l -M -x -file-tied=$testsrc/hughes/krb5-1.11.3-38.fc20.x86_64
 
 # for two-level line tables
 runtest $d1 $d2 emre4/test19_64_dbg -l
