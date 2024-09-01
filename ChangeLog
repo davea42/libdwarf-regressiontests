@@ -1,3 +1,112 @@
+2024-09-01:  David Anderson
+    commit e44ce5c577e73bc591d6c9a1399a718844820424
+
+    New baseline executables for 0.11.1
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-09-01:  David Anderson
+    commit aea6e6ed78b4d642472aee60a101181470c35310
+
+    Now with latest (new) tests.
+            modified:   DWARFTEST.sh
+            modified:   TEST
+            modified:   polar/README
+            new file:   polar/cpp_test.o
+
+2024-08-29:  David Anderson
+    commit 2483166b552b7876d382e4df917c72c4da6eb533
+
+    New testcase
+            new file:   polar/README
+            new file:   polar/hello.o
+
+2024-08-29:  David Anderson
+    commit 67a0b0facd5e745d88a6261f7870266c8cb7cbce
+
+    New testcase
+            new file:   rifkin5/README
+            new file:   rifkin5/RUN
+            new file:   rifkin5/demo
+            new file:   rifkin5/demo.cpp.dwo
+
+2024-08-15:  David Anderson
+    commit eb7925b268dc88fcf19b1105e74de6e99be5803e
+
+    runsingle() had a bit of leftover text from runtests()
+    meaning the FAIL line output had irrelevant content.
+    Fixed.
+            modified:   DWARFTEST.sh
+
+    Now the baseline shows the name of the testfile
+    as
+      test_setframe.input
+    as it should have always been instead of
+      test_setframe
+            modified:   baselines/test_setframe.base
+
+2024-08-15:  David Anderson
+    commit 5dd05cb24b60ebdd914365b20e554c010b891028
+
+    Now test_setframe is against a known object instead
+    of whatever compiler is used in running tests.
+    Always a bad idea to have a subject of a test to depend
+    on the current compiler, that is a guarantee of future
+    FAILs.
+            modified:   DWARFTEST.sh
+            new file:   test_setframe.input
+
+2024-08-06:  David Anderson
+    commit 30b118b6680f5f9ba316317ec12e9831896c0e2c
+
+    New baselines, reflecting dwarfdump output
+    changes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2024-08-04:  David Anderson
+    commit 9ad253b41f7c406ea94f4a261a469ddc042607bf
+
+    Reflecting the improvements in dwarfdump
+    printing of reference-class attributes/forms.
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectdies.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+            modified:   baselines/databitoffset.base
+            modified:   baselines/macuniv.base
+            modified:   baselines/macuniv0.base
+            modified:   baselines/macuniv1.base
+            modified:   debugfission/archivedwo-iMvvv.base.gz
+            modified:   debugfission/archivedwo.base.gz
+            modified:   debugfission/targetdwo.base.gz
+            modified:   dwarfdump-x86_64-ubuntu.O
+            modified:   dwgena/test1.base.gz
+            modified:   dwgena/test2.base.gz
+            modified:   dwgena/test3.base.gz
+            modified:   dwgena/test4.base.gz
+            modified:   dwgena/test5.base.gz
+            modified:   dwgena/test6.base.gz
+            modified:   dwgena/test7.base.gz
+            modified:   dwgena/test8.base.gz
+            modified:   dwgena/test9.base.gz
+            modified:   dwgenc/base.debugnames
+            modified:   implicitconst/implicit.base
+            modified:   nolibelf/test1.base
+
+2024-08-03:  David Anderson
+    commit 5a5f5e644af22cdeebbd845056ab1e9fe7ebeef0
+
+    Up to date with recent changes.
+            modified:   ChangeLog
+
 2024-08-03:  David Anderson
     commit bbfc7fba94eadb81505bf1421903aacc01d6c0ec
 
