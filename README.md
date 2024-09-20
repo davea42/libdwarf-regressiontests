@@ -88,7 +88,7 @@ $HOME.  dwarfdump (itself) and the regression tests script
 DWARFTEST.sh change such path strings to use $HOME by
 replacing (for example) /home/davea with $HOME  .
 
-You must have both zlib (-lz) and libzstd (-lzstd) installed to
+You must have both zlib (-lz) and libzstd (-lzstd) installed
 as a few tests involve compressed Elf sections.
 
 If there are no FAILs the end of a test run
@@ -118,7 +118,7 @@ shared-library libdwarf.so.
 ##  What is dwarfdump-x86_64-ubuntu.O?
 
 Some of the tests involve dwarfdump emitting
-Gigabytes of text.  Keeping a text file
+gigabytes of text.  Keeping a text file
 with the expected dwarfdump output is impractical.
 Instead we run most tests with the dwarfdump built
 in the testing and with a baseline dwarfdump-*.O
