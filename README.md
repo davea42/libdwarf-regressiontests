@@ -39,12 +39,14 @@ on github.
 
 Never run the tests in a regressiontests or libdwarf-regressiontests
 directory, there is no way to automatically
-clean up the test directories.
+and fully clean up the test directories.
 
 Instead, run tests in an empty directory
 you create for
 regression testing.
-It's handy to create an empty test directory,
+
+For repeated runs it is
+convenient to create an empty test directory,
 cd to that test directory,
 and add a short script that starts by
 removing every file
@@ -208,17 +210,18 @@ importance of some other compilers.
 
 ### SUPPRESSDEALLOCTREE
 
-This tells dwarfdump to suppress it's normal
+This tells dwarfdump to suppress libdwarf's normal
 tracking of allocations and automatic dealloc (free)
-of its allocations.
+of its tracked allocations.
 Used to verify dwarfdump does every appropriate
-dealloc.
+dealloc and there is no memory leak
+when libdwarf's alloc tracking is turned off.
 
 This speeds up the test run a few percent, though
 the real purpose is to allow libdwarf itself to
 be faster.
 
-Can be combined with NLIZE.
+Combine with NLIZE for thorough checking.
 
     SUPPRESSDEALLOCTREE=y
     export SUPPRESSDEALLOCTREE
