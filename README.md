@@ -13,23 +13,23 @@ See below for more remarks on valgrind.
 
 ## Historical note
 
-Before July 2023 libelf was in these tests.
+Before July 2023 libelf was used in these tests.
 libelf is no longer used anywhere.
 
 In the sourceforge.net days the libdwarf source itself
-was in a directory named 
+was in a directory named
 
     code
 
 Since the move to
 github the libdwarf source is in a directory
-named 
+named
 
     libdwarf-code
 
 on github, which is also the
 source project name. the regressiontesting project is
-named 
+named
 
     libdwarf-regressiontests
 
@@ -40,19 +40,30 @@ on github.
 Never run the tests in a regressiontests or libdwarf-regressiontests
 directory, there is no way to automatically
 clean up the test directories.
-Instead, run tests in a directory set up for
-regression testing.
 
-There are a number (unspecified) 
+Instead, run tests in an empty directory
+you create for
+regression testing.
+It's handy to create an empty test directory,
+cd to that test directory,
+and add a short script that starts by
+removing every file
+or directory present in test directory
+except, of course, the script itself.
+And then continues on to run the tests with
+appropriate environment variables set (see
+below).
+
+There are a number (unspecified)
 of points where the locations of the tests and source matter
 in comparing the output of a test run with the expected result.
-In a Linux, Freebsd, or modern MacOS environment  
+In a Linux, Freebsd, or modern MacOS environment
 the tests arrange slight modifications to paths
 in dwarfdump output so all the tests pass (see below).
 None of the tests are guaranteed to work if any files
-or directories have spaces in their name. 
-On msys2 (Windows 10) or Microsoft Visual Studio 
-Those adjustments do not work and thest tests
+or directories have spaces in their name.
+On msys2 (Windows 10) or Microsoft Visual Studio
+Those adjustments do not work and these tests
 are useless.
 
 The tests are run using shell and python3
@@ -60,7 +71,7 @@ scripts.
 Meson is used to build libdwarf/dwarfdump.
 
 The test results expect $HOME/dwarf/code (for libdwarf-code)
-and $HOME/dwarf/regressiontests 
+and $HOME/dwarf/regressiontests
 (for libdwarf-regressiontests) to be the
 project directories.
 To run these tests with
@@ -104,7 +115,7 @@ shared-library libdwarf.so.
 
 ##  What is dwarfdump-x86_64-ubuntu.O?
 
-Some of the tests involve dwarfdump emitting 
+Some of the tests involve dwarfdump emitting
 Gigabytes of text.  Keeping a text file
 with the expected dwarfdump output is impractical.
 Instead we run most tests with the dwarfdump built
@@ -151,7 +162,7 @@ It checks directories it identifies as having content
 to be sure the content looks appropriate.
 In case of error the scripts exit with a small non-zero error code,
 typically one(1).
- 
+
     cd /my/emptydirectory/
     lrt=/path/to/libdwarf-regressiontests
     $lrt/INITIALSETUP.sh $lrt
@@ -177,8 +188,6 @@ takes about 24 minutes.
     unset SUPPRESSBIGDIFFS=y
     unset SKIPDECOMPRESS=y
 
-
-
 ### NLIZE
 
 This adds -fsanitize to all compiles under
@@ -187,7 +196,7 @@ Any problems found are reported as FAIL.
 
 Usually takes twice as long to run as a
 standard test run, at this time on a 3GHz
-Linux machine it takes around 60 minutes. 
+Linux machine it takes around 60 minutes.
 
     NLIZE=y
     export NLIZE
@@ -202,7 +211,7 @@ importance of some other compilers.
 This tells dwarfdump to suppress it's normal
 tracking of allocations and automatic dealloc (free)
 of its allocations.
-Used to verify dwarfdump does every appropriate 
+Used to verify dwarfdump does every appropriate
 dealloc.
 
 This speeds up the test run a few percent, though
@@ -216,14 +225,14 @@ Can be combined with NLIZE.
 
 ### VALGRIND
 
-This runs dwarfdump under valgrind(1) 
+This runs dwarfdump under valgrind(1)
 and any problems found by valgrind are reported
 as FAIL.
 
 This takes roughly twenty times as long to run
 as a standard run, and on smaller memory
 or slower machines valgrind can take many hours.
-   
+
     VALGRIND=y
     export VALGRIND
 
@@ -266,12 +275,11 @@ This tells the tests not to run dwarfdump on
 tests with compressed sections.
 Useful if libz or libzstd is absent.
 
-
 ### LCOV
-   
+
 Not supported. To run lcov usefully
 requires a completely different build setup.
-   
+
 ## Important Build Files
 
 ### RUNALL.sh
@@ -285,7 +293,7 @@ Runs the tests and compiles a few things and runs the test code.
 
 ### BASEFILES.sh.in
 
-Used to help generate BASEFILES.sh. 
+Used to help generate BASEFILES.sh.
 The generation is done by the INITIALSETUP.sh command.
 BASEFILES.sh is
 sourced (with the dot (.) shell command) in all *.sh scripts
@@ -307,12 +315,11 @@ in the directory libbld in the testing directory.
 
 ### CLEANUP.sh
 
-Removes generated files in the directory where 
+Removes generated files in the directory where
 it is run.
 We recommend running tests in a directory set up
 for testing, so cleanup.sh becomes pointless.
 cleanup.sh is safe to run in the regressiontests source directory.
-
 
 If you are running tests in a clean directory
 it is not guaranteed to remove all generated-by-test
