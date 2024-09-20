@@ -184,9 +184,9 @@ takes about 24 minutes.
     unset VALGRIND
 
     # the following default properly and can be ignored.
-    unset SKIPBIGOBJECTS=y
-    unset SUPPRESSBIGDIFFS=y
-    unset SKIPDECOMPRESS=y
+    unset SKIPBIGOBJECTS
+    unset SUPPRESSBIGDIFFS
+    unset SKIPDECOMPRESS
 
 ### NLIZE
 
@@ -273,7 +273,13 @@ option is probably not useful for you.
 
 This tells the tests not to run dwarfdump on
 tests with compressed sections.
-Useful if libz or libzstd is absent.
+
+Conceptually useful if libz or libzstd is absent.
+However the baseline dwarfdump-*.O executables
+assume these libraries exist (and they
+must be shared libraries) so the
+tests won't actually work unless these libraries
+are present.
 
 ### LCOV
 
