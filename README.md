@@ -119,8 +119,8 @@ Some of the tests involve dwarfdump emitting
 Gigabytes of text.  Keeping a text file
 with the expected dwarfdump output is impractical.
 Instead we run most tests with the dwarfdump built
-in the testing and with a baseline *dwarfdump.O
-dwarfdump and compare the results.
+in the testing and with a baseline dwarfdump-*.O
+and compare the results.
 
 dwarfdump-x86_64-ubuntu.O is dwarfdump built on Ubuntu
 Linux (currently 22.04 LTS)
