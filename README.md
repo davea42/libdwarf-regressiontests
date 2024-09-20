@@ -1,6 +1,6 @@
 # This is libdwarf-regressiontests README.md
 
-Updated 16 June 2024
+Updated 20 September 2024
 
 ## valgrind note
 
@@ -9,6 +9,7 @@ Valgrind uses  such as
     valgrind --leak-check=full --show-leak-kinds=all
 
 have been found to be essential at times.
+See below for more remarks on valgrind.
 
 ## Historical note
 
@@ -37,16 +38,26 @@ on github.
 ## Testing overview hints
 
 Never run the tests in a regressiontests or libdwarf-regressiontests
-directory. Instead, run tests in a directory set up for
+directory, there is no way to automatically
+clean up the test directories.
+Instead, run tests in a directory set up for
 regression testing.
 
 There are a number (unspecified) 
 of points where the locations of the tests and source matter
-in comparing the output of a test run with the expected result,
-and such can result in failures.
+in comparing the output of a test run with the expected result.
+In a Linux, Freebsd, or modern MacOS environment  
+the tests arrange slight modifications to paths
+in dwarfdump output so all the tests pass (see below).
+None of the tests are guaranteed to work if any files
+or directories have spaces in their name. 
+On msys2 (Windows 10) or Microsoft Visual Studio 
+Those adjustments do not work and thest tests
+are useless.
 
 The tests are run using shell and python3
-scripts.   Meson is used to build libdwarf/dwarfdump.
+scripts.
+Meson is used to build libdwarf/dwarfdump.
 
 The test results expect $HOME/dwarf/code (for libdwarf-code)
 and $HOME/dwarf/regressiontests 
@@ -86,6 +97,11 @@ so do
 
 to split out the FAILs (exfail.py reads ALLdd).
 
+All the tests assume the executables are statically
+linked with libdwarf.  There is no support
+for executables (dwarfdump) run by the tests built with a
+shared-library libdwarf.so.
+
 ##  What is dwarfdump-x86_64-ubuntu.O?
 
 Some of the tests involve dwarfdump emitting 
@@ -95,9 +111,10 @@ Instead we run most tests with the dwarfdump built
 in the testing and with a baseline *dwarfdump.O
 dwarfdump and compare the results.
 
-dwarfdump-x86_64-ubuntu.O is, on Ubuntu 22.04 LTS, a dwarfdump
+dwarfdump-x86_64-ubuntu.O is dwarfdump built on Ubuntu
+Linux (currently 22.04 LTS)
 linked with a static library (libdwarf.a)
-that produces correct and expected output.
+that produces correct (expected) output.
 
 Other environments also need such: the
 test scripts choose the most useful *.O
@@ -111,7 +128,7 @@ changes output we update the relevant *dwarfdump.O .
 There are no real options, but there are environment variables
 you may set but do not need to use:
 
-See NLIZE SUPPRESSDEALLOCTREE VALGRIND below.
+See NLIZE SUPPRESSDEALLOCTREE VALGRIND (and more) below.
 
 Configure options:
 
@@ -121,6 +138,7 @@ We recommend running the tests outside
 of the regression test and libdwarf source trees.
 The default is to build a static libdwarf.a and
 use it everywhere in the builds here.
+Use of a shared libdwarf.so is not supported or expected to work.
 
 Lets assume  /path/to/libdwarf-regressiontests is
 the regression test source
@@ -154,6 +172,12 @@ takes about 24 minutes.
     unset SUPPRESSDEALLOCTREE
     unset VALGRIND
 
+    # the following default properly and can be ignored.
+    unset SKIPBIGOBJECTS=y
+    unset SUPPRESSBIGDIFFS=y
+    unset SKIPDECOMPRESS=y
+
+
 
 ### NLIZE
 
@@ -163,10 +187,15 @@ Any problems found are reported as FAIL.
 
 Usually takes twice as long to run as a
 standard test run, at this time on a 3GHz
-Linux machine it takes around 50 minutes. 
+Linux machine it takes around 60 minutes. 
 
     NLIZE=y
     export NLIZE
+
+There is no guarantee this does anything
+unless gcc is the compiler in use.
+This is a grave defect given the
+importance of some other compilers.
 
 ### SUPPRESSDEALLOCTREE
 
@@ -192,10 +221,51 @@ and any problems found by valgrind are reported
 as FAIL.
 
 This takes roughly twenty times as long to run
-as a standard run.
+as a standard run, and on smaller memory
+or slower machines valgrind can take many hours.
    
     VALGRIND=y
     export VALGRIND
+
+### SKIPBIGOBJECTS
+
+    SKIPBIGOBJECTS=y
+    export SKIPBIGOBJECTS
+
+A few objects dwarfdump is
+run on are quite large. On smaller
+and slower machines the tests
+run too slowly to be usable.
+This option is rarely used.
+
+### SUPPRESSBIGDIFFS
+
+    SUPPRESSBIGDIFFS=y
+    export SUPPRESSBIGDIFFS
+
+If an output of dwarfdump is more than about
+thirty megabytes in size then the tests
+will use a byte-compare program (cmp(1))
+rather than diff(1) to look for changes.
+On smaller machines doing a diff with
+inputs of gigabyte size is not going
+to complete in a reasonable time,
+especially if there are lots of small
+differences.
+
+Unless you are changing dwarfdump yourself
+there will be no differences so this
+option is probably not useful for you.
+
+### SKIPDECOMPRESS
+
+    SKIPDECOMPRESS=y
+    exportSKIPDECOMPRESS
+
+This tells the tests not to run dwarfdump on
+tests with compressed sections.
+Useful if libz or libzstd is absent.
+
 
 ### LCOV
    
@@ -239,11 +309,17 @@ in the directory libbld in the testing directory.
 
 Removes generated files in the directory where 
 it is run.
-Safe to run in the regressiontests source directory.
+We recommend running tests in a directory set up
+for testing, so cleanup.sh becomes pointless.
+cleanup.sh is safe to run in the regressiontests source directory.
+
+
 If you are running tests in a clean directory
-this shell script is unnecessary, just clean
-out any files you see in the clean directory
+it is not guaranteed to remove all generated-by-test
+files.
+This shell script is unnecessary, just clean
+out any files and directories you see in the clean directory
 before rerunning.
+
 Testing never creates files with
 a leading period (.).
-
