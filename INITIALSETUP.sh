@@ -106,8 +106,9 @@ for i in $srcdir/*.O
 do
    rm -f junkf1
    rm -f junkf2
+   echo $i
    echo $i > junkf1
-   grep 'dwarfdump-' < junkf1 >/dev/null 2>/dev/null
+   grep 'dwarfdump-' < junkf1 
    r=$?
    if test $r -eq 0
    then
@@ -115,7 +116,7 @@ do
      # Remove file that should not be here, if it exists.
      rm -f *@*
      # use python to diff as we deal with windows line-ends easily.
-     $srcdir/dwdiff.py $srcdir/findexecutable.base junkf2 >/dev/null 2>/dev/null
+     $srcdir/dwdiff.py $srcdir/findexecutable.base junkf2 >/tmp/INITstdout 2> /tmp/INITstderr
      t=$?
      if test $t -eq 0
      then
@@ -124,6 +125,9 @@ do
         ddbaselinename=$i
         rm -f dwarfdump.O
         cp $i dwarfdump.O
+     else 
+        cat junkf2
+        echo "Unusable dwarfdump $i"
      fi
      continue
    fi
