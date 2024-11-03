@@ -1,0 +1,46 @@
+core-exporer on github writes in issue 266:
+
+I built libdwarf-code with the afl++ fuzzer as compiler and used a set of minimal C files compiled with gcc and clang as seed inputs. My version is origin/main (459c915, 10 commits after v0.9.2)
+
+This is the backtrace:
+
+lldb -- ./dwarfdump --check-loc elf.dbg 
+(lldb) target create "./dwarfdump"
+Current executable set to '/target/x86_64-Debug/libdwarf-code/src/bin/dwarfdump/dwarfdump' (x86_64).
+(lldb) settings set -- target.run-args  "--check-loc" "elf.dbg"
+(lldb) r
+Process 1447488 launched: '/target/x86_64-Debug/libdwarf-code/src/bin/dwarfdump/dwarfdump' (x86_64)
+Process 1447488 stopped
+* thread #1, name = 'dwarfdump', stop reason = signal SIGSEGV: address not mapped to object (fault address: 0x555455699c64)
+    frame #0: 0x00005555555e17dd dwarfdump`read_single_lle_entry(dbg=0x00005555556915d0, data="", dataoffset=18446744069414584356, enddata="", address_size=8, bytes_count_out=0x00007fffffffbb4c, entry_kind=0x00007fffffffbb48, entry_operand1=0x00007fffffffbb40, entry_operand2=0x00007fffffffbb38, opsblocksize=0x00007fffffffbb28, opsoffset=0x00007fffffffbb20, ops=0x00007fffffffbb18, error=0x00007fffffffd2b8) at dwarf_loclists.c:157:12
+   154 	        return DW_DLV_ERROR;
+   155 	    }
+   156 	    startdata = data;
+-> 157 	    code = *data;
+   158 	    ++data;
+   159 	    ++count;
+   160 	    switch(code) {
+(lldb) bt
+* thread #1, name = 'dwarfdump', stop reason = signal SIGSEGV: address not mapped to object (fault address: 0x555455699c64)
+  * frame #0: 0x00005555555e17dd dwarfdump`read_single_lle_entry(dbg=0x00005555556915d0, data="", dataoffset=18446744069414584356, enddata="", address_size=8, bytes_count_out=0x00007fffffffbb4c, entry_kind=0x00007fffffffbb48, entry_operand1=0x00007fffffffbb40, entry_operand2=0x00007fffffffbb38, opsblocksize=0x00007fffffffbb28, opsoffset=0x00007fffffffbb20, ops=0x00007fffffffbb18, error=0x00007fffffffd2b8) at dwarf_loclists.c:157:12
+    frame #1: 0x00005555555e3fc0 dwarfdump`build_array_of_lle(dbg=0x00005555556915d0, rctx=0x00005555556b8ea0, error=0x00007fffffffd2b8) at dwarf_loclists.c:1040:15
+    frame #2: 0x00005555555e4907 dwarfdump`_dwarf_loclists_fill_in_lle_head(dbg=0x00005555556915d0, attr=0x00005555556b8d40, llhead=0x00005555556b8ea0, error=0x00007fffffffd2b8) at dwarf_loclists.c:1249:11
+    frame #3: 0x00005555555e0f80 dwarfdump`dwarf_get_loclist_c(attr=0x00005555556b8d40, ll_header_out=0x00007fffffffbec0, listlen_out=0x00007fffffffbec8, error=0x00007fffffffd2b8) at dwarf_loc.c:1716:17
+    frame #4: 0x000055555557e37f dwarfdump`print_location_list(dbg=0x00005555556915d0, die=0x00005555556ba510, attr=0x00005555556b8d40, checking=1, die_indent_level=2, no_end_newline=0, details=0x00007fffffffc920, llerr=0x00007fffffffd2b8) at print_die.c:6779:16
+    frame #5: 0x0000555555578e4d dwarfdump`print_location_description(dbg=0x00005555556915d0, attrib=0x00005555556b8d40, die=0x00005555556ba510, checking=1, attr=2, die_indent_level=2, base=0x00007fffffffc940, details=0x00007fffffffc920, err=0x00007fffffffd2b8) at print_die.c:4401:16
+    frame #6: 0x000055555557a214 dwarfdump`print_attribute(dbg=0x00005555556915d0, die=0x00005555556ba510, dieprint_cu_goffset=146, attr=2, attr_in=0x00005555556b8d40, print_else_name_match=1, die_indent_level=2, srcfiles=0x0000555555699ca0, srcfiles_cnt=9, lohipc=0x00007fffffffcb70, attr_duplication=0x00007fffffffcb48, err=0x00007fffffffd2b8) at print_die.c:4930:19
+    frame #7: 0x0000555555575958 dwarfdump`print_one_die(dbg=0x00005555556915d0, die=0x00005555556ba510, dieprint_cu_goffset=146, print_else_name_match=1, die_indent_level=2, srcfiles=0x0000555555699ca0, srcfcnt=9, an_attr_matched_io=0x00007fffffffcc74, ignore_die_stack=0, err=0x00007fffffffd2b8) at print_die.c:2866:25
+    frame #8: 0x0000555555573111 dwarfdump`dd_print_die_and_die_stack(dbg=0x00005555556915d0, in_die=0x00005555556ba510, dieprint_cu_goffset=146, srcfiles=0x0000555555699ca0, srcfilescount=9, err=0x00007fffffffd2b8) at print_die.c:1781:13
+    frame #9: 0x00005555555738be dwarfdump`print_die_and_children_internal(dbg=0x00005555556915d0, in_die_in=0x00005555556ba510, dieprint_cu_goffset=146, is_info=1, srcfiles=0x0000555555699ca0, srcfilescount=9, sibling_off_array=0x0000000000000000, sibling_off_count=0, err=0x00007fffffffd2b8) at print_die.c:2047:15
+    frame #10: 0x0000555555573b42 dwarfdump`print_die_and_children_internal(dbg=0x00005555556915d0, in_die_in=0x0000555555699c10, dieprint_cu_goffset=146, is_info=1, srcfiles=0x0000555555699ca0, srcfilescount=9, sibling_off_array=0x0000000000000000, sibling_off_count=0, err=0x00007fffffffd2b8) at print_die.c:2113:28
+    frame #11: 0x0000555555573b42 dwarfdump`print_die_and_children_internal(dbg=0x00005555556915d0, in_die_in=0x000055555568e310, dieprint_cu_goffset=146, is_info=1, srcfiles=0x0000555555699ca0, srcfilescount=9, sibling_off_array=0x0000000000000000, sibling_off_count=0, err=0x00007fffffffd2b8) at print_die.c:2113:28
+    frame #12: 0x00005555555719ef dwarfdump`print_die_and_children(dbg=0x00005555556915d0, in_die_in=0x000055555568e310, dieprint_cu_goffset=146, is_info=1, srcfiles=0x0000555555699ca0, srcfiles_count=9, err=0x00007fffffffd2b8) at print_die.c:1031:11
+    frame #13: 0x00005555555725b3 dwarfdump`print_one_die_section(dbg=0x00005555556915d0, is_info=1, pod_err=0x00007fffffffd2b8) at print_die.c:1411:28
+    frame #14: 0x0000555555570b6a dwarfdump`print_infos(dbg=0x00005555556915d0, is_info=1, pi_err=0x00007fffffffd2b8) at print_die.c:636:12
+    frame #15: 0x000055555555f790 dwarfdump`process_one_file(file_name="elf.dbg", tied_file_name="", temp_path_buf="elf.dbg", temp_path_buf_len=223, l_config_file_data=0x0000555555679de0) at dwarfdump.c:1240:15
+    frame #16: 0x000055555555e4c4 dwarfdump`main(argc=3, argv=0x00007fffffffd678) at dwarfdump.c:609:9
+I have not investigated further.
+
+The input file is attached. I can share my fuzzing setup if there is interest.
+elf.dbg.gz
+
