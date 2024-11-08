@@ -1223,6 +1223,10 @@ else
 fi
 
 
+# See github issue 266 and corexp/README
+runsingle corexpdbg-crash ./dwarfdump --check-loc $testsrc/corexp/elf.dbg
+exit 
+
 runsingle ossfuzz70753.base   ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz70753/fuzz_die_cu_offset-6598270743281664
  
 runsingle ossfuzz70763.base   ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz70763/fuzz_macro_dwarf5-5161075908083712
