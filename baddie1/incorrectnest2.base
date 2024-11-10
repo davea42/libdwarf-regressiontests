@@ -5,7 +5,7 @@ COMPILE_UNIT<header overall offset = 0x00000000>:
 < 0><0x0000000b GOFF=0x0000000b>  DW_TAG_compile_unit
                                     DW_AT_stmt_list             0x00000000
                                     DW_AT_ranges                0x00000000
-  ranges: 4 at .debug_ranges offset 0 (0x00000000) (32 bytes)
+  ranges: 4 at .debug_ranges global offset 0 (0x00000000)  without base 0 (0x00000000) (32 bytes)
    [ 0] base address 0x00000000
    [ 1] range entry  raw: 0xfff40000,  0xfff4009d cooked: 0xfff40000,  0xfff4009d
    [ 2] range entry  raw: 0xfff441e5,  0xfff441e9 cooked: 0xfff441e5,  0xfff441e9
@@ -24,7 +24,7 @@ COMPILE_UNIT<header overall offset = 0x000000bd>:
                                     DW_AT_low_pc                0x00000000
                                     DW_AT_entry_pc              0x00000000
                                     DW_AT_ranges                0x00000020
-  ranges: 1 at .debug_ranges offset 32 (0x00000020)  ( base addr 0x00000000) (8 bytes)
+  ranges: 1 at .debug_ranges global offset 32 (0x00000020)  without base 32 (0x00000020)  ( base addr 0x00000000) (8 bytes)
    [ 0] range end    0,0
                                     DW_AT_stmt_list             0x000000ab
 
@@ -830,7 +830,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_abstract_origin       <0x00000107 GOFF=0x0000038e> Refers to: __udivmoddi4
                                         DW_AT_entry_pc              0xfff43a98
                                         DW_AT_ranges                0x00000058
-  ranges: 9 at .debug_ranges offset 88 (0x00000058)  ( base addr 0xfff43a96) (72 bytes)
+  ranges: 9 at .debug_ranges global offset 88 (0x00000058)  without base 88 (0x00000058)  ( base addr 0xfff43a96) (72 bytes)
    [ 0] range entry  raw: 0x00000002,  0x000000c4 cooked: 0xfff43a98,  0xfff43b5a
    [ 1] range entry  raw: 0x0000037c,  0x000003aa cooked: 0xfff43e12,  0xfff43e40
    [ 2] range entry  raw: 0x0000035e,  0x00000379 cooked: 0xfff43df4,  0xfff43e0f
@@ -967,7 +967,7 @@ LOCAL_SYMBOLS:
                                               DW_OP_piece 4
 < 3><0x000004a6 GOFF=0x0000072d>        DW_TAG_lexical_block
                                           DW_AT_ranges                0x000000a0
-  ranges: 9 at .debug_ranges offset 160 (0x000000a0)  ( base addr 0xfff43a96) (72 bytes)
+  ranges: 9 at .debug_ranges global offset 160 (0x000000a0)  without base 160 (0x000000a0)  ( base addr 0xfff43a96) (72 bytes)
    [ 0] range entry  raw: 0x00000002,  0x000000c4 cooked: 0xfff43a98,  0xfff43b5a
    [ 1] range entry  raw: 0x0000037c,  0x000003aa cooked: 0xfff43e12,  0xfff43e40
    [ 2] range entry  raw: 0x0000035e,  0x00000379 cooked: 0xfff43df4,  0xfff43e0f
@@ -1199,7 +1199,7 @@ LOCAL_SYMBOLS:
                                             DW_AT_abstract_origin       <0x000001bb GOFF=0x00000442> Refers to: ww
 < 4><0x00000510 GOFF=0x00000797>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000000e8
-  ranges: 4 at .debug_ranges offset 232 (0x000000e8)  ( base addr 0xfff43a96) (32 bytes)
+  ranges: 4 at .debug_ranges global offset 232 (0x000000e8)  without base 232 (0x000000e8)  ( base addr 0xfff43a96) (32 bytes)
    [ 0] range entry  raw: 0x000001ec,  0x000002b0 cooked: 0xfff43c82,  0xfff43d46
    [ 1] range entry  raw: 0x0000037c,  0x0000038b cooked: 0xfff43e12,  0xfff43e21
    [ 2] range entry  raw: 0x00000343,  0x0000035b cooked: 0xfff43dd9,  0xfff43df1
@@ -1243,7 +1243,7 @@ LOCAL_SYMBOLS:
                                                   DW_OP_stack_value
 < 5><0x0000052b GOFF=0x000007b2>            DW_TAG_lexical_block
                                               DW_AT_ranges                0x00000108
-  ranges: 7 at .debug_ranges offset 264 (0x00000108)  ( base addr 0xfff43a96) (56 bytes)
+  ranges: 7 at .debug_ranges global offset 264 (0x00000108)  without base 264 (0x00000108)  ( base addr 0xfff43a96) (56 bytes)
    [ 0] range entry  raw: 0x000001fb,  0x00000203 cooked: 0xfff43c91,  0xfff43c99
    [ 1] range entry  raw: 0x0000037c,  0x0000038b cooked: 0xfff43e12,  0xfff43e21
    [ 2] range entry  raw: 0x0000028d,  0x0000028f cooked: 0xfff43d23,  0xfff43d25
@@ -1349,7 +1349,7 @@ LOCAL_SYMBOLS:
                                                     DW_OP_reg10
 < 5><0x00000574 GOFF=0x000007fb>            DW_TAG_lexical_block
                                               DW_AT_ranges                0x00000140
-  ranges: 3 at .debug_ranges offset 320 (0x00000140)  ( base addr 0xfff43a96) (24 bytes)
+  ranges: 3 at .debug_ranges global offset 320 (0x00000140)  without base 320 (0x00000140)  ( base addr 0xfff43a96) (24 bytes)
    [ 0] range entry  raw: 0x0000026a,  0x0000028d cooked: 0xfff43d00,  0xfff43d23
    [ 1] range entry  raw: 0x0000028f,  0x000002a0 cooked: 0xfff43d25,  0xfff43d36
    [ 2] range end    0,0
@@ -1425,7 +1425,7 @@ LOCAL_SYMBOLS:
                                                     DW_OP_reg3
 < 4><0x000005bf GOFF=0x00000846>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000158
-  ranges: 3 at .debug_ranges offset 344 (0x00000158)  ( base addr 0xfff43a96) (24 bytes)
+  ranges: 3 at .debug_ranges global offset 344 (0x00000158)  without base 344 (0x00000158)  ( base addr 0xfff43a96) (24 bytes)
    [ 0] range entry  raw: 0x0000015d,  0x000001b7 cooked: 0xfff43bf3,  0xfff43c4d
    [ 1] range entry  raw: 0x0000038b,  0x00000393 cooked: 0xfff43e21,  0xfff43e29
    [ 2] range end    0,0
@@ -1511,7 +1511,7 @@ LOCAL_SYMBOLS:
                                                   DW_OP_reg10
 < 4><0x00000608 GOFF=0x0000088f>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000170
-  ranges: 5 at .debug_ranges offset 368 (0x00000170)  ( base addr 0xfff43a96) (40 bytes)
+  ranges: 5 at .debug_ranges global offset 368 (0x00000170)  without base 368 (0x00000170)  ( base addr 0xfff43a96) (40 bytes)
    [ 0] range entry  raw: 0x0000011a,  0x00000149 cooked: 0xfff43bb0,  0xfff43bdf
    [ 1] range entry  raw: 0x0000039b,  0x000003aa cooked: 0xfff43e31,  0xfff43e40
    [ 2] range entry  raw: 0x0000036d,  0x00000375 cooked: 0xfff43e03,  0xfff43e0b
@@ -1531,7 +1531,7 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x00000243 GOFF=0x000004ca> Refers to: __xr
 < 4><0x00000620 GOFF=0x000008a7>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000198
-  ranges: 3 at .debug_ranges offset 408 (0x00000198)  ( base addr 0xfff43a96) (24 bytes)
+  ranges: 3 at .debug_ranges global offset 408 (0x00000198)  without base 408 (0x00000198)  ( base addr 0xfff43a96) (24 bytes)
    [ 0] range entry  raw: 0x0000005f,  0x000000c4 cooked: 0xfff43af5,  0xfff43b5a
    [ 1] range entry  raw: 0x00000393,  0x0000039b cooked: 0xfff43e29,  0xfff43e31
    [ 2] range end    0,0
@@ -1617,7 +1617,7 @@ LOCAL_SYMBOLS:
                                                   DW_OP_reg7
 < 4><0x00000669 GOFF=0x000008f0>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000001b0
-  ranges: 4 at .debug_ranges offset 432 (0x000001b0)  ( base addr 0xfff43a96) (32 bytes)
+  ranges: 4 at .debug_ranges global offset 432 (0x000001b0)  without base 432 (0x000001b0)  ( base addr 0xfff43a96) (32 bytes)
    [ 0] range entry  raw: 0x00000014,  0x00000046 cooked: 0xfff43aaa,  0xfff43adc
    [ 1] range entry  raw: 0x0000033b,  0x00000343 cooked: 0xfff43dd1,  0xfff43dd9
    [ 2] range entry  raw: 0x000001d0,  0x000001df cooked: 0xfff43c66,  0xfff43c75
@@ -1634,7 +1634,7 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x000001cb GOFF=0x00000452> Refers to: __xr
 < 4><0x00000681 GOFF=0x00000908>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000001d0
-  ranges: 4 at .debug_ranges offset 464 (0x000001d0)  ( base addr 0xfff43a96) (32 bytes)
+  ranges: 4 at .debug_ranges global offset 464 (0x000001d0)  without base 464 (0x000001d0)  ( base addr 0xfff43a96) (32 bytes)
    [ 0] range entry  raw: 0x000000ce,  0x000000fe cooked: 0xfff43b64,  0xfff43b94
    [ 1] range entry  raw: 0x0000035e,  0x0000036d cooked: 0xfff43df4,  0xfff43e03
    [ 2] range entry  raw: 0x000001c1,  0x000001d0 cooked: 0xfff43c57,  0xfff43c66
@@ -1651,7 +1651,7 @@ LOCAL_SYMBOLS:
                                               DW_AT_abstract_origin       <0x00000315 GOFF=0x0000059c> Refers to: __xr
 < 4><0x00000699 GOFF=0x00000920>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x000001f0
-  ranges: 7 at .debug_ranges offset 496 (0x000001f0)  ( base addr 0xfff43a96) (56 bytes)
+  ranges: 7 at .debug_ranges global offset 496 (0x000001f0)  without base 496 (0x000001f0)  ( base addr 0xfff43a96) (56 bytes)
    [ 0] range entry  raw: 0x000002bb,  0x000002c3 cooked: 0xfff43d51,  0xfff43d59
    [ 1] range entry  raw: 0x000002e9,  0x0000033b cooked: 0xfff43d7f,  0xfff43dd1
    [ 2] range entry  raw: 0x000002e1,  0x000002e6 cooked: 0xfff43d77,  0xfff43d7c
@@ -2379,7 +2379,7 @@ LOCAL_SYMBOLS:
                                         DW_AT_abstract_origin       <0x00000107 GOFF=0x00000aa8> Refers to: __udivmoddi4
                                         DW_AT_entry_pc              0xfff43e42
                                         DW_AT_ranges                0x00000228
-  ranges: 5 at .debug_ranges offset 552 (0x00000228)  ( base addr 0xfff43e40) (40 bytes)
+  ranges: 5 at .debug_ranges global offset 552 (0x00000228)  without base 552 (0x00000228)  ( base addr 0xfff43e40) (40 bytes)
    [ 0] range entry  raw: 0x00000002,  0x000000ba cooked: 0xfff43e42,  0xfff43efa
    [ 1] range entry  raw: 0x000002b9,  0x00000397 cooked: 0xfff440f9,  0xfff441d7
    [ 2] range entry  raw: 0x00000117,  0x000002b6 cooked: 0xfff43f57,  0xfff440f6
@@ -2511,7 +2511,7 @@ LOCAL_SYMBOLS:
                                               DW_OP_piece 4
 < 3><0x000004b3 GOFF=0x00000e54>        DW_TAG_lexical_block
                                           DW_AT_ranges                0x00000250
-  ranges: 5 at .debug_ranges offset 592 (0x00000250)  ( base addr 0xfff43e40) (40 bytes)
+  ranges: 5 at .debug_ranges global offset 592 (0x00000250)  without base 592 (0x00000250)  ( base addr 0xfff43e40) (40 bytes)
    [ 0] range entry  raw: 0x00000002,  0x000000ba cooked: 0xfff43e42,  0xfff43efa
    [ 1] range entry  raw: 0x000002b9,  0x00000397 cooked: 0xfff440f9,  0xfff441d7
    [ 2] range entry  raw: 0x00000117,  0x000002b6 cooked: 0xfff43f57,  0xfff440f6
@@ -2733,7 +2733,7 @@ LOCAL_SYMBOLS:
                                             DW_AT_abstract_origin       <0x000001bb GOFF=0x00000b5c> Refers to: ww
 < 4><0x0000051d GOFF=0x00000ebe>          DW_TAG_lexical_block
                                             DW_AT_ranges                0x00000278
-  ranges: 5 at .debug_ranges offset 632 (0x00000278)  ( base addr 0xfff43e40) (40 bytes)
+  ranges: 5 at .debug_ranges global offset 632 (0x00000278)  without base 632 (0x00000278)  ( base addr 0xfff43e40) (40 bytes)
    [ 0] range entry  raw: 0x000001ce,  0x000002b6 cooked: 0xfff4400e,  0xfff440f6
    [ 1] range entry  raw: 0x0000037d,  0x00000388 cooked: 0xfff441bd,  0xfff441c8
    [ 2] range entry  raw: 0x00000360,  0x0000036f cooked: 0xfff441a0,  0xfff441af

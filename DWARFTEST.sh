@@ -1225,7 +1225,6 @@ fi
 
 # See github issue 266 and corexp/README
 runsingle corexpdbg-crash ./dwarfdump --check-loc $testsrc/corexp/elf.dbg
-exit 
 
 runsingle ossfuzz70753.base   ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz70753/fuzz_die_cu_offset-6598270743281664
  
@@ -1569,7 +1568,7 @@ cd ..
 runtest $d1 $d2 polar/cpp_test.o --print-debug-names
 
 # New tests as of July 2024.
-runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges --file-tied=unittest -M -i -vvv -G
+runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges --file-tied=rifkin3/unittest -M -i -vvv -G
 runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges -M -i -vvv -G stacktrace.cpp.dwo
 runtest $d1 $d2 rifkin3/unittest  --print-ranges -M -i -vvv -G
 
