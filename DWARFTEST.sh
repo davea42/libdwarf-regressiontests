@@ -653,9 +653,10 @@ stripx() {
 unifyddname () {
   touch $1
   mv $1 $2
-  #nstart=$1
-  #nend=$2
-  #sed -e 'sx.\/dwarfdump.Ox.\/dwarfdumpx' < $nstart > $nend
+  if [ $? -ne 0 ]
+  then
+    echo "mv $1 $2  FAIL in unifyddname"
+  fi
 }
 # For stderr we need to fix the name due to getopt.c
 unifyddnameb () {
@@ -1040,9 +1041,9 @@ runtest () {
     filediff tmp1o tmp3 $* $targ
     if [ $? -ne 0 ]
     then
-      #echo FAIL filediff tmp1o tmp2
-       wc tmp1o
-       wc tmp3
+      echo 'FAIL filediff tmp1o tmp2 (final diff)'
+      wc tmp1o
+      wc tmp3
       allgood=n
     fi
     if [ $allgood = "y" ]
@@ -1221,6 +1222,7 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
 
 
 # See github issue 266 and corexp/README
@@ -1418,6 +1420,15 @@ runsingle ossfuzz57027.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuz
 runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993/fuzz_macro_dwarf5-5770464300761088
 
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
+
+# These are DWARF5, and require DW_AT_rnglists_base NOT be inherited.
+# New tests as of November 2024
+runtest $d1 $d2 rifkin7/unittest -a -M --print-raw-rnglists
+runtest $d1 $d2 rifkin7/unittest -ka 
+runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo --print-raw-rnglists
+runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo -ka-raw-rnglists
+runtest $d1 $d2 -a --file-tied= rifkin7/unittest rifkin7/stacktrace.cpp.dwo
+runtest $d1 $d2 -ka --file-tied= rifkin7/unittest rifkin7/stacktrace.cpp.dwo
 
 runtest $d1 $d2 ossfuzz56906/fuzz_rng-6031783801257984.fuzz --print-raw-rnglists
 
