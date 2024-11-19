@@ -1421,6 +1421,9 @@ runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993
 
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
 
+# DWARF5 MacOS, and requires some additional section name translations.
+runtest $d1 $d2 myzhan/lua -a -vv -M --print-raw-rnglists
+
 # These are DWARF5, and require DW_AT_rnglists_base NOT be inherited.
 # New tests as of November 2024
 runtest $d1 $d2 rifkin7/unittest -a -M --print-raw-rnglists
