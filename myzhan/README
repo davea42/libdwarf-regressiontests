@@ -1,0 +1,6 @@
+
+Issue #268 by myzhan.
+
+Sections new in DWARF5 were not recognized by
+libdwarf (there is a small table
+of apple-name to DWARF-name translations). Now they are.
