@@ -1,0 +1,6 @@
+
+Issue #270 github.
+
+dwarfdump gets error processing as tied file.
+
+dwarfdump -i -G -M --file-tied=unittest  stacktrace.cpp.dwo
