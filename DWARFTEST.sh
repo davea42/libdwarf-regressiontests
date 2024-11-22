@@ -1421,6 +1421,14 @@ runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993
 
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
 
+# New tests as of 22 November 2024
+runtest $d1 $d2 rifkin8/stacktrace.cpp.dwo -a -M --file-tied=$testsrc/rifkin8/unittest
+runtest $d1 $d2 rifkin8/stacktrace.cpp.dwo -ka --file-tied=$testsrc/rifkin8/unittest
+runtest $d1 $d2 rifkin8/unittest -a -M --print-raw-rnglists
+runtest $d1 $d2 rifkin8/unittest -ka 
+runtest $d1 $d2 rifkin8/stacktrace.cpp.dwo --print-raw-rnglists
+runtest $d1 $d2 rifkin8/stacktrace.cpp.dwo -ka
+
 # DWARF5 MacOS, and requires some additional section name translations.
 runtest $d1 $d2 myzhan/lua -a -vv -M --print-raw-rnglists
 
@@ -1430,8 +1438,8 @@ runtest $d1 $d2 rifkin7/unittest -a -M --print-raw-rnglists
 runtest $d1 $d2 rifkin7/unittest -ka 
 runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo --print-raw-rnglists
 runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo -ka-raw-rnglists
-runtest $d1 $d2 -a --file-tied= rifkin7/unittest rifkin7/stacktrace.cpp.dwo
-runtest $d1 $d2 -ka --file-tied= rifkin7/unittest rifkin7/stacktrace.cpp.dwo
+runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo -a --file-tied=$testsrc/rifkin7/unittest 
+runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo -ka --file-tied=$testsrc/rifkin7/unittest
 
 runtest $d1 $d2 ossfuzz56906/fuzz_rng-6031783801257984.fuzz --print-raw-rnglists
 
@@ -1582,7 +1590,7 @@ cd ..
 runtest $d1 $d2 polar/cpp_test.o --print-debug-names
 
 # New tests as of July 2024.
-runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges --file-tied=rifkin3/unittest -M -i -vvv -G
+runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges --file-tied=$testsrc/rifkin3/unittest -M -i -vvv -G
 runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges -M -i -vvv -G stacktrace.cpp.dwo
 runtest $d1 $d2 rifkin3/unittest  --print-ranges -M -i -vvv -G
 
@@ -1591,14 +1599,14 @@ runtest $d1 $d2 rifkindwo/demo -a -M -vvv
 runtest $d1 $d2 rifkindwo/demo --print-raw-rnglists --print-raw-loclists 
 runtest $d1 $d2 rifkindwo/demo.cpp.dwo  -a -M -vvv
 runtest $d1 $d2 rifkindwo/demo.cpp.dwo --print-raw-rnglists --print-raw-loclists 
-runtest $d1 $d2 rifkindwo/demo.cpp.dwo --file-tied=rifkindwo/demo -a -M -vvv
+runtest $d1 $d2 rifkindwo/demo.cpp.dwo --file-tied=$testsrc/rifkindwo/demo -a -M -vvv
 
 runtest $d1 $d2 rifkindwo/libcpptrace.so.0.6.0 -a -M -vvv 
 runtest $d1 $d2 rifkindwo/libcpptrace.so.0.6.0  --print-raw-rnglists --print-raw-loclists 
 runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo  -a -M -vvv
 runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo --print-raw-rnglists --print-raw-loclists 
-runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo --file-tied=rifkindwo/libcpptrace.so.0.6.0 -a -M -vvv
-runtest $d1 $d2 rifkin5/demo.cpp.dwo --file-tied=rifkin5/demo -a -M  -vvv
+runtest $d1 $d2 rifkindwo/cpptrace.cpp.dwo --file-tied=$testsrc/rifkindwo/libcpptrace.so.0.6.0 -a -M -vvv
+runtest $d1 $d2 rifkin5/demo.cpp.dwo --file-tied=$testsrc/rifkin5/demo -a -M  -vvv
 
 runversiontest $d2 -V
 
