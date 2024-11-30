@@ -1,3 +1,174 @@
+2024-11-30:  David Anderson
+    commit 3597f5cc37e1117f9c688c7d83ff1b28f473ffcf
+
+    New baselines, passing for Dec 1 release.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-11-28:  David Anderson
+    commit 64350f5d0b64c8766debbb092e6b858772d31bf1
+
+    Changes in dwardump output (small changes in errors)
+    required updating this baseline.
+            modified:   baselines/corexpdbg-crash
+
+2024-11-22:  David Anderson
+    commit 1f6fa954f7a88c337f1c3df5027ba81e699a083b
+
+    Corrected the tests in rifkin7 and added new tests under rifkin8.
+    These are tests of DWARF5 .debug_rnglists.
+            modified:   DWARFTEST.sh
+
+2024-11-22:  David Anderson
+    commit 4723580ed17b0e8ab1b129a17686070a778faca7
+
+    Another new testcase DWARF5 .debug_rnglists
+            new file:   rifkin8/README
+            new file:   rifkin8/stacktrace.cpp.dwo
+            new file:   rifkin8/unittest
+
+2024-11-19:  David Anderson
+    commit df22d1563b4dd6e6345fc0052c8694f8d76d1a47
+
+    New testcase for APPLE DWARF5 section names.
+            modified:   ../DWARFTEST.sh
+    new baseline
+            modified:   ../dwarfdump-macos.O
+
+2024-11-19:  David Anderson
+    commit 683f051c394cc8bb73890564cf715d51d50e6955
+
+    New testcase Now with DWARF5 sections in an Apple dSYM.
+            new file:   myzhan/README
+            new file:   myzhan/lua
+
+2024-11-16:  David Anderson
+    commit bd2ad501450b9de54fbb959ce086025c20c9e403
+
+    Now with the rifkin7 test and with new
+    baselines. There were differences in 526 tests,
+    all are improvements as intended.
+            modified:   DWARFTEST.sh
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    This is the testcase for Issue 267 on Github.
+            new file:   rifkin7/README
+            new file:   rifkin7/stacktrace.cpp.dwo
+            new file:   rifkin7/unittest
+
+2024-11-10:  David Anderson
+    commit 5db2bc140093514568c2c2ca914f2346f3d7b179
+
+    Fixing ranges output caused baseline changes.
+    github issue 265
+
+            modified:   DWARFTEST.sh
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectbeforechild.base
+            modified:   baddie1/incorrectbeforeitself.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+            modified:   baselines/macuniv.base
+            modified:   baselines/macuniv0.base
+            modified:   baselines/macuniv1.base
+            modified:   debugfission/archiveo.base.gz
+            modified:   debugfission/targeto.base.gz
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-11-07:  David Anderson
+    commit 1fd80670565f35375491139db168baa4f1a7200f
+
+    Now with corexp/ test
+            modified:   DWARFTEST.sh
+    New baseline
+            new file:   baselines/corexpdbg-crash
+    with correct coreexp behavior.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-11-03:  David Anderson
+    commit ae8936367e59a40a1cfd851001fa3301f3a34432
+
+    Making it easier to understane what is going wrong when one cannot find the .O as executable.
+            modified:   ../INITIALSETUP.sh
+
+2024-11-03:  David Anderson
+    commit 71165310e8c8a19ef492b47779d8f777b982b5b1
+
+    In corexp: new test case issue 266 on fuzzed binary
+            new file:   README
+            new file:   elf.dbg
+
+2024-09-20:  David Anderson
+    commit 9f0c1a1ecf2ad4543cc2822960ffa4dd04b6f464
+
+    Yet more tiny tweaks.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit 88d1b3988a2959b71bfe895b0edbf2ba723db402
+
+    Yet another revision
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit e83c6e4fcd048bf3511e7544b91f09fba562da4b
+
+    Oh my, more tweaks.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit b50efef27422e08700b32c2b4bc4c4b6a99ab8cd
+
+    Further correction.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit b875577465536d2d1474e8541d1ff454c2f5f503
+
+    Further clarifications.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit 91bab3febf4ffb34ed5d3c0fb2122380168fab45
+
+    Expanded and more complete content.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit 0c1e13efe7bd5b416912477f8ce336ffeb618414
+
+    New baseline executables with the recent
+    changes in dwarfdump output.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-09-15:  David Anderson
+    commit 63a5b4753aa513d1bc657542518572b7581ddbbb
+
+    New baseline executables reflecting
+    the change in tag and attribute summary count
+    logic (dwarfdump).
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-09-01:  David Anderson
+    commit 8ec84810df0cfe0b72426dae74446dc8d052371b
+
+    Now up to date with git log.
+            modified:   ChangeLog
+
 2024-09-01:  David Anderson
     commit e44ce5c577e73bc591d6c9a1399a718844820424
 
