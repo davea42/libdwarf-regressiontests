@@ -604,7 +604,6 @@ liu/HeapOverflow0513.elf
 liu/infinitloop.elf
 liu/null01.elf
 liu/null02.elf
-liu/NULLdereference0519.elf
 liu/NULLdereference0522.elf
 liu/OOB0505_01.elf
 liu/OOB0505_02_02.elf
@@ -613,7 +612,6 @@ liu/OOB0517_01.elf
 liu/OOB0517_03.elf
 liu/OOB_read3_02.elf
 liu/OOB_read3.elf
-liu/OOB_read4.elf
 liu/OOB_READ0519.elf
 liu/outofbound01.elf
 liu/outofboundread2.elf
@@ -1223,7 +1221,7 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
-
+runsingle ossfuzz_42538203.base ./fuzz_findfuncbypc  --testobj=$testsrc/ossfuzz42538203/fuzz_findfuncbypc-5117956621664256
 
 # See github issue 266 and corexp/README
 runsingle corexpdbg-crash ./dwarfdump --check-loc $testsrc/corexp/elf.dbg
@@ -1420,6 +1418,13 @@ runsingle ossfuzz57027.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuz
 runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993/fuzz_macro_dwarf5-5770464300761088
 
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
+
+# These fail badly in many ways though early errors hide what used to be found early.
+runtest $d1 $d2 liu/OOB_read4.elf -a -M 
+runtest $d1 $d2 liu/OOB_read4.elf -ka -M 
+
+runtest $d1 $d2 liu/NULLdereference0519.elf -a -M
+runtest $d1 $d2 liu/NULLdereference0519.elf -ka
 
 # New tests as of 22 November 2024
 runtest $d1 $d2 rifkin8/stacktrace.cpp.dwo -a -M --file-tied=$testsrc/rifkin8/unittest
@@ -2354,7 +2359,6 @@ runtest $d1 $d2  liu/HeapOverflow0513.elf -a
 runtest $d1 $d2  liu/infinitloop.elf -a
 runtest $d1 $d2  liu/null01.elf -a
 runtest $d1 $d2  liu/null02.elf -a
-runtest $d1 $d2  liu/NULLdereference0519.elf -a
 runtest $d1 $d2  liu/NULLdereference0522.elf -a
 runtest $d1 $d2  liu/NULLdeference0522c.elf -a
 runtest $d1 $d2  liu/OOB0505_01.elf -a
@@ -2375,7 +2379,6 @@ runtest $d1 $d2  liu/OOB0517_02.elf -a -x groupnumber=2
 runtest $d1 $d2  liu/OOB0517_03.elf -a
 runtest $d1 $d2  liu/OOB_read3_02.elf -a
 runtest $d1 $d2  liu/OOB_read3.elf -a
-runtest $d1 $d2  liu/OOB_read4.elf -a
 runtest $d1 $d2  liu/OOB_READ0519.elf -a
 runtest $d1 $d2  liu/outofbound01.elf -a
 runtest $d1 $d2  liu/outofbound01.elf -ka
