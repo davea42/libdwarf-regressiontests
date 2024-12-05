@@ -1,2 +1,2 @@
 
-libdwarf is unable to record error DW_DLE_MISSING_REQUIRED_CU_OFFSET_HASH(291) is a broken dwp package file No error argument or handler available
+libdwarf is unable to record error DW_DLE_XU_NAME_COL_ERROR(270) XU means dwarf_cu_ or tu_ index section No error argument or handler available
