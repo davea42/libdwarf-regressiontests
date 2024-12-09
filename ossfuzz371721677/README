@@ -1,0 +1,9 @@
+
+ossfuzz 371721677
+Bug found  )ct 6,2024
+
+Crash Type: Out-of-memory (exceeds 2560 MB)
+Crash State:
+  fuzz_die_cu_e_print
+
+Used 2667MB limit in ossfuzz 2500MB
