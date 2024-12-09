@@ -1220,6 +1220,13 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+/home/davea/dwarf/regressiontests/ossfuzz371659894
+
+runsingle ossfuzz371659894.base ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz371659894/fuzz_die_cu_attrs-6661686947282944
+
+runsingle ossfuzz371721677.base ./fuzz_die_cu_e_print --testobj=$testsrc/ossfuzz371721677/fuzz_die_cu_e_print-4913953320271872
+
+runsingle ossfuzz_42536144.base ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz42536144/fuzz_die_cu_attrs_loclist-5906068650655744
 
 runsingle ossfuzz_42538203.base ./fuzz_findfuncbypc  --testobj=$testsrc/ossfuzz42538203/fuzz_findfuncbypc-5117956621664256
 
@@ -1450,7 +1457,9 @@ runtest $d1 $d2 ossfuzz56906/fuzz_rng-6031783801257984.fuzz --print-raw-rnglists
 
 runsingle ossfuzz56897.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56897/fuzz_rng-5105415777288192
 
-runsingle ossfuzz56458.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz56458/fuzz_globals-5286908805906432
+# wrong testcase
+#runsingle ossfuzz56458.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz56458/fuzz_globals-5286908805906432
+runsingle ossfuzz56458.base  ./fuzz_globals --testobj=$testsrc/ossfuzz56458/fuzz_globals-5286908805906432
 
 runsingle ossfuzz56450.base  ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz56450/fuzz_die_cu_attrs-4953133005799424
 

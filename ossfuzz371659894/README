@@ -1,12 +1,27 @@
 
-Found Oct 6 2024
 
+ossfuzz371659894/README
+Found Oct 6 2024
 testcase fuzz_die_cu_attrs-6661686947282944
 
-	libdwarf is unable to record error DW_DLE_DIE_BAD (112) No error argument or handler available
+output:
+libdwarf is unable to record error DW_DLE_DIE_BAD (112) No error argument or handler available
 libdwarf is unable to record error DW_DLE_ATTR_NULL (111) No error argument or handler available
 libdwarf is unable to record error DW_DLE_ATTR_NULL (111) No error argument or handler available
 libdwarf is unable to record error DW_DLE_ATTR_NULL (111) No error argument or handler available
-libdwarf is unable to record error DW_DLE_STRING_FORM_IMPROPER(327) An internal libdwarf logic error No error argument or handler available
+libdwarf is unable to record error DW_DLE_STRING_FORM_IMPROPER(327 
+  An internal libdwarf logic error No error argument or handler available
 
-repeats forever.
+The sequence repeats many many times.
+
+The repeat is not really infinite, but it might as well be infinite:
+it is useless and every iteration is increasing memory usage...quickly.
+
+Sanitizers choke on it.
+
+I revised the testcase so in completely unreasonable situations  (really
+most given the code in fuzz_die_cu_attrs.c) it stops and
+reports the problem.
+
+Updated:
+libdwarf-code/fuzz/fuzz_die_cu_attrs.c

@@ -1,0 +1,49 @@
+/tmp/dwarfdump --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junkn
+/tmp/dwarfdump --print-raw-loclists /home/davea/dwarf/regressiontests/moya-loc/loclists  >junknhiedraw
+/tmp/dwarfdump -a -M -v  /home/davea/dwarf/regressiontests/moya-loc/loclists  >junkntied
+
+dwarfdump --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junko
+/tmp/dwarfdump --print-raw-loclists  /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junknraw
+dwarfdump --print-raw-loclists  /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junkoraw
+exit 0
+/tmp/dwarfdump -vv --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junk
+dwarfdump -vv --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junko
+/tmp/dwarfdump --print-raw-loclists /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junkraw
+#readelfobj /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp
+#readelfobj /home/davea/dwarf/regressiontests/moya-loc/loclists
+exit 0
+
+
+
+/tmp/dwarfdump --file-tied=/home/davea/dwarf/regressiontests/rifkin5/demo -a -M -vvv /home/davea/dwarf/regressiontests/rifkin5/demo.cpp.dwo >junk
+
+echo "r  --file-tied=/home/davea/dwarf/regressiontests/rifkin5/demo -a -M -vvv /home/davea/dwarf/regressiontests/rifkin5/demo.cpp.dwo"
+gdb /tmp/dwarfdump
+exit 0
+/tmp/dwarfdump -i -G --print-debug-names -vv /home/davea/dwarf/regressiontests/debugnames/dwarfdump >junkdd
+
+#echo "r -a -G -M -v --file-tied=/home/davea/dwarf/regressiontests/moya3/ranges_base.o /home/davea/dwarf/regressiontests/moya3/ranges_base.dwo"
+#gdb /tmp/dwarfdump 
+#exit 0
+#-a -G -M -v --file-tied=/home/davea/dwarf/regressiontests/moya3/ranges_base.o /home/davea/dwarf/regressiontests/moya3/ranges_base.dwo
+f=/home/davea/dwarf/regressiontests/moya3/ranges_base.dwo
+ft=/home/davea/dwarf/regressiontests/moya3/ranges_base.o
+#/tmp/dwarfdump    -a -G -M -v --file-tied=$ft $f 
+#>/tmp/junkn
+/tmp/dwarfdump  -a -G -M -v --file-tied=$ft $f >junktied
+/tmp/dwarfdump  -a -G -M -v $f >junkprimary
+/tmp/dwarfdump  -a -G -M -v $ft >junksecondary
+exit 0
+wc junko junkn
+/tmp/dwarfdump -a -M -vv      /home/davea/dwarf/regressiontests/kaufmann2/ct-bad.o >junko
+exit 0
+echo 'b dwarf_formaddr'
+echo 'r -a -G -M -v /home/davea/dwarf/regressiontests/moya3/ranges_base.dwo'
+gdb /tmp/dwarfdump
+
+exit 0
+dwarfdump -a -M -vv      /home/davea/dwarf/regressiontests/kaufmann2/ct-bad.o >junko
+/tmp/dwarfdump -a -M -vv /home/davea/dwarf/regressiontests/kaufmann2/ct-bad.o >junkn
+
+#/tmp/dwarfdump --print-ranges --file-tied=rifkin3/unittest -M -i -vvv -G rifkin3/stacktrace.cpp.dwo
+
