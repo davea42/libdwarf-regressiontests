@@ -1069,6 +1069,7 @@ echo  "=====BLOCK individual tests and runtest.sh tests"
 
 # BUILDS
 fuzzexe='
+fuzz_aranges
 fuzz_crc
 fuzz_crc_32
 fuzz_debug_addr_access
@@ -1220,7 +1221,14 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
-/home/davea/dwarf/regressiontests/ossfuzz371659894
+
+runsingle ossfuzz383170474.base ./fuzz_globals --testobj=$testsrc/ossfuzz383170474/fuzz_globals-4515360770228224.fuzz
+
+runsingle ossfuzz380108595.base ./fuzz_aranges --testobj=$testsrc/ossfuzz380108595/fuzz_aranges-5572243180027904
+
+runsingle ossfuzz379159140.base ./fuzz_die_cu_print --testobj=$testsrc/ossfuzz379159140/fuzz_die_cu_print-5335984847257600
+
+runsingle ossfuzz372754161.base ./fuzz_globals --testobj=$testsrc/ossfuzz372754161/fuzz_globals-6058837938864128
 
 runsingle ossfuzz371659894.base ./fuzz_die_cu_attrs --testobj=$testsrc/ossfuzz371659894/fuzz_die_cu_attrs-6661686947282944
 
