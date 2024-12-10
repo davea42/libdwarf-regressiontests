@@ -1,0 +1,11 @@
+
+DW202412-005
+oss fuzz 380108595
+ossfuzz380108595/fuzz_aranges-5572243180027904
+
+  #1 0x5c801a756af3 in pe_load_section libdwarf/src/lib/libdwarf/dwarf_peread.c:396:27
+    #2 0x5c801a713670 in _dwarf_load_section libdwarf/src/lib/libdwarf/dwarf_init_finish.c:1442:11
+    #3 0x5c801a77bd07 in _dwarf_load_debug_info libdwarf/src/lib/libdwarf/dwarf_util.c:1344:11
+    #4 0x5c801a6dd26a in dwarf_get_aranges libdwarf/src/lib/libdwarf/dwarf_arange.c:426:11
+
+Looks like PE with bogux VirtualSize, see DW202412-001

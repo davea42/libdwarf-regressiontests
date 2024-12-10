@@ -1,0 +1,13 @@
+
+DW202412-006
+oss fuzz 383170474
+
+==397==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x51700000037c at pc 0x58ae68fa9412 bp 0x7fff1f199a50 sp 0x7fff1f199a48
+READ of size 1 at 0x51700000037c thread T0
+    #0 0x58ae68fa9411 in dwarf_dnames_header libdwarf/src/lib/libdwarf/dwarf_debugnames.c:858:17
+    #1 0x58ae68fd83b0 in _dwarf_internal_get_debug_names_globals libdwarf/src/lib/libdwarf/dwarf_global.c:306:15
+    #2 0x58ae68fd766c in dwarf_globals_by_type libdwarf/src/lib/libdwarf/dwarf_global.c:1214:15
+    #3 0x58ae68fa505c in get_globals_example libdwarf/fuzz/fuzz_globals.c:82:9
+    #4 0x58ae68fa4db7 in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_globals.c:66:5
+    #5 0x58ae68f9aeaf in main
+    #6 0x7ca29f268082 in __libc_start_main /build/glibc-LcI20x/g
