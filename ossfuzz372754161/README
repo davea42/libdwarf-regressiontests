@@ -1,0 +1,17 @@
+
+ossfuzz 372754161
+DW202412-003
+
+
+Exceeds memory limit
+
+Live Heap Allocations: 796552243 bytes in 100 chunks; quarantined: 365645 bytes in 150 chunks; 34231 other chunks; total chunks: 34481; showing top 95% (at most 8 unique contexts)
+771778352 byte(s) (96%) in 1 allocation(s)
+    #0 0x58be4ae900df in __interceptor_malloc /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:68:3
+    #1 0x58be4af4e723 in pe_load_section libdwarf/src/lib/libdwarf/dwarf_peread.c:396:27
+    #2 0x58be4af0b2a0 in _dwarf_load_section libdwarf/src/lib/libdwarf/dwarf_init_finish.c:1442:11
+    #3 0x58be4aefb8f7 in dwarf_globals_by_type libdwarf/src/lib/libdwarf/dwarf_global.c:1180:11
+    #4 0x58be4aecd8f0 in get_globals_example libdwarf/fuzz/fuzz_globals.c:82:9
+    #5 0x58be4aecd68a in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_globals.c:66:5
+
+
