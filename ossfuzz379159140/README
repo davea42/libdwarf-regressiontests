@@ -1,0 +1,9 @@
+
+DW202412-004  
+
+oss fuzz  379159140
+
+Same bug in libdwarf on PE
+as DW202412-003 and DW202412-001.
+
+Failure to check Virtualsize of an object section for sanity. 
