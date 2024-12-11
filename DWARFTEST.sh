@@ -1222,6 +1222,8 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle ossfuzz42536144.base ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz42536144/fuzz_die_cu_attrs_loclist-5906068650655744
+
 runsingle ossfuzz383170474.base ./fuzz_globals --testobj=$testsrc/ossfuzz383170474/fuzz_globals-4515360770228224.fuzz
 
 runsingle ossfuzz380108595.base ./fuzz_aranges --testobj=$testsrc/ossfuzz380108595/fuzz_aranges-5572243180027904
