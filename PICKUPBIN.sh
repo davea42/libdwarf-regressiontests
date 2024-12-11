@@ -3,8 +3,10 @@
 
 # options -Dsanitize=true
 #         -Dwerror=false
+#         -Dlibbdwarfspecialmalloc=false
 # env var $NLIZE=y
 # env var $WALL=n
+# env var $LIBDWARFSPECIALMALLOC=n
 
 # NLIZE tells gcc/clang to use extra run-time
 # code to look for code reading, reading or leaking 
@@ -62,6 +64,15 @@ buildsanitize=""
 if [ "x$NLIZE" = "xy" ]
 then
   buildsanitize="-Dsanitize=true"
+fi
+if [ "x$WALL" = "xn" ]
+then
+  buildwall="-Dwerror=false" 
+fi
+
+if [ "x$LIBDWARFSPECIALMALLOC" = "xy" ]
+then
+  buildlibdwarfspecialmalloc="-Dlibdwarfspecialmalloc=true"
 fi
 if [ "x$WALL" = "xn" ]
 then
@@ -143,7 +154,7 @@ then
 fi
 
 ###  Build now
-m="meson setup --default-library static $buildsanitize  $buildwall  -Ddwarfexample=true -Ddwarfgen=true . $libdw"
+m="meson setup --default-library static $buildsanitize  $buildwall  -Ddwarfexample=true -Ddwarfgen=true . $libdw $buildlibdwarspecialmalloc"
 echo $m
 $m
 if [ $? -ne 0 ]
@@ -180,6 +191,7 @@ echo "configdwarfgen: $configdwarfgen"
 echo "buildlibsubdir: $buildlibsubdir"
 echo "configlibpname: $configlibpname"
 echo "buildbinsubdir: $buildbinsubdir"
+echo "libdwarfspecialmalloc: $buildlibdwarfspecialmalloc"
 if [  $sharedlib = "n"  -a  x$configdwarfgen = "x--enable-dwarfgen" ]
 then
   copyobject libdwarfp.a $libbld/src/lib/libdwarfp $targetdir 
