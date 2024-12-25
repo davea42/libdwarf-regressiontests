@@ -1,0 +1,21 @@
+
+Issue 385466100  Dec 21 2024
+Null-derefercne READ
+
+dwarfbug DW202412-008
+
+
+Crash State:	
+_dwarf_memcpy_noswap_bytes
+_dwarf_internal_read_loclists_header
+_dwarf_find_all_offsets_via_fission
+
+Crash Type:	Null-dereference READ
+
+
+crash at
+    #2 0x5a505e56716e in _dwarf_memcpy_noswap_bytes libdwarf/src/lib/libdwarf/dwarf_memcpy_swap.c:49:5
+    #3 0x5a505e54eb3b in _dwarf_internal_read_loclists_header libdwarf/src/lib/libdwarf/dwarf_loclists.c:385:5
+    #4 0x5a505e4ff96a in load_xu_loclists_into_cucontext libdwarf/src/lib/libdwarf/dwarf_fission_to_cu.c:110:11
+    #5 0x5a505e4ff96a in _dwarf_find_all_offsets_via_fission libdwarf/src/lib/libdwarf/dwarf_fission_to_cu.c:380:23
+    #6 0x5a505e4ec9b9 in finish_up_cu_context_from_cudie libdwarf/src/lib/libdwarf/dwarf_die_deliv.c:1752:19
