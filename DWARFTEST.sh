@@ -686,10 +686,10 @@ then
   then
     if [ ! -f $t1 ]
     then
-      echo "FAIL filediff $t1 $t2 no file $t1"
+      echo "Filediff $t1 $t2 no file $t1"
       cat $t2
     else
-      echo "FAIL filediff $t1 $t2 no file $t2"
+      echo "Filediff $t1 $t2 no file $t2"
       cat $t1
     fi
     return 1
@@ -1039,7 +1039,7 @@ runtest () {
     filediff tmp1o tmp3 $* $targ
     if [ $? -ne 0 ]
     then
-      echo 'FAIL filediff tmp1o tmp2 (final diff)'
+      echo 'Filediff tmp1o tmp2 (final diff)'
       wc tmp1o
       wc tmp3
       allgood=n
@@ -1221,6 +1221,8 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+runsingle ossfuzz385466100.base ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz385466100/fuzz_die_cu_offset-6604029974609920 
 
 runsingle ossfuzz42536144.base ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz42536144/fuzz_die_cu_attrs_loclist-5906068650655744
 
