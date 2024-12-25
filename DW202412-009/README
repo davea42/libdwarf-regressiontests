@@ -1,0 +1,18 @@
+
+DW202412-009.
+
+So far not assigned an oss-fuzz id.
+
+found by ossfuzz Dec 15, 2024.
+
+Emits stuff like
+	INFO: seed corpus: files: 2042 min: 2b max: 2621385b total: 35234195b rss: 35Mb
+libdwarf is unable to record error DW_DLE_FILE_TOO_SMALL(423) File is too small to be an object file. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_TOO_SMALL(423) File is too small to be an object file. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_TOO_SMALL(423) File is too small to be an object file. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_TOO_SMALL(423) File is too small to be an object file. No error argument or handler available
+
+(with some variation in error codes)
+for a long time. Forever?
+
+
