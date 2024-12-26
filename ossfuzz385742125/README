@@ -1,0 +1,20 @@
+
+id: DW202412-010
+fuzzer: oss fuzz 385742125
+datereported: 2024-12-25
+reportedby: David Korczynski
+vulnerability: Heap-buffer-overflow dwarf_decode_leb128.
+product: libdwarf
+
+
+	==407==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x5030000000e9 at pc 0x5ac6bdd42d75 bp 0x7ffdb4747dc0 sp 0x7ffdb4747db8
+READ of size 1 at 0x5030000000e9 thread T0
+    #0 0x5ac6bdd42d74 in dwarf_decode_leb128 libdwarf/src/lib/libdwarf/dwarf_leb.c:260:16
+    #1 0x5ac6bddb0940 in _dwarf_count_abbrev_entries libdwarf/src/lib/libdwarf/dwarf_abbrev.c:79:9
+    #2 0x5ac6bdda8139 in _dwarf_get_abbrev_for_code libdwarf/src/lib/libdwarf/dwarf_util.c:1098:15
+    #3 0x5ac6bdcff806 in _dwarf_siblingof_internal libdwarf/src/lib/libdwarf/dwarf_die_deliv.c:3029:12
+    #4 0x5ac6bdcfa2c3 in finish_cu_context_via_cudie_inner libdwarf/src/lib/libdwarf/dwarf_die_deliv.c:689:14
+    #5 0x5ac6bdcfa2c3 in finish_up_cu_context_from_cudie libdwarf/src/lib/libdwarf/dwarf_die_deliv.c:1735:15
+    #6 0x5ac6bdcfa2c3 in _dwarf_create_a_new_cu_context_record_on_list libdwarf/src/lib/libdwarf/dwarf_die_deliv.c:1879:11
+    #7 0x5ac6bdcf8d23 in _dwarf_next_cu_header_internal libdwarf/src/lib/libdwarf/dwarf_die_deliv.c:2048:15
+    #8 0x5ac6bdcf85ef in dwarf_next_cu_header_d libdwarf/src/lib/libdwarf/dwarf_die_deliv.c:1105:11
