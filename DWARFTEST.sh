@@ -1222,6 +1222,10 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle ossfuzz38574212.base ./fuzz_die_cu_print --testobj=$testsrc/ossfuzz385742125/fuzz_die_cu_print-5500979604160512
+
+runsingle DW202412-009.base ./fuzz_die_cu_offset --testobj=$testsrc/DW202412-009/fuzz_init_path-5854698061496320
+
 runsingle ossfuzz385466100.base ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz385466100/fuzz_die_cu_offset-6604029974609920 
 
 runsingle ossfuzz42536144.base ./fuzz_die_cu_attrs_loclist --testobj=$testsrc/ossfuzz42536144/fuzz_die_cu_attrs_loclist-5906068650655744
