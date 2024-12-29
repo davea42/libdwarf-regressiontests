@@ -1,0 +1,19 @@
+
+Reported December 2024
+DW202412-011
+Not assigned ossfuzz id 
+Runs are inconsistent
+Does not stop in a reasonable time.
+
+	INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 1048576 bytes
+libdwarf is unable to record error DW_DLE_FILE_WRONG_TYPE(412). Not an object type we recognize. No error argument or handler available
+INFO: seed corpus: files: 20172 min: 1b max: 4522496b total: 289872198b rss: 141Mb
+libdwarf is unable to record error DW_DLE_FILE_WRONG_TYPE(412). Not an object type we recognize. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_WRONG_TYPE(412). Not an object type we recognize. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_WRONG_TYPE(412). Not an object type we recognize. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_WRONG_TYPE(412). Not an object type we recognize. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_WRONG_TYPE(412). Not an object type we recognize. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_WRONG_TYPE(412). Not an object type we recognize. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_WRONG_TYPE(412). Not an object type we recognize. No error argument or handler available
+libdwarf is unable to record error DW_DLE_FILE_WRONG_TYPE(412). Not an object type we recognize. No error argument or handler available
+
