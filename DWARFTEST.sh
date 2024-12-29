@@ -509,7 +509,6 @@ polar/hello.o
 kernel/test.ko
 jborg/simple
 diederen/hello
-duplicateattr.o
 google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
 google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
 ckdev/modulewithdwarf.ko
@@ -594,7 +593,6 @@ cristi2/libpthread-2.4.so
 ia32/preloadable_libintl.so
 ia32/libpfm.so.3
 modula2/write-fixed
-cristi3/cristibadobj
 liu/divisionbyzero02.elf
 liu/divisionbyzero.elf
 liu/free_invalid_address.elf
@@ -1221,6 +1219,7 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+runsingle DW202412-011.base ./fuzz_die_cu_attrs --testobj=$testsrc/DW202412-011/fuzz_die_cu_attrs-5424995441901568
 
 runsingle ossfuzz38574212.base ./fuzz_die_cu_print --testobj=$testsrc/ossfuzz385742125/fuzz_die_cu_print-5500979604160512
 
@@ -1978,6 +1977,10 @@ runtest $d1 $d2 moya3/ranges_base.dwo  -a -G -M -v --file-tied=$testsrc/moya3/ra
 # would get an error even though the section involved
 # is of no interest to libdwarf.
 runtest $d1 $d2 debugfission/mungegroup.o -i
+ 
+#Has duplicate attrs.
+runtest $d1 $d2 duplicateattr.o -i
+runtest $d1 $d2 duplicateattr.o -i --no-dup-attr-check
 
 # New September 11, 2019.
 echo "=====START  $testsrc/testoffdie runtest.sh good=$goodcount skip=$skipcount   fail=$failcount"
@@ -2465,11 +2468,15 @@ runtest $d1 $d2 emre3/a.out.dwp -i -d
 runtest $d1 $d2 emre3/a.out.dwp -i -d -v
 runtest $d1 $d2 emre3/a.out.dwp -I
 
+# This one should show the attr/form pairs ok.
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o --no-dup-attr-check -i -O file=./testOfile
+# This one should be short, getting an error due to duplicates.
 runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -i -O file=./testOfile
-runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kD
-runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -kG
-runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -ku
-runtest $d1 $d2 duplicatedattr/duplicated_attributes.o -ku -kuf
+# For the rest ignore the dups and print all indetail.
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o --no-dup-attr-check  -kD
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o --no-dup-attr-check -kG
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o --no-dup-attr-check -ku
+runtest $d1 $d2 duplicatedattr/duplicated_attributes.o --no-dup-attr-check -ku -kuf
 #
 # These are testing  some mangled objects for
 # sensible output. We do not want a core dump.
@@ -3174,7 +3181,13 @@ runtest $d1 $d2 cristi2/libpthread-2.4.so -ka -P -x name=dwarfdump.conf -x abi=x
 runtest $d1 $d2 cristi2/libpthread-2.4.so -ka -kd -P -x name=dwarfdump.conf -x abi=x86
 runtest $d1 $d2 cristi2/libpthread-2.4.so -R -F  -v -v -v
 runtest $d1 $d2 cristi2/libpthread-2.4.so -R -ka  -v -v -v
+
+# this object has some duplicate DW_AT entries.
 runtest $d1 $d2 cristi3/cristibadobj -m
+runtest $d1 $d2 cristi3/cristibadobj -i -M
+runtest $d1 $d2 cristi3/cristibadobj -i -M --no-dup-attr-check
+# To see details of the attributes that are duplicated
+runtest $d1 $d2 cristi3/cristibadobj --no-dup-attr-check  -i
 runtest $d1 $d2 cristi3/cristibadobj -m  -v -v -v
 runtest $d1 $d2 cristi3/cristibadobj --trace=0
 
