@@ -1,3 +1,2 @@
-Forcing close, Null attr due to error means all will fail and the list of errors is unreasonably long 
 
-libdwarf is unable to record error DW_DLE_DIE_BAD (112) No error argument or handler available
+libdwarf is unable to record error DW_DLE_ABBREV_ATTR_DUPLICATION(452) Abbreviation list corruption. No error argument or handler available

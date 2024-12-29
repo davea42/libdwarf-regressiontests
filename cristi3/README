@@ -10,3 +10,24 @@ Provided by Cristi Vlasceanu Oct 2007
 
 The source must be compiled -g3 to generate macinfo to see
 the problem.
+
+This has a few DW_AT duplications.
+Discovered 27 Dec 2024.
+
+*** DWARF CHECK: Duplicated attribute : DW_AT_byte_size ***
+
+CU Name = foo.cpp   
+CU Producer = GNU C++ 4.1.1 20060724 (prerelease) (4.1.1-3mdk)
+DIE OFF = 0x00000533 GOFF = 0x00000649, Low PC = unknown   , High PC = unknown
+                        DW_AT_byte_size             4
+
+*** DWARF CHECK: Duplicated attribute : DW_AT_decl_file ***
+
+CU Name = foo.cpp
+CU Producer = GNU C++ 4.1.1 20060724 (prerelease) (4.1.1-3mdk)
+DIE OFF = 0x00000533 GOFF = 0x00000649, Low PC = unknown   , High PC = unknown
+                        DW_AT_decl_file             0x0000006d /usr/lib/gcc/x86_64-mandriva-linux-gnu/4.1.1/../../../../include/c++/4.1.1/limits
+
+*** DWARF CHECK: Duplicated attribute : DW_AT_decl_line ***
+
+

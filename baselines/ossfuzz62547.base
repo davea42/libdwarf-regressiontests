@@ -1,2 +1,2 @@
 
-libdwarf is unable to record error DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE (342) Corrupt dwarf No error argument or handler available
+libdwarf is unable to record error DW_DLE_ABBREV_ATTR_DUPLICATION(452) Abbreviation list corruption. No error argument or handler available

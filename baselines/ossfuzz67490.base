@@ -1,8 +1,2 @@
 
-libdwarf is unable to record error DW_DLE_LINE_NUMBER_HEADER_ERROR (235), a line number program header seems incomplete No error argument or handler available
-
-libdwarf is unable to record error DW_DLE_LINE_NUMBER_HEADER_ERROR (235), a line number program header seems incomplete No error argument or handler available
-
-libdwarf is unable to record error DW_DLE_LINE_NUMBER_HEADER_ERROR (235), a line number program header seems incomplete No error argument or handler available
-
-libdwarf is unable to record error DW_DLE_LINE_NUMBER_HEADER_ERROR (235), a line number program header seems incomplete No error argument or handler available
+libdwarf is unable to record error DW_DLE_ABBREV_ATTR_DUPLICATION(452) Abbreviation list corruption. No error argument or handler available

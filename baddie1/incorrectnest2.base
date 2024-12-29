@@ -2769,7 +2769,7 @@ LOCAL_SYMBOLS:
 < 5><0x00000538 GOFF=0x00000ed9>            DW_TAG_lexical_block
                                               DW_AT_low_pc                0xfff440dd
                                               DW_AT_high_pc               0xfff440e7
-                                              DW_AT_sibling               <0x000005fb GOFF=0x00000f9c> Reference fails
+                                              DW_AT_sibling               <0x000005fb GOFF=0x00000f9c> Reference fails: 
 
 dwarfdump:  ERROR: Die stack sibling error, outer global offset 0x00000f9b less than inner global offset 0x00000f9c, the DIE tree is erroneous.Die indent level; 4 
 

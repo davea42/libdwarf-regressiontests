@@ -101,7 +101,7 @@ m2 $sr moobject64.base $testsrc/macho-kask/mach-o-object64.dSYM/Contents/Resourc
 m2 $sr moddg4.base  $testsrc/macho-kask/dwarfdump_G4.dSYM/Contents/Resources/DWARF/dwarfdump_G4 fd
 
 m2 $sr pedll.base $testsrc/pe1/libexamine-0.dll fd
-m2 $sr peexe64.base $testsrc/pe1/kask-dwarfdump_64.exe fd
+m2 $sr peexe64x.base $testsrc/pe1/kask-dwarfdump_64.exe fd
 m2 $sr nodwarfexit1.base t.o fd
 
 if [ $isfail = "y" ]
