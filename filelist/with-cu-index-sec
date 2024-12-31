@@ -1,0 +1,11 @@
+
+
+debug_cu_index regressiontests/debugfissionb/ld-new.dwp
+debug_cu_index regressiontests/emre3/a.out.dwp
+debug_cu_index regressiontests/emre5/test33_64_opt_fpo_split.dwp
+debug_cu_index regressiontests/emre6/class_64_opt_fpo_split.dwp
+has debug_cu_index regressiontests/moya-loc/loclists.dwp
+has debug_cu_index regressiontests/moya-rb/ranges3.dwp
+has debug_cu_index regressiontests/moya5/hello.dwp
+has debug_cu_index regressiontests/moya6/hello.dwp
+
