@@ -1,0 +1,88 @@
+
+No ossfuzz number assigned. Inconsistent run times.
+Noted 10 January 2025
+
+Summary: Repeating abbrev code 1 is
+treating the nonsense like a nested DIE tree.
+It does not run long, but it triggers a timeout
+by ossfuzz (sometimes). Repeating on my desktopt with -fsanitize
+takes arount 7 seconds, repeatably.
+
+the test app is sometimes sensitive to DW_DLV_ERROR,
+but less to DW_DLV_NO_ENTRY.  There is nothing wrong
+with libdwarf AFAICT.
+
+Hexdump of .debug_types starts like this:
+
+ 0 000008b9 00050605 00000000 01010101 ................
+     10 01010101 00000101 01010101 01010101 ................
+     20 01010101 01010101 01010101 01010101 ................
+     30 01010101 01010101 01010101 01010101 ................
+     40 01010101 01010101 01010101 01616161 .............aaa
+     50 61616161 61616161 61616161 61616161 aaaaaaaaaaaaaaaa
+     60 61616161 61616161 61616161 61616161 aaaaaaaaaaaaaaaa
+     70 61616161 61616161 61616161 61616161 aaaaaaaaaaaaaaaa
+     80 61616161 61616161 61616161 61616161 aaaaaaaaaaaaaaaa
+     90 61616161 61616101 01010101 01010101 aaaaaaa.........
+     a0 01010101 01010101 01010101 01010101 ................
+     b0 01010101 01010101 01010101 01010101 ................
+     c0 01010101 01010101 01010101 01010101 ................
+     d0 01010101 01010101 01010101 01010101 ................
+     e0 01010101 01000000 00000000 00000000 ................
+     f0 00000001 01010101 01010101 01010101 ................
+    100 01010101 01010101 01000000 00000001 ................
+
+Part of Abbrevs: 
+.debug_abbrev
+<    1><0x00000000><code: 430730> <Unknown TAG value 0xffb>   <Unknown children value 0xf>
+       <0x00000006>              DW_AT_visibility            DW_FORM_implicit_const <28 (0x1c)>
+       <0x00000009>              <Unknown AT value 0xfe0>    DW_FORM_line_strp
+<    2><0x0000000e><code:   1> DW_TAG_skeleton_unit        <Unknown children value 0x2>
+       <0x00000011>              DW_AT_frame_base            <Unknown FORM value 0x0>
+<    3><0x00000015><code:   6> <Unknown TAG value 0x7e>    <Unknown children value 0x2e>
+       <0x00000019>              DW_AT_ranges                DW_FORM_string
+       <0x0000001b>              DW_AT_use_location          DW_FORM_addr
+       <0x0000001d>              DW_AT_decl_file             DW_FORM_strx1
+       <0x0000001f>              <Unknown AT value 0xd1>     DW_FORM_data2
+<    4><0x00000024><code:  97> Abbrev 0: null abbrev entry
+<    5><0x00000029><code:  29> DW_TAG_array_type           <Unknown children value 0xa9>
+       <0x0000002c>              DW_AT_location              <Unknown FORM value 0x0>
+       <0x0000002e>              DW_AT_is_optional           <Unknown FORM value 0x0>
+       <0x00000030>              <Unknown AT value 0xff>     DW_FORM_ref2
+       <0x00000033>              DW_AT_return_addr           DW_FORM_ref_udata
+       <0x00000035>              DW_AT_name                  <Unknown FORM value 0x0>
+       <0x00000037>              <Unknown AT value 0x1f>     DW_FORM_line_strp
+<    6><0x0000003b><code:   1> DW_TAG_dwarf_procedure      DW_children_no
+   This abbreviation code has no entries
+
+
+
+	ALARM: working on the last Unit for 27 seconds
+       and the timeout value is 25 (use -timeout=N to change)
+MS: 0 ; base unit: 0000000000000000000000000000000000000000
+artifact_prefix='/mnt/scratch0/clusterfuzz/bot/inputs/fuzzer-testcases/'; Test unit written to /mnt/scratch0/clusterfuzz/bot/inputs/fuzzer-testcases/timeout-00ac48805fa6969cb9728b6e29ee791eccf6982e
+==5397== ERROR: libFuzzer: timeout after 27 seconds
+    #0 0x57bcf4f56ad1 in __sanitizer_print_stack_trace /src/llvm-project/compiler-rt/lib/asan/asan_stack.cpp:87:3
+    #1 0x57bcf4e5ba68 in fuzzer::PrintStackTrace() /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerUtil.cpp:210:5
+    #2 0x57bcf4e3ed77 in fuzzer::Fuzzer::AlarmCallback() /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:304:5
+    #3 0x79edd12be41f in libpthread.so.0
+    #4 0x57bcf4ec304a in FlagsOffset /src/llvm-project/compiler-rt/lib/asan/asan_fake_stack.h:94:35
+    #5 0x57bcf4ec304a in GetFlags /src/llvm-project/compiler-rt/lib/asan/asan_fake_stack.h:109:12
+    #6 0x57bcf4ec304a in Allocate /src/llvm-project/compiler-rt/lib/asan/asan_fake_stack.cpp:95:15
+    #7 0x57bcf4ec304a in OnMalloc /src/llvm-project/compiler-rt/lib/asan/asan_fake_stack.cpp:229:11
+    #8 0x57bcf4ec304a in __asan_stack_malloc_4 /src/llvm-project/compiler-rt/lib/asan/asan_fake_stack.cpp:277:1
+    #9 0x57bcf4f9a283 in _dwarf_next_die_info_ptr libdwarf/src/lib/libdwarf/dwarf_die_deliv.c:2399
+    #10 0x57bcf4f97087 in _dwarf_siblingof_internal libdwarf/src/lib/libdwarf/dwarf_die_deliv.c:2855:20
+    #11 0x57bcf4f8a74f in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:412:11
+    #12 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #13 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #14 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #15 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #16 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #17 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #18 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #19 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #20 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #21 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #22 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14
+    #23 0x57bcf4f8a697 in get_die_and_siblings libdwarf/fuzz/fuzz_findfuncbypc.c:395:14

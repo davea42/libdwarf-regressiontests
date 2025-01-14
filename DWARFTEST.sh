@@ -1219,6 +1219,12 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+# Problematic as the testcase is really full of tailored junk. Nothing is running away, even though
+# the test app is quite odd in some ways. Runs in around 7 seconds on my desktop, sanitized.
+# Has no leaks. ossfuzz has not assigned a number to this as of Jan 14 2025.
+runsingle  findfunc202501.base ./fuzz_findfuncbypc --testobj=$testsrc/findfunc202501/fuzz_findfuncbypc-5658339610001408
+
 runsingle DW202412-011.base ./fuzz_die_cu_attrs --testobj=$testsrc/DW202412-011/fuzz_die_cu_attrs-5424995441901568
 
 runsingle ossfuzz38574212.base ./fuzz_die_cu_print --testobj=$testsrc/ossfuzz385742125/fuzz_die_cu_print-5500979604160512

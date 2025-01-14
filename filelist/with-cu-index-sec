@@ -1,11 +1,36 @@
 
+d=dwarfdump
+s=/home/davea/dwarf
 
-debug_cu_index regressiontests/debugfissionb/ld-new.dwp
-debug_cu_index regressiontests/emre3/a.out.dwp
-debug_cu_index regressiontests/emre5/test33_64_opt_fpo_split.dwp
-debug_cu_index regressiontests/emre6/class_64_opt_fpo_split.dwp
-has debug_cu_index regressiontests/moya-loc/loclists.dwp
-has debug_cu_index regressiontests/moya-rb/ranges3.dwp
-has debug_cu_index regressiontests/moya5/hello.dwp
-has debug_cu_index regressiontests/moya6/hello.dwp
+m() {
+  f=$1
+  $d --print-fission $s/$f >/tmp/g
+  $d -a -G -vv  $s/$f  >/tmp/a
+}
+# V4
+#m  debugfissionb/ld-new.dwp 
+#m regressiontests/emre3/a.out.dwp 
+#m regressiontests/emre5/test33_64_opt_fpo_split.dwp
+#m  regressiontests/moya-rb/ranges3.dwp
+#m regressiontests/emre6/class_64_opt_fpo_split.dwp
+
+#V5 
+
+#m regressiontests/moya-loc/loclists.dwo
+
+# has loclists
+#m  regressiontests/moya-loc/loclists.dwp
+
+#m regressiontests/moya-loc/loclists2.dwo
+#m regressiontests/moya2/filecheck.dwo
+
+# no dwp loclists
+#m regressiontests/moya5/hello.dwp
+
+# no dwp loclists
+#m regressiontests/moya6/hello.dwp
+
+#m regressiontests/rifkin5/demo.cpp.dwo
+m regressiontests/rifkin5/demo
+exit 0
 
