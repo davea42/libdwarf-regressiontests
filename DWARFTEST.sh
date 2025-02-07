@@ -1220,6 +1220,8 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle  ossfuzz394644267.base ./fuzz_macro_dwarf5  --testobj=$testsrc/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
+
 # Problematic as the testcase is really full of tailored junk. Nothing is running away, even though
 # the test app is quite odd in some ways. Runs in around 7 seconds on my desktop, sanitized.
 # Has no leaks. ossfuzz has not assigned a number to this as of Jan 14 2025.
