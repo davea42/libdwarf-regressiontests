@@ -1,0 +1,15 @@
+
+libdwarf:fuzz_macro_dwarf5: Heap-buffer-overflow in _dwarf_memcpy_swap_bytes  
+394644267
+
+Feb 5, 2025
+
+==403==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x5110000003ff at pc 0x58d6eca43990 bp 0x7ffca9bebe40 sp 0x7ffca9bebe38
+READ of size 1 at 0x5110000003ff thread T0
+    #0 0x58d6eca4398f in _dwarf_memcpy_swap_bytes libdwarf/src/lib/libdwarf/dwarf_memcpy_swap.c:71:20
+    #1 0x58d6eca77e2d in _dwarf_read_unaligned_ck_wrapper libdwarf/src/lib/libdwarf/dwarf_util.c:1649:5
+    #2 0x58d6eca40f6e in _dwarf_internal_macro_context_by_offset libdwarf/src/lib/libdwarf/dwarf_macro5.c:1355:11
+    #3 0x58d6eca3ffaa in _dwarf_internal_macro_context libdwarf/src/lib/libdwarf/dwarf_macro5.c:1270:12
+    #4 0x58d6eca3f7ff in dwarf_get_macro_context libdwarf/src/lib/libdwarf/dwarf_macro5.c:1555:12
+    #5 0x58d6ec9c0b83 in examplep5 libdwarf/fuzz/fuzz_macro_dwarf5.c:118:14
+    #6 0x58d6ec9c0873 in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_macro_dwarf5.c:90:11
