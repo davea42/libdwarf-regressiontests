@@ -1,3 +1,39 @@
+
+export DWARF_WHICH_ALLOC=mmap
+#/tmp/dwarfdump -a --allocate-via-mmap --print-section_allocations  debugfissionb/ld-new
+#/tmp/dwarfdump -a --print-section_allocations  debugfissionb/ld-new
+/tmp/dwarfdump -a --print-section_allocations  /home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
+exit 0
+#/var/tmp/dwtest/fuzz_macro_dwarf5 --testobj=/home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
+/tmp/dwarfdump -a /home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360 >junk
+export DWARF_WHICH_ALLOC=malloc
+#/var/tmp/dwtest/fuzz_macro_dwarf5 --testobj=/home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
+/tmp/dwarfdump -a /home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360 >junk2
+exit 0
+
+
+
+
+#valgrind -s --leak-check=full --show-leak-kinds=all /tmp/dwarfdump11 -i /home/davea/dwarf/mmap/a.out
+#DWARF_WHICH_ALLOC=mmap
+#export DWARF_WHICH_ALLOC
+#valgrind -s --leak-check=full --show-leak-kinds=all /tmp/dwarfdump --allocate-via-mmap --print-section_allocations -i /home/davea/dwarf/mmap/a.out
+#exit 0
+
+#/tmp/dwarfdump -i /home/davea/dwarf/mmap/a.out
+
+#DWARF_WHICH_ALLOC=malloc
+DWARF_WHICH_ALLOC=mmap
+export DWARF_WHICH_ALLOC
+echo 'b mmap' > script
+echo 'r --testobj=/home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360' >>script
+#gdb -x script /tmp/dwarfdump
+gdb -x script  /var/tmp/dwtest/fuzz_macro_dwarf5
+#/tmp/dwarfdump -i /home/davea/dwarf/mmap/a.out >junk
+#--print-section_allocations 
+#/home/davea/dwarf/mmap/a.out >junk
+exit 0
+
 /tmp/dwarfdump --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junkn
 /tmp/dwarfdump --print-raw-loclists /home/davea/dwarf/regressiontests/moya-loc/loclists  >junknhiedraw
 /tmp/dwarfdump -a -M -v  /home/davea/dwarf/regressiontests/moya-loc/loclists  >junkntied

@@ -2507,6 +2507,11 @@ runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
 
+# Check that we get mmap used/not on  a large-ish object.
+runtest $d1 $d2 debugfissionb/ld-new -i --allocate-via-mmap --print-section-allocations
+runtest $d1 $d2 debugfissionb/ld-new -i --print-section-allocations
+
+
 if [ "x$withlibz" = "xno" -o "x$skipdecompress" = "xy" ]
 then
   echo "=====SKIP klingler2/compresseddebug.amd64(3)"
