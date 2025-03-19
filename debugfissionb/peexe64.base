@@ -1302,5 +1302,5 @@
 <2> tag: 52 DW_TAG_variable  name: "ret" FORM 0x8 "DW_FORM_string"
 <1> tag: 46 DW_TAG_subprogram  name: "strlen" FORM 0x8 "DW_FORM_string"
 <1> tag: 46 DW_TAG_subprogram  name: "malloc" FORM 0x8 "DW_FORM_string"
-Error in dwarf_siblingof_b , level 1 :DW_DLE_ABBREV_ATTR_DUPLICATION: Abbreviation attribute 0x6e is duplicated (DW_AT_linkage_name) 
+Error in dwarf_siblingof_b , level 1 :DW_DLE_ABBREV_ATTR_DUPLICATION: Abbreviation attribute 0x6e is duplicated (DW_AT_linkage_name) abbrev block offset 0x0 
 exit_status 1 ../simplereader /home/davea/dwarf/regressiontests/pe1/kask-dwarfdump_64.exe
