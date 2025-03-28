@@ -1064,6 +1064,26 @@ runtest () {
 
 echo "=============BEGIN THE TESTS==============="
 echo  "=====BLOCK individual tests and runtest.sh tests"
+# simple BUILDS
+simpleexe='
+test_harmless
+test_language_version
+test_simple_libfuncs
+test_sectionnames'
+
+for f in $simpleexe
+do
+  echo "====BUILD $f"
+  x="$CC -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf $nonsharedopt\
+     -gdwarf $nlizeopt $testsrc/${f}.c \
+     -o $f  $dwlib $libzlib $libzlink"
+  echo "$x"
+  $x
+  r=$?
+  chkresbld $r "compile of ${f}.c failed" 
+done
+
 
 # BUILDS
 fuzzexe='
@@ -1096,7 +1116,6 @@ fuzz_srcfiles
 fuzz_stack_frame_access
 fuzz_str_offsets'
 
-
 # Do not do -Wall here ever.
 for f in $fuzzexe
 do
@@ -1105,24 +1124,6 @@ do
      -I$libbld/libdwarf $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/testbuildfuzz.c \
      $codedir/fuzz/${f}.c \
-     -o $f  $dwlib $libzlib $libzlink"
-  echo "$x"
-  $x
-  r=$?
-  chkresbld $r "compile of ${f}.c failed"
-done
-
-simpleexe='
-test_harmless
-test_simple_libfuncs
-test_sectionnames'
-
-for f in $simpleexe
-do
-  echo "====BUILD $f"
-  x="$CC -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
-     -I$libbld/libdwarf $nonsharedopt\
-     -gdwarf $nlizeopt $testsrc/${f}.c \
      -o $f  $dwlib $libzlib $libzlink"
   echo "$x"
   $x
@@ -1608,6 +1609,8 @@ fi
 # a bad idea...
 runsingle test_setframe.base ./test_setframe $testsrc/test_setframe.input
 #fi
+
+runsingle test_language_version.base ./test_language_version
 
 # Checking that we can print the .debug_sup section
 echo "=====START  supplementary  $testsrc/supplementary/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
