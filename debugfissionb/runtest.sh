@@ -8,6 +8,15 @@ isfail="n"
 
 . $testsrc/BASEFUNCS.sh
 
+# Adding --no-dup-attr-check  to runs of
+# simplereader as of 0.12.0
+# it is now in simplereader to actually
+# make this true.
+#  Some of the tu/cu hashchecks are on a PE
+# object with duplicate attrs and we do not
+# want the dups to be noticed so we test the
+# hash calls in libdwarf.
+
 cpifmissing $testsrc/kaufmann/t.o t.o
 
 m() {
@@ -20,11 +29,13 @@ m() {
   opts=$3
   obj=$ts/ld-new.dwp
   tmp=junk.$2
-  $sr $opts $obj 1> ${tmp} 2>&1
+  echo "$sr $opts $obj to $tmp"
+  $sr --no-dup-attr-check $opts $obj 1> ${tmp} 2>&1
   r=$?
   if test  $r  -ne 0
   then
-      echo exit_status  $r $sr $obj  >>$tmp
+      n=`basename $obj`
+      echo exit_status  $r $sr $n  >>$tmp
       return
   fi
   diff $diffopt $baseline $tmp
@@ -65,11 +76,13 @@ m2() {
     touch $baseline
   fi
   tmp=junk.${rtype}.$2
-  $mysr $opt $obj 1> ${tmp} 2>&1
+  echo "$mysr $opt $obj to $tmp"
+  $mysr --no-dup-attr-check $opt $obj 1> ${tmp} 2>&1
   r=$?
   if test  $r  -ne 0
   then
-      echo exit_status  $r   $sr $opt $obj   >>$tmp
+      n=`basename $obj`
+      echo exit_status  $r   $sr $opt $n   >>$tmp
   fi
   diff $baseline $tmp
   if test  $?  -ne 0
