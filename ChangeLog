@@ -1,3 +1,103 @@
+2025-05-19:  David Anderson
+    commit 26fafd3bc359415eb0062f98dc22d554028b11e5
+
+    Created these updated versions as part of
+    finalizing the 20 May 2025 libdwarf-code version 2.0.0
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-05-19:  David Anderson
+    commit 77857b08b8a701bcd4e11a13542d1cdb54436c36
+
+    Added comments to hopefully make running the
+    regressiontests easier.
+    But it's not something you need to do.
+            modified:   README.md
+
+2025-04-02:  David Anderson
+    commit 5bdd90ef6e19c5aee36b106b2a9962a0e052121b
+
+    New baseline executables for v0.12.0
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-03-30:  David Anderson
+    commit 046d80b2cd6047f4e0549fa2ef0974f416715bd5
+
+    New, valid, baselines.
+            modified:   debugfissionb/peexe64.base
+            modified:   debugfissionb/peexe64x.base
+
+    Fixed the tests here to let duplicated attributes
+    appear to be ok, allowing the test to generate
+    output as we really want. Corrupt DWARF in PE from an
+    old compiler.
+            modified:   debugfissionb/runtest.sh
+
+2025-03-28:  David Anderson
+    commit 2debb7a784c6a6316ac85a11e15150fa3b2f1888
+
+    Now runs the new test_language_version
+    test.
+    Moved the 'simpleexe' list and build up earlier
+    so running the single new test builds early
+    and can be run early.
+            modified:   DWARFTEST.sh
+    Error message has more data, so we reflect that here now.
+            modified:   debugfissionb/peexe64x.base
+
+2025-03-28:  David Anderson
+    commit dc647462a813f61caac5c6bea203b9ec6e00afe5
+
+    baseline for the new test, just says PASS.
+            new file:   baselines/test_language_version.base
+    New test file. Simple testing new library call.
+            new file:   test_language_version.c
+
+2025-03-18:  David Anderson
+    commit 36498bc5ca84f6754838d76519fa1f1c64ee9dc3
+
+    New baseline executables
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-03-18:  David Anderson
+    commit 19a80a12e7316f879bc7d6de09ae7d83c60ebd86
+
+    New baselines due to duplicate attr message change.
+            modified:   baddie1/incorrectdies.base
+            modified:   debugfissionb/peexe64.base
+
+2025-03-17:  David Anderson
+    commit 8556fe7d5fe65fc505075bed6e7f8f9eb0cafc8c
+
+    New tests of mmap
+            modified:   DWARFTEST.sh
+
+    Ignore. Minor testing only.
+            modified:   RUN
+
+    New baseline executables for 0.12.0 with mmap
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-02-07:  David Anderson
+    commit 4f256d8ae142f9ebd08202e2c815262e4473f107
+
+    Up to date with git log
+            modified:   ChangeLog
+
 2025-02-07:  David Anderson
     commit 21d377555c8d42ac27165523dba76bb5e8eb7fe8
 
