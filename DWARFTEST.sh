@@ -1457,6 +1457,9 @@ runtest $d1 $d2 liu/OOB_read4.elf -ka -M
 runtest $d1 $d2 liu/NULLdereference0519.elf -a -M
 runtest $d1 $d2 liu/NULLdereference0519.elf -ka
 
+# New tests as of 21 June 2025, github issue 297.
+runtest $d1 $d2 rifkinpe/KeyTest.exe -i -M 
+
 # New tests as of 22 November 2024
 runtest $d1 $d2 rifkin8/stacktrace.cpp.dwo -a -M --file-tied=$testsrc/rifkin8/unittest
 runtest $d1 $d2 rifkin8/stacktrace.cpp.dwo -ka --file-tied=$testsrc/rifkin8/unittest

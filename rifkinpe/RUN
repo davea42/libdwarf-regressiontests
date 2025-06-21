@@ -1,0 +1,10 @@
+
+/tmp/dwarfdump KeyTest.exe
+
+#rm script
+##echo "b _dwarf_debuglink_finder_newpath" .>script
+##echo "b _dwarf_debuglink_finder_internal" >>script
+##echo "b dwarf_gnu_debuglink" >>script
+#echo "r -i KeyTest.exe" >>script
+#gdb -x script /tmp/dwarfdump
+

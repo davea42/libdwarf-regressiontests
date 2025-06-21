@@ -1,0 +1,80 @@
+2025-06-19 23:01:55
+SIGSEGV:
+Stack trace (most recent call first):
+#0  0x0000000140001b21 in CrashManager::collectStackTrace(long long) at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/CrashManager.cpp:90:34
+#1  0x000000014000158e in signalHandler at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/CrashManager.cpp:19:29
+#2  0x0000000140005066 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#3  0x00007ffe51577ff7 in _C_specific_handler at C:\WINDOWS\System32\msvcrt.dll
+#4  0x00007ffe521f28be in _chkstk at C:\WINDOWS\SYSTEM32\ntdll.dll
+#5  0x00007ffe521a2553 in RtlRaiseException at C:\WINDOWS\SYSTEM32\ntdll.dll
+#6  0x00007ffe521f13cd in KiUserExceptionDispatcher at C:\WINDOWS\SYSTEM32\ntdll.dll
+#7  0x0000000140003204 in letsCrash(int) at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/MainWindow.cpp:43:9
+#8  0x0000000140003219 in letsCrash(int) at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/MainWindow.cpp:46:12
+#9  0x0000000140003219 in letsCrash(int) at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/MainWindow.cpp:46:12
+#10 0x0000000140003219 in letsCrash(int) at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/MainWindow.cpp:46:12
+#11 0x0000000140003219 in letsCrash(int) at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/MainWindow.cpp:46:12
+#12 0x0000000140003219 in letsCrash(int) at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/MainWindow.cpp:46:12
+#13 0x00000001400032ce in MainWindow::keyPressEvent(QKeyEvent*) at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/MainWindow.cpp:55:14
+#14 0x00000000009a3e1a in ZN7QWidget5eventEP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#15 0x0000000000a9bff2 in ZN11QMainWindow5eventEP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#16 0x000000000096790d in ZN19QApplicationPrivate13notify_helperEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#17 0x000000000096f098 in ZN12QApplication6notifyEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#18 0x0000000068a65a97 in ZN16QCoreApplication12forwardEventEP7QObjectP6QEventS3_ at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#19 0x00000000009bcbf0 in ZN14QDesktopWidget11qt_metacallEN11QMetaObject4CallEiPPv at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#20 0x000000000096790d in ZN19QApplicationPrivate13notify_helperEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#21 0x000000000096e3e2 in ZN12QApplication6notifyEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#22 0x0000000068a65f77 in ZN16QCoreApplication20sendSpontaneousEventEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#23 0x0000000061976cad in ZN22QGuiApplicationPrivate15processKeyEventEPN29QWindowSystemInterfacePrivate8KeyEventE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Gui.dll
+#24 0x000000006197b3b4 in ZN22QGuiApplicationPrivate24processWindowSystemEventEPN29QWindowSystemInterfacePrivate17WindowSystemEventE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Gui.dll
+#25 0x000000006195722c in ZN22QWindowSystemInterface22sendWindowSystemEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Gui.dll
+#26 0x0000000068abc0af in ZN21QEventDispatcherWin3213processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#27 0x000000006a903754 in qt_plugin_instance at C:\Devenv\Qt\5.15.2\mingw81_64\plugins\platforms\qwindows.dll
+#28 0x0000000068a64404 in ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#29 0x0000000068a6d764 in ZN16QCoreApplication4execEv at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#30 0x0000000140002e11 in qMain(int, char**) at C:/Devenv/Repo/KeyTest/build-KeyTest-Desktop-Debug/../KeyTest/main.cpp:10:16
+#31 0x000000014000542c in WinMain at C:/Users/qt/work/qt/qtbase/src/winmain/qtmain_win.cpp:97:30
+#32 0x00000001400013c6 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#33 0x00000001400014ca at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#34 0x00007ffe512b7373 in BaseThreadInitThunk at C:\WINDOWS\System32\KERNEL32.DLL
+#35 0x00007ffe5219cc90 in RtlUserThreadStart at C:\WINDOWS\SYSTEM32\ntdll.dll
+--------------------------------------------------------------------------------
+2025-06-19 23:03:25
+SIGSEGV:
+Stack trace (most recent call first):
+#0  0x00000001400019d8 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#1  0x000000014000158e at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#2  0x0000000140004ef6 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#3  0x00007ffe51577ff7 in _C_specific_handler at C:\WINDOWS\System32\msvcrt.dll
+#4  0x00007ffe521f28be in _chkstk at C:\WINDOWS\SYSTEM32\ntdll.dll
+#5  0x00007ffe521a2553 in RtlRaiseException at C:\WINDOWS\SYSTEM32\ntdll.dll
+#6  0x00007ffe521f13cd in KiUserExceptionDispatcher at C:\WINDOWS\SYSTEM32\ntdll.dll
+#7  0x0000000140002ec4 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#8  0x0000000140002ed9 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#9  0x0000000140002ed9 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#10 0x0000000140002ed9 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#11 0x0000000140002ed9 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#12 0x0000000140002ed9 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#13 0x0000000140002f8e at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#14 0x0000000000953e1a in ZN7QWidget5eventEP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#15 0x0000000000a4bff2 in ZN11QMainWindow5eventEP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#16 0x000000000091790d in ZN19QApplicationPrivate13notify_helperEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#17 0x000000000091f098 in ZN12QApplication6notifyEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#18 0x0000000068a65a97 in ZN16QCoreApplication12forwardEventEP7QObjectP6QEventS3_ at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#19 0x000000000096cbf0 in ZN14QDesktopWidget11qt_metacallEN11QMetaObject4CallEiPPv at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#20 0x000000000091790d in ZN19QApplicationPrivate13notify_helperEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#21 0x000000000091e3e2 in ZN12QApplication6notifyEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Widgets.dll
+#22 0x0000000068a65f77 in ZN16QCoreApplication20sendSpontaneousEventEP7QObjectP6QEvent at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#23 0x0000000061976cad in ZN22QGuiApplicationPrivate15processKeyEventEPN29QWindowSystemInterfacePrivate8KeyEventE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Gui.dll
+#24 0x000000006197b3b4 in ZN22QGuiApplicationPrivate24processWindowSystemEventEPN29QWindowSystemInterfacePrivate17WindowSystemEventE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Gui.dll
+#25 0x000000006195722c in ZN22QWindowSystemInterface22sendWindowSystemEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Gui.dll
+#26 0x0000000068abc0af in ZN21QEventDispatcherWin3213processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#27 0x000000006a903754 in qt_plugin_instance at C:\Devenv\Qt\5.15.2\mingw81_64\plugins\platforms\qwindows.dll
+#28 0x0000000068a64404 in ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#29 0x0000000068a6d764 in ZN16QCoreApplication4execEv at C:\Devenv\Qt\5.15.2\mingw81_64\bin\Qt5Core.dll
+#30 0x0000000140002ad1 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#31 0x00000001400052ac at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#32 0x00000001400013c6 at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#33 0x00000001400014ca at C:\Devenv\Repo\KeyTest\build-KeyTest-Desktop-Debug\debug\KeyTest.exe
+#34 0x00007ffe512b7373 in BaseThreadInitThunk at C:\WINDOWS\System32\KERNEL32.DLL
+#35 0x00007ffe5219cc90 in RtlUserThreadStart at C:\WINDOWS\SYSTEM32\ntdll.dll
+--------------------------------------------------------------------------------
