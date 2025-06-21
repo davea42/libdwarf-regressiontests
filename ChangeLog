@@ -1,3 +1,20 @@
+2025-06-21:  David Anderson
+    commit d1c330d66fea4f4ed8c917072d9909b272d0266b
+
+    Now with this new test
+    See libdwarf-code Issue 297 for details.
+            modified:   DWARFTEST.sh
+            new file:   rifkinpe/KeyTest.exe
+            new file:   rifkinpe/KeyTest.exe.debug
+            new file:   rifkinpe/RUN
+            new file:   rifkinpe/trace.txt
+
+2025-05-19:  David Anderson
+    commit c19fd230f9930701290d1146913765594b84b8c2
+
+    Updated per 20 May 2025 release.
+            modified:   ChangeLog
+
 2025-05-19:  David Anderson
     commit 26fafd3bc359415eb0062f98dc22d554028b11e5
 
