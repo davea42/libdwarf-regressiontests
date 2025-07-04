@@ -1,3 +1,28 @@
+2025-07-04:  David Anderson
+    commit d4764d6ffbc260ad383f017b1992f6cc333d3b74
+
+    Baseline with latest tests of DWARF6 version data.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-07-04:  David Anderson
+    commit e9aebbdf54273463e882912a35ef3ffb02b0f910
+
+    Added testing of DWARF6 DW_AT_language_name
+    and DW_AT_language version.
+    We use a new option to dwarfgen to create
+    an object with those CU DIE attributes.
+            modified:   DWARFTEST.sh
+            modified:   implicitconst/dgout.base
+            modified:   implicitconst/implicit.base
+            modified:   implicitconst/runtest.sh
+            modified:   test_language_version.c
+
+2025-06-21:  David Anderson
+    commit ee07f48c33e8e63ea1f1e7511054f6c51be04cc3
+
+    About Issue 297 in libdwarf-code issues.
+            modified:   ChangeLog
+
 2025-06-21:  David Anderson
     commit d1c330d66fea4f4ed8c917072d9909b272d0266b
 
