@@ -57,7 +57,7 @@ main(int argc, char **argv)
            !t[k].expected_version) {
            break;
        }
-       res = dwarf_language_version_string(
+       res = dwarf_language_version_data(
           t[k].compile_name,&low_bound,&ver);
        if (res != t[k].return_v) {
            printf("k %d name 0x%x\n",k,t[k].compile_name);

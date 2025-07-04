@@ -1221,6 +1221,15 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# Tests with dwarfgen --add-language-version (new July 2025)
+#  --add-implicit-const --add-sun-func-offsets
+# same test run later.  Drop this one
+#echo "=====START   $testsrc/implicitconst sh runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
+#  mklocal implicitconst
+#    sh $testsrc/implicitconst/runtest.sh
+#    chkres $?  $testsrc/implicitconst/runtest.sh
+#  cd ..
+
 runsingle  ossfuzz394644267.base ./fuzz_macro_dwarf5  --testobj=$testsrc/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
 
 # Problematic as the testcase is really full of tailored junk. Nothing is running away, even though
@@ -2257,6 +2266,8 @@ echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simpleread
     chkres $?  $testsrc/hughes2
   cd ..
 
+# Tests with dwarfgen --add-language-version (new July 2025) 
+#  --add-implicit-const --add-sun-func-offsets  
 echo "=====START   $testsrc/implicitconst sh runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
   mklocal implicitconst
     sh $testsrc/implicitconst/runtest.sh

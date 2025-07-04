@@ -3,13 +3,13 @@ New Elf section: .text Type=1 Flags=0 Elf secnum=1 link section=0 info=0
 New Elf section: .debug_info Type=1 Flags=0 Elf secnum=2 link section=0 info=0
 New Elf section: .debug_abbrev Type=1 Flags=0 Elf secnum=3 link section=0 info=0
 New Elf section: .debug_str Type=1 Flags=0 Elf secnum=4 link section=0 info=0
-Inserted 199 bytes into elf section index 2
-Inserted 172 bytes into elf section index 3
-Inserted 221 bytes into elf section index 4
+Inserted 204 bytes into elf section index 2
+Inserted 178 bytes into elf section index 3
+Inserted 228 bytes into elf section index 4
 Relocations sections count= 1 relversion=2
-Relocs for sec=0 ourlinkto=2 linktoobjsecnum=2 name=.debug_info reloc-count=14
+Relocs for sec=0 ourlinkto=2 linktoobjsecnum=2 name=.debug_info reloc-count=15
 New Elf section: .shstrtab Type=1 Flags=3 Elf secnum=5 link section=0 info=0
- output image size in bytes 942
+ output image size in bytes 960
 Debug_Str: debug_info str count 3, byte total len 8
-Debug_Str: count 9, byte total len 221
+Debug_Str: count 10, byte total len 228
 Debug_Str: Reused count 0, byte total len not emitted 0

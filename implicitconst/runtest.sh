@@ -18,7 +18,7 @@ tf=$bldtest/implicitconst
 . $testsrc/BASEFUNCS.sh
 cpifmissing $ts/t1.o t1.o
 
-$dg  -c 0 --add-implicit-const --add-sun-func-offsets -s -v 5 -t obj -o junkimplcon.o t1.o 1>junkdg.new 2>&1
+$dg  -c 0 --add-language-version --add-implicit-const --add-sun-func-offsets -s -v 5 -t obj -o junkimplcon.o t1.o 1>junkdg.new 2>&1
 if [ $? -ne 0 ]
 then
  echo fail implicitconst in dwarfgen exit code not zero
