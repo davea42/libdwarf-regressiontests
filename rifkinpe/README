@@ -1,0 +1,7 @@
+
+This is a debuglink instance where old dwarfdump
+failed to follow debuglink because there was no
+DWARF section in the base executable at all.
+Something a big surprisint.
+
+Fixed in 2.10.0
