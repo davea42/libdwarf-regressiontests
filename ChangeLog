@@ -1,3 +1,26 @@
+2025-07-06:  David Anderson
+    commit 663336e2cebc5e780565bbb4465bfb2865b241a9
+
+    Update for 2.1.0 (KeyTest testcase fix)
+    New baseline executables
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2025-07-05:  David Anderson
+    commit 5d1b2a30848fd82badd554fed54c852a1570cd7d
+
+    New baseline
+            modified:   dwarfdump-s390.O
+    Explanation of KeyTest problem (solved).
+            new file:   rifkinpe/README
+
+2025-07-04:  David Anderson
+    commit 1cca9a4b9a70f4c51ec03967a5d656d73785a1a0
+
+    Up to date with git log
+            modified:   ChangeLog
+
 2025-07-04:  David Anderson
     commit d4764d6ffbc260ad383f017b1992f6cc333d3b74
 
