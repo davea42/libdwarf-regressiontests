@@ -1,0 +1,9 @@
+17 July 2025
+
+DropsWJL says  the DW_AT_language_version 
+data is not correctly reported by libdwarf/dwarfdump.
+
+After fixing: 
+ DW_AT_language_version      202311 (0x00031647)
+
+which looks correct.
