@@ -1,4 +1,6 @@
 
+/tmp/dwarfdump -i --allocate-via-mmap --print-section-allocations debugfissionb/ld-new > /tmp/junk
+exit 0
 export DWARF_WHICH_ALLOC=mmap
 #/tmp/dwarfdump -a --allocate-via-mmap --print-section_allocations  debugfissionb/ld-new
 #/tmp/dwarfdump -a --print-section_allocations  debugfissionb/ld-new
