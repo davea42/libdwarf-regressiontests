@@ -1638,6 +1638,9 @@ cd ..
 #  chkres $? "$testsrc/showsecgroupsdir/runtest.sh"
 #cd ..
 
+# New as of July 2025. DW_AT_language_version
+runtest $d1 $d2 wjl/demo -i
+
 # New as of Aug 2024.
 runtest $d1 $d2 polar/cpp_test.o --print-debug-names
 
