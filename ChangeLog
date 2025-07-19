@@ -1,3 +1,45 @@
+2025-07-19:  David Anderson
+    commit 480b46d12aae0dfebae1060dac0fd52205c28892
+
+    New baseline executables for 2.1.0 release..
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-07-19:  David Anderson
+    commit 5c37f1c2d39d8d7eda1054ef9579ac95d2d12e48
+
+    Testing specfic things -- use by hand.
+            modified:   RUN
+
+2025-07-19:  David Anderson
+    commit f50aa676f14928209b237248845959289925f08c
+
+    Now with test of DW_AT_language_name and _version
+            modified:   DWARFTEST.sh
+
+2025-07-19:  David Anderson
+    commit 5a8ba429e77b5734ee13776e6650038e7437b0d6
+
+    Now  with test of DW_AT_language_version  and _name.
+            modified:   implicitconst/dgout.base
+            modified:   implicitconst/implicit.base
+
+2025-07-17:  David Anderson
+    commit 51b811137cc32d0fcd4e275e3e8138265d7c6ffa
+
+    New test, compiler-generated DW_AT_language_version
+            new file:   wjl/README
+            new file:   wjl/demo
+
+2025-07-06:  David Anderson
+    commit c91a3dee0de5192c9f1ee7057433c204d6ff5f58
+
+    Per git log
+            modified:   ChangeLog
+
 2025-07-06:  David Anderson
     commit 663336e2cebc5e780565bbb4465bfb2865b241a9
 
