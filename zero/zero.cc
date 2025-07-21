@@ -1,7 +1,7 @@
 /*
   Copyright (c) 2010 David Anderson.  All rights reserved.
   This code is hereby placed into the public domain.
- 
+
   THIS SOFTWARE IS PROVIDED BY David Anderson ''AS IS'' AND ANY
   EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
@@ -25,10 +25,12 @@
 // proprietary instructions and data from the object files, leaving
 // the Elf headers and the file size unchanged.
 //
-// This app is used once, typically before committing a new test object,
+// This app is used once, typically before committing a
+// new test object,
 // to clean out the irrelevant .text and .data section contents.
 // This app assumes some other application was used to determine
-// what areas to zero out (the other app would usually be an object header
+// what areas to zero out (the other app would usually
+// be an object header
 // dumper like readelf -S).
 
 // Usage:
@@ -70,67 +72,82 @@ vector<range> ranges;
 static void
 usage()
 {
-   cout << "Usage: " << " zero -s <offset>  -l <len> ... filepath " <<endl;
-   cout << " where ... means repeat the -s <offset> -l <len> quads as often as needed." 
-        <<endl;
-   cout << " Offset/length values may be decimal or with 0x prefix for hex" << endl; 
-   cout << " Example: ./zero -s 0x1 -l 2 testdata" << endl;
+    cout <<
+    "Usage: " << " zero -s <offset>  -l <len> ... filepath " <<endl;
+    cout <<
+    " where ... means repeat the -s <offset> -l <len> quads "<<endl;
+    cout <<
+    "    as often as needed." <<endl;
+    cout <<
+    " Offset/length values may be decimal or with 0x prefix " <<endl;
+    cout <<
+    "    for hex" << endl;
+    cout << " Example: ./zero -s 0x1 -l 2 testdata" << endl;
 }
 
 counter getval(const string s)
 {
-       char *ep = 0;
-       errno = 0;
-       unsigned long long v = strtoull(s.c_str(),&ep,0);
-       if (errno != 0) {
-            cout << "The offset " << s << " is outside the representable value set. " <<endl;
-            exit(1);
-       }
-       return v; 
+    char *ep = 0;
+    errno = 0;
+    unsigned long long v = strtoull(s.c_str(),&ep,0);
+    if (errno != 0) {
+        cout << "The offset " << s <<
+            " is outside the representable value set. " <<endl;
+        exit(1);
+    }
+    return v;
 }
 
 /* Args are:
    appname
    -s start  -l len
-   // the -s -l repeat as many times as wanted 
+   // the -s -l repeat as many times as wanted
    filepath
 */
 static void
 validate_args(int argc, char **argv)
 {
     int nextarg = 1;
-    while( nextarg < (argc-1)) {
+    while (nextarg < argc) {
+        if (nextarg == (argc-1)) {
+            cout << "break" <<endl;
+            break;
+        }
         string a = argv[nextarg];
-        if( a != "-s") {
-             cout << "Expected -s, got " << a <<endl;
-             usage();
-             exit(1);
+        if (a == "-h") {
+            usage();
+            exit(0);
+        }
+        if (a != "-s") {
+            cout << "Expected -s, got " << a <<endl;
+            usage();
+            exit(1);
         }
         ++nextarg;
-        if (nextarg >= (argc-1)) {
-             cout << "Expected start offset, got no argument " <<endl;
-             usage();
-             exit(1);
+        if (nextarg >= (argc)) {
+            cout << "Expected start offset, got no argument " <<endl;
+            usage();
+            exit(1);
         }
         counter off = getval(argv[nextarg]);
 
         ++nextarg;
-        if (nextarg >= (argc-1)) {
-             cout << "Expected -l, got  no argument" << endl;
-             usage();
-             exit(1);
+        if (nextarg >= (argc)) {
+            cout << "Expected -l, got  no argument" << endl;
+            usage();
+            exit(1);
         }
         string l = argv[nextarg];
-        if( l != "-l") {
-             cout << "Expected -l, got " << l <<endl;
-             usage();
-             exit(1);
+        if (l != "-l") {
+            cout << "Expected -l, got " << l <<endl;
+            usage();
+            exit(1);
         }
         ++nextarg;
-        if (nextarg >= (argc-1)) {
-             cout << "Too few arguments." << endl;
-             usage();
-             exit(1);
+        if (nextarg >= (argc)) {
+            cout << "Too few arguments." << endl;
+            usage();
+            exit(1);
         }
         counter len = getval(argv[nextarg]);
         range r(off,len);
@@ -140,67 +157,79 @@ validate_args(int argc, char **argv)
     if (nextarg != (argc-1)) {
         usage();
         cout << "Expected file path , got no argument " <<endl;
-             exit(1);
+        exit(1);
     }
     filepath = argv[nextarg];
+    if (filepath == "-h") {
+        usage();
+        exit(0);
+    }
 };
 
 static void
 write_some_zeros(counter o, counter len)
 {
-     errno = 0;
-     off_t res  = lseek(fd,o,SEEK_SET);
-     if(res == (off_t)-1) {
-          cout << "lseek  failed on " << filepath << " to offset " << o << endl;
-          exit(1);
-     }
-     size_t remaining = len;
-     cout << "Zeroing " << filepath << " offset " << o << " length " << len << endl;
-     while( remaining) {
-          size_t writesize = ZEROSIZE;
-          if (writesize > remaining) {
-             writesize = remaining;
-          }
-          errno = 0;
-          ssize_t w = write(fd,zerobuf,writesize);
-          if ( w < 0 ) {
-              cout << "Write failed on " << filepath << " of " << writesize << 
-                  " bytes, errno is " << errno << endl;
-              exit(1);
-          }
-          if (w == 0) {
-              cout << "Write produced no progress on " << filepath << " of " << writesize << 
-                  " bytes, errno is " << errno << endl;
-              exit(1);
-          }
-          remaining -= w;
-     }
+    errno = 0;
+    off_t res  = lseek(fd,o,SEEK_SET);
+    if (res == (off_t)-1) {
+        cout << "lseek  failed on " << filepath <<
+            " to offset " << o << endl;
+        exit(1);
+    }
+    size_t remaining = len;
+    cout << "Zeroing " << filepath << " offset " << o <<
+        " length " << len << endl;
+    while (remaining) {
+        size_t writesize = ZEROSIZE;
+        if (writesize > remaining) {
+            writesize = remaining;
+        }
+        errno = 0;
+        ssize_t w = write(fd,zerobuf,writesize);
+        if (w < 0 ) {
+            cout << "Write failed on " << filepath << " of "
+                << writesize <<
+                " bytes, errno is " << errno << endl;
+            exit(1);
+        }
+        if (w == 0) {
+            cout << "Write produced no progress on " <<
+                filepath << " of " << writesize <<
+                " bytes, errno is " << errno << endl;
+            exit(1);
+        }
+        remaining -= w;
+    }
 }
 
 static void
 write_all_zeros()
 {
-    for(unsigned i = 0; i < ranges.size(); ++i) {
-         counter o = ranges[i].offset;
-         counter l = ranges[i].len;
-         if(l > 0) {
-             write_some_zeros(o,l);
-         }
+    for (unsigned i = 0; i < ranges.size(); ++i) {
+        counter o = ranges[i].offset;
+        counter l = ranges[i].len;
+        if (l > 0) {
+            write_some_zeros(o,l);
+        }
     }
 };
 
-int 
+int
 main(int argc, char **argv)
 {
     validate_args(argc,argv);
     errno = 0;
+    if (filepath == "-h") {
+        usage();
+        exit(0);
+    }
     fd = open(filepath.c_str(), O_RDWR);
-    if(fd < 0) {
-         cout << "Open failed on " << filepath << "  errno is " << errno<< endl;
-         exit(1);
+    if (fd < 0) {
+        cout << "Open failed on " << filepath <<
+            "  errno is " << errno<< endl;
+        exit(1);
     }
     write_all_zeros();
     close(fd);
     return 0;
 }
-
