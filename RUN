@@ -1,5 +1,20 @@
 
+# test language_version
+t=wjl/demo
+t=/home/davea/dwarf/regressiontests/offsetfromlowpc/offsetfromlowpc.bin 
+t=/home/davea/dwarf/regressiontests/debugfissionb/ld-new 
+t=rifkin5/demo.cpp.dwo
+t=rifkin7/stacktrace.cpp.dwo
+t=rifkin8/stacktrace.cpp.dwo
+t=rifkin8/unittest
+
+/tmp/dwarfdump -i  -M   $t >junk
+dwarfdump -i -M  $t >junko
+
+exit 0
 /tmp/dwarfdump -i --allocate-via-mmap --print-section-allocations debugfissionb/ld-new > /tmp/junk
+dwarfdump  -i --allocate-via-mmap --print-section-allocations debugfissionb/ld-new > /tmp/junko
+
 exit 0
 export DWARF_WHICH_ALLOC=mmap
 #/tmp/dwarfdump -a --allocate-via-mmap --print-section_allocations  debugfissionb/ld-new
