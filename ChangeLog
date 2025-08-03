@@ -1,3 +1,40 @@
+2025-08-03:  David Anderson
+    commit bb9df5e415418c9747498d68ad078c62ae9515e9
+
+    New baseline executables which have printing
+    of valid strings inside DW_FORM_block (etc)
+    in addition to the print of hex bytes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    For debugging. Ignore this
+            modified:   RUN
+
+2025-07-29:  David Anderson
+    commit 09df752250e96b28f45db967c7f67813aa09aea7
+
+    Now tests dwarfdump --print-language-version-table
+            modified:   DWARFTEST.sh
+
+2025-07-21:  David Anderson
+    commit 8c9b5c7178d7f2b9e2040fd429d2ff8923262e92
+
+    Now follows libdwarf project coding stanard
+    and also implents a usage message (emits
+    a usage message and stops)
+    if a -h argument is supplied.
+            modified:   zero.cc
+
+2025-07-19:  David Anderson
+    commit 98191f344a4537fcb5ffb6191c93c6df01ffb6d0
+
+    Now up to date.
+            modified:   ChangeLog
+
 2025-07-19:  David Anderson
     commit 480b46d12aae0dfebae1060dac0fd52205c28892
 
