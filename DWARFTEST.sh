@@ -1233,7 +1233,6 @@ fi
 #  cd ..
 
 runsingle  ossfuzz437060549.base ./fuzz_globals  --testobj=$testsrc/ossfuzz437060549/fuzz_globals-4771320878661632
-exit 1
 
 runsingle  ossfuzz394644267.base ./fuzz_macro_dwarf5  --testobj=$testsrc/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
 
