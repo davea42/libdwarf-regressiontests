@@ -1221,6 +1221,8 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+
+
 # Tests with dwarfgen --add-language-version (new July 2025)
 #  --add-implicit-const --add-sun-func-offsets
 # same test run later.  Drop this one
@@ -1229,6 +1231,9 @@ fi
 #    sh $testsrc/implicitconst/runtest.sh
 #    chkres $?  $testsrc/implicitconst/runtest.sh
 #  cd ..
+
+runsingle  ossfuzz437060549.base ./fuzz_globals  --testobj=$testsrc/ossfuzz437060549/fuzz_globals-4771320878661632
+exit 1
 
 runsingle  ossfuzz394644267.base ./fuzz_macro_dwarf5  --testobj=$testsrc/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
 
@@ -1640,6 +1645,8 @@ cd ..
 
 # New as of July 2025. DW_AT_language_version
 runtest $d1 $d2 wjl/demo -i --print-language-version-table
+# New as of August 2025. --print-all-srcfiles
+runtest $d1 $d2 wjl/demo  --print-all-srcfiles 
 
 # New as of Aug 2024.
 runtest $d1 $d2 polar/cpp_test.o --print-debug-names
@@ -2526,6 +2533,9 @@ runtest $d1 $d2 comdatex/example.o -a -g -x groupnumber=3
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr
 runtest $d1 $d2 debugfissionb/ld-new --check-tag-attr --format-extensions
 runtest $d1 $d2 debugfissionb/ld-new.dwp -I -v -v -v
+runtest $d1 $d2 debugfissionb/ld-new --print-all-srcfiles
+runtest $d1 $d2 debugfissionb/ld-new.dwp --print-all-srcfiles
+
 
 # Check that we get mmap used/not on  a large-ish object.
 runtest $d1 $d2 debugfissionb/ld-new -i --allocate-via-mmap --print-section-allocations

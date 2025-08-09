@@ -1,0 +1,31 @@
+Crash State:	
+_dwarf_memcpy_noswap_bytes
+_dwarf_length_of_cu_header
+dwarf_global_name_offsets
+Crash Type:	Heap-buffer-overflow READ 4	
+Created:	Thu, Aug 7, 2025, 4:20 AM	
+Security:	YES (Medium) 
+Crash Address:	0x51d00000007f	Sanitizer:	address (ASAN)	Reliably Reproduces:	YES
+Issue:	437060549	Platform:	linux
+Fuzzing Engine:	libFuzzer	Fuzz Target:	fuzz_globals	Job Type:	libfuzzer_asan_libdwarf
+Project:	libdwarf
+Fixed:	NO
+fuzz_globals
+	=================================================================
+==403==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x51d00000007f at pc 0x58031d88cfd2 bp 0x7ffd377a9d40 sp 0x7ffd377a9500
+READ of size 4 at 0x51d00000007f thread T0
+    #0 0x58031d88cfd1 in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #1 0x58031d94384e in _dwarf_memcpy_noswap_bytes libdwarf/src/lib/libdwarf/dwarf_memcpy_swap.c:49:5
+    #2 0x58031d975917 in _dwarf_length_of_cu_header libdwarf/src/lib/libdwarf/dwarf_util.c:1234:5
+
+Just before 1516 there was an addition not checked for
+overflow. dwarf_global.c 
+    #3 0x58031d9018c6 in dwarf_global_name_offsets libdwarf/src/lib/libdwarf/dwarf_global.c:1516:16
+    #4 0x58031d8ccb7b in get_globals_example libdwarf/fuzz/fuzz_globals.c:108:5
+    #5 0x58031d8cc68a in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_globals.c:66:5
+    #6 0x58031d783310 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13
+    #7 0x58031d76e585 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6
+    #8 0x58031d77401f in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9
+    #9 0x58031d79f2c2 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10
+    #10 0x7eb58ec17082 in __libc_start_main /build/glibc-LcI20x/glibc-2.31/csu/libc-start.c:308:16
+    #11 0x58031d76676d in _start
