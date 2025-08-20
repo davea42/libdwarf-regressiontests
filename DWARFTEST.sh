@@ -1120,7 +1120,7 @@ fuzz_str_offsets'
 for f in $fuzzexe
 do
   echo "====BUILD $f"
-  x="$CC -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC -DDWREGRESSIONTEMP -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/testbuildfuzz.c \
      $codedir/fuzz/${f}.c \
