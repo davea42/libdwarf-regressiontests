@@ -1,6 +1,6 @@
 #!/bin/sh
 
-f="C:/msys64/"
+f="C:/msys64/davea/"
 fz=${f}home/admin
 flin=/home/davea/dwarf/
 ./canonicalpath.py $flin xxxx name
