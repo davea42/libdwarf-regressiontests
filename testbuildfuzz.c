@@ -21,7 +21,8 @@
 
 int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size);
 
-/* So far, just for testing a build */
+/*  Used to build all the fuzz sourcefiles to use them
+    in DWARFTEST.sh */
 int main(int argc, char **argv)
 {
     int i = 0;
@@ -54,7 +55,8 @@ int main(int argc, char **argv)
     }
     fd = open(filename,O_RDONLY|O_BINARY);
     if (fd < 0 ) {
-        printf("Open %s failed\n",filename);
+        printf("Open %s by regressiontests/testbuildfuzz.c failed\n",
+            filename);
         exit(EXIT_FAILURE);
     }
     res = fstat(fd,&statbuf);
