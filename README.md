@@ -1,6 +1,62 @@
-# This is libdwarf-regressiontests README.md
+# libdwarf-regressiontests README.md
 
-Updated 19 September 2026
+Updated 23 August 2025
+
+## Getting all tests to pass
+
+The test results expect $HOME/dwarf/code (for libdwarf-code)
+and $HOME/dwarf/regressiontests
+(for libdwarf-regressiontests) to be the
+project directories.
+To run these tests with
+success we recommend you put the
+source into the expected places.
+The test builds normally run in directories
+under /var/tmp and those /var/tmp names don't appear
+in test results.
+
+Many tests print paths beginning with a string matching
+$HOME.  dwarfdump (itself) and the regression tests script
+DWARFTEST.sh change such path strings to use $HOME by
+replacing (for example) /home/davea with $HOME  .
+
+This works fine on MacOS and Linux variants.
+It does not suffice on Windows Msys2
+
+### Windows Msys2 issues
+
+We run all tests in Windows as user 'admin'.
+
+Sometimes test actions get data from the system (around 30 percent of 
+the 20000 tests) and that shows C: based name, not /home/admin..
+
+An example failure is
+
+    < No DWARF information present in $HOME/dwarf/regressiontests/Celik/crash_elfio
+
+    ---
+
+    > No DWARF information present in C:/msys64/davea/home/admin/dwarf/regressiontests/Celik/crash_elfio
+
+The 'davea' is because C:/msys64/davea (or C:\msys64\davea  in normal
+use in Windows) is the directory we had msys2 (mingw64) installed in.
+For this we attempt to replace 'C:/msys64/davea/home/admin' with '$HOME'
+
+In libdwarf-code/src/bin/dwarfdump/dwarfdump.c see homeify() .
+In libdwarf-code/test/canonicalpath.py and
+libdwarf-code/test/test_transformpath.py
+we address similar issues (not quite the same though!). 
+
+We eliminate another set of mismatches (run time
+failures) by compiling
+the fuzz/*.c files (in the regression test build)
+with -DDWREGRESSIONTEMP
+
+In the regressiontests dwarfdump build we look for the environment
+variable DWREGRESSIONTEMP and if present and with value 'y'
+we arrange that dwarfdump calls itself './dwarfdump' and ignores
+argv[0] .
+
 
 ## valgrind note
 
@@ -75,21 +131,6 @@ The tests are run using shell and python3
 scripts.
 Meson is used to build libdwarf/dwarfdump.
 
-The test results expect $HOME/dwarf/code (for libdwarf-code)
-and $HOME/dwarf/regressiontests
-(for libdwarf-regressiontests) to be the
-project directories.
-To run these tests with
-success we recommend you put the
-source into the expected places.
-The test builds and runs  occur in directories
-under /var/tmp and those /var/tmp names don't appear
-in test results.
-
-Many tests print paths beginning with a string matching
-$HOME.  dwarfdump (itself) and the regression tests script
-DWARFTEST.sh change such path strings to use $HOME by
-replacing (for example) /home/davea with $HOME  .
 
 You must have both zlib (-lz) and libzstd (-lzstd) installed
 as a few tests involve compressed Elf sections.
