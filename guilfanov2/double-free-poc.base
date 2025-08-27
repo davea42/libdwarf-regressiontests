@@ -1,9 +1,9 @@
 
 .debug_info
 
-../dwarfdump ERROR:  ERROR: Failure reading CU header or DIE, corrupt DWARF:  DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE:  The header length of 0x5f677562 is larger than the section length of 0x16.. Attempting to continue.
+./dwarfdump ERROR:  ERROR: Failure reading CU header or DIE, corrupt DWARF:  DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE:  The header length of 0x5f677562 is larger than the section length of 0x16.. Attempting to continue.
 
-../dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE:  The header length of 0x5f677562 is larger than the section length of 0x16.. Attempting to continue.
+./dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE:  The header length of 0x5f677562 is larger than the section length of 0x16.. Attempting to continue.
 
 .debug_str
 name at offset 0x00000000, length    0 is ''
@@ -644,9 +644,9 @@ name at offset 0x000002d0, length    0 is ''
 
 .debug_aranges
 
-../dwarfdump ERROR:  Unable to load the .debug_aranges section.:  DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE:  The header length of 0x2e007478 is larger than the section length of 0x30.. Attempting to continue.
+./dwarfdump ERROR:  Unable to load the .debug_aranges section.:  DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE:  The header length of 0x2e007478 is larger than the section length of 0x30.. Attempting to continue.
 
-../dwarfdump ERROR:  printing the aranges section had a problem.:  DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE:  The header length of 0x2e007478 is larger than the section length of 0x30.. Attempting to continue.
+./dwarfdump ERROR:  printing the aranges section had a problem.:  DW_DLE_HEADER_LEN_BIGGER_THAN_SECSIZE:  The header length of 0x2e007478 is larger than the section length of 0x30.. Attempting to continue.
 
 .debug_frame is not present
 

@@ -1,9 +1,9 @@
 
 .debug_info
 
-../dwarfdump ERROR:  ERROR: Failure reading CU header or DIE, corrupt DWARF:  DW_DLE_VERSION_STAMP_ERROR: The version should be 5 but we find 96 instead.. Attempting to continue.
+./dwarfdump ERROR:  ERROR: Failure reading CU header or DIE, corrupt DWARF:  DW_DLE_VERSION_STAMP_ERROR: The version should be 5 but we find 96 instead.. Attempting to continue.
 
-../dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_VERSION_STAMP_ERROR: The version should be 5 but we find 96 instead.. Attempting to continue.
+./dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_VERSION_STAMP_ERROR: The version should be 5 but we find 96 instead.. Attempting to continue.
 
 .debug_str
 name at offset 0x00000000, length    5 is 'close'
