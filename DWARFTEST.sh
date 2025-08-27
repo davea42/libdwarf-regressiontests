@@ -754,7 +754,9 @@ runsingle () {
   args=$*
   based=baselines
   rm -f tmp2erra
+  touch tmp2erra
   rm -f junksingle.$base junksingle2.$base junksingle3.$base
+  touch junksingle.$base junksingle2.$base junksingle3.$base
   totalct=`expr $goodcount + $failcount + $skipcount + 1`
   pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
   if [ "$args" = "" ]
@@ -1120,6 +1122,7 @@ fuzz_str_offsets'
 for f in $fuzzexe
 do
   echo "====BUILD $f"
+  # always force simple executable path report with -DDWREGRESSIONTEMP
   x="$CC -DDWREGRESSIONTEMP -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/testbuildfuzz.c \
@@ -1132,7 +1135,7 @@ do
 done
 
 echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
-   x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+   x="$CC -DDWREGRESSIONTEMP $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/dwnames_checks/dwnames_all.c \
      -o dwnames_all $dwlib $libzlib $libzlink"
@@ -1333,15 +1336,27 @@ runsingle machinearchunivbinv.base ./dwarfdump -v --print-machine-arch $testsrc/
 runsingle machinearcmacho.base ./dwarfdump --print-machine-arch $testsrc/macho-kask/dwarfdump_32
 runsingle machinearcmachov.base ./dwarfdump -v --print-machine-arch $testsrc/macho-kask/dwarfdump_32
 # elf object
-runsingle machinearchi386.base ./dwarfdump --print-machine-arch $testsrc/debuglink/crc32
-runsingle machinearchi386v.base ./dwarfdump -v --print-machine-arch $testsrc/debuglink/crc32
+# skip debuglink on msys2
+if [  $platform = "msys2" ]
+then
+  echo "====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  2 `
+else
+  runsingle machinearchi386.base ./dwarfdump --print-machine-arch $testsrc/debuglink/crc32
+  runsingle machinearchi386v.base ./dwarfdump -v --print-machine-arch $testsrc/debuglink/crc32
+fi
 # PE object
 runsingle machinearchpe.base ./dwarfdump --print-machine-arch $testsrc/pe1/kask-dwarfdump_64.exe
 runsingle machinearchpev.base ./dwarfdump -v --print-machine-arch $testsrc/pe1/kask-dwarfdump_64.exe
 
-runsingle ossfuzz64496.base  ./fuzz_debuglink --testobj=$testsrc/ossfuzz64496/fuzz_debuglink-6154376638234624
-
-runsingle ossfuzz56452.base  ./fuzz_debuglink --testobj=$testsrc/ossfuzz56452/fuzz_debuglink-cs4231a-5927365017731072
+if [  $platform = "msys2" ]
+then
+  echo "====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  2 `
+else
+  runsingle ossfuzz64496.base  ./fuzz_debuglink --testobj=$testsrc/ossfuzz64496/fuzz_debuglink-6154376638234624
+  runsingle ossfuzz56452.base  ./fuzz_debuglink --testobj=$testsrc/ossfuzz56452/fuzz_debuglink-cs4231a-5927365017731072
+fi
 
 runsingle ossfuzz63024.base  ./fuzz_macro_dwarf4 --testobj=$testsrc/ossfuzz63024/fuzz_macro_dwarf4-4887579306360832
 
@@ -1527,7 +1542,7 @@ runsingle databitoffset.base $d2 -i -M $testsrc/databitoffset/dbotest.o
 echo "=====START  $testsrc/test_pubsreader good=$goodcount skip=$skipcount fail=$failcount"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
      $libzhdr \
-     -I$libbld/libdwarf \
+     -I$libbld/libdwarf $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
       -o test_pubsreader $dwlib $libzlib $libzlink"
   echo $x
@@ -1555,7 +1570,7 @@ echo "=====START  $testsrc/test_pubsreader good=$goodcount skip=$skipcount fail=
 echo "=====START  $testsrc/bitoffset/test_bitoffset.c good=$goodcount skip=$skipcount fail=$failcount"
   echo "test_bitoffset:"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
-     $libzhdr \
+     $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/bitoffset/test_bitoffset.c  -o \
       test_bitoffset $dwlib $libzlib $libzlink"
   echo $x
@@ -1584,7 +1599,7 @@ echo "=====START  $testsrc/bitoffset/test_bitoffset.c good=$goodcount skip=$skip
 echo "=====BUILD  $testsrc/test_arange"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
-     $libzhdr$nonsharedopt  \
+     $libzhdr $nonsharedopt  \
      -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
       test_arange $dwlib $libzlib $libzlink"
   echo "$x"
@@ -1793,21 +1808,27 @@ runtest $d1 $d2 diederen7/pc_dwarf_aircrack_ng.macho -a -vv -M
 # March 24, 2022, fuzzed object
 runtest $d1 $d2 moqigod/buffer-overflow-example-2022
 
+if [  $platform = "msys2" ]
+then
+  echo "====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  12 `
+else
 # May 6, 2022. debuglink tests exploring related options
-runtest $d1 $d2 debuglinkb/testid -P -i
-runtest $d1 $d2 debuglinkb/testid.debug -P -i
-runtest $d1 $d2 debuglinkb/testnoid -P -i
-runtest $d1 $d2 debuglinkb/testnoid.debug -P -i
+  runtest $d1 $d2 debuglinkb/testid -P -i
+  runtest $d1 $d2 debuglinkb/testid.debug -P -i
+  runtest $d1 $d2 debuglinkb/testnoid -P -i
+  runtest $d1 $d2 debuglinkb/testnoid.debug -P -i
 
-runtest $d1 $d2 debuglinkb/testid -P -i --no-follow-debuglink
-runtest $d1 $d2 debuglinkb/testid.debug -P -i --no-follow-debuglink
-runtest $d1 $d2 debuglinkb/testnoid -P -i --no-follow-debuglink
-runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --no-follow-debuglink
+  runtest $d1 $d2 debuglinkb/testid -P -i --no-follow-debuglink
+  runtest $d1 $d2 debuglinkb/testid.debug -P -i --no-follow-debuglink
+  runtest $d1 $d2 debuglinkb/testnoid -P -i --no-follow-debuglink
+  runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --no-follow-debuglink
 
-runtest $d1 $d2 debuglinkb/testid -P -i --suppress-debuglink-crc
-runtest $d1 $d2 debuglinkb/testid.debug -P -i --suppress-debuglink-crc
-runtest $d1 $d2 debuglinkb/testnoid -P -i --suppress-debuglink-crc
-runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --suppress-debuglink-crc
+  runtest $d1 $d2 debuglinkb/testid -P -i --suppress-debuglink-crc
+  runtest $d1 $d2 debuglinkb/testid.debug -P -i --suppress-debuglink-crc
+  runtest $d1 $d2 debuglinkb/testnoid -P -i --suppress-debuglink-crc
+  runtest $d1 $d2 debuglinkb/testnoid.debug -P -i --suppress-debuglink-crc
+fi
 
 # February 16, 2022, with clang-generated .debug_names
 # The ones with -v are ok, but not as nice looking.
@@ -1914,8 +1935,14 @@ runtest $d1 $d2 \
 
 runtest $d1 $d2 \
   ossfuzz41240/clusterfuzz-testcase-minimized-fuzz_init_path-5929343686148096 -a
-runtest $d1 $d2 \
+if [  $platform = "msys2" ]
+then
+  echo "====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  1 `
+else
+  runtest $d1 $d2 \
   ossfuzz41240/clusterfuzz-testcase-minimized-fuzz_init_path-5929343686148096 --print-gnu-debuglink
+fi
 
 #These two were a libelf bug. Lets see how libdwarf elf reading
 #deals with it.
@@ -1996,7 +2023,13 @@ runtest $d1 $d2  moya4/hello -kr -kuf -C
 runtest $d1 $d2 debugfission/archive.o --print-debug-gnu
 runtest $d1 $d2 debugfission/target.o  --print-debug-gnu
 runtest $d1 $d2 gsplitdwarf/frame1     --print-debug-gnu
-runtest $d1 $d2 gsplitdwarf/getdebuglink --print-debug-gnu
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP debuglink runtest.sh on msys2"
+  skipcount=`expr $skipcount +  1 `
+else
+  runtest $d1 $d2 gsplitdwarf/getdebuglink --print-debug-gnu
+fi
 runtest $d1 $d2 moya/simple.o          --print-debug-gnu
 runtest $d1 $d2 moya/with-types.o      --print-debug-gnu
 runtest $d1 $d2 moya3/ranges_base.o    -a -G -M -v
@@ -2022,7 +2055,7 @@ echo "=====START  $testsrc/testoffdie runtest.sh good=$goodcount skip=$skipcount
   cd ..
 
 # .gnu_debuglink and .note.gnu.build-id  section tests.
-if [ "x$endian" = "xB" ]
+if [ "x$endian" = "xB" -o "x$platform" = "xmsys2" ]
 then
   echo "=====SKIP debuglink runtest.sh as bigendian will fail (1) good=$goodcount skip=$skipcount"
   skipcount=`expr $skipcount + 1`
@@ -2036,16 +2069,30 @@ fi
 
 #gcc using -gsplit-dwarf option
 # debuglink via DWARF4. frame one via DWARF5
-runtest $d1 $d2 gsplitdwarf/getdebuglink     --print-fission -a
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --print-fission -a
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=$testsrc/gsplitdwarf/getdebuglink --print-fission -a
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  4 `
+else
+  runtest $d1 $d2 gsplitdwarf/getdebuglink --print-debug-gnu
+  runtest $d1 $d2 gsplitdwarf/getdebuglink     --print-fission -a
+  runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --print-fission -a
+  runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=$testsrc/gsplitdwarf/getdebuglink --print-fission -a
+fi
+
 runtest $d1 $d2 gsplitdwarf/frame1.dwo       -a --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=$testsrc/gsplitdwarf/frame1 -a --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission
 # Same but now with -vv
-runtest $d1 $d2 gsplitdwarf/getdebuglink -a -vv --print-fission
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo -a -vv --print-fission
-runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=$testsrc/gsplitdwarf/getdebuglink -a -vv --print-fission
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  3 `
+else
+  runtest $d1 $d2 gsplitdwarf/getdebuglink -a -vv --print-fission
+  runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo -a -vv --print-fission
+  runtest $d1 $d2 gsplitdwarf/getdebuglink.dwo --file-tied=$testsrc/gsplitdwarf/getdebuglink -a -vv --print-fission
+fi
 runtest $d1 $d2 gsplitdwarf/frame1.dwo -a -vv --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1.dwo --file-tied=$testsrc/gsplitdwarf/frame1 -a -vv --print-fission
 runtest $d1 $d2 gsplitdwarf/frame1 -a --print-fission -vv
@@ -2144,7 +2191,13 @@ echo "=====START  $testsrc/mustacchi runtest.sh nolibelf good=$goodcount skip=$s
     chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
   cd ..
 
-runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  1 `
+else
+  runtest $d1 $d2 val_expr/libpthread-2.5.so --print-gnu-debuglink
+fi
 
 if [ -f /lib/x86_64-linux-gnu/libc-2.27.so ]
 then
@@ -2235,7 +2288,13 @@ runtest $d1 $d2 emre3/foo.dwo --print-str-offsets
 runtest $d1 $d2 emre3/main.dwo --print-str-offsets
 runtest $d1 $d2 emre5/test33_64_opt_fpo_split.dwp
 runtest $d1 $d2 emre6/class_64_opt_fpo_split.dwp
-runtest $d1 $d2 emre6/class_64_opt_fpo_split --print-gnu-debuglink
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  3 `
+else
+  runtest $d1 $d2 emre6/class_64_opt_fpo_split --print-gnu-debuglink
+fi
 
 runtest $d1 $d2  sarubbo-3/1.crashes.bin -a -b
 
@@ -2576,7 +2635,13 @@ runtest $d1 $d2 emre/input.o -a
 
 # Has a type unit so we can see the index for such.
 runtest $d1 $d2 emre2/emre.ex -I
-runtest $d1 $d2 emre2/emre.ex --print-gnu-debuglink
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  1 `
+else
+  runtest $d1 $d2 emre2/emre.ex --print-gnu-debuglink
+fi
 
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=$testsrc/emre5/test33_64_opt_fpo_split
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=$testsrc/emre5/test33_64_opt_fpo_split
@@ -2886,12 +2951,19 @@ runsingle frame1-2018.base ./frame1/frame1 \
 runsingle frame1-2018s.base ./frame1/frame1  \
   --just-print-selected-regs \
   $testsrc/frame1/frame1.exe.2018-05-11
-runsingle dwdebuglink-a.base ./dwdebuglink \
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  2 `
+else
+  runsingle dwdebuglink-a.base ./dwdebuglink \
   "--add-debuglink-path=/exam/ple" \
   "--add-debuglink-path=/tmp/phony" $codedir/test/dummyexecutable
-runsingle dwdebuglink-b.base ./dwdebuglink \
+
+  runsingle dwdebuglink-b.base ./dwdebuglink \
   --no-follow-debuglink --add-debuglink-path=/exam/ple \
   --add-debuglink-path=/tmp/phony $codedir/test/dummyexecutable
+fi
 #runsingle test_dwnames.base ./test_dwnames \
 #  -i $codedir/src/lib/libdwarf --run-self-test
 
@@ -3109,8 +3181,14 @@ runtest $d1 $d2 macro5/dwarfdump-g3  -m -vvv
 runtest $d1 $d2 macro5/dwarfdump-g3  -m -v
 
 runtest $d1 $d2 convey/testesb.c.o -v  --print-macinfo
-runtest $d1 $d2 debuglinkb/testid.debug -v  --print-macinfo
-runtest $d1 $d2 debuglinkb/testnoid.debug -v  --print-macinfo
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  2 `
+else
+  runtest $d1 $d2 debuglinkb/testid.debug -v  --print-macinfo
+  runtest $d1 $d2 debuglinkb/testnoid.debug -v  --print-macinfo
+fi
 runtest $d1 $d2 emre4/test19_64_dbg -v  --print-macinfo
 runtest $d1 $d2 emre4/test3_64_dbg -v  --print-macinfo
 runtest $d1 $d2 emre5/test33_64_opt_fpo_split.dwp -v  --print-macinfo
