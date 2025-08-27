@@ -1,3 +1,155 @@
+2025-08-27:  David Anderson
+    commit aca7951705c7bc9ba2cf6c93a405ff6d786652ba
+
+    Baseline with dwarfdump called ./dwarfdump
+    when built for regression testing.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-08-27:  David Anderson
+    commit fabfd0f3bf241cb806ef6bbbd805a899306565ab
+
+    Now these expect the dwarfdump name as ./dwarfdump
+    when dwarfdump/libdwarf built for regressiontesting.
+            modified:   guilfanov/crash.base
+            modified:   guilfanov2/double-free-poc.base
+
+2025-08-27:  David Anderson
+    commit 3eaa647ca1875c257112d5609256df339335fc91
+
+    A couple compiles here missing $nonsharedopt which
+    was a problem on Msys2.
+    Also, on Msys2, all code testing debuglink is
+    skipped as it is difficult to make it work.
+    Too many dependencies on the interpretation of
+    a full-path. in the definition of debuglink
+
+            modified:   DWARFTEST.sh
+
+2025-08-27:  David Anderson
+    commit 4256a7fc0540b63e20b2e0d8c92c2fc2873545ff
+
+    Explains how to run regression tests on Msys2,
+    which is working better now.
+            modified:   README.md
+
+2025-08-27:  David Anderson
+    commit 8f05387347e21b24bb8209ee81f1448c1c70e047
+
+    Adds for best testing, showing $HOME instead of
+    actual full path base component.
+    Does
+    -Dregressiontesting=true
+            modified:   PICKUPBIN.sh
+
+2025-08-23:  David Anderson
+    commit b82258059365827bbe4bdf4a8dc3ba6feb034a7d
+
+    Updated to explain what is needed for msys2 to
+    have regression tests pass.
+            modified:   README.md
+
+2025-08-20:  David Anderson
+    commit 25e59f3b24c60dc9a3b8198d20d9001f590dc2f0
+
+    Better message in case of disaster
+    in building for fuzz tests.This is
+    our driver for the fuzzed-object tests.
+            modified:   testbuildfuzz.c
+
+2025-08-20:  David Anderson
+    commit 37ca7f408b6b7ab8a82f4ccdea37beabf392578e
+
+    -f="C:/msys64/"
+    +f="C:/msys64/davea/"
+    so we can remove the Win full path prefix
+    leaving the msys2 full path.
+            modified:   scripts/testcanonical.sh
+
+2025-08-20:  David Anderson
+    commit b3f99125b0de212f159f03aecbcbc98923c5b419
+
+    -    winb="C:/msys64/"
+    +    winb="C:/msys64/davea/"
+    So that on Windows msys2 we correctly remove the
+    generic part of the full path, msys2 does not
+    need the c: stuff.
+            modified:   scripts/canonicalpath.py
+
+2025-08-20:  David Anderson
+    commit 5eff83dca46aceabe9d9dbb637fde71ec38bba5b
+
+    When building fuzz_*.c tests, add -DDWREGRESSIONTEMP
+    so  we do not use /tmp/
+    to hold results and do not break the tests on Windows Msys2.
+            modified:   DWARFTEST.sh
+
+2025-08-20:  David Anderson
+    commit 29ff68463a365f6428612e3d366328b1740dddd1
+
+    Correct typos in the comments.
+            modified:   BASEFILES.sh.in
+
+2025-08-09:  David Anderson
+    commit 414d0035e167c016fc3326161401791b5a0a45e8
+
+    With latest test (fuzz issue)
+            modified:   DWARFTEST.sh
+    Latest executable for comparisons.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-08-08:  David Anderson
+    commit 961ce8d2ce998c32a38c83aa5e96082b6787567e
+
+    ossfuzz 437060549 is the discovery of
+    a testcase that has bogus sizes and an addition
+    is not checked.
+    Fix is
+    +++ b/src/lib/libdwarf/dwarf_global.c
+    @@ -1426,6 +1426,7 @@ dwarf_global_name_offsets(Dwarf_Global global,
+         Dwarf_Global_Context con = 0;
+         Dwarf_Debug dbg = 0;
+         Dwarf_Off cuhdr_off = 0;
+    +    Dwarf_Off cuhsum = 0;
+
+         if (global == NULL) {
+             _dwarf_error(NULL, error, DW_DLE_GLOBAL_NULL);
+    @@ -1454,9 +1455,21 @@ dwarf_global_name_offsets(Dwarf_Global global,
+         CHECK_DBG(dbg,error,"dwarf_global_name_offsets()");
+         /*  Cannot refer to debug_types, see p141 of
+             DWARF4 Standard */
+    +    cuhsum = cuhdr_off + MIN_CU_HDR_SIZE;
+    +    if (cuhsum < cuhdr_off || cuhsum < MIN_CU_HDR_SIZE) {
+    +        /*overflow*/
+    +        dwarfstring m;
+    +
+    +        dwarfstring_constructor(&m);
+    +        build_off_end_msg(cuhdr_off,cuhdr_off,
+    +            dbg->de_debug_info.dss_size,&m);
+    +        _dwarf_error_string(dbg, error, DW_DLE_OFFSET_BAD,
+    +            dwarfstring_string(&m));
+    +        dwarfstring_destructor(&m);
+    +        return DW_DLV_ERROR;
+    +    }
+         if (dbg->de_debug_info.dss_size &&
+    -        ((cuhdr_off + MIN_CU_HDR_SIZE) >=
+    -        dbg->de_debug_info.dss_size)) {
+    +        cuhsum >= dbg->de_debug_info.dss_size) {
+
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz437060549.base
+            new file:   ossfuzz437060549/README
+            new file:   ossfuzz437060549/fuzz_globals-4771320878661632
+
+2025-08-03:  David Anderson
+    commit 7a126d53b6ba70aafc1ad94dd6a3bf2417050883
+
+    Up to date.
+            modified:   ChangeLog
+
 2025-08-03:  David Anderson
     commit bb9df5e415418c9747498d68ad078c62ae9515e9
 
