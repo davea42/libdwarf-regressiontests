@@ -34,6 +34,7 @@ configstaticlib=
 configdwarfgen=
 configsharedlib=
 buildsanitize=
+regressiontesting=
 # BASEFILES has the basic data we need to build.
 if [ ! -f BASEFILES.sh ]
 then
@@ -61,6 +62,10 @@ else
 fi
 buildsanitize=""
 # Checking env var.
+if [ "x$DWREGRESSIONTEMP" = "xy" ]
+then
+  regressiontesting="-Dregressiontesting=true"
+fi
 if [ "x$NLIZE" = "xy" ]
 then
   buildsanitize="-Dsanitize=true"
@@ -154,7 +159,7 @@ then
 fi
 
 ###  Build now
-m="meson setup --default-library static $buildsanitize  $buildwall  -Ddwarfexample=true -Ddwarfgen=true . $libdw $buildlibdwarspecialmalloc"
+m="meson setup --default-library static $buildsanitize  $buildwall  -Ddwarfexample=true -Ddwarfgen=true . $libdw $buildlibdwarspecialmalloc $regressiontesting"
 echo $m
 $m
 if [ $? -ne 0 ]
