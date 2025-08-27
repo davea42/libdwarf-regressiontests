@@ -1,6 +1,37 @@
 # libdwarf-regressiontests README.md
 
-Updated 23 August 2025
+Updated 24 August 2025
+
+Regressiontests build libdwarf and dwarfdump using the
+meson build system so ensure meson is installed
+before attempting a build.
+
+## Basic configure and build with bash shell or equivalent
+
+    Set up any desired env vars.
+    we do, for msys2:
+    unset NLIZE
+    unset SUPPRESSDEALLOCTREE
+    unset VALGRIND
+    unset DRMEMORY
+    unset SUPPRESSBIGDIFFS
+    unset COMPILEONLY
+    unset SKIPDECOMPRESS
+    unset PRINTFFMT
+    unset SKIPBIGOBJECTS
+    export DWREGRESSIONTEMP=y
+
+    # do configuration
+    testsrcloc="$HOME/dwarf/regressiontests"
+    x="$testsrcloc/INITIALSETUP.sh $testsrcloc
+    echo $x
+    $x
+
+    # then run the tests
+    $testsrcloc/RUNALL.sh
+
+The exporting DWREGRESSIONTEMP is not unique to msys2,
+all regressiontest builds should export DWREGRESSIONTEMP=y .
 
 ## Getting all tests to pass
 
@@ -19,13 +50,20 @@ Many tests print paths beginning with a string matching
 $HOME.  dwarfdump (itself) and the regression tests script
 DWARFTEST.sh change such path strings to use $HOME by
 replacing (for example) /home/davea with $HOME  .
-
 This works fine on MacOS and Linux variants.
 It does not suffice on Windows Msys2
 
-### Windows Msys2 issues
+In Msys2, there is now code in $HOME/dwarf/code/src/bin/dwarfdump/dd_sanitized.c
+to do a better job of showing $HOME
 
-We run all tests in Windows as user 'admin'.
+## Windows Msys2 path issues
+
+If your setup does not exactly) match the maintainers
+tests can fail. Large numbers of them.
+See just below for the places you might have to
+change names to get them to pass.
+
+We run all tests in Windows Msys2 as user 'admin'.
 
 Sometimes test actions get data from the system (around 30 percent of 
 the 20000 tests) and that shows C: based name, not /home/admin..
@@ -39,13 +77,20 @@ An example failure is
     > No DWARF information present in C:/msys64/davea/home/admin/dwarf/regressiontests/Celik/crash_elfio
 
 The 'davea' is because C:/msys64/davea (or C:\msys64\davea  in normal
-use in Windows) is the directory we had msys2 (mingw64) installed in.
+use in Windows) is the directory we had Msys2 (mingw64) installed in.
 For this we attempt to replace 'C:/msys64/davea/home/admin' with '$HOME'
 
-In libdwarf-code/src/bin/dwarfdump/dwarfdump.c see homeify() .
+Msys2 or Windows seems to transform filenames that are full paths like
+/home/admin  (passed
+in from a shell script) to prefix with C:/msys64/davea always.
+That is awkward.  
+
+In libdwarf-code/src/bin/dwarfdump/dwarfdump.c see homeify().
+See libdwarf-code/src/bin/dwarfdump/dd_sanitized.c
 In libdwarf-code/test/canonicalpath.py and
 libdwarf-code/test/test_transformpath.py
-we address similar issues (not quite the same though!). 
+we address this sort of issue.
+The meson option -Dregressiontesting is important.
 
 We eliminate another set of mismatches (run time
 failures) by compiling
@@ -123,7 +168,7 @@ Linux, Freebsd, or modern MacOS environment the tests
 arrange slight modifications to paths in dwarfdump output
 so all the tests pass (see below).  None of the tests
 are guaranteed to work if any files or directories have
-spaces in their name.  On msys2 (Windows 10) or Microsoft
+spaces in their name.  On Msys2 (Windows 10) or Microsoft
 Visual Studio Those adjustments do not work and these
 tests are useless.
 
