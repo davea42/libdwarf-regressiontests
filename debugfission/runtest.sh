@@ -2,18 +2,31 @@
 # Assumes a single argument, naming a dwarfdump.
 # So it's testing the new dwarfdump.
 
-
 dd=../dwarfdump
 ourzcat=zcat
 . ../BASEFILES.sh
 ts=$testsrc/debugfission
 tf=$bldtest/debugfission
 
-which gzcat 1>/dev/null
-if [ $? -eq 0 ]
+okzcat=y
+which zcat 1>/dev/null
+if [ $? -ne 0 ]
 then
-  # On MacOS gzcat does what zcat does on Linux.
-  ourzcat=gzcat
+  echo "zcat missing, unavailable"
+  okzcat=n
+  which gzcat 1>/dev/null
+  if [ $? -eq 0 ]
+  then
+    # On MacOS gzcat does what zcat does on Linux.
+    ourzcat=gzcat
+      echo "gzcat present, using instead of zcat"
+    okzcat=y
+  fi
+  if [ $okzcat = "n"
+  then
+    echo " No zcat or gzcat present"
+    exit 1
+  fi
 fi
 
 b=archiveo.base

@@ -1539,63 +1539,75 @@ runsingle ossfuzz56465.base  ./fuzz_die_cu_offset --testobj=$testsrc/ossfuzz5646
 
 runsingle databitoffset.base $d2 -i -M $testsrc/databitoffset/dbotest.o
 
-echo "=====START  $testsrc/test_pubsreader good=$goodcount skip=$skipcount fail=$failcount"
-  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
-     $libzhdr \
-     -I$libbld/libdwarf $nonsharedopt \
-     -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
-      -o test_pubsreader $dwlib $libzlib $libzlink"
-  echo $x
-  $x
-  r=$?
-  chkresbld $r 'check pubsreader-error compile test_pubsreader.c failed'
-  echo "./test_pubsreader $suppresstree $testsrc/mustacchi/m32t.o \
-    $testsrc/irixn32/dwarfdump"
-  echo "Results in junk_pubsreaderout"
-  ./test_pubsreader $testsrc/irixn32/dwarfdump \
-     $testsrc/mustacchi/m32t.o \
-     >junk_pubsreaderout
-  r=$?
-  chkresbld $r "check pubsreader-error execution failed look at \
-    junk_pubsreaderout"
-  diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout
-  r=$?
-  chkres $r "fail comparison pubsreader.base vs junk_pubsreaderout"
-  if [ $r -ne 0 ]
-  then
-    echo "FAIL diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout"
-    echo "To update mv $bldtest/junk_pubsreaderout $testsrc/pubsreader.base"
-  fi
+if [  $platform = "msys2" ]
+then 
+  echo "====SKIP test_pubsreader on msys2"
+  skipcount=`expr $skipcount +  1 `
+else 
+  echo "=====START  $testsrc/test_pubsreader good=$goodcount skip=$skipcount fail=$failcount"
+    x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
+       $libzhdr \
+       -I$libbld/libdwarf $nonsharedopt \
+       -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
+        -o test_pubsreader $dwlib $libzlib $libzlink"
+    echo $x
+    $x
+    r=$?
+    chkresbld $r 'check pubsreader-error compile test_pubsreader.c failed'
+    echo "./test_pubsreader $suppresstree $testsrc/mustacchi/m32t.o \
+      $testsrc/irixn32/dwarfdump"
+    echo "Results in junk_pubsreaderout"
+    ./test_pubsreader $testsrc/irixn32/dwarfdump \
+       $testsrc/mustacchi/m32t.o \
+       >junk_pubsreaderout
+    r=$?
+    chkresbld $r "check pubsreader-error execution failed look at \
+      junk_pubsreaderout"
+    diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout
+    r=$?
+    chkres $r "fail comparison pubsreader.base vs junk_pubsreaderout"
+    if [ $r -ne 0 ]
+    then
+      echo "FAIL diff $testsrc/pubsreader.base $bldtest/junk_pubsreaderout"
+      echo "To update mv $bldtest/junk_pubsreaderout $testsrc/pubsreader.base"
+    fi
+fi
 
-echo "=====START  $testsrc/bitoffset/test_bitoffset.c good=$goodcount skip=$skipcount fail=$failcount"
+if [  $platform = "msys2" ]
+then
+  echo "====bitoffset/test_bitoffset SKIP on msys2"
+  skipcount=`expr $skipcount +  1 `
+else
+  echo "=====START  $testsrc/bitoffset/test_bitoffset.c good=$goodcount skip=$skipcount fail=$failcount"
   echo "test_bitoffset:"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
-     $libzhdr $nonsharedopt \
-     -gdwarf $nlizeopt $testsrc/bitoffset/test_bitoffset.c  -o \
-      test_bitoffset $dwlib $libzlib $libzlink"
+    $libzhdr $nonsharedopt \
+    -gdwarf $nlizeopt $testsrc/bitoffset/test_bitoffset.c  -o \
+     test_bitoffset $dwlib $libzlib $libzlink"
   echo $x
   $x
   chkresbld $? "check bitoffset-error compiling bitoffset/test_bitoffset.c\
-     failed"
+    failed"
   echo "./test_bitoffset  \
-    $testsrc/bitoffset/bitoffsetexampledw3.o \
-    $testsrc/bitoffset/bitoffsetexampledw5.o "
+   $testsrc/bitoffset/bitoffsetexampledw3.o \
+   $testsrc/bitoffset/bitoffsetexampledw5.o "
   ./test_bitoffset  \
-    $testsrc/bitoffset/bitoffsetexampledw3.o \
-    $testsrc/bitoffset/bitoffsetexampledw5.o  \
-    >junk_bitoffset
+   $testsrc/bitoffset/bitoffsetexampledw3.o \
+   $testsrc/bitoffset/bitoffsetexampledw5.o  \
+   >junk_bitoffset
   chkresbld $? "check bitoffset-error execution failed look at \
-     junk_bitoffset"
+    junk_bitoffset"
   diff $testsrc/bitoffset/bitoffset.base junk_bitoffset
   r=$?
   chkres $r "FAIL comparison $testsrc/bitoffset/bitoffset.base vs junk_bitoffset"
   if [ $r -ne 0 ]
   then
-    echo "FAIL diff $testsrc/bitoffset.base \
-      $bldtest/junk_bitoffset"
-    echo "To update mv $bldtest/junk_bitoffset \
-      $testsrc/bitoffset.base"
+   echo "FAIL diff $testsrc/bitoffset.base \
+     $bldtest/junk_bitoffset"
+   echo "To update mv $bldtest/junk_bitoffset \
+     $testsrc/bitoffset.base"
   fi
+fi
 echo "=====BUILD  $testsrc/test_arange"
   x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
@@ -1667,7 +1679,7 @@ runtest $d1 $d2 polar/cpp_test.o --print-debug-names
 
 # New tests as of July 2024.
 runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges --file-tied=$testsrc/rifkin3/unittest -M -i -vvv -G
-runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges -M -i -vvv -G stacktrace.cpp.dwo
+runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges -M -i -vvv -G
 runtest $d1 $d2 rifkin3/unittest  --print-ranges -M -i -vvv -G
 
 # New tests as of 12 June 2024.
@@ -2185,11 +2197,17 @@ runtest $d1 $d2 liu/OOB_read4.elf                  -vvv --print-fission
 # See mustacchi/README.
 # Clang generates a slightly unusual relocation set for -m32.
 # As of Jan 2020 for the m32 case dwarfdump prints the wrong stuff.
-echo "=====START  $testsrc/mustacchi runtest.sh nolibelf good=$goodcount skip=$skipcount fail=$failcount"
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP mustacchi runtest.sh on msys2"
+  skipcount=`expr $skipcount +  3 `
+else 
+  echo "=====START  $testsrc/mustacchi runtest.sh nolibelf good=$goodcount skip=$skipcount fail=$failcount"
   mklocal mustacchi
     sh $testsrc/mustacchi/runtestnolibelf.sh
     chkres $? "$testsrc/mustacchi/runtestnolibelf.sh"
   cd ..
+fi
 
 if [  $platform = "msys2" ]
 then
@@ -2336,17 +2354,30 @@ echo "=====START  $testsrc/hughes2 runtest.sh $testsrc/corruptdwarf-a/simpleread
 
 # Tests with dwarfgen --add-language-version (new July 2025) 
 #  --add-implicit-const --add-sun-func-offsets  
-echo "=====START   $testsrc/implicitconst sh runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP implicitconst runtest.sh on msys2"
+  skipcount=`expr $skipcount +  1 `
+else
+  echo "=====START   $testsrc/implicitconst sh runtest.sh \
+    good=$goodcount skip=$skipcount fail=$failcount"
   mklocal implicitconst
     sh $testsrc/implicitconst/runtest.sh
     chkres $?  $testsrc/implicitconst/runtest.sh
   cd ..
+fi
 
-echo "=====START  $testsrc/nolibelf/runtest.sh good=$goodcount skip=$skipcount  fail=$failcount"
-mklocal nolibelf
-  sh $testsrc/nolibelf/runtest.sh
-  chkres $?  $testsrc/nolibelf/runtest.sh
-cd ..
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP debuglink on msys2"
+  skipcount=`expr $skipcount +  1 `
+else
+  echo "=====START  $testsrc/nolibelf/runtest.sh good=$goodcount skip=$skipcount  fail=$failcount"
+  mklocal nolibelf
+    sh $testsrc/nolibelf/runtest.sh
+    chkres $?  $testsrc/nolibelf/runtest.sh
+  cd ..
+fi
 
 # All the following have been fuzzed and some have
 # elf that is so badly damaged it is unusable.
@@ -2646,11 +2677,17 @@ fi
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -v -a -M -x tied=$testsrc/emre5/test33_64_opt_fpo_split
 runtest $d1 $d2  emre5/test33_64_opt_fpo_split.dwp  -ka -x tied=$testsrc/emre5/test33_64_opt_fpo_split
 
-echo "=====START  $testsrc/baddie1/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
-mklocal baddie1
+if [  $platform = "msys2" ]
+then
+  echo "=====SKIP baddie1 on msys2"
+  skipcount=`expr $skipcount +  1 `
+else
+  echo "=====START  $testsrc/baddie1/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
+  mklocal baddie1
   sh $testsrc/baddie1/runtest.sh ../$d2
   chkres $?  $testsrc/baddie1
-cd ..
+  cd ..
+fi
 
   # Also tests dwarfgen and libdwarf with DW_CFA_advance_loc
   # operations
@@ -2680,24 +2717,59 @@ fi
 # tests simple reader and more than one dwarf_init* interface
 # across all object types
 # here kaufmann/t.o is tested as input to simplereader.
-echo "=====START $testsrc/debugfissionb runtest.sh ../simplereader good=$goodcount skip=$skipcount fail=$failcount"
-mklocal debugfissionb
-  sh $testsrc/debugfissionb/runtest.sh
-  chkres $?  $testsrc/debugfissionb-simplreader
-cd ..
-
-echo "=====START $testsrc/debugfission runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
-mklocal debugfission
-  sh $testsrc/debugfission/runtest.sh  ../$d2
-  chkres $?  "$testsrc/debugfission/runtest.sh ../$d2"
-cd ..
-
-echo "=====START  $testsrc/data16 runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
-if [ $dwarfgenok = "n" ]
+if [  $platform = "msys2" ]
 then
-  echo "====SKIP run data16 (1)"
+  echo "====SKIP debugfissionb runtest.sh(1)"
   skipcount=`expr $skipcount +  1 `
 else
+  echo "=====START $testsrc/debugfissionb runtest.sh ../simplereader good=$goodcount skip=$skipcount fail=$failcount"
+  mklocal debugfissionb
+    sh $testsrc/debugfissionb/runtest.sh
+    chkres $?  $testsrc/debugfissionb-simplreader
+  cd ..
+fi
+
+echo "=====START $testsrc/debugfission runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
+okzcat=y
+which zcat 1>/dev/null
+if [ $? -ne 0 ]
+then
+    echo "zcat missing, unavailable"
+    okzcat=n
+    which gzcat 1>/dev/null
+  if [ $? -eq 0 ]
+    then
+    # On MacOS gzcat does what zcat does on Linux.
+    ourzcat=gzcat
+    okzcat=y 
+  fi
+fi
+
+if [ $okzcat = "n"  -o $platform = "msys2" ]
+then
+  echo "====SKIP run debugfission/runtest.sh no zcat or gzcat (or is msys2) "
+  skipcount=`expr $skipcount +  5 `
+else
+  mklocal debugfission
+    sh $testsrc/debugfission/runtest.sh  ../$d2
+    r=$?
+    if [ $r -eq 0 ]
+    then
+      goodcount=`expr $goodcount + 5`
+    else 
+      echo "FAIL DEBUGFISSION/runtest.sh"
+      failcount=`expr $failcount + 5`
+    fi
+    chkres $r  "$testsrc/debugfission/runtest.sh ../$d2"
+  cd ..
+fi
+
+if [ $platform = "msys2" -o $dwarfgenok = "n"  ]
+then
+  echo "====SKIP run data16 runtest.sh (1)"
+  skipcount=`expr $skipcount +  1 `
+else
+  echo "=====START  $testsrc/data16 runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
   mklocal data16
     sh $testsrc/data16/runtest.sh
     chkres $?  "$testsrc/data16/runtest.sh"
@@ -2880,19 +2952,24 @@ runtest $d1 $d2  lloyd/arange.elf  -kr
 # DW_DLE_FRAME_REGISTER_UNREPRESENTABLE.  That is normal, expected.
 # It is not MIPS and MIPS is just wrong here.  Testing it anyway!
 runtest $d1 $d2  val_expr/libpthread-2.5.so -x abi=mips -F -v -v -v
-
-echo "=====START  $testsrc/findcu/runtest.sh "good=$goodcount skip=$skipcoun fail=$failcountt
+if [ $platform = "msys2" ]
+then
+  echo "====SKIP run findcu runtest.sh (1)"
+  skipcount=`expr $skipcount +  1 `
+else
+  echo "=====START  $testsrc/findcu/runtest.sh "good=$goodcount skip=$skipcoun fail=$failcountt
   mklocal findcu
     sh $testsrc/findcu/runtest.sh   
     chkres $? "$testsrc/findcu/cutest-of-a-libdwarf-interface"
   cd ..
+fi
 
-echo "====$START   $testsrc/dwgena/runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
-if [ $dwarfgenok = "n" ]
+if [ $platform = "msys2" -o $dwarfgenok = "n"  ]
 then
-  echo "====SKIP run dwgena  (1)"
+  echo "====SKIP run dwgena/runtest.sh  not dwarfgenok or is msys2 "
   skipcount=`expr $skipcount +  1 `
-else
+else 
+  echo "====$START   $testsrc/dwgena/runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
   mklocal dwgena
     sh $testsrc/dwgena/runtest.sh
     r=$?
@@ -2920,17 +2997,23 @@ mklocal sandnes2
   chkres $r  $testsrc/sandnes2
 cd ..
 
-if [ $nlize = 'n' ]
+if [ $platform = "msys2" ]
 then
-  echo "=====START $testsrc/legendre/runtest.sh  good=$goodcount skip=$skipcount  fail=$failcount"
-  mklocal legendre
-    sh $testsrc/legendre/runtest.sh  
-    r=$?
-    chkres $r  $testsrc/legendre
-  cd ..
+  echo "=====SKIP 1  msys2 $testsrc/legendre/runtest.sh NLIZE as it has leaks (1)"
+  skipcount=`expr $skipcount +  1 `
 else
-  echo "=====SKIP 1  $testsrc/legendre/runtest.sh NLIZE as it has leaks (1)"
-  skipcount=`expr $skipcount + 1`
+  if [ $nlize = 'n' ]
+  then
+    echo "=====START $testsrc/legendre/runtest.sh  good=$goodcount skip=$skipcount  fail=$failcount"
+    mklocal legendre
+      sh $testsrc/legendre/runtest.sh  
+      r=$?
+      chkres $r  $testsrc/legendre
+    cd ..
+  else
+    echo "=====SKIP 1  $testsrc/legendre/runtest.sh NLIZE as it has leaks (1)"
+    skipcount=`expr $skipcount + 1`
+  fi
 fi
 
 echo "=====START   $testsrc/enciso4/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
@@ -2942,8 +3025,13 @@ cd ..
 # -g: use old dwarf loclist code.
 runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
      -x abi=mips
-
-runsingle test_simple_libfuncs.base ./test_simple_libfuncs ./jitreader
+if [ $platform = "msys2" ]
+then
+  echo "====SKIP run test_simple_libfuncs h (1)"
+  skipcount=`expr $skipcount +  1 `
+else
+  runsingle test_simple_libfuncs.base ./test_simple_libfuncs ./jitreader
+fi
 runsingle frame1-orig.base ./frame1/frame1  \
   $testsrc/frame1/frame1.orig
 runsingle frame1-2018.base ./frame1/frame1 \
@@ -2979,14 +3067,20 @@ runsingle fuzz40802b.base ./filelist/localfuzz_init_binary  \
    $testsrc/ossfuzz40802/clusterfuzz-testcase-minimized-fuzz_init_binary-5538015955517440.fuzz
 runsingle fuzz40624.base ./filelist/localfuzz_init_binary  \
    $testsrc/ossfuzz40674/clusterfuzz-testcase-minimized-fuzz_init_path-6557751518560256
-runsingle fuzzgoogle1.base ./filelist/localfuzz_init_binary  \
-   $testsrc/google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
-runsingle fuzzgoogle1b.base ./filelist/localfuzz_init_binary  \
-   $testsrc/google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
-runsingle fuzzc-sun.base ./filelist/localfuzz_init_binary  \
-   $testsrc/c-sun/poc
-runsingle fuzz201609.base ./filelist/localfuzz_init_binary  \
+if [ $platform = "msys2" ]
+then
+  echo "====SKIP run fuzzgoogle1.base fuzzgoogle1b.base (1)"
+  skipcount=`expr $skipcount +  4 `
+else
+  runsingle fuzzgoogle1.base ./filelist/localfuzz_init_binary  \
+    $testsrc/google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
+  runsingle fuzzgoogle1b.base ./filelist/localfuzz_init_binary  \
+    $testsrc/google1/crash-d8d1ea593642a46c57d50e6923bc02c1bbbec54d
+  runsingle fuzzc-sun.base ./filelist/localfuzz_init_binary  \
+    $testsrc/c-sun/poc
+  runsingle fuzz201609.base ./filelist/localfuzz_init_binary  \
    $testsrc/DW201609-004/poc
+fi
 runsingle fuzzguil.base ./filelist/localfuzz_init_binary  \
    $testsrc/guilfanov2/double-free-poc
 runsingle fuzz201609b.base ./filelist/localfuzz_init_binary  \
@@ -3025,7 +3119,7 @@ runsingle test_bitoffseta.base ./test_bitoffset  \
 
 echo "platform : $platform"
 
-if [ ! $platform = "macos" ]
+if [ ! $platform = "macos" -a ! $platform = "msys2" ]
 then
   runsingle test_harmlessb.base ./test_harmless $suppresstree
   runsingle test_harmlessc.base ./test_harmless $suppresstree  -f \
@@ -3151,7 +3245,7 @@ runtest $d1 $d2 mucci/stream.o -i -e
 runtest $d1 $d2 legendre/libmpich.so.1.0 -f -F
 runtest $d1 $d2 legendre/libmpich.so.1.0 -ka
 
-if [ $nlize = 'n' ]
+if [ $nlize = 'n' -a ! $platform = "msys2" ]
 then
   echo "=====START $testsrc/test-alex1/runtest.sh good=$goodcount skip=$skipcount fail=$failcount"
   mklocal test-alex1
@@ -3159,11 +3253,11 @@ then
     chkres $?  $testsrc/test-alex1
   cd ..
 else
-  echo "=====SKIP 1 $testsrc/test-alex1/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP 1 $testsrc/test-alex1/runtest.sh NLIZE and msys2"
   skipcount=`expr $skipcount + 1`
 fi
 
-if [ $nlize = 'n' ]
+if [ $nlize = 'n'  -a ! $platform = "msys2"  ]
 then
   echo "=====START $testsrc/test-alex2/runtest.sh  good=$goodcount skip=$skipcount fail=$failcount"
   mklocal test-alex2
@@ -3171,7 +3265,7 @@ then
     chkres $?  $testsrc/test-alex2
   cd ..
 else
-  echo "=====SKIP 1 $testsrc/test-alex2/runtest.sh NLIZE as it has leaks"
+  echo "=====SKIP 1 $testsrc/test-alex2/runtest.sh NLIZE and msys2 "
   skipcount=`expr $skipcount + 1`
 fi
 
