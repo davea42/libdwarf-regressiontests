@@ -3142,8 +3142,14 @@ runsingle test_sectionnamesb.base ./test_sectionnames \
 runsingle test_arangeb.base ./test_arange  \
   $testsrc/irixn32/dwarfdump
 
-runsingle test_pubsreaderb.base ./test_pubsreader  \
+if [ ! $platform = "msys2" ]
+then
+  echo "====SKIP run test_pubsreader on msys2 (Dwarwin) "
+  skipcount=`expr $skipcount +  1 `
+else
+  runsingle test_pubsreaderb.base ./test_pubsreader  \
   $testsrc/irixn32/dwarfdump $testsrc/mustacchi/m32t.o
+fi
 
 runsingle test_jitreaderb.base ./jitreader
 
