@@ -23,6 +23,9 @@ limitations under the License.
  */
 #include "dwarf.h"
 #include "libdwarf.h"
+#ifndef O_BINARY
+#define O_BINARY 0
+#endif
 
 /*
  * A fuzzer that simulates a small part of the simplereader.c example.
@@ -55,7 +58,7 @@ int main(int argc,char **argv)
         return 0;
     }
     filename = argv[i];
-    my_init_fd = open(filename, O_RDONLY);
+    my_init_fd = open(filename, O_RDONLY,O_BINARY);
     if (my_init_fd == -1) {
         printf("fails to open target file\n");
         return 0;
