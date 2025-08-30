@@ -34,7 +34,7 @@ configstaticlib=
 configdwarfgen=
 configsharedlib=
 buildsanitize=
-regressiontesting=
+regressiontesting
 # BASEFILES has the basic data we need to build.
 if [ ! -f BASEFILES.sh ]
 then
@@ -64,6 +64,8 @@ buildsanitize=""
 # Checking env var.
 if [ "x$DWREGRESSIONTEMP" = "xy" ]
 then
+  # this ensures that dwarfdump compiled here will present its name and fullpath
+  # as ./dwarfdump
   regressiontesting="-Dregressiontesting=true"
 fi
 if [ "x$NLIZE" = "xy" ]
@@ -158,8 +160,8 @@ then
    exit 1
 fi
 
-###  Build now
-m="meson setup --default-library static $buildsanitize  $buildwall  -Ddwarfexample=true -Ddwarfgen=true . $libdw $buildlibdwarspecialmalloc $regressiontesting"
+###  setup now
+m="meson setup --default-library static $buildsanitize  $buildwall  -Ddwarfexample=true -Ddwarfgen=true . $libdw $buildlibdwarfspecialmalloc $regressiontesting"
 echo $m
 $m
 if [ $? -ne 0 ]
@@ -167,6 +169,7 @@ then
   echo "meson setup failed. giving up."
   exit 1;
 fi
+###  build now
 ninja
 
 #  Now copy the items built into $targetdir.
@@ -191,12 +194,13 @@ copyobject() {
 }
 
 
-echo "sharedlib     : $sharedlib"
-echo "configdwarfgen: $configdwarfgen"
-echo "buildlibsubdir: $buildlibsubdir"
-echo "configlibpname: $configlibpname"
-echo "buildbinsubdir: $buildbinsubdir"
+echo "sharedlib            : $sharedlib"
+echo "configdwarfgen       : $configdwarfgen"
+echo "buildlibsubdir       : $buildlibsubdir"
+echo "configlibpname       : $configlibpname"
+echo "buildbinsubdir       : $buildbinsubdir"
 echo "libdwarfspecialmalloc: $buildlibdwarfspecialmalloc"
+echo "regressiontesting    : $regressiontesting"
 if [  $sharedlib = "n"  -a  x$configdwarfgen = "x--enable-dwarfgen" ]
 then
   copyobject libdwarfp.a $libbld/src/lib/libdwarfp $targetdir 

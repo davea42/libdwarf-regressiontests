@@ -40,8 +40,10 @@ finalfailcheck () {
 }
 $testsrc/CHECKIFRUNNING.sh
 chkres $? "Checking if tests running already"
+echo "Is DWREGRESSIONTEMP set? $DWREGRESSIONTEMP "
 $testsrc/PICKUPBIN.sh
 chkres $? "Trying to build from libdwarf etc sources"
+echo "Is DWREGRESSIONTEMP set? $DWREGRESSIONTEMP "
 
 loc=$bldtest
 rm -f ALLdd 

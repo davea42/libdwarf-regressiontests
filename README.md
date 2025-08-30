@@ -85,23 +85,24 @@ Msys2 or Windows seems to transform filenames that are full paths like
 in from a shell script) to prefix with C:/msys64/davea always.
 That is awkward.  
 
-In libdwarf-code/src/bin/dwarfdump/dwarfdump.c see homeify().
+See libdwarf-code/src/bin/dwarfdump/dwarfdump.c see homeify().
 See libdwarf-code/src/bin/dwarfdump/dd_sanitized.c
-In libdwarf-code/test/canonicalpath.py and
+See libdwarf-code/test/canonicalpath.py and
 libdwarf-code/test/test_transformpath.py
 we address this sort of issue.
-The meson option -Dregressiontesting is important.
+The meson option -Dregressiontesting=true is important and
+is arranged by the regression test building scripts noticing
+the environment variable DWREGRESSIONTEMP has the value 'y').
 
 We eliminate another set of mismatches (run time
 failures) by compiling
 the fuzz/*.c files (in the regression test build)
-with -DDWREGRESSIONTEMP
+with -DDWREGRESSIONTEMP explicitly (see DWARFTEST.sh).
 
-In the regressiontests dwarfdump build we look for the environment
+In the regressiontests dwarfdump build we look for the
 variable DWREGRESSIONTEMP and if present and with value 'y'
 we arrange that dwarfdump calls itself './dwarfdump' and ignores
-argv[0] .
-
+argv[0] . See meson option '-Dregressiontesting=true'
 
 ## valgrind note
 

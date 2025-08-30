@@ -2731,18 +2731,21 @@ fi
 
 echo "=====START $testsrc/debugfission runtest.sh ../$d2 good=$goodcount skip=$skipcount fail=$failcount"
 okzcat=y
+ourzcat=zcat
 which zcat 1>/dev/null
 if [ $? -ne 0 ]
 then
     echo "zcat missing, unavailable"
     okzcat=n
-    which gzcat 1>/dev/null
-  if [ $? -eq 0 ]
-    then
-    # On MacOS gzcat does what zcat does on Linux.
-    ourzcat=gzcat
-    okzcat=y 
-  fi
+fi
+# Prefer gzcat if present (Macos)
+which gzcat 1>/dev/null
+if [ $? -eq 0 ]
+  then
+  # On MacOS gzcat does what zcat does on Linux.
+  echo "Using gzcat"
+  ourzcat=gzcat
+  okzcat=y 
 fi
 
 if [ $okzcat = "n"  -o $platform = "msys2" ]
