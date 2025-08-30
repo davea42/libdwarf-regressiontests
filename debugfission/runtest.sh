@@ -14,19 +14,20 @@ if [ $? -ne 0 ]
 then
   echo "zcat missing, unavailable"
   okzcat=n
-  which gzcat 1>/dev/null
-  if [ $? -eq 0 ]
-  then
-    # On MacOS gzcat does what zcat does on Linux.
-    ourzcat=gzcat
-      echo "gzcat present, using instead of zcat"
-    okzcat=y
-  fi
-  if [ $okzcat = "n"
-  then
-    echo " No zcat or gzcat present"
-    exit 1
-  fi
+fi
+#  prefer gzcat when present (Macos)
+which gzcat 1>/dev/null
+if [ $? -eq 0 ]
+then
+  # On MacOS gzcat does what zcat does on Linux.
+  ourzcat=gzcat
+  echo "gzcat present, using instead of zcat"
+  okzcat=y
+fi
+if [ $okzcat = "n" ]
+then
+  echo " No zcat or gzcat present"
+  exit 1
 fi
 
 b=archiveo.base
