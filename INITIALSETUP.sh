@@ -187,14 +187,9 @@ then
 else
   tsa=$srcdir
 fi
-# Using xxxx to prevent canonicalpath.py from emitting ..std.. here
-pyloc="$tsa/scripts/canonicalpath.py"
-ts=`$pyloc $tsa  xxxx name`
-echo "testsrc=$ts" >>           BASEFILES.sh
-lw=`$pyloc $codedir xxxx name`
-echo "libdw=$lw" >>             BASEFILES.sh
-cod=`$pyloc $codedir xxxx name`
-echo "codedir=$cod" >>          BASEFILES.sh
+echo "testsrc=$tsa" >>           BASEFILES.sh
+echo "libdw=$codedir" >>             BASEFILES.sh
+echo "codedir=$codedir" >>          BASEFILES.sh
 echo "bldtest=$abs_builddir" >> BASEFILES.sh
 echo "ddbaselinename=$ddbaselinename" >> BASEFILES.sh
 
