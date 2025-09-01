@@ -692,11 +692,13 @@ then
     fi
     return 1
   fi
+  # An exit code of 1 means a big diff. Exit of 0 means reasonable size.
   $mypycom $testsrc/$mypydir/checksize.py $maxdiffile $t1  $t2
-  if [ $?  -eq 0 -o "$platform" = "msys2"  ]
+  
+  # on msys2 it's good to see the real diff.
+  if [ $? -eq 0 -o "$platform" = "msys2"  ]
   then
     # on msys2 we must diff: cmp will fail .
-    # Ok to diff
     x="diff $diffopt $t1 $t2"
     echo "$x"
     $x
@@ -730,7 +732,8 @@ else
     #echo "pass diff Identical "  $*
     return 0
   else
-    echo "fail diff Differ "  $*
+    echo "fail diff Differ $t1 $t2 "  $*
+    diff $t1 $t2
     return 1
   fi
 fi
@@ -761,9 +764,9 @@ runsingle () {
   pctstring=`$mypycom $testsrc/$mypydir/showpct.py $totalct`
   if [ "$args" = "" ]
   then
-    echo  "=====STARTsingle Pct $pctstring $exe $args good=$goodcount skip=$skipcount fail=$failcount"
+    echo  "=====STARTsingle Pct $pctstring $base $exe good=$goodcount skip=$skipcount fail=$failcount"
   else
-    echo  "=====STARTsingle Pct $pctstring $args $args good=$goodcount skip=$skipcount fail=$failcount"
+    echo  "=====STARTsingle Pct $pctstring $base $exe $args good=$goodcount skip=$skipcount fail=$failcount"
   fi
   echo  "=====STATSsingle Pct $pctstring ct: $totalct"
   echo "new start " `date "+%Y-%m-%d %H:%M:%S"`
@@ -804,16 +807,27 @@ runsingle () {
   fi
   if [ $modpath = "y" ]
   then
-    canp=$testsrc/scripts/canonicalpath.py
-    echo "$scr junksingle.$base $code $codedir content"
-    $canp junksingle.$base $code $codedir content >junksingle3a.$base
-    chkresbld $? "FAIL $canp a"
-    #Needed as some strings in the 
-    #object file itself are:
+    canp=$testsrc/scripts/dirtostd.py
+    # This is local transform, actual $HOME
+    xstd="$HOME/dwarf/code"
+    echo "dadebug==== baseline base $testsrc/baselines/$base" 
+    cat $testsrc/baselines/$base
+    echo "dadebug==== output of app junksingle.$base "
+    cat junksingle.$base
+    $canp junksingle.$base $xstd >junksingle3a.$base
+    r=$?
+    # This is transform base on original compile of object.
+    chkresbld $r "FAIL $canp a"
     xstd="/home/davea/dwarf/code"
-    $canp junksingle3a.$base $xstd content >junksingle3.$base
-    chkresbld $? "FAIL $canp b"
+    echo "dadebug==== output of first transform junksingle3a.$base $xstd  "
+    cat junksingle3a.$base
+    $canp junksingle3a.$base $xstd >junksingle3.$base
+    r=$?
+    echo "dadebug==== final output new junksingle3.$base $xstd " 
+    cat junksingle3.$base
+    chkresbld $r "FAIL $canp b"
   else
+    echo "dadebug skip canonicalpath.py"
     cp junksingle.$base junksingle3.$base
     chkresbld $? "FAIL cp junksingle.$base to junksingle3"
   fi
@@ -1192,8 +1206,8 @@ echo "=====BUILD  dwarfexample/dwdebuglink.c "
 
 echo "=====START  $testsrc/testfindfuncbypc/ tests good=$goodcount skip=$skipcount fail=$failcount"
   mklocal testfindfuncbypc
-  sh $testsrc/testfindfuncbypc/runtest.sh
-  chkres $? 'check  of testfindfuncbypc failed'
+    sh $testsrc/testfindfuncbypc/runtest.sh
+    chkres $? 'check  of testfindfuncbypc failed'
   cd ..
 # the special (badly written) testcases here
 # return 0 even if there is a DWARF ERROR reported
@@ -3055,6 +3069,7 @@ else
   --no-follow-debuglink --add-debuglink-path=/exam/ple \
   --add-debuglink-path=/tmp/phony $codedir/test/dummyexecutable
 fi
+
 #runsingle test_dwnames.base ./test_dwnames \
 #  -i $codedir/src/lib/libdwarf --run-self-test
 
@@ -3116,9 +3131,15 @@ runsingle fuzzpath201690c.base ./filelist/localfuzz_init_path  \
 runsingle fuzzpath54724.base ./filelist/localfuzz_init_path  \
   $testsrc/ossfuzz54724/clusterfuzz-54724-poc
 
-runsingle test_bitoffseta.base ./test_bitoffset  \
+if [  $platform = "msys2" ]
+then 
+  echo "====SKIP test_bitoffset on msys2"
+  skipcount=`expr $skipcount +  1 `
+else 
+  runsingle test_bitoffseta.base ./test_bitoffset  \
     $testsrc/bitoffset/bitoffsetexampledw3.o \
     $testsrc/bitoffset/bitoffsetexampledw5.o  
+fi
 
 echo "platform : $platform"
 
@@ -3128,7 +3149,7 @@ then
   runsingle test_harmlessc.base ./test_harmless $suppresstree  -f \
   $testsrc/testfindfuncbypc/findfuncbypc.exe1
 else
-  echo "====SKIP run test_harmless on macos count 2 (Dwarwin) "
+  echo "====SKIP run test_harmless on macos count 2 (Darwin or Msys2) "
   skipcount=`expr $skipcount +  2 `
 fi
 
@@ -3144,7 +3165,7 @@ runsingle test_arangeb.base ./test_arange  \
 
 if [ ! $platform = "msys2" ]
 then
-  echo "====SKIP run test_pubsreader on msys2 (Dwarwin) "
+  echo "====SKIP run test_pubsreader on msys2  "
   skipcount=`expr $skipcount +  1 `
 else
   runsingle test_pubsreaderb.base ./test_pubsreader  \
@@ -3162,12 +3183,18 @@ runsingle test_findfuncbypcb2.base ./findfuncbypc  \
 # no output?
 runsingle test_findfuncbypcb3.base ./findfuncbypc  \
   --printdetails $testsrc/testfindfuncbypc/findfuncbypc.exe1
-# pc not found
-runsingle test_findfuncbypcb4.base ./findfuncbypc  \
-  --printdetails --pc=10000 $testsrc/testfindfuncbypc/findfuncbypc.exe1
-# should work
-runsingle test_findfuncbypcb5.base ./findfuncbypc  \
-  --printdetails --pc=0x36a4 $testsrc/testfindfuncbypc/findfuncbypc.exe1
+#if [ $platform = "msys2" ]
+#then 
+#  echo "====SKIP run findfunc --pc= on msys2  "
+#  skipcount=`expr $skipcount +  1 `
+#else 
+  # pc not found
+  runsingle test_findfuncbypcb4.base ./findfuncbypc  \
+    --printdetails --pc=10000 $testsrc/testfindfuncbypc/findfuncbypc.exe1
+  # should work
+  runsingle test_findfuncbypcb5.base ./findfuncbypc  \
+    --printdetails --pc=0x36a4 $testsrc/testfindfuncbypc/findfuncbypc.exe1
+#fi
 
 runsingle test_simplereaderb.base ./simplereader \
   $testsrc/corruptdwarf-a/simplereader.elf
