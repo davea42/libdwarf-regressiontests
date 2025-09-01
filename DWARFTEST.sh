@@ -810,24 +810,24 @@ runsingle () {
     canp=$testsrc/scripts/dirtostd.py
     # This is local transform, actual $HOME
     xstd="$HOME/dwarf/code"
-    echo "dadebug==== baseline base $testsrc/baselines/$base" 
-    cat $testsrc/baselines/$base
-    echo "dadebug==== output of app junksingle.$base "
-    cat junksingle.$base
+    #echo "debug:==== baseline base $testsrc/baselines/$base" 
+    #cat $testsrc/baselines/$base
+    #echo "debug:==== output of app junksingle.$base "
+    #cat junksingle.$base
     $canp junksingle.$base $xstd >junksingle3a.$base
     r=$?
     # This is transform base on original compile of object.
     chkresbld $r "FAIL $canp a"
     xstd="/home/davea/dwarf/code"
-    echo "dadebug==== output of first transform junksingle3a.$base $xstd  "
-    cat junksingle3a.$base
+    #echo "debug:==== output of first transform junksingle3a.$base $xstd  "
+    #cat junksingle3a.$base
     $canp junksingle3a.$base $xstd >junksingle3.$base
     r=$?
-    echo "dadebug==== final output new junksingle3.$base $xstd " 
-    cat junksingle3.$base
+    #echo "debug:==== final output new junksingle3.$base $xstd " 
+    #cat junksingle3.$base
     chkresbld $r "FAIL $canp b"
   else
-    echo "dadebug skip canonicalpath.py"
+    echo "debug: skip canonicalpath.py"
     cp junksingle.$base junksingle3.$base
     chkresbld $? "FAIL cp junksingle.$base to junksingle3"
   fi
