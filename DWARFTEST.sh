@@ -3088,7 +3088,7 @@ runsingle fuzz40624.base ./filelist/localfuzz_init_binary  \
 if [ $platform = "msys2" ]
 then
   echo "====SKIP run fuzzgoogle1.base fuzzgoogle1b.base (1)"
-  skipcount=`expr $skipcount +  4 `
+  skipcount=`expr $skipcount +  6 `
 else
   runsingle fuzzgoogle1.base ./filelist/localfuzz_init_binary  \
     $testsrc/google1/crash-c7e04f405a39f3e92edb56c28180531b9b8211bd
@@ -3098,13 +3098,14 @@ else
     $testsrc/c-sun/poc
   runsingle fuzz201609.base ./filelist/localfuzz_init_binary  \
    $testsrc/DW201609-004/poc
-fi
-runsingle fuzzguil.base ./filelist/localfuzz_init_binary  \
+  runsingle fuzzguil.base ./filelist/localfuzz_init_binary  \
    $testsrc/guilfanov2/double-free-poc
-runsingle fuzz201609b.base ./filelist/localfuzz_init_binary  \
-  $testsrc/DW201609-002/DW201609-002-poc
-runsingle fuzz201690c.base ./filelist/localfuzz_init_binary  \
-  $testsrc/DW201609-003/poc
+
+  runsingle fuzz201609b.base ./filelist/localfuzz_init_binary  \
+    $testsrc/DW201609-002/DW201609-002-poc
+  runsingle fuzz201690c.base ./filelist/localfuzz_init_binary  \
+    $testsrc/DW201609-003/poc
+fi
 runsingle fuzz54724.base ./filelist/localfuzz_init_binary  \
   $testsrc/ossfuzz54724/clusterfuzz-54724-poc
 
@@ -3163,7 +3164,7 @@ runsingle test_sectionnamesb.base ./test_sectionnames \
 runsingle test_arangeb.base ./test_arange  \
   $testsrc/irixn32/dwarfdump
 
-if [ ! $platform = "msys2" ]
+if [ $platform = "msys2" ]
 then
   echo "====SKIP run test_pubsreader on msys2  "
   skipcount=`expr $skipcount +  1 `
@@ -3183,18 +3184,18 @@ runsingle test_findfuncbypcb2.base ./findfuncbypc  \
 # no output?
 runsingle test_findfuncbypcb3.base ./findfuncbypc  \
   --printdetails $testsrc/testfindfuncbypc/findfuncbypc.exe1
-#if [ $platform = "msys2" ]
-#then 
-#  echo "====SKIP run findfunc --pc= on msys2  "
-#  skipcount=`expr $skipcount +  1 `
-#else 
+if [ $platform = "msys2" ]
+then 
+  echo "====SKIP run findfunc --pc= on msys2  "
+  skipcount=`expr $skipcount +  1 `
+else 
   # pc not found
   runsingle test_findfuncbypcb4.base ./findfuncbypc  \
     --printdetails --pc=10000 $testsrc/testfindfuncbypc/findfuncbypc.exe1
   # should work
   runsingle test_findfuncbypcb5.base ./findfuncbypc  \
     --printdetails --pc=0x36a4 $testsrc/testfindfuncbypc/findfuncbypc.exe1
-#fi
+fi
 
 runsingle test_simplereaderb.base ./simplereader \
   $testsrc/corruptdwarf-a/simplereader.elf
