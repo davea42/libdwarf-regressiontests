@@ -2,24 +2,13 @@
 
 f="C:/msys64/davea/"
 fz=${f}home/admin
-flin=/home/davea/dwarf/
-./canonicalpath.py $flin xxxx name
-./canonicalpath.py $flin /home/davea  name
-./canonicalpath.py $flin /home/admin name
+flin="/home/davea/dwarf/code"
 
-echo ""
-./canonicalpath.py $fz xxxx name
-./canonicalpath.py $fz /home/davea/dwarf/regressiontests  name
-./canonicalpath.py $fz /home/admin name
-
-echo " a /home/davea" >junkcontent
-echo " b /home/admin" >>junkcontent
-echo " c $fz/dwarf/code" >>junkcontent
-echo " d $flin/regressiontests" >>junkcontent
-echo " e C:/msys64${flin}/code" >>junkcontent
+echo " a /home/davea/dwarf/regressiontests/../code/test/dummyexecutable" >junkcontent
+echo " b /home/davea/dwarf/code/test/dummyexecutable" >>junkcontent
 
 echo " "
-./canonicalpath.py junkcontent $fz content
+./dirtostd.py junkcontent  $flin
 echo " "
-./canonicalpath.py junkcontent $flin content
+./dirtostd.py  sampledirtostd.base $flin
 
