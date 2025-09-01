@@ -1,3 +1,114 @@
+2025-09-01:  David Anderson
+    commit 998721d0ab7ffdf1f1d355ea330a8692af27bf86
+
+    A few more SKIPped on msys2.
+            modified:   DWARFTEST.sh
+
+2025-09-01:  David Anderson
+    commit d218df3bdaf72e9d9cf252dfb9f32a4e809a91a0
+
+    Heavily revised and simplified for its current use.
+            modified:   scripts/dirtostd.py
+
+2025-09-01:  David Anderson
+    commit 43e75186bf3c8ea5bef0baf6ba38bb0dddce8504
+
+    Comment out a few lines used for debugging this
+    and scripts/dirtostd.py  .
+            modified:   DWARFTEST.sh
+
+2025-09-01:  David Anderson
+    commit 67be25bba343477a954cdd0ac92debc431aba82c
+
+    SKIP a few more tests when running in Msys2
+    so we can PASS. Leaving the vast majority
+    in place and working.
+    See '$platform = "msys2"'
+            modified:   DWARFTEST.sh
+
+2025-09-01:  David Anderson
+    commit 9c2beef33be2c2ba77a6b56ebfc47b68ff16a34a
+
+    Removed no-longer-needed calls to python code in creating BASEFILES.sh
+            modified:   INITIALSETUP.sh
+
+2025-09-01:  David Anderson
+    commit a96cbda2703c71dc0e0beac6bcb6332ef2799c85
+
+    Changed comments for precision and clarity.
+            modified:   README.md
+
+2025-09-01:  David Anderson
+    commit 8d65a3f6ea7fd2e28515467dfae1b4ed5161cf69
+
+    Removed irrelevant #include and #define.
+            modified:   test_pubsreader.c
+
+2025-09-01:  David Anderson
+    commit b4ee29e17532cdf2520172b570bcc0fff76cfbb4
+
+    Improved local test of dirtostd.py
+            new file:   scripts/sampledirtostd.base
+            modified:   scripts/testdirtostd.sh
+
+2025-09-01:  David Anderson
+    commit 16611ec4eb4d5cfbe5775e9614f42af162b0fefb
+
+    Removed obsolete functionality, making simpler code.
+            renamed:    scripts/canonicalpath.py -> scripts/dirtostd.py
+            renamed:    scripts/testcanonical.sh -> scripts/testdirtostd.sh
+
+    Remove blank line
+            modified:   testfindfuncbypc/runall.sh
+    Add 2 line comment
+            modified:   testfindfuncbypc/runtest.sh
+
+2025-08-30:  David Anderson
+    commit 54a3476f671768746bbf7f963d78d7f576664938
+
+    Another local open() that failed to use O_BINARY for Msys2.
+            modified:   filelist/localfuzz_init_binary.c
+
+2025-08-30:  David Anderson
+    commit 94db7dcb9aafa7baa98833577b53bc326f5b7816
+
+    One more SKIP for Msys2.
+            modified:   DWARFTEST.sh
+
+2025-08-30:  David Anderson
+    commit 391a8abdd2d759d80cac09cd1456e83d25d20cb3
+
+    Correcting the Macos use of gzcat (zcat is there but
+    we need the GNU version gzcat).
+            modified:   debugfission/runtest.sh
+
+2025-08-30:  David Anderson
+    commit 9231d19c05a772bea9884149c3ef881386a43fb2
+
+    Final cleanup/comment-fixing so regressiontesting
+    works on all supported platforms (now including
+    regressiontesting on Msys2).
+            modified:   DWARFTEST.sh
+            modified:   PICKUPBIN.sh
+            modified:   README.md
+            modified:   RUNALL.sh
+
+2025-08-29:  David Anderson
+    commit 7c31bb2d2f49dd654b389d02a02473c694fcc6a9
+
+    Ensure we have zcat or gzcat (Macos) before using such.
+    Now skip  various tests that  simply will not pass on Msys2.
+            modified:   DWARFTEST.sh
+
+    Ensure we have zcat or gzcat (Macos) before using such.
+            modified:   debugfission/runtest.sh
+
+2025-08-27:  David Anderson
+    commit 028cf13ebaadc4b9f721e18e317e6da1bf7e9a52
+
+    Up to date with git log.
+            modified:   ChangeLog
+
 2025-08-27:  David Anderson
     commit aca7951705c7bc9ba2cf6c93a405ff6d786652ba
 
