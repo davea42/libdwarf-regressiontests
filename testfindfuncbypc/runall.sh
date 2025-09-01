@@ -21,4 +21,3 @@ $ff --printdetails --pc=10000 $testff
 echo "====Following tests using ranges properly"
 echo "====$ff --printdetails --pc=0x36a4 findfuncbypc.ex1"
 $ff --printdetails --pc=0x36a4 $testff
-

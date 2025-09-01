@@ -3,6 +3,8 @@
 ts=$testsrc/testfindfuncbypc
 tf=$bldtest/testfindfuncbypc
 
+# All the test data was captured as is, so we do not
+# need to adjust any full paths.
 sh $ts/runall.sh > junkbypcresults 2>&1
 base=$ts/findfuncbypc.base
 # cmp cannot work on Windows
