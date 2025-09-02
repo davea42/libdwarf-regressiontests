@@ -1,3 +1,33 @@
+2025-09-02:  David Anderson
+    commit 417334d002fdbb64330076a8dbc426de20be0870
+
+    Added Details on Msys2 passing regressiontests.
+            modified:   RegressionTestsResults.ods
+    Latest baseline executable.
+            modified:   dwarfdump-msys2.O
+
+2025-09-01:  David Anderson
+    commit f99c73f710376a6d8639c7a100ba24367622d032
+
+    Reformatted to match libdwarf project coding style.
+            modified:   test_language_version.c
+
+2025-09-01:  David Anderson
+    commit dd71ba4dec1e093c0776ac79cf4c2c0bb67e8ddd
+
+    New baseline exectables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-09-01:  David Anderson
+    commit da2ae9f6b69349c2493960f5c8b425e896db28a9
+
+    Up to date with git log
+            modified:   ChangeLog
+
 2025-09-01:  David Anderson
     commit 998721d0ab7ffdf1f1d355ea330a8692af27bf86
 
