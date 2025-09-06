@@ -1,0 +1,88 @@
+November 1, 2023
+There is a concern that pyelftools 
+do not report this correctly.
+In particular are the restore(s) shown properly.
+00000000 000000000000000c ffffffff CIE
+  Version:               3
+  Augmentation:          ""
+  Code alignment factor: 1
+  Data alignment factor: -4
+  Return address column: 1
+
+  DW_CFA_def_cfa_register: r2 (sp)
+  DW_CFA_nop
+
+00000010 000000000000002c 00000000 FDE cie=00000000 pc=00000000000108b8..00000000000109a0
+  DW_CFA_advance_loc: 4 to 00000000000108bc
+  DW_CFA_def_cfa_offset: 32
+  DW_CFA_advance_loc: 12 to 00000000000108c8
+  DW_CFA_offset: r9 (s1) at cfa-16
+  DW_CFA_offset: r18 (s2) at cfa-24
+  DW_CFA_offset: r8 (s0) at cfa-8
+  DW_CFA_advance_loc1: 200 to 0000000000010990
+  DW_CFA_restore: r8 (s0)
+  DW_CFA_advance_loc: 4 to 0000000000010994
+  DW_CFA_restore: r9 (s1)
+  DW_CFA_advance_loc: 4 to 0000000000010998
+  DW_CFA_restore: r18 (s2)
+  DW_CFA_advance_loc: 4 to 000000000001099c
+  DW_CFA_def_cfa_offset: 0
+  DW_CFA_nop
+  DW_CFA_nop
+  DW_CFA_nop
+  DW_CFA_nop
+
+and the following DecodedCallFrameTable is generated:
+
+DecodedCallFrameTable(table=[{'pc': 67768, 'cfa': CFARule(reg=2, offset=0, expr=None)}, 
+                             {'pc': 67772, 'cfa': CFARule(reg=2, offset=32, expr=None)}, 
+                             {'pc': 67784, 'cfa': CFARule(reg=2, offset=32, expr=None), 
+                                9: RegisterRule(OFFSET, -16), 
+                                18: RegisterRule(OFFSET, -24), 
+                                8: RegisterRule(OFFSET, -8)}, 
+                             {'pc': 67984, 'cfa': CFARule(reg=2, offset=32, expr=None), 
+                                9: RegisterRule(OFFSET, -16), 
+                                18: RegisterRule(OFFSET, -24)}, 
+                            {'pc': 67988, 'cfa': CFARule(reg=2, offset=32, expr=None), 
+                                18: RegisterRule(OFFSET, -24)}, 
+                            {'pc': 67992, 'cfa': CFARule(reg=2, offset=32, expr=None)}, 
+                             {'pc': 67996, 'cfa': CFARule(reg=2, offset=0, expr=None)}], reg_order=[9, 18, 8])
+
+we can see that the restore on reg8 is lost.
+It is a bit annoying that they sometimes show pc as
+integer, sometimes as hex.
+
+dwarfdump -f -F -vvv reports as follows
+
+
+<    1><0x000108b8:0x000109a0><fft><cie offset 0x00000000::cie index     0><fde offset 0x00000010 length: 0x0000002c><eh offset none>
+        0x000108b8: <off cfa=r2 >
+        0x000108bc: <off cfa=32(r2) >
+        0x000108c8: <off cfa=32(r2) > <off r8=-8(cfa) > <off r9=-16(cfa) > <off r18=-24(cfa) >
+        0x00010990: <off cfa=32(r2) > <off r9=-16(cfa) > <off r18=-24(cfa) >
+        0x00010994: <off cfa=32(r2) > <off r18=-24(cfa) >
+        0x00010998: <off cfa=32(r2) >
+        0x0001099c: <off cfa=00(r2) >
+ fde section offset 16 0x00000010 cie offset for fde: 0 0x00000000
+  [  ] offset name                 operands
+  [ 0]   0 DW_CFA_advance_loc      4  (4 * 1)
+  [ 1]   1 DW_CFA_def_cfa_offset   32
+  [ 2]   3 DW_CFA_advance_loc      12  (12 * 1)
+  [ 3]   4 DW_CFA_offset           r9 -16  (4 * -4)
+  [ 4]   6 DW_CFA_offset           r18 -24  (6 * -4)
+  [ 5]   8 DW_CFA_offset           r8 -8  (2 * -4)
+  [ 6]  10 DW_CFA_advance_loc1     200  (200 * 1)
+  [ 7]  12 DW_CFA_restore          r8
+  [ 8]  13 DW_CFA_advance_loc      4  (4 * 1)
+  [ 9]  14 DW_CFA_restore          r9
+  [10]  15 DW_CFA_advance_loc      4  (4 * 1)
+  [11]  16 DW_CFA_restore          r18
+  [12]  17 DW_CFA_advance_loc      4  (4 * 1)
+  [13]  18 DW_CFA_def_cfa_offset   0
+  [14]  20 DW_CFA_nop
+  [15]  21 DW_CFA_nop
+  [16]  22 DW_CFA_nop
+  [17]  23 DW_CFA_nop
+
+
+
