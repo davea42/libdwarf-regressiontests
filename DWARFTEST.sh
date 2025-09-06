@@ -1242,8 +1242,6 @@ runsingle frame1regs-2025-09-06.base frame1/frame1 --stop-at-fde-n=8 $testsrc/gs
 
 runsingle frame1riskv-2025-09-06.base frame1/frame1 --stop-at-fde-n=8 $testsrc/frameriskv/fft
 
-exit 1
-
 # Tests with dwarfgen --add-language-version (new July 2025)
 #  --add-implicit-const --add-sun-func-offsets
 # same test run later.  Drop this one
