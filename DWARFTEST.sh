@@ -1238,7 +1238,11 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle frame1regs-2025-09-06.base frame1/frame1 --stop-at-fde-n=8 $testsrc/gsplitdwarf/frame1
 
+runsingle frame1riskv-2025-09-06.base frame1/frame1 --stop-at-fde-n=8 $testsrc/frameriskv/fft
+
+exit 1
 
 # Tests with dwarfgen --add-language-version (new July 2025)
 #  --add-implicit-const --add-sun-func-offsets
