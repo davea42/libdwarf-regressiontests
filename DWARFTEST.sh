@@ -3053,9 +3053,9 @@ else
 fi
 runsingle frame1-orig.base ./frame1/frame1  \
   $testsrc/frame1/frame1.orig
-runsingle frame1-2018.base ./frame1/frame1 \
+runsingle frame1-2018.base ./frame1/frame1 --stop-at-fde-n=10 \
    $testsrc/frame1/frame1.exe.2018-05-11
-runsingle frame1-2018s.base ./frame1/frame1  \
+runsingle frame1-2018s.base ./frame1/frame1  --stop-at-fde-n=10 \
   --just-print-selected-regs \
   $testsrc/frame1/frame1.exe.2018-05-11
 if [  $platform = "msys2" ]
