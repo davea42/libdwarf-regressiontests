@@ -1241,13 +1241,13 @@ fi
 # A macos segment with no sections was handled inappropriately, hence
 # complaints from -fscanitize , but now we just avoid doing 
 # anything for an empty section list.
-runsingle ossfuzz446356422.base ./fuzz_crc_32 --suppress-de-alloc-tree --testobj=/home/davea/dwarf/regressiontests/ossfuzz446356422/fuzz_crc_32-4931308642172928
+runsingle ossfuzz446356422.base ./fuzz_crc_32 --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446356422/fuzz_crc_32-4931308642172928
 
 # Uses DWARF5 DW_FORM_line_strp which was not handled correctly, nor was FORM strx
 # in the line table handled correctly.
-runsingle macho-kagstrom-l.base ./dwarfdump -l -vvv /home/davea/dwarf/regressiontests/macho-kagstrom/a
+runsingle macho-kagstrom-l.base ./dwarfdump -l -vvv $testsrc/macho-kagstrom/a
 
-runsingle macho-kagstrom-srcfiles.base ./dwarfdump --print-all-srcfiles /home/davea/dwarf/regressiontests/macho-kagstrom/a
+runsingle macho-kagstrom-srcfiles.base ./dwarfdump --print-all-srcfiles $testsrc/macho-kagstrom/a
 
 runsingle frame1regs-2025-09-06.base frame1/frame1 --stop-at-fde-n=8 $testsrc/gsplitdwarf/frame1
 
