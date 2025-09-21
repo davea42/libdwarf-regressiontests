@@ -1238,6 +1238,15 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# A macos segment with no sections was handled inappropriately, hence
+# complaints from -fscanitize , but now we just avoid doing 
+# anything for an empty section list.
+runsingle ossfuzz446356422.base ./fuzz_crc_32 --suppress-de-alloc-tree --testobj=/home/davea/dwarf/regressiontests/ossfuzz446356422/./fuzz_crc_32-4931308642172928
+
+runsingle macho-kagstrom-l.base ./dwarfdump -l -vvv --testobj=/home/davea/dwarf/regressiontests/macho-kagstrom/a
+
+runsingle macho-kagstrom-srcfiles.base ./dwarfdump --print-all-srcfiles  --testobj=/home/davea/dwarf/regressiontests/macho-kagstrom/a
+
 runsingle frame1regs-2025-09-06.base frame1/frame1 --stop-at-fde-n=8 $testsrc/gsplitdwarf/frame1
 
 runsingle frame1riskv-2025-09-06.base frame1/frame1 --stop-at-fde-n=8 $testsrc/frameriskv/fft

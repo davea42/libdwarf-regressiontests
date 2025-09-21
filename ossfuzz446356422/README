@@ -1,0 +1,29 @@
+
+ oss fuzz ossfuzz446356422
+
+crash type: Heap-buffer-overflow WRITE 8
+
+Crash State: _dwarf_macho_load_dwarf_sections
+    _dwarf_load_macho_commands
+    _dwarf_macho_setup
+
+==403==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x7d3e748e1230 at pc 0x58e6f020a1d0 bp 0x7ffe9edfe4d0 sp 0x7ffe9edfe4
+WRITE of size 8 at 0x7d3e748e1230 thread T0
+SCARINESS: 52 (8-byte-write-heap-buffer-overflow-far-from-bounds)
+#0 0x58e6f020a1cf in _dwarf_macho_load_dwarf_section_details32 libdwarf/src/lib/libdwarf/dwarf_machoread.c:632:33
+#1 0x58e6f020a1cf in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:816:15
+#2 0x58e6f020a1cf in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:850:15
+#3 0x58e6f020745c in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:924:11
+#4 0x58e6f020ad64 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1140:11
+#5 0x58e6f020ad64 in _dwarf_macho_object_access_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1196:11
+#6 0x58e6f020ad64 in _dwarf_macho_setup libdwarf/src/lib/libdwarf/dwarf_machoread.c:950:11
+#7 0x58e6f0200111 in dwarf_init_b libdwarf/src/lib/libdwarf/dwarf_generic_init.c:493:16
+#8 0x58e6f01fe2a4 in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_crc_32.c:69:5
+#9 0x58e6f009ce0d in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /src/llvm-project/
+
+The bug was introduced 2 days ago in new code.
+
+Fundamentally, a segment with no sections (other than the initial segment because
+the initial segment generates an empty section to be like ELF)
+was not handled correctly.  Now we just ignore the lack of sections
+and pretend it is normal.
