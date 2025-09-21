@@ -1,0 +1,4 @@
+
+We were handling  strx forms in the DWARF5 line table
+incorrectly, so printing the lines did not work.
+Now working.
