@@ -3,4 +3,14 @@ Sept 22 2025 New vulnerability.
 
 Times out when run by oss fuzz folks.
 
+A hint as to the point that never completes:
+
+#5 0x5c9e98472939 in __asan_region_is_poisoned /src/llvm-project/compiler-rt/lib/asan/asan_poisoning.cpp:259:8
+    #6 0x5c9e9846d493 in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #7 0x5c9e9851f337 in _dwarf_macho_load_dwarf_section_details32 libdwarf/src/lib/libdwarf/dwarf_machoread.c:650:9
+    #8 0x5c9e9851f337 in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:846:15
+    #9 0x5c9e9851f337 in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:880:15
+    #10 0x5c9e9851d72c in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:954:11
+    #11 0x5c9e985212b4 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1170:11
+
 
