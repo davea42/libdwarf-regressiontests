@@ -1,1 +1,2 @@
 Giving up, dwarf_init failed, cannot do DWARF processing
+Error code DW_DLE_MACHO_CORRUPT_HEADER(486) Incorrect header content. Corrupt DWARF

@@ -1,23 +1,7 @@
 
-.debug_info
+./dwarfdump ERROR:  dwarf_init_path_dl fails.:  DW_DLE_MACHO_CORRUPT_COMMAND(487) Incorrect Macho Command data.  Corrupt DWARF. Attempting to continue.
 
-COMPILE_UNIT<header overall offset = 0x00000000>:
-< 0><0x0000000b>  DW_TAG_partial_unit
-                    
-./dwarfdump:  DW_AT_SUN_func_offsets cannot uncompress data
- 
-
-CU Name = <unknown>
-CU Producer = <unknown>
-DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
-DW_AT_SUN_func_offsets      
-
-.debug_line: line number info for a single cu
-
-.debug_str
-
-.debug_aranges
-
-.debug_frame is not present
-
+CU Name = 
+CU Producer = 
+DIE OFF = 0x00000000 GOFF = 0x00000000, Low PC = unknown   , High PC = unknown   
 There was 1 DWARF error reported: see ERROR above.

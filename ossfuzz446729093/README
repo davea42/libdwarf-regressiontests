@@ -1,0 +1,20 @@
+
+19 Sept 2025.
+
+ oss fuzz 446729093
+libdwarf id DW2025090-003
+
+description: Reading a corrupted object takes excessive
+  time due to the failure to notice the corruption.
+  Segment size and segment counts (multiplied)
+  gave value larger than file size.
+  This vulnerability has been present since Mach-o
+  object support was added in 2018.
+
+
+  #4 0x7c8baf913c23 in memmove-vec-unaligned-erms.S:505 /build/glibc-LcI20x/glibc-2.31/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:505
+    #5 0x5b316f923cce in _dwarf_macho_load_dwarf_section_details64 libdwarf/src/lib/libdwarf/dwarf_machoread.c:758:9
+    #6 0x5b316f923cce in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:849:15
+    #7 0x5b316f923cce in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:880:15
+    #8 0x5b316f922cc2 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:954:11
+    #9 0x5b316f924e9b in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1170:11
