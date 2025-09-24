@@ -9,6 +9,8 @@ testcase: ossfuzz446735540 fuzz_aranges-4698786724380672
 
 Timed out as reading object was very slow.
 
+The set of sizes and count for object segment names
+was unreasonable. Now we notice and return an error.
 
 
 part of stack trace at cancellation:
