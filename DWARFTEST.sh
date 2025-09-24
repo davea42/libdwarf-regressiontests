@@ -1238,6 +1238,11 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle ossfuzz446781574.base ./fuzz_gdbindex --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446781574/fuzz_gdbindex-4712655307997184
+exit 1
+runsingle ossfuzz446726228.base ./fuzz_debuglink --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446726228/fuzz_debuglink-4854619680604160
+runsingle ossfuzz446726229.base ./fuzz_globals --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446726229/fuzz_globals-5387186766938112
+
 # A macos segment with no sections was handled inappropriately, hence
 # complaints from -fscanitize , but now we just avoid doing 
 # anything for an empty section list.

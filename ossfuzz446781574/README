@@ -1,0 +1,18 @@
+
+ossfuzz 446781574
+
+testcase fuzz_gdbindex-4712655307997184
+
+
+DW id: DW202509-004
+
+Code runs too long. times out in fuzzer.
+
+As in related cases, this is a failure to detect 
+a corrupted Mach-o object file.
+
+ #5 0x562db025218b in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #6 0x562db0301d47 in _dwarf_macho_load_dwarf_section_details32 libdwarf/src/lib/libdwarf/dwarf_machoread.c:650:9
+    #7 0x562db0301d47 in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:846:15
+    #8 0x562db0301d47 in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:880:15
+    #9 0x562db030013c in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/d
