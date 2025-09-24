@@ -1,0 +1,24 @@
+
+oss fuzz 446735540
+
+libdwarf id: DW202509-007
+
+testcase: ossfuzz446735540 fuzz_aranges-4698786724380672
+
+
+
+Timed out as reading object was very slow.
+
+
+
+part of stack trace at cancellation:
+
+    #3 0x7bc63aff141f in libpthread.so.0
+    #4 0x7bc63adde962 in memmove-vec-unaligned-erms.S:261 /build/glibc-LcI20x/glibc-2.31/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:261
+    #5 0x5ccf0eccb14e in _dwarf_macho_load_dwarf_section_details32 libdwarf/src/lib/libdwarf/dwarf_machoread.c:650:9
+    #6 0x5ccf0eccb14e in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:846:15
+    #7 0x5ccf0eccb14e in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:880:15
+    #8 0x5ccf0ecca2a2 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:954:11
+    #9 0x5ccf0eccc47b in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1170:11
+    #10 0x5ccf0eccc47b in _dwarf_macho_object_access_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1226:11
+    #11 0x5ccf0eccc47b in _dwarf_macho_setup libdwarf/src/lib/libdwarf/dwarf_machoread.c:98

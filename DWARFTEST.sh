@@ -1130,7 +1130,8 @@ fuzz_set_frame_all
 fuzz_simplereader_tu
 fuzz_srcfiles
 fuzz_stack_frame_access
-fuzz_str_offsets'
+fuzz_str_offsets
+fuzz_tie'
 
 # Do not do -Wall here ever.
 for f in $fuzzexe
@@ -1238,7 +1239,10 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
-runsingle ossfuzz446856589.base ./fuzz_aranges --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446856589/fuzz_tie-5831785406857216
+
+runsingle ossfuzz446735540.base ./fuzz_dnames --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446735540/fuzz_dnames-5931269398790144 
+runsingle ossfuzz446856589.base ./fuzz_tie --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446856589/fuzz_tie-5831785406857216
+
 
 runsingle ossfuzz446746574.base ./fuzz_aranges --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446746574/fuzz_aranges-4698786724380672
 
