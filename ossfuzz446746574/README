@@ -1,0 +1,24 @@
+
+
+test dir: regressiontests/ossfuzz446746574
+Testcase  fuzz_aranges-4698786724380672
+
+ossfuzz id 446746574
+
+libdwarf id DW202509-005
+
+Timeout running fuzzer.
+
+Some segment names are empty or garbage and before recent
+checks we just ignored those.  Since all such names
+are defined by the compiler and ABI anything 
+non-ascii is nonsense, so we error off.
+
+   #3 0x7ec1e9d7e41f in libpthread.so.0
+    #4 0x7ec1e9a9be1e in memmove-vec-unaligned-erms.S:505 /build/glibc-LcI20x/glibc-2.31/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:505
+    #5 0x5a101ca6518b in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #6 0x5a101cb1386b in _dwarf_macho_load_dwarf_section_details64 libdwarf/src/lib/libdwarf/dwarf_machoread.c:758:9
+    #7 0x5a101cb1386b in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:849:15
+    #8 0x5a101cb1386b in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:880:15
+    #9 0x5a101cb11abc in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:954:11
+    #10 0x5a101cb15644 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c
