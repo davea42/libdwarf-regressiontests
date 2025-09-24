@@ -1,0 +1,4 @@
+
+libdwarf is unable to record error DW_DLE_MACHO_CORRUPT_COMMAND(487) Incorrect Macho Command data.  Corrupt DWARF No error argument or handler available
+
+libdwarf is unable to record error DW_DLE_DBG_NULL (81) No error argument or handler available
