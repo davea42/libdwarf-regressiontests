@@ -1,3 +1,253 @@
+2025-09-25:  David Anderson
+    commit a814e11321e0a5f34f29bddb0b94ac062e317c85
+
+    All these updated for the recent fixes in mach-o
+    reading.  The CoverityScan issue fixes
+    related to memory leaks not included as
+    it seemed unneccesary to redo the process,
+    no tests hit those leaks.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-09-25:  David Anderson
+    commit 9086d0854a2dd442a2766ab961456ae8ac28189b
+
+    baseline update...
+            modified:   baselines/ossfuzz446781574.base
+
+2025-09-25:  David Anderson
+    commit 00bffe34be91b7d92e2261efa46482187694d3f2
+
+    Now running the testcase.
+            modified:   DWARFTEST.sh
+            new file:   baselines/macho-kagstrom.base
+            modified:   macho-kagstrom/README
+
+2025-09-24:  David Anderson
+    commit 28f80ad7a6dcebc7ae5b7c40cb078c734335686b
+
+    Last of the September bugs are fixed and tested.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz446831123.base
+            new file:   ossfuzz446831123/README
+            new file:   ossfuzz446831123/fuzz_rng-6527551318327296
+
+2025-09-24:  David Anderson
+    commit 1275d662929da9ae97a9d92eaff0a8ae139fdc46
+
+    Description of the test
+            modified:   ossfuzz446735540/README
+
+2025-09-24:  David Anderson
+    commit 83d260803b4dc3d38ac67b1ce13901e85e124452
+
+    New tests run
+            modified:   DWARFTEST.sh
+    New test created, test of a few minutes ago corrected.
+            new file:   baselines/ossfuzz446735540.base
+            modified:   baselines/ossfuzz446856589.base
+    New test
+            new file:   ossfuzz446735540/README
+            new file:   ossfuzz446735540/fuzz_dnames-5931269398790144
+
+2025-09-24:  David Anderson
+    commit 657dc00786b146d4145e7a116bdd2a0b20e9ea49
+
+    Now running the newest tests.
+            modified:   DWARFTEST.sh
+
+2025-09-24:  David Anderson
+    commit 93d03a9b779e668d1bd62ac7cdded32dfcb9d561
+
+    Correct baselines
+            new file:   baselines/ossfuzz446746574.base
+            new file:   baselines/ossfuzz446856589.base
+
+2025-09-24:  David Anderson
+    commit b7dab5804e39866e54d267b1e668717f9cdd988d
+
+    New testcases
+            new file:   ossfuzz446746574/README
+            new file:   ossfuzz446746574/fuzz_aranges-4698786724380672
+            new file:   ossfuzz446856589/README
+            new file:   ossfuzz446856589/fuzz_tie-5831785406857216
+
+2025-09-24:  David Anderson
+    commit 506c87488537ef207c01836fb38eb7d521a5fb11
+
+    With tests of these vulnerabilities.
+            modified:   DWARFTEST.sh
+    baseline.
+            new file:   baselines/ossfuzz446781574.base
+    the new test cases.
+            new file:   ossfuzz446726228/README
+            new file:   ossfuzz446726228/fuzz_debuglink-4854619680604160
+            new file:   ossfuzz446781574/README
+            new file:   ossfuzz446781574/fuzz_gdbindex-4712655307997184
+
+2025-09-23:  David Anderson
+    commit 06dc8db117089ac1edc97baea4aa82bbc3a26052
+
+    New baselines
+            new file:   baselines/ossfuzz446726228.base
+            new file:   baselines/ossfuzz446726229.base
+
+2025-09-23:  David Anderson
+    commit 3fe2cfac622fd85faaff5d484485d0c4261921e1
+
+    Details on a vulnerability (fixed)
+            modified:   ossfuzz446726229/README
+
+2025-09-23:  David Anderson
+    commit 946f465bec5ebdfa4484d9b5d29282e9edee7540
+
+    All about mach-o object file checking and finding
+    corrupt object files.
+            modified:   baselines/hongg2024-02-16-a.base
+            modified:   baselines/hongg2024-02-16-b.base
+            modified:   baselines/hongg2024-02-16-c.base
+            modified:   baselines/hongg2024-02-16-d.base
+            modified:   baselines/hongg2024-02-16-e.base
+            modified:   baselines/hongg2024-02-16-g.base
+            modified:   baselines/hongg2024-02-16-h.base
+            modified:   baselines/hongg2024-02-16-i.base
+            modified:   baselines/hongg2024-02-16-k.base
+            modified:   baselines/ossfuzz59950.base
+            modified:   baselines/ossfuzz60090.base
+            modified:   baselines/ossfuzz70277.base
+            new file:   ossfuzz446729093/README
+            new file:   ossfuzz446729093/fuzz_init_binary-5396366991097856
+
+2025-09-23:  David Anderson
+    commit 5c8361f9ef0216dde3349db8d81a4297c4142787
+
+    dw assigned number DW202509-002
+
+            new file:   ossfuzz446726229/README
+            new file:   ossfuzz446726229/fuzz_globals-5387186766938112
+
+2025-09-21:  David Anderson
+    commit f3768917a6e5eeeab31db4e8c55979de8bebe541
+
+    Added new tests of mach-o objects, one with
+    a corrupted object.
+            modified:   DWARFTEST.sh
+
+2025-09-21:  David Anderson
+    commit 2037081f6d60f15b96462a5ea62e92ab3f55f6cd
+
+    Now testing mach-o for better corrupt object detection
+    and for correct handling of DW_FORM_line_strp and strx
+    forms in the line table.
+            modified:   DWARFTEST.sh
+
+2025-09-21:  David Anderson
+    commit 6c1eb49edb342c911832f3e1a53382a143d00368
+
+    New testfiles to verify correct handling of Apple
+    DWARF5 line-table strings.
+            new file:   baselines/macho-kagstrom-l.base
+            new file:   baselines/macho-kagstrom-srcfiles.base
+            new file:   macho-kagstrom/._a.dSYM
+            new file:   macho-kagstrom/README
+            new file:   macho-kagstrom/a
+            new file:   macho-kagstrom/a.dSYM/._Contents
+            new file:   macho-kagstrom/a.dSYM/Contents/._Info.plist
+            new file:   macho-kagstrom/a.dSYM/Contents/._Resources
+            new file:   macho-kagstrom/a.dSYM/Contents/Info.plist
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/._DWARF
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/._Relocations
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/DWARF/._a
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/DWARF/a
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/Relocations/._aarch64
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/Relocations/aarch64/._a.yml
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/Relocations/aarch64/a.yml
+
+2025-09-21:  David Anderson
+    commit 3ab71f9e0417bfb9a58a0e157e96789655f42bcc
+
+    New tests for reading Mach-o objects, and testing
+    fix for ossfuzz issue 446356422
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz446356422.base
+            new file:   ossfuzz446356422/README
+            new file:   ossfuzz446356422/fuzz_crc_32-4931308642172928
+
+2025-09-20:  David Anderson
+    commit 07a3727d34f3d6742de41696607e742678ba44ad
+
+    Changes in the output of dwarfdump means changing these baselines.
+            modified:   baselines/machinearchunivbinv.base
+            modified:   baselines/machinearcmachov.base
+
+2025-09-08:  David Anderson
+    commit 2d11627b9a89a6fcfe64ae24db69a45992d1ee0f
+
+    Having added some LLVM and APPLE items to the
+    list of known extensions we no longer
+    report DWARF CHECK with -ka etc on those.
+    So new baseline executables.
+    Msys2 will run for some hours, so
+    we will show that after it finishes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-09-08:  David Anderson
+    commit bed151788543c2f12adba0ab2edbf5c9bb29ce91
+
+    New baselines reflecting the new specification
+    of showing just 10 FDEs from frame1.
+            modified:   baselines/frame1-2018.base
+            modified:   baselines/frame1-2018s.base
+            modified:   baselines/frame1-orig.base
+
+2025-09-08:  David Anderson
+    commit 3f1bf4fc56e54fb606f0ac47432a804cdd7b19f4
+
+    when running frame1, use
+    --stop-at-fde-n=10
+    so the list of (usually very similar) fde-s printed
+    is not excessively long.
+            modified:   DWARFTEST.sh
+
+2025-09-06:  David Anderson
+    commit 05444069354baac12794d4fe1605c8de910d18df
+
+    REmoved unwanted exit 1.
+            modified:   DWARFTEST.sh
+
+2025-09-06:  David Anderson
+    commit fc65d82ae32dcf2fb45c9e3e68dedd5c02b93e83
+
+    Two new tests running dwarfexample/frame1 to examine
+    frame data.
+    The example is now much more complete
+    than earlier.
+            modified:   DWARFTEST.sh
+
+            new file:   baselines/frame1regs-2025-09-06.base
+    New test case, riskv cpu.
+            new file:   baselines/frame1riskv-2025-09-06.base
+
+2025-09-06:  David Anderson
+    commit 6703ebc2acda44083ae095b82c7b642447058584
+
+    New test case. Risc-V cpu
+            new file:   frameriskv/README
+            new file:   frameriskv/fft
+
+2025-09-02:  David Anderson
+    commit 85c6101e129fa0143ce01e472e07934af198f2f5
+
+    Now up to date.
+            modified:   ChangeLog
+
 2025-09-02:  David Anderson
     commit 417334d002fdbb64330076a8dbc426de20be0870
 
