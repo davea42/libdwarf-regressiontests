@@ -1,4 +1,14 @@
 
 We were handling  strx forms in the DWARF5 line table
 incorrectly, so printing the lines did not work.
-Now working.
+
+This was because, in certain call sequences not seen in
+dwarfdump, we were assuming .debug_str_offsets
+was loaded into libdwarf when in fact that
+_dwarf_load_section(dbg, &dbg->de_debug_str_offsets,error)
+had not been called.
+
+Now we call whenever needing the size or address
+of that section (we added the call in three places).
+
+September 2025.

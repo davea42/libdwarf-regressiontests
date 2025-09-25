@@ -1,0 +1,153 @@
+Filename by dSYM is $HOME/dwarf/regressiontests/macho-kagstrom/a.dSYM/Contents/Resources/DWARF/a
+
+.debug_info
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000c>  DW_TAG_compile_unit
+                    DW_AT_producer              (indexed string: 0x00000000)Apple clang version 17.0.0 (clang-1700.0.13.5) <form DW_FORM_strx>
+                    DW_AT_language              DW_LANG_C11 <form DW_FORM_data2>
+                    DW_AT_name                  (indexed string: 0x00000001)/Users/ska/devel/kcov/a.c <form DW_FORM_strx>
+                    DW_AT_LLVM_sysroot          (indexed string: 0x00000002)/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk <form DW_FORM_strx>
+                    DW_AT_APPLE_sdk             (indexed string: 0x00000003)MacOSX.sdk <form DW_FORM_strx>
+                    DW_AT_str_offsets_base      0x00000008 <form DW_FORM_sec_offset>
+                    DW_AT_stmt_list             0x00000000 <form DW_FORM_sec_offset>
+                    DW_AT_comp_dir              (indexed string: 0x00000004)/Users/ska/build/kcov-debug <form DW_FORM_strx>
+                    DW_AT_low_pc                (addr_index: 0x00000000)0x100000328 <form DW_FORM_addrx>
+                    DW_AT_high_pc               <offset-from-lowpc> 64 <form DW_FORM_data4> <highpc: 0x100000368>
+                    DW_AT_addr_base             0x00000008 <form DW_FORM_sec_offset>
+
+LOCAL_SYMBOLS:
+< 1><0x00000025>    DW_TAG_subprogram
+                      DW_AT_low_pc                (addr_index: 0x00000000)0x100000328 <form DW_FORM_addrx>
+                      DW_AT_high_pc               <offset-from-lowpc> 64 <form DW_FORM_data4> <highpc: 0x100000368>
+                      DW_AT_APPLE_omit_frame_ptr  yes(1) <form DW_FORM_flag_present>
+                      DW_AT_frame_base            len 0x0001: 0x6f:  <form DW_FORM_exprloc>
+                          DW_OP_reg31
+                      DW_AT_name                  (indexed string: 0x00000005)main <form DW_FORM_strx>
+                      DW_AT_decl_file             0x00000001 /Users/ska/devel/kcov/a.c <form DW_FORM_data1>
+                      DW_AT_decl_line             0x00000001 <form DW_FORM_data1>
+                      DW_AT_type                  <0x00000040> <form DW_FORM_ref4> Refers to: int
+                      DW_AT_external              yes(1) <form DW_FORM_flag_present>
+< 2><0x00000034>      DW_TAG_variable
+                        DW_AT_location              len 0x0002: 0x9108:  <form DW_FORM_exprloc>
+                            DW_OP_fbreg 8
+                        DW_AT_name                  (indexed string: 0x00000006)a <form DW_FORM_strx>
+                        DW_AT_decl_file             0x00000001 /Users/ska/devel/kcov/a.c <form DW_FORM_data1>
+                        DW_AT_decl_line             0x00000003 <form DW_FORM_data1>
+                        DW_AT_type                  <0x00000044> <form DW_FORM_ref4>
+< 1><0x00000040>    DW_TAG_base_type
+                      DW_AT_name                  (indexed string: 0x00000007)int <form DW_FORM_strx>
+                      DW_AT_encoding              DW_ATE_signed <form DW_FORM_data1>
+                      DW_AT_byte_size             4 <form DW_FORM_data1>
+< 1><0x00000044>    DW_TAG_volatile_type
+                      DW_AT_type                  <0x00000040> <form DW_FORM_ref4> Refers to: int
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x0000000c):
+
+            NS new statement, BB new basic block, ET end of text sequence
+            PE prologue end, EB epilogue begin
+            IS=val ISA number, DI=val discriminator value
+<pc>        [lno,col] NS BB ET PE EB IS= DI= uri: "filepath"
+0x100000328  [   2, 0] NS uri: "/Users/ska/devel/kcov/a.c"
+0x100000330  [   3,17] NS PE
+0x100000338  [   5, 8] NS
+0x10000033c  [   5, 8]
+0x100000348  [   6, 7] NS
+0x100000354  [   8, 4] NS
+0x10000035c  [   9, 1] NS
+0x100000360  [   9, 1] ET EB
+0x100000368  [   9, 1] ET
+
+.debug_names
+ global data.  1 entry
+  CUhdr      DIE        CU DIE     DIE
+  in sect    in CU      in sect    in sect
+ 0x00000000 0x00000025 0x0000000c 0x00000025 DW_TAG_subprogram  'main'
+
+.debug_str
+name at offset 0x00000000, length    0 is ''
+name at offset 0x00000001, length   46 is 'Apple clang version 17.0.0 (clang-1700.0.13.5)'
+name at offset 0x00000030, length   25 is '/Users/ska/devel/kcov/a.c'
+name at offset 0x0000004a, length   51 is '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk'
+name at offset 0x0000007e, length   10 is 'MacOSX.sdk'
+name at offset 0x00000089, length   27 is '/Users/ska/build/kcov-debug'
+name at offset 0x000000a5, length    4 is 'main'
+name at offset 0x000000aa, length    1 is 'a'
+name at offset 0x000000ac, length    3 is 'int'
+
+.debug_aranges
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000c>  DW_TAG_compile_unit
+                    DW_AT_producer              (indexed string: 0x00000000)Apple clang version 17.0.0 (clang-1700.0.13.5) <form DW_FORM_strx>
+                    DW_AT_language              DW_LANG_C11 <form DW_FORM_data2>
+                    DW_AT_name                  (indexed string: 0x00000001)/Users/ska/devel/kcov/a.c <form DW_FORM_strx>
+                    DW_AT_LLVM_sysroot          (indexed string: 0x00000002)/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk <form DW_FORM_strx>
+                    DW_AT_APPLE_sdk             (indexed string: 0x00000003)MacOSX.sdk <form DW_FORM_strx>
+                    DW_AT_str_offsets_base      0x00000008 <form DW_FORM_sec_offset>
+                    DW_AT_stmt_list             0x00000000 <form DW_FORM_sec_offset>
+                    DW_AT_comp_dir              (indexed string: 0x00000004)/Users/ska/build/kcov-debug <form DW_FORM_strx>
+                    DW_AT_low_pc                (addr_index: 0x00000000)0x100000328 <form DW_FORM_addrx>
+                    DW_AT_high_pc               <offset-from-lowpc> 64 <form DW_FORM_data4> <highpc: 0x100000368>
+                    DW_AT_addr_base             0x00000008 <form DW_FORM_sec_offset>
+
+
+arange starts at 0x100000328, length of 0x00000040, cu_die_offset = 0x0000000c
+arange end
+
+.debug_frame is not present
+
+.debug_names
+
+Name table offset       : 0x00000000 (offset of header length field)
+Next name table offset  : 0x00000070
+Section size            : 0x00000070
+Table version           :    5
+Comp unit count         :    1
+Type unit count         :    0
+Foreign Type unit count :    0
+Bucket count            :    2
+Name count              :    2
+Abbrev table length     :   17 (0x0011)
+Entry pool size         :   15 (0x000f)
+Augmentation string size:    8 (0x0008)
+Augmentation string     : LLVM0700
+  cu List. Entry count: 1
+  [   0] CU-offset:  0x00000000
+
+  tu List. Entry count: 0 (local tu count 0,foreign tu count 0)
+
+  Bucket (hash) table entry count: 2
+  [ ]    nameindex collisioncount
+  [   0]      1      1
+  [   1]      0      0
+
+
+  Names Table, entry count 2
+  (Any DW_IDX_die_offset not in .debug_info will be reported as an error.)
+  [Entry    1] Bucket# 0 hash 0x0b888030 nameoffset=0xac "int"
+      EntrypoolOffset=0x000000 abbrevcode=   1 (0x0001) attrcount=3 arraysz=10
+      Tag=0x0024      DW_TAG_base_type
+        Nameindex=1 abbrevcode=1 (0x0001) abbrevindex=0
+        Tag 0x0024     DW_TAG_base_type
+        Valuecount     3  valuesoffset 0x0001
+          Entrypool Values. Entry count:3.
+          Single CU case. CUoffset defaults to: 0x00000000
+          [ ]  idxattr    idxname           value
+          [ 0]       3 DW_IDX_die_offset    DIEcuLocalOff=64 (0x00000040)
+          [ 1]       4 DW_IDX_parent        FORM-flag-present (Parent generated but not indexed)
+          [ 2]  0 (end of list)
+  [Entry    2] Bucket# 0 hash 0x0b888030 nameoffset=0xa5 "main"
+      EntrypoolOffset=0x000006 abbrevcode=   2 (0x0002) attrcount=3 arraysz=10
+      Tag=0x002e      DW_TAG_subprogram
+        Nameindex=2 abbrevcode=2 (0x0002) abbrevindex=1
+        Tag 0x002e     DW_TAG_subprogram
+        Valuecount     3  valuesoffset 0x0007
+          Entrypool Values. Entry count:3.
+          Single CU case. CUoffset defaults to: 0x00000000
+          [ ]  idxattr    idxname           value
+          [ 0]       3 DW_IDX_die_offset    DIEcuLocalOff=37 (0x00000025)
+          [ 1]       4 DW_IDX_parent        FORM-flag-present (Parent generated but not indexed)
+          [ 2]  0 (end of list)
+

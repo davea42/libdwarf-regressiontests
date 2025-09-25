@@ -1239,6 +1239,9 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# see macho-kagstrom/README
+runsingle macho-kagstrom.base ./dwarfdump -a -M $testsrc/macho-kagstrom/a
+
 runsingle ossfuzz446831123.base ./fuzz_rng --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446831123/fuzz_rng-6527551318327296
 runsingle ossfuzz446735540.base ./fuzz_dnames --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446735540/fuzz_dnames-5931269398790144 
 runsingle ossfuzz446856589.base ./fuzz_tie --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz446856589/fuzz_tie-5831785406857216
