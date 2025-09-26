@@ -1,0 +1,25 @@
+
+ossfuzz  447457197
+
+test object  fuzz_tie-4785079261134848  README
+
+
+runsingle ossfuzz447457197.base ./fuzz-tie  --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447457197/fuzz_tie-4785079261134848
+
+
+Added further testing of section and segment names.
+
+	       and the timeout value is 60 (use -timeout=N to change)
+==401== ERROR: libFuzzer: timeout after 61 seconds
+    #0 0x58181bd00e31 in __sanitizer_print_stack_trace /src/llvm-project/compiler-rt/lib/asan/asan_stack.cpp:87:3
+    #1 0x58181bbf2bd8 in fuzzer::PrintStackTrace() /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerUtil.cpp:210:5
+    #2 0x58181bbd56ad in fuzzer::Fuzzer::AlarmCallback() /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:304:5
+    #3 0x7f75d5e4841f in libpthread.so.0
+    #4 0x58181bd0f3cf in __sanitizer::mem_is_zero(char const*, unsigned long) /src/llvm-project/compiler-rt/lib/sanitizer_common/sanitizer_libc.cpp:0:3
+    #5 0x58181bcf8939 in __asan_region_is_poisoned /src/llvm-project/compiler-rt/lib/asan/asan_poisoning.cpp:259:8
+    #6 0x58181bcf3493 in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #7 0x58181bd4244a in _dwarf_macho_load_dwarf_section_details64 libdwarf/src/lib/libdwarf/dwarf_machoread.c:798:9
+    #8 0x58181bd4244a in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:894:15
+    #9 0x58181bd4244a in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:925:15
+    #10 0x58181bd40750 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+    #11 0x58181bd443e4 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1215:11

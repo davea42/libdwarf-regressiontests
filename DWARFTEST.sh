@@ -1131,7 +1131,8 @@ fuzz_simplereader_tu
 fuzz_srcfiles
 fuzz_stack_frame_access
 fuzz_str_offsets
-fuzz_tie'
+fuzz_tie
+fuzz_xuindex'
 
 # Do not do -Wall here ever.
 for f in $fuzzexe
@@ -1238,6 +1239,14 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+runsingle ossfuzz447396726.base ./fuzz_xuindex --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447396726/fuzz_xuindex-4824455521304576
+
+runsingle ossfuzz447421051.base ./fuzz_crc_32 --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447421051/fuzz_crc_32-6747299494821888
+
+runsingle ossfuzz447445674.base ./fuzz_str_offsets --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447445674/fuzz_str_offsets-4859796391264256
+
+runsingle ossfuzz447457197.base ./fuzz_tie  --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447457197/fuzz_tie-4785079261134848
 
 # see macho-kagstrom/README
 runsingle macho-kagstrom.base ./dwarfdump -a -M $testsrc/macho-kagstrom/a

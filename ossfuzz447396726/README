@@ -1,0 +1,24 @@
+
+
+ Issue 447396726: libdwarf:fuzz_xuindex: Timeout in fuzz_xuindex
+
+testcase:
+fuzz_xuindex-4824455521304576
+
+
+      and the timeout value is 60 (use -timeout=N to change)
+==403== ERROR: libFuzzer: timeout after 61 seconds
+    #0 0x55b00132ae31 in __sanitizer_print_stack_trace /src/llvm-project/compiler-rt/lib/asan/asan_stack.cpp:87:3
+    #1 0x55b00121cbd8 in fuzzer::PrintStackTrace() /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerUtil.cpp:210:5
+    #2 0x55b0011ff6ad in fuzzer::Fuzzer::AlarmCallback() /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:304:5
+    #3 0x7d524556341f in libpthread.so.0
+    #4 0x7d5245280e1e in memmove-vec-unaligned-erms.S:505 /build/glibc-LcI20x/glibc-2.31/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:505
+    #5 0x55b00131d18b in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #6 0x55b00136c366 in _dwarf_macho_load_dwarf_section_details32 libdwarf/src/lib/libdwarf/dwarf_machoread.c:686:9
+    #7 0x55b00136c366 in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:891:15
+    #8 0x55b00136c366 in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:925:15
+    #9 0x55b00136a820 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+    #10 0x55b00136e4b4 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1215:11
+    #11 0x55b00136e4b4 in _dwarf_macho_object_access_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1271:11
+    #12 0x55b00136e4b4 in _dwarf_macho_setup libdwarf/src/lib/libdwarf/dwarf_machoread.c:1025:11
+    #13 0x55b001363491 in dwarf_init_b libdwarf/src/lib/libdwarf/dwarf_generic_init.c:493:16

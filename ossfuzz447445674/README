@@ -1,0 +1,15 @@
+
+Crash Type:	Timeout (exceeds 60 secs)	
+Created:	Wed, Sep 24, 2025, 9:05 PM
+Issue:	447445674	
+Fuzzing Engine:	libFuzzer	Fuzz Target:	fuzz_str_offsets
+
+A corrupted Mach-o header 
+
+fuzz_str_offsets-4859796391264256
+
+Required more careful testing of section names
+and segment names, looking for nonsense names.  
+
+
+
