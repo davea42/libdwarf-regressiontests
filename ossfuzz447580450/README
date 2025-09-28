@@ -1,0 +1,18 @@
+
+ossfuzz 447580450
+
+testcase fuzz_globals-4845056734593024
+
+DW202509-014
+
+Reported 25 Sept 2025.
+
+Timed out at 60 seconds
+
+    #5 0x5b5d84bc718b in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #6 0x5b5d84c7955a in _dwarf_macho_load_dwarf_section_details64 libdwarf/src/lib/libdwarf/dwarf_machoread.c:798:9
+    #7 0x5b5d84c7955a in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:894:15
+    #8 0x5b5d84c7955a in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:925:15
+    #9 0x5b5d84c77860 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+    #10 0x5b5d84c7b4f4 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1215:11
+    #11 0x5b5d84c7b4f4 in _dwarf_macho_object_access_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1271:11

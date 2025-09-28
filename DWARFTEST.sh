@@ -1240,6 +1240,12 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle ossfuzz447629673.base ./fuzz_die_cu_print --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447629673/fuzz_die_cu_print-4591618901737472
+
+runsingle ossfuzz447580449.base ./fuzz_debuglink --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447580449/fuzz_debuglink-469140951407001
+
+runsingle ossfuzz447580450.base ./fuzz_globals --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447580450/fuzz_globals-4845056734593024
+
 runsingle ossfuzz447396726.base ./fuzz_xuindex --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447396726/fuzz_xuindex-4824455521304576
 
 runsingle ossfuzz447421051.base ./fuzz_crc_32 --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447421051/fuzz_crc_32-6747299494821888

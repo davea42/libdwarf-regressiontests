@@ -1,0 +1,21 @@
+
+
+ossfuzz id 447580449
+
+DW202509-015
+
+testcase fuzz_debuglink-469140951407001
+
+A section name has non-ascii characters (32bit Mach-o)
+and that leads to a non-terminating test case.
+
+timeout at 60 seconds
+
+  #4 0x7a216808ee1e in memmove-vec-unaligned-erms.S:505 /build/glibc-LcI20x/glibc-2.31/sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:505
+    #5 0x5c2a98a1f18b in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #6 0x5c2a98a71cc6 in _dwarf_macho_load_dwarf_section_details32 libdwarf/src/lib/libdwarf/dwarf_machoread.c:686:9
+    #7 0x5c2a98a71cc6 in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:891:15
+    #8 0x5c2a98a71cc6 in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:925:15
+    #9 0x5c2a98a70180 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+    #10 0x5c2a98a73e14 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1215:11
+    #11 0x5c2a98a73e14 in _dwarf_macho_object_access_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1271:1

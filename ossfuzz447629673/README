@@ -1,0 +1,21 @@
+
+
+ossfuzz447629673
+
+fuzz_die_cu_print: Timeout in fuzz_die_cu_print
+
+Crash Type:	Timeout (exceeds 60 secs)
+
+testcase: fuzz_die_cu_print-4591618901737472 
+
+Times out reading Mach-o section due to
+non-ascii characters in section names.
+Exceeds 60 seconds in the ossfuzz test harness.
+
+ #7 0x57feac55c526 in __interceptor_free /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #8 0x57feac61b3ad in _dwarf_macho_load_dwarf_section_details32 libdwarf/src/lib/libdwarf/dwarf_machoread.c:692:9
+    #9 0x57feac61b3ad in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:891:15
+    #10 0x57feac61b3ad in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:925:15
+    #11 0x57feac619830 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+    #12 0x57feac61d4c4 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1215:11
+    #13 0x57feac61d4c4 in _dwarf_macho_object_access_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:12
