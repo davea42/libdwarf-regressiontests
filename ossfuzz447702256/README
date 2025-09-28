@@ -1,0 +1,19 @@
+Issue:	447702256
+Fuzz Target:	fuzz_init_binary
+
+Crash Type:	Timeout (exceeds 60 secs)
+
+testcase fuzz_init_binary-4759449983320064 
+
+Days ago garbage in section names were ignored and the result
+was very slow startup.
+These are fixed by 28 Sept 2025
+
+	    #5 0x5950baf9f18b in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #6 0x5950bafee41a in _dwarf_macho_load_dwarf_section_details64 libdwarf/src/lib/libdwarf/dwarf_machoread.c:798:9
+    #7 0x5950bafee41a in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:894:15
+    #8 0x5950bafee41a in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:925:15
+    #9 0x5950bafec720 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+    #10 0x5950baff03b4 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1215:11
+    #11 0x5950baff03b4 in _dwarf_macho_object_access_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1271:11
+    #12 0x5950baff03b4 in _dwarf_macho_setup libdwarf/src/lib/libdwarf/dwarf_machoread.c:1

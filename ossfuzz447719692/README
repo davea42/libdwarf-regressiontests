@@ -1,0 +1,15 @@
+
+created 27 September 2025
+timeout in fizz_die_cu_info1 after 60 seconds
+
+ossfuzz 447719692
+
+testcase fuzz_die_cu_info1-5983735611981824
+
+The usual traceback for these:
+
+    #6 0x5ced61ea3296 in _dwarf_macho_load_dwarf_section_details32 libdwarf/src/lib/libdwarf/dwarf_machoread.c:686:9
+    #7 0x5ced61ea3296 in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:891:15
+    #8 0x5ced61ea3296 in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:925:15
+    #9 0x5ced61ea1750 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+
