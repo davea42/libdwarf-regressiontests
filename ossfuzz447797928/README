@@ -1,0 +1,19 @@
+
+oss fuzz id 447797928
+Crash type Timeout at 60 seconds
+test app fuzz_init_b
+testcase object: fuzz_init_b-6276293315592
+
+libdwarf id: DW202509-020.
+
+The count of commands times size of a command
+block is too large to be real. Corrupt object.
+
+The usual stack trace at timeout:
+
+    #5 0x594fec5a818b in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3
+    #6 0x594fec65404a in _dwarf_macho_load_dwarf_section_details64 libdwarf/src/lib/libdwarf/dwarf_machoread.c:798:9
+    #7 0x594fec65404a in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:894:15
+    #8 0x594fec65404a in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:925:15
+    #9 0x594fec652350 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+    #10 0x594fec655fe4 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1215:11

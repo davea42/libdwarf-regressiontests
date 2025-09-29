@@ -1122,11 +1122,14 @@ fuzz_findfuncbypc
 fuzz_gdbindex
 fuzz_globals
 fuzz_gnu_index
+fuzz_init_b
+fuzz_init_binary
 fuzz_init_path
 fuzz_macro_dwarf4
 fuzz_macro_dwarf5
 fuzz_rng
 fuzz_set_frame_all
+fuzz_showsectgrp
 fuzz_simplereader_tu
 fuzz_srcfiles
 fuzz_stack_frame_access
@@ -1239,6 +1242,18 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+runsingle ossfuzz447797928.base ./fuzz_init_b --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447797928/fuzz_init_b-6276293315592
+
+runsingle ossfuzz447719692.base ./fuzz_showsectgrp --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447719692/fuzz_die_cu_info1-5983735611981824
+runsingle ossfuzz447686887.base ./fuzz_showsectgrp --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447686887/fuzz_dnames-5657680116252672
+
+#447805105       
+#fuzz_showsectgrp-5078066159484928
+runsingle ossfuzz447805105.base ./fuzz_showsectgrp --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447805105/fuzz_showsectgrp-5078066159484928
+
+
+runsingle ossfuzz447702256.base ./fuzz_init_binary --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447702256/fuzz_init_binary-4759449983320064
 
 runsingle ossfuzz447629673.base ./fuzz_die_cu_print --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447629673/fuzz_die_cu_print-4591618901737472
 
