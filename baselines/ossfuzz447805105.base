@@ -1,2 +1,2 @@
 
-libdwarf is unable to record error DW_DLE_MACHO_CORRUPT_SECTIONDETAILS(488) Incorrect Macho section data. Corrupt DWARF No error argument or handler available
+libdwarf is unable to record error DW_DLE_MACHO_CORRUPT_COMMAND(487) Incorrect Macho Command data.  Corrupt DWARF No error argument or handler available
