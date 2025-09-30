@@ -11,4 +11,7 @@ had not been called.
 Now we call whenever needing the size or address
 of that section (we added the call in three places).
 
+b.macho is 'a' but renamed so no dSYM
+can be found. Sometimes useful to have.
+
 September 2025.
