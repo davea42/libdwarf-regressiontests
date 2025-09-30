@@ -1,0 +1,48 @@
+Skip dsym check
+Reading name provided /home/davea/dwarf/regressiontests/macho-kask/dwarfdump_32
+  Total Commands count      : 12
+  Total Commands item size  : 1492
+  Total Commands space bytes: 17904
+Mach-o Magic:  0xfeedface
+  cputype           : 0x7 cpusubtype: 0x3
+  offset size       : 4
+  endian            : LITTLEENDIAN
+  file size         : 0x000d3678
+  filetype          : 0x2 MH_EXECUTE
+  number of commands: 0xc (12)
+  size of commands  : 0x5d4 (1492)
+  flags             : 0x85 MH_NOUNDEFS|
+             MH_DYLDLINK|
+             MH_TWOLEVEL
+Segment name __PAGEZERO
+Segment name __TEXT
+Segment name __DATA
+Segment name __LINKEDIT
+ Commands: at offset 0x1c
+  [0] cmd: 0x00000001 LC_SEGMENT       cmdsize: 56 (0x00000038)
+  [1] cmd: 0x00000001 LC_SEGMENT       cmdsize: 464 (0x000001d0)
+  [2] cmd: 0x00000001 LC_SEGMENT       cmdsize: 532 (0x00000214)
+  [3] cmd: 0x00000001 LC_SEGMENT       cmdsize: 56 (0x00000038)
+  [4] cmd: 0x80000022 LC_DYLD_INFO_ONLY cmdsize: 48 (0x00000030)
+  [5] cmd: 0x00000002 LC_SYMTAB        cmdsize: 24 (0x00000018)
+  [6] cmd: 0x0000000b LC_DYSYMTAB      cmdsize: 80 (0x00000050)
+  [7] cmd: 0x0000000e LC_LOAD_DYLINKER cmdsize: 28 (0x0000001c)
+  [8] cmd: 0x0000001b LC_UUID          cmdsize: 24 (0x00000018)
+  [9] cmd: 0x00000005 LC_UNIXTHREAD    cmdsize: 80 (0x00000050)
+  [10] cmd: 0x0000000c LC_LOAD_DYLIB    cmdsize: 48 (0x00000030)
+  [11] cmd: 0x0000000c LC_LOAD_DYLIB    cmdsize: 52 (0x00000034)
+  Segments count:4 starting at 0x0000001c:
+    command                 segname      fileoff   filesize
+  [0] 0x1 LC_SEGMENT       __PAGEZERO        0x00000000 0x00000000
+  [1] 0x1 LC_SEGMENT       __TEXT            0x00000000 0x000ae000
+  [2] 0x1 LC_SEGMENT       __DATA            0x000ae000 0x00007000
+  [3] 0x1 LC_SEGMENT       __LINKEDIT        0x000b5000 0x0001e678
+ Sections count: 7  offset 0x0000008c
+                         addr      offset     size 
+  [ 0]                  0x00000000 0x00000000 0x00000000
+  [ 1] __text           0x00001ad0 0x00000ad0 0x0009424e
+  [ 2] __symbol_stub    0x00095d1e 0x00094d1e 0x00000186
+  [ 3] __stub_helper    0x00095ea4 0x00094ea4 0x00000296
+  [ 4] __cstring        0x0009613c 0x0009513c 0x00018e11
+  [ 5] __const          0x000aef50 0x000adf50 0x0000005b
+  [ 6] __unwind_info    0x000aefb0 0x000adfb0 0x00000048

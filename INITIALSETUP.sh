@@ -28,6 +28,30 @@ fi
 }
 
 srcdir=$1
+# rosrc is path from libdwarf-code to readelfobj-code
+# So we can regression test some mach-o objects
+# in detail
+# If it is not present as expected we will not
+# run the few readobjmacho tests.
+t="$srcdir/../readelfobj-code/src"
+if test  -d $t
+then
+  rosrc="$t"
+else
+  rosrc="n"
+fi
+t="$srcdir/../readelfobj-code/configure"
+if test  -f $t
+then
+  robase="$srcdir/../readelfobj-code"
+else
+  robase="n"
+fi
+if [ "x$robase" = "xn" -o "x$rosrc" = "xn" ]
+then
+  robase="n"
+  rosrc="n"
+fi
 
 #srcdir is regressiontests source dir
 #codedir is libdwarf code source dir
@@ -190,6 +214,8 @@ fi
 echo "testsrc=$tsa" >>           BASEFILES.sh
 echo "libdw=$codedir" >>             BASEFILES.sh
 echo "codedir=$codedir" >>          BASEFILES.sh
+echo "rosrc=$rosrc" >>          BASEFILES.sh
+echo "robase=$robase" >>          BASEFILES.sh
 echo "bldtest=$abs_builddir" >> BASEFILES.sh
 echo "ddbaselinename=$ddbaselinename" >> BASEFILES.sh
 

@@ -1,0 +1,52 @@
+Reading object at /home/davea/dwarf/regressiontests/macho-kask/dwarfdump_32.dSYM/Contents/Resources/DWARF/dwarfdump_32 rather than name provided.
+  Total Commands count      : 7
+  Total Commands item size  : 1892
+  Total Commands space bytes: 13244
+Mach-o Magic:  0xfeedface
+  cputype           : 0x7 cpusubtype: 0x3
+  offset size       : 4
+  endian            : LITTLEENDIAN
+  file size         : 0x000478b0
+  filetype          : 0xa MH_DSYM
+  number of commands: 0x7 (7)
+  size of commands  : 0x764 (1892)
+  flags             : 0x0
+Segment name __PAGEZERO
+Segment name __TEXT
+Segment name __DATA
+Segment name __LINKEDIT
+Segment name __DWARF
+ Commands: at offset 0x1c
+  [0] cmd: 0x0000001b LC_UUID          cmdsize: 24 (0x00000018)
+  [1] cmd: 0x00000002 LC_SYMTAB        cmdsize: 24 (0x00000018)
+  [2] cmd: 0x00000001 LC_SEGMENT       cmdsize: 56 (0x00000038)
+  [3] cmd: 0x00000001 LC_SEGMENT       cmdsize: 464 (0x000001d0)
+  [4] cmd: 0x00000001 LC_SEGMENT       cmdsize: 532 (0x00000214)
+  [5] cmd: 0x00000001 LC_SEGMENT       cmdsize: 56 (0x00000038)
+  [6] cmd: 0x00000001 LC_SEGMENT       cmdsize: 736 (0x000002e0)
+  Segments count:5 starting at 0x0000001c:
+    command                 segname      fileoff   filesize
+  [0] 0x1 LC_SEGMENT       __PAGEZERO        0x00000000 0x00000000
+  [1] 0x1 LC_SEGMENT       __TEXT            0x00000000 0x00000000
+  [2] 0x1 LC_SEGMENT       __DATA            0x00000000 0x00000000
+  [3] 0x1 LC_SEGMENT       __LINKEDIT        0x00001000 0x0000c60c
+  [4] 0x1 LC_SEGMENT       __DWARF           0x0000e000 0x000398b0
+ Sections count: 17  offset 0x000000bc
+                         addr      offset     size 
+  [ 0]                  0x00000000 0x00000000 0x00000000
+  [ 1] __text           0x00001ad0 0x00000000 0x0009424e
+  [ 2] __symbol_stub    0x00095d1e 0x00000000 0x00000186
+  [ 3] __stub_helper    0x00095ea4 0x00000000 0x00000296
+  [ 4] __cstring        0x0009613c 0x00000000 0x00018e11
+  [ 5] __const          0x000aef50 0x00000000 0x0000005b
+  [ 6] __unwind_info    0x000aefb0 0x00000000 0x00000048
+  [ 7] __debug_abbrev   0x000e6000 0x0000e000 0x000003c1
+  [ 8] __debug_aranges  0x000e63c1 0x0000e3c1 0x00000560
+  [ 9] __debug_frame    0x000e6921 0x0000e921 0x00005200
+  [10] __debug_info     0x000ebb21 0x00013b21 0x000176d0
+  [11] __debug_line     0x001031f1 0x0002b1f1 0x0000872b
+  [12] __debug_loc      0x0010b91c 0x0003391c 0x00005dd8
+  [13] __debug_pubnames 0x001116f4 0x000396f4 0x00003404
+  [14] __debug_pubtypes 0x00114af8 0x0003caf8 0x00001d92
+  [15] __debug_ranges   0x0011688a 0x0003e88a 0x00000060
+  [16] __debug_str      0x001168ea 0x0003e8ea 0x00008fc6

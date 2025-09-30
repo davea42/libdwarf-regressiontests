@@ -1226,6 +1226,7 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_path"
   echo "$x"
   $x
   chkresbld $? "check -error compiling $testsrc/filelist/localfuzz_init_path.c failed"
+# Here continue in the filelist directory:
 echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf $lihbzstdhdrdir $nonsharedopt \
@@ -1235,12 +1236,55 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
   $x
   chkresbld $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
   cd ..
+# exit from filelist directory.
+
+echo "=====BUILD  readelfobj-code readobjmacho"
+if [ "x$rosrc" = "xn" ] 
+then
+  echo "Skip building readobjmacho, readelfobj-code not present"
+else
+  mklocal robuild
+  $robase/configure
+  make
+  echo "ls build area"
+  ls
+  if [ -f ./src/readobjmacho ]
+  then
+    echo cp src/readobjmacho ..
+    cp src/readobjmacho ..
+  else
+    chkresbld 1 "check error compiled $rosrc readobjmacho failed"
+    echo "Missing readobjmacho, build failed"
+  fi
+  cd ..
+fi
+
+echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
+  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf $lihbzstdhdrdir $nonsharedopt \
+     -gdwarf  $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
+     -o localfuzz_init_binary $dwlib $libzlib $libzlink"
+  echo "$x"
+  $x
+  chkresbld $? "check error compiled $testsrc/filelist/localfuzz_init_binary.c failed"
+ 
 if [ "x$endian" = "xB" ]
 then
   echo "====SKIP ossfuzz69641 BEendian message says error 332, not 331 (1)"
   skipcount=`expr $skipcount +  1 `
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
+fi
+
+if [ -f ./readobjmacho ]
+then
+  runsingle macho-kask-ro-32.base ./readobjmacho $testsrc/macho-kask/dwarfdump_32
+  runsingle macho-kask-ro-32-nodsym.base ./readobjmacho --skip-dsym-check $testsrc/macho-kask/dwarfdump_32
+  runsingle macho-kask-ro-64.base ./readobjmacho $testsrc/macho-kask/dwarfdump_64
+  runsingle macho-kask-ro-64-nodsym.base ./readobjmacho --skip-dsym-check $testsrc/macho-kask/dwarfdump_64
+else 
+  echo "====SKIP readobjmacho tests"
+  skipcount=`expr $skipcount +  4 `
 fi
 
 runsingle ossfuzz447805105.base ./fuzz_showsectgrp --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447805105/fuzz_showsectgrp-5078066159484928 
