@@ -1283,7 +1283,7 @@ then
   runsingle macho-kask-ro-64.base ./readobjmacho $testsrc/macho-kask/dwarfdump_64
   runsingle macho-kask-ro-64-nodsym.base ./readobjmacho --skip-dsym-check $testsrc/macho-kask/dwarfdump_64
 else 
-  echo "====SKIP readobjmacho tests"
+  echo "=====SKIP readobjmacho tests"
   skipcount=`expr $skipcount +  4 `
 fi
 
