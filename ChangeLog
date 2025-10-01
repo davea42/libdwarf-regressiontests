@@ -1,3 +1,162 @@
+2025-10-01:  David Anderson
+    commit 055b7dd90125b4a730258a543e907900e2b18e4a
+
+    One new test
+            modified:   DWARFTEST.sh
+    Baselines changed due to refinements in
+    checking for corrupt mach-o object files.
+            modified:   baselines/ossfuzz447457197.base
+            modified:   baselines/ossfuzz447586815.base
+            modified:   baselines/ossfuzz447629673.base
+            modified:   baselines/ossfuzz447702256.base
+            modified:   baselines/ossfuzz447805105.base
+
+2025-09-30:  David Anderson
+    commit bfb078a6f2f3a9c31c297d626d30413dbddcef45
+
+    Fixed one character typo (missing a leading '='  ) in echo statement.
+            modified:   DWARFTEST.sh
+
+2025-09-30:  David Anderson
+    commit 71b84f69a43e5ba03532e228dd343613396a7d4c
+
+    Now also builds the readelfobj-code project
+    (and tests the readobjmacho program that
+    program builds).
+    Uses new information from INITIALSETUP.sh
+    to run a standard configure build of readobjmacho.
+            modified:   DWARFTEST.sh
+    Now provides  additional information
+    in BASEFILES.sh
+            modified:   INITIALSETUP.sh
+
+    New tests of readobjmacho on reasonably large
+    macho programs.
+            new file:   baselines/macho-kask-ro-32-nodsym.base
+            new file:   baselines/macho-kask-ro-32.base
+            new file:   baselines/macho-kask-ro-64-nodsym.base
+            new file:   baselines/macho-kask-ro-64.base
+
+    Small change in output here.
+            modified:   baselines/ossfuzz447457197.base
+
+2025-09-30:  David Anderson
+    commit 8eace4f31f42f7ff10a1058afc19f473f59e9551
+
+    Mentions new file b.macho : sometimes
+    useful to have as b.macho has no dSYM.
+            modified:   macho-kagstrom/README
+            new file:   macho-kagstrom/b.macho
+
+2025-09-29:  David Anderson
+    commit 34f776a77ec30e35b8fcf610fc7de82821e2dbd2
+
+    New tests and baselines reading corrupted mach-o
+    object files.
+            modified:   DWARFTEST.sh
+            modified:   baselines/ossfuzz446831123.base
+            modified:   baselines/ossfuzz447396726.base
+            modified:   baselines/ossfuzz447457197.base
+            new file:   baselines/ossfuzz447586815.base
+            new file:   baselines/ossfuzz447600209.base
+            modified:   baselines/ossfuzz447629673.base
+            modified:   baselines/ossfuzz447686887.base
+            modified:   baselines/ossfuzz447702256.base
+            modified:   baselines/ossfuzz447719692.base
+            modified:   baselines/ossfuzz447805105.base
+            new file:   ossfuzz447586815/README
+            new file:   ossfuzz447586815/fuzz_die_cu_e-6725653933391872
+            new file:   ossfuzz447600209/README
+            new file:   ossfuzz447600209/fuzz_debug_str-6405288967340032
+
+2025-09-29:  David Anderson
+    commit d5fe19a7d276597640a15e30a827ee6677810c0b
+
+            modified:   DWARFTEST.sh
+    New testcase.  aka DW202509-020
+            new file:   baselines/ossfuzz447797928.base
+            new file:   ossfuzz447797928/README
+            new file:   ossfuzz447797928/fuzz_init_b-6276293315592
+
+2025-09-28:  David Anderson
+    commit fb2edd5b9fed92ffbcd02a62fbc6779ffe4d551b
+
+    New testcases
+            new file:   ossfuzz447686887/README
+            new file:   ossfuzz447686887/fuzz_dnames-5657680116252672
+            new file:   ossfuzz447702256/README
+            new file:   ossfuzz447702256/fuzz_init_binary-4759449983320064
+            new file:   ossfuzz447719692/README
+            new file:   ossfuzz447719692/fuzz_die_cu_info1-5983735611981824
+            new file:   ossfuzz447805105/README
+            new file:   ossfuzz447805105/fuzz_showsectgrp-5078066159484928
+
+2025-09-28:  David Anderson
+    commit a49cd79cc7f757a593cbfe89966da712b5e2ce21
+
+    New baselines for new testcases
+            new file:   ../baselines/ossfuzz447686887.base
+            new file:   ../baselines/ossfuzz447702256.base
+            new file:   ../baselines/ossfuzz447719692.base
+            new file:   ../baselines/ossfuzz447805105.base
+
+2025-09-28:  David Anderson
+    commit 5a84318ba314a3310b919a0ec842b20e9ff45960
+
+    Doing tests from oss-fuzz folks.
+            modified:   DWARFTEST.sh
+
+    Nothing, really.
+            modified:   baselines/machinearchunivbinv.base
+    Nothing, really.
+            modified:   baselines/machinearcmachov.base
+
+    New tests
+            new file:   baselines/ossfuzz447580449.base
+            new file:   baselines/ossfuzz447580450.base
+            new file:   baselines/ossfuzz447629673.base
+
+    Nothing, really.
+            modified:   diederen7/README
+
+    New tests
+            new file:   ossfuzz447580449/README
+            new file:   ossfuzz447580449/fuzz_debuglink-4691409514070016
+            new file:   ossfuzz447580450/README
+            new file:   ossfuzz447580450/fuzz_globals-4845056734593024
+            new file:   ossfuzz447629673/README
+            new file:   ossfuzz447629673/fuzz_die_cu_print-4591618901737472
+
+2025-09-26:  David Anderson
+    commit f11f20d47a9e64b9be4ab2724726092288f1f86d
+
+    A new set of tests found by oss fuzz
+    All these are involve reading Mach-o
+    object files and required some changes
+    in the mach-o reader to check input
+    more carefully. Especially section and
+    segment names.  Added some tests to
+    check for unsigned overflow too.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz447396726.base
+            new file:   baselines/ossfuzz447421051.base
+            new file:   baselines/ossfuzz447445674.base
+            new file:   baselines/ossfuzz447457197.base
+            new file:   ossfuzz447396726/README
+            new file:   ossfuzz447396726/fuzz_xuindex-4824455521304576
+            new file:   ossfuzz447421051/README
+            new file:   ossfuzz447421051/fuzz_crc_32-6747299494821888
+            new file:   ossfuzz447445674/README
+            new file:   ossfuzz447445674/fuzz_str_offsets-4859796391264256
+            new file:   ossfuzz447457197/README
+            new file:   ossfuzz447457197/fuzz_tie-4785079261134848
+
+2025-09-25:  David Anderson
+    commit 16a025befe738c70af4febe888c367b347260540
+
+    Now with latest test updates.
+            modified:   ChangeLog
+
 2025-09-25:  David Anderson
     commit a814e11321e0a5f34f29bddb0b94ac062e317c85
 
