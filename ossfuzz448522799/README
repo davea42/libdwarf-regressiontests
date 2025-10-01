@@ -1,0 +1,23 @@
+id: DW202510-001
+fuzzer: oss fuzz 448522799
+
+datereported: 2025-10-01
+
+testcase:
+ossfuzz448522799/fuzz_gnu_index-5175853874216960
+
+A segment name is absurd in the testcase. Corrupt object.
+
+A familiar slow response before such names verified:
+
+	    #4 0x7e33133c2b9a in munmap /build/glibc-LcI20x/glibc-2.31/sysdeps/unix/syscall-template.S:78
+    #5 0x5818ffaa08eb in _dwarf_macho_load_dwarf_section_details64 libdwarf/src/lib/libdwarf/dwarf_64machoread.c:203:9
+    #6 0x5818ffa9da1c in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:675:15
+    #7 0x5818ffa9da1c in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:709:15
+    #8 0x5818ffa9cf6e in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:783:11
+    #9 0x5818ffa9e68b in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+    #10 0x5818ffa9e68b in _dwarf_macho_object_access_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1055:11
+    #11 0x5818ffa9e68b in _dwarf_macho_setup libdwarf/src/lib/libdwarf/dwarf_machoread.c:809:11
+    #12 0x5818ffa7e465 in dwarf_init_b libdwarf/src/lib/libdwarf/dwarf_generic_init.c:493:16
+    #13 0x5818ffa59f90 in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_gnu_index.c:63:9
+
