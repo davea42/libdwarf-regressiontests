@@ -1287,6 +1287,8 @@ else
   skipcount=`expr $skipcount +  4 `
 fi
 
+runsingle ossfuzz448522799.base ./fuzz_gnu_index --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz448522799/fuzz_gnu_index-5175853874216960
+
 runsingle ossfuzz447805105.base ./fuzz_showsectgrp --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447805105/fuzz_showsectgrp-5078066159484928 
 
 runsingle ossfuzz447421051.base ./fuzz_crc_32 --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447421051/fuzz_crc_32-6747299494821888
