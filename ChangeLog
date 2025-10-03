@@ -1,4 +1,18 @@
 2025-10-01:  David Anderson
+    commit 46720dda01c2ee9f37f9ee41632d39ab4a2243d4
+
+    These are tested, and new.
+            new file:   baselines/ossfuzz448522799.base
+            new file:   ossfuzz448522799/README
+            new file:   ossfuzz448522799/fuzz_gnu_index-5175853874216960
+
+2025-10-01:  David Anderson
+    commit 5f728f584fa5f92e833728a06c458efc05caea7d
+
+    Now up to date. All tests added are listed.
+            modified:   ChangeLog
+
+2025-10-01:  David Anderson
     commit 055b7dd90125b4a730258a543e907900e2b18e4a
 
     One new test
