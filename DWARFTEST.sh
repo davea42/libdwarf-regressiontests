@@ -1287,6 +1287,12 @@ else
   skipcount=`expr $skipcount +  4 `
 fi
 
+
+#libdwarf id DW202510-003
+runsingle ossfuzz449018019.base ./fuzz_debug_str --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz449018019/fuzz_crc_32-5704317387735040
+
+runsingle ossfuzz448717186.base ./fuzz_debug_str --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz448717186/fuzz_debug_str-5394262943662080
+
 runsingle ossfuzz448522799.base ./fuzz_gnu_index --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz448522799/fuzz_gnu_index-5175853874216960
 
 runsingle ossfuzz447805105.base ./fuzz_showsectgrp --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447805105/fuzz_showsectgrp-5078066159484928 

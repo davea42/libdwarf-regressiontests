@@ -1,0 +1,19 @@
+
+ossfuzz448717186
+Sept 30, 2025
+
+
+testcase
+fuzz_debug_str-5394262943662080
+
+Already fixed by previous fixes (Sep 30)
+
+The usual pattern:
+	    #7 0x5d13d1cba526 in __interceptor_free /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #8 0x5d13d1d630f2 in _dwarf_macho_load_dwarf_section_details32 libdwarf/src/lib/libdwarf/dwarf_machoread.c:561:9
+    #9 0x5d13d1d630f2 in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:672:15
+    #10 0x5d13d1d630f2 in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:709:15
+    #11 0x5d13d1d61e31 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:783:11
+    #12 0x5d13d1d64934 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:999:11
+    #13 0x5d13d1d64934 in _dwarf_macho_object_access_init libdwarf/src/lib/libdwarf/dwarf_machoread.c:1055:11
+    #14 0x5d13d1d64934 in _dwarf_macho_setup libdwarf/src/lib/libdwarf/dwarf_machoread.c:809:11

@@ -1,0 +1,17 @@
+Reported 2 October 2025
+id: ossfuzz449018019/
+libdwarf id DW202510-003
+testcase: fuzz_crc_32-5704317387735040
+
+
+Already fixed as of Oct 2.
+
+Timeout in the usual place.
+	    #9 0x55fe470cfc89 in __sanitizer::Quarantine<__asan::QuarantineCallback, __asan::AsanChunk>::Put(__sanitizer::QuarantineCache<__asan::QuarantineCallback>*, __asan::QuarantineCallback, __asan::AsanChunk*, unsigned long) /src/llvm-project/compiler-rt/lib/sanitizer_common/sanitizer_quarantine.h:107:7
+    #10 0x55fe4716b526 in __interceptor_free /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:52:3
+    #11 0x55fe471bcac2 in _dwarf_macho_load_dwarf_section_details64 libdwarf/src/lib/libdwarf/dwarf_64machoread.c:203:9
+    #12 0x55fe471b8293 in _dwarf_macho_load_dwarf_section_details libdwarf/src/lib/libdwarf/dwarf_machoread.c:675:15
+    #13 0x55fe471b8293 in _dwarf_macho_load_dwarf_sections libdwarf/src/lib/libdwarf/dwarf_machoread.c:709:15
+    #14 0x55fe471b6f01 in _dwarf_load_macho_commands libdwarf/src/lib/libdwarf/dwarf_machoread.c:783:11
+    #15 0x55fe471b9a04 in _dwarf_macho_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_mac
+
