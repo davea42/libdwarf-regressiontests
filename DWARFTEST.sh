@@ -801,7 +801,7 @@ runsingle () {
   then
      modpath=y
   fi
-  if [ "x$exe" = "x./findfuncbypc" -o "x$exe" = "x./findfuncbypc.exe" ]
+  if [ "x$exe" = "x./findfuncbypc" -o "x$exe" = "x./findfuncbypc.exe" -o "x$exe" = "x./readobjmacho" -o "x$exe" = "x.fuzz_debuglink" ]
   then
      modpath=y
   fi
@@ -809,20 +809,22 @@ runsingle () {
   then
     canp=$testsrc/scripts/dirtostd.py
     # This is local transform, actual $HOME
-    xstd="$HOME/dwarf/code"
+    xstd="$HOME/dwarf/"
     #echo "debug:==== baseline base $testsrc/baselines/$base" 
     #cat $testsrc/baselines/$base
     #echo "debug:==== output of app junksingle.$base "
     #cat junksingle.$base
     $canp junksingle.$base $xstd >junksingle3a.$base
     r=$?
+
     # This is transform base on original compile of object.
     chkresbld $r "FAIL $canp a"
-    xstd="/home/davea/dwarf/code"
+    xstd="/home/davea/dwarf/"
     #echo "debug:==== output of first transform junksingle3a.$base $xstd  "
     #cat junksingle3a.$base
     $canp junksingle3a.$base $xstd >junksingle3.$base
     r=$?
+
     #echo "debug:==== final output new junksingle3.$base $xstd " 
     #cat junksingle3.$base
     chkresbld $r "FAIL $canp b"
@@ -1317,7 +1319,7 @@ runsingle ossfuzz447702256.base ./fuzz_init_binary --suppress-de-alloc-tree --te
 
 runsingle ossfuzz447629673.base ./fuzz_die_cu_print --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447629673/fuzz_die_cu_print-4591618901737472
 
-runsingle ossfuzz447580449.base ./fuzz_debuglink --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447580449/fuzz_debuglink-469140951407001
+runsingle ossfuzz447580449.base ./fuzz_debuglink --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447580449/fuzz_debuglink-4691409514070016 
 
 runsingle ossfuzz447580450.base ./fuzz_globals --suppress-de-alloc-tree --testobj=$testsrc/ossfuzz447580450/fuzz_globals-4845056734593024
 
