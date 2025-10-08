@@ -1,3 +1,61 @@
+2025-10-08:  David Anderson
+    commit 7f76b92475d66b3bfe4262412c4a6a1cc4010bcc
+
+    All now up to date .
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2025-10-08:  David Anderson
+    commit 9d3faac2837f1a2db47d6370b24a1ce926b2d343
+
+    All of these changed to be latest mach-o reading
+    and independent of $HOME
+            modified:   baselines/dwdebuglink-a.base
+            modified:   baselines/dwdebuglink-b.base
+            modified:   baselines/macho-kask-ro-32-nodsym.base
+            modified:   baselines/macho-kask-ro-32.base
+            modified:   baselines/macho-kask-ro-64-nodsym.base
+            modified:   baselines/macho-kask-ro-64.base
+            modified:   baselines/ossfuzz447580449.base
+            modified:   baselines/test_findfuncbypcb4.base
+            modified:   baselines/test_findfuncbypcb5.base
+
+2025-10-08:  David Anderson
+    commit 716d5de1d5c076f2d8b2ae2a07cda665423495cc
+
+    Corrected the ordering of replacements of
+    strings by ...std... to first look for
+    Windows names (C: which will not find anything on linux/macos)
+    and then posix names (linux/macos).
+            modified:   scripts/dirtostd.py
+
+2025-10-07:  David Anderson
+    commit f1a56bef98e0a14b8152396d92ef8a5aa5a33f66
+
+    Fixing mistakes.
+            modified:   DWARFTEST.sh
+
+2025-10-03:  David Anderson
+    commit 48ada7d54f2c9b6289212b7b88b6c663f8ee9a61
+
+    Two new instances, though the same old macho-issue,
+    already fixed.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz448717186.base
+            new file:   baselines/ossfuzz449018019.base
+            new file:   ossfuzz448717186/README
+            new file:   ossfuzz448717186/fuzz_debug_str-5394262943662080
+            new file:   ossfuzz449018019/README
+            new file:   ossfuzz449018019/fuzz_crc_32-5704317387735040
+
+2025-10-03:  David Anderson
+    commit 9f385725609d14fabdb01c6fdddbd496dfb1dc8c
+
+    Updated
+            modified:   ChangeLog
+
 2025-10-01:  David Anderson
     commit 46720dda01c2ee9f37f9ee41632d39ab4a2243d4
 
