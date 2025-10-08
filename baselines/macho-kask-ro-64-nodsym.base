@@ -1,5 +1,5 @@
 Skip dsym check
-Reading name provided /home/davea/dwarf/regressiontests/macho-kask/dwarfdump_64
+Reading name provided ...std...regressiontests/macho-kask/dwarfdump_64
   Total Commands count      : 12
   Total Commands item size  : 1904
   Total Commands space bytes: 22848
@@ -38,7 +38,7 @@ Segment name __LINKEDIT
   [2] 0x19 LC_SEGMENT_64    __DATA            0x000ad000 0x0000a000
   [3] 0x19 LC_SEGMENT_64    __LINKEDIT        0x000b7000 0x000227f8
  Sections count: 8  offset 0x000000b0
-                         addr      offset     size 
+                         addr      offset     size
   [ 0]                  0x00000000 0x00000000 0x00000000
   [ 1] __text           0x100001664 0x00001664 0x00083222
   [ 2] __symbol_stub1   0x100084886 0x00084886 0x0000016e

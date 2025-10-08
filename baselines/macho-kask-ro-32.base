@@ -1,4 +1,4 @@
-Reading object at /home/davea/dwarf/regressiontests/macho-kask/dwarfdump_32.dSYM/Contents/Resources/DWARF/dwarfdump_32 rather than name provided.
+Reading object at ...std...regressiontests/macho-kask/dwarfdump_32.dSYM/Contents/Resources/DWARF/dwarfdump_32 rather than name provided.
   Total Commands count      : 7
   Total Commands item size  : 1892
   Total Commands space bytes: 13244
@@ -32,7 +32,7 @@ Segment name __DWARF
   [3] 0x1 LC_SEGMENT       __LINKEDIT        0x00001000 0x0000c60c
   [4] 0x1 LC_SEGMENT       __DWARF           0x0000e000 0x000398b0
  Sections count: 17  offset 0x000000bc
-                         addr      offset     size 
+                         addr      offset     size
   [ 0]                  0x00000000 0x00000000 0x00000000
   [ 1] __text           0x00001ad0 0x00000000 0x0009424e
   [ 2] __symbol_stub    0x00095d1e 0x00000000 0x00000186
