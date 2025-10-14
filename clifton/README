@@ -7,10 +7,19 @@ gdb has a problem with.
 Clifton 
 Builder: Dominic Clifton
 Issue: Fixing gdb crash issue when loading an elf file compiled, with rust 1.87.0 gdb crash
-
 Other builds have no such problem.
 
-It is not yet clear what the problem is.
+The DWARF is version 4.
+
+The .debug_loc ranges and .debug_ranges have many
+bogus entries. Many may be ok, but lots are
+clearly nonsense. Not random junk, but
+impossible ranges, given the addresses in the
+object are 0x100xxx.
+
+The object references NO libraries, there
+is no dynamic section, no shared object in use.
+Not even libc. Intended for an ARM cpu board.
 
 We have the tar.xz form here as the uncompressed
 form is 8.7 MN, vs 1.3MB for the compressed.

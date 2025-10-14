@@ -1014,7 +1014,7 @@ runtest () {
       #This will record any ESBERR instances.
       cat $tesb >>tmp2a
     fi
-    #echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
+    echo "new done " `date "+%Y-%m-%d %H:%M:%S"`
     # No need to unify for new dd name.
     unifyddname tmp2a tmp3
     unifyddnameb tmp2erra tmp2err
@@ -1081,7 +1081,23 @@ runtest () {
 # end 'runtest'
 
 echo "=============BEGIN THE TESTS==============="
-echo  "=====BLOCK individual tests and runtest.sh tests"
+echo "=====Decompress clifton/blinky.tar.xz======"
+mkdir clifton
+cp $testsrc/clifton/blinky.tar.xz clifton/
+chkresbld $? 'Copy blinky failed'
+cd clifton
+chkresbld $? 'cd clifton failed'
+tar xf blinky.tar.xz
+chkresbld $? 'tar xzf blinky.tar.xz failed'
+cd ..
+chkresbld $? 'cd back to main dir failed'
+if [ -f clifton/blinky ]
+then
+  echo "Have clifton/blinky for test"
+else
+  echo "Missing clifton/blinky"
+fi
+echo "=====BLOCK individual tests and runtest.sh tests"
 # simple BUILDS
 simpleexe='
 test_harmless
@@ -1612,6 +1628,9 @@ runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng
 # These fail badly in many ways though early errors hide what used to be found early.
 runtest $d1 $d2 liu/OOB_read4.elf -a -M 
 runtest $d1 $d2 liu/OOB_read4.elf -ka -M 
+
+runtest $d1 $d2 clifton/blinky -a -M
+runtest $d1 $d2 clifton/blinky -ka 
 
 runtest $d1 $d2 liu/NULLdereference0519.elf -a -M
 runtest $d1 $d2 liu/NULLdereference0519.elf -ka
