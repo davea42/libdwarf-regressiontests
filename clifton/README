@@ -1,0 +1,21 @@
+Oct 14, 2025
+
+This test case is a Rust build of a
+fully open source application that
+gdb has a problem with.
+
+Clifton 
+Builder: Dominic Clifton
+Issue: Fixing gdb crash issue when loading an elf file compiled, with rust 1.87.0 gdb crash
+
+Other builds have no such problem.
+
+It is not yet clear what the problem is.
+
+We have the tar.xz form here as the uncompressed
+form is 8.7 MN, vs 1.3MB for the compressed.
+
+We will need to add a tar xzf in the startup part
+of DWARFTEST.sh and run tests against the
+expanded blinky.
+
