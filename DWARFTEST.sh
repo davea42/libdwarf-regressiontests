@@ -1635,7 +1635,7 @@ runtest $d1 $d2 myzhan/lua -a -vv -M --print-raw-rnglists
 runtest $d1 $d2 rifkin7/unittest -a -M --print-raw-rnglists
 runtest $d1 $d2 rifkin7/unittest -ka 
 runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo --print-raw-rnglists
-runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo -ka-raw-rnglists
+runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo -ka 
 runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo -a --file-tied=$testsrc/rifkin7/unittest 
 runtest $d1 $d2 rifkin7/stacktrace.cpp.dwo -ka --file-tied=$testsrc/rifkin7/unittest
 
