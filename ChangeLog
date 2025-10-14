@@ -1,3 +1,52 @@
+2025-10-14:  David Anderson
+    commit 30fcc351c812d62e47a1be768d20909f93326e51
+
+    Small changes (but many) due to improvement in dwarfdump
+    and libdwarf in dealing with ranges.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-10-14:  David Anderson
+    commit 440e88f545d6d1b409243bfbf38f39fb5518d1a0
+
+    Small baseline change.
+            modified:   baselines/dwdebuglink-a.base
+            modified:   baselines/dwdebuglink-b.base
+
+2025-10-14:  David Anderson
+    commit 31c8a184626cabbb52b4cb17f5b2ee3200a5f23b
+
+    Now testing clifton/blinky
+            modified:   DWARFTEST.sh
+    More detailed comments about the blinky
+    object file.
+            modified:   clifton/README
+
+2025-10-14:  David Anderson
+    commit 61106bc29c1e612eb19830345df4e38a94ada31c
+
+    New test case. First Rust based testcase.
+
+    clifton/
+            new file:   README
+            new file:   blinky.tar.xz
+
+2025-10-14:  David Anderson
+    commit e65b15c06c6a26fc8b8b76d8409782f88e20169e
+
+        rifkin7/stacktrace.cpp.dwo -ka-raw-rnglists
+    was a mistake, a typo. Now corrected.
+            modified:   DWARFTEST.sh
+
+2025-10-08:  David Anderson
+    commit 216d2835bfcef1325a179935ab1f5916b13f8335
+
+    Now up to date with git log.
+            modified:   ChangeLog
+
 2025-10-08:  David Anderson
     commit 7f76b92475d66b3bfe4262412c4a6a1cc4010bcc
 
