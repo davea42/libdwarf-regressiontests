@@ -4,6 +4,10 @@ This test case is a Rust build of a
 fully open source application that
 gdb has a problem with.
 
+The CPU in the elf header
+is  e_machine  : 0x28 (EM_ARM)
+
+
 Clifton 
 Builder: Dominic Clifton
 Issue: Fixing gdb crash issue when loading an elf file compiled, with rust 1.87.0 gdb crash
@@ -17,6 +21,10 @@ clearly nonsense. Not random junk, but
 impossible ranges, given the addresses in the
 object are 0x100xxx.
 
+The board(s) define additional valid addresses, ones
+not part of .text   .
+
+
 The object references NO libraries, there
 is no dynamic section, no shared object in use.
 Not even libc. Intended for an ARM cpu board.
@@ -24,7 +32,33 @@ Not even libc. Intended for an ARM cpu board.
 We have the tar.xz form here as the uncompressed
 form is 8.7 MN, vs 1.3MB for the compressed.
 
-We will need to add a tar xzf in the startup part
+We added a tar xf in the startup part
 of DWARFTEST.sh and run tests against the
 expanded blinky.
+
+
+------------ References
+
+https://kb.segger.com/RTT#How_RTT_works
+This is about .defmt section content.
+Data used by the board.
+
+https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/
+
+www.st.com/en/microcontrollers-microprocessors/stm32h743-753/documentation.html
+
+Defmt (https://defmt.ferrous-systems.com/) is the defacto standard logging system used by the entire embedded rust ecosystem.
+
+Further details on the address space can be found in the ST Micros datasheet for the STM32H743 
+(https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753/documentation.html)
+See RM0433 section 2.3.2 Memory map and register boundary addresses.
+
+https://crates.io/crates/defmt
+
+https://github.com/knurling-rs/defmt/network/dependents
+
+https://embassy.dev/book/#_getting_started
+
+https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753/documentation.html
+
 
