@@ -50,8 +50,12 @@ www.st.com/en/microcontrollers-microprocessors/stm32h743-753/documentation.html
 Defmt (https://defmt.ferrous-systems.com/) is the defacto standard logging system used by the entire embedded rust ecosystem.
 
 Further details on the address space can be found in the ST Micros datasheet for the STM32H743 
-(https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753/documentation.html)
+https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753/documentation.html
+
 See RM0433 section 2.3.2 Memory map and register boundary addresses.
+
+Also Table 7 in Sec 4, which mentions
+ITCM at address 0 for 64KB.
 
 https://crates.io/crates/defmt
 
@@ -60,5 +64,19 @@ https://github.com/knurling-rs/defmt/network/dependents
 https://embassy.dev/book/#_getting_started
 
 https://www.st.com/en/microcontrollers-microprocessors/stm32h743-753/documentation.html
+
+
+https://crates.io/crates/cdefmt-decoder#technical-details
+
+
+
+
+ .defmt has a condensed binary section. Winds up
+on remote board in ELF.
+
+ .cdefmt seems to be the other side and is on
+the workstation side and is the details on error
+messages. This is stripped from the version sent
+from workstation to the board.
 
 

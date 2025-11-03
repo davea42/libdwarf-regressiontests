@@ -1080,7 +1080,8 @@ runtest () {
 }
 # end 'runtest'
 
-echo "=============BEGIN THE TESTS==============="
+echo "=============DECOMPRESS some big files==============="
+
 echo "=====Decompress clifton/blinky.tar.xz======"
 mkdir clifton
 cp $testsrc/clifton/blinky.tar.xz clifton/
@@ -1097,6 +1098,26 @@ then
 else
   echo "Missing clifton/blinky"
 fi
+echo "=====Decompress kaufmann2/ct-bad.o.xz======"
+mkdir kaufmann2
+cp $testsrc/kaufmann2/ct-bad.o.xz kaufmann2/
+chkresbld $? 'Copy kaufmann2/ct-bad.o.xz  failed'
+cd kaufmann2
+chkresbld $? 'cd kaufmann2 failed'
+xz --decompress ct-bad.o.xz
+chkresbld $? 'xz kaufmann2/ct-bad.o.xz failed'
+cd ..
+chkresbld $? 'cd back to main dir failed'
+if [ -f  ]
+then
+  echo "Have kaufmann2/ct-bad.o for test"
+else
+  echo "Missing kaufmann2/ct-bad.o"
+fi
+
+
+
+echo "=============BEGIN THE TESTS==============="
 echo "=====BLOCK individual tests and runtest.sh tests"
 # simple BUILDS
 simpleexe='
@@ -1920,7 +1941,8 @@ runtest $d1 $d2 ossfuzz51183/ossfuzz54358-emptyfile -i
 # Testcase uses DW_FORM_strx3.
 # Similar problem exists with DW_FORM_addrx3.
 # Neither handled properly until 24 January 2023 v0.6.0
-runtest $d1 $d2 kaufmann2/ct-bad.o -a -M -vv
+# As of 3 Nov 2025, the local and decompressed
+runtest $d1 $d2 ./kaufmann2/ct-bad.o -a -M -vv
 
 runtest $d1 $d2 data16/data16.bin               -a -M
 runtest $d1 $d2 implicitconst/implicitconst.bin -a -M

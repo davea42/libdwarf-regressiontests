@@ -1,6 +1,6 @@
 # libdwarf-regressiontests README.md
 
-Updated 24 August 2025
+Updated 03 November 2025
 
 Regressiontests build libdwarf and dwarfdump using the
 meson build system so ensure meson is installed
@@ -273,6 +273,12 @@ machine a test run takes about 24 to 30 minutes.
     unset SUPPRESSBIGDIFFS
     unset SKIPDECOMPRESS
 
+## Tools
+
+A few normal Linux/Unix tools are required to run
+all the testcases. As of November 2025
+that includes xz to decompress some test object-files.
+
 ### NLIZE
 
 This adds -fsanitize to all compiles under libdwarf and
@@ -370,7 +376,7 @@ scripts named below to do its work.
 
 ### DWARFTEST.sh
 
-Runs the tests and compiles a few things and runs the
+Runs compiles a few things and runs the
 test code.
 
 ### BASEFILES.sh.in
