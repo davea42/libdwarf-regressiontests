@@ -1130,6 +1130,7 @@ testdecompress clifton blinky.tar.xz blinky tar
 testdecompress kaufmann2 ct-bad.o.xz ct-bad.o xz 
 testdecompress gobinary go-binary.xz go-binary xz
 testdecompress debugfissionb ld-new.xz ld-new xz
+testdecompress debugfissionb ld-new.dwp.xz ld-new.dwp xz
 
 echo "=============BEGIN THE TESTS==============="
 echo "=====BLOCK individual tests and runtest.sh tests"

@@ -27,7 +27,8 @@ m() {
     touch $baseline
   fi
   opts=$3
-  obj=$ts/ld-new.dwp
+  # read uncompressed in $tf as of 18 Nov 2025
+  obj=$tf/ld-new.dwp
   tmp=junk.$2
   echo "$sr $opts $obj to $tmp"
   $sr --no-dup-attr-check $opts $obj 1> ${tmp} 2>&1
