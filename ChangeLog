@@ -1,3 +1,53 @@
+2025-11-17:  David Anderson
+    commit af4b75ad5827911661a66850bd4a9c51b19bb4aa
+
+    Revised so the uncompress process done
+    by a shell function
+            modified:   DWARFTEST.sh
+
+    binary, .text zero-d and compressed.
+            deleted:    debugfissionb/ld-new
+            new file:   debugfissionb/ld-new.xz
+
+            new file:   gobinary/README
+    New object (Go language). compressed after
+     the .text section made all zero bits.
+            new file:   gobinary/go-binary.xz
+
+2025-11-16:  David Anderson
+    commit b1de76f5678b1e9dfe81971cef5bb010b8854651
+
+    New baseline dwarfdump.
+    More complete Go language attributes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-11-03:  David Anderson
+    commit 9f381d0200923383a6e61567319e69d22305fbd0
+
+    We replace ct-bad.o with ct-bad.o.xz
+    and decompress in DWARFTEST.sh as
+    required. To save space in the test source.
+
+    There are two more objects > 10M in size it
+    seems useful to do this with too.
+
+            modified:   DWARFTEST.sh
+            modified:   README.md
+            modified:   clifton/README
+            deleted:    kaufmann2/ct-bad.o
+            new file:   kaufmann2/ct-bad.o.xz
+
+2025-10-20:  David Anderson
+    commit b80a948aa1fcba7452dcc6d2848f47ed8376b924
+
+    Now with msys2 baseline executable.
+            modified:   ChangeLog
+
 2025-10-20:  David Anderson
     commit d15f5affe932615af20944aa4c110e382e16a8cd
 
