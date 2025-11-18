@@ -505,6 +505,7 @@ chkresn () {
 #ia32/libpt_linux_x86_r.so.1  -f -F runs too long.
 
 filepaths='moshe/hello
+gobinary/go-binary
 polar/hello.o
 kernel/test.ko
 jborg/simple
@@ -923,7 +924,6 @@ runversiontest () {
 runtest () {
     olddw=$1
     newdw=$2
-    targ=$testsrc/$3
     shift
     shift
     shift
@@ -931,6 +931,16 @@ runtest () {
     if [ $singleonly = "y" ]
     then
         return
+    fi
+    if [ -f $3 ]
+    then
+      # When object is local to test run
+      # This deals with objects decompressed
+      # during testing startup see testdecompress() here
+      targ=$3
+    else
+      # when targ is in testsrc.
+      targ=$testsrc/$3
     fi
     #  Add 1 to show our summary number. We have not yet
     #  counted it as a good or a fail.
@@ -1081,41 +1091,45 @@ runtest () {
 # end 'runtest'
 
 echo "=============DECOMPRESS some big files==============="
+testdecompress() {
+  localdir=$1
+  dirfile=$2
+  uncmpname=$3
+  tarcommand=$4
+  echo "=====Decompress $localdir/$dirfile======"
+  if [ ! -d  $localdir ]
+  then
+    echo "Creating: $localdir"
+    mkdir $localdir
+  else
+    echo "Present already: $localdir"
+  fi
+  cp $testsrc/$localdir/$dirfile $localdir/
+  chkresbld $? "Copy $localdir/$dirfile  failed"
+  cd $localdir
+  chkresbld $? "cd $localdir failed"
+  if [ "x$tarcommand" = "xtar" ]
+  then
+    tar xf $dirfile
+  else
+    xz --decompress $dirfile
+  fi
+  chkresbld $? "xz/tar $localdir/$dirfile failed"
+  cd ..
+  chkresbld $? 'cd back to main dir failed'
+  if [ -f $localdir/$uncmpname ]
+  then
+    echo "Have $localdir/$uncmpname for test"
+  else
+    echo "Missing $localdir/$uncmpname"
+  fi
+}
 
-echo "=====Decompress clifton/blinky.tar.xz======"
-mkdir clifton
-cp $testsrc/clifton/blinky.tar.xz clifton/
-chkresbld $? 'Copy blinky failed'
-cd clifton
-chkresbld $? 'cd clifton failed'
-tar xf blinky.tar.xz
-chkresbld $? 'tar xzf blinky.tar.xz failed'
-cd ..
-chkresbld $? 'cd back to main dir failed'
-if [ -f clifton/blinky ]
-then
-  echo "Have clifton/blinky for test"
-else
-  echo "Missing clifton/blinky"
-fi
-echo "=====Decompress kaufmann2/ct-bad.o.xz======"
-mkdir kaufmann2
-cp $testsrc/kaufmann2/ct-bad.o.xz kaufmann2/
-chkresbld $? 'Copy kaufmann2/ct-bad.o.xz  failed'
-cd kaufmann2
-chkresbld $? 'cd kaufmann2 failed'
-xz --decompress ct-bad.o.xz
-chkresbld $? 'xz kaufmann2/ct-bad.o.xz failed'
-cd ..
-chkresbld $? 'cd back to main dir failed'
-if [ -f  ]
-then
-  echo "Have kaufmann2/ct-bad.o for test"
-else
-  echo "Missing kaufmann2/ct-bad.o"
-fi
 
-
+testdecompress clifton blinky.tar.xz blinky tar
+testdecompress kaufmann2 ct-bad.o.xz ct-bad.o xz 
+testdecompress gobinary go-binary.xz go-binary xz
+testdecompress debugfissionb ld-new.xz ld-new xz
 
 echo "=============BEGIN THE TESTS==============="
 echo "=====BLOCK individual tests and runtest.sh tests"
@@ -2820,8 +2834,8 @@ if [ "x$skipbigobjects" = "xn" ]
 then
   runtest $d1 $d2 debugfissionb/ld-new.dwp -i -v -v -v
   runtest $d1 $d2 debugfissionb/ld-new.dwp -ka
-  runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=$testsrc/debugfissionb/ld-new
-  runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=$testsrc/debugfissionb/ld-new
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -i -x tied=debugfissionb/ld-new
+  runtest $d1 $d2 debugfissionb/ld-new.dwp -a -x tied=debugfissionb/ld-new
   runtest $d1 $d2 debugfissionb/ld-new -I
   runtest $d1 $d2 debugfissionb/ld-new -a
   echo "Testing -i --format-expr-ops-joined . a -d for exprs"
@@ -2896,6 +2910,8 @@ then
 else
   echo "=====START $testsrc/debugfissionb runtest.sh ../simplereader good=$goodcount skip=$skipcount fail=$failcount"
   mklocal debugfissionb
+    # This runs only ld-new.dwp so needs no special
+    # handling of the local debugfissionb.ld-new .
     sh $testsrc/debugfissionb/runtest.sh
     chkres $?  $testsrc/debugfissionb-simplreader
   cd ..

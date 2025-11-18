@@ -1,0 +1,10 @@
+This shows specific Go compiler issues
+with Go specific attributes.
+
+As of 17 November 2025 this all works
+as it should, and -ka shows some
+small real issues in the object file.
+
+The .text section has been set to all
+zero bits as we don't need it. 
+We decompress for testing.
