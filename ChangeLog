@@ -1,3 +1,20 @@
+2025-11-18:  David Anderson
+    commit 2c8fb5da67ccd1f331747e351032cf8db71293b9
+
+    Now the xz compressed form stored,
+    In total across several files saves 30+MB
+    in regressiontest tar file.
+            modified:   DWARFTEST.sh
+            deleted:    debugfissionb/ld-new.dwp
+            new file:   debugfissionb/ld-new.dwp.xz
+            modified:   debugfissionb/runtest.sh
+
+2025-11-17:  David Anderson
+    commit e111dea9f1bc70ad7a773a47c98f97e7fd563e27
+
+    Now with latest changes
+            modified:   ChangeLog
+
 2025-11-17:  David Anderson
     commit af4b75ad5827911661a66850bd4a9c51b19bb4aa
 
