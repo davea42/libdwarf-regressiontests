@@ -924,6 +924,7 @@ runversiontest () {
 runtest () {
     olddw=$1
     newdw=$2
+    itarg=$3
     shift
     shift
     shift
@@ -932,15 +933,17 @@ runtest () {
     then
         return
     fi
-    if [ -f $3 ]
+    if [ -f $itarg ]
     then
       # When object is local to test run
       # This deals with objects decompressed
       # during testing startup see testdecompress() here
-      targ=$3
+      targ=$itarg
+      echo "local test run: $targ"
     else
       # when targ is in testsrc.
-      targ=$testsrc/$3
+      targ=$testsrc/$itarg
+      echo "testsrc run: $targ"
     fi
     #  Add 1 to show our summary number. We have not yet
     #  counted it as a good or a fail.
@@ -1661,7 +1664,11 @@ runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993
 
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
 
-# These fail badly in many ways though early errors hide what used to be found early.
+runtest $d1 $d2 gobinary/go-binary -ka
+runtest $d1 $d2 gobinary/go-binary -v -ka
+
+# These fail badly in many ways though early errors hide
+# what used to be found early.
 runtest $d1 $d2 liu/OOB_read4.elf -a -M 
 runtest $d1 $d2 liu/OOB_read4.elf -ka -M 
 
