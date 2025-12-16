@@ -1,5 +1,10 @@
 Agostino Surabbo provided this testcase.
+The file is an archive and we stopped
+reading archives some years ago.
 
+Now altered to be 1.crashes.bin.xz
+to save space. The object no longer used at all
+so we never expand.
 
 dwarfdump -ka 1.crashes.bin
 
