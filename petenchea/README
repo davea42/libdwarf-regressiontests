@@ -1,0 +1,22 @@
+Alex Petenchea provides a test case
+related to github pull request 312.
+
+The basic problem was he was using 
+dwarf_object_init_b(), meaning 
+his own code to read the object file,
+and his code was not adequately checking
+for errors in the object file itself.
+The result was a crash (segmentation
+violation) in libdwarf.
+
+The pull request added a new test
+in libdwarf
+making up for the lack of the
+check in his object reading code.
+
+We don't have an object reader making that mistake,
+so this test case never did fail in regression testing
+and an error is reported.
+
+10 December  2025
+
