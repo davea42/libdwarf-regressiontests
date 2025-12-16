@@ -1,0 +1,13 @@
+The testcase object is reported as Apple Macho built with latest
+Apple command line tools
+
+Testcase from Vladimir Gordeyev (COJIDAT)
+16 December 2025.
+
+Initial errors from dwarfdump:
+
+dwarfdump ERROR:  ERROR: Failure reading CU header or DIE, corrupt DWARF:  DW_DLE_IMPROPER_DWO_ID(369). Attempting to continue.
+
+dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_IMPROPER_DWO_ID(369). Attempting to continue.
+
+
