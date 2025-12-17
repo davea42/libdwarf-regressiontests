@@ -1,0 +1,137 @@
+ Print .debug_frame
+No .debug_frame data present
+ Print .eh_frame
+2 cies present. 749 fdes present. 
+
+Print fde 0
+row_pc 0x44c0 subsequentpc 0x44c6
+  <cfa=[r7]  +16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x44c6 subsequentpc 0x44d0
+  <cfa=[r7]  +24>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x44d0
+  <cfa=[r7] Block ptr set? yes  Value is at address given by expr val >
+  <reg 16=[(CFA)]  -8>
+
+
+Print fde 1
+row_pc 0x4770
+  <cfa=[r7]  +8>
+  <reg 16=[(CFA)]  -8>
+
+
+Print fde 2
+row_pc 0x4780
+  <cfa=[r7]  +8>
+  <reg 16= [DW_FRAME_UNDEF_VAL] >
+
+
+Print fde 3
+row_pc 0x488a subsequentpc 0x488b
+  <cfa=[r7]  +8>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x488b subsequentpc 0x488e
+  <cfa=[r7]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x488e subsequentpc 0x4b39
+  <cfa=[r6]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4b39
+  <cfa=[r7]  +8>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+
+Print fde 4
+row_pc 0x4b3a subsequentpc 0x4b3b
+  <cfa=[r7]  +8>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4b3b subsequentpc 0x4b3e
+  <cfa=[r7]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4b3e subsequentpc 0x4da6
+  <cfa=[r6]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4da6
+  <cfa=[r7]  +8>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+
+Print fde 5
+row_pc 0x4da7 subsequentpc 0x4da8
+  <cfa=[r7]  +8>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4da8 subsequentpc 0x4dab
+  <cfa=[r7]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4dab subsequentpc 0x4e72
+  <cfa=[r6]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4e72
+  <cfa=[r7]  +8>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+
+Print fde 6
+row_pc 0x4e73 subsequentpc 0x4e74
+  <cfa=[r7]  +8>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4e74 subsequentpc 0x4e77
+  <cfa=[r7]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4e77 subsequentpc 0x4fc2
+  <cfa=[r6]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4fc2
+  <cfa=[r7]  +8>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+
+Print fde 7
+row_pc 0x4fc3 subsequentpc 0x4fc4
+  <cfa=[r7]  +8>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4fc4 subsequentpc 0x4fc7
+  <cfa=[r7]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x4fc7 subsequentpc 0x524a
+  <cfa=[r6]  +16>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+row_pc 0x524a
+  <cfa=[r7]  +8>
+  <reg  6=[(CFA)]  -16>
+  <reg 16=[(CFA)]  -8>
+
+
+Stopping at 8 FDEs by request

@@ -1,0 +1,334 @@
+ Print .debug_frame
+8 cies present. 40 fdes present. 
+
+Print fde 0
+row_pc 0x10590 subsequentpc 0x10594
+  <cfa=[r2] >
+
+row_pc 0x10594 subsequentpc 0x105a8
+  <cfa=[r2]  +48>
+
+row_pc 0x105a8 subsequentpc 0x10680
+  <cfa=[r2]  +48>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+  <reg 18=[(CFA)]  -32>
+  <reg 19=[(CFA)]  -40>
+
+row_pc 0x10680 subsequentpc 0x10684
+  <cfa=[r2]  +48>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+  <reg 18=[(CFA)]  -32>
+  <reg 19=[(CFA)]  -40>
+
+row_pc 0x10684 subsequentpc 0x10688
+  <cfa=[r2]  +48>
+  <reg  9=[(CFA)]  -24>
+  <reg 18=[(CFA)]  -32>
+  <reg 19=[(CFA)]  -40>
+
+row_pc 0x10688 subsequentpc 0x1068c
+  <cfa=[r2]  +48>
+  <reg 18=[(CFA)]  -32>
+  <reg 19=[(CFA)]  -40>
+
+row_pc 0x1068c subsequentpc 0x10690
+  <cfa=[r2]  +48>
+  <reg 19=[(CFA)]  -40>
+
+row_pc 0x10690 subsequentpc 0x10694
+  <cfa=[r2]  +48>
+
+row_pc 0x10694 subsequentpc 0x10698
+  <cfa=[r2]  +0>
+
+row_pc 0x10698
+  <cfa=[r2]  +48>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+  <reg 18=[(CFA)]  -32>
+  <reg 19=[(CFA)]  -40>
+
+
+Print fde 1
+row_pc 0x108b8 subsequentpc 0x108bc
+  <cfa=[r2] >
+
+row_pc 0x108bc subsequentpc 0x108c8
+  <cfa=[r2]  +32>
+
+row_pc 0x108c8 subsequentpc 0x10990
+  <cfa=[r2]  +32>
+  <reg  8=[(CFA)]  -8>
+  <reg  9=[(CFA)]  -16>
+  <reg 18=[(CFA)]  -24>
+
+row_pc 0x10990 subsequentpc 0x10994
+  <cfa=[r2]  +32>
+  <reg  9=[(CFA)]  -16>
+  <reg 18=[(CFA)]  -24>
+
+row_pc 0x10994 subsequentpc 0x10998
+  <cfa=[r2]  +32>
+  <reg 18=[(CFA)]  -24>
+
+row_pc 0x10998 subsequentpc 0x1099c
+  <cfa=[r2]  +32>
+
+row_pc 0x1099c
+  <cfa=[r2]  +0>
+
+
+Print fde 2
+row_pc 0x109a0
+  <cfa=[r2] >
+
+
+Print fde 3
+row_pc 0x109bc subsequentpc 0x109c0
+  <cfa=[r2] >
+
+row_pc 0x109c0 subsequentpc 0x109cc
+  <cfa=[r2]  +32>
+
+row_pc 0x109cc subsequentpc 0x10a48
+  <cfa=[r2]  +32>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10a48 subsequentpc 0x10a4c
+  <cfa=[r2]  +32>
+  <reg  1=[(CFA)]  -8>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10a4c subsequentpc 0x10a50
+  <cfa=[r2]  +32>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10a50 subsequentpc 0x10a54
+  <cfa=[r2]  +32>
+
+row_pc 0x10a54
+  <cfa=[r2]  +0>
+
+
+Print fde 4
+row_pc 0x10a58 subsequentpc 0x10a5c
+  <cfa=[r2] >
+
+row_pc 0x10a5c subsequentpc 0x10a68
+  <cfa=[r2]  +32>
+
+row_pc 0x10a68 subsequentpc 0x10ad0
+  <cfa=[r2]  +32>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10ad0 subsequentpc 0x10ad4
+  <cfa=[r2]  +32>
+  <reg  1=[(CFA)]  -8>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10ad4 subsequentpc 0x10adc
+  <cfa=[r2]  +32>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10adc subsequentpc 0x10ae4
+  <cfa=[r2]  +32>
+
+row_pc 0x10ae4
+  <cfa=[r2]  +0>
+
+
+Print fde 5
+row_pc 0x10ae8 subsequentpc 0x10aec
+  <cfa=[r2] >
+
+row_pc 0x10aec subsequentpc 0x10af0
+  <cfa=[r2]  +32>
+
+row_pc 0x10af0 subsequentpc 0x10b00
+  <cfa=[r2]  +32>
+  <reg  8=[(CFA)]  -16>
+
+row_pc 0x10b00 subsequentpc 0x10b0c
+  <cfa=[r2]  +32>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10b0c subsequentpc 0x10b50
+  <cfa=[r2]  +32>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10b50 subsequentpc 0x10b54
+  <cfa=[r2]  +32>
+  <reg  1=[(CFA)]  -8>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10b54 subsequentpc 0x10b5c
+  <cfa=[r2]  +32>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10b5c subsequentpc 0x10b60
+  <cfa=[r2]  +32>
+
+row_pc 0x10b60
+  <cfa=[r2]  +0>
+
+
+Print fde 6
+row_pc 0x10b64 subsequentpc 0x10b68
+  <cfa=[r2] >
+
+row_pc 0x10b68 subsequentpc 0x10b74
+  <cfa=[r2]  +32>
+
+row_pc 0x10b74 subsequentpc 0x10ba4
+  <cfa=[r2]  +32>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10ba4 subsequentpc 0x10ba8
+  <cfa=[r2]  +32>
+  <reg  1=[(CFA)]  -8>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10ba8 subsequentpc 0x10bb0
+  <cfa=[r2]  +32>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x10bb0 subsequentpc 0x10bb8
+  <cfa=[r2]  +32>
+
+row_pc 0x10bb8
+  <cfa=[r2]  +0>
+
+
+Print fde 7
+row_pc 0x10bbc
+  <cfa=[r2] >
+
+
+Stopping at 8 FDEs by request
+ Print .eh_frame
+2 cies present. 260 fdes present. 
+
+Print fde 0
+row_pc 0x10798
+  <cfa=[r2] >
+  <reg  1= [DW_FRAME_UNDEF_VAL] >
+
+
+Print fde 1
+row_pc 0x12458 subsequentpc 0x1245c
+  <cfa=[r2] >
+
+row_pc 0x1245c subsequentpc 0x12468
+  <cfa=[r2]  +32>
+
+row_pc 0x12468 subsequentpc 0x1247c
+  <cfa=[r2]  +32>
+  <reg  8=[(CFA)]  -16>
+
+row_pc 0x1247c subsequentpc 0x124a4
+  <cfa=[r2]  +32>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x124a4 subsequentpc 0x124a8
+  <cfa=[r2]  +32>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x124a8 subsequentpc 0x124ac
+  <cfa=[r2]  +32>
+  <reg  9=[(CFA)]  -24>
+
+row_pc 0x124ac subsequentpc 0x124b0
+  <cfa=[r2]  +32>
+
+row_pc 0x124b0
+  <cfa=[r2]  +0>
+
+
+Print fde 2
+row_pc 0x124b4 subsequentpc 0x124b8
+  <cfa=[r2] >
+
+row_pc 0x124b8 subsequentpc 0x124c4
+  <cfa=[r2]  +304>
+
+row_pc 0x124c4
+  <cfa=[r2]  +304>
+  <reg  1=[(CFA)]  -8>
+
+
+Print fde 3
+row_pc 0x1254c subsequentpc 0x12554
+  <cfa=[r2] >
+
+row_pc 0x12554 subsequentpc 0x12588
+  <cfa=[r2]  +112>
+
+row_pc 0x12588
+  <cfa=[r2]  +112>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+  <reg  9=[(CFA)]  -24>
+  <reg 18=[(CFA)]  -32>
+  <reg 19=[(CFA)]  -40>
+
+
+Print fde 4
+row_pc 0x17220
+  <cfa=[r2] >
+
+
+Print fde 5
+row_pc 0x17228
+  <cfa=[r2] >
+
+
+Print fde 6
+row_pc 0x1722c
+  <cfa=[r2] >
+
+
+Print fde 7
+row_pc 0x172f0 subsequentpc 0x172f4
+  <cfa=[r2] >
+
+row_pc 0x172f4 subsequentpc 0x172fc
+  <cfa=[r2]  +16>
+
+row_pc 0x172fc subsequentpc 0x17314
+  <cfa=[r2]  +16>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+
+row_pc 0x17314 subsequentpc 0x17318
+  <cfa=[r2]  +16>
+  <reg  8=[(CFA)]  -16>
+
+row_pc 0x17318 subsequentpc 0x1731c
+  <cfa=[r2]  +16>
+
+row_pc 0x1731c subsequentpc 0x17320
+  <cfa=[r2]  +0>
+
+row_pc 0x17320
+  <cfa=[r2]  +16>
+  <reg  1=[(CFA)]  -8>
+  <reg  8=[(CFA)]  -16>
+
+
+Stopping at 8 FDEs by request
