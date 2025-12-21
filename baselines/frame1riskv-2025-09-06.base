@@ -18,147 +18,78 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 0
-function low pc 0x10590  and length 0x208  and midpoint addr we choose 0x10694
-function  Requested_pc 0x10694 Actual addr of row 0x10694
+function low pc 0x10590  and length 0x208  and addr we choose 0x10694
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x10590 hasmore yes subsequent_pc 0x10594
 
 Regtable at pc 0x10590
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10594
+row_pc 0x10594 hasmore yes subsequent_pc 0x105a8
 
 Regtable at pc 0x10594
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  48 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x105a8
+row_pc 0x105a8 hasmore yes subsequent_pc 0x10680
 
 Regtable at pc 0x105a8
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  48 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
+reg 18 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -32 Address of value is CFA plus signed offset]
+reg 19 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -40 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10680
+row_pc 0x10680 hasmore yes subsequent_pc 0x10684
 
 Regtable at pc 0x10680
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  48 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
+reg 18 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -32 Address of value is CFA plus signed offset]
+reg 19 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -40 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10684
+row_pc 0x10684 hasmore yes subsequent_pc 0x10688
 
 Regtable at pc 0x10684
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  48 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
+reg 18 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -32 Address of value is CFA plus signed offset]
+reg 19 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -40 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10688
+row_pc 0x10688 hasmore yes subsequent_pc 0x1068c
 
 Regtable at pc 0x10688
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  48 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
+reg 18 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -32 Address of value is CFA plus signed offset]
+reg 19 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -40 Address of value is CFA plus signed offset]
   Next row to print is pc 0x1068c
+row_pc 0x1068c hasmore yes subsequent_pc 0x10690
 
 Regtable at pc 0x1068c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  48 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
+reg 19 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -40 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10690
+row_pc 0x10690 hasmore yes subsequent_pc 0x10694
 
 Regtable at pc 0x10690
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  48 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10694
+row_pc 0x10694 hasmore yes subsequent_pc 0x10698
 
 Regtable at pc 0x10694
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  0 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10698
+row_pc 0x10698 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x10698
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  48 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
+reg 18 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -32 Address of value is CFA plus signed offset]
+reg 19 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -40 Address of value is CFA plus signed offset]
 Frame op count: 23
 
 Print 23 frame instructions
@@ -203,105 +134,49 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 1
-function low pc 0x108b8  and length 0xe8  and midpoint addr we choose 0x1092c
-function  Requested_pc 0x1092c Actual addr of row 0x108c8
+function low pc 0x108b8  and length 0xe8  and addr we choose 0x1092c
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x108b8 hasmore yes subsequent_pc 0x108bc
 
 Regtable at pc 0x108b8
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x108bc
+row_pc 0x108bc hasmore yes subsequent_pc 0x108c8
 
 Regtable at pc 0x108bc
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x108c8
+row_pc 0x108c8 hasmore yes subsequent_pc 0x10990
 
 Regtable at pc 0x108c8
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
+reg 18 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10990
+row_pc 0x10990 hasmore yes subsequent_pc 0x10994
 
 Regtable at pc 0x10990
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
+reg 18 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10994
+row_pc 0x10994 hasmore yes subsequent_pc 0x10998
 
 Regtable at pc 0x10994
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
+reg 18 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10998
+row_pc 0x10998 hasmore yes subsequent_pc 0x1099c
 
 Regtable at pc 0x10998
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x1099c
+row_pc 0x1099c hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x1099c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  0 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 18
 
 Print 18 frame instructions
@@ -341,21 +216,13 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 2
-function low pc 0x109a0  and length 0x1c  and midpoint addr we choose 0x109ae
-function  Requested_pc 0x109ae Actual addr of row 0x109a0
+function low pc 0x109a0  and length 0x1c  and addr we choose 0x109ae
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x109a0 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x109a0
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 0
 
 Print 0 frame instructions
@@ -377,105 +244,49 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 3
-function low pc 0x109bc  and length 0x9c  and midpoint addr we choose 0x10a0a
-function  Requested_pc 0x10a0a Actual addr of row 0x109cc
+function low pc 0x109bc  and length 0x9c  and addr we choose 0x10a0a
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x109bc hasmore yes subsequent_pc 0x109c0
 
 Regtable at pc 0x109bc
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x109c0
+row_pc 0x109c0 hasmore yes subsequent_pc 0x109cc
 
 Regtable at pc 0x109c0
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x109cc
+row_pc 0x109cc hasmore yes subsequent_pc 0x10a48
 
 Regtable at pc 0x109cc
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10a48
+row_pc 0x10a48 hasmore yes subsequent_pc 0x10a4c
 
 Regtable at pc 0x10a48
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10a4c
+row_pc 0x10a4c hasmore yes subsequent_pc 0x10a50
 
 Regtable at pc 0x10a4c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10a50
+row_pc 0x10a50 hasmore yes subsequent_pc 0x10a54
 
 Regtable at pc 0x10a50
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10a54
+row_pc 0x10a54 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x10a54
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  0 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 18
 
 Print 18 frame instructions
@@ -515,105 +326,49 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 4
-function low pc 0x10a58  and length 0x90  and midpoint addr we choose 0x10aa0
-function  Requested_pc 0x10aa0 Actual addr of row 0x10a68
+function low pc 0x10a58  and length 0x90  and addr we choose 0x10aa0
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x10a58 hasmore yes subsequent_pc 0x10a5c
 
 Regtable at pc 0x10a58
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10a5c
+row_pc 0x10a5c hasmore yes subsequent_pc 0x10a68
 
 Regtable at pc 0x10a5c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10a68
+row_pc 0x10a68 hasmore yes subsequent_pc 0x10ad0
 
 Regtable at pc 0x10a68
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10ad0
+row_pc 0x10ad0 hasmore yes subsequent_pc 0x10ad4
 
 Regtable at pc 0x10ad0
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10ad4
+row_pc 0x10ad4 hasmore yes subsequent_pc 0x10adc
 
 Regtable at pc 0x10ad4
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10adc
+row_pc 0x10adc hasmore yes subsequent_pc 0x10ae4
 
 Regtable at pc 0x10adc
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10ae4
+row_pc 0x10ae4 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x10ae4
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  0 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 18
 
 Print 18 frame instructions
@@ -653,133 +408,62 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 5
-function low pc 0x10ae8  and length 0x7c  and midpoint addr we choose 0x10b26
-function  Requested_pc 0x10b26 Actual addr of row 0x10b0c
+function low pc 0x10ae8  and length 0x7c  and addr we choose 0x10b26
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x10ae8 hasmore yes subsequent_pc 0x10aec
 
 Regtable at pc 0x10ae8
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10aec
+row_pc 0x10aec hasmore yes subsequent_pc 0x10af0
 
 Regtable at pc 0x10aec
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10af0
+row_pc 0x10af0 hasmore yes subsequent_pc 0x10b00
 
 Regtable at pc 0x10af0
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10b00
+row_pc 0x10b00 hasmore yes subsequent_pc 0x10b0c
 
 Regtable at pc 0x10b00
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10b0c
+row_pc 0x10b0c hasmore yes subsequent_pc 0x10b50
 
 Regtable at pc 0x10b0c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10b50
+row_pc 0x10b50 hasmore yes subsequent_pc 0x10b54
 
 Regtable at pc 0x10b50
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10b54
+row_pc 0x10b54 hasmore yes subsequent_pc 0x10b5c
 
 Regtable at pc 0x10b54
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10b5c
+row_pc 0x10b5c hasmore yes subsequent_pc 0x10b60
 
 Regtable at pc 0x10b5c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10b60
+row_pc 0x10b60 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x10b60
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  0 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 18
 
 Print 18 frame instructions
@@ -819,105 +503,49 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 6
-function low pc 0x10b64  and length 0x58  and midpoint addr we choose 0x10b90
-function  Requested_pc 0x10b90 Actual addr of row 0x10b74
+function low pc 0x10b64  and length 0x58  and addr we choose 0x10b90
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x10b64 hasmore yes subsequent_pc 0x10b68
 
 Regtable at pc 0x10b64
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10b68
+row_pc 0x10b68 hasmore yes subsequent_pc 0x10b74
 
 Regtable at pc 0x10b68
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10b74
+row_pc 0x10b74 hasmore yes subsequent_pc 0x10ba4
 
 Regtable at pc 0x10b74
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10ba4
+row_pc 0x10ba4 hasmore yes subsequent_pc 0x10ba8
 
 Regtable at pc 0x10ba4
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10ba8
+row_pc 0x10ba8 hasmore yes subsequent_pc 0x10bb0
 
 Regtable at pc 0x10ba8
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x10bb0
+row_pc 0x10bb0 hasmore yes subsequent_pc 0x10bb8
 
 Regtable at pc 0x10bb0
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x10bb8
+row_pc 0x10bb8 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x10bb8
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  0 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 19
 
 Print 19 frame instructions
@@ -958,21 +586,13 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 7
-function low pc 0x10bbc  and length 0x98  and midpoint addr we choose 0x10c08
-function  Requested_pc 0x10c08 Actual addr of row 0x10bbc
+function low pc 0x10bbc  and length 0x98  and addr we choose 0x10c08
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x10bbc hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x10bbc
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 0
 
 Print 0 frame instructions
@@ -998,21 +618,14 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 0
-function low pc 0x10798  and length 0x30  and midpoint addr we choose 0x107b0
-function  Requested_pc 0x107b0 Actual addr of row 0x10798
+function low pc 0x10798  and length 0x30  and addr we choose 0x107b0
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x10798 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x10798
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_UNDEF_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 2
 
 Print 2 frame instructions
@@ -1036,119 +649,55 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 1
-function low pc 0x12458  and length 0x5c  and midpoint addr we choose 0x12486
-function  Requested_pc 0x12486 Actual addr of row 0x1247c
+function low pc 0x12458  and length 0x5c  and addr we choose 0x12486
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x12458 hasmore yes subsequent_pc 0x1245c
 
 Regtable at pc 0x12458
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x1245c
+row_pc 0x1245c hasmore yes subsequent_pc 0x12468
 
 Regtable at pc 0x1245c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x12468
+row_pc 0x12468 hasmore yes subsequent_pc 0x1247c
 
 Regtable at pc 0x12468
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x1247c
+row_pc 0x1247c hasmore yes subsequent_pc 0x124a4
 
 Regtable at pc 0x1247c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x124a4
+row_pc 0x124a4 hasmore yes subsequent_pc 0x124a8
 
 Regtable at pc 0x124a4
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x124a8
+row_pc 0x124a8 hasmore yes subsequent_pc 0x124ac
 
 Regtable at pc 0x124a8
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
   Next row to print is pc 0x124ac
+row_pc 0x124ac hasmore yes subsequent_pc 0x124b0
 
 Regtable at pc 0x124ac
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  32 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x124b0
+row_pc 0x124b0 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x124b0
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  0 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 18
 
 Print 18 frame instructions
@@ -1188,49 +737,24 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 2
-function low pc 0x124b4  and length 0x98  and midpoint addr we choose 0x12500
-function  Requested_pc 0x12500 Actual addr of row 0x124c4
+function low pc 0x124b4  and length 0x98  and addr we choose 0x12500
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x124b4 hasmore yes subsequent_pc 0x124b8
 
 Regtable at pc 0x124b4
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x124b8
+row_pc 0x124b8 hasmore yes subsequent_pc 0x124c4
 
 Regtable at pc 0x124b8
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  304 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x124c4
+row_pc 0x124c4 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x124c4
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  304 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 4
 
 Print 4 frame instructions
@@ -1256,49 +780,28 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 3
-function low pc 0x1254c  and length 0x2ac  and midpoint addr we choose 0x126a2
-function  Requested_pc 0x126a2 Actual addr of row 0x12588
+function low pc 0x1254c  and length 0x2ac  and addr we choose 0x126a2
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x1254c hasmore yes subsequent_pc 0x12554
 
 Regtable at pc 0x1254c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x12554
+row_pc 0x12554 hasmore yes subsequent_pc 0x12588
 
 Regtable at pc 0x12554
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  112 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x12588
+row_pc 0x12588 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x12588
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  112 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
 reg 9 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -24 Address of value is CFA plus signed offset]
+reg 18 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -32 Address of value is CFA plus signed offset]
+reg 19 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -40 Address of value is CFA plus signed offset]
 Frame op count: 18
 
 Print 18 frame instructions
@@ -1338,21 +841,13 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 4
-function low pc 0x17220  and length 0x8  and midpoint addr we choose 0x17224
-function  Requested_pc 0x17224 Actual addr of row 0x17220
+function low pc 0x17220  and length 0x8  and addr we choose 0x17224
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x17220 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x17220
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 3
 
 Print 3 frame instructions
@@ -1377,21 +872,13 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 5
-function low pc 0x17228  and length 0x4  and midpoint addr we choose 0x1722a
-function  Requested_pc 0x1722a Actual addr of row 0x17228
+function low pc 0x17228  and length 0x4  and addr we choose 0x1722a
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x17228 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x17228
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 3
 
 Print 3 frame instructions
@@ -1416,21 +903,13 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 6
-function low pc 0x1722c  and length 0x6c  and midpoint addr we choose 0x17262
-function  Requested_pc 0x17262 Actual addr of row 0x1722c
+function low pc 0x1722c  and length 0x6c  and addr we choose 0x17262
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x1722c hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x1722c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 7
 
 Print 7 frame instructions
@@ -1459,105 +938,48 @@ Print 2 frame instructions
 [ 1]  2 DW_CFA_nop 
 
 Print fde 7
-function low pc 0x172f0  and length 0x48  and midpoint addr we choose 0x17314
-function  Requested_pc 0x17314 Actual addr of row 0x17314
+function low pc 0x172f0  and length 0x48  and addr we choose 0x17314
+Now read frame data at chosen address
+Now read frame data again, starting at lowpc
+row_pc 0x172f0 hasmore yes subsequent_pc 0x172f4
 
 Regtable at pc 0x172f0
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? no. Value in register]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x172f4
+row_pc 0x172f4 hasmore yes subsequent_pc 0x172fc
 
 Regtable at pc 0x172f4
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  16 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x172fc
+row_pc 0x172fc hasmore yes subsequent_pc 0x17314
 
 Regtable at pc 0x172fc
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  16 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x17314
+row_pc 0x17314 hasmore yes subsequent_pc 0x17318
 
 Regtable at pc 0x17314
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  16 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x17318
+row_pc 0x17318 hasmore yes subsequent_pc 0x1731c
 
 Regtable at pc 0x17318
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  16 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x1731c
+row_pc 0x1731c hasmore yes subsequent_pc 0x17320
 
 Regtable at pc 0x1731c
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  0 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 1 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 8 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
   Next row to print is pc 0x17320
+row_pc 0x17320 hasmore no subsequent_pc 0x0
 
 Regtable at pc 0x17320
 cfa   type: [DW_EXPR_OFFSET]  [r2]    [offset_rel? yes.  Offset  16 Defines cfa value]
-reg 0 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 1 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -8 Address of value is CFA plus signed offset]
-reg 2 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 3 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 4 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 5 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 6 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
-reg 7 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 reg 8 type: [DW_EXPR_OFFSET]  [(CFA)]    [offset_rel? yes.  Offset  -16 Address of value is CFA plus signed offset]
-reg 9 type: [DW_EXPR_OFFSET]  [DW_FRAME_SAME_VAL]    [offset_rel? no. Value in register]
 Frame op count: 19
 
 Print 19 frame instructions
