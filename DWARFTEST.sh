@@ -1234,6 +1234,19 @@ echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
   chkresbld $r 'check frame1-error compile dwarfexample/frame1.c failed'
   cd ..
 
+echo "=====BUILD  dwarfexample/frame2.c into frame2/frame2 "
+  mklocal frame2
+  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+    -I$libbld/libdwarf  $nonsharedopt \
+    -gdwarf $nlizeopt \
+    $codedir/src/bin/dwarfexample/frame2.c \
+    -o frame2 $dwlib $libzlib $libzlink"
+  echo "$x"
+  $x
+  r=$?
+  chkresbld $r 'check frame2-error compile dwarfexample/frame2.c failed'
+  cd ..
+
 echo "=====BUILD  dwarfexample/jitreader.c "
   x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf  $nonsharedopt \
@@ -1332,6 +1345,10 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+runsingle frame2regs-2025-12-07.base frame2/frame2 --stop-at-fde-n=8 $testsrc/gsplitdwarf/frame1 
+
+runsingle frame2riskv-2025-12-07.base frame2/frame2 --stop-at-fde-n=8 $testsrc/frameriskv/fft
 
 if [ -f ./readobjmacho ]
 then
@@ -1663,6 +1680,13 @@ runsingle ossfuzz57027.base  ./fuzz_stack_frame_access --testobj=$testsrc/ossfuz
 runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993/fuzz_macro_dwarf5-5770464300761088
 
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
+
+# Test case uses latest Apple compiler December 2025
+# which (for the first time) uses DW_AT_GNU_dwo_id.
+runtest $d1 $d2 gordeyev/DwarfTest -vv
+
+# See petenchia/README for explanation. Not a good test, but...
+runtest $d1 $d2 petenchea/sample.elf
 
 runtest $d1 $d2 gobinary/go-binary -ka
 runtest $d1 $d2 gobinary/go-binary -v -ka
