@@ -1,0 +1,58 @@
+
+
+Bug ossfuzz 475582650
+fuzz_set_frame_all-5675964708487168
+Reported 13 January 2026.
+
+
+	==1084==ERROR: LeakSanitizer: detected memory leaks
+Direct leak of 216 byte(s) in 3 object(s) allocated from:
+    #0 0x596db95fe939 in __interceptor_calloc /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:74:3
+    #1 0x596db9661b3f in _dwarf_initialize_frame_table libdwarf/src/lib/libdwarf/dwarf_frame.c:1688:29
+    #2 0x596db9661b3f in dwarf_get_fde_info_for_reg3_c libdwarf/src/lib/libdwarf/dwarf_frame.c:954:15
+    #3 0x596db9661709 in dwarf_get_fde_info_for_reg3_b libdwarf/src/lib/libdwarf/dwarf_frame.c:899:11
+    #4 0x596db964260e in print_fde_selected_regs libdwarf/fuzz/fuzz_set_frame_all.c:388:15
+    #5 0x596db964260e in read_frame_data libdwarf/fuzz/fuzz_set_frame_all.c:192:5
+    #6 0x596db9641363 in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_set_frame_all.c:105:7
+    #7 0x596db94dfe1d in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:619:13
+    #8 0x596db94cab92 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:329:6
+    #9 0x596db94d0a60 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:865:9
+    #10 0x596db94fc592 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10
+    #11 0x7e6365c52082 in __libc_start_main /build/glibc-B3wQXB/glibc-2.31/csu/libc-start.c:308:16
+
+Direct leak of 72 byte(s) in 1 object(s) allocated from:
+    #0 0x596db95fe939 in __interceptor_calloc /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:74:3
+    #1 0x596db9661b3f in _dwarf_initialize_frame_table libdwarf/src/lib/libdwarf/dwarf_frame.c:1688:29
+    #2 0x596db9661b3f in dwarf_get_fde_info_for_reg3_c libdwarf/src/lib/libdwarf/dwarf_frame.c:954:15
+    #3 0x596db9661709 in dwarf_get_fde_info_for_reg3_b libdwarf/src/lib/libdwarf/dwarf_frame.c:899:11
+    #4 0x596db964260e in print_fde_selected_regs libdwarf/fuzz/fuzz_set_frame_all.c:388:15
+    #5 0x596db964260e in read_frame_data libdwarf/fuzz/fuzz_set_frame_all.c:192:5
+    #6 0x596db96413d3 in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_set_frame_all.c:110:7
+    #7 0x596db94dfe1d in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:619:13
+    #8 0x596db94cab92 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:329:6
+    #9 0x596db94d0a60 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:865:9
+    #10 0x596db94fc592 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10
+    #11 0x7e6365c52082 in __libc_start_main /build/glibc-B3wQXB/glibc-2.31/csu/libc-start.c:308:16
+Indirect leak of 31752 byte(s) in 3 object(s) allocated from:
+    #0 0x596db95fe939 in __interceptor_calloc /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:74:3
+    #1 0x596db9661b7f in _dwarf_initialize_frame_table libdwarf/src/lib/libdwarf/dwarf_frame.c:1695:9
+    #2 0x596db9661b7f in dwarf_get_fde_info_for_reg3_c libdwarf/src/lib/libdwarf/dwarf_frame.c:954:15
+    #3 0x596db9661709 in dwarf_get_fde_info_for_reg3_b libdwarf/src/lib/libdwarf/dwarf_frame.c:899:11
+    #4 0x596db964260e in print_fde_selected_regs libdwarf/fuzz/fuzz_set_frame_all.c:388:15
+    #5 0x596db964260e in read_frame_data libdwarf/fuzz/fuzz_set_frame_all.c:192:5
+    #6 0x596db9641363 in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_set_frame_all.c:105:7
+    #7 0x596db94dfe1d in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:619:13
+    #8 0x596db94cab92 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:329:6
+    #9 0x596db94d0a60 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:865:9
+    #10 0x596db94fc592 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10
+    #11 0x7e6365c52082 in __libc_start_main /build/glibc-B3wQXB/glibc-2.31/csu/libc-start.c:308:16
+Indirect leak of 10584 byte(s) in 1 object(s) allocated from:
+    #0 0x596db95fe939 in __interceptor_calloc /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:74:3
+    #1 0x596db9661b7f in _dwarf_initialize_frame_table libdwarf/src/lib/libdwarf/dwarf_frame.c:1695:9
+    #2 0x596db9661b7f in dwarf_get_fde_info_for_reg3_c libdwarf/src/lib/libdwarf/dwarf_frame.c:954:15
+    #3 0x596db9661709 in dwarf_get_fde_info_for_reg3_b libdwarf/src/lib/libdwarf/dwarf_frame.c:899:11
+    #4 0x596db964260e in print_fde_selected_regs libdwarf/fuzz/fuzz_set_frame_all.c:388:15
+    #5 0x596db964260e in read_frame_data libdwarf/fuzz/fuzz_set_frame_all.c:192:5
+    #6 0x596db96413d3 in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_set_frame_all.c:110:7
+    #7 0x596db94dfe1d in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:619:13
+    #8 0x596db94cab92 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) /src/llvm-project/co
