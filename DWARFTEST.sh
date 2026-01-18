@@ -1346,6 +1346,8 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle fuzz_set_frame_all-475582650.base ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz475582650/fuzz_set_frame_all-5675964708487168
+
 runsingle frame2regs-2025-12-07.base frame2/frame2 --stop-at-fde-n=8 $testsrc/gsplitdwarf/frame1 
 
 runsingle frame2riskv-2025-12-07.base frame2/frame2 --stop-at-fde-n=8 $testsrc/frameriskv/fft

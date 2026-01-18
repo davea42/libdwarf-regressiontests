@@ -24,6 +24,7 @@ Print 4 frame instructions
 Print fde 0
 
  FDE columns (registers) for pc 0x400f10
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -42,6 +43,7 @@ Print fde 0
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x400f16
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =24( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -60,6 +62,8 @@ Print fde 0
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x400f20
+ col=12290 [CFA] <DW_EXPR_EXPRESSION  [(CFA)] =expr-block-len=11<DW_EXPR_EXPRESSIONbytes:77088000 3f1a3b2a 332422> 
+>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -97,6 +101,7 @@ Print 3 frame instructions
 Print fde 1
 
  FDE columns (registers) for pc 0x4011e0
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -135,6 +140,7 @@ Print 4 frame instructions
 Print fde 2
 
  FDE columns (registers) for pc 0x4012d6
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -153,6 +159,7 @@ Print fde 2
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x4012d7
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -171,6 +178,7 @@ Print fde 2
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x4012da
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r6] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -189,6 +197,7 @@ Print fde 2
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x40153b
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -227,6 +236,7 @@ Print 4 frame instructions
 Print fde 3
 
  FDE columns (registers) for pc 0x40153c
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -245,6 +255,7 @@ Print fde 3
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x40153d
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -263,6 +274,7 @@ Print fde 3
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401540
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r6] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -281,6 +293,7 @@ Print fde 3
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401798
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -319,6 +332,7 @@ Print 4 frame instructions
 Print fde 4
 
  FDE columns (registers) for pc 0x401799
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -337,6 +351,7 @@ Print fde 4
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x40179a
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -355,6 +370,7 @@ Print fde 4
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x40179d
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r6] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -373,6 +389,7 @@ Print fde 4
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401862
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -411,6 +428,7 @@ Print 4 frame instructions
 Print fde 5
 
  FDE columns (registers) for pc 0x401863
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -429,6 +447,7 @@ Print fde 5
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401864
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -447,6 +466,7 @@ Print fde 5
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401867
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r6] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -465,6 +485,7 @@ Print fde 5
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x4019c1
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -503,6 +524,7 @@ Print 4 frame instructions
 Print fde 6
 
  FDE columns (registers) for pc 0x4019c2
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -521,6 +543,7 @@ Print fde 6
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x4019c3
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -539,6 +562,7 @@ Print fde 6
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x4019c6
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r6] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -557,6 +581,7 @@ Print fde 6
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401c1a
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -595,6 +620,7 @@ Print 4 frame instructions
 Print fde 7
 
  FDE columns (registers) for pc 0x401c1b
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -613,6 +639,7 @@ Print fde 7
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401c1c
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -631,6 +658,7 @@ Print fde 7
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401c1f
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r6] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -649,6 +677,7 @@ Print fde 7
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401c27
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r6] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET [ [r3] =-24( [(CFA)] ) ]>
@@ -667,6 +696,7 @@ Print fde 7
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401faf
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET [ [r3] =-24( [(CFA)] ) ]>
@@ -705,6 +735,7 @@ Print 4 frame instructions
 Print fde 8
 
  FDE columns (registers) for pc 0x401fb0
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -723,6 +754,7 @@ Print fde 8
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401fb1
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -741,6 +773,7 @@ Print fde 8
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x401fb4
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r6] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -759,6 +792,7 @@ Print fde 8
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x40232d
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -797,6 +831,7 @@ Print 4 frame instructions
 Print fde 9
 
  FDE columns (registers) for pc 0x40232e
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -815,6 +850,7 @@ Print fde 9
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x40232f
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -833,6 +869,7 @@ Print fde 9
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x402332
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =16( [r6] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
@@ -851,6 +888,7 @@ Print fde 9
  col=16 <DW_EXPR_OFFSET [ [r16] =-8( [(CFA)] ) ]>
 
  FDE columns (registers) for pc 0x4023ac
+ col=12290 [CFA] <DW_EXPR_OFFSET [ [(CFA)] =08( [r7] ) ]>
  col=1 <DW_EXPR_OFFSET  SAME_VAL[ [r1] = [DW_FRAME_SAME_VAL]  ]>
  col=2 <DW_EXPR_OFFSET  SAME_VAL[ [r2] = [DW_FRAME_SAME_VAL]  ]>
  col=3 <DW_EXPR_OFFSET  SAME_VAL[ [r3] = [DW_FRAME_SAME_VAL]  ]>
