@@ -1,0 +1,74 @@
+ Print .debug_frame
+1 cies present. 1 fdes present. 
+Print cie of fde 0
+Print fde 0
+
+FAIL: dwarf_get_fde_info_for_reg3_b, reading reg err DW_DLE_DF_FRAME_DECODING_ERROR:  instr opcode 0x20 unknown line 394
+function low pc 0xffffffffffffff20  and length 0x20  and midpoint addr we choose 0xffffffffffffff30
+function actual addr of row 0x0
+dwarf_get_fde_info_for_all_regs3 failed!
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+1 cies present. 1 fdes present. 
+Print cie of fde 0
+Print fde 0
+
+FAIL: dwarf_get_fde_info_for_reg3_b, reading reg err DW_DLE_DF_FRAME_DECODING_ERROR:  instr opcode 0x20 unknown line 394
+function low pc 0xffffffffffffff20  and length 0x20  and midpoint addr we choose 0xffffffffffffff30
+function actual addr of row 0x0
+dwarf_get_fde_info_for_all_regs3 failed!
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present
+ Print .debug_frame
+Error reading frame data 
+ Print .eh_frame
+No .eh_frame data present

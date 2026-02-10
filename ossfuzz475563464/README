@@ -1,0 +1,54 @@
+
+Notice of this bug recieved 10 February 2026.
+
+This commit fixes a heap-use-after-free vulnerability in
+`_dwarf_get_fde_info_for_a_pc_row` within
+`src/lib/libdwarf/dwarf_frame.c`.
+
+The issue stemmed from `cie->ci_initial_table` retaining a pointer to
+freed memory.  When `_dwarf_get_fde_info_for_a_pc_row` initializes the
+CIE initial table, it allocates memory for `cieframe` and assigns it to
+`cie->ci_initial_table`. If subsequent initialization steps (like
+`_dwarf_initialize_frame_table` or `_dwarf_exec_frame_instr`) fail,
+`cieframe` is deallocated, but `cie->ci_initial_table` was not cleared.
+
+Since `cie` objects are shared, a subsequent call to
+`_dwarf_get_fde_info_for_a_pc_row` would find `cie->ci_initial_table`
+non-NULL (pointing to the freed memory) and attempt to use it, resulting
+in a use-after-free.
+
+This patch explicitly sets `cie->ci_initial_table = 0` whenever
+`cieframe` is deallocated in `_dwarf_get_fde_info_for_a_pc_row`,
+preventing the dangling pointer and subsequent crash.
+
+Co-authored-by: CodeMender <codemender-patching@google.com>
+Fixes: https://issues.oss-fuzz.com/issues/475563464
+Change-Id: I5b0192356c57b9782d389d8933a779fcf2440ad2
+---
+ src/lib/libdwarf/dwarf_frame.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/lib/libdwarf/dwarf_frame.c b/src/lib/libdwarf/dwarf_frame.c
+index 76314a0c..9cd2c762 100644
+--- a/src/lib/libdwarf/dwarf_frame.c
++++ b/src/lib/libdwarf/dwarf_frame.c
+@@ -836,7 +836,7 @@ _dwarf_get_fde_info_for_a_pc_row(Dwarf_Fde fde,
+             rules_count, NULL,error);
+         if (res == DW_DLV_ERROR) {
+             dwarf_dealloc(dbg,cieframe,DW_DLA_FRAME);
+-            cieframe = 0;
++            cie->ci_initial_table = 0;
+             return res;
+         }
+         rules = cieframe->fr_regtable->rt3_rules;
+@@ -861,6 +861,7 @@ _dwarf_get_fde_info_for_a_pc_row(Dwarf_Fde fde,
+             error);
+         if (res != DW_DLV_OK) {
+             dwarf_dealloc(dbg,cieframe,DW_DLA_FRAME);
++            cie->ci_initial_table = 0;
+             return res;
+         }
+     }
+--
+2.53.0.239.g8d8fc8a987-goog
+
