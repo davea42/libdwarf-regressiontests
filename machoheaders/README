@@ -1,0 +1,7 @@
+24 February 2026
+This is a macho test object provided in github
+pull request 316.
+
+It has no dSYM data but it does have __eh_frame
+in the executable.  The library fails to do
+do anything with the __eh_frame (oops).
