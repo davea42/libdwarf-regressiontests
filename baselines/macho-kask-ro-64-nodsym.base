@@ -1,8 +1,7 @@
 Skip dsym check
 Reading name provided ...std...regressiontests/macho-kask/dwarfdump_64
   Total Commands count      : 12
-  Total Commands item size  : 1904
-  Total Commands space bytes: 22848
+  Total Commands size  : 1904
 Mach-o Magic:  0xfeedfacf
   cputype           : 0x1000007 cpusubtype: 0x80000003
   offset size       : 8

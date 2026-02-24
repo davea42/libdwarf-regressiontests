@@ -1,7 +1,6 @@
 Reading object at ...std...regressiontests/macho-kask/dwarfdump_64.dSYM/Contents/Resources/DWARF/dwarfdump_64 rather than name provided.
   Total Commands count      : 7
-  Total Commands item size  : 2328
-  Total Commands space bytes: 16296
+  Total Commands size  : 2328
 Mach-o Magic:  0xfeedfacf
   cputype           : 0x1000007 cpusubtype: 0x3
   offset size       : 8
