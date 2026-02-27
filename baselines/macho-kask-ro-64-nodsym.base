@@ -37,12 +37,12 @@ Segment name __LINKEDIT
   [2] 0x19 LC_SEGMENT_64    __DATA            0x000ad000 0x0000a000
   [3] 0x19 LC_SEGMENT_64    __LINKEDIT        0x000b7000 0x000227f8
  Sections count: 8  offset 0x000000b0
-                         addr      offset     size
-  [ 0]                  0x00000000 0x00000000 0x00000000
-  [ 1] __text           0x100001664 0x00001664 0x00083222
-  [ 2] __symbol_stub1   0x100084886 0x00084886 0x0000016e
-  [ 3] __stub_helper    0x1000849f4 0x000849f4 0x00000272
-  [ 4] __cstring        0x100084c68 0x00084c68 0x0001979d
-  [ 5] __const          0x10009e405 0x0009e405 0x0000000b
-  [ 6] __unwind_info    0x10009e410 0x0009e410 0x00000180
-  [ 7] __eh_frame       0x10009e590 0x0009e590 0x0000ea68
+                         addr      offset     size       (segment)
+  [ 0]                  0x00000000 0x00000000 0x00000000 ()
+  [ 1] __text           0x100001664 0x00001664 0x00083222 (__TEXT)
+  [ 2] __symbol_stub1   0x100084886 0x00084886 0x0000016e (__TEXT)
+  [ 3] __stub_helper    0x1000849f4 0x000849f4 0x00000272 (__TEXT)
+  [ 4] __cstring        0x100084c68 0x00084c68 0x0001979d (__TEXT)
+  [ 5] __const          0x10009e405 0x0009e405 0x0000000b (__TEXT)
+  [ 6] __unwind_info    0x10009e410 0x0009e410 0x00000180 (__TEXT)
+  [ 7] __eh_frame       0x10009e590 0x0009e590 0x0000ea68 (__TEXT)

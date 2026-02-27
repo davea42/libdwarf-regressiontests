@@ -31,21 +31,21 @@ Segment name __DWARF
   [3] 0x1 LC_SEGMENT       __LINKEDIT        0x00001000 0x0000c60c
   [4] 0x1 LC_SEGMENT       __DWARF           0x0000e000 0x000398b0
  Sections count: 17  offset 0x000000bc
-                         addr      offset     size
-  [ 0]                  0x00000000 0x00000000 0x00000000
-  [ 1] __text           0x00001ad0 0x00000000 0x0009424e
-  [ 2] __symbol_stub    0x00095d1e 0x00000000 0x00000186
-  [ 3] __stub_helper    0x00095ea4 0x00000000 0x00000296
-  [ 4] __cstring        0x0009613c 0x00000000 0x00018e11
-  [ 5] __const          0x000aef50 0x00000000 0x0000005b
-  [ 6] __unwind_info    0x000aefb0 0x00000000 0x00000048
-  [ 7] __debug_abbrev   0x000e6000 0x0000e000 0x000003c1
-  [ 8] __debug_aranges  0x000e63c1 0x0000e3c1 0x00000560
-  [ 9] __debug_frame    0x000e6921 0x0000e921 0x00005200
-  [10] __debug_info     0x000ebb21 0x00013b21 0x000176d0
-  [11] __debug_line     0x001031f1 0x0002b1f1 0x0000872b
-  [12] __debug_loc      0x0010b91c 0x0003391c 0x00005dd8
-  [13] __debug_pubnames 0x001116f4 0x000396f4 0x00003404
-  [14] __debug_pubtypes 0x00114af8 0x0003caf8 0x00001d92
-  [15] __debug_ranges   0x0011688a 0x0003e88a 0x00000060
-  [16] __debug_str      0x001168ea 0x0003e8ea 0x00008fc6
+                         addr      offset     size       (segment)
+  [ 0]                  0x00000000 0x00000000 0x00000000 ()
+  [ 1] __text           0x00001ad0 0x00000000 0x0009424e (__TEXT)
+  [ 2] __symbol_stub    0x00095d1e 0x00000000 0x00000186 (__TEXT)
+  [ 3] __stub_helper    0x00095ea4 0x00000000 0x00000296 (__TEXT)
+  [ 4] __cstring        0x0009613c 0x00000000 0x00018e11 (__TEXT)
+  [ 5] __const          0x000aef50 0x00000000 0x0000005b (__TEXT)
+  [ 6] __unwind_info    0x000aefb0 0x00000000 0x00000048 (__TEXT)
+  [ 7] __debug_abbrev   0x000e6000 0x0000e000 0x000003c1 (__DWARF)
+  [ 8] __debug_aranges  0x000e63c1 0x0000e3c1 0x00000560 (__DWARF)
+  [ 9] __debug_frame    0x000e6921 0x0000e921 0x00005200 (__DWARF)
+  [10] __debug_info     0x000ebb21 0x00013b21 0x000176d0 (__DWARF)
+  [11] __debug_line     0x001031f1 0x0002b1f1 0x0000872b (__DWARF)
+  [12] __debug_loc      0x0010b91c 0x0003391c 0x00005dd8 (__DWARF)
+  [13] __debug_pubnames 0x001116f4 0x000396f4 0x00003404 (__DWARF)
+  [14] __debug_pubtypes 0x00114af8 0x0003caf8 0x00001d92 (__DWARF)
+  [15] __debug_ranges   0x0011688a 0x0003e88a 0x00000060 (__DWARF)
+  [16] __debug_str      0x001168ea 0x0003e8ea 0x00008fc6 (__DWARF)
