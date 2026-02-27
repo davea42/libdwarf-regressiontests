@@ -1685,6 +1685,12 @@ runsingle ossfuzz56993.base  ./fuzz_macro_dwarf5 --testobj=$testsrc/ossfuzz56993
 
 runsingle ossfuzz56906.base  ./fuzz_rng --testobj=$testsrc/ossfuzz56906/fuzz_rng-6031783801257984.fuzz
 
+
+# Test case with .eh_frame in Apple executable. February 2026
+runtest $d1 $d2 machoheaders/demo -f -F --no-follow-dsym
+#This testcase has no dSYM so --no-follow-dsym needed
+# not needed to se .eh_frame.
+runtest $d1 $d2 machoheaders/demo -f -F 
 # Test case uses latest Apple compiler December 2025
 # which (for the first time) uses DW_AT_GNU_dwo_id.
 runtest $d1 $d2 gordeyev/DwarfTest -vv
