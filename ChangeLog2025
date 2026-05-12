@@ -1,0 +1,2592 @@
+
+2025-12-20:  David Anderson
+    commit 30585b9320cb46fdc9df4ad873376cc47c6805af
+
+    Now testing dwarfexample/frame2.c
+            modified:   DWARFTEST.sh
+
+2025-12-20:  David Anderson
+    commit 0c0e3cae33baf9bfe79195f90eb32515f4319e80
+
+    Small changes in the frame1 output formatting.
+            modified:   baselines/frame1-2018.base
+            modified:   baselines/frame1-orig.base
+            modified:   baselines/frame1regs-2025-09-06.base
+            modified:   baselines/frame1riskv-2025-09-06.base
+
+2025-12-17:  David Anderson
+    commit 0f1ead81a745c6b21d73f9fec2778fb1616651ea
+
+    New baselines, new test program dwarfexample/frame2.c
+            new file:   baselines/frame2regs-2025-12-07.base
+            new file:   baselines/frame2riskv-2025-12-07.base
+
+2025-12-16:  David Anderson
+    commit 09478ac3791994d99dca088d041289f5c9fc1916
+
+    We do not test reading an archive, so we turn
+    the testcase into xz to save space and otherwise
+    ignore the testcase. See sarubbo-6/README
+            deleted:    sarubbo-6/1.crashes.bin
+            new file:   sarubbo-6/1.crashes.bin.xz
+            modified:   sarubbo-6/README
+
+2025-12-16:  David Anderson
+    commit 51c90f57ec3e02c8a035b40240f79f7569c0354a
+
+    New testcase.  See this README .
+            new file:   petenchea/README
+            new file:   petenchea/sample.elf
+
+2025-12-16:  David Anderson
+    commit 389adbd77ac28d6c94820bd99e45727457a73667
+
+    Testcase demonstrates problems reading by dwarfdump/libdwarf.
+            new file:   gordeyev/DwarfTest
+
+2025-11-23:  David Anderson
+    commit cab43b2689a4a9dda491bdbd04a4c98b9a51e453
+
+    New specific tests of -v -ka and  -ka
+    to ensure the options report
+    DW_FORM_data<n> uses usefully if they waste
+    space in the object file.
+            modified:   DWARFTEST.sh
+
+2025-11-18:  David Anderson
+    commit 2d277db91ae817c40937d567b5b4ab559f5119eb
+
+    With latest size reduction.
+            modified:   ChangeLog
+
+2025-11-18:  David Anderson
+    commit 2c8fb5da67ccd1f331747e351032cf8db71293b9
+
+    Now the xz compressed form stored,
+    In total across several files saves 30+MB
+    in regressiontest tar file.
+            modified:   DWARFTEST.sh
+            deleted:    debugfissionb/ld-new.dwp
+            new file:   debugfissionb/ld-new.dwp.xz
+            modified:   debugfissionb/runtest.sh
+
+2025-11-17:  David Anderson
+    commit e111dea9f1bc70ad7a773a47c98f97e7fd563e27
+
+    Now with latest changes
+            modified:   ChangeLog
+
+2025-11-17:  David Anderson
+    commit af4b75ad5827911661a66850bd4a9c51b19bb4aa
+
+    Revised so the uncompress process done
+    by a shell function
+            modified:   DWARFTEST.sh
+
+    binary, .text zero-d and compressed.
+            deleted:    debugfissionb/ld-new
+            new file:   debugfissionb/ld-new.xz
+
+            new file:   gobinary/README
+    New object (Go language). compressed after
+     the .text section made all zero bits.
+            new file:   gobinary/go-binary.xz
+
+2025-11-16:  David Anderson
+    commit b1de76f5678b1e9dfe81971cef5bb010b8854651
+
+    New baseline dwarfdump.
+    More complete Go language attributes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-11-03:  David Anderson
+    commit 9f381d0200923383a6e61567319e69d22305fbd0
+
+    We replace ct-bad.o with ct-bad.o.xz
+    and decompress in DWARFTEST.sh as
+    required. To save space in the test source.
+
+    There are two more objects > 10M in size it
+    seems useful to do this with too.
+
+            modified:   DWARFTEST.sh
+            modified:   README.md
+            modified:   clifton/README
+            deleted:    kaufmann2/ct-bad.o
+            new file:   kaufmann2/ct-bad.o.xz
+
+2025-10-20:  David Anderson
+    commit b80a948aa1fcba7452dcc6d2848f47ed8376b924
+
+    Now with msys2 baseline executable.
+            modified:   ChangeLog
+
+2025-10-20:  David Anderson
+    commit d15f5affe932615af20944aa4c110e382e16a8cd
+
+    Added links to board documentation for the testcase.
+            modified:   clifton/README
+
+2025-10-20:  David Anderson
+    commit 2fb8bd010183d4a854675d2feab759d90fb10115
+
+    Baseline for msys2.
+            modified:   dwarfdump-msys2.O
+
+2025-10-14:  David Anderson
+    commit 43f0dd1426101e200b2da1c3d9d6b1e9035a97c2
+
+    ChangeLog up to date now.
+            modified:   ChangeLog
+
+2025-10-14:  David Anderson
+    commit 30fcc351c812d62e47a1be768d20909f93326e51
+
+    Small changes (but many) due to improvement in dwarfdump
+    and libdwarf in dealing with ranges.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-10-14:  David Anderson
+    commit 440e88f545d6d1b409243bfbf38f39fb5518d1a0
+
+    Small baseline change.
+            modified:   baselines/dwdebuglink-a.base
+            modified:   baselines/dwdebuglink-b.base
+
+2025-10-14:  David Anderson
+    commit 31c8a184626cabbb52b4cb17f5b2ee3200a5f23b
+
+    Now testing clifton/blinky
+            modified:   DWARFTEST.sh
+    More detailed comments about the blinky
+    object file.
+            modified:   clifton/README
+
+2025-10-14:  David Anderson
+    commit 61106bc29c1e612eb19830345df4e38a94ada31c
+
+    New test case. First Rust based testcase.
+
+    clifton/
+            new file:   README
+            new file:   blinky.tar.xz
+
+2025-10-14:  David Anderson
+    commit e65b15c06c6a26fc8b8b76d8409782f88e20169e
+
+        rifkin7/stacktrace.cpp.dwo -ka-raw-rnglists
+    was a mistake, a typo. Now corrected.
+            modified:   DWARFTEST.sh
+
+2025-10-08:  David Anderson
+    commit 216d2835bfcef1325a179935ab1f5916b13f8335
+
+    Now up to date with git log.
+            modified:   ChangeLog
+
+2025-10-08:  David Anderson
+    commit 7f76b92475d66b3bfe4262412c4a6a1cc4010bcc
+
+    All now up to date .
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2025-10-08:  David Anderson
+    commit 9d3faac2837f1a2db47d6370b24a1ce926b2d343
+
+    All of these changed to be latest mach-o reading
+    and independent of $HOME
+            modified:   baselines/dwdebuglink-a.base
+            modified:   baselines/dwdebuglink-b.base
+            modified:   baselines/macho-kask-ro-32-nodsym.base
+            modified:   baselines/macho-kask-ro-32.base
+            modified:   baselines/macho-kask-ro-64-nodsym.base
+            modified:   baselines/macho-kask-ro-64.base
+            modified:   baselines/ossfuzz447580449.base
+            modified:   baselines/test_findfuncbypcb4.base
+            modified:   baselines/test_findfuncbypcb5.base
+
+2025-10-08:  David Anderson
+    commit 716d5de1d5c076f2d8b2ae2a07cda665423495cc
+
+    Corrected the ordering of replacements of
+    strings by ...std... to first look for
+    Windows names (C: which will not find anything on linux/macos)
+    and then posix names (linux/macos).
+            modified:   scripts/dirtostd.py
+
+2025-10-07:  David Anderson
+    commit f1a56bef98e0a14b8152396d92ef8a5aa5a33f66
+
+    Fixing mistakes.
+            modified:   DWARFTEST.sh
+
+2025-10-03:  David Anderson
+    commit 48ada7d54f2c9b6289212b7b88b6c663f8ee9a61
+
+    Two new instances, though the same old macho-issue,
+    already fixed.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz448717186.base
+            new file:   baselines/ossfuzz449018019.base
+            new file:   ossfuzz448717186/README
+            new file:   ossfuzz448717186/fuzz_debug_str-5394262943662080
+            new file:   ossfuzz449018019/README
+            new file:   ossfuzz449018019/fuzz_crc_32-5704317387735040
+
+2025-10-03:  David Anderson
+    commit 9f385725609d14fabdb01c6fdddbd496dfb1dc8c
+
+    Updated
+            modified:   ChangeLog
+
+2025-10-01:  David Anderson
+    commit 46720dda01c2ee9f37f9ee41632d39ab4a2243d4
+
+    These are tested, and new.
+            new file:   baselines/ossfuzz448522799.base
+            new file:   ossfuzz448522799/README
+            new file:   ossfuzz448522799/fuzz_gnu_index-5175853874216960
+
+2025-10-01:  David Anderson
+    commit 5f728f584fa5f92e833728a06c458efc05caea7d
+
+    Now up to date. All tests added are listed.
+            modified:   ChangeLog
+
+2025-10-01:  David Anderson
+    commit 055b7dd90125b4a730258a543e907900e2b18e4a
+
+    One new test
+            modified:   DWARFTEST.sh
+    Baselines changed due to refinements in
+    checking for corrupt mach-o object files.
+            modified:   baselines/ossfuzz447457197.base
+            modified:   baselines/ossfuzz447586815.base
+            modified:   baselines/ossfuzz447629673.base
+            modified:   baselines/ossfuzz447702256.base
+            modified:   baselines/ossfuzz447805105.base
+
+2025-09-30:  David Anderson
+    commit bfb078a6f2f3a9c31c297d626d30413dbddcef45
+
+    Fixed one character typo (missing a leading '='  ) in echo statement.
+            modified:   DWARFTEST.sh
+
+2025-09-30:  David Anderson
+    commit 71b84f69a43e5ba03532e228dd343613396a7d4c
+
+    Now also builds the readelfobj-code project
+    (and tests the readobjmacho program that
+    program builds).
+    Uses new information from INITIALSETUP.sh
+    to run a standard configure build of readobjmacho.
+            modified:   DWARFTEST.sh
+    Now provides  additional information
+    in BASEFILES.sh
+            modified:   INITIALSETUP.sh
+
+    New tests of readobjmacho on reasonably large
+    macho programs.
+            new file:   baselines/macho-kask-ro-32-nodsym.base
+            new file:   baselines/macho-kask-ro-32.base
+            new file:   baselines/macho-kask-ro-64-nodsym.base
+            new file:   baselines/macho-kask-ro-64.base
+
+    Small change in output here.
+            modified:   baselines/ossfuzz447457197.base
+
+2025-09-30:  David Anderson
+    commit 8eace4f31f42f7ff10a1058afc19f473f59e9551
+
+    Mentions new file b.macho : sometimes
+    useful to have as b.macho has no dSYM.
+            modified:   macho-kagstrom/README
+            new file:   macho-kagstrom/b.macho
+
+2025-09-29:  David Anderson
+    commit 34f776a77ec30e35b8fcf610fc7de82821e2dbd2
+
+    New tests and baselines reading corrupted mach-o
+    object files.
+            modified:   DWARFTEST.sh
+            modified:   baselines/ossfuzz446831123.base
+            modified:   baselines/ossfuzz447396726.base
+            modified:   baselines/ossfuzz447457197.base
+            new file:   baselines/ossfuzz447586815.base
+            new file:   baselines/ossfuzz447600209.base
+            modified:   baselines/ossfuzz447629673.base
+            modified:   baselines/ossfuzz447686887.base
+            modified:   baselines/ossfuzz447702256.base
+            modified:   baselines/ossfuzz447719692.base
+            modified:   baselines/ossfuzz447805105.base
+            new file:   ossfuzz447586815/README
+            new file:   ossfuzz447586815/fuzz_die_cu_e-6725653933391872
+            new file:   ossfuzz447600209/README
+            new file:   ossfuzz447600209/fuzz_debug_str-6405288967340032
+
+2025-09-29:  David Anderson
+    commit d5fe19a7d276597640a15e30a827ee6677810c0b
+
+            modified:   DWARFTEST.sh
+    New testcase.  aka DW202509-020
+            new file:   baselines/ossfuzz447797928.base
+            new file:   ossfuzz447797928/README
+            new file:   ossfuzz447797928/fuzz_init_b-6276293315592
+
+2025-09-28:  David Anderson
+    commit fb2edd5b9fed92ffbcd02a62fbc6779ffe4d551b
+
+    New testcases
+            new file:   ossfuzz447686887/README
+            new file:   ossfuzz447686887/fuzz_dnames-5657680116252672
+            new file:   ossfuzz447702256/README
+            new file:   ossfuzz447702256/fuzz_init_binary-4759449983320064
+            new file:   ossfuzz447719692/README
+            new file:   ossfuzz447719692/fuzz_die_cu_info1-5983735611981824
+            new file:   ossfuzz447805105/README
+            new file:   ossfuzz447805105/fuzz_showsectgrp-5078066159484928
+
+2025-09-28:  David Anderson
+    commit a49cd79cc7f757a593cbfe89966da712b5e2ce21
+
+    New baselines for new testcases
+            new file:   ../baselines/ossfuzz447686887.base
+            new file:   ../baselines/ossfuzz447702256.base
+            new file:   ../baselines/ossfuzz447719692.base
+            new file:   ../baselines/ossfuzz447805105.base
+
+2025-09-28:  David Anderson
+    commit 5a84318ba314a3310b919a0ec842b20e9ff45960
+
+    Doing tests from oss-fuzz folks.
+            modified:   DWARFTEST.sh
+
+    Nothing, really.
+            modified:   baselines/machinearchunivbinv.base
+    Nothing, really.
+            modified:   baselines/machinearcmachov.base
+
+    New tests
+            new file:   baselines/ossfuzz447580449.base
+            new file:   baselines/ossfuzz447580450.base
+            new file:   baselines/ossfuzz447629673.base
+
+    Nothing, really.
+            modified:   diederen7/README
+
+    New tests
+            new file:   ossfuzz447580449/README
+            new file:   ossfuzz447580449/fuzz_debuglink-4691409514070016
+            new file:   ossfuzz447580450/README
+            new file:   ossfuzz447580450/fuzz_globals-4845056734593024
+            new file:   ossfuzz447629673/README
+            new file:   ossfuzz447629673/fuzz_die_cu_print-4591618901737472
+
+2025-09-26:  David Anderson
+    commit f11f20d47a9e64b9be4ab2724726092288f1f86d
+
+    A new set of tests found by oss fuzz
+    All these are involve reading Mach-o
+    object files and required some changes
+    in the mach-o reader to check input
+    more carefully. Especially section and
+    segment names.  Added some tests to
+    check for unsigned overflow too.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz447396726.base
+            new file:   baselines/ossfuzz447421051.base
+            new file:   baselines/ossfuzz447445674.base
+            new file:   baselines/ossfuzz447457197.base
+            new file:   ossfuzz447396726/README
+            new file:   ossfuzz447396726/fuzz_xuindex-4824455521304576
+            new file:   ossfuzz447421051/README
+            new file:   ossfuzz447421051/fuzz_crc_32-6747299494821888
+            new file:   ossfuzz447445674/README
+            new file:   ossfuzz447445674/fuzz_str_offsets-4859796391264256
+            new file:   ossfuzz447457197/README
+            new file:   ossfuzz447457197/fuzz_tie-4785079261134848
+
+2025-09-25:  David Anderson
+    commit 16a025befe738c70af4febe888c367b347260540
+
+    Now with latest test updates.
+            modified:   ChangeLog
+
+2025-09-25:  David Anderson
+    commit a814e11321e0a5f34f29bddb0b94ac062e317c85
+
+    All these updated for the recent fixes in mach-o
+    reading.  The CoverityScan issue fixes
+    related to memory leaks not included as
+    it seemed unneccesary to redo the process,
+    no tests hit those leaks.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-09-25:  David Anderson
+    commit 9086d0854a2dd442a2766ab961456ae8ac28189b
+
+    baseline update...
+            modified:   baselines/ossfuzz446781574.base
+
+2025-09-25:  David Anderson
+    commit 00bffe34be91b7d92e2261efa46482187694d3f2
+
+    Now running the testcase.
+            modified:   DWARFTEST.sh
+            new file:   baselines/macho-kagstrom.base
+            modified:   macho-kagstrom/README
+
+2025-09-24:  David Anderson
+    commit 28f80ad7a6dcebc7ae5b7c40cb078c734335686b
+
+    Last of the September bugs are fixed and tested.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz446831123.base
+            new file:   ossfuzz446831123/README
+            new file:   ossfuzz446831123/fuzz_rng-6527551318327296
+
+2025-09-24:  David Anderson
+    commit 1275d662929da9ae97a9d92eaff0a8ae139fdc46
+
+    Description of the test
+            modified:   ossfuzz446735540/README
+
+2025-09-24:  David Anderson
+    commit 83d260803b4dc3d38ac67b1ce13901e85e124452
+
+    New tests run
+            modified:   DWARFTEST.sh
+    New test created, test of a few minutes ago corrected.
+            new file:   baselines/ossfuzz446735540.base
+            modified:   baselines/ossfuzz446856589.base
+    New test
+            new file:   ossfuzz446735540/README
+            new file:   ossfuzz446735540/fuzz_dnames-5931269398790144
+
+2025-09-24:  David Anderson
+    commit 657dc00786b146d4145e7a116bdd2a0b20e9ea49
+
+    Now running the newest tests.
+            modified:   DWARFTEST.sh
+
+2025-09-24:  David Anderson
+    commit 93d03a9b779e668d1bd62ac7cdded32dfcb9d561
+
+    Correct baselines
+            new file:   baselines/ossfuzz446746574.base
+            new file:   baselines/ossfuzz446856589.base
+
+2025-09-24:  David Anderson
+    commit b7dab5804e39866e54d267b1e668717f9cdd988d
+
+    New testcases
+            new file:   ossfuzz446746574/README
+            new file:   ossfuzz446746574/fuzz_aranges-4698786724380672
+            new file:   ossfuzz446856589/README
+            new file:   ossfuzz446856589/fuzz_tie-5831785406857216
+
+2025-09-24:  David Anderson
+    commit 506c87488537ef207c01836fb38eb7d521a5fb11
+
+    With tests of these vulnerabilities.
+            modified:   DWARFTEST.sh
+    baseline.
+            new file:   baselines/ossfuzz446781574.base
+    the new test cases.
+            new file:   ossfuzz446726228/README
+            new file:   ossfuzz446726228/fuzz_debuglink-4854619680604160
+            new file:   ossfuzz446781574/README
+            new file:   ossfuzz446781574/fuzz_gdbindex-4712655307997184
+
+2025-09-23:  David Anderson
+    commit 06dc8db117089ac1edc97baea4aa82bbc3a26052
+
+    New baselines
+            new file:   baselines/ossfuzz446726228.base
+            new file:   baselines/ossfuzz446726229.base
+
+2025-09-23:  David Anderson
+    commit 3fe2cfac622fd85faaff5d484485d0c4261921e1
+
+    Details on a vulnerability (fixed)
+            modified:   ossfuzz446726229/README
+
+2025-09-23:  David Anderson
+    commit 946f465bec5ebdfa4484d9b5d29282e9edee7540
+
+    All about mach-o object file checking and finding
+    corrupt object files.
+            modified:   baselines/hongg2024-02-16-a.base
+            modified:   baselines/hongg2024-02-16-b.base
+            modified:   baselines/hongg2024-02-16-c.base
+            modified:   baselines/hongg2024-02-16-d.base
+            modified:   baselines/hongg2024-02-16-e.base
+            modified:   baselines/hongg2024-02-16-g.base
+            modified:   baselines/hongg2024-02-16-h.base
+            modified:   baselines/hongg2024-02-16-i.base
+            modified:   baselines/hongg2024-02-16-k.base
+            modified:   baselines/ossfuzz59950.base
+            modified:   baselines/ossfuzz60090.base
+            modified:   baselines/ossfuzz70277.base
+            new file:   ossfuzz446729093/README
+            new file:   ossfuzz446729093/fuzz_init_binary-5396366991097856
+
+2025-09-23:  David Anderson
+    commit 5c8361f9ef0216dde3349db8d81a4297c4142787
+
+    dw assigned number DW202509-002
+
+            new file:   ossfuzz446726229/README
+            new file:   ossfuzz446726229/fuzz_globals-5387186766938112
+
+2025-09-21:  David Anderson
+    commit f3768917a6e5eeeab31db4e8c55979de8bebe541
+
+    Added new tests of mach-o objects, one with
+    a corrupted object.
+            modified:   DWARFTEST.sh
+
+2025-09-21:  David Anderson
+    commit 2037081f6d60f15b96462a5ea62e92ab3f55f6cd
+
+    Now testing mach-o for better corrupt object detection
+    and for correct handling of DW_FORM_line_strp and strx
+    forms in the line table.
+            modified:   DWARFTEST.sh
+
+2025-09-21:  David Anderson
+    commit 6c1eb49edb342c911832f3e1a53382a143d00368
+
+    New testfiles to verify correct handling of Apple
+    DWARF5 line-table strings.
+            new file:   baselines/macho-kagstrom-l.base
+            new file:   baselines/macho-kagstrom-srcfiles.base
+            new file:   macho-kagstrom/._a.dSYM
+            new file:   macho-kagstrom/README
+            new file:   macho-kagstrom/a
+            new file:   macho-kagstrom/a.dSYM/._Contents
+            new file:   macho-kagstrom/a.dSYM/Contents/._Info.plist
+            new file:   macho-kagstrom/a.dSYM/Contents/._Resources
+            new file:   macho-kagstrom/a.dSYM/Contents/Info.plist
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/._DWARF
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/._Relocations
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/DWARF/._a
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/DWARF/a
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/Relocations/._aarch64
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/Relocations/aarch64/._a.yml
+            new file:   macho-kagstrom/a.dSYM/Contents/Resources/Relocations/aarch64/a.yml
+
+2025-09-21:  David Anderson
+    commit 3ab71f9e0417bfb9a58a0e157e96789655f42bcc
+
+    New tests for reading Mach-o objects, and testing
+    fix for ossfuzz issue 446356422
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz446356422.base
+            new file:   ossfuzz446356422/README
+            new file:   ossfuzz446356422/fuzz_crc_32-4931308642172928
+
+2025-09-20:  David Anderson
+    commit 07a3727d34f3d6742de41696607e742678ba44ad
+
+    Changes in the output of dwarfdump means changing these baselines.
+            modified:   baselines/machinearchunivbinv.base
+            modified:   baselines/machinearcmachov.base
+
+2025-09-08:  David Anderson
+    commit 2d11627b9a89a6fcfe64ae24db69a45992d1ee0f
+
+    Having added some LLVM and APPLE items to the
+    list of known extensions we no longer
+    report DWARF CHECK with -ka etc on those.
+    So new baseline executables.
+    Msys2 will run for some hours, so
+    we will show that after it finishes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-09-08:  David Anderson
+    commit bed151788543c2f12adba0ab2edbf5c9bb29ce91
+
+    New baselines reflecting the new specification
+    of showing just 10 FDEs from frame1.
+            modified:   baselines/frame1-2018.base
+            modified:   baselines/frame1-2018s.base
+            modified:   baselines/frame1-orig.base
+
+2025-09-08:  David Anderson
+    commit 3f1bf4fc56e54fb606f0ac47432a804cdd7b19f4
+
+    when running frame1, use
+    --stop-at-fde-n=10
+    so the list of (usually very similar) fde-s printed
+    is not excessively long.
+            modified:   DWARFTEST.sh
+
+2025-09-06:  David Anderson
+    commit 05444069354baac12794d4fe1605c8de910d18df
+
+    REmoved unwanted exit 1.
+            modified:   DWARFTEST.sh
+
+2025-09-06:  David Anderson
+    commit fc65d82ae32dcf2fb45c9e3e68dedd5c02b93e83
+
+    Two new tests running dwarfexample/frame1 to examine
+    frame data.
+    The example is now much more complete
+    than earlier.
+            modified:   DWARFTEST.sh
+
+            new file:   baselines/frame1regs-2025-09-06.base
+    New test case, riskv cpu.
+            new file:   baselines/frame1riskv-2025-09-06.base
+
+2025-09-06:  David Anderson
+    commit 6703ebc2acda44083ae095b82c7b642447058584
+
+    New test case. Risc-V cpu
+            new file:   frameriskv/README
+            new file:   frameriskv/fft
+
+2025-09-02:  David Anderson
+    commit 85c6101e129fa0143ce01e472e07934af198f2f5
+
+    Now up to date.
+            modified:   ChangeLog
+
+2025-09-02:  David Anderson
+    commit 417334d002fdbb64330076a8dbc426de20be0870
+
+    Added Details on Msys2 passing regressiontests.
+            modified:   RegressionTestsResults.ods
+    Latest baseline executable.
+            modified:   dwarfdump-msys2.O
+
+2025-09-01:  David Anderson
+    commit f99c73f710376a6d8639c7a100ba24367622d032
+
+    Reformatted to match libdwarf project coding style.
+            modified:   test_language_version.c
+
+2025-09-01:  David Anderson
+    commit dd71ba4dec1e093c0776ac79cf4c2c0bb67e8ddd
+
+    New baseline exectables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-09-01:  David Anderson
+    commit da2ae9f6b69349c2493960f5c8b425e896db28a9
+
+    Up to date with git log
+            modified:   ChangeLog
+
+2025-09-01:  David Anderson
+    commit 998721d0ab7ffdf1f1d355ea330a8692af27bf86
+
+    A few more SKIPped on msys2.
+            modified:   DWARFTEST.sh
+
+2025-09-01:  David Anderson
+    commit d218df3bdaf72e9d9cf252dfb9f32a4e809a91a0
+
+    Heavily revised and simplified for its current use.
+            modified:   scripts/dirtostd.py
+
+2025-09-01:  David Anderson
+    commit 43e75186bf3c8ea5bef0baf6ba38bb0dddce8504
+
+    Comment out a few lines used for debugging this
+    and scripts/dirtostd.py  .
+            modified:   DWARFTEST.sh
+
+2025-09-01:  David Anderson
+    commit 67be25bba343477a954cdd0ac92debc431aba82c
+
+    SKIP a few more tests when running in Msys2
+    so we can PASS. Leaving the vast majority
+    in place and working.
+    See '$platform = "msys2"'
+            modified:   DWARFTEST.sh
+
+2025-09-01:  David Anderson
+    commit 9c2beef33be2c2ba77a6b56ebfc47b68ff16a34a
+
+    Removed no-longer-needed calls to python code in creating BASEFILES.sh
+            modified:   INITIALSETUP.sh
+
+2025-09-01:  David Anderson
+    commit a96cbda2703c71dc0e0beac6bcb6332ef2799c85
+
+    Changed comments for precision and clarity.
+            modified:   README.md
+
+2025-09-01:  David Anderson
+    commit 8d65a3f6ea7fd2e28515467dfae1b4ed5161cf69
+
+    Removed irrelevant #include and #define.
+            modified:   test_pubsreader.c
+
+2025-09-01:  David Anderson
+    commit b4ee29e17532cdf2520172b570bcc0fff76cfbb4
+
+    Improved local test of dirtostd.py
+            new file:   scripts/sampledirtostd.base
+            modified:   scripts/testdirtostd.sh
+
+2025-09-01:  David Anderson
+    commit 16611ec4eb4d5cfbe5775e9614f42af162b0fefb
+
+    Removed obsolete functionality, making simpler code.
+            renamed:    scripts/canonicalpath.py -> scripts/dirtostd.py
+            renamed:    scripts/testcanonical.sh -> scripts/testdirtostd.sh
+
+    Remove blank line
+            modified:   testfindfuncbypc/runall.sh
+    Add 2 line comment
+            modified:   testfindfuncbypc/runtest.sh
+
+2025-08-30:  David Anderson
+    commit 54a3476f671768746bbf7f963d78d7f576664938
+
+    Another local open() that failed to use O_BINARY for Msys2.
+            modified:   filelist/localfuzz_init_binary.c
+
+2025-08-30:  David Anderson
+    commit 94db7dcb9aafa7baa98833577b53bc326f5b7816
+
+    One more SKIP for Msys2.
+            modified:   DWARFTEST.sh
+
+2025-08-30:  David Anderson
+    commit 391a8abdd2d759d80cac09cd1456e83d25d20cb3
+
+    Correcting the Macos use of gzcat (zcat is there but
+    we need the GNU version gzcat).
+            modified:   debugfission/runtest.sh
+
+2025-08-30:  David Anderson
+    commit 9231d19c05a772bea9884149c3ef881386a43fb2
+
+    Final cleanup/comment-fixing so regressiontesting
+    works on all supported platforms (now including
+    regressiontesting on Msys2).
+            modified:   DWARFTEST.sh
+            modified:   PICKUPBIN.sh
+            modified:   README.md
+            modified:   RUNALL.sh
+
+2025-08-29:  David Anderson
+    commit 7c31bb2d2f49dd654b389d02a02473c694fcc6a9
+
+    Ensure we have zcat or gzcat (Macos) before using such.
+    Now skip  various tests that  simply will not pass on Msys2.
+            modified:   DWARFTEST.sh
+
+    Ensure we have zcat or gzcat (Macos) before using such.
+            modified:   debugfission/runtest.sh
+
+2025-08-27:  David Anderson
+    commit 028cf13ebaadc4b9f721e18e317e6da1bf7e9a52
+
+    Up to date with git log.
+            modified:   ChangeLog
+
+2025-08-27:  David Anderson
+    commit aca7951705c7bc9ba2cf6c93a405ff6d786652ba
+
+    Baseline with dwarfdump called ./dwarfdump
+    when built for regression testing.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-08-27:  David Anderson
+    commit fabfd0f3bf241cb806ef6bbbd805a899306565ab
+
+    Now these expect the dwarfdump name as ./dwarfdump
+    when dwarfdump/libdwarf built for regressiontesting.
+            modified:   guilfanov/crash.base
+            modified:   guilfanov2/double-free-poc.base
+
+2025-08-27:  David Anderson
+    commit 3eaa647ca1875c257112d5609256df339335fc91
+
+    A couple compiles here missing $nonsharedopt which
+    was a problem on Msys2.
+    Also, on Msys2, all code testing debuglink is
+    skipped as it is difficult to make it work.
+    Too many dependencies on the interpretation of
+    a full-path. in the definition of debuglink
+
+            modified:   DWARFTEST.sh
+
+2025-08-27:  David Anderson
+    commit 4256a7fc0540b63e20b2e0d8c92c2fc2873545ff
+
+    Explains how to run regression tests on Msys2,
+    which is working better now.
+            modified:   README.md
+
+2025-08-27:  David Anderson
+    commit 8f05387347e21b24bb8209ee81f1448c1c70e047
+
+    Adds for best testing, showing $HOME instead of
+    actual full path base component.
+    Does
+    -Dregressiontesting=true
+            modified:   PICKUPBIN.sh
+
+2025-08-23:  David Anderson
+    commit b82258059365827bbe4bdf4a8dc3ba6feb034a7d
+
+    Updated to explain what is needed for msys2 to
+    have regression tests pass.
+            modified:   README.md
+
+2025-08-20:  David Anderson
+    commit 25e59f3b24c60dc9a3b8198d20d9001f590dc2f0
+
+    Better message in case of disaster
+    in building for fuzz tests.This is
+    our driver for the fuzzed-object tests.
+            modified:   testbuildfuzz.c
+
+2025-08-20:  David Anderson
+    commit 37ca7f408b6b7ab8a82f4ccdea37beabf392578e
+
+    -f="C:/msys64/"
+    +f="C:/msys64/davea/"
+    so we can remove the Win full path prefix
+    leaving the msys2 full path.
+            modified:   scripts/testcanonical.sh
+
+2025-08-20:  David Anderson
+    commit b3f99125b0de212f159f03aecbcbc98923c5b419
+
+    -    winb="C:/msys64/"
+    +    winb="C:/msys64/davea/"
+    So that on Windows msys2 we correctly remove the
+    generic part of the full path, msys2 does not
+    need the c: stuff.
+            modified:   scripts/canonicalpath.py
+
+2025-08-20:  David Anderson
+    commit 5eff83dca46aceabe9d9dbb637fde71ec38bba5b
+
+    When building fuzz_*.c tests, add -DDWREGRESSIONTEMP
+    so  we do not use /tmp/
+    to hold results and do not break the tests on Windows Msys2.
+            modified:   DWARFTEST.sh
+
+2025-08-20:  David Anderson
+    commit 29ff68463a365f6428612e3d366328b1740dddd1
+
+    Correct typos in the comments.
+            modified:   BASEFILES.sh.in
+
+2025-08-09:  David Anderson
+    commit 414d0035e167c016fc3326161401791b5a0a45e8
+
+    With latest test (fuzz issue)
+            modified:   DWARFTEST.sh
+    Latest executable for comparisons.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-08-08:  David Anderson
+    commit 961ce8d2ce998c32a38c83aa5e96082b6787567e
+
+    ossfuzz 437060549 is the discovery of
+    a testcase that has bogus sizes and an addition
+    is not checked.
+    Fix is
+    +++ b/src/lib/libdwarf/dwarf_global.c
+    @@ -1426,6 +1426,7 @@ dwarf_global_name_offsets(Dwarf_Global global,
+         Dwarf_Global_Context con = 0;
+         Dwarf_Debug dbg = 0;
+         Dwarf_Off cuhdr_off = 0;
+    +    Dwarf_Off cuhsum = 0;
+
+         if (global == NULL) {
+             _dwarf_error(NULL, error, DW_DLE_GLOBAL_NULL);
+    @@ -1454,9 +1455,21 @@ dwarf_global_name_offsets(Dwarf_Global global,
+         CHECK_DBG(dbg,error,"dwarf_global_name_offsets()");
+         /*  Cannot refer to debug_types, see p141 of
+             DWARF4 Standard */
+    +    cuhsum = cuhdr_off + MIN_CU_HDR_SIZE;
+    +    if (cuhsum < cuhdr_off || cuhsum < MIN_CU_HDR_SIZE) {
+    +        /*overflow*/
+    +        dwarfstring m;
+    +
+    +        dwarfstring_constructor(&m);
+    +        build_off_end_msg(cuhdr_off,cuhdr_off,
+    +            dbg->de_debug_info.dss_size,&m);
+    +        _dwarf_error_string(dbg, error, DW_DLE_OFFSET_BAD,
+    +            dwarfstring_string(&m));
+    +        dwarfstring_destructor(&m);
+    +        return DW_DLV_ERROR;
+    +    }
+         if (dbg->de_debug_info.dss_size &&
+    -        ((cuhdr_off + MIN_CU_HDR_SIZE) >=
+    -        dbg->de_debug_info.dss_size)) {
+    +        cuhsum >= dbg->de_debug_info.dss_size) {
+
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz437060549.base
+            new file:   ossfuzz437060549/README
+            new file:   ossfuzz437060549/fuzz_globals-4771320878661632
+
+2025-08-03:  David Anderson
+    commit 7a126d53b6ba70aafc1ad94dd6a3bf2417050883
+
+    Up to date.
+            modified:   ChangeLog
+
+2025-08-03:  David Anderson
+    commit bb9df5e415418c9747498d68ad078c62ae9515e9
+
+    New baseline executables which have printing
+    of valid strings inside DW_FORM_block (etc)
+    in addition to the print of hex bytes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    For debugging. Ignore this
+            modified:   RUN
+
+2025-07-29:  David Anderson
+    commit 09df752250e96b28f45db967c7f67813aa09aea7
+
+    Now tests dwarfdump --print-language-version-table
+            modified:   DWARFTEST.sh
+
+2025-07-21:  David Anderson
+    commit 8c9b5c7178d7f2b9e2040fd429d2ff8923262e92
+
+    Now follows libdwarf project coding stanard
+    and also implents a usage message (emits
+    a usage message and stops)
+    if a -h argument is supplied.
+            modified:   zero.cc
+
+2025-07-19:  David Anderson
+    commit 98191f344a4537fcb5ffb6191c93c6df01ffb6d0
+
+    Now up to date.
+            modified:   ChangeLog
+
+2025-07-19:  David Anderson
+    commit 480b46d12aae0dfebae1060dac0fd52205c28892
+
+    New baseline executables for 2.1.0 release..
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-07-19:  David Anderson
+    commit 5c37f1c2d39d8d7eda1054ef9579ac95d2d12e48
+
+    Testing specfic things -- use by hand.
+            modified:   RUN
+
+2025-07-19:  David Anderson
+    commit f50aa676f14928209b237248845959289925f08c
+
+    Now with test of DW_AT_language_name and _version
+            modified:   DWARFTEST.sh
+
+2025-07-19:  David Anderson
+    commit 5a8ba429e77b5734ee13776e6650038e7437b0d6
+
+    Now  with test of DW_AT_language_version  and _name.
+            modified:   implicitconst/dgout.base
+            modified:   implicitconst/implicit.base
+
+2025-07-17:  David Anderson
+    commit 51b811137cc32d0fcd4e275e3e8138265d7c6ffa
+
+    New test, compiler-generated DW_AT_language_version
+            new file:   wjl/README
+            new file:   wjl/demo
+
+2025-07-06:  David Anderson
+    commit c91a3dee0de5192c9f1ee7057433c204d6ff5f58
+
+    Per git log
+            modified:   ChangeLog
+
+2025-07-06:  David Anderson
+    commit 663336e2cebc5e780565bbb4465bfb2865b241a9
+
+    Update for 2.1.0 (KeyTest testcase fix)
+    New baseline executables
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2025-07-05:  David Anderson
+    commit 5d1b2a30848fd82badd554fed54c852a1570cd7d
+
+    New baseline
+            modified:   dwarfdump-s390.O
+    Explanation of KeyTest problem (solved).
+            new file:   rifkinpe/README
+
+2025-07-04:  David Anderson
+    commit 1cca9a4b9a70f4c51ec03967a5d656d73785a1a0
+
+    Up to date with git log
+            modified:   ChangeLog
+
+2025-07-04:  David Anderson
+    commit d4764d6ffbc260ad383f017b1992f6cc333d3b74
+
+    Baseline with latest tests of DWARF6 version data.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-07-04:  David Anderson
+    commit e9aebbdf54273463e882912a35ef3ffb02b0f910
+
+    Added testing of DWARF6 DW_AT_language_name
+    and DW_AT_language version.
+    We use a new option to dwarfgen to create
+    an object with those CU DIE attributes.
+            modified:   DWARFTEST.sh
+            modified:   implicitconst/dgout.base
+            modified:   implicitconst/implicit.base
+            modified:   implicitconst/runtest.sh
+            modified:   test_language_version.c
+
+2025-06-21:  David Anderson
+    commit ee07f48c33e8e63ea1f1e7511054f6c51be04cc3
+
+    About Issue 297 in libdwarf-code issues.
+            modified:   ChangeLog
+
+2025-06-21:  David Anderson
+    commit d1c330d66fea4f4ed8c917072d9909b272d0266b
+
+    Now with this new test
+    See libdwarf-code Issue 297 for details.
+            modified:   DWARFTEST.sh
+            new file:   rifkinpe/KeyTest.exe
+            new file:   rifkinpe/KeyTest.exe.debug
+            new file:   rifkinpe/RUN
+            new file:   rifkinpe/trace.txt
+
+2025-05-19:  David Anderson
+    commit c19fd230f9930701290d1146913765594b84b8c2
+
+    Updated per 20 May 2025 release.
+            modified:   ChangeLog
+
+2025-05-19:  David Anderson
+    commit 26fafd3bc359415eb0062f98dc22d554028b11e5
+
+    Created these updated versions as part of
+    finalizing the 20 May 2025 libdwarf-code version 2.0.0
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-05-19:  David Anderson
+    commit 77857b08b8a701bcd4e11a13542d1cdb54436c36
+
+    Added comments to hopefully make running the
+    regressiontests easier.
+    But it's not something you need to do.
+            modified:   README.md
+
+2025-04-02:  David Anderson
+    commit 5bdd90ef6e19c5aee36b106b2a9962a0e052121b
+
+    New baseline executables for v0.12.0
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-03-30:  David Anderson
+    commit 046d80b2cd6047f4e0549fa2ef0974f416715bd5
+
+    New, valid, baselines.
+            modified:   debugfissionb/peexe64.base
+            modified:   debugfissionb/peexe64x.base
+
+    Fixed the tests here to let duplicated attributes
+    appear to be ok, allowing the test to generate
+    output as we really want. Corrupt DWARF in PE from an
+    old compiler.
+            modified:   debugfissionb/runtest.sh
+
+2025-03-28:  David Anderson
+    commit 2debb7a784c6a6316ac85a11e15150fa3b2f1888
+
+    Now runs the new test_language_version
+    test.
+    Moved the 'simpleexe' list and build up earlier
+    so running the single new test builds early
+    and can be run early.
+            modified:   DWARFTEST.sh
+    Error message has more data, so we reflect that here now.
+            modified:   debugfissionb/peexe64x.base
+
+2025-03-28:  David Anderson
+    commit dc647462a813f61caac5c6bea203b9ec6e00afe5
+
+    baseline for the new test, just says PASS.
+            new file:   baselines/test_language_version.base
+    New test file. Simple testing new library call.
+            new file:   test_language_version.c
+
+2025-03-18:  David Anderson
+    commit 36498bc5ca84f6754838d76519fa1f1c64ee9dc3
+
+    New baseline executables
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-03-18:  David Anderson
+    commit 19a80a12e7316f879bc7d6de09ae7d83c60ebd86
+
+    New baselines due to duplicate attr message change.
+            modified:   baddie1/incorrectdies.base
+            modified:   debugfissionb/peexe64.base
+
+2025-03-17:  David Anderson
+    commit 8556fe7d5fe65fc505075bed6e7f8f9eb0cafc8c
+
+    New tests of mmap
+            modified:   DWARFTEST.sh
+
+    Ignore. Minor testing only.
+            modified:   RUN
+
+    New baseline executables for 0.12.0 with mmap
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2025-02-07:  David Anderson
+    commit 4f256d8ae142f9ebd08202e2c815262e4473f107
+
+    Up to date with git log
+            modified:   ChangeLog
+
+2025-02-07:  David Anderson
+    commit 21d377555c8d42ac27165523dba76bb5e8eb7fe8
+
+    id: DW202502-001
+    fuzzer: oss fuzz 394644267
+    datereported: 2025-02-05
+    
+    Now testing the newly found vulnerability
+            modified:   DWARFTEST.sh
+    New baseline correct output.
+            new file:   baselines/ossfuzz394644267.base
+
+2025-02-07:  David Anderson
+    commit cdda8f336166bdf66f725f4a35c0f498f3c43964
+
+    Bug found
+    ossfuzz394644267
+            new file:   README
+            new file:   fuzz_macro_dwarf5-5504709091983360
+
+2025-01-14:  David Anderson
+    commit 8c46dc4a4e12db2bfbfed55beaf67ef1c9ed85b3
+
+    Now with findfunc202501 tested.
+            modified:   DWARFTEST.sh
+    New testcase
+            new file:   baselines/findfunc202501.base
+            new file:   findfunc202501/README
+            new file:   findfunc202501/fuzz_findfuncbypc-5658339610001408
+
+    Just notes. Not executed or read by tests.
+            modified:   filelist/with-cu-index-sec
+
+2025-01-04:  David Anderson
+    commit 4f02f75e41fb566559596f74d591c62b8518a122
+
+    Now with a working freebsd 64. New(ish) machine.
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2024-12-31:  David Anderson
+    commit bbb4e99f8322eec023a6ef6b2b92ec8c807e96cf
+
+    A list of the dwp objects being tested
+            new file:   filelist/with-cu-index-sec
+
+2024-12-30:  David Anderson
+    commit 7487a481e646c2ef96773b68e422ecb860d60fe3
+
+    These are Dec 29 baseline executables.
+    64bit freebsd temporarily unavailable for testing.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-12-28:  David Anderson
+    commit 121b735d8570c686d8e05f5632d4342ad65e601a
+
+    New test
+            modified:   DWARFTEST.sh
+    New baseline
+            modified:   baddie1/incorrectdies.base
+
+2024-12-28:  David Anderson
+    commit add413091e9c87e5b8bc94c4756be2a9410962ad
+
+    Testcase an baseline. Duplicate attrs in abbrev list
+            new file:   DW202412-011/README
+            new file:   DW202412-011/fuzz_die_cu_attrs-5424995441901568
+            new file:   baselines/DW202412-011.base
+
+2024-12-28:  David Anderson
+    commit f6abf2cc79bec6b575383a0f9befd13da2e2d3cd
+
+    These all had duplicate attributes in
+    abbrev lists, so we have new baseline values
+            modified:   baddie1/incorrectnest2.base
+            modified:   baselines/ossfuzz371659894.base
+            modified:   baselines/ossfuzz42536144.base
+            modified:   baselines/ossfuzz56474.base
+            modified:   baselines/ossfuzz56492.base
+            modified:   baselines/ossfuzz56958.base
+            modified:   baselines/ossfuzz57107.base
+            modified:   baselines/ossfuzz57292.base
+            modified:   baselines/ossfuzz57300.base
+            modified:   baselines/ossfuzz57766.base
+            modified:   baselines/ossfuzz57887.base
+            modified:   baselines/ossfuzz59699.base
+            modified:   baselines/ossfuzz59775.base
+            modified:   baselines/ossfuzz62547.base
+            modified:   baselines/ossfuzz67490.base
+            modified:   baselines/ossfuzz70753.base
+            modified:   baselines/ossfuzz_42536144.base
+            modified:   debugfissionb/peexe64.base
+
+    Added explanation.
+            modified:   cristi3/README
+    Fixed a bug in one test run
+            modified:   debugfissionb/runtest.sh
+
+2024-12-28:  David Anderson
+    commit 4d90714c257f8924b572e8d401068077a43f612f
+
+    Two tests had the same basename! Changed the second ones base name.
+            new file:   debugfissionb/peexe64x.base
+
+2024-12-26:  David Anderson
+    commit c1239caf2ccc86410b7489a4a1a91057f9b57397
+
+    Two new test cases.
+            modified:   DWARFTEST.sh
+    new baseline for the latest bug, DW202412-010 oss fuzz 385742125
+            new file:   baselines/ossfuzz38574212.base
+
+2024-12-26:  David Anderson
+    commit f19902acbaa76d39215df8ba804a667238324a34
+
+    New testcase
+            new file:   ossfuzz385742125/README
+            new file:   ossfuzz385742125/fuzz_die_cu_print-5500979604160512
+
+2024-12-25:  David Anderson
+    commit dad072eb91d9db42cefbe5c0dcb3ee515ca5f085
+
+    baseline for the new test corrupt MachO obj..
+            new file:   baselines/DW202412-009.base
+
+2024-12-25:  David Anderson
+    commit 5d77841a4e9a0d2f6cb8116683e3ba8cf9db8ac9
+
+    Test case
+            DW202412-009/
+            new file:   README
+            new file:   fuzz_init_path-5854698061496320
+
+2024-12-25:  David Anderson
+    commit ae6ef4b9c4100aded969f9a8b004db0125b3b766
+
+    Adding testcase and its baseline.
+            new file:   baselines/ossfuzz385466100.base
+            new file:   ossfuzz385466100/README
+            new file:   ossfuzz385466100/RUN
+            new file:   ossfuzz385466100/fuzz_die_cu_offset-6604029974609920
+
+2024-12-24:  David Anderson
+    commit 4e996713733e291406a120641955dea10a540dca
+
+    One new test Issue DW202412-008.
+            modified:   DWARFTEST.sh
+    Updated to match dwarfdump/libdwarf
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-12-18:  David Anderson
+    commit 56cd1b52419a210e56373d5e3fad2bd82cd0b1e9
+
+     Now that S390 big-endian VM working again
+     bring the baseline up to current.
+            modified:   ../dwarfdump-s390.O
+
+2024-12-11:  David Anderson
+    commit 1fef8fb7a2e3e869571dcc6e9c2aa012500b811d
+
+    The beginnings of being able to build with LOCAL_MALLOC
+    set in libdwarf.
+            modified:   PICKUPBIN.sh
+
+2024-12-11:  David Anderson
+    commit ba5bb7d286838f12dba6dbde7f167b669ff92219
+
+    We now test ossfuzz id: 42536144
+            modified:   DWARFTEST.sh
+
+2024-12-11:  David Anderson
+    commit b5efae70c14b49dca00d2cac4e86f626b3cbf2ad
+
+    Test cases updates
+            new file:   baselines/ossfuzz42536144.base
+            modified:   baselines/ossfuzz_42536144.base
+            new file:   ossfuzz42536144/clusterfuzz-testcase-minimized-fuzz_die_cu_attrs_loclist-5906068650655744
+
+2024-12-10:  David Anderson
+    commit fcc737b7880ddb1fb3173754dfda980a5dda4edc
+
+    Now runs all rests includijng latest
+            modified:   DWARFTEST.sh
+    New baseline
+            new file:   baselines/ossfuzz383170474.base
+
+2024-12-10:  David Anderson
+    commit 41268f1c3a49589653b572c15ce4555b616c90c7
+
+    New testcases
+            new file:   baselines/ossfuzz380108595.base
+            new file:   ossfuzz380108595/README
+            new file:   ossfuzz380108595/fuzz_aranges-5572243180027904
+            new file:   ossfuzz383170474/README
+            new file:   ossfuzz383170474/fuzz_globals-4515360770228224.fuzz
+
+2024-12-10:  David Anderson
+    commit b62ce9d4296571e4866f6273150ec6494c265c40
+
+    New baseline for the new test. Corrupt PE object involved.
+            new file:   baselines/ossfuzz379159140.base
+            new file:   ossfuzz379159140/README
+
+2024-12-10:  David Anderson
+    commit b30c54b8e803d003cb3d6b7457584875cfb0527b
+
+    new baseline value
+            new file:   baselines/ossfuzz372754161.base
+
+    DW202412-004
+            new file:   ossfuzz379159140/fuzz_die_cu_print-5335984847257600
+
+2024-12-10:  David Anderson
+    commit 8cbfb1350e8a54546b89895b319cdbedbd608c8d
+
+    testcase for DW202412-003
+            new file:   ossfuzz372754161/README
+            new file:   ossfuzz372754161/fuzz_globals-6058837938864128
+
+2024-12-10:  David Anderson
+    commit a191638dc04d1ef761acaa041605083b4208c0a1
+
+    New baseline value
+            modified:   baselines/ossfuzz56450.base
+
+2024-12-09:  David Anderson
+    commit 2a9f70f37516ee03099f94780fa3b1b0a71743d1
+
+    Added tests of new ossfuzz issues.
+            modified:   DWARFTEST.sh
+
+    ignore this
+            new file:   RUN
+
+    test cases updated.
+            new file:   baselines/ossfuzz371659894.base
+            modified:   baselines/ossfuzz371721677.base
+            modified:   ossfuzz371659894/README
+
+2024-12-09:  David Anderson
+    commit 4c5956eccc1da46967ce38e37927388ec71b94f6
+
+            new file:   baselines/ossfuzz371721677.base
+
+    New testcase  DW202412-002
+            new file:   ossfuzz371659894/README
+            new file:   ossfuzz371659894/fuzz_die_cu_attrs-6661686947282944
+
+2024-12-09:  David Anderson
+    commit f5afb7da1997d69d329e0625db79da5554f62367
+
+    New testcase
+            new file:   baselines/ossfuzz_42536144.base
+            new file:   ossfuzz42536144/fuzz_die_cu_attrs_loclist-5906068650655744
+
+2024-12-09:  David Anderson
+    commit 064204b37fc694028dd84b918e1218c8ed9f4ef0
+
+    Ossfuzz error testcase
+            new file:   ossfuzz371721677/README
+            new file:   ossfuzz371721677/fuzz_die_cu_e_print-4913953320271872
+
+2024-12-05:  David Anderson
+    commit 971713d034f0b671c03734c12606ac5f3398d285
+
+    The fixes for DW202409-001   oss fuzz 42538203
+    affected the error messages emitted by these test cases.
+            modified:   baselines/ossfuzz56480.base
+            modified:   baselines/ossfuzz56480dcp.base
+            modified:   baselines/ossfuzz57027.base
+            modified:   baselines/ossfuzz57193.base
+            modified:   baselines/ossfuzz70721.base
+
+    New baseline executables for three of the test environments.
+    Others will follow.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-12-05:  David Anderson
+    commit d03834fdce857d50d0b54b964b2a67528311f8e1
+
+    Now tests  for bug     Documenting DW202409-001   oss fuzz 42538203
+    And avoids doing so many tests of a couple of badly damaged
+    object files (no need to test dwarfdump option combinations,
+    a single pair of tests on each suffices).
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz_42538203.base
+
+2024-12-03:  David Anderson
+    commit 337373149447fdd62138b57ef2a420e1b8e717bb
+
+    First report *that I ever saw* of this bug report.
+            new file:   ossfuzz42538203/README
+            new file:   ossfuzz42538203/fuzz_findfuncbypc-5117956621664256
+
+2024-11-30:  David Anderson
+    commit 14846a8d8996a78b82c24f1b9e4936cb0771e74c
+
+    Now up to date.
+            modified:   ChangeLog
+
+2024-11-30:  David Anderson
+    commit 3597f5cc37e1117f9c688c7d83ff1b28f473ffcf
+
+    New baselines, passing for Dec 1 release.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-11-28:  David Anderson
+    commit 64350f5d0b64c8766debbb092e6b858772d31bf1
+
+    Changes in dwardump output (small changes in errors)
+    required updating this baseline.
+            modified:   baselines/corexpdbg-crash
+
+2024-11-22:  David Anderson
+    commit 1f6fa954f7a88c337f1c3df5027ba81e699a083b
+
+    Corrected the tests in rifkin7 and added new tests under rifkin8.
+    These are tests of DWARF5 .debug_rnglists.
+            modified:   DWARFTEST.sh
+
+2024-11-22:  David Anderson
+    commit 4723580ed17b0e8ab1b129a17686070a778faca7
+
+    Another new testcase DWARF5 .debug_rnglists
+            new file:   rifkin8/README
+            new file:   rifkin8/stacktrace.cpp.dwo
+            new file:   rifkin8/unittest
+
+2024-11-19:  David Anderson
+    commit df22d1563b4dd6e6345fc0052c8694f8d76d1a47
+
+    New testcase for APPLE DWARF5 section names.
+            modified:   ../DWARFTEST.sh
+    new baseline
+            modified:   ../dwarfdump-macos.O
+
+2024-11-19:  David Anderson
+    commit 683f051c394cc8bb73890564cf715d51d50e6955
+
+    New testcase Now with DWARF5 sections in an Apple dSYM.
+            new file:   myzhan/README
+            new file:   myzhan/lua
+
+2024-11-16:  David Anderson
+    commit bd2ad501450b9de54fbb959ce086025c20c9e403
+
+    Now with the rifkin7 test and with new
+    baselines. There were differences in 526 tests,
+    all are improvements as intended.
+            modified:   DWARFTEST.sh
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    This is the testcase for Issue 267 on Github.
+            new file:   rifkin7/README
+            new file:   rifkin7/stacktrace.cpp.dwo
+            new file:   rifkin7/unittest
+
+2024-11-10:  David Anderson
+    commit 5db2bc140093514568c2c2ca914f2346f3d7b179
+
+    Fixing ranges output caused baseline changes.
+    github issue 265
+
+            modified:   DWARFTEST.sh
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectbeforechild.base
+            modified:   baddie1/incorrectbeforeitself.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+            modified:   baselines/macuniv.base
+            modified:   baselines/macuniv0.base
+            modified:   baselines/macuniv1.base
+            modified:   debugfission/archiveo.base.gz
+            modified:   debugfission/targeto.base.gz
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-11-07:  David Anderson
+    commit 1fd80670565f35375491139db168baa4f1a7200f
+
+    Now with corexp/ test
+            modified:   DWARFTEST.sh
+    New baseline
+            new file:   baselines/corexpdbg-crash
+    with correct coreexp behavior.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-11-03:  David Anderson
+    commit ae8936367e59a40a1cfd851001fa3301f3a34432
+
+    Making it easier to understane what is going wrong when one cannot find the .O as executable.
+            modified:   ../INITIALSETUP.sh
+
+2024-11-03:  David Anderson
+    commit 71165310e8c8a19ef492b47779d8f777b982b5b1
+
+    In corexp: new test case issue 266 on fuzzed binary
+            new file:   README
+            new file:   elf.dbg
+
+2024-09-20:  David Anderson
+    commit 9f0c1a1ecf2ad4543cc2822960ffa4dd04b6f464
+
+    Yet more tiny tweaks.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit 88d1b3988a2959b71bfe895b0edbf2ba723db402
+
+    Yet another revision
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit e83c6e4fcd048bf3511e7544b91f09fba562da4b
+
+    Oh my, more tweaks.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit b50efef27422e08700b32c2b4bc4c4b6a99ab8cd
+
+    Further correction.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit b875577465536d2d1474e8541d1ff454c2f5f503
+
+    Further clarifications.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit 91bab3febf4ffb34ed5d3c0fb2122380168fab45
+
+    Expanded and more complete content.
+            modified:   README.md
+
+2024-09-20:  David Anderson
+    commit 0c1e13efe7bd5b416912477f8ce336ffeb618414
+
+    New baseline executables with the recent
+    changes in dwarfdump output.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-09-15:  David Anderson
+    commit 63a5b4753aa513d1bc657542518572b7581ddbbb
+
+    New baseline executables reflecting
+    the change in tag and attribute summary count
+    logic (dwarfdump).
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-09-01:  David Anderson
+    commit 8ec84810df0cfe0b72426dae74446dc8d052371b
+
+    Now up to date with git log.
+            modified:   ChangeLog
+
+2024-09-01:  David Anderson
+    commit e44ce5c577e73bc591d6c9a1399a718844820424
+
+    New baseline executables for 0.11.1
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-09-01:  David Anderson
+    commit aea6e6ed78b4d642472aee60a101181470c35310
+
+    Now with latest (new) tests.
+            modified:   DWARFTEST.sh
+            modified:   TEST
+            modified:   polar/README
+            new file:   polar/cpp_test.o
+
+2024-08-29:  David Anderson
+    commit 2483166b552b7876d382e4df917c72c4da6eb533
+
+    New testcase
+            new file:   polar/README
+            new file:   polar/hello.o
+
+2024-08-29:  David Anderson
+    commit 67a0b0facd5e745d88a6261f7870266c8cb7cbce
+
+    New testcase
+            new file:   rifkin5/README
+            new file:   rifkin5/RUN
+            new file:   rifkin5/demo
+            new file:   rifkin5/demo.cpp.dwo
+
+2024-08-15:  David Anderson
+    commit eb7925b268dc88fcf19b1105e74de6e99be5803e
+
+    runsingle() had a bit of leftover text from runtests()
+    meaning the FAIL line output had irrelevant content.
+    Fixed.
+            modified:   DWARFTEST.sh
+
+    Now the baseline shows the name of the testfile
+    as
+      test_setframe.input
+    as it should have always been instead of
+      test_setframe
+            modified:   baselines/test_setframe.base
+
+2024-08-15:  David Anderson
+    commit 5dd05cb24b60ebdd914365b20e554c010b891028
+
+    Now test_setframe is against a known object instead
+    of whatever compiler is used in running tests.
+    Always a bad idea to have a subject of a test to depend
+    on the current compiler, that is a guarantee of future
+    FAILs.
+            modified:   DWARFTEST.sh
+            new file:   test_setframe.input
+
+2024-08-06:  David Anderson
+    commit 30b118b6680f5f9ba316317ec12e9831896c0e2c
+
+    New baselines, reflecting dwarfdump output
+    changes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2024-08-04:  David Anderson
+    commit 9ad253b41f7c406ea94f4a261a469ddc042607bf
+
+    Reflecting the improvements in dwarfdump
+    printing of reference-class attributes/forms.
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectdies.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+            modified:   baselines/databitoffset.base
+            modified:   baselines/macuniv.base
+            modified:   baselines/macuniv0.base
+            modified:   baselines/macuniv1.base
+            modified:   debugfission/archivedwo-iMvvv.base.gz
+            modified:   debugfission/archivedwo.base.gz
+            modified:   debugfission/targetdwo.base.gz
+            modified:   dwarfdump-x86_64-ubuntu.O
+            modified:   dwgena/test1.base.gz
+            modified:   dwgena/test2.base.gz
+            modified:   dwgena/test3.base.gz
+            modified:   dwgena/test4.base.gz
+            modified:   dwgena/test5.base.gz
+            modified:   dwgena/test6.base.gz
+            modified:   dwgena/test7.base.gz
+            modified:   dwgena/test8.base.gz
+            modified:   dwgena/test9.base.gz
+            modified:   dwgenc/base.debugnames
+            modified:   implicitconst/implicit.base
+            modified:   nolibelf/test1.base
+
+2024-08-03:  David Anderson
+    commit 5a5f5e644af22cdeebbd845056ab1e9fe7ebeef0
+
+    Up to date with recent changes.
+            modified:   ChangeLog
+
+2024-08-03:  David Anderson
+    commit bbfc7fba94eadb81505bf1421903aacc01d6c0ec
+
+    The test used to emit a trailing space
+    but it no longer does that.
+    Baseline matches again.
+            modified:   baselines/examplev-ranges-a.base
+            modified:   baselines/examplev-ranges-b.base
+            modified:   baselines/examplev-ranges-c.base
+
+2024-08-03:  David Anderson
+    commit 965f48ce3eaf9f29f40a79a37ccb45028510a4a3
+
+    Reduce the length of text checked in finding
+    a usable dwarfdump*.O to 19 lines (from 20)
+    as a recent dwarfdump change involved a
+    change in dwarfdump output in the 20th line.
+            modified:   INITIALSETUP.sh
+
+2024-08-01:  David Anderson
+    commit a32cf864add277c7b31ab658fa0eb7aa0c8028ae
+
+    Baselines changed as dwarfdump does a better job
+    of informing about attributes
+    DW_AT_specification DW_AT_abstract_origin DW_AT_type  .
+
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectbeforechild.base
+            modified:   baddie1/incorrectbeforeitself.base
+            modified:   baddie1/incorrectdies.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+            modified:   baselines/databitoffset.base
+            modified:   baselines/macuniv.base
+            modified:   baselines/macuniv0.base
+            modified:   baselines/macuniv1.base
+            modified:   debugfission/archivedwo-iMvvv.base.gz
+            modified:   debugfission/archivedwo.base.gz
+            modified:   debugfission/targetdwo.base.gz
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+            modified:   dwgena/test1.base.gz
+            modified:   dwgena/test2.base.gz
+            modified:   dwgena/test3.base.gz
+            modified:   dwgena/test4.base.gz
+            modified:   dwgena/test5.base.gz
+            modified:   dwgena/test6.base.gz
+            modified:   dwgena/test7.base.gz
+            modified:   dwgena/test8.base.gz
+            modified:   dwgena/test9.base.gz
+            modified:   dwgenc/base.debugnames
+            modified:   findexecutable.base
+            modified:   implicitconst/implicit.base
+            modified:   mustacchi/m32out.base
+            modified:   mustacchi/m64out.base
+            modified:   nolibelf/test1.base
+
+2024-07-31:  David Anderson
+    commit 196a59794279926a127b5e35f6a2a6d40adb9c0f
+
+    Now with tests for ossfuzz 70753 and 70763
+            modified:   DWARFTEST.sh
+    Baseline executables update.
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-07-28:  David Anderson
+    commit 86f5a8392be757a74ca1e60ab0a69d6e15311e00
+
+    Newtests, initial baseline value
+            new file:   baselines/ossfuzz70753.base
+            new file:   baselines/ossfuzz70763.base
+
+2024-07-28:  David Anderson
+    commit ec88db13b5fb327a5c5bda759c3d29d211811433
+
+    New failures
+            new file:   ossfuzz70753/README.txt
+            new file:   ossfuzz70753/fuzz_die_cu_offset-6598270743281664
+            new file:   ossfuzz70763/README.txt
+            new file:   ossfuzz70763/fuzz_macro_dwarf5-5161075908083712
+
+2024-07-27:  David Anderson
+    commit 7d970208a6231e68dca1a0996b6a1faf53bcd33e
+
+    Reflecting change to dwarfdump output of .debug_ranges data
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectbeforechild.base
+            modified:   baddie1/incorrectbeforeitself.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+
+    New baselines given .debug_ranges output format change.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2024-07-27:  David Anderson
+    commit 313af648432c167fe262d6ec03a6fa43c1199d21
+
+    Adding testcase ossfuzz 70721, heap use after free.
+    The output lines about START all also echo the $failcount
+    to make it easier to check for script correctness.
+            modified:   DWARFTEST.sh
+
+2024-07-27:  David Anderson
+    commit 2b223303f23abe2ec88af4fe8154514a648d4f47
+
+    New test based on this ossfuzz error
+    DW202407-010.
+            new file:   baselines/ossfuzz70721.base
+            new file:   ossfuzz70721/fuzz_macro_dwarf5-4907954017468416
+
+2024-07-26:  David Anderson
+    commit 3bbf9f842be0d725ba39460f97ef91dbdfb69ee6
+
+    Now with new tests accessing .debug_ranges
+    validating code in doc/checkexamples.c
+            modified:   DWARFTEST.sh
+            modified:   baselines/examplev-ranges-b.base
+            new file:   baselines/examplev-ranges-c.base
+            modified:   baselines/ossfuzz56492.base
+    baseline executables.
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-07-23:  David Anderson
+    commit 7434331f135839b4d41c4de91e82e3ce669a3dac
+
+    Up to date with git log
+            modified:   ChangeLog
+
+2024-07-23:  David Anderson
+    commit a61ef7a9e986a77a3f0ab633a128440c5e4f910e
+
+     Changes to be committed:
+    Runs new tests on .debug_ranges specifically
+    using the runsingle shell function, so new
+    executable baselines *.O are not needed at
+    this time.
+            modified:   DWARFTEST.sh
+
+    New baselines: examplev() is a function in doc/checkexamples.c
+            new file:   baselines/examplev-ranges-a.base
+            new file:   baselines/examplev-ranges-b.base
+    New test code.
+            modified:   examplechecks/test_ranges.c
+
+2024-07-23:  David Anderson
+    commit b95dc2da077a98e4b2bd622e28bc18f7ab73f08f
+
+    Cleaned up formatting to match libdwarf CODINGSTYLE.
+            modified:   test_sectionnames.c
+            modified:   test_setframe.c
+            modified:   test_simple_libfuncs.c
+            modified:   testbuildfuzz.c
+
+2024-07-23:  David Anderson
+    commit 372d9ee842ac70c5fb5256fdcdb182d32167d266
+
+    A new test, which uses examplev in
+    doc/checkexamples.c showing access to raw
+    and cooked values for .debug_ranges section
+    (which is in DWARF2,3, and 4).
+            new file:   examplechecks/README
+            new file:   examplechecks/checkexamples.h
+            new file:   examplechecks/test_ranges.c
+
+2024-07-21:  David Anderson
+    commit e57b2e8fc06845548fe0641df3c72456099e50f1
+
+    New baseline executable.
+            modified:   dwarfdump-s390.O
+
+    junk
+            deleted:    examplesarange
+            deleted:    examplesloclist
+            deleted:    examplesrnglist
+
+    Ignore this, occassionally useful..
+            modified:   rifkin3/TEST
+
+2024-07-21:  David Anderson
+    commit 780afe3f9239d0ecd7120589b57c0b49ff35c554
+
+    New baseline executables to match the .debug_ranges output format
+    changes in dwarfdump.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-07-21:  David Anderson
+    commit 77a7cea4298929efc7678e3e9422efaad266bf3a
+
+    Fix small mistakes in the messages about updating the baselines.
+            modified:   debugfission/runtest.sh
+
+    Now matching the new output format of .debug_ranges data from dwarfdump.
+            modified:   baddie1/incorrectatchild.base
+            modified:   baddie1/incorrectatitself.base
+            modified:   baddie1/incorrectbeforechild.base
+            modified:   baddie1/incorrectbeforeitself.base
+            modified:   baddie1/incorrectnest.base
+            modified:   baddie1/incorrectnest2.base
+            modified:   baselines/macuniv.base
+            modified:   baselines/macuniv0.base
+            modified:   baselines/macuniv1.base
+            modified:   debugfission/archivedwo-iMvvv.base.gz
+            modified:   debugfission/archivedwo.base.gz
+            modified:   debugfission/archiveo.base.gz
+            modified:   debugfission/targetdwo.base.gz
+            modified:   debugfission/targeto.base.gz
+
+2024-07-11:  David Anderson
+    commit 1ba79ac0097de3e6ba8342aa86f52ca255572901
+
+    New tests, working. Looks good.
+            modified:   ../DWARFTEST.sh
+
+2024-07-11:  David Anderson
+    commit 61414bab42b6d9af7524e7a6abc9a799de5d40b0
+
+    New ossfuzz baselines.
+    These are identical, effectively, first
+    identified by ossfuzz 70246
+    All these inspect CUs and that means they
+    trip on the bug in rnglist reading
+    (Valid rnglists data was never incorrect,
+    these are about a particular object file
+    corruption in the test objects.)
+
+            new file:   baselines/ossfuzz70277.base
+            new file:   baselines/ossfuzz70278.base
+            new file:   baselines/ossfuzz70282.base
+            new file:   baselines/ossfuzz70287.base
+            new file:   ossfuzz70277/fuzz_die_cu_info1-5380280051892224
+            new file:   ossfuzz70278/fuzz_stack_frame_access-5419136084148224
+            new file:   ossfuzz70282/fuzz_gnu_index-5974064515055616
+            new file:   ossfuzz70287/fuzz_die_cu_e-6493908297646080
+
+2024-07-10:  David Anderson
+    commit 55f324622fd3405a997393b4b28595fa6bb0d711
+
+    three new tests, ossfuzz.
+            modified:   DWARFTEST.sh
+
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Ignore this.
+            modified:   rifkin3/TEST
+
+2024-07-10:  David Anderson
+    commit b70f2d7c7795d691097a34ffbdb9bf0b2c247428
+
+    New, baselines
+            new file:   baselines/ossfuzz70256.base
+            new file:   baselines/ossfuzz70263.base
+            new file:   baselines/ossfuzz70266.base
+
+2024-07-10:  David Anderson
+    commit c1cc27079719ae68410bd6a2d71f1c34ed423b74
+
+    New testcase.
+            new file:   ossfuzz70266/fuzz_findfuncbypc-6093996460408832
+
+2024-07-10:  David Anderson
+    commit dd62c3c10cb1a957a1ad77800a5a31205185ffc0
+
+    New failures (all rnglists...)
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz70244.base
+            new file:   baselines/ossfuzz70246.base
+            new file:   ossfuzz70244/RUNONE
+            new file:   ossfuzz70244/fuzz_die_cu_attrs_loclist-4958134427254784
+            new file:   ossfuzz70246/RUNONE
+            new file:   ossfuzz70246/fuzz_macro_dwarf5-5128935898152960
+            new file:   ossfuzz70256/fuzz_rng-4838222916550656
+            new file:   ossfuzz70263/fuzz_die_cu-4960441042796544
+            new file:   rifkin3/TEST
+
+2024-07-08:  David Anderson
+    commit 36884606ecdc8c7ef46b8a1dd5c3ae29595247eb
+
+    New dwarf4 testcase.
+            new file:   rifkin3/README
+            new file:   rifkin3/stacktrace.cpp.dwo
+            new file:   rifkin3/unittest
+
+2024-07-04:  David Anderson
+    commit 94673202bf7059f5ea124b32a1c4623f5c33b937
+
+    More relevent for current tests
+            modified:   TEST
+
+    Updating the baselines for dwarfdump to match 0.10.1
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-07-04:  David Anderson
+    commit 7dfce10e814452fc5da3b886ce5a1c33b19f5fa5
+
+    Correcting comment text.
+            modified:   DWARFTEST.sh
+
+2024-06-24:  David Anderson
+    commit 6ab0308e85ded5e01d19d8fbbcd581d102d11b92
+
+    Up to date now.
+            modified:   ChangeLog
+
+2024-06-17:  David Anderson
+    commit bf6cecda220e456830a462e2a6ebe2bf3ad7a59a
+
+    Minor tweaks to tests to get accurate counts.
+            modified:   DWARFTEST.sh
+
+    Added remark about using meson here.
+            modified:   README.md
+
+    Latest set of test results. 15 June.
+            modified:   RegressionTestsResults.ods
+
+    New baseline executables for the rnglists/loclists
+    fixes.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2024-06-15:  David Anderson
+    commit 80fcf6ad7427c50b24e3c65c7e24b1a7529083da
+
+    Updated, now up to date.
+            modified:   ChangeLog
+
+2024-06-15:  David Anderson
+    commit d058c801c004e26201c7050dfb50223ab9fb1236
+
+    Adds new tests related to DWARF5 rnglists and loclists
+            modified:   DWARFTEST.sh
+
+    Now equipped for all the DWARF5 rnglists loclists situations.
+            modified:   TEST
+    New baseline results.
+            new file:   baselines/ossfuzz69639.base
+            new file:   baselines/ossfuzz69641.base
+
+    New dwarfdump baseline executable.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-06-14:  David Anderson
+    commit 1b2d756f8c9e61c8b0a4e23afdfe582173a2f297
+
+    Updated baseline.
+            modified:   baselines/hongg2024-02-18-m.base
+    New testcases
+            new file:   ossfuzz69639/fuzz_die_cu_offset-6001910176350208
+            new file:   ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
+
+2024-06-13:  David Anderson
+    commit 523d59ad3776c19b20f93e15d274c597ccaa6967
+
+    Now with new tests and, a new ENV-var option
+    SKIPTBIGOBJECTS
+    which if 'y' will avoid running some tests
+    that generate several Gigabytes of output.
+            modified:   DWARFTEST.sh
+    Now matches current test results.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+    Moved this up one level, into base directory.
+    Ignore it :-)
+            deleted:    rifkindwo/TEST
+
+2024-06-12:  David Anderson
+    commit 935981d08b839ef8daca5c6b876865f8a9d6c154
+
+    Handy for certain tests with lots of differences
+    when certain changes made..
+            new file:   TEST
+
+2024-06-08:  David Anderson
+    commit 1854c266632a89b83dcbc04e5fc4d7f89e7c3d73
+
+    New test objects.
+            new file:   cpptrace.cpp.dwo
+            new file:   libcpptrace.so.0.6.0
+
+2024-06-08:  David Anderson
+    commit 84641acc4df52367acaa9953a5f5b0cb14eb77da
+
+    This is a file only for individual tests.
+    Ignore it.
+            new file:   TEST
+
+2024-05-26:  David Anderson
+    commit 0018eb0620d9c02c63c2b134c0ba84d4d4532192
+
+    New test cases.  DWARF4 in these objects
+    uses an extension of using .debug_addr
+    but not using the DWARF5 standard.
+    See the README for additional details.
+            new file:   rifkindwo/README
+            new file:   rifkindwo/demo
+            new file:   rifkindwo/demo.cpp.dwo
+
+2024-05-10:  David Anderson
+    commit 71b5d3965194271802b1c48e78b7aad617bd0abe
+
+    baselines matching the new error message format for
+    PE objects failing a heuristic sanity check.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+
+2024-05-10:  David Anderson
+    commit 40d801db454351dd5d81f3511403c1c8e22457db
+
+    minor correction.
+            modified:   baselines/dwnames_all.base
+
+    New baseline due to renaming  DW_DLE_PE_SECTION_SIZE_ERROR
+    to  DW_DLE_PE_SECTION_SIZE_HEURISTIC_FAIL
+    in three places
+    for clarity when the failing is a heuristic, not
+    necessarily a genuine error.
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-03-31:  David Anderson
+    commit 5e4306993f0bc90b7cd4ed4af0da20825b327d8e
+
+    Up to date.
+            modified:   ChangeLog
+
+2024-03-31:  David Anderson
+    commit 7f68e2c680c07a1a13a94b8cbea2cad658a3d7b6
+
+    the checking source was wrong, now we check
+    for the correct spelling "DW_CFA_hi_user"
+            modified:   dwnames_checks/dwnames_all.c
+
+2024-03-31:  David Anderson
+    commit ab7ea2fc299d7796075015227cb554c5c9ea82a0
+
+    To keep track of these for the future.
+            new file:   helloz/bldwzlib
+            new file:   helloz/bldwzstd
+    SHould have committed this earler.
+            new file:   marini/testcase
+
+2024-03-29:  David Anderson
+    commit 034a710f7f8c2e4fcddee237b86dc525de86ab70
+
+    Updated the total count so the percent values
+    look right, the latest addition added enough
+    tests it seemed sensible to update the count.
+            modified:   python2/showpct.py
+            modified:   python3/showpct.py
+
+2024-03-29:  David Anderson
+    commit 77f5a55cc4cebc3e6f8d61b7bf6aa76517d0f1e1
+
+    Now running dwarfdump (with many options) on the .ko
+    which has really nice usage of DW_AT_decl_file,
+    DW_AT_decl_line *and* DW_AT_decl_column.
+            modified:   DWARFTEST.sh
+            new file:   kernel/README
+            new file:   kernel/test.ko
+
+2024-03-29:  David Anderson
+    commit 683f6e95c09da3116f20b04c6cefb70060a2215b
+
+    Up to date with git log
+            modified:   ChangeLog
+
+2024-03-29:  David Anderson
+    commit 5c03493e704150d3a8e924b67e01065265500968
+
+    Now runs the new testcase (which
+    showed a bug in 0.9.1
+    (DW202402-002)  that was already fixed February 17 2024.
+            modified:   DWARFTEST.sh
+            new file:   baselines/abudev-a.base
+
+2024-03-29:  David Anderson
+    commit 46ed6f6c8705e3e0b2ddf24df8720e3114a61c75
+
+    New testcase.
+            new file:   abudev/README
+            new file:   abudev/abudev_test.poc
+
+2024-03-21:  David Anderson
+    commit 2f1a3f926eee82f889f0c9a2a674f2eee78621c8
+
+    Now with the test for DW202403-001
+            modified:   DWARFTEST.sh
+    Baseline result
+            new file:   baselines/ossfuzz67490.base
+
+2024-03-19:  David Anderson
+    commit b64860c960f1ad2bfabf369e9ce8756ff3a61018
+
+    New failure report.
+            new file:   ossfuzz67490/README
+            new file:   ossfuzz67490/fuzz_srcfiles-5195296927711232
+
+2024-03-03:  David Anderson
+    commit bb83ed3ef542c762368176503a4f2c22fc3fa77a
+
+    Now with an msys2 run to completion.
+    Very slow.
+            modified:   RegressionTestsResults.ods
+
+2024-03-01:  David Anderson
+    commit b410d1ec8219a0eabb3676c3a155db58c438c2a8
+
+    New testcase
+            new file:   Celik/README
+            new file:   Celik/crash_elfio
+    Run the new testcase
+            modified:   DWARFTEST.sh
+    Baseline with the expected output of dwarfdump
+            new file:   baselines/CelikCrash.base
+
+2024-02-18:  David Anderson
+    commit 45d6a5b63fe6304b4cc4ddf84679a09f913effe8
+
+    Now runs the test for DW202402-003.
+            modified:   DWARFTEST.sh
+
+2024-02-18:  David Anderson
+    commit fff8b79eddda31c73e194b28a2e9eb0d5be542c9
+
+    Test for DW202402-003.
+            new file:   baselines/hongg2024-02-18-m.base
+            new file:   hongg2024-02-18/README
+            new file:   hongg2024-02-18/SIGSEGV-m.fuzz
+
+2024-02-17:  David Anderson
+    commit bc167b941d5dfbbb06138304530de4e6ac741c4a
+
+    New tests relevant to DW202402-002.
+            modified:   DWARFTEST.sh
+            modified:   README.md
+    Showing latest
+            modified:   RegressionTestsResults.ods
+
+2024-02-17:  David Anderson
+    commit 1ba4e1981b676d762372b6503652d0f990793788
+
+    testing that a serious bug is fixed. DW202402-002
+            new file:   baselines/hongg2024-02-16-a.base
+            new file:   baselines/hongg2024-02-16-b.base
+            new file:   baselines/hongg2024-02-16-c.base
+            new file:   baselines/hongg2024-02-16-d.base
+            new file:   baselines/hongg2024-02-16-e.base
+            new file:   baselines/hongg2024-02-16-f.base
+            new file:   baselines/hongg2024-02-16-g.base
+            new file:   baselines/hongg2024-02-16-h.base
+            new file:   baselines/hongg2024-02-16-i.base
+            new file:   baselines/hongg2024-02-16-k.base
+            new file:   hongg2024-02-16/README
+            new file:   hongg2024-02-16/SIGABRT-a.fuzz
+            new file:   hongg2024-02-16/SIGABRT-b.fuzz
+            new file:   hongg2024-02-16/SIGABRT-c.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-d.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-e.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-f.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-g.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-h.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-i.fuzz
+            new file:   hongg2024-02-16/SIGSEGV-k.fuzz
+
+2024-02-12:  David Anderson
+    commit fc0ae9f5bb5d99dd63ee7dc9bb0f28d24dcff6d7
+
+    Now with a test verifying vulnerability
+    DW202402-001 (oss fuzz 66646) is fixed.
+            modified:   DWARFTEST.sh
+            new file:   baselines/ossfuzz66646.base
+
+2024-02-12:  David Anderson
+    commit da0dd4e72a5b3c1fe4a9efda7f6bc75dafbd5c27
+
+    New issue found.
+            new file:   README
+            new file:   fuzz_findfuncbypc-5178544143532032
+
+2024-02-06:  David Anderson
+    commit ccfc02cae36e88ce82111a651d71a8f21a415aaa
+
+    Explaining the test and test failure.
+            new file:   marini/README
+
+2024-02-06:  David Anderson
+    commit c86ff1ae32ab195401fc32fc84c32c682f77b555
+
+    Adding marini/testcase to the tests.
+    The problem is not notice by -fsanitize,
+    but valgrind notices.
+    Now fixed.
+            modified:   DWARFTEST.sh
+            new file:   baselines/marini_testcase.base
+
+2024-01-31:  David Anderson
+    commit 30e6c88e8c5c0022ab920dd48a34306aeb03ee1b
+
+    Remove an exit 1 which was a one-time shortcut.
+            modified:   DWARFTEST.sh
+
+2024-01-31:  David Anderson
+    commit 97dfba854f69727027b3d9af808eacac5b72e623
+
+    Added new testcase
+            modified:   DWARFTEST.sh
+
+    new test and baseline.
+            new file:   baselines/ossfuzz_crc.base
+            new file:   ossfuzz56443/README
+            new file:   ossfuzz56443/fuzz_crc_testcase
+
+2024-01-28:  David Anderson
+    commit e91bb2058f5a686b1ae58fa5e5da6c5afd336193
+
+    New option via env var SKIPDECOMPRESS .
+            modified:   DWARFTEST.sh
+    Minor clarification
+            modified:   README.md
+
+2024-01-28:  David Anderson
+    commit b3b9f0637cdaf0910e679673a05b4f5c9249c208
+
+    baseline for helloz/zero-e_shoff-i386.o
+            new file:   baselines/zero-e_shoff-i386.base
+
+2024-01-28:  David Anderson
+    commit 47a0078baba40b602115ee7d7ee0bbd820031cb7
+
+    New 32bit test case alongside 64bit test case.
+            new file:   README
+            new file:   zero-e_shoff-i386.o
+
+2024-01-27:  David Anderson
+    commit 6b1495de03a35343fec225acdb985a3373f5c371
+
+    With latest from git log
+            modified:   ChangeLog
+
+2024-01-27:  David Anderson
+    commit 646fbcc2c114016fde953d84f3fc19e44baffecc
+
+    New baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-01-26:  David Anderson
+    commit 8c1171c8f9188e3733242c710c137a7b778a674d
+
+    baseline using $HOME
+            modified:   baselines/zero-e_shoff.base
+
+2024-01-26:  David Anderson
+    commit 00c3f6033d7fa61f8d638267e02f6f19cb3cb88d
+
+    Added tests
+            modified:   DWARFTEST.sh
+
+2024-01-26:  David Anderson
+    commit d6f04173280945cd56db2a1c38bf4bee6f5ddc81
+
+    New test, baseline output (1 line long), object file
+    has no sections data.
+            new file:   baselines/zero-e_shoff.base
+
+2024-01-26:  David Anderson
+    commit 168deec949cfa5c1e5617822357a5ac02681ceac
+
+    We catch bogus Macho object quickly and say no DWARF present.
+            modified:   baselines/ossfuzz59950.base
+            modified:   baselines/ossfuzz60090.base
+
+    Source of a n Elf object used to create a .o with e_shoff zero.
+            new file:   helloz/hello.c
+
+2024-01-26:  David Anderson
+    commit 920e9b0d2f6907b930e0e285386e5b95bc071c79
+
+    For testing a zeroed e_shoff header.
+            new file:   zero-e_shoff.o
+
+2024-01-23:  David Anderson
+    commit 68b8758e620346bce1d06802f7a5770b5a676382
+
+    New test objects.
+    rifkin/
+            new file:   README
+            new file:   test-mach-o-32.dSYM
+
+2024-01-23:  David Anderson
+    commit 58a09e434ed4d72eba63e60442bb954f9b6449a0
+
+    Mach-o 64bit latest compilers, .o object, not executable object.
+            new file:   demo.cpp.o
+
+2024-01-19:  David Anderson
+    commit c5cca9082c66692616586f0922f4f89c831409aa
+
+    Additional comment, about zstd
+            modified:   DWARFTEST.sh
+
+2024-01-19:  David Anderson
+    commit ed89952dae782488ab314b8a2131de4852a36a93
+
+    Now lists, in comments, the executables with zlib compression
+            modified:   DWARFTEST.sh
+
+2024-01-10:  David Anderson
+    commit baa6f324ebc98cca9e8cc0ca8a27b95c0724678f
+
+    The last change affected these test results by removing errors.
+            modified:   baselines/fuzzkal.base
+            modified:   baselines/fuzzpathkal.base
+
+2024-01-09:  David Anderson
+    commit c99c8de6542c52b92b9cdb16530e3d9d8577c0e8
+
+    tixorebel/
+            new file:   README
+            new file:   test.c
+            new file:   test.o
+
+2024-01-09:  David Anderson
+    commit 810e5c1f0802eb3aedf2f1481595550b0bf63d48
+
+    Up to date with git log
+            modified:   ChangeLog
+
+2024-01-09:  David Anderson
+    commit 9b50acc287fd87d69c36c1bdc9c46a562e85fa20
+
+    Removing an unneeded ERROR
+    from a particular unimportant
+    corruption in elf sections resulted in four
+    things producing some useful results now.
+    And now we can read Metrowerks-produced
+    DWARF.
+
+    So new baseline executables.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2024-01-06:  David Anderson
+    commit 535be9db18ff97fc966be878e392acd7653679f9
+
+    Now 2022 separated out properly.
+            new file:   ChangeLog2022
+
+2024-01-01:  David Anderson
+    commit 7fcb4d7f2772df4344c05316e03e6c84baef9984
+
+    Now just 2024.
+            modified:   ChangeLog
+
+2024-01-01:  David Anderson
+    commit 5f0c74a80f9a323bd036dda74cc52ae8e5029984
+
+    Now with initial 2024
+            modified:   ChangeLog
+
+2024-01-01:  David Anderson
+    commit bf83059cb0ffa06baffc502f361183fcd31d109c
+
+    Created with 2023 log data
+            new file:   ChangeLog2023
