@@ -112,6 +112,8 @@ cat ./$b
 . $testsrc/BASEFUNCS.sh
 
 warn="-Wall"
+opt="-O0"
+opt=
 dwarfgenok=y
 if [ $platform = "macos" ]
 then
@@ -635,6 +637,7 @@ else
      filepaths="dwarf4/ddg4.5dwarf-4 $filepaths"
 fi
 
+
 #echo "=====SKIP sarubbo-6/1.crashes.bin and sarubbo-4/libresolv.a because archives not handled"
 
 stripx() {
@@ -1147,7 +1150,7 @@ test_sectionnames'
 for f in $simpleexe
 do
   echo "====BUILD $f"
-  x="$CC -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+  x="$CC $opt -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf $nonsharedopt\
      -gdwarf $nlizeopt $testsrc/${f}.c \
      -o $f  $dwlib $libzlib $libzlink"
@@ -1199,7 +1202,7 @@ for f in $fuzzexe
 do
   echo "====BUILD $f"
   # always force simple executable path report with -DDWREGRESSIONTEMP
-  x="$CC -DDWREGRESSIONTEMP -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC  $opt -DDWREGRESSIONTEMP -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/testbuildfuzz.c \
      $codedir/fuzz/${f}.c \
@@ -1211,7 +1214,7 @@ do
 done
 
 echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
-   x="$CC -DDWREGRESSIONTEMP $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+   x="$CC $opt -DDWREGRESSIONTEMP $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/dwnames_checks/dwnames_all.c \
      -o dwnames_all $dwlib $libzlib $libzlink"
@@ -1223,7 +1226,7 @@ echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
 # frame1 is a directory name, hence the build -o frame1/frame1
 echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
   mklocal frame1
-  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
     -I$libbld/libdwarf  $nonsharedopt \
     -gdwarf $nlizeopt \
     $codedir/src/bin/dwarfexample/frame1.c \
@@ -1236,7 +1239,7 @@ echo "=====BUILD  dwarfexample/frame1.c into frame1/frame1 "
 
 echo "=====BUILD  dwarfexample/frame2.c into frame2/frame2 "
   mklocal frame2
-  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
     -I$libbld/libdwarf  $nonsharedopt \
     -gdwarf $nlizeopt \
     $codedir/src/bin/dwarfexample/frame2.c \
@@ -1248,7 +1251,7 @@ echo "=====BUILD  dwarfexample/frame2.c into frame2/frame2 "
   cd ..
 
 echo "=====BUILD  dwarfexample/jitreader.c "
-  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf  $nonsharedopt \
      -gdwarf $nlizeopt $codedir/src/bin/dwarfexample/jitreader.c \
      -o jitreader $dwlib $libzlib $libzlink"
@@ -1258,7 +1261,7 @@ echo "=====BUILD  dwarfexample/jitreader.c "
   chkresbld $r 'check jitreader compile dwarfexample/jitreader.c failed'
 
 echo "=====BUILD  $testsrc/examplechecks/test_ranges.c "
-  x="$CC $warn -I$codedir/src/lib/libdwarf -I$testsrc/examplechecks \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf -I$testsrc/examplechecks \
      $libzhdr -I$libbld \
      -I$libbld/libdwarf  $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/examplechecks/test_ranges.c \
@@ -1270,7 +1273,7 @@ echo "=====BUILD  $testsrc/examplechecks/test_ranges.c "
   chkresbld $r 'check examplechecs/test_ranges.c compile failed'
 
 echo "=====BUILD  dwarfexample/dwdebuglink.c "
-  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf  $nonsharedopt \
      -gdwarf $nlizeopt $codedir/src/bin/dwarfexample/dwdebuglink.c \
      -o dwdebuglink $dwlib $libzlib $libzlink"
@@ -1289,7 +1292,7 @@ echo "=====START  $testsrc/testfindfuncbypc/ tests good=$goodcount skip=$skipcou
 # (but if the required arg omitted, return 1).
 echo "=====BUILD  $testsrc/filelist/localfuzz_init_path"
   mklocal filelist
-  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/filelist/localfuzz_init_path.c \
      -o localfuzz_init_path $dwlib $libzlib $libzlink"
@@ -1298,7 +1301,7 @@ echo "=====BUILD  $testsrc/filelist/localfuzz_init_path"
   chkresbld $? "check -error compiling $testsrc/filelist/localfuzz_init_path.c failed"
 # Here continue in the filelist directory:
 echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
-  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf $lihbzstdhdrdir $nonsharedopt \
      -gdwarf  $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
      -o localfuzz_init_binary $dwlib $libzlib $libzlink"
@@ -1330,7 +1333,7 @@ else
 fi
 
 echo "=====BUILD  $testsrc/filelist/localfuzz_init_binary"
-  x="$CC $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
      -I$libbld/libdwarf $lihbzstdhdrdir $nonsharedopt \
      -gdwarf  $nlizeopt $testsrc/filelist/localfuzz_init_binary.c \
      -o localfuzz_init_binary $dwlib $libzlib $libzlink"
@@ -1772,7 +1775,7 @@ then
   skipcount=`expr $skipcount +  1 `
 else 
   echo "=====START  $testsrc/test_pubsreader good=$goodcount skip=$skipcount fail=$failcount"
-    x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
+    x="$CC $opt $warn -I$codedir/src/lib/libdwarf -I$libbld \
        $libzhdr \
        -I$libbld/libdwarf $nonsharedopt \
        -gdwarf $nlizeopt $testsrc/test_pubsreader.c \
@@ -1807,7 +1810,7 @@ then
 else
   echo "=====START  $testsrc/bitoffset/test_bitoffset.c good=$goodcount skip=$skipcount fail=$failcount"
   echo "test_bitoffset:"
-  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf -I$libbld -I$libbld/libdwarf \
     $libzhdr $nonsharedopt \
     -gdwarf $nlizeopt $testsrc/bitoffset/test_bitoffset.c  -o \
      test_bitoffset $dwlib $libzlib $libzlink"
@@ -1836,7 +1839,7 @@ else
   fi
 fi
 echo "=====BUILD  $testsrc/test_arange"
-  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
      $libzhdr $nonsharedopt  \
      -gdwarf $nlizeopt $testsrc/test_arange.c  -o \
@@ -1846,7 +1849,7 @@ echo "=====BUILD  $testsrc/test_arange"
   chkresbld $? 'check arange-error compiling test_arange.c\
      failed'
 echo "=====BUILD  $testsrc/test_setframe"
-  x="$CC $warn -I$codedir/src/lib/libdwarf -I$libbld \
+  x="$CC $opt $warn -I$codedir/src/lib/libdwarf -I$libbld \
      -I$libbld/libdwarf \
      $libzhdr $nonsharedopt \
      -gdwarf $nlizeopt $testsrc/test_setframe.c  -o \
@@ -2209,6 +2212,37 @@ else
   else 
     echo "=====SKIP compressed-be/testprog-be-dw4 (6) "
     skipcount=`expr $skipcount +  6`
+  fi
+fi
+
+# SHF_COMPRESSED testcases.
+if [ "x$withlibz" = "xno" ]
+then
+  echo "=====SKIP COMPRESSED sections, skipcount+1 no libz (6)"
+  skipcount=`expr $skipcount +  16 `
+else
+  if [ "x$skipdecompress" = "xn" ]
+  then
+    runtest $d1 $d2 compressed-le/comprelad32.x -a
+    runtest $d1 $d2 compressed_le/comprelad32.x -a
+    runtest $d1 $d2 compressed_le/comprelad.x -a
+    runtest $d1 $d2 compressed_le/comprelaf32.x -a
+    runtest $d1 $d2 compressed_le/comprelaf.x -a
+    runtest $d1 $d2 compressed_le/comprelal.x -a
+    runtest $d1 $d2 compressed_le/comprelar32.x -a
+    runtest $d1 $d2 compressed_le/comprelar.x -a
+    runtest $d1 $d2 compressed_le/comprelat32.x -a
+    runtest $d1 $d2 compressed_le/comprelat.x -a
+    runtest $d1 $d2 compressed_le/compshstrtab.x -a
+    runtest $d1 $d2 compressed_le/compstrtab32.x -a
+    runtest $d1 $d2 compressed_le/compstrtab.x -a
+    runtest $d1 $d2 compressed_le/compsymtab32.x -a
+    runtest $d1 $d2 compressed_le/compsymtab.x
+    runtest $d1 $d2 compressed-le/hello32.x -a
+    runtest $d1 $d2 compressed_le/hello.x -a
+  else 
+    echo "=====SKIP  decompress various sections tests "
+    skipcount=`expr $skipcount +  16`
   fi
 fi
 
