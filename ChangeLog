@@ -1,3 +1,72 @@
+2026-05-15:  David Anderson
+    commit 6221a3d41b8ed7d7dca46db5a0843ed4f97b5caf
+
+    Notes for small tests. Ignore.
+            modified:   RUN
+
+    New baseline executables where ET no longer
+    appearing inappropriately in line table
+    output.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2026-05-15:  David Anderson
+    commit a2fcf1bf24a48f1e721dea92c0e0b5d43d3611d0
+
+    Moved 2025 entries to ChangeLog2025
+            modified:   ChangeLog
+
+2026-05-12:  David Anderson
+    commit 192cee9c99e14a12891e7f45f55dafef6c67aa37
+
+    Extracted last year from ChangeLog.
+            new file:   ChangeLog2025
+
+2026-05-12:  David Anderson
+    commit 1b6af2f4d50e50af928acd53afdfd10a263102ed
+
+    With latest tests.
+            modified:   DWARFTEST.sh
+    Commentary update as we added new tests in this directory.
+            modified:   compressed-le/README
+
+2026-05-12:  David Anderson
+    commit eef611fdd4c9becac01ae4637180eb28f9e80452
+
+    Updated baselines resulting from changes to elf section
+    reading.
+            modified:   baselines/macho-kagstrom.base
+            modified:   baselines/ossfuzz58026.base
+            modified:   baselines/ossfuzz59478.base
+            modified:   baselines/ossfuzz59519.base
+
+2026-05-10:  David Anderson
+    commit 2e676a8d8469fe94ed7c256976776076d9fb8167
+
+    Recording the object files for compressed sections
+            new file:   compressed-le/comprelad.x
+            new file:   compressed-le/comprelad32.x
+            new file:   compressed-le/comprelaf.x
+            new file:   compressed-le/comprelaf32.x
+            new file:   compressed-le/comprelal.x
+            new file:   compressed-le/comprelal32.x
+            new file:   compressed-le/comprelar.x
+            new file:   compressed-le/comprelar32.x
+            new file:   compressed-le/comprelat.x
+            new file:   compressed-le/comprelat32.x
+            new file:   compressed-le/compshstrtab.x
+            new file:   compressed-le/compshstrtab32.x
+            new file:   compressed-le/compstrtab.x
+            new file:   compressed-le/compstrtab32.x
+            new file:   compressed-le/compsymtab.x
+            new file:   compressed-le/compsymtab32.x
+            new file:   compressed-le/hello.x
+            new file:   compressed-le/hello32.x
+
 2026-02-26:  David Anderson
     commit ae6ffc79d2ddf8c478ce95c08ef900b7a3d43dee
 
