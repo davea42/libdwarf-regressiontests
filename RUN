@@ -7,11 +7,21 @@ t=rifkin5/demo.cpp.dwo
 t=rifkin7/stacktrace.cpp.dwo
 t=rifkin8/stacktrace.cpp.dwo
 t=rifkin8/unittest
+t=wjl/demo
+t=/home/davea/dwarf/regressiontests/corexp/elf.dbg
 
-/tmp/dwarfdump -i  -M   $t >junk
-dwarfdump -i -M  $t >junko
+/tmp/dwarfdump --check-loc $t
+#/tmp/dwarfdump -i  -M   $t >junk
+#dwarfdump -i -M  $t >junko
+#rm -f script
+#echo "b _dwarf_error_string  " >>script
+#echo "b _dwarf_do_decompress_elf" >>script
+#echo "b elf_load_nolibelf_section " >>script
+#echo "r --check-loc $t" >>script
+#gdb -x script /tmp/dwarfdump
 
 exit 0
+
 /tmp/dwarfdump -i --allocate-via-mmap --print-section-allocations debugfissionb/ld-new > /tmp/junk
 dwarfdump  -i --allocate-via-mmap --print-section-allocations debugfissionb/ld-new > /tmp/junko
 
