@@ -1,0 +1,38 @@
+
+
+Created by ossfuzz folks 26 Feb 2026
+I first found this on 14 May 2026!
+
+oss fuzz 488137256
+Direct-leak in _dwarf_internal_read_rnglists_header
+
+testcase fuzz_die_cu-4889329913888768
+
+Code in  _dwarf_elf_setup_all_section_groups()
+  ( in dwarf_elf_load_headers.c)
+had an incorrect response in looking for
+SHF_GROUP records, and tried to treat
+a non-group section as if it was a group-content-list
+section. Chaos ensued, leading to a leaked record.
+
+The object file here is very severly corrupted
+and that contributed to the leakage:  we were
+doing wrong things based on the following test.
+
+-        if (!elf_sht_groupsec(psh->gh_type,name)) {
+-            /* Step B */
+-            if (elf_flagmatches(psh->gh_flags,SHF_GROUP)) {
+-                ep->f_shf_group_flag_section_count++;
+-            }
++        if (elf_sht_groupsec(psh->gh_type,name) ||
++            elf_flagmatches(psh->gh_flags,SHF_GROUP)) {
++            ep->f_shf_group_flag_section_count++;
++        } else {
+             continue;
+         }
+
+This has been broken for a very long time,
+it was definitely broken in the
+libdwarf-20191104 release, so broken for at least
+seven years. 2019 was the year support for Elf
+GROUPs was added.

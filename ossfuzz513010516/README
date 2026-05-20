@@ -1,0 +1,16 @@
+
+This is oss fuzz vulnerability 513010516.
+Reported May 14 2026.
+
+Bug introduced May 12.
+
+It would leak memory with some corrupted objects
+marked as having Elf SHF_GROUP sections.
+The function was not completely updated to match
+the revisions introduced 12 May (4 days ago),
+leading directly to the leak.
+
+Fixed May 16 2026.
+
+The test file is
+ossfuzz513010516/fuzz_dnames-5764687336898560

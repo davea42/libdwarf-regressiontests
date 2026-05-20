@@ -34,7 +34,7 @@ configstaticlib=
 configdwarfgen=
 configsharedlib=
 buildsanitize=
-regressiontesting
+regressiontesting=
 # BASEFILES has the basic data we need to build.
 if [ ! -f BASEFILES.sh ]
 then

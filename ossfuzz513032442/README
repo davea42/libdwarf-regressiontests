@@ -1,0 +1,9 @@
+
+This is oss fuzz 513032442 reported 14 May 2026.
+
+Double free and crash in _dwarf_destruct_elf_nlaccess().
+Seems very similar to ossfuzz 513063397.
+
+testcase is fuzz_findfuncbypc-5181686974578688.
+
+

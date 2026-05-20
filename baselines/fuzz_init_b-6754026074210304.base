@@ -1,0 +1,2 @@
+Giving up, dwarf_init failed, cannot do DWARF processing
+Error code DW_DLE_COMPRESSED_FORMAT_ODD(512) Error unknown compression type, possibly a corrupt object file.
