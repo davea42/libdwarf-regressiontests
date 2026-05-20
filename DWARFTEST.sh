@@ -1349,7 +1349,15 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle fuzz_die_cu-4889329913888768.base ./fuzz_die_cu --testobj=$testsrc/ossfuzz488137256/fuzz_die_cu-4889329913888768
+runsingle fuzz_dnames-5764687336898560.base ./fuzz_dnames --testobj=$testsrc/ossfuzz513010516/fuzz_dnames-5764687336898560
+
+runsingle fuzz_findfuncbypc-5181686974578688.base ./fuzz_init_b --testobj=$testsrc/ossfuzz513032442/fuzz_findfuncbypc-5181686974578688
+
+runsingle fuzz_init_b-6754026074210304.base ./fuzz_init_b --testobj=$testsrc/ossfuzz513063397/fuzz_init_b-6754026074210304
+
 runsingle fuzz_set_frame_all-475563464.base ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz475563464/fuzz_set_frame_all-6159202753249280
+
 
 runsingle fuzz_set_frame_all-475582650.base ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz475582650/fuzz_set_frame_all-5675964708487168
 
