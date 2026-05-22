@@ -1,5 +1,46 @@
+set -x
 
-# test language_version
+##/tmp/readelfobj /home/davea/dwarf/regressiontests/testfindfuncbypc/findfuncbypc.exe1
+##/tmp/readelfobj /home/davea/dwarf/regressiontests/convey/testesb.c.o
+##/var/tmp/dwtest/test_sectionnames --suppress-de-alloc-tree /home/davea/dwarf/regressiontests/testfindfuncbypc/findfuncbypc.exe1 
+#/var/tmp/dwtest/test_sectionnames --suppress-de-alloc-tree /home/davea/dwarf/regressiontests/convey/testesb.c.o
+rm -f  script
+echo "b printf" >> script
+echo "r /home/davea/dwarf/regressiontests/convey/testesb.c.o" >>script
+
+gdb -x script /var/tmp/dwtest/test_sectionnames
+
+exit 0
+
+
+./test_sectionnames --suppress-de-alloc-tree /home/davea/dwarf/regressiontests/testfindfuncbypc/findfuncbypc.exe1 /home/davea/dwarf/regressiontests/convey/testesb.c.o
+
+exit 0
+# issues reading the groups here.
+./test_sectionnames --suppress-de-alloc-tree /home/davea/dwarf/regressiontests/testfindfuncbypc/findfuncbypc.exe1 /home/davea/dwarf/regressiontests/convey/testesb.c.o
+
+exit 0
+
+valgrind --leak-check=full --show-leak-kinds=all  \
+/tmp/dwarfdump ossfuzz488137256/fuzz_die_cu-4889329913888768
+#/var/tmp/dwtest/fuzz_die_cu --testobj=ossfuzz488137256/fuzz_die_cu-4889329913888768
+exit 0
+
+rm -f  script
+echo "b _dwarf_internal_read_rnglists_header" >> script
+echo "b _dwarf_find_all_offsets_via_fission" >> script
+echo "b transform_su_to_dfp" >> script
+echo "b fijnish_up_cu_context_from_cudie" >> script
+echo "r --testobj=/home/davea/dwarf/regressiontests/ossfuzz488137256/fuzz_die_cu-4889329913888768" >>script
+gdb -x script /var/tmp/dwtest/fuzz_die_cu 
+exit 0
+
+#valgrind --leak-check=full --show-leak-kinds=all  \
+#/var/tmp/dwtest/fuzz_die_cu --testobj=/home/davea/dwarf/regressiontests/ossfuzz513010516/fuzz_dnames-5764687336898560
+#exit 0
+
+
+
 t=wjl/demo
 t=/home/davea/dwarf/regressiontests/offsetfromlowpc/offsetfromlowpc.bin 
 t=/home/davea/dwarf/regressiontests/debugfissionb/ld-new 
@@ -9,6 +50,23 @@ t=rifkin8/stacktrace.cpp.dwo
 t=rifkin8/unittest
 t=wjl/demo
 t=/home/davea/dwarf/regressiontests/corexp/elf.dbg
+t=fuzz_init_b-6754026074210304
+rm -f  script
+echo "b _dwarf_do_decompress_elf" >> script
+echo "r --testobj=/home/davea/dwarf/regressiontests/ossfuzz513010516/fuzz_dnames-5764687336898560" >>script
+
+gdb -r script /var/tmp/dwtest/fuzz_die_cu 
+
+exit 0
+
+valgrind --leak-check=full --show-leak-kinds=all  \
+/var/tmp/dwtest/fuzz_die_cu --testobj=/home/davea/dwarf/regressiontests/ossfuzz513010516/fuzz_dnames-5764687336898560
+
+#/home/davea/dwarf/regressiontests/ossfuzz488137256/fuzz_die_cu-4889329913888768
+
+exit 0
+valgrind --leak-check=full --show-leak-kinds=all ./fuzz_init_b --testobj=/home/davea/dwarf/regressiontests/ossfuzz513063397/fuzz_init_b-6754026074210304
+exit 0
 
 /tmp/dwarfdump --check-loc $t
 #/tmp/dwarfdump -i  -M   $t >junk

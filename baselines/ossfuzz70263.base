@@ -1,2 +1,3 @@
->>Error
+>>Error, dwarf_siblingof_b failed
+
 libdwarf is unable to record error DW_DLE_RNGLISTS_ERROR(468) Corrupt dwarf. Bad .debug_rnglists data. No error argument or handler available
