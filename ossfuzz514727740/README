@@ -1,0 +1,22 @@
+
+ossfuzz 514727740
+
+Reported 19 May 2026
+
+Abort, crash in _dwarf_destruct_elf_nlaccess
+
+The problem was a double-free, the  free(data);
+the one in in read_gs_section_group() was a mistake.
+That free is done later via free( ...->gh_content).
+the code was revised to  store data
+into gh_content within the last month.
+That single free(data) was the only such
+in read_gs_section_group() and a mistake.
+Now as soon as ownership given from data to gh_content
+(for a later free())
+we  set data=0 and do not free(data).
+
+testcase:
+ossfuzz514727740/fuzz_init_b-4646656783220736
+
+git fix id: f49716564b3a263ce81c5319fecea4c9319e178f
