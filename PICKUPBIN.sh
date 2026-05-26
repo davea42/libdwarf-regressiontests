@@ -8,6 +8,13 @@
 # env var $WALL=n
 # env var $LIBDWARFSPECIALMALLOC=n
 
+# to build with -O0 for gdb best use, alter the lines
+#CFLAGS=-O0 $m
+#$m
+below to use the CFLAGS line, not plain $m
+
+
+
 # NLIZE tells gcc/clang to use extra run-time
 # code to look for code reading, reading or leaking 
 # where it should not.
@@ -163,6 +170,8 @@ fi
 ###  setup now
 m="meson setup --default-library static $buildsanitize  $buildwall  -Ddwarfexample=true -Ddwarfgen=true . $libdw $buildlibdwarfspecialmalloc $regressiontesting"
 echo $m
+# Following is the CFLAGS alternative for good debugging with gdb
+#CFLAGS=-O0 $m
 $m
 if [ $? -ne 0 ]
 then

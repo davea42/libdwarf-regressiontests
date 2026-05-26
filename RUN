@@ -1,170 +1,42 @@
 set -x
-
-##/tmp/readelfobj /home/davea/dwarf/regressiontests/testfindfuncbypc/findfuncbypc.exe1
-##/tmp/readelfobj /home/davea/dwarf/regressiontests/convey/testesb.c.o
-##/var/tmp/dwtest/test_sectionnames --suppress-de-alloc-tree /home/davea/dwarf/regressiontests/testfindfuncbypc/findfuncbypc.exe1 
-#/var/tmp/dwtest/test_sectionnames --suppress-de-alloc-tree /home/davea/dwarf/regressiontests/convey/testesb.c.o
-rm -f  script
-echo "b printf" >> script
-echo "r /home/davea/dwarf/regressiontests/convey/testesb.c.o" >>script
-
-gdb -x script /var/tmp/dwtest/test_sectionnames
-
-exit 0
-
-
-./test_sectionnames --suppress-de-alloc-tree /home/davea/dwarf/regressiontests/testfindfuncbypc/findfuncbypc.exe1 /home/davea/dwarf/regressiontests/convey/testesb.c.o
-
-exit 0
-# issues reading the groups here.
-./test_sectionnames --suppress-de-alloc-tree /home/davea/dwarf/regressiontests/testfindfuncbypc/findfuncbypc.exe1 /home/davea/dwarf/regressiontests/convey/testesb.c.o
-
-exit 0
-
 valgrind --leak-check=full --show-leak-kinds=all  \
-/tmp/dwarfdump ossfuzz488137256/fuzz_die_cu-4889329913888768
-#/var/tmp/dwtest/fuzz_die_cu --testobj=ossfuzz488137256/fuzz_die_cu-4889329913888768
+/var/tmp/dwtest/fuzz_gdbindex --testobj=/home/davea/dwarf/regressiontests/ossfuzz516582687/fuzz_gdbindex-5725564647571456
 exit 0
 
-rm -f  script
-echo "b _dwarf_internal_read_rnglists_header" >> script
-echo "b _dwarf_find_all_offsets_via_fission" >> script
-echo "b transform_su_to_dfp" >> script
-echo "b fijnish_up_cu_context_from_cudie" >> script
-echo "r --testobj=/home/davea/dwarf/regressiontests/ossfuzz488137256/fuzz_die_cu-4889329913888768" >>script
-gdb -x script /var/tmp/dwtest/fuzz_die_cu 
-exit 0
-
-#valgrind --leak-check=full --show-leak-kinds=all  \
-#/var/tmp/dwtest/fuzz_die_cu --testobj=/home/davea/dwarf/regressiontests/ossfuzz513010516/fuzz_dnames-5764687336898560
-#exit 0
-
-
-
-t=wjl/demo
-t=/home/davea/dwarf/regressiontests/offsetfromlowpc/offsetfromlowpc.bin 
-t=/home/davea/dwarf/regressiontests/debugfissionb/ld-new 
-t=rifkin5/demo.cpp.dwo
-t=rifkin7/stacktrace.cpp.dwo
-t=rifkin8/stacktrace.cpp.dwo
-t=rifkin8/unittest
-t=wjl/demo
-t=/home/davea/dwarf/regressiontests/corexp/elf.dbg
-t=fuzz_init_b-6754026074210304
-rm -f  script
-echo "b _dwarf_do_decompress_elf" >> script
-echo "r --testobj=/home/davea/dwarf/regressiontests/ossfuzz513010516/fuzz_dnames-5764687336898560" >>script
-
-gdb -r script /var/tmp/dwtest/fuzz_die_cu 
+rm -f script
+echo "b read_gs_section_group" >> script
+echo "r  --testobj=/home/davea/dwarf/regressiontests/ossfuzz516582687/fuzz_gdbindex-5725564647571456" >>script
+gdb -x script /var/tmp/dwtest/fuzz_gdbindex
 
 exit 0
 
-valgrind --leak-check=full --show-leak-kinds=all  \
-/var/tmp/dwtest/fuzz_die_cu --testobj=/home/davea/dwarf/regressiontests/ossfuzz513010516/fuzz_dnames-5764687336898560
 
-#/home/davea/dwarf/regressiontests/ossfuzz488137256/fuzz_die_cu-4889329913888768
 
-exit 0
-valgrind --leak-check=full --show-leak-kinds=all ./fuzz_init_b --testobj=/home/davea/dwarf/regressiontests/ossfuzz513063397/fuzz_init_b-6754026074210304
-exit 0
-
-/tmp/dwarfdump --check-loc $t
-#/tmp/dwarfdump -i  -M   $t >junk
-#dwarfdump -i -M  $t >junko
 #rm -f script
-#echo "b _dwarf_error_string  " >>script
-#echo "b _dwarf_do_decompress_elf" >>script
-#echo "b elf_load_nolibelf_section " >>script
-#echo "r --check-loc $t" >>script
-#gdb -x script /tmp/dwarfdump
+#echo "b sanitized" >>script
+#echo "r --vs /home/davea/dwarf/regressiontests/ossfuzz514729017/fuzz_die_cu_e_print-4644164729110528" >>script
+#gdb -x script /tmp/readelfobj
 
+#rm -f script
+#echo "b do_one_file" >> script
+#echo "b dwarf_load_elf_sectheaders" >> script
+#echo "r --vs /home/davea/dwarf/regressiontests/ossfuzz514729017/fuzz_die_cu_e_print-4644164729110528" >>script
+#gdb -x script /tmp/readelfobj
+
+
+/tmp/readelfobj --v /tmp/readelfobj
+#/tmp/readelfobj --v /home/davea/dwarf/regressiontests/ossfuzz514729017/fuzz_die_cu_e_print-4644164729110528
 exit 0
+#rm -f script
+#echo "b _dwarf_destruct_elf_nlaccess" >> script
+#echo "r --testobj=/home/davea/dwarf/regressiontests/ossfuzz514729017/fuzz_die_cu_e_print-4644164729110528" >>script
+#gdb -x script /var/tmp/dwtest/fuzz_die_cu_e_print
 
-/tmp/dwarfdump -i --allocate-via-mmap --print-section-allocations debugfissionb/ld-new > /tmp/junk
-dwarfdump  -i --allocate-via-mmap --print-section-allocations debugfissionb/ld-new > /tmp/junko
-
-exit 0
-export DWARF_WHICH_ALLOC=mmap
-#/tmp/dwarfdump -a --allocate-via-mmap --print-section_allocations  debugfissionb/ld-new
-#/tmp/dwarfdump -a --print-section_allocations  debugfissionb/ld-new
-/tmp/dwarfdump -a --print-section_allocations  /home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
-exit 0
-#/var/tmp/dwtest/fuzz_macro_dwarf5 --testobj=/home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
-/tmp/dwarfdump -a /home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360 >junk
-export DWARF_WHICH_ALLOC=malloc
-#/var/tmp/dwtest/fuzz_macro_dwarf5 --testobj=/home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360
-/tmp/dwarfdump -a /home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360 >junk2
-exit 0
-
-
-
-
-#valgrind -s --leak-check=full --show-leak-kinds=all /tmp/dwarfdump11 -i /home/davea/dwarf/mmap/a.out
-#DWARF_WHICH_ALLOC=mmap
-#export DWARF_WHICH_ALLOC
-#valgrind -s --leak-check=full --show-leak-kinds=all /tmp/dwarfdump --allocate-via-mmap --print-section_allocations -i /home/davea/dwarf/mmap/a.out
 #exit 0
-
-#/tmp/dwarfdump -i /home/davea/dwarf/mmap/a.out
-
-#DWARF_WHICH_ALLOC=malloc
-DWARF_WHICH_ALLOC=mmap
-export DWARF_WHICH_ALLOC
-echo 'b mmap' > script
-echo 'r --testobj=/home/davea/dwarf/regressiontests/ossfuzz394644267/fuzz_macro_dwarf5-5504709091983360' >>script
-#gdb -x script /tmp/dwarfdump
-gdb -x script  /var/tmp/dwtest/fuzz_macro_dwarf5
-#/tmp/dwarfdump -i /home/davea/dwarf/mmap/a.out >junk
-#--print-section_allocations 
-#/home/davea/dwarf/mmap/a.out >junk
+valgrind --leak-check=full --show-leak-kinds=all  \
+/var/tmp/dwtest/fuzz_die_cu_e_print --testobj=/home/davea/dwarf/regressiontests/ossfuzz514729017/fuzz_die_cu_e_print-4644164729110528
 exit 0
 
-/tmp/dwarfdump --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junkn
-/tmp/dwarfdump --print-raw-loclists /home/davea/dwarf/regressiontests/moya-loc/loclists  >junknhiedraw
-/tmp/dwarfdump -a -M -v  /home/davea/dwarf/regressiontests/moya-loc/loclists  >junkntied
-
-dwarfdump --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junko
-/tmp/dwarfdump --print-raw-loclists  /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junknraw
-dwarfdump --print-raw-loclists  /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junkoraw
-exit 0
-/tmp/dwarfdump -vv --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junk
-dwarfdump -vv --file-tied=/home/davea/dwarf/regressiontests/moya-loc/loclists -a -M -v /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junko
-/tmp/dwarfdump --print-raw-loclists /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp >junkraw
-#readelfobj /home/davea/dwarf/regressiontests/moya-loc/loclists.dwp
-#readelfobj /home/davea/dwarf/regressiontests/moya-loc/loclists
-exit 0
-
-
-
-/tmp/dwarfdump --file-tied=/home/davea/dwarf/regressiontests/rifkin5/demo -a -M -vvv /home/davea/dwarf/regressiontests/rifkin5/demo.cpp.dwo >junk
-
-echo "r  --file-tied=/home/davea/dwarf/regressiontests/rifkin5/demo -a -M -vvv /home/davea/dwarf/regressiontests/rifkin5/demo.cpp.dwo"
-gdb /tmp/dwarfdump
-exit 0
-/tmp/dwarfdump -i -G --print-debug-names -vv /home/davea/dwarf/regressiontests/debugnames/dwarfdump >junkdd
-
-#echo "r -a -G -M -v --file-tied=/home/davea/dwarf/regressiontests/moya3/ranges_base.o /home/davea/dwarf/regressiontests/moya3/ranges_base.dwo"
-#gdb /tmp/dwarfdump 
-#exit 0
-#-a -G -M -v --file-tied=/home/davea/dwarf/regressiontests/moya3/ranges_base.o /home/davea/dwarf/regressiontests/moya3/ranges_base.dwo
-f=/home/davea/dwarf/regressiontests/moya3/ranges_base.dwo
-ft=/home/davea/dwarf/regressiontests/moya3/ranges_base.o
-#/tmp/dwarfdump    -a -G -M -v --file-tied=$ft $f 
-#>/tmp/junkn
-/tmp/dwarfdump  -a -G -M -v --file-tied=$ft $f >junktied
-/tmp/dwarfdump  -a -G -M -v $f >junkprimary
-/tmp/dwarfdump  -a -G -M -v $ft >junksecondary
-exit 0
-wc junko junkn
-/tmp/dwarfdump -a -M -vv      /home/davea/dwarf/regressiontests/kaufmann2/ct-bad.o >junko
-exit 0
-echo 'b dwarf_formaddr'
-echo 'r -a -G -M -v /home/davea/dwarf/regressiontests/moya3/ranges_base.dwo'
-gdb /tmp/dwarfdump
-
-exit 0
-dwarfdump -a -M -vv      /home/davea/dwarf/regressiontests/kaufmann2/ct-bad.o >junko
-/tmp/dwarfdump -a -M -vv /home/davea/dwarf/regressiontests/kaufmann2/ct-bad.o >junkn
-
-#/tmp/dwarfdump --print-ranges --file-tied=rifkin3/unittest -M -i -vvv -G rifkin3/stacktrace.cpp.dwo
-
+valgrind --leak-check=full --show-leak-kinds=all  \
+/var/tmp/dwtest/fuzz_showsectgrp --testobj=/home/davea/dwarf/regressiontests/ossfuzz514753154/fuzz_showsectgrp-5634424300699648
+ 

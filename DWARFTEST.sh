@@ -1349,6 +1349,13 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle fuzz_gdbindex-5725564647571456.base ./fuzz_gdbindex --testobj=$testsrc/ossfuzz516582687/fuzz_gdbindex-5725564647571456
+
+runsingle fuzz_die_cu_e_print-4644164729110528.base ./fuzz_die_cu_e_print --testobj=$testsrc/ossfuzz514729017/fuzz_die_cu_e_print-4644164729110528
+
+runsingle fuzz_showsectgrp-5634424300699648.base ./fuzz_showsectgrp --testobj=$testsrc/ossfuzz514753154/fuzz_showsectgrp-5634424300699648
+
+runsingle fuzz_init_b-4646656783220736.base ./fuzz_init_b --testobj=$testsrc/ossfuzz514727740/fuzz_init_b-4646656783220736
 runsingle fuzz_die_cu-4889329913888768.base ./fuzz_die_cu --testobj=$testsrc/ossfuzz488137256/fuzz_die_cu-4889329913888768
 
 runsingle fuzz_dnames-5764687336898560.base ./fuzz_dnames --testobj=$testsrc/ossfuzz513010516/fuzz_dnames-5764687336898560
