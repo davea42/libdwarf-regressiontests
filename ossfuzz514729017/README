@@ -1,0 +1,9 @@
+id: DW202605-007
+fuzzer: oss fuzz 514729017
+
+Direct leak of memory from _dwarf_load_elf_sectheaders()
+
+testcase
+regressiontests/ossfuzz514729017/fuzz_die_cu_e_print-4644164729110528
+
+

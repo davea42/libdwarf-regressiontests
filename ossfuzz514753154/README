@@ -1,0 +1,13 @@
+
+
+Testcase directory
+regressiontests/ossfuzz514753154
+
+
+Heap double free in _dwarf_load_elf_symtab_symbols().
+
+testcase 
+regressiontests/ossfuzz514753154/fuzz_showsectgrp-5634424300699648
+
+
+

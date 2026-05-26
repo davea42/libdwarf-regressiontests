@@ -1,0 +1,24 @@
+
+Test case from oss-fuzz.
+516582687
+Failed 26 May 2026
+
+testcase id:5725564647571456
+
+test object file:
+fuzz_gdbindex-5725564647571456
+
+failure:
+==250==ERROR: LeakSanitizer: detected memory leaks
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0x571db2062764 in __interceptor_malloc /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:67:3
+    #1 0x571db217e05f in read_gs_section_group libdwarf/src/lib/libdwarf/dwarf_elf_load_headers.c:2089:16
+    #2 0x571db217e05f in _dwarf_elf_setup_all_section_groups libdwarf/src/lib/libdwarf/dwarf_elf_load_headers.c:2264:15
+    #3 0x571db217cf81 in _dwarf_load_elf_sectheaders libdwarf/src/lib/libdwarf/dwarf_elf_load_headers.c:2393:11
+    #4 0x571db216a8c5 in _dwarf_elf_object_access_internals_init libdwarf/src/lib/libdwarf/dwarf_elfread.c:1035:11
+    #5 0x571db216a8c5 in _dwarf_elf_object_access_init libdwarf/src/lib/libdwarf/dwarf_elfread.c:1128:11
+    #6 0x571db216a8c5 in _dwarf_elf_nlsetup libdwarf/src/lib/libdwarf/dwarf_elfread.c:923:11
+    #7 0x571db20e17b5 in dwarf_init_b libdwarf/src/lib/libdwarf/dwarf_generic_init.c:484:16
+    #8 0x571db20a5286 in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_gdbindex.c:69:9
+
+
