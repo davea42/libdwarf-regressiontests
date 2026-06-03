@@ -17,6 +17,7 @@ echo "  printf_sanitize..............: export PRINTFFMT=DEFAULT"
 echo "  printf_sanitize..............: export PRINTFFMT=NOSANITY"
 echo "  printf_sanitize..............: export PRINTFFMT=ASCII"
 echo "  SkipBigObjects...............: export SKIPBIGOBJECTS=y"
+echo "  StopAfterSingleBuilds........: export STOPAFTERSINGLE=y"
 # On certain VMs if too much change, we get
 # stuck at 1% done forever (and after 10 hours
 # far from done with the tests).
@@ -1212,6 +1213,12 @@ do
   r=$?
   chkresbld $r "compile of ${f}.c failed"
 done
+
+if [ "x$STOPAFTERSINGLE" = "xy" ]
+then
+  echo "STOPPING ON REQUEST. fuzz_ objects built. "
+  exit 1
+fi
 
 echo "=====BUILD  dwnames_checks/dwnames_all.c into dwnames_all"
    x="$CC $opt -DDWREGRESSIONTEMP $warn -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
