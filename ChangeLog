@@ -1,3 +1,117 @@
+2026-06-16:  David Anderson
+    commit b7d5e52152e37a409ccaffbba590ba7830cad206
+
+    Added new test ossfuzzflaky:
+    I cannot reproduce their result from their
+    binary. Odd, their tests do not get consistent
+    results on the testcase.
+            modified:   DWARFTEST.sh
+
+2026-06-03:  David Anderson
+    commit 22ae680a96a0c52dea911235ffad41df508fe9a6
+
+    Adding the new env var option STOPAFTERSINGLE
+    so we can rebuild the library,
+    dwarfdump, ossfuzz objects and then stop.
+
+    This is handy when trying to fix an ossfuzz-found
+    bug in libdwarf.
+            modified:   DWARFTEST.sh
+
+2026-05-26:  David Anderson
+    commit f0d1d164fa81b1bed57a71cb904145894c1df0b2
+
+    With new tests of vulnerabilities (including latest)
+            modified:   DWARFTEST.sh
+    Improved comment for the case where one wants to compile
+    -O0 for use with gdb.
+            modified:   PICKUPBIN.sh
+
+    ignore this
+            modified:   RUN
+    New baseline
+            new file:   baselines/fuzz_gdbindex-5725564647571456.base
+    Slight update
+            modified:   ossfuzz516582687/README
+
+2026-05-26:  David Anderson
+    commit ab97d0ecc9cd82dfab655e4ea7e08132bf5def1a
+
+    New baselines.
+            new file:   baselines/fuzz_die_cu_e_print-4644164729110528.base
+            new file:   baselines/fuzz_showsectgrp-5634424300699648.base
+            new file:   ossfuzz514729017/README
+            new file:   ossfuzz514729017/fuzz_die_cu_e_print-4644164729110528
+            new file:   ossfuzz514753154/README
+            new file:   ossfuzz514753154/fuzz_showsectgrp-5634424300699648
+    New fail
+            new file:   ossfuzz516582687/README
+            new file:   ossfuzz516582687/fuzz_gdbindex-5725564647571456
+
+2026-05-23:  David Anderson
+    commit 942438791be5d80fffadd93a374c87837d13a5ba
+
+    New testcase for ossfuzz 514727740
+            new file:   baselines/fuzz_init_b-4646656783220736.base
+            new file:   ossfuzz514727740/README
+            new file:   ossfuzz514727740/fuzz_init_b-4646656783220736
+
+2026-05-22:  David Anderson
+    commit 8a7915943e185dcb5bfc824ff46c28019dd64f37
+
+    Added new test for bug id DW202605-004
+    ossfuzz 488137256.
+    A severly corrupted object file exposed
+    broken code in _dwarf_elf_setup_all_section_groups() which
+    memory allocated in _dwarf_internal_read_rnglists_header() failed to
+    free() before returning.
+    The bug was initially found February 26, 2026.
+            modified:   DWARFTEST.sh
+
+    Ignore 'RUN'
+            modified:   RUN
+    Correct baselines
+            modified:   baselines/fuzz_die_cu-4889329913888768.base
+            modified:   baselines/ossfuzz70263.base
+            modified:   debugfission/archiveo.base.gz
+
+2026-05-20:  David Anderson
+    commit dd2469929c84fe19041c52ae68821083081a7233
+
+    This corrects recent test typos
+    and adds a test for ossfuzz 488137256,
+            modified:   DWARFTEST.sh
+
+2026-05-20:  David Anderson
+    commit 56f6a7e9c8c2829210247b5e7843ec380b00159c
+
+    A very old typo meant the local shell variable regressiontesting
+    was not set. Now set to empty.
+            modified:   PICKUPBIN.sh
+
+    There were issues with getting the test lines
+    and baselines correct in DWARFTEST.sh
+    Corrected now, these are good baseline data
+    and good tests.
+            new file:   baselines/fuzz_die_cu-4889329913888768.base
+            new file:   baselines/fuzz_dnames-5764687336898560.base
+            new file:   baselines/fuzz_findfuncbypc-5181686974578688.base
+            new file:   baselines/fuzz_init_b-6754026074210304.base
+            new file:   ossfuzz488137256/README
+            new file:   ossfuzz488137256/fuzz_die_cu-4889329913888768
+            new file:   ossfuzz513010516/README
+            new file:   ossfuzz513010516/fuzz_dnames-5764687336898560
+            new file:   ossfuzz513032442/README
+            new file:   ossfuzz513032442/fuzz_findfuncbypc-5181686974578688
+            new file:   ossfuzz513063397/README
+            new file:   ossfuzz513063397/fuzz_init_b-6754026074210304
+
+2026-05-15:  David Anderson
+    commit 7c43114f1356c415ec181e842ce7916838e0a475
+
+            modified:   ChangeLog
+    Up to date with git log.
+
 2026-05-15:  David Anderson
     commit 6221a3d41b8ed7d7dca46db5a0843ed4f97b5caf
 
