@@ -1,0 +1,18 @@
+
+As of June 1,2026 this testcase
+got varying failures, some with many more outputs
+than other times.
+
+It is a very corrupted Macho object file.
+ossfuzz is going to drop the test June 7
+if it continues to be flaky.
+No ossfuzz id has been assigned, just the official
+test object name of
+clusterfuzz-testcase-fuzz_init_path-5832857477251072
+
+We'll continue to test.
+
+We shorten the name a little.
+test object: fuzz_init_path-5832857477251072
+
+
