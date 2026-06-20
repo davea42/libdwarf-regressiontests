@@ -1,3 +1,33 @@
+2026-06-20:  David Anderson
+    commit 23d3f2dfad1b9ec765ddcfbd53c3d101ec24da8c
+
+    Baseline executables. Visible differences (3)
+    are in spelling corrections in error message text.
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2026-06-20:  David Anderson
+    commit 3fa984c635386e23b268c7453c3e199794836c0c
+
+    This testcase is for a Macho executable that
+    ossfuzz test runs do not behave consistently.
+    I hope that as libdwarf of 19 June 2026
+    will fix this, but I cannot reproduce what the ossfuzz
+    folks get. Ugh.
+            new file:   baselines/fuzz_init_path-5832857477251072.base
+            new file:   ossfuzzflaky/README
+            new file:   ossfuzzflaky/fuzz_init_path-5832857477251072
+
+2026-06-18:  David Anderson
+    commit 3cb2c3c3789c6ae3a76343893fa7dd72d24871bc
+
+    Up to date
+            modified:   ChangeLog
+
 2026-06-16:  David Anderson
     commit b7d5e52152e37a409ccaffbba590ba7830cad206
 
