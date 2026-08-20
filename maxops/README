@@ -1,10 +1,31 @@
 19 August 2026
 
 This is as compiled.
+files here:
+   maxops/README (this document)
+   
+   maxops/maxopsperinst.c The source to create the .o
+   maxops/maxopsperinst.o (altered to set maximum ops per instruction
+    to zero, which is erroneous.)
+   maxops/original-maxopsperinst.o (as compiled maximum ops
+    per instruction is 1)
+
+The maximum ops per instruction is in .debug_line
+which begins at 0x1f7.  The actual maximum ops per instruction
+is at byte 0x204.
+
+Do not recompile, please.
 
 cc -c -O0 -gdwarf-5 maxopsperinst.c
 
-dwarfdump -l -vv max*.o
+Using a dwarfdump which catches the error:
+dwarfdump -l -vv maxopsperinst.o
+
+dwarfdump ERROR:  ERROR: dwarf_srcfiles problem :  DW_DLE_LINE_NUMBER_HEADER_ERROR: maximum_operations_per_second is zero. Attempting to continue.
+
+CU Name = <unknown>
+CU Producer = GNU C17 13.3.0 -mtune=generic -march=x86-64 -gdwarf-5 -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = unknown   , High PC = unknown   
 
 .debug_line: line number info for a single cu
 Source lines (from CU-DIE at .debug_info offset 0x0000000c):
@@ -18,87 +39,18 @@ COMPILE_UNIT<header overall offset = 0x00000000>:
                     DW_AT_low_pc                0x00000000
                     DW_AT_high_pc               <offset-from-lowpc> 67 <highpc: 0x00000043>
                     DW_AT_stmt_list             0x00000000
-total line info length 99 bytes, line offset 0x00000000 0
-  line table version     5
-  address size          8
-  segment selector size 0
-  line table length field length 4
-  prologue length       42
-  compilation_directory /home/davea/dwarf/regressiontests/maxops
-  min instruction length 1
-  maximum ops per instruction 1
-  default is stmt        1
-  line base              -5
-  line_range             14
-  opcode base            13
-  standard opcode count  12
-  opcode[ 1] length  0
-  opcode[ 2] length  1
-  opcode[ 3] length  1
-  opcode[ 4] length  1
-  opcode[ 5] length  1
-  opcode[ 6] length  0
-  opcode[ 7] length  0
-  opcode[ 8] length  0
-  opcode[ 9] length  1
-  opcode[10] length  0
-  opcode[11] length  0
-  opcode[12] length  1
-  directory entry format count 1
-  format [ 0]  type 0x00000001 DW_LNCT_path        
-               code 0x0000001f DW_FORM_line_strp   
-  include directories count 1
-  include dir[0] /home/davea/dwarf/regressiontests/maxops
-  file entry format count      2
-  format [ 0]  type 0x00000001 DW_LNCT_path        
-               code 0x0000001f DW_FORM_line_strp   
-  format [ 1]  type 0x00000002 DW_LNCT_directory_index
-               code 0x0000000f DW_FORM_udata       
-  file names count      2
-  file[0]  maxopsperinst.c      (file-number: 0)
-    dir index 0
-  file[1]  maxopsperinst.c      (file-number: 1)
-    dir index 0
-  statement prog offset in section: 0x00000036 (54)
-                                                         s b e p e i d
-                                                         t l s r p s i
-                                                         m c e o i a s
- section    op                                       col t k q l l   c
- offset     code               address     file line umn ? ? ? ? ?
- [0x000036] DW_LNS_set_column val 1 0x00000001
- [0x000038] DW_LNE_set_address address 0x00000000
- [0x000043] Specialop  24   11 0x00000000  1      7  1   1 0 0
- [0x000044] DW_LNS_set_column val 8 0x00000008
- [0x000046] Specialop 215   202 0x0000000e  1      8  8   1 0 0
- [0x000047] DW_LNS_set_column val 24 0x00000018
- [0x000049] DW_LNE_set_discriminator 0x00000001
- [0x00004d] Specialop 130   117 0x00000016  1      8 24   1 0 0 0 0 0 0x1
- [0x00004e] DW_LNS_negate_stmt
- [0x00004f] Specialop  60   47 0x00000019  1      8 24   0 0 0
- [0x000050] DW_LNS_set_column val 12 0x0000000c
- [0x000052] DW_LNS_negate_stmt
- [0x000053] Specialop  47   34 0x0000001b  1      9 12   1 0 0
- [0x000054] DW_LNS_set_column val 1 0x00000001
- [0x000056] Specialop  61   48 0x0000001e  1     10  1   1 0 0
- [0x000057] Specialop  49   36 0x00000020  1     13  1   1 0 0
- [0x000058] DW_LNS_set_column val 14 0x0000000e
- [0x00005a] Specialop 187   174 0x0000002c  1     14 14   1 0 0
- [0x00005b] DW_LNS_set_column val 13 0x0000000d
- [0x00005d] DW_LNS_const_add_pc new address 0x0000003d
- [0x00005e] Specialop  33   20 0x0000003e  1     15 13   1 0 0
- [0x00005f] DW_LNS_set_column val 1 0x00000001
- [0x000061] Specialop  61   48 0x00000041  1     16  1   1 0 0
- [0x000062] DW_LNS_advance_pc val 2 0x00000002
- [0x000064] DW_LNE_end_sequence extended  1 0x00000043  1     16  1   1 0 1
 
+/tmp/dwarfdump ERROR:  Failed to print CU lines:  DW_DLE_LINE_NUMBER_HEADER_ERROR: maximum_operations_per_second is zero. Attempting to continue.
 
+CU Name = maxopsperinst.c
+CU Producer = GNU C17 13.3.0 -mtune=generic -march=x86-64 -gdwarf-5 -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = 0x00000000, High PC = 0x00000043
 
-The hex dump of .debug_line as compiled:
+/tmp/dwarfdump ERROR:  ERROR: Printing line numbers for the current CU failed. :  DW_DLE_LINE_NUMBER_HEADER_ERROR: maximum_operations_per_second is zero. Attempting to continue.
 
-    1f7 63000000 05000800 2a000000 010101fb c.......*.......
-    207 0e0d0001 01010100 00000100 00010101 ................
-    217 1f010000 00000201 1f020f02 00000000 ................
-    227 00000000 00000501 00090200 00000000 ................
-    237 00000018 0508d705 18000204 0182063c ...............<
-    247 050c062f 05013d31 050ebb05 0d082105 .../..=1......!.
-    257 013d0202 000101                     .=.....
+CU Name = maxopsperinst.c
+CU Producer = GNU C17 13.3.0 -mtune=generic -march=x86-64 -gdwarf-5 -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = 0x00000000, High PC = 0x00000043
+
+There were 3 DWARF errors reported: see ERROR above.
+
