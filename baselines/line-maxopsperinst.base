@@ -1,0 +1,119 @@
+
+.debug_info
+
+CU_HEADER:
+  cu_header_length = 0x000000ad 173
+  version_stamp    = 0x0005     5
+  abbrev_offset    = 0x00000000 0
+  address_size     = 0x08       8
+  offset_size      = 0x04       4
+  cu_type          = 0x01       DW_UT_compile
+
+./dwarfdump ERROR:  ERROR: dwarf_srcfiles problem :  DW_DLE_LINE_NUMBER_HEADER_ERROR: maximum_operations_per_second is zero. Attempting to continue.
+
+CU Name = <unknown>
+CU Producer = GNU C17 13.3.0 -mtune=generic -march=x86-64 -gdwarf-5 -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = unknown   , High PC = unknown   
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000c>  DW_TAG_compile_unit <abbrev 2>
+                    DW_AT_producer              GNU C17 13.3.0 -mtune=generic -march=x86-64 -gdwarf-5 -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
+                    DW_AT_language              DW_LANG_C11
+                    DW_AT_name                  maxopsperinst.c
+                    DW_AT_comp_dir              /home/davea/dwarf/regressiontests/maxops
+                    DW_AT_low_pc                0x00000000
+                    DW_AT_high_pc               <offset-from-lowpc> 67 <highpc: 0x00000043>
+                    DW_AT_stmt_list             0x00000000
+
+LOCAL_SYMBOLS:
+< 1><0x0000002e>    DW_TAG_variable <abbrev 3>
+                      DW_AT_name                  foo
+                      DW_AT_decl_file             0x00000001
+                      DW_AT_decl_line             0x00000003
+                      DW_AT_decl_column           0x00000005
+                      DW_AT_type                  <0x00000044> Refers to: int
+                      DW_AT_external              yes(1)
+                      DW_AT_location              len 0x0009: 0x030000000000000000: 
+                          DW_OP_addr 0x00000000
+< 1><0x00000044>    DW_TAG_base_type <abbrev 4>
+                      DW_AT_byte_size             4
+                      DW_AT_encoding              DW_ATE_signed
+                      DW_AT_name                  int
+< 1><0x0000004b>    DW_TAG_subprogram <abbrev 5>
+                      DW_AT_external              yes(1)
+                      DW_AT_name                  main
+                      DW_AT_decl_file             0x00000001
+                      DW_AT_decl_line             0x0000000c
+                      DW_AT_decl_column           0x00000005
+                      DW_AT_prototyped            yes(1)
+                      DW_AT_type                  <0x00000044> Refers to: int
+                      DW_AT_low_pc                0x00000020
+                      DW_AT_high_pc               <offset-from-lowpc> 35 <highpc: 0x00000043>
+                      DW_AT_frame_base            len 0x0001: 0x9c: 
+                          DW_OP_call_frame_cfa
+                      DW_AT_call_all_tail_calls   yes(1)
+                      DW_AT_sibling               <0x0000007b> Refers to: max
+< 2><0x0000006d>      DW_TAG_variable <abbrev 6>
+                        DW_AT_name                  c
+                        DW_AT_decl_file             0x00000001
+                        DW_AT_decl_line             0x0000000e
+                        DW_AT_decl_column           0x0000000a
+                        DW_AT_type                  <0x00000044> Refers to: int
+                        DW_AT_location              len 0x0002: 0x916c: 
+                            DW_OP_fbreg -20
+< 1><0x0000007b>    DW_TAG_subprogram <abbrev 7>
+                      DW_AT_external              yes(1)
+                      DW_AT_name                  max
+                      DW_AT_decl_file             0x00000001
+                      DW_AT_decl_line             0x00000006
+                      DW_AT_decl_column           0x00000001
+                      DW_AT_prototyped            yes(1)
+                      DW_AT_type                  <0x00000044> Refers to: int
+                      DW_AT_low_pc                0x00000000
+                      DW_AT_high_pc               <offset-from-lowpc> 32 <highpc: 0x00000020>
+                      DW_AT_frame_base            len 0x0001: 0x9c: 
+                          DW_OP_call_frame_cfa
+                      DW_AT_call_all_calls        yes(1)
+< 2><0x00000099>      DW_TAG_formal_parameter <abbrev 1>
+                        DW_AT_name                  a
+                        DW_AT_decl_file             0x00000001
+                        DW_AT_decl_line             0x00000006
+                        DW_AT_decl_column           0x00000009
+                        DW_AT_type                  <0x00000044> Refers to: int
+                        DW_AT_location              len 0x0002: 0x916c: 
+                            DW_OP_fbreg -20
+< 2><0x000000a4>      DW_TAG_formal_parameter <abbrev 1>
+                        DW_AT_name                  b
+                        DW_AT_decl_file             0x00000001
+                        DW_AT_decl_line             0x00000006
+                        DW_AT_decl_column           0x00000010
+                        DW_AT_type                  <0x00000044> Refers to: int
+                        DW_AT_location              len 0x0002: 0x9168: 
+                            DW_OP_fbreg -24
+
+.debug_line: line number info for a single cu
+Source lines (from CU-DIE at .debug_info offset 0x0000000c):
+
+COMPILE_UNIT<header overall offset = 0x00000000>:
+< 0><0x0000000c>  DW_TAG_compile_unit <abbrev 2>
+                    DW_AT_producer              GNU C17 13.3.0 -mtune=generic -march=x86-64 -gdwarf-5 -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
+                    DW_AT_language              DW_LANG_C11
+                    DW_AT_name                  maxopsperinst.c
+                    DW_AT_comp_dir              /home/davea/dwarf/regressiontests/maxops
+                    DW_AT_low_pc                0x00000000
+                    DW_AT_high_pc               <offset-from-lowpc> 67 <highpc: 0x00000043>
+                    DW_AT_stmt_list             0x00000000
+
+./dwarfdump ERROR:  Failed to print CU lines:  DW_DLE_LINE_NUMBER_HEADER_ERROR: maximum_operations_per_second is zero. Attempting to continue.
+
+CU Name = maxopsperinst.c
+CU Producer = GNU C17 13.3.0 -mtune=generic -march=x86-64 -gdwarf-5 -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = 0x00000000, High PC = 0x00000043
+
+./dwarfdump ERROR:  ERROR: Printing line numbers for the current CU failed. :  DW_DLE_LINE_NUMBER_HEADER_ERROR: maximum_operations_per_second is zero. Attempting to continue.
+
+CU Name = maxopsperinst.c
+CU Producer = GNU C17 13.3.0 -mtune=generic -march=x86-64 -gdwarf-5 -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection
+DIE OFF = 0x0000000c GOFF = 0x0000000c, Low PC = 0x00000000, High PC = 0x00000043
+
+There were 3 DWARF errors reported: see ERROR above.
