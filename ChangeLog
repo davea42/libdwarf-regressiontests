@@ -1,3 +1,40 @@
+2026-08-31:  David Anderson
+    commit b50035a4111aa9ad3e8dcbfb0897a89fab003ffc
+
+    Now properly tests for line table header
+    maximum operations per instruction using -ka.
+            modified:   DWARFTEST.sh
+            modified:   baselines/line-maxopsperinst.base
+
+2026-08-22:  David Anderson
+    commit e30e4ecc46851a9ae0f05c5a16170cccba76c639
+
+    Added new test in dir maxops/
+            modified:   DWARFTEST.sh
+            new file:   baselines/line-maxopsperinst.base
+
+2026-08-20:  David Anderson
+    commit 06aaaba3605820b6e1c8c3c50f5fbf09b13505d6
+
+    describes the testcase
+            modified:   README
+
+2026-08-20:  David Anderson
+    commit bd2aa7d1b05e03bff266057a591f317156404c35
+
+    New test case with one byte altered to catch an error:
+    line table header max ops per instruction of zero.
+            new file:   maxops/README
+            new file:   maxops/maxopsperinst.c
+            new file:   maxops/maxopsperinst.o
+            new file:   maxops/original-maxopsperinst.o
+
+2026-06-20:  David Anderson
+    commit 1e566f1e0df0951404834177391aa534db260c6a
+
+    Updated to git log now.
+            modified:   ChangeLog
+
 2026-06-20:  David Anderson
     commit 23d3f2dfad1b9ec765ddcfbd53c3d101ec24da8c
 
