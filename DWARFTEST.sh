@@ -1356,7 +1356,8 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
-runsingle line-maxopsperinst.base ./dwarfdump -vv -i -l $testsrc/maxops/maxopsperinst.o
+# Must use checking to see the harmless error in this object.
+runsingle line-maxopsperinst.base ./dwarfdump -ka $testsrc/maxops/maxopsperinst.o
 
 runsingle fuzz_init_path-5832857477251072.base ./fuzz_init_path --testobj=$testsrc/ossfuzzflaky/fuzz_init_path-5832857477251072
 
