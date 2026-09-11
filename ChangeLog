@@ -1,3 +1,36 @@
+2026-09-11:  David Anderson
+    commit d8bc7e988e3c982670f6dfde6cd77a343a7cd356
+
+    About ready for a new release.
+            modified:   DWARFTEST.sh
+            new file:   baselines/compress64.base
+            new file:   compress64/README
+            new file:   compress64/build_compress.c
+            new file:   compress64/libdwarf-chdr-poc-KD0V23
+            new file:   compress64/test_compress64.c
+            modified:   macho_universal/test_macho_universal.c
+
+2026-09-11:  David Anderson
+    commit e57b6650990414e2c5a417500c2678f2239f8ddd
+
+    Here testing for the bug found in github Pull Request 325.
+            modified:   DWARFTEST.sh
+            new file:   baselines/test_macho_universal32.base
+            new file:   baselines/test_macho_universal64.base
+            new file:   baselines/test_macho_universalcombo.base
+            new file:   macho_universal/README
+            new file:   macho_universal/build_macho_universal.c
+            new file:   macho_universal/test_macho_universal.c
+            new file:   macho_universal/test_macho_universal_32.poc
+            new file:   macho_universal/test_macho_universal_64.poc
+
+2026-08-31:  David Anderson
+    commit 9f2a1a0c1d8d46c662fd368c9828bee7dbf73d1d
+
+    Now with test for maximum operations per instruction
+    (in line table header).
+            modified:   ChangeLog
+
 2026-08-31:  David Anderson
     commit b50035a4111aa9ad3e8dcbfb0897a89fab003ffc
 
