@@ -1,0 +1,17 @@
+
+Bug found and fixed September 9-11 2026.
+
+Kaixuan Li provided git Pull Request #325.
+
+We separated the original testcase
+submission into a build and a test
+C source, and save the proof binaries
+as *.poc files here.
+
+We find it convenient to run both the
+original test program as well as running
+dwarfdump.  The dwarfdump  run on on the 64 case
+with a -fsanitize build shows a definitive
+error before the fix and shows sensible
+behavior after the fix.
+

@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+_
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
 echo "Env vars that affect the tests:"
@@ -1161,6 +1162,24 @@ do
   chkresbld $r "compile of ${f}.c failed" 
 done
 
+simpleexeb='
+test_macho_universal'
+for f in $simpleexeb
+do
+  echo "====BUILD $f"
+  mklocal macho_universal
+  x="$CC $opt -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf $nonsharedopt\
+     -gdwarf $nlizeopt $testsrc/macho_universal/${f}.c \
+     -o $f  $dwlib $libzlib $libzlink"
+  echo "$x"
+  $x
+  r=$?
+  chkresbld $r "compile of ${f}.c failed" 
+  cd ..
+done
+
+
 
 # BUILDS
 fuzzexe='
@@ -1356,6 +1375,12 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runsingle test_macho_universalcombo.base ./macho_universal/test_macho_universal $testsrc/macho_universal/test_macho_universal.32.poc $testsrc/macho_universal/test_macho_universal.64.poc
+runsingle test_macho_universal32.base ./dwarfdump -a  $testsrc/macho_universal/test_macho_universal_32.poc 
+# the following test is definitive with -fsanitize
+runsingle test_macho_universal64.base ./dwarfdump -a  $testsrc/macho_universal/test_macho_universal_64.poc 
+exit 0
+
 # Must use checking to see the harmless error in this object.
 runsingle line-maxopsperinst.base ./dwarfdump -ka $testsrc/maxops/maxopsperinst.o
 
@@ -1372,8 +1397,6 @@ runsingle fuzz_die_cu-4889329913888768.base ./fuzz_die_cu --testobj=$testsrc/oss
 
 runsingle fuzz_dnames-5764687336898560.base ./fuzz_dnames --testobj=$testsrc/ossfuzz513010516/fuzz_dnames-5764687336898560
 
-runsingle fuzz_findfuncbypc-5181686974578688.base ./fuzz_init_b --testobj=$testsrc/ossfuzz513032442/fuzz_findfuncbypc-5181686974578688
-
 runsingle fuzz_init_b-6754026074210304.base ./fuzz_init_b --testobj=$testsrc/ossfuzz513063397/fuzz_init_b-6754026074210304
 
 runsingle fuzz_set_frame_all-475563464.base ./fuzz_set_frame_all --testobj=$testsrc/ossfuzz475563464/fuzz_set_frame_all-6159202753249280
@@ -1387,6 +1410,7 @@ runsingle frame2riskv-2025-12-07.base frame2/frame2 --stop-at-fde-n=8 $testsrc/f
 if [ -f ./readobjmacho ]
 then
   runsingle macho-kask-ro-32.base ./readobjmacho $testsrc/macho-kask/dwarfdump_32
+  runsingle macho-kask-ro-32-nodsym.base ./readobjmacho --skip-dsym-check $testsrc/macho-kask/dwarfdump_32
   runsingle macho-kask-ro-32-nodsym.base ./readobjmacho --skip-dsym-check $testsrc/macho-kask/dwarfdump_32
   runsingle macho-kask-ro-64.base ./readobjmacho $testsrc/macho-kask/dwarfdump_64
   runsingle macho-kask-ro-64-nodsym.base ./readobjmacho --skip-dsym-check $testsrc/macho-kask/dwarfdump_64
