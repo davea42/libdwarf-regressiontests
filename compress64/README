@@ -1,0 +1,11 @@
+
+
+glopselemiu submitted a bug report
+and fix suggestion 9 September 2026.
+
+He also submitted a test case which
+we revised into build_compress.c 
+which we ran, creating Proof Of Concept 
+object file libdwarf-chdr-poc-KD0V23 .
+
+

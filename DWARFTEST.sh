@@ -1162,9 +1162,7 @@ do
   chkresbld $r "compile of ${f}.c failed" 
 done
 
-simpleexeb='
-test_macho_universal'
-for f in $simpleexeb
+for f in test_macho_universal
 do
   echo "====BUILD $f"
   mklocal macho_universal
@@ -1178,6 +1176,21 @@ do
   chkresbld $r "compile of ${f}.c failed" 
   cd ..
 done
+for f in test_compress64
+do
+  echo "====BUILD $f"
+  mklocal compress64
+  x="$CC $opt -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf $nonsharedopt\
+     -gdwarf $nlizeopt $testsrc/compress64/${f}.c \
+     -o $f  $dwlib $libzlib $libzlink"
+  echo "$x"
+  $x
+  r=$?
+  chkresbld $r "compile of ${f}.c failed"
+  cd ..
+done 
+
 
 
 
@@ -1375,11 +1388,14 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# Was a bug in decompress for 64bit Elf.
+runsingle compress64.base ./compress64/test_compress64 $testsrc/compress64/libdwarf-chdr-poc-KD0V23
+
+# Was a bug in the Macho FAT64 universal base handling.
 runsingle test_macho_universalcombo.base ./macho_universal/test_macho_universal $testsrc/macho_universal/test_macho_universal.32.poc $testsrc/macho_universal/test_macho_universal.64.poc
 runsingle test_macho_universal32.base ./dwarfdump -a  $testsrc/macho_universal/test_macho_universal_32.poc 
 # the following test is definitive with -fsanitize
 runsingle test_macho_universal64.base ./dwarfdump -a  $testsrc/macho_universal/test_macho_universal_64.poc 
-exit 0
 
 # Must use checking to see the harmless error in this object.
 runsingle line-maxopsperinst.base ./dwarfdump -ka $testsrc/maxops/maxopsperinst.o

@@ -38,6 +38,7 @@ open_it(const char *path, int *errnum,const char *ver)
     int res = 0;
 
     *errnum = 0;
+
     res = dwarf_init_path_a(path, tp, sizeof(tp), DW_GROUPNUMBER_ANY,
         0, 0, 0, &dbg, &err);
     if (res == DW_DLV_ERROR) {
@@ -62,14 +63,29 @@ main(int argc, char **argv)
     int err32 = 0;
     int err64 = 0;
     int failcount = 0;
+    int i = 1;
+
     if (argc < 3) {
         printf("ERROR Argc %d less than 3  improper test"
             " absolute paths to the proof of concept "
             " binary objects should be present\n",argc);
         return 1;
     }
-    f32 = argv[1];
-    f64 = argv[2];
+    for (; i < argc;++i) {
+        char *p = argv[i];
+        if ( p[0] == '-') {
+            continue;
+        }
+        if (!f32) {
+            f32 = p;
+            continue;
+        } 
+        if (!f64) {
+            f64 = p;
+            break;
+        }
+        break;
+    }
 
     res32 = open_it(f32, &err32,"macho-universal 32");
     res64 = open_it(f64, &err64,"macho-universal 64");
