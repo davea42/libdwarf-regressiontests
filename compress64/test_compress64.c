@@ -16,7 +16,7 @@ int main(int argc, char **argv)
     char *path = 0;
     int i = 1;
 
-    if (argc < 3) {
+    if (argc < 2) {
         printf("ERROR: path name of test object is"
             " required\n");
         return 1;
