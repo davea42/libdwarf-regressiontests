@@ -86,6 +86,11 @@ main(int argc, char **argv)
         }
         break;
     }
+    if (!f64) {
+        printf("ERROR Missing f64 path "
+            "Correct macho_universal test run\n");
+        return 1;
+    }
 
     res32 = open_it(f32, &err32,"macho-universal 32");
     res64 = open_it(f64, &err64,"macho-universal 64");
