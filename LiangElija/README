@@ -1,0 +1,15 @@
+This test is to demonstrate a previous bug in libdwarf.
+
+The fix is in src/lib/libdwarf/dwarf_die_deliv.c
+
+2026-09-18:  David Anderson
+    commit 558b101fe0a02a32c313b6f78d8f8998b820a176
+
+    Test case is libdwarf-regressiontests/LiangElija/test.elf
+
+    Correcting a CU context size check by adding in
+    the required length_size and extension_size.
+    A very very old bug.
+            modified:   dwarf_die_deliv.c
+
+
