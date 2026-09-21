@@ -1388,6 +1388,8 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+runtest $d1 $d2 LiangElija/test.elf -a -M -vv
+
 # Was a bug in decompress for 64bit Elf.
 runsingle compress64.base ./compress64/test_compress64 $testsrc/compress64/libdwarf-chdr-poc-KD0V23
 
