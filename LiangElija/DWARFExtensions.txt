@@ -1,0 +1,41 @@
+
+In Mandarin:
+https://www.ti.com.cn/tool/zh-cn/download/c2000-CGT
+
+
+ Vendor-Specific Attributes (DW_AT_TI_*)
+Attribute Name 	Value/ID (Hex) 	Key Function / Usage Scenario
+
+DW_AT_TI_symbol_name 	0x2001 / 0x200B 	Stores the raw assembly symbol name. Retains physical mangled/unmangled names for C++ or register-renamed symbols in C28x/C6000 architectures.
+
+DW_AT_TI_max_frame_size 	0x2002 	Records the maximum stack frame size of a function for static stack usage analysis in TI tools (e.g., Code Composer Studio).
+
+DW_AT_TI_interrupt 	0x2003 	Identifies whether a subprogram is an Interrupt Service Routine (ISR), helping the debugger unwind stack frames with specialized context saving.
+
+DW_AT_TI_asm_line 	0x2004 	Maps the DWARF entry to its corresponding generated assembly source line number for source-assembly mixed debugging.
+
+DW_AT_TI_begin_file 	0x2005 	Marks the file index (in the File Table) where a declaration, macro expansion, or block begins.
+
+DW_AT_TI_end_file 	0x2006 	Marks the file index where a declaration, macro expansion, or block ends, ensuring correct scope closure across multiple included headers.
+
+DW_AT_TI_begin_line 	0x2007 	Marks the starting line number of a block or function definition within the source file.
+
+DW_AT_TI_end_line 	0x2008 	Marks the ending line number of a block or function definition within the source file.
+
+DW_AT_TI_begin_column 	0x2009 	Marks the starting column number of a source code construct.
+
+DW_AT_TI_end_column 	0x200A 	Marks the ending column number of a source code construct.
+
+
+ Vendor-Specific Tags (DW_TAG_TI_*)
+
+Tag Name 	Value/ID (Hex) 	Key Function / Usage Scenario
+
+DW_TAG_TI_branch_target 	0x4001 	Identifies branch targets for hardware loops and instruction pipeline debugging in C6000/C2000 DSP architectures.
+
+DW_TAG_TI_far_type 	0x4002 	Specifies types located in extended memory spaces (far vs near pointers) in architectures like MSP430X or C28x.
+
+DW_TAG_TI_pragma_can_inline 	0x4003 	Annotates inline hints/directives specified via #pragma CAN_INLINE or #pragma FUNC_ALWAYS_INLINE, aiding non-standard inlining analysis.
+
+DW_TAG_TI_assign_register 	0x4004 	Maps specific variables to dedicated hardware registers during loop optimization or parallel processing execution.
+
