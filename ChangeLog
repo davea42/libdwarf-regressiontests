@@ -1,3 +1,53 @@
+2026-09-24:  David Anderson
+    commit 7924495b28d1c8380cb517964b384b9f61250fdd
+
+    New baseline executables for v2.3.3
+            modified:   dwarfdump-i386-freebsd.O
+            modified:   dwarfdump-macos.O
+            modified:   dwarfdump-msys2.O
+            modified:   dwarfdump-s390.O
+            modified:   dwarfdump-x86_64-freebsd.O
+            modified:   dwarfdump-x86_64-ubuntu.O
+
+2026-09-21:  David Anderson
+    commit cbb9277f41176ffdc56ae5d5725de639b4fa18e7
+
+    Added test of
+    LiangElija/test.elf
+            modified:   DWARFTEST.sh
+
+2026-09-20:  David Anderson
+    commit 92136877545dbe5734974fce0106142df0b8798d
+
+    New test case demonstrating a bug in handling
+    type offsets for releases 3.3.2 and earlier.
+            new file:   LiangElija/README
+            new file:   LiangElija/test.elf
+
+2026-09-15:  David Anderson
+    commit 2ed901fe465300bd89d79a65c5c5ee6c19576b84
+
+    New baseline (new testcase).
+            modified:   baselines/line-maxopsperinst.base
+
+2026-09-15:  David Anderson
+    commit 3a05798cb3a1a3b3d0ca34fff6e1808ec458f71f
+
+    Finalized this new testcase for use here.
+            modified:   compress64/test_compress64.c
+
+2026-09-15:  David Anderson
+    commit 991f0b7daa0428f416326a675695ab2b1ec8de71
+
+    Fixed mistake in this new testcase.
+            modified:   macho_universal/test_macho_universal.c
+
+2026-09-11:  David Anderson
+    commit ba321b20e2bce132e73f8c0f65aa57961f2ea325
+
+    Now up to date
+            modified:   ChangeLog
+
 2026-09-11:  David Anderson
     commit d8bc7e988e3c982670f6dfde6cd77a343a7cd356
 
