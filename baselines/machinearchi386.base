@@ -3,7 +3,7 @@ Machine Architecture, Object Information fields
   Filetype              : 1  (DW_FTYPE_ELF)
   Pointersize           : 8
   endian                : little endian
-  machine/architecture  : 62 (0x3e) <AMD x86_64>
+  machine/architecture  : 62 (0x3e) <EM_X86_64>
   machine flags         : 0x0
   path source           : 3  (DW_PATHSOURCE_debuglink, GNU debuglink)
   Comdat group number   : 1  (DW_GROUPNUMBER_BASE, standard)
