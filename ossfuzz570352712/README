@@ -1,0 +1,34 @@
+ossfuzz Issue:	570352712
+bug revealed 5 October 2026.
+
+The fix at commit 5d5cbd43351a9bb7337b04ecd297f76d28f1b523
+left one return DW_DLV_ERROR at line 795 missing the required free
+of 'format values'.
+         if (line_ptr >= line_ptr_end) {
++            free(format_values);
++            format_values = 0;
+             _dwarf_error_string(dbg, err, DW_DLE_LINE_OFFSET_BAD,
+A mistake introduced 5 days ago.
+Issue: 571622054 
+Issue: 570352712 
+Issue: 570703910
+
+
+
+Crash State:	
+_dwarf_read_line_table_header
+_dwarf_internal_printlines
+exampled
+Crash Type:	Direct-leak
+
+Direct leak of 272 byte(s) in 1 object(s) allocated from:
+    #0 0x578f78912764 in __interceptor_malloc /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:67:3
+    #1 0x578f78a1dc3f in _dwarf_read_line_table_header libdwarf/src/lib/libdwarf/dwarf_line_table_reader_common.h:770:33
+    #2 0x578f78a1b8e3 in _dwarf_internal_printlines libdwarf/src/lib/libdwarf/dwarf_print_lines.c:705:20
+    #3 0x578f78955a33 in exampled libdwarf/fuzz/fuzz_srcfiles.c:131:3
+    #4 0x578f7895557a in LLVMFuzzerTestOneInput libdwarf/fuzz/fuzz_srcfiles.c:89:11
+    #5 0x578f787f3e0d in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:619:13
+    #6 0x578f787deb82 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:329:6
+    #7 0x578f787e4a50 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:865:9
+    #8 0x578f78810582 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10
+
