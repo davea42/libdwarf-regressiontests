@@ -1390,6 +1390,11 @@ fi
 
 runtest $d1 $d2 LiangElija/test.elf -a -M -vv --print-machine-arch
 
+#First tests of the very old option --arg-format-producer.
+#Either or both should fail (but do not fail for me). github Issue #332
+runsingle Issue332-a.base ./dwarfdump --arg-format-producer $testsrc/ossfuzz516582687/fuzz_gdbindex-5725564647571456
+runsingle Issue332-b.base ./dwarfdump --arg-format-producer= $testsrc/ossfuzz516582687/fuzz_gdbindex-5725564647571456
+
 runsingle ossfuzz570352712.base ./fuzz_srcfiles  --testobj=$testsrc/ossfuzz570352712/fuzz_srcfiles-5487022035501056
 
 # Was a bug in decompress for 64bit Elf.
