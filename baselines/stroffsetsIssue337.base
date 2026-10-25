@@ -1,0 +1,27 @@
+
+.debug_str_offsets
+ table 0
+ tableheader 0x00000000
+ arrayoffset 0x00000008
+ unit length 0x00000034
+ entry size  4
+ version     5
+ padding     0x0
+ arraysize   12
+ Entry [   0]:  0x00000000 0x00000027 0x0000002b 0x00000060
+ Entry [   4]:  0x00000062 0x00000064 0x00000068 0x0000006a
+ Entry [   8]:  0x0000006f 0x00000071 0x00000075 0x0000007a
+ wasted      0 bytes
+
+ table 1
+ tableheader 0x00000038
+ arrayoffset 0x00000040
+ unit length 0x0000001c
+ entry size  4
+ version     5
+ padding     0x0
+ arraysize   6
+ Entry [   0]:  0x0000007c 0x000000a3 0x000000a7 0x000000dc
+ Entry [   4]:  0x000000e0 0x000000e4
+ wasted      0 bytes
+

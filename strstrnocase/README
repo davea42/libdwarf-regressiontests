@@ -1,0 +1,17 @@
+This about github issue #335.
+
+22 October 2026
+
+We add an executable as the issue proposes
+and verify things work ok.
+
+
+
+cc -c -gdwarf-5 s.c -o s.o
+
+test with:
+dwarfdump -S any=ab_var s.o
+dwarfdump -S any=b_var s.o
+Both should work and produce  a report of aab_var.
+
+

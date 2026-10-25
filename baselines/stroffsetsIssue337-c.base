@@ -1,0 +1,4 @@
+
+./dwarfdump ERROR:  print .debug_str_offsets failed:  DW_DLE_STR_OFFSETS_EXTRA_BYTES: Table Offset plus a minimal header is 3 bytes past end of section and some bytes in-section are non-zero. Attempting to continue.
+
+There was 1 DWARF error reported: see ERROR above.
