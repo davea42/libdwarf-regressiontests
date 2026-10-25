@@ -1390,9 +1390,14 @@ fi
 
 runtest $d1 $d2 LiangElija/test.elf -a -M -vv --print-machine-arch
 
+runsingle stroffsetsIssue337.base ./dwarfdump --print-str-offsets $testsrc/stroffsetsIssue337/both.o
+runsingle stroffsetsIssue337-b.base ./dwarfdump --print-str-offsets $testsrc/stroffsetsIssue337/z.o
+runsingle stroffsetsIssue337-c.base ./dwarfdump --print-str-offsets $testsrc/stroffsetsIssue337/n.o
+
+# There are more tests of edge cases in 
+# libdwarf-code/test/test_strstrnocase.c
 runsingle Issue335-a.base ./dwarfdump -S any=ab_var  $testsrc/strstrnocase/s.o
 runsingle Issue335-b.base ./dwarfdump -S any=b_var  $testsrc/strstrnocase/s.o
-exit 
 
 #First tests of the very old option --arg-format-producer.
 #Either or both should fail (but do not fail for me). github Issue #332
@@ -1986,6 +1991,10 @@ runtest $d1 $d2 wjl/demo  --print-all-srcfiles
 
 # New as of Aug 2024.
 runtest $d1 $d2 polar/cpp_test.o --print-debug-names
+
+# New as of 24 Oct 2026.
+runtest $d1 $d2 polar/hello.o --print-debug-names
+runtest $d1 $d2 pubname/dw5_names.o  --print-debug-names
 
 # New tests as of July 2024.
 runtest $d1 $d2 rifkin3/stacktrace.cpp.dwo --print-ranges --file-tied=$testsrc/rifkin3/unittest -M -i -vvv -G

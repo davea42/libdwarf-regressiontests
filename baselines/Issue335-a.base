@@ -1,1 +1,6 @@
-junk
+
+CU Name = s.c
+CU Producer = GNU C23 15.2.0 -mtune=generic -march=x86-64 -gdwarf-5 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection -fzero-init-padding-bits=all
+DIE OFF = 0x00000023 GOFF = 0x00000023, Low PC = unknown   , High PC = unknown   
+DW_AT_name                  aab_var
+
