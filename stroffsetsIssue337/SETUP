@@ -1,0 +1,8 @@
+
+alias cc=clang-22
+echo 'int foo(int a){return a+1;}\nstruct S{int x; char *y;} s;\nint main(){return foo(2);}\n' > a.c
+echo 'int bar(int q){return q*3;}\n' > b.c
+cc -gdwarf-5 -c a.c -o a.o && cc -gdwarf-5 -c b.c -o b.o
+ld -r a.o b.o -o both.o
+readelf -x .debug_str_offsets both.o
+#dwarfdump --print-str-offsets both.o

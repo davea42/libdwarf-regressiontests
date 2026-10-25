@@ -1,0 +1,3 @@
+
+dwarfdump  --print-str-offsets both.o >junko
+/tmp/dwarfdump  --print-str-offsets both.o >junkn
