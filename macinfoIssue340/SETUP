@@ -1,0 +1,13 @@
+echo -n '#define FOO 1\nint x(int a){return a+FOO;}\n' > m.c
+gcc -g3 -gdwarf-4 -gstrict-dwarf -O0 -S m.c -o m.s
+awk 'BEGIN{n=0} /\.byte\t0x3$/{n++; print; getline; print; getline; if(n==2){print "\t.uleb128 0xfffffffffffff000"; next}} {print}' m.s > macneg.s
+diff m.s macneg.s
+
+#1201c1201
+#< 	.uleb128 0x2
+#---
+#> 	.uleb128 0xfffffffffffff000
+gcc -c macneg.s -o macneg.o
+# dwarfdump -m macneg.o > /dev/null
+
+valgrind /tmp/dwarfdump -m macneg.o

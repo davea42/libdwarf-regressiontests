@@ -1,0 +1,14 @@
+
+This is the github Issue #340 testcase.
+
+Added 25 October 2026
+
+dwarfdump -m crashes (SIGSEGV, release build) when a DW_MACINFO_start_file entry in .debug_macinfo has a file index of 2^63 or more
+
+
+ASan build:
+
+==ERROR: AddressSanitizer: SEGV on unknown address 0x602fffff81c8 ...
+The signal is caused by a READ memory access.
+    #0 in print_one_macro_entry src/bin/dwarfdump/print_macinfo.c:114
+    #1 in print_macinfo_by_offset src/bin/dwarfdump/print_macinfo.c:254

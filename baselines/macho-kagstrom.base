@@ -118,9 +118,9 @@ Augmentation string     : LLVM0700
 
   tu List. Entry count: 0 (local tu count 0,foreign tu count 0)
 
-  Bucket (hash) table entry count: 2
+  Bucket table entry count: 2
   [ ]    nameindex collisioncount
-  [   0]      1      1
+  [   0]      1      2
   [   1]      0      0
 
 
@@ -138,7 +138,7 @@ Augmentation string     : LLVM0700
           [ 0]       3 DW_IDX_die_offset    DIEcuLocalOff=64 (0x00000040)
           [ 1]       4 DW_IDX_parent        FORM-flag-present (Parent generated but not indexed)
           [ 2]  0 (end of list)
-  [Entry    2] Bucket# 0 hash 0x0b888030 nameoffset=0xa5 "main"
+  [Entry    2] Bucket# 0 hash 0x7c9a7f6a nameoffset=0xa5 "main"
       EntrypoolOffset=0x000006 abbrevcode=   2 (0x0002) attrcount=3 arraysz=10
       Tag=0x002e      DW_TAG_subprogram
         Nameindex=2 abbrevcode=2 (0x0002) abbrevindex=1

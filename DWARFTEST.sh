@@ -1390,6 +1390,9 @@ fi
 
 runtest $d1 $d2 LiangElija/test.elf -a -M -vv --print-machine-arch
 
+# Fails with segv before fixed.
+runsingle macnegIssue340.base ./dwarfdump -m $testsrc/macinfoIssue340/macneg.o
+
 runsingle stroffsetsIssue337.base ./dwarfdump --print-str-offsets $testsrc/stroffsetsIssue337/both.o
 runsingle stroffsetsIssue337-b.base ./dwarfdump --print-str-offsets $testsrc/stroffsetsIssue337/z.o
 runsingle stroffsetsIssue337-c.base ./dwarfdump --print-str-offsets $testsrc/stroffsetsIssue337/n.o
