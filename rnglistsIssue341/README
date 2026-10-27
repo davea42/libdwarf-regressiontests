@@ -1,0 +1,10 @@
+
+dwarfdump -a segfault: NULL de_rnglists_context used after a bad .debug_rnglists table header
+ #341
+￼
+Fixing 27 October 2026.
+
+See the SETUP file to construct the testcase
+rng-bad.o
+
+

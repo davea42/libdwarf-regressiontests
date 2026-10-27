@@ -1,0 +1,23 @@
+.debug_loclists: contribution length checked against the whole section, not the bytes left after its offset (heap over-read, sibling of #336)
+ #342
+￼
+New issue
+￼
+This is the .debug_loclists version of #336.
+_dwarf_internal_read_loclists_header()
+(src/lib/libdwarf/dwarf_loclists.c:395-396 on master
+71f0401) checks a contribution's length against the size
+of the whole section and ignores the contribution's offset:
+
+    if (arealen > sectionlength ||
+        (arealen+offset_size+exten_size) > sectionlength) {
+
+A contribution that does not start at offset 0 can
+therefore declare an end past the end of the section.
+The list reader then reads past the section buffer. Here
+is a 26-byte section with two contributions. The second
+starts at 0x0d and declares unit_length 17, so it ends
+at 0x22. Its single list entry is DW_LLE_base_address,
+which reads an 8-byte operand:
+
+

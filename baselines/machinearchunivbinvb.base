@@ -1,0 +1,33 @@
+Filename by dSYM is $HOME/dwarf/regressiontests/macuniv/demo.dSYM/Contents/Resources/DWARF/demo
+This is a Mach-O Universal Binary with 2 objects.  This is object 1
+Machine Architecture, Object Information fields
+  Filetype              : 5  (DW_FTYPE_APPLEUNIVERSAL)
+  Pointersize           : 8
+  endian                : little endian
+  machine/architecture  : 16777228 (0x100000c) <CPU_TYPE_ARM64>
+  machine flags         : 0x0
+  path source           : 2  (DW_PATHSOURCE_dsym, MacOS)
+  MacOS Universal Binary 
+    Object Offset in UB : Ox0
+    UB object count     : 2
+    UB index            : 1
+  Comdat group number   : 1  (DW_GROUPNUMBER_BASE, standard)
+  []    offset     size       flags      addr
+  [  0] 0x00000000 0x00000000 0x00000000 0x00000000 
+  [  1] 0x00000000 0x000009d8 0x80000400 0x100003438 .text
+  [  2] 0x00000000 0x000000c0 0x80000408 0x100003e10 __stubs
+  [  3] 0x00000000 0x00000030 0x00000000 0x100003ed0 __gcc_except_tab
+  [  4] 0x00000000 0x000000b0 0x00000000 0x100003f00 __unwind_info
+  [  5] 0x00002000 0x00000050 0x00000000 0x100003fb0 .eh_frame
+  [  6] 0x00000000 0x00000088 0x00000006 0x100004000 __got
+  [  7] 0x00003000 0x00000aa0 0x00000000 0x100009000 .debug_line
+  [  8] 0x00003aa0 0x00000040 0x00000000 0x100009aa0 .debug_aranges
+  [  9] 0x00003ae0 0x00000030 0x00000000 0x100009ae0 .debug_ranges
+  [ 10] 0x00003b10 0x0000821c 0x00000000 0x100009b10 .debug_info
+  [ 11] 0x0000bd2c 0x00000794 0x00000000 0x100011d2c .debug_abbrev
+  [ 12] 0x0000c4c0 0x0000c633 0x00000000 0x1000124c0 .debug_str
+  [ 13] 0x00018af3 0x000008b4 0x00000000 0x10001eaf3 __apple_names
+  [ 14] 0x000193a7 0x00000074 0x00000000 0x10001f3a7 __apple_namespac
+  [ 15] 0x0001941b 0x00001a0a 0x00000000 0x10001f41b __apple_types
+  [ 16] 0x0001ae25 0x00000024 0x00000000 0x100020e25 __apple_objc
+

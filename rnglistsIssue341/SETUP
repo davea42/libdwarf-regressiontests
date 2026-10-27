@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cc=clang-22
+printf 'int f1(int a){return a+1;}\nint f2(int a){return a*2;}\n' > rng.c
+$cc -gdwarf-5 -gdwarf-aranges -O1 -ffunction-sections -c rng.c -o rng.o
+objcopy --dump-section .debug_rnglists=rng.bin rng.o
+printf '\010\000\000\000\011\000\010\000\000\000\000\000' >> rng.bin
+objcopy --update-section .debug_rnglists=rng.bin rng.o rng-bad.o
+hxdump rng.bin
+00000000: 1300 0000 0500 0800 0100 0000 0400 0000  ................
+00000010: 0300 0403 0104 0008 0000 0009 0008 0000  ................
+00000020: 0000 00                                  ...
+/tmp/dwarfdump -a rng-bad.o 

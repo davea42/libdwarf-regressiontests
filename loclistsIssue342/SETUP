@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+printf 'int main(void) { return 0; }\n' > base.c && cc -c base.c -o base.o
+printf '\011\000\000\000\005\000\010\000\000\000\000\000\000' > ll.bin
+printf '\021\000\000\000\005\000\010\000\000\000\000\000\006' >> ll.bin
+hxdump ll.bin
+#00000000: 0900 0000 0500 0800 0000 0000 0011 0000  ................
+#00000010: 0005 0008 0000 0000 0006                 ..........
+#
+objcopy --add-section .debug_loclists=ll.bin --set-section-flags .debug_loclists=readonly,debug base.o ll.o
+
+valgrind dwarfdump --print-raw-loclists -v ll.o
