@@ -1388,6 +1388,12 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# github Issue #343
+runtest $d1 $d2 macroendfileIssue343/macend -kw
+# To see the start/end, do 
+# dwarfdump --print-macinfo <object>
+runtest $d1 $d2 macroendfileIssue343/macend --print-macinfo
+
 # github Issue #344
 runtest $d1 $d2 loclistsIssue344/llwrap.o --print-raw-loclists -v
 
