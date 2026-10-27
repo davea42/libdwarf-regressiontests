@@ -1388,6 +1388,12 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# github Issue #342
+runtest $d1 $d2 loclistsIssue342/ll.o --print-raw-loclists -v
+
+# github Issue #341
+runtest $d1 $d2 rnglistsIssue341/rng-bad.o -a 
+
 runtest $d1 $d2 LiangElija/test.elf -a -M -vv --print-machine-arch
 
 # Fails with segv before fixed.
@@ -1629,7 +1635,16 @@ runsingle zero-e_shoff-i386.base ./dwarfdump -a $testsrc/helloz/zero-e_shoff-i38
 # MacOS universalbinary
 runsingle machinearchunivbin.base ./dwarfdump --print-machine-arch $testsrc/macuniv/demo 
 runsingle machinearchunivbinun1.base ./dwarfdump --format-universalnumber=1 --print-machine-arch $testsrc/macuniv/demo 
+
 runsingle machinearchunivbinv.base ./dwarfdump -v --print-machine-arch $testsrc/macuniv/demo 
+
+# The other format of universal number selection
+# github Issue #338
+dwarfdump -v -x universalnumber=1 --print-machine-arch $testsrc/macuniv/demo
+
+
+runsingle machinearchunivbinvb.base ./dwarfdump -v -x universalnumber=1 --print-machine-arch $testsrc/macuniv/demo
+
 #macos simple binary
 runsingle machinearcmacho.base ./dwarfdump --print-machine-arch $testsrc/macho-kask/dwarfdump_32
 runsingle machinearcmachov.base ./dwarfdump -v --print-machine-arch $testsrc/macho-kask/dwarfdump_32
@@ -3387,7 +3402,7 @@ runtest $d1 $d2 irixn32/dwarfdump -g  -x name=dwarfdump.conf \
 if [ $platform = "msys2" ]
 then
   echo "====SKIP run test_simple_libfuncs h (1)"
-  skipcount=`expr $skipcount +  1 `
+  skipcount=`expr $skipcount + 1 `
 else
   runsingle test_simple_libfuncs.base ./test_simple_libfuncs ./jitreader
 fi
@@ -3401,7 +3416,7 @@ runsingle frame1-2018s.base ./frame1/frame1  --stop-at-fde-n=10 \
 if [  $platform = "msys2" ]
 then
   echo "=====SKIP debuglink on msys2"
-  skipcount=`expr $skipcount +  2 `
+  skipcount=`expr $skipcount + 4 `
 else
   runsingle dwdebuglink-a.base ./dwdebuglink \
   "--add-debuglink-path=/exam/ple" \
@@ -3410,6 +3425,9 @@ else
   runsingle dwdebuglink-b.base ./dwdebuglink \
   --no-follow-debuglink --add-debuglink-path=/exam/ple \
   --add-debuglink-path=/tmp/phony $codedir/test/dummyexecutable
+  # testing the option, the -b is useful but arbitrary.
+  runtest $d1  $d2 ./dwdebuglink --add-debuglink-path= -b
+  runtest $d1  $d2 ./dwdebuglink --add-debuglink-path=x -b
 fi
 
 #runsingle test_dwnames.base ./test_dwnames \
