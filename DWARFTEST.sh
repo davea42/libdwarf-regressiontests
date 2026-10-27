@@ -1388,6 +1388,9 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# github Issue #344
+runtest $d1 $d2 loclistsIssue344/llwrap.o --print-raw-loclists -v
+
 # github Issue #342
 runtest $d1 $d2 loclistsIssue342/ll.o --print-raw-loclists -v
 

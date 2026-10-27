@@ -1,0 +1,18 @@
+
+printf 'int main(void) { return 0; }\n' > base.c && cc -c base.c -o base.o
+printf '\027\000\000\000\005\000\010\000\000\000\000\000' > ll.bin
+printf '\004\000\013\366\377\377\377\377\377\377\377\377\001\125\000' >> ll.bin
+hxdump ll.bin
+00000000: 1700 0000 0500 0800 0000 0000 0400 0bf6  ................
+00000010: ffff ffff ffff ffff 0155 00              .........U.
+
+objcopy --add-section .debug_loclists=ll.bin --set-section-flags .debug_loclists=readonly,debug base.o llwrap.o
+valgrind dwarfdump -v --print-raw-loclists llwrap.o
+
+
+#...
+#   LocationList (raw)
+#   [goff      ][loff      ] entryname           val1     val2   entrylen
+#   [0x0000000c][0x0000000c] DW_LLE_offset_pair   0x00000000 0x0000000b 3
+#     opslen 18446744073709551606 opsbytes: 55 00 00 00 00 00 00 00 00 00 00 00 00 00 00 71 00 00 ...
+#Segmentation fault (core dumped)

@@ -1,0 +1,6 @@
+.debug_loclists: counted location expression length can wrap the entry size to 0 (dwarfdump -v --print-raw-loclists heap over-read / segfault)
+ #344
+
+dwarfdump -v --print-raw-loclists crashes (SIGSEGV, release build) when a .debug_loclists entry has a counted location expression whose ULEB length is close to 2^64. Here a single DW_LLE_offset_pair has the expression length 0xfffffffffffffff6, which takes 10 ULEB bytes:
+
+With the length set to 1 (unit_length 0x0e, entry 04 00 0b 01 55 00) the same object prints opslen 1 opsbytes: 55 and a DW_LLE_end_of_list.
