@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+printf '#define A 1\n#define B 2\n#include <stddef.h>\nint main(void){return A+B;}\n' > m.c
+gcc -g3 -gdwarf-5 -O0 -S m.c -o m.s
+awk '/^\.Ldebug_macro0:/{inm=1} inm && /^\t\.byte\t0$/{print "\t.byte\t0x4\n\t.byte\t0x4"; inm=0} {print}' m.s > macend.s
+# warning: For my version of gcc the output
+3of macend was not perfect. So touched it up to be right.
+diff m.s macend.s
+#189a190,191
+#> 	.byte	0x4
+#> 	.byte	0x4
+gcc macend.s -o macend
+valgrind /tmp/dwarfdump -kw macend 
+#Segmentation fault (core dumped)
+valgrind /tmp/dwarfdump -i macend |grep MACNOTE
