@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+u!/usr/bin/env sh
 _
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
@@ -1387,6 +1387,10 @@ then
 else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
+
+# github Issue #345
+runtest $d1 $d2 $testsrc/buildidIssue345/exe --add-debuglink-path=$testsrc/buildidIssue345/dbg -i
+runtest $d1 $d2 $testsrc/buildidIssue345/exe --add-debuglink-path=$testsrc/buildidIssue345/dbgshort -i
 
 # github Issue #343
 runtest $d1 $d2 macroendfileIssue343/macend -kw

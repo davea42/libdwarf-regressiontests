@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+printf 'int main(void) { return 0; }\n' > p.c
+gcc -Wl,--build-id=sha1 -o exe p.c
+BID=$(readelf -n exe | awk '/Build ID/{print $3}')
+D2=$(echo $BID | cut -c1-2)
+REST=$(echo $BID | cut -c3-)
+echo BID=$BID
+echo D2=$D2
+echo REST=$REST
+mkdir -p dbg/.build-id/$D2
+gcc -g -Wl,--build-id=none -o nobid.debug p.c
+objcopy --add-gnu-debuglink=p.c nobid.debug dbg/.build-id/$D2/$REST.debug
+y="valgrind /tmp/dwarfdump --add-debuglink-path=$PWD/dbg -i exe"
+echo $y
+$y
+
+
+mkdir -p dbgshort/.build-id/$D2
+gcc -g -Wl,--build-id=0x$(echo $BID | cut -c1-8) -o dbgshort/.build-id/$D2/$REST.debug p.c
+
+z="valgrind /tmp/dwarfdump --add-debuglink-path=$PWD/dbgshort -i exe"
+echo $z 
+$z 

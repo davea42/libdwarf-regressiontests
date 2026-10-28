@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+dwarfdump segfault in match_buildid(): build-ids compared
+before their lengths (NULL deref / heap over-read on a
+.build-id debug file)
+ #345
+
+dwarfdump crashes (SIGSEGV, release build) when it follows
+the .build-id path for an executable and the debug file
+it finds there has no build-id note. If the debug file
+has a build-id that is shorter than the executable's, the
+comparison reads past the end of the note (heap over-read,
+seen with ASan).
+
+exe has a 20-byte build-id and no DWARF. The candidate
+dbg/.build-id/xx/yyyy.debug has no .note.gnu.build-id. It
+has a .gnu_debuglink, so dwarf_gnu_debuglink() succeeds
+on it. /usr/lib/debug is a default global path, so a file
+like this under /usr/lib/debug/.build-id/ has the same
+effect without --add-debuglink-path.
+
+ASan build:
+
+A second variant gives the debug file a 4-byte build-id equal to the first 4 bytes of the executable's:
+
+$ mkdir -p dbgshort/.build-id/$D2
+$ gcc -g -Wl,--build-id=0x$(echo $BID | cut -c1-8) -o dbgshort/.build-id/$D2/$REST.debug p.c
+$ dwarfdump --add-debuglink-path=$PWD/dbgshort -i exe
+
+The release build prints nothing wrong, but ASan reports:
+
+==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x5030000005c4 
