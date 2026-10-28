@@ -1,0 +1,13 @@
+
+
+printf 'int main(void) { return 0; }\n' > base.c && gcc -g -c base.c -o base.o
+
+printf '\027\000\000\000\002\000\000\000\000\000\000\000\000\000\013\000\000\000\060mainYYYY' > gp.bin
+
+hxdump  gp.bin
+#00000000: 1700 0000 0200 0000 0000 0000 0000 0b00  ................
+#00000010: 0000 306d 6169 6e59 5959 59              ..0mainYYYY
+
+objcopy --add-section .debug_gnu_pubnames=gp.bin --set-section-flags .debug_gnu_pubnames=readonly,debug base.o gp.o
+
+valgrind /tmp/dwarfdump --print-debug-gnu gp.o

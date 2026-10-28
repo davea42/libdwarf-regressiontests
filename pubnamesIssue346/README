@@ -1,0 +1,22 @@
+dwarfdump --print-debug-gnu: name without a NUL in the
+last .debug_gnu_pubnames entry reads past the section
+(heap over-read)
+ #346
+
+
+If the last name in a .debug_gnu_pubnames block has
+no NUL inside the block's entry area, and the 4-byte
+end-of-block word (which should be zero) is not zero,
+dwarfdump --print-debug-gnu prints the name with a string
+scan that runs off the end of the section buffer. Here is
+a 27-byte section with one block and one entry:
+
+(unit_length 0x17, version 2, CU offset 0, CU size 0,
+then one entry: DIE offset 0x0b, flag 0x30, the name
+"main" with no NUL. The end-of-block word is "YYYY".)
+
+The release build exits 0 and prints the name together
+with the end-of-block word and whatever bytes follow the
+section in memory. ASan build:
+
+

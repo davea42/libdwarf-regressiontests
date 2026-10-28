@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+Some directories here begin with . (period).
+So add -aR to any ls you do to see all the files.
+
 dwarfdump segfault in match_buildid(): build-ids compared
 before their lengths (NULL deref / heap over-read on a
 .build-id debug file)
