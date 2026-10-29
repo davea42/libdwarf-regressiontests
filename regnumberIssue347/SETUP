@@ -1,0 +1,9 @@
+#!/bin/bash
+printf 'int main(void) { return 0; }\n' > base.c && gcc -g -c base.c -o base.o
+
+printf '# register number near ULONG_MAX: rval + 100 wraps in add_to_reg_table\nbeginabi: big\nframe_interface: 3\nreg: rbig 0xfffffffffffffff0\nendabi: big\n' > big.conf
+
+
+#/tmp/dwarfdump -x name=big.conf -x abi=big -f base.o
+#dwarfdump looking for configuration as "big.conf"
+

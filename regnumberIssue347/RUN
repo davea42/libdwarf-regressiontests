@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#dwarfdump looking for configuration as "big.conf"
+/tmp/dwarfdump -x name=big.conf -x abi=big -f base.o
+
