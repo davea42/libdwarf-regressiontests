@@ -1388,6 +1388,12 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# github Issue #347
+runtest $d1 $d2 $testsrc/regnumberIssue347/base.o -x name=$testsrc/regnumberIssue347/big.conf -x abi=big -f
+
+# github Issue #346
+runtest $d1 $d2 $testsrc/pubnamesIssue346/gp.o --print-debug-gnu
+
 # github Issue #345
 runtest $d1 $d2 $testsrc/buildidIssue345/exe --add-debuglink-path=$testsrc/buildidIssue345/dbg -i
 runtest $d1 $d2 $testsrc/buildidIssue345/exe --add-debuglink-path=$testsrc/buildidIssue345/dbgshort -i
