@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+printf 'int f(int x) { return x + 1; }\nint g(int x) { return x * 2; }\n' > t.c
+
+gcc -g -O1 -ffunction-sections -c t.c -o t.o
+
+cp t.o t-zstd.o && eu-elfcompress -q -t zstd -n .symtab t-zstd.o
+
+cp t.o t-zlib.o && eu-elfcompress -q -t zlib -n .symtab t-zlib.o
+
+exit 0
+
+readelf -S -W t-zstd.o | grep symtab
+#  [22] .symtab           SYMTAB          0000000000000000 0005a0 000075 18   C 23  10  8
+
+dwarfdump -i t.o | grep low_pc
+#                    DW_AT_low_pc                0x00000000
+#                      DW_AT_low_pc                0x00000000
+#                      DW_AT_low_pc                0x00000000
+$ dwarfdump -i t-zstd.o
+#.debug_info
+#
+#dwarfdump ERROR:  ERROR: Failure reading CU header or DIE, corrupt DWARF:  DW_DLE_ABBREV_OFFSET_ERROR (49) Corrupted DWARF or corrupted object. Attempting to continue.
+#...
+
+dwarfdump -i t-zlib.o

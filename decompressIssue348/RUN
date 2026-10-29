@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+d=dwarfdump
+d=/tmp/dwarfdump
+$d -i t-zlib.o >junklib
+$d -i t-zstd.o >junkstd
+$d -i t.o  >junka

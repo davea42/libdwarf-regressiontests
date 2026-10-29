@@ -1388,6 +1388,11 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# github Issue #348
+# These should run perfectly, no errors.
+runtest $d1 $d2 $testsrc/decompressIssue348/t-zlib.o -i
+runtest $d1 $d2 $testsrc/decompressIssue348/t-zstd.o -i
+
 # github Issue #347
 runtest $d1 $d2 $testsrc/regnumberIssue347/base.o -x name=$testsrc/regnumberIssue347/big.conf -x abi=big -f
 
