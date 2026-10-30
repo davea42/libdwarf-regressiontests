@@ -1388,6 +1388,15 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# github Issue #349  (a PR)
+# DW_LLEX_start_end_entry high end fix for DWARF4. 
+runtest $d1 $d2 $testsrc/lowhighIssue349/ok/s.dwo -i --print-debug-addr --file-tied=$testsrc/lowhighIssue349/ok/s.o
+runtest $d1 $d2 $testsrc/lowhighIssue349/bad/s.dwo -i --print-debug-addr --file-tied=$testsrc/lowhighIssue349/bad/s.o
+
+# github Issue #350
+# bad macro name spelling DW_FORM_CLASS_MAXCROPTR
+runtest $d1 $d2 $testsrc/classmacroIssue350/m.o -ku
+
 # github Issue #348
 # These should run perfectly, no errors.
 runtest $d1 $d2 $testsrc/decompressIssue348/t-zlib.o -i
