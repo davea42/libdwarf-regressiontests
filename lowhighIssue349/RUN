@@ -1,0 +1,4 @@
+
+/tmp/dwarfdump --file-tied=ok/s.o -i --print-debug-addr -vvv ok/s.dwo >junkok
+
+/tmp/dwarfdump --file-tied=bad/s.o -i --print-debug-addr -vvv bad/s.dwo >junkba

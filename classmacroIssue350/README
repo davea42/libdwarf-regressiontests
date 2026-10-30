@@ -1,0 +1,9 @@
+
+
+Fix the name returned for DW_FORM_CLASS_MACROPTR- #350
+#350
+￼
+￼
+A small typo: dwarf_get_FORM_CLASS_name(DW_FORM_CLASS_MACROPTR, ...) returns the string "DW_FORM_CLASS_MAXCROPTR" (src/lib/libdwarf/dwarf_form_class_names.c:87 on master e6d1bbb). It shows up in dwarfdump's form-class statistics for any DWARF5 object with DW_AT_macros:
+
+

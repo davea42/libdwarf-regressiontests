@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+printf '#define X 1\nint main(void) { return X; }\n' > m.c
+gcc -g3 -gdwarf-5 -c m.c -o m.o
+
+#dwarfdump -ku m.o | grep CROPTR
+#[ 7] DW_FORM_CLASS_MAXCROPTR           1 5%

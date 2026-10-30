@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+printf 'extern int g(int);\nint f(int a, int b) { int x = a*3; x = g(x); int y = x + b; y = g(y); return y + a; }\n' > s.c
+gcc -gdwarf-4 -gsplit-dwarf -O2 -S s.c -o s.s
+# 13 is 0xd,the actual end raw value 
+sed '/^\.LLST0:/,/^\t\.long/{s/^\t\.byte\t0x3$/\t.byte\t0x2/;s/^\t\.long\t\.LVL1-\.LVL0$/\t.uleb128 0/}' s.s > se.s
+diff s.s se.s
+#379c379
+#< 	.byte	0x3
+#---
+#> 	.byte	0x2
+#381c381
+#< 	.long	.LVL1-.LVL0
+#---
+#> 	.uleb128 0
+mkdir ok bad
+(cd ok && gcc -gsplit-dwarf -c ../s.s -o s.o) && (cd bad && gcc -gsplit-dwarf -c ../se.s -o s.o)
