@@ -8,4 +8,10 @@ CU Name = <unknown>
 CU Producer = GNU C23 15.2.0 -mtune=generic -march=x86-64 -g3 -gdwarf-4 -gstrict-dwarf -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection -fzero-init-padding-bits=all
 DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
 
-There were 2 DWARF errors reported: see ERROR above.
+./dwarfdump ERROR:  printing .debug_info had a problem.:  DW_DLE_BAD_MACRO_INDEX:  The file index read from object data is negative. Corrupt DWARF.. Attempting to continue.
+
+CU Name = <unknown>
+CU Producer = GNU C23 15.2.0 -mtune=generic -march=x86-64 -g3 -gdwarf-4 -gstrict-dwarf -O0 -fasynchronous-unwind-tables -fstack-protector-strong -fstack-clash-protection -fcf-protection -fzero-init-padding-bits=all
+DIE OFF = 0x0000000b GOFF = 0x0000000b, Low PC = unknown   , High PC = unknown   
+
+There were 3 DWARF errors reported: see ERROR above.

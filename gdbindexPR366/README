@@ -1,0 +1,53 @@
+.gdb_index offsets can wrap the pointer below the section
+on 32-bit hosts (dwarfdump -I heap over-read / segfault)-
+#366 #366 ￼ Three .gdb_index readers in
+src/lib/libdwarf/dwarf_gdbindex.c (main 7c2874c) add a
+32-bit offset taken from the section to a pointer, and
+only then compare the pointer with the section end:
+
+dwarf_gdbindex_cuvector_length(), line 699: base +=
+cuvector_offset; if ((base + fieldlen) > endptr)
+
+dwarf_gdbindex_cuvector_inner_attributes(), lines 740-748:
+the same, plus fieldlen*innerindex
+
+dwarf_gdbindex_string_by_offset(), lines 823-826:
+stringitself = gi_section_data + fulloffset; if (stringitself
+> section_end)
+
+On a 64-bit host a 32-bit offset cannot wrap the pointer,
+so a bad offset is rejected. On a 32-bit host, an offset
+near 2^32 wraps base to an address below the section, the
+check passes, and the read happens there. The string reader
+has a lower-bound check in _dwarf_check_string_valid(),
+but it never applies, because pooldata is left at 0.
+
+To reproduce, I built a small program, ran gdb-add-index
+on it, and changed one field of the symbol-table entry
+for main. Three inputs were made: the CU vector offset
+set to 16 bytes before the section (t-bad), the CU vector
+offset about 1 GiB away (t-far), and the name offset set
+to 16 bytes before the section (t-name). The script at
+the end of this description regenerates them.
+
+32-bit (-m32) ASan+UBSan build of main:
+
+$ dwarfdump -I t-bad
+ERROR: AddressSanitizer: heap-buffer-overflow on address 0xf3a050f0
+READ of size 4 at 0xf3a050f0 thread T0
+    #1 dwarf_gdbindex_cuvector_length dwarf_gdbindex.c:710
+    #2 print_symtab_entry print_gdbindex.c:309
+0xf3a050f0 is located 16 bytes to the left of 8297-byte region [0xf3a05100,0xf3a07169)
+
+$ dwarfdump -I t-name
+ERROR: AddressSanitizer: heap-buffer-overflow on address 0xf3a050f0
+READ of size 1 at 0xf3a050f0 thread T0
+    #0 _dwarf_check_string_valid dwarf_util.c:1164
+    #1 dwarf_gdbindex_string_by_offset dwarf_gdbindex.c:837
+
+In a 32-bit release build, t-bad reports no error: the
+count is read from the bytes before the buffer, and the
+main entry silently drops out of the symbol-table listing.
+t-far segfaults (exit 139). A 64-bit release build reports
+DW_DLE_GDB_INDEX_INDEX_ERROR for both offsets, which is
+what the 32-bit build should do too.

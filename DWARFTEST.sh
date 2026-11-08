@@ -1,4 +1,4 @@
-u!/usr/bin/env sh
+#!/usr/bin/env sh
 _
 trap "echo Exit testing - signal ; rm -f $dwbb ; exit 1 " 2
 #
@@ -1161,6 +1161,21 @@ do
   r=$?
   chkresbld $r "compile of ${f}.c failed" 
 done
+for f in debugaddrIssue336
+do
+  sa=test_debugaddr
+  echo "====BUILD $f"
+  mklocal $f
+  x="$CC $opt -I$codedir/src/lib/libdwarf $libzhdr -I$libbld \
+     -I$libbld/libdwarf $nonsharedopt\
+     -gdwarf $nlizeopt $testsrc/$f/${sa}.c \
+     -o $sa  $dwlib $libzlib $libzlink"
+  echo "$x"
+  $x
+  r=$?
+  chkresbld $r "compile of $sa failed" 
+  cd ..
+done
 
 for f in test_macho_universal
 do
@@ -1388,6 +1403,18 @@ else
   runsingle ossfuzz69641.base ./fuzz_die_cu_attrs_loclist  --testobj=$testsrc/ossfuzz69641/fuzz_die_cu_attrs_loclist-6271271030030336
 fi
 
+# github PR #366  (a pull request)
+#In a 32-bit release build, t-bad reports no error: the
+#count is read from the bytes before the buffer, and the
+#main entry silently drops out of the symbol-table listing.
+#t-far segfaults (exit 139). A 64-bit release build reports
+#DW_DLE_GDB_INDEX_INDEX_ERROR for both offsets, which is
+#what the 32-bit build should do too.
+
+runtest $d1 $d2 $testsrc/gdbindexPR366/t-bad -I 
+runtest $d1 $d2 $testsrc/gdbindexPR366/t-far -I 
+runtest $d1 $d2 $testsrc/gdbindexPR366/t-name -I 
+
 # github Issue #349  (a PR)
 # DW_LLEX_start_end_entry high end fix for DWARF4. 
 runtest $d1 $d2 $testsrc/lowhighIssue349/ok/s.dwo -i --print-debug-addr --file-tied=$testsrc/lowhighIssue349/ok/s.o
@@ -1428,6 +1455,16 @@ runtest $d1 $d2 loclistsIssue342/ll.o --print-raw-loclists -v
 runtest $d1 $d2 rnglistsIssue341/rng-bad.o -a 
 
 runtest $d1 $d2 LiangElija/test.elf -a -M -vv --print-machine-arch
+
+# for multiple debug_addr tables in the section, failed
+# due to a calculated offset  before fixed. github Issue 336
+runsingle debugaddrIssue336-a.base ./debugaddrIssue336/test_debugaddr  $testsrc/stroffsetsIssue337/both.o
+runsingle debugaddrIssue336-b.base ./debugaddrIssue336/test_debugaddr  $testsrc/debugaddr/blaik.so
+runsingle debugaddrIssue336-c.base ./debugaddrIssue336/test_debugaddr  $testsrc/corexp/elf.dbg
+runsingle debugaddrIssue336-d.base ./debugaddrIssue336/test_debugaddr  $testsrc/gordeyev/DwarfTest
+# the following two have lots in debugaddr.  Issue 336
+runtest $d1 $d2  $testsrc/myzhan/lua --print-debug-addr
+runtest $d1 $d2  $testsrc/pubnames/dw5_names.o --print-debug-addr
 
 # Fails with segv before fixed.
 runsingle macnegIssue340.base ./dwarfdump -m $testsrc/macinfoIssue340/macneg.o

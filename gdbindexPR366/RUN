@@ -1,0 +1,5 @@
+
+
+valgrind /tmp/dwarfdump -I t-name
+valgrind /tmp/dwarfdump -I t-bad
+valgrind /tmp/dwarfdump -I t-far

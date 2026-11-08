@@ -1,0 +1,20 @@
+#!/bin/sh
+# Regenerate the inputs: a small binary with a 
+# gdb-built .gdb_index, then
+# three copies with one symbol-table field of "main" changed.
+set -e
+gcc -g -O0 t.c -o t
+gdb-add-index t
+OFF=$(readelf -SW t | awk '/\.gdb_index/{print $5}')
+python3 -I patch.py t t-bad "$OFF" cuvec  # CU vector offset: 16 bytes before the section
+python3 -I patch.py t t-far "$OFF" cuvec 40000000  # CU vector offset: ~1 GiB away
+python3 -I - "$OFF" <<'PY'
+import struct, sys
+s = int(sys.argv[1], 16); b = bytearray(open('t', 'rb').read())
+symo, cpo = struct.unpack_from('<2I', b, s + 16)
+for i in range((cpo - symo) // 8):
+    so, cvo = struct.unpack_from('<II', b, s + symo + 8 * i)
+    if so or cvo:
+        struct.pack_into('<I', b, s + symo + 8 * i, (2**32 - cpo - 16) & 0xffffffff)
+        break
+open('t-name', 'wb').write(b)
