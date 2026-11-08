@@ -1,3 +1,273 @@
+2026-11-07:  David Anderson
+    commit 3276e118033fb5058eb6b11d662fff5b41ba0e3b
+
+    New tests of githubIssue 336.
+            modified:   DWARFTEST.sh
+            modified:   baselines/macnegIssue340.base
+            new file:   gdbindexPR366/README
+            new file:   gdbindexPR366/RUN
+            new file:   gdbindexPR366/SETUP
+            new file:   gdbindexPR366/patch.py
+            new file:   gdbindexPR366/t
+            new file:   gdbindexPR366/t-bad
+            new file:   gdbindexPR366/t-far
+            new file:   gdbindexPR366/t-name
+            new file:   gdbindexPR366/t.c
+
+2026-10-30:  David Anderson
+    commit cb6cddd882ecbd0f1069a8674cf2189245df19cc
+
+    With added tests.
+            modified:   DWARFTEST.sh
+
+2026-10-30:  David Anderson
+    commit 2503374d94bd929d217080cbc229fd42e10bd914
+
+    New testcases
+            new file:   classmacroIssue350/README
+            new file:   classmacroIssue350/SETUP
+            new file:   classmacroIssue350/m.c
+            new file:   classmacroIssue350/m.o
+            new file:   lowhighIssue349/RUN
+            new file:   lowhighIssue349/SETUP
+            new file:   lowhighIssue349/bad/s.dwo
+            new file:   lowhighIssue349/bad/s.o
+            new file:   lowhighIssue349/ok/s.dwo
+            new file:   lowhighIssue349/ok/s.o
+            new file:   lowhighIssue349/s.c
+            new file:   lowhighIssue349/s.s
+            new file:   lowhighIssue349/se.s
+
+2026-10-29:  David Anderson
+    commit f02f7a96dfa29731653624d33e028990f9026292
+
+    A new testcase verifying decompress
+    with either zlib or zstd works
+    (was broken for both till now).
+    github Issue #348
+            modified:   DWARFTEST.sh
+            new file:   decompressIssue348/RUN
+            new file:   decompressIssue348/SETUP
+            new file:   decompressIssue348/t-zlib.o
+            new file:   decompressIssue348/t-zstd.o
+            new file:   decompressIssue348/t.c
+            new file:   decompressIssue348/t.o
+
+2026-10-29:  David Anderson
+    commit c83ae57703634b99392d231c6ef1d9f41acbc2d1
+
+    Now with test for github Issue #347
+            modified:   DWARFTEST.sh
+
+2026-10-28:  David Anderson
+    commit a2575a259023737111c54736120b1ce5045145fe
+
+    Newtestcase. Github issue 347.
+            new file:   regnumberIssue347/RUN
+            new file:   regnumberIssue347/SETUP
+            new file:   regnumberIssue347/base.c
+            new file:   regnumberIssue347/base.o
+            new file:   regnumberIssue347/big.conf
+
+2026-10-28:  David Anderson
+    commit 27d8c004091bcdb44c907c5a0a8ffc8d8e81f769
+
+    Small change
+            modified:   buildidIssue345/README
+    New Test case
+            new file:   pubnamesIssue346/README
+            new file:   pubnamesIssue346/SETUP
+            new file:   pubnamesIssue346/base.c
+            new file:   pubnamesIssue346/base.o
+            new file:   pubnamesIssue346/gp.bin
+            new file:   pubnamesIssue346/gp.o
+
+2026-10-28:  David Anderson
+    commit 8a0496906f10f249faa70ce98b54d2be5dd2776c
+
+    github Issue #346
+    References to buildid could fail due to misordering
+    a length-test and a byte comparison.
+    The fault was present when this build-id was first added to libdwarf.
+
+            modified:   DWARFTEST.sh
+            new file:   buildidIssue345/README
+            new file:   buildidIssue345/SETUP
+            new file:   buildidIssue345/dbg/.build-id/a9/ec4636fb401c7e7da6b3f2892b861425d4deac.debug
+            new file:   buildidIssue345/dbgshort/.build-id/a9/ec4636fb401c7e7da6b3f2892b861425d4deac.debug
+            new file:   buildidIssue345/exe
+            new file:   buildidIssue345/nobid.debug
+            new file:   buildidIssue345/p.c
+
+2026-10-27:  David Anderson
+    commit f97dd4fa76cf2281badf26bb68a1660eefd70b91
+
+    New tests added for Issue #343
+            modified:   DWARFTEST.sh
+
+2026-10-27:  David Anderson
+    commit 25db7c48700f9598aec233365b7728a12f5b56f3
+
+    New test case behaves as it should.
+    Segv before fixing.
+            new file:   macroendfileIssue343/.byte
+            new file:   macroendfileIssue343/SETUP
+            new file:   macroendfileIssue343/m.c
+            new file:   macroendfileIssue343/m.s
+            new file:   macroendfileIssue343/macend
+            new file:   macroendfileIssue343/macend.s
+
+2026-10-27:  David Anderson
+    commit 48bbca5a2b67681cf096193bb31e3f0e9c7ea52a
+
+    New testcase, now run by DWARFTEST.sh
+            modified:   DWARFTEST.sh
+            new file:   loclistsIssue344/README
+            new file:   loclistsIssue344/SETUP
+            new file:   loclistsIssue344/base.c
+            new file:   loclistsIssue344/base.o
+            new file:   loclistsIssue344/ll.bin
+            new file:   loclistsIssue344/llwrap.o
+
+2026-10-27:  David Anderson
+    commit 2aa9c2617bc340641b4219131cdfa157e87b6d3e
+
+    Now testing latest fixes,
+            modified:   DWARFTEST.sh
+
+2026-10-27:  David Anderson
+    commit 880b3a008b80165e576ce6cb9c41eb7e4bf439ac
+
+    New baseline
+            new file:   baselines/machinearchunivbinvb.base
+    New tests
+            new file:   loclistsIssue342/README
+            new file:   loclistsIssue342/SETUP
+            new file:   loclistsIssue342/base.c
+            new file:   loclistsIssue342/base.o
+            new file:   loclistsIssue342/ll.bin
+            new file:   loclistsIssue342/ll.o
+            new file:   rnglistsIssue341/README
+            new file:   rnglistsIssue341/SETUP
+            new file:   rnglistsIssue341/rng-bad.o
+            new file:   rnglistsIssue341/rng.bin
+            new file:   rnglistsIssue341/rng.c
+            new file:   rnglistsIssue341/rng.o
+
+2026-10-26:  David Anderson
+    commit fc1789a21b82f45d375a7400a501c0e1e51fe62f
+
+    New test and now tested in regressiontests.
+            modified:   DWARFTEST.sh
+            modified:   baselines/macho-kagstrom.base
+            new file:   baselines/macnegIssue340.base
+            new file:   macinfoIssue340/README
+            new file:   macinfoIssue340/SETUP
+            new file:   macinfoIssue340/m.c
+            new file:   macinfoIssue340/m.s
+            new file:   macinfoIssue340/macneg.o
+            new file:   macinfoIssue340/macneg.s
+
+2026-10-25:  David Anderson
+    commit bbf2943e027966a2d8c43cb54bf489a585238428
+
+    New baseline for Issue #335
+            modified:   DWARFTEST.sh
+    New test for Issue #337
+            modified:   baselines/Issue335-a.base
+
+2026-10-25:  David Anderson
+    commit e290a69c52cc5e8412c92a6e66e8e474551489c4
+
+    Finishing up test creation.
+            new file:   baselines/stroffsetsIssue337-b.base
+            new file:   baselines/stroffsetsIssue337-c.base
+            new file:   baselines/stroffsetsIssue337.base
+            new file:   strstrnocase/README
+            new file:   strstrnocase/s.c
+            new file:   strstrnocase/s.o
+
+2026-10-25:  David Anderson
+    commit a3c6bc15cb75bb6b9d6066cb07c59443cae89adb
+
+    Added -n to echo command to get exactly the bytes
+    wanted (no newline)
+            modified:   stroffsetsIssue337/SETUPB
+            modified:   stroffsetsIssue337/n.bin
+            modified:   stroffsetsIssue337/n.o
+            modified:   stroffsetsIssue337/z.bin
+            modified:   stroffsetsIssue337/z.o
+
+2026-10-25:  David Anderson
+    commit 5a8345147cf9e50ea13c966d76360d5bc426e75c
+
+    Test case creation and all intermediate files.
+            new file:   stroffsetsIssue337/README
+            new file:   stroffsetsIssue337/RUN
+            new file:   stroffsetsIssue337/SETUP
+            new file:   stroffsetsIssue337/SETUPB
+            new file:   stroffsetsIssue337/a.c
+            new file:   stroffsetsIssue337/a.o
+            new file:   stroffsetsIssue337/b.c
+            new file:   stroffsetsIssue337/b.o
+            new file:   stroffsetsIssue337/both.o
+            new file:   stroffsetsIssue337/n.bin
+            new file:   stroffsetsIssue337/n.o
+            new file:   stroffsetsIssue337/z.bin
+            new file:   stroffsetsIssue337/z.o
+
+2026-10-22:  David Anderson
+    commit 82239a3091fdea3d1d6436cc9a7fb5bb769847f9
+
+    Test for github Issue #335
+            modified:   DWARFTEST.sh
+            new file:   baselines/Issue335-a.base
+            new file:   baselines/Issue335-b.base
+
+2026-10-22:  David Anderson
+    commit 3b85c73d316f69eb9211bbd515f0e95d79ed1993
+
+    New baselines
+            modified:   baselines/Issue332-a.base
+            modified:   baselines/Issue332-b.base
+
+2026-10-21:  David Anderson
+    commit bd9381b0d149f2399bc315300fe85f75c6d68a5b
+
+    New tests for github issue 332.
+            modified:   DWARFTEST.sh
+            new file:   baselines/Issue332-a.base
+            new file:   baselines/Issue332-b.base
+
+2026-10-09:  David Anderson
+    commit 2bd32cb83dd40d1656dd54ff8cfd0c640d8fad15
+
+    New ossfuzz testcase. Updated baselines
+    on dwardump output for option --print-machine-arch .
+            modified:   DWARFTEST.sh
+            modified:   baselines/machinearchi386.base
+            modified:   baselines/machinearchi386v.base
+            new file:   baselines/ossfuzz570352712.base
+
+2026-10-09:  David Anderson
+    commit 539c1b5ff1680b4185be8430427ed3ba2f9d3495
+
+    New testcase.
+            new file:   ossfuzz570352712/README
+            new file:   ossfuzz570352712/fuzz_srcfiles-5487022035501056
+
+2026-09-24:  David Anderson
+    commit ae0ef83047532beca039801e95e178baf353d9c8
+
+    Used by TI DSP compiler.
+            new file:   LiangElija/DWARFExtensions.txt
+
+2026-09-24:  David Anderson
+    commit b6c4abba528359ff1f31defaf69f28e87a476ea3
+
+    Up to date for 2.3.3.
+            modified:   ChangeLog
+
 2026-09-24:  David Anderson
     commit 7924495b28d1c8380cb517964b384b9f61250fdd
 
